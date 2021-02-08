@@ -1,0 +1,63 @@
+
+// clone a fresh lamp container
+https://github.com/sprintcube/docker-compose-lamp
+git clone https://github.com/sprintcube/docker-compose-lamp.git
+
+> cd docker-compose-lamp/
+> docker-compose up -d
+// visit localhost
+
+
+// run this from within your project directoty
+> docker-compose up -d
+
+
+
+// all front end html files go in /www/pages/views/
+// all other assets can be anywhere
+
+Note: .htaccess controls url destinations to the appropriate php file (template):
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

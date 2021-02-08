@@ -1,0 +1,174 @@
+
+
+
+		<footer class="clearfix">
+			<div class="wrapper">
+				<div class="container-fluid">
+					<div class="row first-footer">
+						<div class="col-6 col-xl-3">
+							<div class="first-footer__wrapper">
+								<nav class="first-footer__wrapper--border">
+									<a href="#" title="" class="first-footer__wrapper--link">
+										<img src="images/group.svg" alt="" class="first-footer__img">
+										<h2 class="first-footer__heading">Custom closets</h2>
+									</a>
+									<ul class="first-footer__navivation">
+										<li><a href="#" title="Closet Installation">Closet Installation</a></li>
+										<li><a href="#" title="Showroom">Showroom</a></li>
+										<li><a href="#" title="Closet Specifications">Closet Specifications</a></li>
+									</ul>
+								</nav>
+							</div>
+						</div>
+						<div class="col-6 col-xl-3">
+							<div class="first-footer__wrapper">
+								<nav class="first-footer__wrapper--border">
+									<a href="#" title="" class="first-footer__wrapper--link">
+										<img src="images/application.svg" alt="" class="first-footer__img">
+										<h2 class="first-footer__heading">Shop</h2>
+									</a>
+									<ul class="first-footer__navivation">
+										<li><a href="#" title="Pantry Storage Systems">Pantry Storage Systems</a></li>
+										<li><a href="#" title="Custom Closet Organizers">Custom Closet Organizers</a></li>
+										<li><a href="#" title="Garage Storage Systems">Garage Storage Systems</a></li>
+										<li><a href="#" title="Office Closet Systems">Office Closet Systems</a></li>
+										<li><a href="#" title="Deluxe Wine Racks">Deluxe Wine Racks</a></li>
+										<li><a href="#" title="Wall Beds">Wall Beds</a></li>
+										<li><a href="#" title="Craft Storage Systems">Craft Storage Systems</a></li>
+										<li><a href="#" title="See more...">See more...</a></li>
+									</ul>
+								</nav>
+							</div>
+						</div>
+						<div class="col-6 col-xl-3">
+							<div class="first-footer__wrapper">
+								<nav class="first-footer__wrapper--border">
+									<a href="#" title="" class="first-footer__wrapper--link">
+										<img src="images/support.svg" alt="" class="first-footer__img">
+										<h2 class="first-footer__heading">Support</h2>
+									</a>
+									<ul class="first-footer__navivation">
+									<li><a href="#" title="Frequently Asked Questions">Frequently Asked Questions</a></li>
+									<li><a href="#" title="Contact Closets To Go">Contact Closets To Go</a></li>
+									<li><a href="#" title="Closet Guide & Tips">Closet Guide & Tips</a></li>
+									<li><a href="#" title="Feedback">Feedback</a></li>
+									<li><a href="#" title="Privacy Statement">Privacy Statement</a></li>
+									</ul>
+								</nav>
+							</div>
+						</div>
+						<div class="col-6 col-xl-3">
+							<div class="first-footer__wrapper">
+								<nav class="first-footer__wrapper--border">
+									<a href="#" title="" class="first-footer__wrapper--link">
+										<img src="images/puzzle.svg" alt="" class="first-footer__img">
+										<h2 class="first-footer__heading">Company</h2>
+									</a>
+									<ul class="first-footer__navivation">
+									<li><a href="#" title="About Closets To Go">About Closets To Go</a></li>
+									<li><a href="#" title="Shipping">Shipping</a></li>
+									<li><a href="#" title="Closet Order Process">Closet Order Process</a></li>
+									<li><a href="#" title="Closet Purchase Policy">Closet Purchase Policy</a></li>
+									<li><a href="#" title="About Closets To Go">About Closets To Go</a></li>
+									<li><a href="#" title="Shipping">Shipping</a></li>
+									<li><a href="#" title="Closet Order Process">Closet Order Process</a></li>
+									<li><a href="#" title="Closet Purchase Policy">Closet Purchase Policy</a></li>
+									</ul>
+								</nav>
+							</div>
+						</div>
+					</div>
+					<div class="row second-footer">
+						<div class="col-12">
+							<div class="second-footer__wrapper">
+								<h2 class="second-footer__heading">DESIGN YOUR CUSTOM CLOSET</h2>
+								<nav class="second-footer__navigation">
+									<a href="#" title="">Email A Closet Design</a>
+									<a href="fax-a-design-plan.html" title="">>>>>> Fax A Closet Design</a>
+									<a href="#" title="">Free Local In-Home Consultation</a>
+								</nav>
+							</div>
+						</div>
+					</div>
+					<div class="row third-footer">
+						<div class="col-12 third-footer__wrapper">
+							<h2 class="third-footer__heading">DESIGN YOUR CUSTOM CLOSET</h2>
+							<div class="third-footer__cards">
+								<img src="images/footer-visa.png" alt="">
+								<img src="images/footer-masterCard.png" alt="">
+								<img src="images/footer-paypal.png" alt="">
+								<img src="images/footer-american-express.png" alt="">
+								<img src="images/optimized-enerbankusalogo.jpg" alt="" class="footer-enerbankusa-logo">
+							</div>
+							<p class="third-footer__first-text js-show-text">
+								Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
+								invidunt
+								ut labore et dolore magna aliquyam erat,
+								sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita
+								kasd
+								gubergren, no sea takimata sanctus est Lorem
+								ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+								nonumy
+								eirmod tempor invidunt ut labore et dolore
+								magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo
+							</p>
+
+							<div class="mobile-show">
+								<button data-readAll="Discover all"
+										data-readLess="Discover less"
+										class="third-footer__mobile-button js-btn-view-all-text">
+									<span>Discover all</span>
+								</button>
+							</div>
+
+							<div class="third-footer__social-media">
+								<a href="#" title=""><img src="images/facebook.svg" alt=""></a>
+								<a href="#" title=""><img src="images/twitter.svg" alt=""></a>
+								<a href="#" title=""><img src="images/linkedin.svg" alt=""></a>
+								<a href="#" title=""><img src="images/iconfinder_houzz.png"></a>
+								<a href="#" title=""><img src="images/logotype.svg" alt=""></a>
+								<a href="#" title=""><img src="images/brands-and-logotypes.svg" alt=""></a>
+								<a href="#" title=""><img src="images/brands-and-logotypes(1).svg" alt=""></a>
+							</div>
+
+							<p class="third-footer__second-text">Copyright © 2019 All Rights Reserved.</p>
+
+							<div class="mobile-show">
+								<a href="#" title="" class="third-footer__mobile-button js-to-top">Top</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+<?php
+echo "<br />";
+$url_str = "fax-a-design-plan.html";
+echo "<a href='".$url_str."'>".$url_str."</a>";
+echo "<br />";
+$url_str = "about-us.html";
+echo "<a href='".$url_str."'>".$url_str."</a>";
+echo "<br />";
+
+?>
+			
+		</footer>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<a href='about-us.html'
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />

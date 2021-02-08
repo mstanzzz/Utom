@@ -1,0 +1,2 @@
+[03-Jan-2021 18:18:05 UTC] PHP Warning:  mysqli::mysqli(): php_network_getaddresses: getaddrinfo failed: Name or service not known in /home/ctgtest/public_html/includes/class.dbcustom.php on line 11
+[03-Jan-2021 18:18:05 UTC] PHP Warning:  mysqli::mysqli(): (HY000/2002): php_network_getaddresses: getaddrinfo failed: Name or service not known in /home/ctgtest/public_html/includes/class.dbcustom.php on line 11

@@ -1,0 +1,87 @@
+<!-- Begin Product List Controls -->
+<?php
+
+	// REMOVE THE AJAX
+
+		$current_page = (int)$itemListData["current_page"];
+		$prev_pg_int = $current_page-1;
+		$next_pg_int = $current_page+1;
+		$previous_page = (string)$prev_pg_int;
+		$next_page = (string)$next_pg_int;
+		$last_page = $itemListData["page_count"];
+	
+//$base_ajax_url = $_SERVER['DOCUMENT_ROOT']."/pages/cart/ajax-product-list.php?id=".$itemListData["cat_id"]."&id_type=".$itemListData["id_type"].$itemListData["filter_qstr"]."&pagenum=";
+		
+		$base_ajax_url = $_SERVER['DOCUMENT_ROOT']."/pages/cart/ajax-product-list.php";
+		$base_ajax_url .= "?cat_id=".$itemListData['cat_id'];
+		$base_ajax_url .= "&brand_id=".$itemListData['brand_id'];
+		$base_ajax_url .= "&search_str=".$itemListData['search_str'];
+		$base_ajax_url .= $itemListData["filter_qstr"];
+
+		
+		$first_page_ajax = ($current_page == 1) ? "" : "loadAJAX('".$base_ajax_url."&pagenum=1"."&page_rows=".$itemListData["page_rows"]."')";
+		$previous_page_ajax = ($current_page - 1 <= 0) ? "" : "loadAJAX('".$base_ajax_url."&pagenum=".$previous_page."&page_rows=".$itemListData["page_rows"]."')";
+		$next_page_ajax = ($current_page + 1 > (int)$last_page) ? "" : "loadAJAX('".$base_ajax_url."&pagenum=".$next_page."&page_rows=".$itemListData["page_rows"]."')";
+		$last_page_ajax = ((int)$last_page <= $current_page) ? "" : "loadAJAX('".$base_ajax_url."&pagenum=".$last_page."&page_rows=".$itemListData["page_rows"]."')";
+		$per_page_ajax = "appendAndLoadAJAX('".$base_ajax_url."&pagenum=".$itemListData["current_page"]."&sort_type=".$itemListData["sort_type"]."&page_rows=',this)";
+		$sort_ajax = "appendAndLoadAJAX('".$base_ajax_url."&pagenum=".$itemListData["current_page"]."&page_rows=".$itemListData["page_rows"]."&sort_type=',this)";
+		
+		$gridActive = ($itemListData['view_type'] == 'grid') ? '' : 'active';
+		$listActive = ($itemListData['view_type'] == 'list') ? '' : 'active';
+		$perpage6 = ($itemListData['page_rows'] == 6) ? 'selected' : '';
+		$perpage12 = ($itemListData['page_rows'] == 12) ? 'selected' : '';
+		$perpage24 = ($itemListData['page_rows'] == 24) ? 'selected' : '';
+		$perpage30 = ($itemListData['page_rows'] == 30) ? 'selected' : '';
+		
+		//unset($_SESSION["product_bar_content"]);
+		
+		function setActiveIcon($check_url){
+			return ($check_url == "") ? "" : "active";
+		}
+		function setSelected($option_val){
+			return "";
+			//return ((int)$itemListData["page_rows"] == $option_val) ? "selected" : "";
+		}
+
+			$block = "";
+				$block .= "<div class='row'>";
+					$block .= "<div class='span9 search-controls search-controls-top'>";
+						$block .= "<span class='result-summary'>".$itemListData['items_count']." Products Found</span>";
+						$block .= "<span class='display-type'>";
+							$block .= "View: ";
+							$block .= "<a class='list-view' onclick='makeListView()'><i class='list-icon $gridActive'></i></a>";
+							$block .= "<a onclick='makeGridView()' class='grid-view'><i class='grid-icon $listActive'></i></a></span>";
+						$block .= "<span class='pagination'>";
+						//<!-- first page -->
+							$block .= "<a onclick=\"$first_page_ajax\" class='paging-first'><i class='paging-icon-first ".setActiveIcon($first_page_ajax)."'></i></a>";
+						//<!-- previous page -->
+							$block .= "<a onclick=\"$previous_page_ajax\" class='paging-previous'><i class='paging-icon-previous ". setActiveIcon($previous_page_ajax)."'></i></a>";
+						//<!-- current out of total pages -->
+							$block .= "Page ".$itemListData['current_page']."/<a onclick=\"$last_page_ajax\" class='paging-last'>".$itemListData['page_count']."</a>";
+						//<!-- next page -->
+							$block .= "<a onclick=\"$next_page_ajax\" class='paging-next'><i class='paging-icon-next ".setActiveIcon($next_page_ajax)."'></i></a>";
+						//<!-- last page -->
+							$block .= "<a onclick=\"$last_page_ajax\" class='paging-last'><i class='paging-icon-last ".setActiveIcon($last_page_ajax)."'></i></a>";
+						$block .= "</span>";
+						$block .= "<span class='results-per-page'>";
+							$block .= "<select name=\"results_per_page\" onChange=\"$per_page_ajax\">";
+								$block .= "<option $perpage6>6</option>";
+								$block .= "<option $perpage12>12</option>";
+								$block .= "<option $perpage24>24</option>";
+								$block .= "<option $perpage30>30</option>";
+							$block .= "</select>";
+							$block .= "per pg.";
+						$block .= "</span>";
+						$block .= "<span class='sort-results'>";
+							$block .= "Sort:";
+							$block .= "<select name='sort_results' onChange=\"$sort_ajax\">";
+								$block .= "<option value='price_low_to_high'>Price: Low to High</option>";
+								$block .= "<option value='price_high_to_low'>Price: High to Low</option>";
+								$block .= "<option value='featured'>Featured</option>";
+							$block .= "</select>";
+						$block .= "</span>";
+					$block .= "</div>";
+				$block .= "</div>";
+			$_SESSION["product_bar_content"] = $block;
+			echo $block;
+ ?>

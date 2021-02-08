@@ -1,0 +1,43 @@
+#
+Options +FollowSymlinks
+#RewriteBase /
+RewriteEngine on
+#
+# prevent infinite loops
+RewriteCond %{ENV:REDIRECT_STATUS} 200
+RewriteRule .* - [L]
+#
+#
+RewriteRule ^$ template_default.php?slug=home [L]
+#
+#
+#
+#
+#/showroom-category-69/custom-closet-organizers-for-wardrobes.html/showroom-category-69/custom-closet-organizers-for-wardrobes.html
+RewriteRule ^showroom-category-([0-9]+)/([^/\.]+).html?$ template_default.php?slug=showroom&prodCatId=$1 [L]
+#
+#
+#
+#
+RewriteRule ^showroom-([0-9]+)/([^/\.]+).html?$ template_default.php?slug=showroom-details&productId=$1 [L]
+RewriteRule ([^.]+)/showroom-([0-9]+)/([^/\.]+).html?$ template_default.php?slug=showroom-details&productId=$2 [L]
+RewriteRule ([^.]+)/([^.]+)/([^.]+)/showroom-([0-9]+)/([^/\.]+).html?$ template_default.php?slug=showroom-details&productId=$4 [L]
+RewriteRule ([^.]+)/([^.]+)/([^.]+)/([^.]+)/showroom-([0-9]+)/([^/\.]+).html?$ template_default.php?slug=showroom-details&productId=$5 [L]
+#
+#
+#
+#productId
+#
+#localhost/product-60/docking-station-300-ipod-iphone.html
+RewriteRule ^product-([0-9]+)/([^/\.]+).html?$ template_default.php?slug=product-details&productId=$1 [L]
+#
+#
+#
+#
+#
+RewriteRule ^([^/\.]+).html?$ template_default.php?slug=$1 [L]
+#
+RewriteRule ^([^/\.]+)/([^/\.]+).html?$ template_default.php?slug=$2 [L]
+#
+#
+#
