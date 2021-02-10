@@ -1,0 +1,22 @@
+@charset "utf-8";
+/* CSS Document */
+
+ body { 
+
+          font-family: Georgia, "Times New Roman", Times, serif;  
+
+          font-size: 14px;  
+
+           color: #000000;  
+
+          background-color: #FFFFFF;  
+
+} 
+
+@media print
+{    
+    .no-print, .no-print *
+    {
+        display: none !important;
+    }
+}

@@ -561,7 +561,7 @@ if(is_array($likes_ret)){
             $block = '';
 			$block .= "<div class='like_pic_box'>";
 			$block .= "<a href='".SITEROOT."/closet-accessory-details/closets-accessory-item/".getUrlText($value['name'])."/".$value["item_id"]."/0' style='text-decoration:none;'>";
-            $block .= "<img src='".SITEROOT."/uploads/cart/like/".$value["img_file_name"]."' alt='closet organizers'/><br />";
+            $block .= "<img src='".SITEROOT."/uploads/cart/like/".$value["file_name"]."' alt='closet organizers'/><br />";
             $block .= "<div class='like_item_name'>".$value['name']."</div>";
             $block .= "</a>";
             $block .= "</div>";

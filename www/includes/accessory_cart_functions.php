@@ -17,6 +17,23 @@ function _xml2array ( $xmlObject, $out = array () ){
 }
 
 
+
+
+		
+function get_shorter($in, $len = 30){
+
+	$out = strlen($in) > $len ? substr($in,0,$len)."..." : $in;
+	
+	return $out; 
+}	
+
+
+
+
+
+
+
+
 function has_add_to_cart_btn($has_sc_module, $call_for_pricing, $price, $ship_type, $weight, $is_free_shipping, $show_atc_btn_or_cfp){
 	
 	if($has_sc_module  
@@ -2802,7 +2819,7 @@ $result = $dbCustom->getResult($db,$sql);
 					}else{
 						$file_name = '';
 					}
-					$t[$i]["img_file_name"] = $file_name;
+					$t[$i]["file_name"] = $file_name;
 						
 					$i++;
 				}

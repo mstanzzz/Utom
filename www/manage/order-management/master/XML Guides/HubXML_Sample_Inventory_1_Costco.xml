@@ -1,0 +1,32 @@
+<advice_file xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="S:\VENDOR~1\XSD's\Costco\Costco_inventory.xsd">
+	<advice_file_control_number>1</advice_file_control_number>
+	<vendorMerchID>costco</vendorMerchID>
+	<product>
+		<vendor_SKU>1_1</vendor_SKU>
+		<qtyonhand>10</qtyonhand>
+		<available>YES</available>
+		<description>Test Item #1</description>
+		<unit_cost>12.45</unit_cost>
+		<merchantSKU>0002154</merchantSKU>
+	</product>
+	<product>
+		<vendor_SKU>1_2</vendor_SKU>
+		<qtyonhand>1</qtyonhand>
+		<available>YES</available>
+		<description>Test Item #2</description>
+		<next_available_date>20100105</next_available_date>
+		<next_available_qty>250</next_available_qty>
+		<unit_cost>15.45</unit_cost>
+		<merchantSKU>0005844</merchantSKU>
+	</product>
+	<product>
+		<vendor_SKU>1_3</vendor_SKU>
+		<qtyonhand>4</qtyonhand>
+		<available>DISCONTINUED</available>
+		<description>Test Item #1</description>
+		<discontinued_date>20100101</discontinued_date>
+		<unit_cost>12.45</unit_cost>
+		<merchantSKU>0002169</merchantSKU>
+	</product>
+	<advice_file_count>3</advice_file_count>
+</advice_file>

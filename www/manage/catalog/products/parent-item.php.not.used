@@ -1,0 +1,636 @@
+<?php
+require_once("../../includes/config.php"); 
+require_once("../../admin-includes/db_connect.php");
+require_once("../../includes/class.admin_login.php");
+require_once("../../admin-includes/class.admin_bread_crumb.php");	
+require_once("../admin-includes/tool-tip.php"); 
+
+require_once("../admin-includes/class.setup_progress.php"); 
+$progress = new SetupProgress;
+require_once("../../admin-includes/class.module.php");	
+$module = new Module;
+
+
+$page_title = "Parent Items";
+$page_group = "item";
+
+
+$parent_cat_id =  (isset($_GET['parent_cat_id'])) ? $_GET['parent_cat_id'] : 0;
+$cat_id =  (isset($_GET['cat_id'])) ? $_GET['cat_id'] : 0;
+if($cat_id = 0) $cat_id = $parent_cat_id;
+
+
+$top_cat_id =  (isset($_GET['top_cat_id'])) ? $_GET['top_cat_id'] : 0;
+$msg = (isset($_GET['msg'])) ? $_GET['msg'] : "";
+if($cat_id > 0){
+	$db_selected = dbSelect(CART_DATABASE);
+	$sql = "SELECT name, cat_id  
+			FROM category
+			WHERE cat_id = '".$cat_id."'";
+	$result = mysql_query ($sql);
+	if(!$result)die(mysql_error());
+	$cat_obj = mysql_fetch_object($result);
+	$page_title = $cat_obj->name; 
+}
+
+
+
+require_once("../admin-includes/set-page.php");	
+
+
+$db_selected = dbSelect(CART_DATABASE);
+
+
+if(isset($_POST["add_item"])){
+	
+	$name = trim(mysql_real_escape_string($_POST["name"])); 
+	$is_closet = $_POST["is_closet"];
+	$show_in_cart = $_POST["show_in_cart"]; 
+	$show_in_showroom = $_POST["show_in_showroom"]; 
+	$img_id = $_POST["img_id"];
+
+
+	$price_flat = trim(mysql_real_escape_string($_POST["price_flat"]));
+	$price_wholesale = trim(mysql_real_escape_string($_POST["price_wholesale"]));
+	$percent_markup = trim(mysql_real_escape_string($_POST["percent_markup"]));
+	$percent_off = trim(mysql_real_escape_string($_POST["percent_off"]));
+	$amount_off = trim(mysql_real_escape_string($_POST["amount_off"]));
+	$is_taxable = $_POST["is_taxable"];
+	$call_for_pricing = $_POST["call_for_pricing"];
+
+
+	$short_description = trim(mysql_real_escape_string($_POST["short_description"]));
+	$description = trim(mysql_real_escape_string($_POST["description"])); 
+	
+	//YYYY-MM-DD HH:MM:SS
+	$date_active = trim(mysql_real_escape_string($_POST["date_active"]));
+	$date_inactive = trim(mysql_real_escape_string($_POST["date_inactive"]));
+	if(!strlen($date_active) < 10){
+		$wd = explode("/",$date_active);
+		$date_active = "$wd[2]-$wd[0]-$wd[1] 00:00:00";
+		//echo $date_active."<br />";
+
+	}else{
+		$date_active = "2010-12-12 00:00:00";
+	}
+	
+	if(!(strlen($date_inactive) < 10)){
+		$wd = explode("/",$date_inactive);
+		$date_inactive = "$wd[2]-$wd[0]-$wd[1] 00:00:00";
+	}else{
+		$date_inactive = "3000-12-12 00:00:00";
+	}
+	
+	
+	if(in_array(3,$user_functions_array) && in_array(4,$user_functions_array)){		
+		$sql = sprintf("INSERT INTO parent_item 
+					(name
+					,price_flat
+					,price_wholesale
+					,percent_markup
+					,percent_off
+					,amount_off
+					,is_taxable
+					,call_for_pricing
+					,is_closet					
+					,show_in_cart
+					,show_in_showroom
+					,img_id
+					,date_active
+					,date_inactive 
+					,short_description
+					,description) 
+					VALUES 
+	('%s','%f','%f','%u','%u','%f','%u','%u','%u','%u','%u','%u','%s','%s','%s','%s')",
+					$name 
+					,$price_flat
+					,$price_wholesale
+					,$percent_markup
+					,$percent_off
+					,$amount_off
+					,$is_taxable
+					,$call_for_pricing
+					,$is_closet
+					,$show_in_cart
+					,$show_in_showroom
+					,$img_id
+					,$date_active
+					,$date_inactive
+					,$short_description
+					,$description
+					);
+
+		$result = mysql_query($sql);
+		if(!$result)die(mysql_error());
+
+		$parent_item_id = mysql_insert_id();
+
+
+		if(isset($_SESSION['temp_key_words'])){			
+			if(is_array($_SESSION['temp_key_words'])){
+				foreach($_SESSION['temp_key_words'] as $val){
+					$sql = "INSERT INTO key_words 
+							(word, parent_item_id) 
+							VALUES( '".$val."', '".$parent_item_id."')";
+					$result = mysql_query ($sql);
+					if(!$result)die(mysql_error());
+				}
+			}
+		}
+
+
+
+		if(isset($_SESSION['temp_cat_ids'])){
+			if(is_array($_SESSION['temp_cat_ids'])){
+				foreach($_SESSION['temp_cat_ids'] as $val){
+					if($val["checked"] == 1){
+						$sql = "INSERT INTO parent_item_to_category 
+								(cat_id, parent_item_id) 
+								VALUES( '".$val["cat_id"]."', '".$parent_item_id."')";
+						$result = mysql_query ($sql);
+						if(!$result)die(mysql_error());
+					}
+				}
+			}
+		}
+	
+
+		$msg = "Your change is now live.";
+
+	}else{
+
+		$msg = "Your change is now pending approval.";
+		
+	}
+	
+}
+
+
+if(isset($_POST["edit_item"])){
+
+		//print_r($_SESSION['temp_attribute_ids']);
+	
+	$parent_item_id = $_POST["parent_item_id"];
+	
+	$name = trim(mysql_real_escape_string($_POST["name"])); 
+	$is_closet = $_POST["is_closet"];
+	$show_in_cart = $_POST["show_in_cart"]; 
+	$show_in_showroom = $_POST["show_in_showroom"];
+
+
+	$price_flat = trim(mysql_real_escape_string($_POST["price_flat"]));
+	$price_wholesale = trim(mysql_real_escape_string($_POST["price_wholesale"]));
+	$percent_markup = trim(mysql_real_escape_string($_POST["percent_markup"]));
+	$percent_off = trim(mysql_real_escape_string($_POST["percent_off"]));
+	$amount_off = trim(mysql_real_escape_string($_POST["amount_off"]));
+	$is_taxable = $_POST["is_taxable"];
+	$call_for_pricing = $_POST["call_for_pricing"];
+	
+	$img_id = $_POST["img_id"];
+	$short_description = trim(mysql_real_escape_string($_POST["short_description"]));
+	$description = trim(mysql_real_escape_string($_POST["description"])); 
+
+	//YYYY-MM-DD HH:MM:SS
+	$date_active = trim(mysql_real_escape_string($_POST["date_active"]));
+	$date_inactive = trim(mysql_real_escape_string($_POST["date_inactive"]));
+	if(!strlen($date_active) < 10){
+		$wd = explode("/",$date_active);
+		$date_active = "$wd[2]-$wd[0]-$wd[1] 00:00:00";
+		//echo $date_active."<br />";
+
+	}else{
+		$date_active = "2010-12-12 00:00:00";
+	}
+	
+	if(!(strlen($date_inactive) < 10)){
+		$wd = explode("/",$date_inactive);
+		$date_inactive = "$wd[2]-$wd[0]-$wd[1] 00:00:00";
+	}else{
+		$date_inactive = "3000-12-12 00:00:00";
+	}
+
+	// delete all categories
+	$sql = "DELETE FROM parent_item_to_category 
+			WHERE parent_item_id = '".$parent_item_id."'";
+	$result = mysql_query ($sql);
+	if(!$result)die(mysql_error());
+		
+
+
+
+
+
+
+		if(isset($_SESSION['temp_cat_ids'])){
+			if(is_array($_SESSION['temp_cat_ids'])){
+				foreach($_SESSION['temp_cat_ids'] as $val){
+					if($val["checked"] == 1){
+						$sql = "INSERT INTO parent_item_to_category 
+								(cat_id, parent_item_id) 
+								VALUES( '".$val["cat_id"]."', '".$parent_item_id."')";
+						$result = mysql_query ($sql);
+						if(!$result)die(mysql_error());
+					}
+				}
+			}
+		}
+
+
+
+	if(in_array(2,$user_functions_array)){		
+
+		$sql = sprintf("UPDATE parent_item 
+				SET name = '%s'
+					,price_flat = '%f'
+					,price_wholesale = '%f'
+					,percent_markup = '%u'
+					,percent_off = '%u'
+					,amount_off = '%f'
+					,is_taxable = '%u'
+					,call_for_pricing = '%u'
+					,short_description = '%s'
+					,description = '%s'
+					,is_closet = '%u'
+					,show_in_cart = '%u'
+					,show_in_showroom = '%u'
+					,img_id = '%u'
+					,date_active = '%s'
+					,date_inactive = '%s' 
+				WHERE parent_item_id = '%u'", 
+					$name 
+					,$price_flat
+					,$price_wholesale
+					,$percent_markup
+					,$percent_off
+					,$amount_off
+					,$is_taxable
+					,$call_for_pricing
+					,$short_description
+					,$description
+					,$is_closet
+					,$show_in_cart
+					,$show_in_showroom
+					,$img_id
+					,$date_active
+					,$date_inactive
+					,$parent_item_id);
+
+		$msg = "Your change is now live.";
+
+	}else{
+		
+		$msg = "Your change is now pending approval.";
+	}
+
+	$result = mysql_query($sql);
+	if(!$result)die(mysql_error());
+
+}
+
+if(isset($_POST["del_parent_item"])){
+
+	$parent_item_id = $_POST["del_parent_item"];
+
+	if(in_array(3,$user_functions_array)){	
+	
+		$parent_item_id = $_POST["del_parent_item_id"];
+		$sql = sprintf("DELETE FROM parent_item WHERE parent_item_id = '%u'", $parent_item_id);
+		$result = mysql_query($sql);
+		if(!$result)die(mysql_error());
+
+		// delete all categories
+		$sql = "DELETE FROM parent_item_to_category 
+				WHERE parent_item_id = '".$parent_item_id."'";
+		$result = mysql_query ($sql);
+		if(!$result)die(mysql_error());
+	
+		$msg = "Your change is now live.";
+
+	}else{
+		$msg = "You are not authorised to delete.";		
+	}
+
+}
+
+unset($_SESSION['temp_cat_ids']);
+unset($_SESSION['temp_key_words']);
+unset($_SESSION['temp_item_fields']);
+
+
+require_once("../admin-includes/doc_header.php"); 
+
+
+?>
+<script>
+$(document).ready(function() {
+	
+	$(".inline").click(function(){ 
+
+		if(this.href.indexOf("add") > 1){
+			var f_id = $(this).find(".e_sub").attr('id');
+			//alert(this.href.indexOf("edit"));
+			//alert(f_id);			
+			$.ajaxSetup({ cache: false}); 
+			$.ajax({
+			  url: 'add-parent-item.php?cat_id='+f_id,
+			  success: function(data) {
+				$('#add').html(data);
+				//alert('Load was performed.');
+			  }
+			});			
+		}
+
+		if(this.href.indexOf("edit") > 1){
+			var f_id = $(this).find(".e_sub").attr('id');
+			//alert(this.href.indexOf("edit"));
+						
+			$.ajaxSetup({ cache: false}); 
+			$.ajax({
+			  url: 'edit-parent-item.php?parent_item_id='+f_id,
+			  success: function(data) {
+				$('#edit').html(data);
+				//alert('Load was performed.');
+			  }
+			});			
+		}
+
+
+		if(this.href.indexOf("view_desc") > 1){
+			var f_id = $(this).find(".e_sub").attr('id');
+			//alert(this.href.indexOf("edit"));
+						
+			$.ajaxSetup({ cache: false}); 
+			$.ajax({
+			  url: 'view-parent-item-description.php?parent_item_id='+f_id,
+			  success: function(data) {
+				$('#view_desc').html(data);
+				//alert('Load was performed.');
+			  }
+			});			
+			
+		}
+
+		if(this.href.indexOf("delete") > 1){
+			var f_id = $(this).find(".e_sub").attr('id');
+			//alert("del"+this.href.indexOf("delete"));
+			//alert("f_id"+f_id);
+			$("#del_parent_item_id").val(f_id);
+			
+		}
+		
+	})
+	
+	$("a.inline").fancybox();
+	
+	$("#view_desc").click(function(){ $.fancybox.close;  })
+
+});
+
+tinyMCE.init({
+	mode : "textareas",
+	theme : "advanced",
+	content_css : "../css/mce.css"
+});
+
+
+function select_img(img_id){
+	document.getElementById(img_id).checked = true;	
+}
+
+function show_msg(msg){
+	alert(msg);
+}
+
+</script>
+</head>
+
+<?php if($msg != ""){ ?>
+	<body onload="show_msg('<?php  echo $msg; ?>')">
+<?php }else{ ?>
+	<body>
+<?php } 
+
+	require_once("../admin-includes/manage-header.php");
+	require_once("../admin-includes/manage-top-nav.php");
+
+?>
+
+<div class="manage_page_container">
+
+
+    <div class="manage_side_nav">
+        <?php 
+        require_once("../admin-includes/manage-side-nav.php");
+        ?>
+    </div>	
+
+
+	<?php if(in_array(3,$user_functions_array)){ ?>		
+        <div  class="top_link">
+            <a href='add-parent-item.php?cat_id=<?php echo $cat_id; ?>&parent_cat_id=<?php echo $parent_cat_id; ?>&top_cat_id=<?php echo $top_cat_id; ?>'>Add Item</a>
+        </div>
+    <?php } ?>
+
+    <div class="manage_main">
+
+	<?php 
+
+		echo "<div class='manage_main_page_title'>Items:  ".$page_title."</div>";
+    
+        $bc = $bread_crumb->output();
+        echo $bc."<br />"; 
+
+	
+	?>	
+
+
+  <table border="0" width="100%" cellpadding="10">
+  <tr>
+    <td width="6%">&nbsp;</td>
+    <td width="6%">&nbsp;</td>
+    <td width="6%">&nbsp;</td>
+    <td width="10%"><div class="blue">Rating</div></td>
+    <td width="10%"><div class="blue">Category</div></td>
+    <td width="15%"><div class="blue">Item Name</div></td>
+    <td><div class="blue">Description</div></td>
+    <td><div class="blue">Image</div></td>
+    
+   
+  </tr>
+
+    <?php
+
+	if($cat_id > 0){
+		$sql = "SELECT DISTINCT item.name
+			,item.description
+			,item.item_id
+			,item.img_id
+		FROM  item, item_to_category 
+		WHERE item.parent_item_id = item_to_category.item_id
+		AND item_to_category.cat_id = '".$cat_id."'
+		ORDER BY item.item_id";
+
+	}else{
+		
+		$sql = "SELECT name
+			,description
+			,item_id
+			,img_id
+		FROM  item 
+		ORDER BY item_id";
+	}
+
+    $result = mysql_query ($sql);
+	if(!$result)die(mysql_error());
+
+
+ 
+    while($row = mysql_fetch_object($result)) {
+		 
+		 
+		// get only parent items
+				 
+		$sql = "SELECT item_id
+				FROM  item 
+				WHERE parent_item_id = '".$row->item_id."'";
+		$ch_r = mysql_query ($sql);
+		if(!$ch_r)die(mysql_error());
+		if(mysql_num_rows($ch_r)> 0){
+			
+		}
+		 
+		 
+		 
+		 $block = "<tr>";		
+
+		if(in_array(2,$user_functions_array)){		
+
+			$block .= "<td valign='top'><a href='edit-parent-item.php?parent_item_id=".$row->parent_item_id."&ret_page=parent-item&parent_cat_id=".$parent_cat_id."&top_cat_id=".$cat_id."&cat_id=".$top_cat_id."'>
+			edit</a></td>";
+						
+			$block .= "<td valign='top'><a class='inline' href='#delete'>
+			delete<div class='e_sub' id='".$row->parent_item_id."' style='display:none'></div> </a></td>";
+		}else{
+			$block .= "<td>&nbsp;</td>";
+		
+			$block .= "<td valign='top'><a href='edit-parent-item.php?parent_item_id=".$row->parent_item_id."&ret_page=item&parent_cat_id=".$parent_cat_id."&top_cat_id=".$top_cat_id."&cat_id=".$cat_id."'>
+			edit</a></td>";
+			
+		}
+		
+		
+		$block .= "<td valign='top'><a href='item.php?parent_item_id=".$row->parent_item_id."&ret_page=parent-item&parent_cat_id=".$parent_cat_id."&top_cat_id=".$cat_id."&cat_id=".$top_cat_id."'>
+			sub items</a></td>";
+		
+		
+        $block .= "<td valign='top'>";
+
+		$sql = "SELECT star_count
+				FROM item_rating 
+				WHERE item_id = '".$row->parent_item_id."'";		
+		$res = mysql_query ($sql);
+		if(!$res)die(mysql_error());
+		if(mysql_num_rows($res)){
+			$star_obj = mysql_fetch_object($result);
+			$block .= $star_obj->star_count;			
+		}else{
+			$block .= "not rated";
+		}
+					
+		$block .= "</td>";
+
+		$sql = "SELECT category.cat_id
+						,category.name  
+				FROM category, parent_item_to_category 
+				WHERE category.cat_id = parent_item_to_category.cat_id
+				AND parent_item_to_category.parent_item_id = '".$row->parent_item_id."'
+				ORDER BY category.cat_id";
+		$cat_res = mysql_query ($sql);
+        if(!$cat_res)die(mysql_error());
+		
+		$block .= "<td valign='top'>";
+		if(mysql_num_rows($cat_res) > 0){		
+			while($cat_row = mysql_fetch_object($cat_res)) {
+				$block .= "<a href='category.php?cat_id=".$cat_row->cat_id."' style='text-decoration:none'>$cat_row->name</a>";	
+			}
+		}else{
+				
+			$block .= "WARNING: this item has no category.";
+		}
+		
+		$block .= "</td>";
+        		
+		$block .= "<td valign='top'>$row->name</td>";
+        $block .= "<td valign='top'>
+		<a class='inline' href='#view_desc'>View Description<div class='e_sub' id='".$row->parent_item_id."' style='display:none'></div></a>
+		</td>";
+		
+		
+        
+		$sql = "SELECT file_name FROM image WHERE img_id = '".$row->img_id."'";
+		$img_res = mysql_query ($sql);
+		$img_object = mysql_fetch_object($img_res);
+		if(mysql_num_rows($img_res) < 1){
+			$block .= "<td valign='top'>no image</td>";			
+		}else{
+						
+			$block .= "<td valign='top'>";
+			$block .= "<a class='inline' href='".$ste_root."/uploads/tmp/pre-crop/".$img_object->file_name."'>";
+			$block .= "<img  src='".$ste_root."/uploads/cart/list/".$img_object->file_name."'>";
+			$block .= "</a>";
+			$block .= "</td>";		
+		}
+		
+		
+		
+        $block .= "</tr>";
+		echo $block;
+    }
+    
+    ?>
+    </table>
+
+    
+    
+	</div>
+    
+</div>
+
+
+
+    <div style="display:none">
+        <div id="edit" style="width:900px; height:620px;">
+        </div>
+    </div>
+    
+    <div style="display:none">
+        <div id="upload" style="width:280px; height:200px;">
+        </div>
+    </div>
+    
+    <div style="display:none">
+        <div id="delete" style="width:200px; height:100px;">
+            Are you sure you want to delete this entry?<br /><br />
+            <form name="del_parent_item_form" action="parent-item.php" method="post">
+                <input id="del_parent_item_id" type="hidden" name="del_parent_item_id" />
+                <input type="hidden" name="cat_id" value="<?php echo $cat_id; ?>">
+                <input name="del_parent_item" type="submit" value="DELETE" />
+            </form>
+        </div>
+    </div>
+    
+    <div style="display:none">
+        <div id="add" style="width:900px; height:620px;">
+        </div>
+    </div>
+    
+     <div style="display:none">
+        <div id="view_desc" style="width:500px; height:200px;">
+        </div>
+    </div>
+
+</body>
+</html>
+
+<?php $db_dis = dbDisconnect(); ?>
+

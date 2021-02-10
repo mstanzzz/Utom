@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<xs:import namespace="http://www.w3.org/XML/1998/namespace"/>
+	<xs:element name="advice_file">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="advice_file_control_number"/>
+				<xs:element ref="vendorMerchID"/>
+				<xs:element ref="product" maxOccurs="unbounded"/>
+				<xs:element ref="advice_file_count"/>
+			</xs:sequence>
+			<xs:attribute name="as-of-date" type="xs:anySimpleType"/>
+			<xs:attribute name="advice-content">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="incr"/>
+						<xs:enumeration value="full"/>
+						<xs:enumeration value="diff"/>
+						<xs:enumeration value="vendor-diff"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="product">
+		<xs:annotation>
+			<xs:documentation>
+					The product element is used to contain sub-elements that describe the product being reported.
+					The last-update-date attribute is currently not used.
+				</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="vendor_SKU"/>
+				<xs:element ref="qtyonhand"/>
+				<xs:element ref="available"/>
+				<xs:element ref="description"/>
+				<xs:element ref="next_available_date" minOccurs="0"/>
+				<xs:element ref="next_available_qty" minOccurs="0"/>
+				<xs:element ref="discontinued_date" minOccurs="0"/>
+				<xs:element ref="unit_cost"/>
+				<xs:element ref="merchantSKU"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="advice_file_control_number">
+		<xs:annotation>
+			<xs:documentation>
+			The advice_file_control_number element contains a unique ID for the file being submitted, assigned by the sender of the document.
+		</xs:documentation>
+		</xs:annotation>
+		<xs:simpleType>
+			<xs:restriction base="xs:normalizedString">
+				<xs:maxLength value="100"/>
+				<xs:minLength value="1"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="advice_file_count">
+		<xs:annotation>
+			<xs:documentation>
+			The advice_file_count will contain a count of all product elements included in the message.
+		</xs:documentation>
+		</xs:annotation>
+		<xs:simpleType>
+			<xs:restriction base="xs:positiveInteger"/>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="vendor_SKU">
+		<xs:annotation>
+			<xs:documentation>
+			The vendor_SKU element will contain the ID assigned to the product by the sender of the document.
+			The value of this element is required to be unique for each item.
+		</xs:documentation>
+		</xs:annotation>
+		<xs:simpleType>
+			<xs:restriction base="xs:normalizedString">
+				<xs:maxLength value="100"/>
+				<xs:minLength value="1"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="qtyonhand">
+		<xs:annotation>
+			<xs:documentation>
+			The qtyonhand element will contain the numeric quantity that is being made available for sale to the merchant specified in the merchant element.
+		</xs:documentation>
+		</xs:annotation>
+		<xs:simpleType>
+			<xs:restriction base="xs:positiveInteger"/>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="available">
+		<xs:annotation>
+			<xs:documentation>
+			The available element will contain one of the enumerated values listed above.
+			YES - The quantity contained in the quantity element is available for sale to the specified merchant.
+			NO - The product is temporarily unavailable for sale, regardless of the quantity contained in the quantity element.
+			GUARANTEED - The quantity of the product being reported can be considered unlimited by the merchant.  The sender guarantees that regardless of the quantity ordered, it will be fulfilled.
+			DISCONTINUED - Used when the stock for a product is no longer being replenished.  The quantity reported in the quantity element is still available to the merchant for sale.  
+			Once the quantity of a 'DISCONTINUED' item reaches zero, the item can be removed from the feed.
+		</xs:documentation>
+		</xs:annotation>
+		<xs:simpleType>
+			<xs:restriction base="xs:normalizedString">
+				<xs:enumeration value="YES"/>
+				<xs:enumeration value="NO"/>
+				<xs:enumeration value="GUARANTEED"/>
+				<xs:enumeration value="DISCONTINUED"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="description">
+		<xs:annotation>
+			<xs:documentation>
+			The description element will contain a plain text description of the product being reported.
+		</xs:documentation>
+		</xs:annotation>
+		<xs:simpleType>
+			<xs:restriction base="xs:normalizedString">
+				<xs:maxLength value="255"/>
+				<xs:minLength value="1"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="next_available_date">
+		<xs:annotation>
+			<xs:documentation>
+			The next_available_date will contain the date that the next shipment of the product being reported is expected into inventory.
+			The value of this element is not a standard XML formatted date.  The date passed here is required to be in the CCYYMMDD.
+		</xs:documentation>
+		</xs:annotation>
+		<xs:simpleType>
+			<xs:restriction base="xs:integer">
+				<xs:pattern value="[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="next_available_qty">
+		<xs:annotation>
+			<xs:documentation>
+			The next_available_qty element will contain the quantity that is associated with the next_available_date.
+		</xs:documentation>
+		</xs:annotation>
+		<xs:simpleType>
+			<xs:restriction base="xs:positiveInteger"/>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="discontinued_date">
+		<xs:annotation>
+			<xs:documentation>
+			The discontinued_date element will contain the date on which fulfillment for the SKU will cease.
+		</xs:documentation>
+		</xs:annotation>
+		<xs:simpleType>
+			<xs:restriction base="xs:integer">
+				<xs:pattern value="[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="unit_cost">
+		<xs:annotation>
+			<xs:documentation>
+			The unit_cost element will contain the cost of a single item to the retailer that the product is being reported to.  This cost is required to be provided in order to confirm the negotiated cost for each item fulfilled.
+			Only two decimal places should be included.  No $ should be included in the data.
+		</xs:documentation>
+		</xs:annotation>
+		<xs:simpleType>
+			<xs:restriction base="xs:decimal"/>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="merchantSKU">
+		<xs:annotation>
+			<xs:documentation>
+			The merchantSKU element will contain the merchant assigned ID for the product being reported.
+			This information should be obtained from the merchant receiving the file.
+		</xs:documentation>
+		</xs:annotation>
+		<xs:simpleType>
+			<xs:restriction base="xs:normalizedString">
+				<xs:maxLength value="100"/>
+				<xs:minLength value="1"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="vendorMerchID">
+		<xs:annotation>
+			<xs:documentation>
+			The vendorMerchID element is the CommerceHub assigned ID for the party receiving the message.
+		</xs:documentation>
+		</xs:annotation>
+		<xs:simpleType>
+			<xs:restriction base="xs:normalizedString">
+				<xs:enumeration value="costco"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+</xs:schema>

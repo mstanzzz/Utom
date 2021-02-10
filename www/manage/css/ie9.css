@@ -1,0 +1,34 @@
+/*===================================================
+   IE 9 Overrides 
+===================================================*/
+.btn {
+	filter: none;
+	background: #cdcdcd url('../images/iebg-btn.gif') repeat-x top left;	
+}
+.btn-warning {
+	filter: none;
+	background: #F63;	
+}
+.btn-group {
+	filter: none;	
+}
+.btn-primary {
+	filter: none;
+	background: #2a6477 url('../images/iebg-btn-primary.gif') repeat-x top left;	
+}
+.btn-success, button.btn-success {
+	filter: none;
+	background: #638e4d url('../images/iebg-btn-success.gif') repeat-x top left;
+	padding: 8px;	
+}
+.btn-danger {
+	filter: none;
+	background: #a13e3e url('../images/iebg-btn-danger.gif') repeat-x top left;	
+}
+.radiotoggle .switch,
+.checkboxtoggle .switch,
+.data_table .radiotoggle .switch,
+.data_table .checkboxtoggle .switch {
+	filter: none;
+	background: #f5f6f6 url('../images/ie-switchbg.png') no-repeat top left;	
+}

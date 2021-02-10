@@ -55,6 +55,7 @@ echo $absolute_url;
 $parts = Explode('/', $absolute_url);
 
 //print_r($parts);
+/*
 echo "<br />";
 echo "<br />";
 echo "<br />";
@@ -69,7 +70,7 @@ echo "<br />";
 echo "4 ".$parts[4];
 echo "<br />";
 echo "5 ".$parts[5];
-
+*/
 
 $lev = count($parts);
 if($lev <= 3){
@@ -84,9 +85,9 @@ if($lev <= 3){
 	$ste_root = './';
 }
 $ste_root = preg_replace('/(\/+)/','/',$ste_root);
-echo "<br />";
-echo $ste_root;
-echo "<br />";
+//echo "<br />";
+//echo $ste_root;
+//echo "<br />";
 
 
 

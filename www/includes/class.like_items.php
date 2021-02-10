@@ -29,7 +29,7 @@ class LikeItems {
 		while($row = $result->fetch_object()){
 				$t[$i]['item_id'] = $row->item_id;
 				$t[$i]['name'] = $row->name;
-				$t[$i]['img_file_name'] = $row->file_name;
+				$t[$i]['file_name'] = $row->file_name;
 				$t[$i]['cat_id'] = $it->getCat($row->item_id);
 		}
 
@@ -98,7 +98,7 @@ class LikeItems {
 						
 						$t[$i]['profile_item_id'] = $wl_kw_row->profile_item_id;
 						$t[$i]['name'] = $wl_kw_row->name;
-						$t[$i]['img_file_name'] = $wl_kw_row->file_name;
+						$t[$i]['file_name'] = $wl_kw_row->file_name;
 						//$t[$i]['cat_id'] = getCatFromItem($item_id);
 						$t[$i]['cat_id'] = 0;
 						$t[$i]['seo_url'] = $wl_kw_row->seo_url;
@@ -162,7 +162,7 @@ class LikeItems {
 				if(is_numeric($val['item_id'])){
 					$t[$i]['item_id'] = $val['item_id'];
 					$t[$i]['name'] = $val['name'];
-					$t[$i]['img_file_name'] = $val['img_file_name'];
+					$t[$i]['file_name'] = $val['file_name'];
 					$i++;
 				}
 			}

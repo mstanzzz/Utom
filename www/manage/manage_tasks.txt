@@ -1,0 +1,79 @@
+manage tasks 01/07/2013
+
+16 hours
+===> in CMS under pages when OTG logs in (this is ONLY for OTG) we need a new column called "Optional Page". This will be an on/off button. What this will do is allow OTG to selected pages that are not going to be for all SAAS customers. So for example specs and showroom would be marked as optional.
+
+Then when creating/editing SAAS we need to show the optional pages (so we will need another field in DB to mark if optional) so we can choose to select pages that other SAAS customers may want, but by default they are off. So for example if joeplubming.com purchases the site we will leave all as default. If, however, joeclosets.com purchases he may have an installation and specs page so we will mark those as on for him.
+
+
+2 hours
+===>Instead of having the orange section for OTG only under administration lets create a complete section group called "OTG Administration" and move all the OTG only ones under that. This will of course only show for OTG. News is also an OTG only option. 
+
+1 hour
+===>Under administration basic settings we do not want to allow domain to be an editable field. That needs to be fixed (readonly). Charge for shipping should also be moved to shipping options in e-commerce settings.
+
+1 hour
+==>the ASK piece is currently ONLY going to be for OTG. We wont even have it as an addon option. Please be sure it only shows for OTG and does not show up as an addon or addon request.
+
+
+1 hour
+==>We need a new section in left nav called "Design Tool". In here we need to have Design Requests which right now is under customers and orders. We will add more to it later. Also move the Design Consultations to this too (its also under customers and orders and called Consultation Requests so that should be renamed to Design Consultations). This section will only show if SAAS customer has designer tool addon
+
+
+8 hours (this would take changing the navigation section, added page section, and all fixed cms pages)
+===>When adding or editing a page from CMS we need a link to navigation so customers can select where they want this newly created page to go. If they are creating (i.e. page has not been made yet) then this button neds to be disabled and text saying "please save this page before adding to navigation". Once the page has been saved then the button will be active. On click just fancybox open the navigation page (without header, footer, etc... like we do with others). 
+
+
+12 hours
+===> specs page has multiple main headings that each have multiple sub headings that each have multiple elements. It has a banner and 2 content areas
+
+
+
+
+30 minutes
+===> move "Addon Toggles" to a more approprate section for all saas users to access
+
+
+14 hours
+===> contact us page with multiple locations. This requires using new techneques in google maps api.
+
+unknown hours
+===> admin user access, rights, functions 
+
+
+36 hours
+===> cms change management (review/deny , version management) 
+
+
+
+
+8 hours
+===> If brand has no products then we should show option to go to brand website... So tell customer there are no products for brand but show link to brand site if one was added. Be able to show bothe vendors site and brads site
+
+6 hours
+===> new version of saas customer setup progress
+
+
+
+unknown hours
+===> home page link to video in fancybox including saas customer (need to know which video to show if multiple)
+
+unknown hours
+===> video uploads and video management
+
+unknown hours
+===>  Issue #178 concerning nav section
+
+8 hours
+===> page review needs updated to show new changes
+
+
+unknown hours
+===>  Idea folder
+
+
+
+
+56 36 14 8 = 114
+
+

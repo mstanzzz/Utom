@@ -1,0 +1,541 @@
+// New Navigation Styles for OTG
+//
+@mainNavHeight: 40px;
+nav {
+	display: block;	
+}
+
+//====================================================
+// remove bullet styles from UL's in Navs
+//====================================================
+nav ul {
+	.unlist;	
+}
+//====================================================
+// Desktop:
+// make top-level links in a nav horizontally oriented
+//====================================================
+nav.hide-mobile > ul > li {
+	float: left;
+	position: relative;
+	a {
+		display: block;	
+	}
+}
+//====================================================
+// Desktop:
+// default subnavigation styles (drop down menus)
+//====================================================
+nav.hide-mobile >ul >li > .subnav {
+	position: absolute;
+	transition: opacity .3s ease-out;
+	top: 100%;
+	left: -20000px;
+	min-width: 220px;
+	z-index: 525;
+	padding: 0px;
+	background-color: @lightestgray;	
+	.border-bottom-right-radius(4px);
+	.border-bottom-left-radius(4px);
+	.border-top-right-radius(4px);
+	box-shadow: 0px 5px 8px 0px rgba(0,0,0,.5);
+	opacity: 0;
+	// rounded top right corner on subnavs
+	&>li:first-child, &>li:first-child >a{
+		.border-top-right-radius(4px);
+		border-top: none;
+	}
+	> li > a {
+		padding: 2px 5px;
+		border-bottom: 1px solid @lightgray;
+		&:hover {
+			background-color: @lightgray;	
+		}
+		
+	}
+	> li:last-child > a{
+		border-bottom: 0px;
+		.border-bottom-right-radius(4px);
+		.border-bottom-left-radius(4px);
+	}
+}
+//======================================================
+// animate fade-in of subnavigations; match backgrounds
+//======================================================
+nav.hide-mobile li:hover > .subnav {
+	left: 0px;
+	opacity: 1;
+}
+nav.hide-mobile li:hover > a {
+	background-color: @lightestgray;
+}
+//======================================================
+// Desktop: 
+// support menu and cart styles
+//======================================================
+nav#support-nav {
+	position: absolute;
+	top: -4px;
+	right: 0px;
+	padding: 4px 255px 0 5px;
+	box-shadow: 0px 1px 5px 0px rgba(0,0,0,.1);
+	border-bottom: 1px solid @lightgray;
+	.border-radius(4px);
+	#gradient > .vertical(@lightestgray,@lightgray);
+		li.cart ul {
+		min-width: 300px;	
+	}
+	& >ul >li > a {
+		display: block;
+		padding: 3px 6px;	
+	}
+	& >ul >li >ul >li >a {
+		padding: 3px;	
+	}
+	//======================================================
+	// cart drop down menu styles
+	//======================================================
+	li.drop-heading a {
+		font-size: 1.2em;
+		color: @darkergray;
+	}
+	li.drop-heading, li.button {
+		padding: 5px;	
+		border-bottom: 1px solid @gray;
+	}
+	li.drop-table {
+		font-weight: normal;
+		table {
+			width: 100%;	
+		}
+		a {
+			display: inline;
+			padding: 0;
+			border-top: 0;
+			line-height: 1em;
+		}
+		thead th {
+			color: @darkgray;
+			font-weight: normal;
+			text-align: center;
+		}
+		tr {
+			border-bottom: 1px solid @white;
+			cursor: pointer;	
+		}
+		tbody tr:hover {
+			background-color: @darkblue;
+			a {
+				color: @white;	
+			}
+		}
+		tr:last-child {
+			border-bottom: none;
+		}
+		img {
+			width: 25px;
+			height: 25px;
+			padding-left: 5px;
+			padding-right: 5px;	
+		}
+		td {
+			padding: 2px 5px 2px 0px;	
+		}
+	}
+	li.button a {
+		background-color: @green;	
+	}
+}
+//======================================================
+// Desktop: 
+// Main Navigation styles
+//======================================================
+nav#main-nav {
+	position: absolute;
+	left: 0px;
+	bottom: 0px;
+	border-top: 1px solid @white;
+	border-bottom: 1px solid @white;
+	width: 100%;
+	background-color: @lightestgray;
+	& > ul {
+		.clearfix;
+		margin: 0;
+		height: 35px;
+	}
+	//======================================================
+	// navigation bar appearance, top level
+	//======================================================
+	& >ul >li {
+		#gradient > .vertical(lighten(@brightblue,5%),darken(@brightblue,5%));
+		display: block;
+		& > a {
+			display: block;
+			padding: 10px 7px;
+			font-size: 15px;
+			line-height: 20px;
+			height: 20px;
+			font-weight: normal;
+			text-shadow: 0px 1px 0px lighten(@brightblue,20%);
+			border-left: 1px solid darken(@brightblue,20%);
+			border-right: 1px solid lighten(@brightblue,20%);
+			color: @darkestblue;
+		}
+		&:hover {
+			background-color: @orange;
+			#gradient > .vertical(lighten(@orange,5%),darken(@orange,5%));
+			& > a, & > a:hover {
+				color: @white;
+				background-color: transparent;
+				text-shadow: 0px -1px 0px darken(@orange,20%);
+			}
+
+		}
+	}
+	& >ul >li.multiple-subnavs {
+		position: static;
+		//======================================================
+		// main .subnav dropdown class; large
+		//======================================================
+		>.subnav {
+			width: @gridRowWidth;
+			top: @mainNavHeight;
+			padding: 10px 20px 10px 0px;
+			.clearfix;
+		//======================================================
+		// first level .subnav class; heading
+		//======================================================
+			>li {
+				width: (@gridRowWidth - 80px)/4;
+				float: left;
+				margin-left: 10px;
+				margin-bottom: 10px;
+				> a {
+					font-size: 14px;
+					line-height: 15px;
+					padding: 5px 10px;
+					display: block;
+					background-color: @lightgray;
+				}
+				//======================================================
+				// second level .subnav class
+				//======================================================
+				> .subnav {
+					padding: 5px;
+					a {
+						font-weight: normal;
+						line-height: 13px;
+						margin-top: 5px;
+						border: none;
+						font-size: 12px;
+					}
+				}
+			}
+		}
+	}
+	//======================================================
+	// account drop down appearance
+	//======================================================
+	& >ul >li.account {
+		#gradient > .vertical(lighten(@lightgray,5%),darken(@lightgray,5%));
+		& > a {
+			text-transform: uppercase;
+			font-size: 10px;
+			color: @darkgray;
+			border-left-color: @gray;
+			border-right: 1px solid @gray;
+			i {
+				margin-top: -5px;	
+			}
+		}
+		.drop-table {
+			padding: 10px;	
+		}
+		&:hover > a {
+			color: @black;
+			text-shadow: none;
+		}
+	}
+}
+//======================================================
+// Mobile: 
+// Top Fixed Navigation styles
+//======================================================
+nav#mobile-top-nav {
+	width: 100%;
+	position: fixed;
+	z-index: 100;
+	top: 0px;
+	left: 0px;
+	border-bottom: 1px solid @white;
+	box-shadow: 0px 1px 4px rgba(0,0,0,.2);
+	#gradient > .vertical(lighten(@brightblue,2%),darken(@brightblue, 5%));
+	.clearfix;
+	>a {
+		box-shadow: inset -2px 0px 1px @blue, inset 1px 0px 1px lighten(@brightblue, 10%);
+		display: block;
+		float: left;
+		padding: 1% 2%;
+		height: 27px;
+		font-size: 12px;
+		line-height: 20px;
+	}
+	a.mobile-nav-trigger {
+		width: 20%;
+		position: relative;
+		i:after{
+			content: ' Menu';
+			font-style: normal;
+			left: 22px;
+			position: absolute;
+			display: block;
+		}
+	}
+	a#mobile-contact-info {
+		width: 32%;	
+		text-align: center;
+	}
+	a#mobile-cart {
+		width: 12%;	
+		text-align: center;
+	}
+	a#mobile-account-menu-trigger {
+		width: 20%;
+		position: relative;
+		i:after{
+			content: ' Account';	
+			font-style: normal;
+			left: 22px;
+			position: absolute;
+			display: block;
+		}
+	}
+}
+//======================================================
+// Mobile: 
+// Left Slide-Out Navigation styles
+//======================================================
+#mobile-nav, #mobile-account-menu {
+	width: 95%;
+	position: absolute;
+	top: 0px;
+	padding: 32px 0 0 0;
+	#gradient > .vertical(@darkblue,darken(@darkblue,20%));
+	z-index: 90;
+	height: 100%;
+	-webkit-transition: -webkit-width 300ms ease;
+	-moz-transition: -moz-width 300ms ease;
+	-o-transition: -o-width 300ms ease;
+	transition: width 300ms ease;
+	.box-shadow(1px 0px 10px rgba(0,0,0,.5));
+	// Default Link styles
+	a {
+		color: @white;
+		text-shadow: 0px 1px 0px @black;
+		font-weight: normal;
+		/*display: block;*/
+		/*padding: 12px 25px 12px 6px;*/
+	}
+	li {
+		position: relative;	
+		box-shadow: inset 0px -1px 0px rgba(0,0,0,.2);
+		border-bottom: 1px solid rgba(255,255,255,.2);
+		.unlist;
+	}
+	.expand-subnav {
+		position: absolute;
+		top: 0px;
+		right: 5px;
+		padding: 5px;
+	}
+	ul.subnav {
+		height: 0;
+		opacity: 0;
+		margin: 0;
+		overflow: hidden;	
+    	-webkit-transition: height 300ms ease-out;
+	}
+	li.active ul.subnav{
+		padding-left: 7px;
+	}
+	li.active {
+		background-color: rgba(0,0,0,.1);	
+	}
+	li.active > ul.subnav {
+		opacity: 1;	
+	}
+	li.active > a {
+		background-color: rgba(0,0,0,.2);	
+	}
+	.drop-heading {
+		display: block;
+		padding: 10px;
+		background-color: rgba(255,255,255,.2);	
+	}
+}
+#mobile-nav:not(:target) {
+	-webkit-transition: -webkit-width 300ms ease;
+	-moz-transition: -moz-width 300ms ease;
+	-o-transition: -o-width 300ms ease;
+	transition: width 300ms ease;
+	-webkit-backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
+	-ms-backface-visibility: hidden;
+	-o-backface-visibility: hidden;
+	backface-visibility: hidden;
+	-webkit-perspective: 1000;
+	-webkit-perspective: 1000;
+   -moz-perspective: 1000;
+   -ms-perspective: 1000;
+   perspective: 1000;	
+	-webkit-transform: translate3d(0, 0, 0);
+	-moz-transform: translate3d(0, 0, 0);
+	-ms-transform: translate3d(0, 0, 0);
+	transform: translate3d(0, 0, 0);
+   left: 0px;
+	z-index: -1;
+	width: 0;
+}
+#mobile-nav {
+	left: 0px;
+}
+#mobile-account-menu:not(:target) {
+	-webkit-transition: -webkit-width 300ms ease;
+	-moz-transition: -moz-width 300ms ease;
+	-o-transition: -o-width 300ms ease;
+	transition: width 300ms ease;
+	-webkit-transform: translate3d(0, 0, 0);
+	-moz-transform: translate3d(0, 0, 0);
+	-ms-transform: translate3d(0, 0, 0);
+	transform: translate3d(0, 0, 0);
+   	-webkit-backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
+	-ms-backface-visibility: hidden;
+	-o-backface-visibility: hidden;
+	backface-visibility: hidden;
+	-webkit-perspective: 1000;
+   -moz-perspective: 1000;
+   -ms-perspective: 1000;
+   perspective: 1000;	position: absolute;
+	right: 0px;
+	z-index: -1;
+	width: 0;
+}
+#mobile-account-menu {
+	right: 0px;
+}
+#inner-wrap {
+	position: relative;
+	width: 100%;
+	left: 0 !important;
+/*	-webkit-transition: -webkit-width 300ms ease;
+	-moz-transition: -moz-width 300ms ease;
+	-o-transition: -o-width 300ms ease;
+	transition: width 300ms ease;
+	-webkit-transform: translate3d(0, 0, 0);
+	-moz-transform: translate3d(0, 0, 0);
+	-ms-transform: translate3d(0, 0, 0);
+	transform: translate3d(0, 0, 0);
+	-webkit-backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
+	-ms-backface-visibility: hidden;
+	-o-backface-visibility: hidden;
+	backface-visibility: hidden;
+	-webkit-perspective: 1000;
+   -moz-perspective: 1000;
+   -ms-perspective: 1000;
+   perspective: 1000;
+*/  }
+#outer-wrap {
+	overflow: hidden;
+	width: 100%;
+	position: relative;	
+}
+//mobile account menu styles
+body.show-account {
+	#inner-wrap{
+		//width: 10%;
+	}
+	#mobile-account-menu .mobile-account-trigger {
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		display: block;
+		background-color: #2e6c81;
+		padding: 4px 0 0 0;
+		width: 100%;
+		height: 28px;
+		text-align: left;
+		overflow: visible;
+		line-height: 20px;
+		border-bottom: 1px solid rgba(255,255,255,.2);
+		box-shadow: inset 0px -1px 0px rgba(0,0,0,.2);
+		background-color: rgba(0,0,0,.1);		
+		i {
+			position: relative;
+			top: -8px;	
+		}
+	}
+	#sign-in-menu {
+		padding: 15px;
+		hr {
+			border-bottom-color: rgba(255,255,255,.2);
+			border-top-color: rgba(0,0,0,.2);	
+		}
+		a, .btn-link, label {
+			color: @white;
+		}
+	}
+	#mobile-top-nav {
+		position: absolute;
+		z-index: 5;
+	}
+}
+//mobile nav menu styles
+body.show-nav {
+	#inner-wrap{
+		//width: 10%;
+	}
+	#mobile-nav .mobile-nav-trigger {
+		position: absolute;
+		top: 0px;
+		right: 0px;
+		display: block;
+		background-color: #2e6c81;
+		padding: 7px 8px 0 0;
+		height: 26px;
+		width: 100%;
+		text-align: right;
+		overflow: visible;
+		line-height: 20px;
+		border-bottom: 1px solid rgba(255,255,255,.2);
+		box-shadow: inset 0px -1px 0px rgba(0,0,0,.2);
+		background-color: rgba(0,0,0,.1);		
+		i {
+			position: relative;
+			top: -8px;	
+		}
+	}
+	#mobile-top-nav {
+		position: absolute;
+		z-index: 5;	
+	}
+}
+//mobile nav search styles
+#mobile-search-input {
+	width: 90%;
+	padding: 5%;
+	background-color: rgba(255,255,255,.1);
+	box-shadow: inset 0px -1px 0px rgba(0,0,0,.2);
+	border-bottom: 1px solid rgba(255,255,255,.2);
+	form {
+		margin-bottom: 0;	
+	}
+	input {
+		width: 75%;
+		margin-right: 4px;	
+	}
+	button {
+		width: 15%;	
+	}
+}

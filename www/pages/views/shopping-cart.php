@@ -3,13 +3,6 @@ $ts = time();
 $db = $dbCustom->getDbConnect(CART_DATABASE);
 
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<title></title>
-<style>
-</style>
 
 <script
   src="https://code.jquery.com/jquery-3.5.1.min.js"
@@ -70,10 +63,10 @@ function add_item(item_id){
 	
 
 </script>
-</head>
-<body>
+
+
 <br />
-<a href="checkout.html">Checkout</a>
+<a href="checkout.html"><span style="font-size:40px; color:blue">Checkout</span></a>
 <br />
 
 
@@ -113,10 +106,10 @@ if($cart->hasItems()){
 		$weight += $item_array['weight']*$cart_array['qty'];
 		$content_height += 90;				
 
-		$details_url = $nav->getItemUrl($item_array['seo_url'], $item_array['name'], $item_array['profile_item_id'], $brand_name, 'shop', $item_array['hide_id_from_url']);		
-
+$details_url = $nav->getItemUrl($item_array['seo_url'], $item_array['name'], $item_array['profile_item_id'], $brand_name, 'shop', $item_array['hide_id_from_url']);		
 echo "<br />";
-echo ">>><img src='../../saascustuploads/".$_SESSION['profile_account_id']."/cart/full/".$item_array['file_name']."' >"; 
+echo "<img src='../../saascustuploads/".$_SESSION['profile_account_id']."/cart/full/".$item_array['file_name']."' >"; 
+
 
 		$line_total = ($cart_array['price'] - $total_item_discount) * $cart_array['qty'];							
 		if($line_total < 0) $line_total = 0;		
@@ -131,6 +124,3 @@ echo "sub_total:  $".number_format($sub_total,2);
 }
 
 ?>
-
-</body>
-</html>

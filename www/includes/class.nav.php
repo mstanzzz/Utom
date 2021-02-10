@@ -52,7 +52,7 @@ class Nav {
 			$_SESSION['home_cats_2'][$i]['seo_url'] = $row->seo_url;
 			$_SESSION['home_cats_2'][$i]['seo_list'] = $row->seo_list;
 			$_SESSION['home_cats_2'][$i]['img_alt_text'] = $row->img_alt_text;
-			$_SESSION['home_cats_2'][$i]['img_file_name'] = $row->file_name;
+			$_SESSION['home_cats_2'][$i]['file_name'] = $row->file_name;
 			$_SESSION['home_cats_2'][$i]['tool_tip'] = $row->tool_tip;					
 			$_SESSION['home_cats_2'][$i]['hp1_display_order'] = $row->hp1_display_order;
 			$_SESSION['home_cats_2'][$i]['hp2_display_order'] = $row->hp2_display_order;
@@ -752,7 +752,7 @@ class Nav {
 						$_SESSION['top_showroom_cats'][$i]['seo_url'] = $row->seo_url;
 						$_SESSION['top_showroom_cats'][$i]['seo_list'] = $row->seo_list;
 						$_SESSION['top_showroom_cats'][$i]['img_alt_text'] = $row->img_alt_text;
-						$_SESSION['top_showroom_cats'][$i]['img_file_name'] = $row->file_name;
+						$_SESSION['top_showroom_cats'][$i]['file_name'] = $row->file_name;
 						$_SESSION['top_showroom_cats'][$i]['tool_tip'] = $row->tool_tip;
 						$_SESSION['top_showroom_cats'][$i]['display_order'] = $row->display_order;
 								
@@ -825,7 +825,7 @@ class Nav {
 					$_SESSION['top_cats'][$i]['cat_id'] = $row->cat_id;
 					$_SESSION['top_cats'][$i]['profile_cat_id'] = $row->profile_cat_id;
 					$_SESSION['top_cats'][$i]['name'] = $row->name;
-					$_SESSION['top_cats'][$i]['img_file_name'] = $row->file_name;
+					$_SESSION['top_cats'][$i]['file_name'] = $row->file_name;
 					$i++;
 				}
 
@@ -861,7 +861,7 @@ class Nav {
 		
 			$t[$i]['keyword_landing_id'] = $row->keyword_landing_id;
 			$t[$i]['name'] = $row->heading;
-			$t[$i]['img_file_name'] = $row->file_name;
+			$t[$i]['file_name'] = $row->file_name;
 			$t[$i]['tool_tip'] = $row->heading;			
 			$t[$i]['img_alt_text'] = $row->url_name; 
 			$t[$i]['url'] = ($row->url_name != '') ? $row->url_name : 'organizer';
@@ -874,7 +874,7 @@ class Nav {
 	}
 
 
-	function get_img_file_name($img_id)
+	function get_file_name($img_id)
 	{
 		
 		$ret = "NONE";
@@ -922,7 +922,7 @@ class Nav {
 		$i = 0;		
 		while($row = $result->fetch_object()) {	
 	
-			$child_cats_array[$i]['img_file_name'] = $this->get_img_file_name($row->img_id);	
+			$child_cats_array[$i]['file_name'] = $this->get_file_name($row->img_id);	
 			$child_cats_array[$i]['cat_id'] = $row->cat_id;
 			$child_cats_array[$i]['profile_cat_id'] = $row->profile_cat_id;
 			$child_cats_array[$i]['name'] = $row->name;
@@ -1119,7 +1119,7 @@ class Nav {
 						}
 						
 						$block .= "<li><a href='".$url_str."' title='".$full_label."'>";
-						$block .= "<img src='"."/saascustuploads/".$_SESSION['profile_account_id']."/cart/".$imgdir."/".$val["img_file_name"]."' 
+						$block .= "<img src='"."/saascustuploads/".$_SESSION['profile_account_id']."/cart/".$imgdir."/".$val["file_name"]."' 
 						alt='".$val['img_alt_text']."' />";
 						$block .= $label."</a></li>";
 					}
@@ -1184,7 +1184,7 @@ $block .= "<li><a href='"."/".getUrlText($val['name'])."/category.html?brandId="
 						}
 						
 						$block .= "<li><a href='".$url_str."' title='".$full_label."'>";
-						$block .= "<img src='"."/saascustuploads/".$_SESSION['profile_account_id']."/cart/".$imgdir."/".$val["img_file_name"]."' 
+						$block .= "<img src='"."/saascustuploads/".$_SESSION['profile_account_id']."/cart/".$imgdir."/".$val["file_name"]."' 
 						alt='".$val['img_alt_text']."' />";
 						$block .= $label."</a></li>";
 					}
@@ -1672,7 +1672,7 @@ $block .= "<li><a href='"."/".getUrlText($val['name'])."/category.html?brandId="
 						$_SESSION['home_cats_2'][$i]['seo_url'] = $row->seo_url;
 						$_SESSION['home_cats_2'][$i]['seo_list'] = $row->seo_list;
 						$_SESSION['home_cats_2'][$i]['img_alt_text'] = $row->img_alt_text;
-						$_SESSION['home_cats_2'][$i]['img_file_name'] = $row->file_name;
+						$_SESSION['home_cats_2'][$i]['file_name'] = $row->file_name;
 						$_SESSION['home_cats_2'][$i]['tool_tip'] = $row->tool_tip;					
 						$_SESSION['home_cats_2'][$i]['hp1_display_order'] = $row->hp1_display_order;
 						$_SESSION['home_cats_2'][$i]['hp2_display_order'] = $row->hp2_display_order;
@@ -1758,7 +1758,7 @@ $block .= "<li><a href='"."/".getUrlText($val['name'])."/category.html?brandId="
 							$_SESSION['home_cats_1'][$i]['seo_url'] = $row->seo_url;
 							$_SESSION['home_cats_1'][$i]['seo_list'] = $row->seo_list;
 							$_SESSION['home_cats_1'][$i]['img_alt_text'] = $row->img_alt_text;
-							$_SESSION['home_cats_1'][$i]['img_file_name'] = $row->file_name;
+							$_SESSION['home_cats_1'][$i]['file_name'] = $row->file_name;
 							$_SESSION['home_cats_1'][$i]['tool_tip'] = $row->tool_tip;					
 							$_SESSION['home_cats_1'][$i]['hp1_display_order'] = $row->hp1_display_order;
 							$_SESSION['home_cats_1'][$i]['hp2_display_order'] = $row->hp2_display_order;
@@ -1983,7 +1983,7 @@ $block .= "<li><a href='"."/".getUrlText($val['name'])."/category.html?brandId="
 						$_SESSION['top_cats'][$i]['seo_url'] = $row->seo_url;						
 						$_SESSION['top_cats'][$i]['seo_list'] = $row->seo_list;
 						$_SESSION['top_cats'][$i]['img_alt_text'] = $row->img_alt_text;
-						$_SESSION['top_cats'][$i]['img_file_name'] = $row->file_name;
+						$_SESSION['top_cats'][$i]['file_name'] = $row->file_name;
 						$_SESSION['top_cats'][$i]['child_array'] = $this->getChildCats($row->cat_id);
 						$_SESSION['top_cats'][$i]['child_count'] = count($_SESSION['top_cats'][$i]['child_array']);
 						$_SESSION['top_cats'][$i]['display_order'] = $row->display_order;

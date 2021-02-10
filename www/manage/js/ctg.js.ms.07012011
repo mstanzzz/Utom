@@ -1,0 +1,158 @@
+
+
+
+
+
+// maybe get rid of this and use update_header_cart to do the whole thing
+function update_item_count_top(count){	
+	//alert("hhhhhh");
+	$('#item_count_top').html(count);
+	//$('#item_count_top').html("jkl");
+}
+
+
+function update_header_cart(count){	
+
+}
+
+
+
+
+
+
+function make_blank(ele)
+{
+	ele.value ="";
+}
+
+
+function defaultText(ele,str){
+		
+	if(ele.value == ""){
+		
+		ele.value = str;
+	}
+	
+}
+
+
+
+function isValidEmail(str) {
+	
+	
+   return (str.indexOf(".") > 2) && (str.indexOf("@") > 0);
+   
+   
+ 
+}
+
+
+$(document).ready(function() {
+	
+	$("a.inline").fancybox();	
+	//$("#get_pswd").click(function(){ $.fancybox.close;  })
+	
+	var ol_len = $('.overlay').length;
+	var i;
+	for(i=0;i<=ol_len;i++){
+		$('#under_lay'+i).hover(
+			function () {
+				$(this).addClass('trans_overlay');
+				$(this).removeClass('overlay');				
+				//$(this).find(".hsb").css('color','black');
+				
+				
+			},			
+			function () {
+				$(this).removeClass('trans_overlay');
+				$(this).addClass('overlay');
+				//$(this).find(".hsb").css('color','999999');
+			}		
+		);
+	}
+
+	
+	$("#email_updates").click(function(){ 
+		//alert("bbbb");							   
+		var email = $("#email_updates_input").attr('value');
+			
+		if(!isValidEmail(email)){
+			alert("Please enter a valid email address.");
+			return false;	
+		}
+		
+		//alert(email);
+			
+		$.ajaxSetup({ cache: false}); 
+		$.ajax({
+		  url: 'ajax_add_to_email_list.php?email='+email,
+		  success: function(data) {
+			alert('Entered: '+data+'   Thank you.' );
+			$("#eu_thankyou").html("Thank you");
+			
+		  }
+		});
+		
+	})	
+	
+	
+	
+	$(".header_cart_row").click(function(){ 
+
+		var item_id = $(this).find(".i_sub").attr('id');
+		var cat_id = $(this).find(".c_sub").attr('id');			
+		var $ste_root = $(this).find(".r_sub").attr('id');			
+			
+		//alert(cat_id);
+			
+		window.location = $ste_root+"/closet-accessory-details/closets-accessory-item/"+item_id+"/"+cat_id;
+	})
+	
+	
+	
+	$(".nav_li_out").click(function(){ 
+		var cat_name = $(this).find(".n_sub").attr('id');
+		var cat_id = $(this).find(".c_sub").attr('id');			
+		var $ste_root = $(this).find(".r_sub").attr('id');			
+		//alert(cat_name);
+		window.location = $ste_root+"/storage-shop/category/"+cat_name+"/"+cat_id;
+	})
+	
+	
+	
+	
+	$(".nav_li_in").click(function(){ 
+	
+		var cat_name = $(this).find(".n_sub").attr('id');
+		var cat_id = $(this).find(".c_sub").attr('id');			
+		var $ste_root = $(this).find(".r_sub").attr('id');			
+		//alert(cat_id);
+		window.location = $ste_root+"/storage-shop/category/"+cat_name+"/"+cat_id;
+	})
+	
+	
+	$(".nav_brand_li").click(function(){ 
+	
+		//alert("hhhh");
+	
+		var name = $(this).find(".n_sub").attr('id');
+		var vend_man_id = $(this).find(".v_sub").attr('id');			
+		var $ste_root = $(this).find(".r_sub").attr('id');			
+	
+		window.location = $ste_root+"/storage-shop/brand/"+name+"/"+vend_man_id;
+	})
+	
+
+	
+   	$(".nav_rd_li").click(function(){ 
+		var url = $(this).find(".r_sub").attr('id');			
+		window.location = url;
+	})
+	
+	
+
+
+
+
+	
+})

@@ -608,7 +608,7 @@ class ShoppingCart {
 						
 			$ret_array[$i]['item_id'] = $row->item_id;
 			$ret_array[$i]['profile_item_id'] = $row->profile_item_id;
-			$ret_array[$i]['img_file_name'] = $this->getItemPic($row->item_id);	
+			$ret_array[$i]['file_name'] = $this->getItemPic($row->item_id);	
 			$ret_array[$i]['brand_id'] = $row->brand_id; 
 			$ret_array[$i]['seo_url'] = $row->seo_url; 
 			$ret_array[$i]['name'] = $row->name;

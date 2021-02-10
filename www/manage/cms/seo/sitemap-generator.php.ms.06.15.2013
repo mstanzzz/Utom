@@ -1,0 +1,935 @@
+<?php
+
+
+
+if(strpos($_SERVER['REQUEST_URI'], "onlinecl" )){  
+	$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT']."/onlinecl"; 
+}elseif(strpos($_SERVER['REQUEST_URI'], "designitpro" )){  
+	$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT']."/designitpro"; 
+}elseif(strpos($_SERVER['REQUEST_URI'], "otg-site" )){  
+	$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT']."/otg-site"; 
+}else{
+	$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT']; 	
+}
+
+require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/manage-includes.php");
+
+$progress = new SetupProgress;
+$module = new Module;
+
+$page_title = "Sitemap Generator";
+$page_group = "seo";
+
+require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/set-page.php");	
+
+$msg = (isset($_GET["msg"])) ? $_GET["msg"] : "";
+$action = (isset($_GET["action"])) ? $_GET["action"] : "";
+
+set_time_limit(0);
+
+function getNumPagesPriceRange($price_bottom,$price_top, $cat_id=0, $brand_id=0, $page_rows = 6){
+
+	$db_selected = dbSelect(CART_DATABASE);
+		if($cat_id > 0){
+
+			$sql = "SELECT child_cat_to_parent_cat_id
+				FROM child_cat_to_parent_cat
+				WHERE child_cat_to_parent_cat.parent_cat_id = '".$cat_id."'";
+					
+			$tc_res = mysql_query ($sql);
+			if(!$tc_res)die(mysql_error());
+
+			if(mysql_num_rows($tc_res) > 0){
+
+				$sql = "SELECT DISTINCT price_flat
+						,price_wholesale
+						,percent_markup 
+					FROM item, item_to_category, category, child_cat_to_parent_cat, image
+					WHERE item.item_id = item_to_category.item_id
+					AND item_to_category.cat_id = category.cat_id
+					AND child_cat_to_parent_cat.child_cat_id = category.cat_id
+					AND item.img_id = image.img_id
+					AND (child_cat_to_parent_cat.parent_cat_id = '".$cat_id."'
+						OR category.cat_id = '".$cat_id."')
+					AND date_inactive > NOW()
+					AND date_active <= NOW()
+					AND category.show_in_cart = '1'
+					AND item.parent_item_id = '0'				
+					AND item.show_in_cart = '1'
+					AND item.active = '1'				
+					AND item.profile_account_id = '".$_SESSION["profile_account_id"]."'";
+
+
+
+			}else{
+
+				$sql = "SELECT DISTINCT price_flat
+						,price_wholesale
+						,percent_markup 
+					FROM item, item_to_category, category, image
+					WHERE item.item_id = item_to_category.item_id
+					AND item_to_category.cat_id = category.cat_id
+					AND item.img_id = image.img_id
+					AND category.cat_id = '".$cat_id."'
+					AND item.date_inactive > NOW()
+					AND item.date_active <= NOW()
+					AND item.parent_item_id = '0'
+					AND item.show_in_cart = '1'
+					AND item.active = '1'				
+					AND item.profile_account_id = '".$_SESSION["profile_account_id"]."'";
+
+
+			}
+			
+		}elseif($brand_id > 0){
+
+			$sql = "SELECT DISTINCT price_flat
+						,price_wholesale
+						,percent_markup 						
+			FROM item, image
+			WHERE item.img_id = image.img_id
+			AND item.brand_id = '".$brand_id."'
+			AND item.parent_item_id = '0'
+			AND item.show_in_cart = '1'
+			AND item.date_inactive > NOW()
+			AND item.date_active <= NOW()
+			AND item.active = '1'			
+			AND item.profile_account_id = '".$_SESSION["profile_account_id"]."'";
+
+		}else{
+			$sql = "SELECT price_flat
+					,price_wholesale
+					,percent_markup 					
+				FROM item, image
+				WHERE item.img_id = image.img_id
+				AND item.parent_item_id = '0'
+				AND item.show_in_cart = '1'
+				AND item.date_inactive > NOW()
+				AND item.date_active <= NOW()
+				AND item.active = '1'
+				AND item.call_for_pricing = '0'				
+				AND item.profile_account_id ='".$_SESSION['profile_account_id']."'";
+		}
+
+		$res = mysql_query ($sql);
+		if(!$res)die(mysql_error());
+		$i = 0;
+		while($row = mysql_fetch_object($res)){			
+			
+			if($row->price_flat > 0){
+				$price = $row->price_flat;	
+			}elseif($row->price_wholesale > 0){
+				$price = $row->price_wholesale + $row->percent_markup; 
+			}else{
+				$price = 0;	
+			}
+
+			if($price >= $price_bottom && $price <= $price_top){				
+				$i++;
+			}
+		}
+
+	$last = ceil($i/$page_rows); 
+	
+	return $last;	
+}
+
+function getNumPagesBrand($brand_id,$page_rows = 6){
+
+	$db_selected = dbSelect(CART_DATABASE);
+	
+	$sql = "SELECT DISTINCT item.item_id
+			FROM item, image
+			WHERE item.img_id = image.img_id
+			AND item.brand_id = '".$brand_id."'
+			AND item.parent_item_id = '0'
+			AND item.show_in_cart = '1'
+			AND item.date_inactive > NOW()
+			AND item.date_active <= NOW()
+			AND item.active = '1'			
+			AND item.profile_account_id = '".$_SESSION["profile_account_id"]."'";
+	$nmx_res = mysql_query($sql);
+	if(!$nmx_res)die(mysql_error());
+	
+	$num_products = mysql_num_rows($nmx_res);
+	
+	$last = ceil($num_products/$page_rows); 
+	
+	return $last;	
+
+}
+
+function getNumPages($cat_id,$page_rows){
+	
+	$db_selected = dbSelect(CART_DATABASE);
+	
+	$sql = "SELECT count(child_cat_to_parent_cat_id) as n
+			FROM child_cat_to_parent_cat
+			WHERE child_cat_to_parent_cat.child_cat_id = '".$cat_id."'
+			OR child_cat_to_parent_cat.parent_cat_id = '".$cat_id."'";
+	$result = mysql_query ($sql);
+	if(!$result)die(mysql_error());
+	$n = mysql_fetch_array($result);
+	if($n['n'] > 0){
+
+		$sql = "SELECT DISTINCT item.item_id 
+				FROM item, item_to_category, category, child_cat_to_parent_cat, image
+				WHERE item.item_id = item_to_category.item_id
+				AND item_to_category.cat_id = category.cat_id
+				AND item.img_id = image.img_id
+				AND (child_cat_to_parent_cat.child_cat_id = item_to_category.cat_id
+					OR child_cat_to_parent_cat.parent_cat_id = item_to_category.cat_id)
+				AND (child_cat_to_parent_cat.parent_cat_id = '".$cat_id."'
+					OR category.cat_id = '".$cat_id."')
+				AND item.date_inactive > NOW()
+				AND item.date_active <= NOW()
+				AND category.show_in_cart = '1'
+				AND item.parent_item_id = '0'				
+				AND item.show_in_cart = '1'
+				AND item.active = '1'
+				AND item.profile_account_id = '".$_SESSION["profile_account_id"]."'";
+				
+	}else{
+
+				
+		$sql = "SELECT DISTINCT item.item_id 
+				FROM item, item_to_category, category, image
+				WHERE item.item_id = item_to_category.item_id
+				AND item_to_category.cat_id = category.cat_id
+				AND item.img_id = image.img_id
+				AND category.cat_id = '".$cat_id."'
+				AND item.date_inactive > NOW()
+				AND item.date_active <= NOW()
+				AND item.parent_item_id = '0'
+				AND item.show_in_cart = '1'
+				AND item.active = '1'
+				AND item.profile_account_id = '".$_SESSION["profile_account_id"]."'";
+						
+	}
+
+	$nmx_res = mysql_query($sql);
+	if(!$nmx_res)die(mysql_error());
+	
+	$num_products = mysql_num_rows($nmx_res);
+	
+	$last = ceil($num_products/$page_rows); 
+	
+	return $last;	
+
+	
+}
+
+
+
+
+if($action == 'generate'){
+		
+	require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/class.xml.sitemap.generator-modified.php");
+
+	$url_array = array();
+
+	if($module->hasDesignToolModule($_SESSION['profile_account_id'])){
+		$url_array[] = '/'.$_SESSION['global_url_word'].'app'; 
+	}
+
+	if($module->hasShoppingCartModule($_SESSION['profile_account_id'])){
+		$url_array[] = '/'.$_SESSION['global_url_word'].'shopping-cart.html';
+		$url_array[] = '/'.$_SESSION['global_url_word'].'checkout.html';
+		$url_array[] = '/'.$_SESSION['global_url_word'].'category.html';
+		$url_array[] = '/'.$_SESSION['global_url_word'].'showroom.html';
+	}
+
+	$pages = new Pages;
+	$cms_page_array = $pages->getPageSeoUrls($_SESSION['profile_account_id'],1);
+	
+	foreach($cms_page_array as $cms_page){
+		$url_array[] = '/'.$_SESSION['global_url_word'].$cms_page.'.html';
+	}
+	
+	$db_selected = dbSelect(SITE_N_DATABASE);
+	// is blog page active?
+	$sql = "SELECT active 
+			FROM page_seo
+			WHERE profile_account_id = '".$_SESSION["profile_account_id"]."'
+			AND page_name = 'blog'";
+	$result = mysql_query ($sql);
+	if(!$result)die(mysql_error());
+	if(mysql_num_rows($result) > 0){
+		$object = mysql_fetch_object($result);
+		if($object->active){
+			$sql = "SELECT name, blog_cat_id 
+					FROM blog_category
+					WHERE profile_account_id = '".$_SESSION["profile_account_id"]."'";
+			$bc_res = mysql_query ($sql);
+			if(!$bc_res)die(mysql_error());
+			while($row = mysql_fetch_object($bc_res)){
+				$url_array[] = '/'.$_SESSION['global_url_word'].getUrlText($row->name)."/blog.html?slug=blog&blogCatId=".$row->blog_cat_id;
+				$sql = "SELECT title, blog_post_id 
+						FROM blog_post
+						WHERE blog_cat_id = '".$row->blog_cat_id."'
+						AND hide = '0'";			
+				$bp_res = mysql_query ($sql);
+				if(!$bp_res)die(mysql_error());
+				while($bp_row = mysql_fetch_object($bp_res)){
+
+
+
+$url_array[] = '/'.$_SESSION['global_url_word'].getUrlText($row->name)."/".getUrlText($bp_row->title)."/blog.html?slug=blog&blogPostId=".$bp_row->blog_post_id."&blogCatId=".$row->blog_cat_id;
+
+
+				}
+			}	
+		}
+	}
+
+	
+	$url_array[] = '/'.$_SESSION['global_url_word'].'category.html?priceBottom=0&amp;priceTop=50&amp;catId=0&amp;brandId=0';
+	$url_array[] = '/'.$_SESSION['global_url_word'].'category.html?priceBottom=100&amp;priceTop=200&amp;catId=0&amp;brandId=0';
+	$url_array[] = '/'.$_SESSION['global_url_word'].'category.html?priceBottom=200&amp;priceTop=1000&amp;catId=0&amp;brandId=0';
+	$url_array[] = '/'.$_SESSION['global_url_word'].'category.html?priceBottom=1000&amp;priceTop=5000&amp;catId=0&amp;brandId=0';
+	$url_array[] = '/'.$_SESSION['global_url_word'].'category.html?priceBottom=5000&amp;priceTop=999999&amp;catId=0&amp;brandId=0';
+
+	$db_selected = dbSelect(CART_DATABASE);
+	$sql = "SELECT cat_id, seo_url, show_in_cart, show_in_showroom  
+			FROM category
+			WHERE profile_account_id = '".$_SESSION['profile_account_id']."'
+			AND active = '1'";
+	$result = mysql_query ($sql);
+	if(!$result)die(mysql_error());	
+	while($row = mysql_fetch_object($result)){		
+		if($row->show_in_cart){
+			$url_array[] = '/'.$_SESSION['global_url_word'].$row->seo_url.'/category.html?catId='.$row->cat_id;
+			$url_array[] = '/'.$_SESSION['global_url_word'].$row->seo_url.'/category.html?priceBottom=0&amp;priceTop=50&amp;catId='.$row->cat_id.'&amp;brandId=0';
+			$url_array[] = '/'.$_SESSION['global_url_word'].$row->seo_url.'/category.html?priceBottom=50&amp;priceTop=100&amp;catId='.$row->cat_id.'&amp;brandId=0';
+			$url_array[] = '/'.$_SESSION['global_url_word'].$row->seo_url.'/category.html?priceBottom=100&amp;priceTop=200&amp;catId='.$row->cat_id.'&amp;brandId=0';
+			$url_array[] = '/'.$_SESSION['global_url_word'].$row->seo_url.'/category.html?priceBottom=200&amp;priceTop=500&amp;catId='.$row->cat_id.'&amp;brandId=0';			
+			$url_array[] = '/'.$_SESSION['global_url_word'].$row->seo_url.'/category.html?priceBottom=500&amp;priceTop=1000&amp;catId='.$row->cat_id.'&amp;brandId=0';
+			$url_array[] = '/'.$_SESSION['global_url_word'].$row->seo_url.'/category.html?priceBottom=1000&amp;priceTop=5000&amp;catId='.$row->cat_id.'&amp;brandId=0';
+			$url_array[] = '/'.$_SESSION['global_url_word'].$row->seo_url.'/category.html?priceBottom=5000&amp;priceTop=999999&amp;catId='.$row->cat_id.'&amp;brandId=0';
+		}
+		if($row->show_in_showroom){
+			$url_array[] = '/'.$_SESSION['global_url_word'].$row->seo_url.'/showroom.html?catId='.$row->cat_id;					
+		}
+	}
+
+	// add paging query strings cats
+	if(mysql_num_rows($result) > 0){
+		mysql_data_seek ($result,0);
+	}	
+	while($row = mysql_fetch_object($result)){		
+		if($row->show_in_cart){
+			$num_pages = getNumPages($row->cat_id,6);			
+			for($i = 1; $i <= $num_pages; $i++){		
+				// if(!is_in_results($results_array, $row->cat_id, 6)){
+				$url_array[] = '/'.$_SESSION['global_url_word'].$row->seo_url.'/category.html?catId='.$row->cat_id.'&amp;brandId=0&amp;priceBottom=0&amp;priceTop=0&amp;pageRows=6&amp;pagenum='.$i;
+				// }
+				
+				// $results_array[] = get_relults_str()
+				// results str is item_ids in one string. {212, 345, 678} would be "212345678"
+			
+			}
+			$num_pages = getNumPages($row->cat_id,12);			
+			for($i = 1; $i <= $num_pages; $i++){		
+				$url_array[] = '/'.$_SESSION['global_url_word'].$row->seo_url.'/category.html?catId='.$row->cat_id.'&amp;brandId=0&amp;priceBottom=0&amp;priceTop=0&amp;pageRows=12&amp;pagenum='.$i;
+			}
+			$num_pages = getNumPages($row->cat_id,24);			
+			for($i = 1; $i <= $num_pages; $i++){		
+				$url_array[] = '/'.$_SESSION['global_url_word'].$row->seo_url.'/category.html?catId='.$row->cat_id.'&amp;brandId=0&amp;priceBottom=0&amp;priceTop=0&amp;pageRows=24&amp;pagenum='.$i;
+			}
+			$num_pages = getNumPages($row->cat_id,30);			
+			for($i = 1; $i <= $num_pages; $i++){		
+				$url_array[] = '/'.$_SESSION['global_url_word'].$row->seo_url.'/category.html?catId='.$row->cat_id.'&amp;brandId=0&amp;priceBottom=0&amp;priceTop=0&amp;pageRows=30&amp;pagenum='.$i;
+			}
+			// Price ranges
+			//$price_bottom,$price_top, $cat_id=0, $brand_id=0, $page_rows = 6
+			$num_pages = getNumPagesPriceRange(0,50,$row->cat_id,0,6);
+			for($i = 1; $i <= $num_pages; $i++){		
+				$url_array[] = '/'.$_SESSION['global_url_word'].$row->seo_url.'/category.html?catId='.$row->cat_id.'&amp;brandId=0&amp;priceBottom=0&amp;priceTop=50&amp;pageRows=6&amp;pagenum='.$i;
+			}
+			$num_pages = getNumPagesPriceRange(0,50,$row->cat_id,0,12);
+			for($i = 1; $i <= $num_pages; $i++){		
+				$url_array[] = '/'.$_SESSION['global_url_word'].$row->seo_url.'/category.html?catId='.$row->cat_id.'&amp;brandId=0&amp;priceBottom=0&amp;priceTop=50&amp;pageRows=12&amp;pagenum='.$i;
+			}
+			$num_pages = getNumPagesPriceRange(0,50,$row->cat_id,0,24);
+			for($i = 1; $i <= $num_pages; $i++){		
+				$url_array[] = '/'.$_SESSION['global_url_word'].$row->seo_url.'/category.html?catId='.$row->cat_id.'&amp;brandId=0&amp;priceBottom=0&amp;priceTop=50&amp;pageRows=24&amp;pagenum='.$i;
+			}
+			$num_pages = getNumPagesPriceRange(0,50,$row->cat_id,0,30);
+			for($i = 1; $i <= $num_pages; $i++){		
+				$url_array[] = '/'.$_SESSION['global_url_word'].$row->seo_url.'/category.html?catId='.$row->cat_id.'&amp;brandId=0&amp;priceBottom=0&amp;priceTop=50&amp;pageRows=30&amp;pagenum='.$i;
+			}
+
+			$num_pages = getNumPagesPriceRange(50,100,$row->cat_id,0,6);
+			for($i = 1; $i <= $num_pages; $i++){		
+				$url_array[] = '/'.$_SESSION['global_url_word'].$row->seo_url.'/category.html?catId='.$row->cat_id.'&amp;brandId=0&amp;priceBottom=50&amp;priceTop=100&amp;pageRows=6&amp;pagenum='.$i;
+			}
+			$num_pages = getNumPagesPriceRange(50,100,$row->cat_id,0,12);
+			for($i = 1; $i <= $num_pages; $i++){		
+				$url_array[] = '/'.$_SESSION['global_url_word'].$row->seo_url.'/category.html?catId='.$row->cat_id.'&amp;brandId=0&amp;priceBottom=50&amp;priceTop=100&amp;pageRows=12&amp;pagenum='.$i;
+			}
+			$num_pages = getNumPagesPriceRange(50,100,$row->cat_id,0,24);
+			for($i = 1; $i <= $num_pages; $i++){		
+				$url_array[] = '/'.$_SESSION['global_url_word'].$row->seo_url.'/category.html?catId='.$row->cat_id.'&amp;brandId=0&amp;priceBottom=50&amp;priceTop=100&amp;pageRows=24&amp;pagenum='.$i;
+			}
+			$num_pages = getNumPagesPriceRange(50,100,$row->cat_id,0,30);
+			for($i = 1; $i <= $num_pages; $i++){		
+				$url_array[] = '/'.$_SESSION['global_url_word'].$row->seo_url.'/category.html?catId='.$row->cat_id.'&amp;brandId=0&amp;priceBottom=50&amp;priceTop=100&amp;pageRows=30&amp;pagenum='.$i;
+			}
+
+			$num_pages = getNumPagesPriceRange(100,200,$row->cat_id,0,6);
+			for($i = 1; $i <= $num_pages; $i++){		
+				$url_array[] = '/'.$_SESSION['global_url_word'].$row->seo_url.'/category.html?catId='.$row->cat_id.'&amp;brandId=0&amp;priceBottom=100&amp;priceTop=200&amp;pageRows=6&amp;pagenum='.$i;
+			}
+			$num_pages = getNumPagesPriceRange(100,200,$row->cat_id,0,12);
+			for($i = 1; $i <= $num_pages; $i++){		
+				$url_array[] = '/'.$_SESSION['global_url_word'].$row->seo_url.'/category.html?catId='.$row->cat_id.'&amp;brandId=0&amp;priceBottom=100&amp;priceTop=200&amp;pageRows=12&amp;pagenum='.$i;
+			}
+			$num_pages = getNumPagesPriceRange(100,200,$row->cat_id,0,24);
+			for($i = 1; $i <= $num_pages; $i++){		
+				$url_array[] = '/'.$_SESSION['global_url_word'].$row->seo_url.'/category.html?catId='.$row->cat_id.'&amp;brandId=0&amp;priceBottom=100&amp;priceTop=200&amp;pageRows=24&amp;pagenum='.$i;
+			}
+			$num_pages = getNumPagesPriceRange(100,200,$row->cat_id,0,30);
+			for($i = 1; $i <= $num_pages; $i++){		
+				$url_array[] = '/'.$_SESSION['global_url_word'].$row->seo_url.'/category.html?catId='.$row->cat_id.'&amp;brandId=0&amp;priceBottom=100&amp;priceTop=200&amp;pageRows=30&amp;pagenum='.$i;
+			}
+
+			$num_pages = getNumPagesPriceRange(200,500,$row->cat_id,0,6);
+			for($i = 1; $i <= $num_pages; $i++){		
+				$url_array[] = '/'.$_SESSION['global_url_word'].$row->seo_url.'/category.html?catId='.$row->cat_id.'&amp;brandId=0&amp;priceBottom=200&amp;priceTop=500&amp;pageRows=6&amp;pagenum='.$i;
+			}
+			$num_pages = getNumPagesPriceRange(200,500,$row->cat_id,0,12);
+			for($i = 1; $i <= $num_pages; $i++){		
+				$url_array[] = '/'.$_SESSION['global_url_word'].$row->seo_url.'/category.html?catId='.$row->cat_id.'&amp;brandId=0&amp;priceBottom=200&amp;priceTop=500&amp;pageRows=12&amp;pagenum='.$i;
+			}
+			$num_pages = getNumPagesPriceRange(200,500,$row->cat_id,0,24);
+			for($i = 1; $i <= $num_pages; $i++){		
+				$url_array[] = '/'.$_SESSION['global_url_word'].$row->seo_url.'/category.html?catId='.$row->cat_id.'&amp;brandId=0&amp;priceBottom=200&amp;priceTop=500&amp;pageRows=24&amp;pagenum='.$i;
+			}
+			$num_pages = getNumPagesPriceRange(200,500,$row->cat_id,0,30);
+			for($i = 1; $i <= $num_pages; $i++){		
+				$url_array[] = '/'.$_SESSION['global_url_word'].$row->seo_url.'/category.html?catId='.$row->cat_id.'&amp;brandId=0&amp;priceBottom=200&amp;priceTop=500&amp;pageRows=30&amp;pagenum='.$i;
+			}
+
+			$num_pages = getNumPagesPriceRange(500,1000,$row->cat_id,0,6);
+			for($i = 1; $i <= $num_pages; $i++){		
+				$url_array[] = '/'.$_SESSION['global_url_word'].$row->seo_url.'/category.html?catId='.$row->cat_id.'&amp;brandId=0&amp;priceBottom=500&amp;priceTop=1000&amp;pageRows=6&amp;pagenum='.$i;
+			}
+			$num_pages = getNumPagesPriceRange(500,1000,$row->cat_id,0,12);
+			for($i = 1; $i <= $num_pages; $i++){		
+				$url_array[] = '/'.$_SESSION['global_url_word'].$row->seo_url.'/category.html?catId='.$row->cat_id.'&amp;brandId=0&amp;priceBottom=500&amp;priceTop=1000&amp;pageRows=12&amp;pagenum='.$i;
+			}
+			$num_pages = getNumPagesPriceRange(500,1000,$row->cat_id,0,24);
+			for($i = 1; $i <= $num_pages; $i++){		
+				$url_array[] = '/'.$_SESSION['global_url_word'].$row->seo_url.'/category.html?catId='.$row->cat_id.'&amp;brandId=0&amp;priceBottom=500&amp;priceTop=1000&amp;pageRows=24&amp;pagenum='.$i;
+			}
+			$num_pages = getNumPagesPriceRange(500,1000,$row->cat_id,0,30);
+			for($i = 1; $i <= $num_pages; $i++){		
+				$url_array[] = '/'.$_SESSION['global_url_word'].$row->seo_url.'/category.html?catId='.$row->cat_id.'&amp;brandId=0&amp;priceBottom=500&amp;priceTop=1000&amp;pageRows=30&amp;pagenum='.$i;
+			}
+
+			$num_pages = getNumPagesPriceRange(1000,5000,$row->cat_id,0,6);
+			for($i = 1; $i <= $num_pages; $i++){		
+				$url_array[] = '/'.$_SESSION['global_url_word'].$row->seo_url.'/category.html?catId='.$row->cat_id.'&amp;brandId=0&amp;priceBottom=1000&amp;priceTop=5000&amp;pageRows=6&amp;pagenum='.$i;
+			}
+			$num_pages = getNumPagesPriceRange(1000,5000,$row->cat_id,0,12);
+			for($i = 1; $i <= $num_pages; $i++){		
+				$url_array[] = '/'.$_SESSION['global_url_word'].$row->seo_url.'/category.html?catId='.$row->cat_id.'&amp;brandId=0&amp;priceBottom=1000&amp;priceTop=5000&amp;pageRows=12&amp;pagenum='.$i;
+			}
+			$num_pages = getNumPagesPriceRange(1000,5000,$row->cat_id,0,24);
+			for($i = 1; $i <= $num_pages; $i++){		
+				$url_array[] = '/'.$_SESSION['global_url_word'].$row->seo_url.'/category.html?catId='.$row->cat_id.'&amp;brandId=0&amp;priceBottom=1000&amp;priceTop=5000&amp;pageRows=24&amp;pagenum='.$i;
+			}
+			$num_pages = getNumPagesPriceRange(1000,5000,$row->cat_id,0,30);
+			for($i = 1; $i <= $num_pages; $i++){		
+				$url_array[] = '/'.$_SESSION['global_url_word'].$row->seo_url.'/category.html?catId='.$row->cat_id.'&amp;brandId=0&amp;priceBottom=1000&amp;priceTop=5000&amp;pageRows=30&amp;pagenum='.$i;
+			}
+
+			$num_pages = getNumPagesPriceRange(5000,90000,$row->cat_id,0,6);
+			for($i = 1; $i <= $num_pages; $i++){		
+				$url_array[] = '/'.$_SESSION['global_url_word'].$row->seo_url.'/category.html?catId='.$row->cat_id.'&amp;brandId=0&amp;priceBottom=1000&amp;priceTop=5000&amp;pageRows=6&amp;pagenum='.$i;
+			}
+			$num_pages = getNumPagesPriceRange(5000,90000,$row->cat_id,0,12);
+			for($i = 1; $i <= $num_pages; $i++){		
+				$url_array[] = '/'.$_SESSION['global_url_word'].$row->seo_url.'/category.html?catId='.$row->cat_id.'&amp;brandId=0&amp;priceBottom=1000&amp;priceTop=5000&amp;pageRows=12&amp;pagenum='.$i;
+			}
+			$num_pages = getNumPagesPriceRange(5000,90000,$row->cat_id,0,24);
+			for($i = 1; $i <= $num_pages; $i++){		
+				$url_array[] = '/'.$_SESSION['global_url_word'].$row->seo_url.'/category.html?catId='.$row->cat_id.'&amp;brandId=0&amp;priceBottom=1000&amp;priceTop=5000&amp;pageRows=24&amp;pagenum='.$i;
+			}
+			$num_pages = getNumPagesPriceRange(5000,90000,$row->cat_id,0,30);
+			for($i = 1; $i <= $num_pages; $i++){		
+				$url_array[] = '/'.$_SESSION['global_url_word'].$row->seo_url.'/category.html?catId='.$row->cat_id.'&amp;brandId=0&amp;priceBottom=1000&amp;priceTop=5000&amp;pageRows=30&amp;pagenum='.$i;
+			}
+		
+		}
+	}
+
+
+	$sql = "SELECT brand_id, name  
+			FROM brand
+			WHERE profile_account_id = '".$_SESSION['profile_account_id']."'";
+	$result = mysql_query ($sql);
+	if(!$result)die(mysql_error());	
+	while($row = mysql_fetch_object($result)){
+		$url_array[] = '/'.$_SESSION['global_url_word'].getUrlText($row->name).'/category.html?brandId='.$row->brand_id;
+		$url_array[] = '/'.$_SESSION['global_url_word'].getUrlText($row->name).'/category.html?priceBottom=0&amp;priceTop=50&amp;catId=0&amp;brandId='.$row->brand_id;
+		$url_array[] = '/'.$_SESSION['global_url_word'].getUrlText($row->name).'/category.html?priceBottom=100&amp;priceTop=200&amp;catId=0&amp;brandId='.$row->brand_id;
+		$url_array[] = '/'.$_SESSION['global_url_word'].getUrlText($row->name).'/category.html?priceBottom=200&amp;priceTop=1000&amp;catId=0&amp;brandId='.$row->brand_id;
+		$url_array[] = '/'.$_SESSION['global_url_word'].getUrlText($row->name).'/category.html?priceBottom=1000&amp;priceTop=5000&amp;catId=0&amp;brandId='.$row->brand_id;
+		$url_array[] = '/'.$_SESSION['global_url_word'].getUrlText($row->name).'/category.html?priceBottom=5000&amp;priceTop=999999&amp;catId=0&amp;brandId='.$row->brand_id;
+
+		$num_pages = getNumPagesBrand($row->brand_id,6);			
+		for($i = 1; $i <= $num_pages; $i++){		
+			$url_array[] = '/'.$_SESSION['global_url_word'].getUrlText($row->name).'/category.html?catId=0&amp;brandId='.$row->brand_id.'&amp;priceBottom=0&amp;priceTop=0&amp;pageRows=6&amp;pagenum='.$i;
+		}
+		$num_pages = getNumPagesBrand($row->brand_id,12);			
+		for($i = 1; $i <= $num_pages; $i++){		
+			$url_array[] = '/'.$_SESSION['global_url_word'].getUrlText($row->name).'/category.html?catId=0&amp;brandId='.$row->brand_id.'&amp;priceBottom=0&amp;priceTop=0&amp;pageRows=12&amp;pagenum='.$i;
+		}
+		$num_pages = getNumPagesBrand($row->brand_id,24);			
+		for($i = 1; $i <= $num_pages; $i++){		
+			$url_array[] = '/'.$_SESSION['global_url_word'].getUrlText($row->name).'/category.html?catId=0&amp;brandId='.$row->brand_id.'&amp;priceBottom=0&amp;priceTop=0&amp;pageRows=24&amp;pagenum='.$i;
+		}
+		$num_pages = getNumPagesBrand($row->brand_id,30);			
+		for($i = 1; $i <= $num_pages; $i++){		
+			$url_array[] = '/'.$_SESSION['global_url_word'].getUrlText($row->name).'/category.html?catId=0&amp;brandId='.$row->brand_id.'&amp;priceBottom=0&amp;priceTop=0&amp;pageRows=30&amp;pagenum='.$i;
+		}
+
+
+
+		// Price ranges
+		//$price_bottom,$price_top, $cat_id=0, $brand_id=0, $page_rows = 6
+		$num_pages = getNumPagesPriceRange(0,50,0,$row->brand_id,6);
+		for($i = 1; $i <= $num_pages; $i++){		
+			$url_array[] = '/'.$_SESSION['global_url_word'].getUrlText($row->name).'/category.html?catId=0&amp;brandId='.$row->brand_id.'&amp;priceBottom=0&amp;priceTop=50&amp;pageRows=6&amp;pagenum='.$i;
+		}
+		$num_pages = getNumPagesPriceRange(0,50,0,$row->brand_id,12);
+		for($i = 1; $i <= $num_pages; $i++){		
+			$url_array[] = '/'.$_SESSION['global_url_word'].getUrlText($row->name).'/category.html?catId=0&amp;brandId='.$row->brand_id.'&amp;priceBottom=0&amp;priceTop=50&amp;pageRows=12&amp;pagenum='.$i;
+		}
+		$num_pages = getNumPagesPriceRange(0,50,0,$row->brand_id,24);
+		for($i = 1; $i <= $num_pages; $i++){		
+			$url_array[] = '/'.$_SESSION['global_url_word'].getUrlText($row->name).'/category.html?catId=0&amp;brandId='.$row->brand_id.'&amp;priceBottom=0&amp;priceTop=50&amp;pageRows=24&amp;pagenum='.$i;
+		}
+		$num_pages = getNumPagesPriceRange(0,50,0,$row->brand_id,30);
+		for($i = 1; $i <= $num_pages; $i++){		
+			$url_array[] = '/'.$_SESSION['global_url_word'].getUrlText($row->name).'/category.html?catId=0&amp;brandId='.$row->brand_id.'&amp;priceBottom=0&amp;priceTop=50&amp;pageRows=30&amp;pagenum='.$i;
+		}
+
+		$num_pages = getNumPagesPriceRange(50,100,0,$row->brand_id,6);
+		for($i = 1; $i <= $num_pages; $i++){		
+			$url_array[] = '/'.$_SESSION['global_url_word'].getUrlText($row->name).'/category.html?catId=0&amp;brandId='.$row->brand_id.'&amp;priceBottom=50&amp;priceTop=100&amp;pageRows=6&amp;pagenum='.$i;
+		}
+		$num_pages = getNumPagesPriceRange(50,100,0,$row->brand_id,12);
+		for($i = 1; $i <= $num_pages; $i++){		
+			$url_array[] = '/'.$_SESSION['global_url_word'].getUrlText($row->name).'/category.html?catId=0&amp;brandId='.$row->brand_id.'&amp;priceBottom=50&amp;priceTop=100&amp;pageRows=12&amp;pagenum='.$i;
+		}
+		$num_pages = getNumPagesPriceRange(50,100,0,$row->brand_id,24);
+		for($i = 1; $i <= $num_pages; $i++){		
+			$url_array[] = '/'.$_SESSION['global_url_word'].getUrlText($row->name).'/category.html?catId=0&amp;brandId='.$row->brand_id.'&amp;priceBottom=50&amp;priceTop=100&amp;pageRows=24&amp;pagenum='.$i;
+		}
+		$num_pages = getNumPagesPriceRange(50,100,0,$row->brand_id,30);
+		for($i = 1; $i <= $num_pages; $i++){		
+			$url_array[] = '/'.$_SESSION['global_url_word'].getUrlText($row->name).'/category.html?catId=0&amp;brandId='.$row->brand_id.'&amp;priceBottom=50&amp;priceTop=100&amp;pageRows=30&amp;pagenum='.$i;
+		}
+
+		$num_pages = getNumPagesPriceRange(100,200,0,$row->brand_id,6);
+		for($i = 1; $i <= $num_pages; $i++){		
+			$url_array[] = '/'.$_SESSION['global_url_word'].getUrlText($row->name).'/category.html?catId=0&amp;brandId='.$row->brand_id.'&amp;priceBottom=100&amp;priceTop=200&amp;pageRows=6&amp;pagenum='.$i;
+		}
+		$num_pages = getNumPagesPriceRange(100,200,0,$row->brand_id,12);
+		for($i = 1; $i <= $num_pages; $i++){		
+			$url_array[] = '/'.$_SESSION['global_url_word'].getUrlText($row->name).'/category.html?catId=0&amp;brandId='.$row->brand_id.'&amp;priceBottom=100&amp;priceTop=200&amp;pageRows=12&amp;pagenum='.$i;
+		}
+		$num_pages = getNumPagesPriceRange(100,200,0,$row->brand_id,24);
+		for($i = 1; $i <= $num_pages; $i++){		
+			$url_array[] = '/'.$_SESSION['global_url_word'].getUrlText($row->name).'/category.html?catId=0&amp;brandId='.$row->brand_id.'&amp;priceBottom=100&amp;priceTop=200&amp;pageRows=24&amp;pagenum='.$i;
+		}
+		$num_pages = getNumPagesPriceRange(100,200,0,$row->brand_id,30);
+		for($i = 1; $i <= $num_pages; $i++){		
+			$url_array[] = '/'.$_SESSION['global_url_word'].getUrlText($row->name).'/category.html?catId=0&amp;brandId='.$row->brand_id.'&amp;priceBottom=100&amp;priceTop=200&amp;pageRows=30&amp;pagenum='.$i;
+		}
+
+		$num_pages = getNumPagesPriceRange(200,500,0,$row->brand_id,6);
+		for($i = 1; $i <= $num_pages; $i++){		
+			$url_array[] = '/'.$_SESSION['global_url_word'].getUrlText($row->name).'/category.html?catId=0&amp;brandId='.$row->brand_id.'&amp;priceBottom=200&amp;priceTop=500&amp;pageRows=6&amp;pagenum='.$i;
+		}
+		$num_pages = getNumPagesPriceRange(200,500,0,$row->brand_id,12);
+		for($i = 1; $i <= $num_pages; $i++){		
+			$url_array[] = '/'.$_SESSION['global_url_word'].getUrlText($row->name).'/category.html?catId=0&amp;brandId='.$row->brand_id.'&amp;priceBottom=200&amp;priceTop=500&amp;pageRows=12&amp;pagenum='.$i;
+		}
+		$num_pages = getNumPagesPriceRange(200,500,0,$row->brand_id,24);
+		for($i = 1; $i <= $num_pages; $i++){		
+			$url_array[] = '/'.$_SESSION['global_url_word'].getUrlText($row->name).'/category.html?catId=0&amp;brandId='.$row->brand_id.'&amp;priceBottom=200&amp;priceTop=500&amp;pageRows=24&amp;pagenum='.$i;
+		}
+		$num_pages = getNumPagesPriceRange(200,500,0,$row->brand_id,30);
+		for($i = 1; $i <= $num_pages; $i++){		
+			$url_array[] = '/'.$_SESSION['global_url_word'].getUrlText($row->name).'/category.html?catId=0&amp;brandId='.$row->brand_id.'&amp;priceBottom=200&amp;priceTop=500&amp;pageRows=30&amp;pagenum='.$i;
+		}
+
+		$num_pages = getNumPagesPriceRange(500,1000,0,$row->brand_id,6);
+		for($i = 1; $i <= $num_pages; $i++){		
+			$url_array[] = '/'.$_SESSION['global_url_word'].getUrlText($row->name).'/category.html?catId=0&amp;brandId='.$row->brand_id.'&amp;priceBottom=500&amp;priceTop=1000&amp;pageRows=6&amp;pagenum='.$i;
+		}
+		$num_pages = getNumPagesPriceRange(500,1000,0,$row->brand_id,12);
+		for($i = 1; $i <= $num_pages; $i++){		
+			$url_array[] = '/'.$_SESSION['global_url_word'].getUrlText($row->name).'/category.html?catId=0&amp;brandId='.$row->brand_id.'&amp;priceBottom=500&amp;priceTop=1000&amp;pageRows=12&amp;pagenum='.$i;
+		}
+		$num_pages = getNumPagesPriceRange(500,1000,0,$row->brand_id,24);
+		for($i = 1; $i <= $num_pages; $i++){		
+			$url_array[] = '/'.$_SESSION['global_url_word'].getUrlText($row->name).'/category.html?catId=0&amp;brandId='.$row->brand_id.'&amp;priceBottom=500&amp;priceTop=1000&amp;pageRows=24&amp;pagenum='.$i;
+		}
+		$num_pages = getNumPagesPriceRange(500,1000,0,$row->brand_id,30);
+		for($i = 1; $i <= $num_pages; $i++){		
+			$url_array[] = '/'.$_SESSION['global_url_word'].getUrlText($row->name).'/category.html?catId=0&amp;brandId='.$row->brand_id.'&amp;priceBottom=500&amp;priceTop=5000&amp;pageRows=30&amp;pagenum='.$i;
+		}
+
+		$num_pages = getNumPagesPriceRange(1000,5000,0,$row->brand_id,6);
+		for($i = 1; $i <= $num_pages; $i++){		
+			$url_array[] = '/'.$_SESSION['global_url_word'].getUrlText($row->name).'/category.html?catId=0&amp;brandId='.$row->brand_id.'&amp;priceBottom=1000&amp;priceTop=5000&amp;pageRows=6&amp;pagenum='.$i;
+		}
+		$num_pages = getNumPagesPriceRange(1000,5000,0,$row->brand_id,12);
+		for($i = 1; $i <= $num_pages; $i++){		
+			$url_array[] = '/'.$_SESSION['global_url_word'].getUrlText($row->name).'/category.html?catId=0&amp;brandId='.$row->brand_id.'&amp;priceBottom=1000&amp;priceTop=5000&amp;pageRows=12&amp;pagenum='.$i;
+		}
+		$num_pages = getNumPagesPriceRange(1000,5000,0,$row->brand_id,24);
+		for($i = 1; $i <= $num_pages; $i++){		
+			$url_array[] = '/'.$_SESSION['global_url_word'].getUrlText($row->name).'/category.html?catId=0&amp;brandId='.$row->brand_id.'&amp;priceBottom=1000&amp;priceTop=5000&amp;pageRows=24&amp;pagenum='.$i;
+		}
+		$num_pages = getNumPagesPriceRange(1000,5000,0,$row->brand_id,30);
+		for($i = 1; $i <= $num_pages; $i++){		
+			$url_array[] = '/'.$_SESSION['global_url_word'].getUrlText($row->name).'/category.html?catId=0&amp;brandId='.$row->brand_id.'&amp;priceBottom=1000&amp;priceTop=5000&amp;pageRows=30&amp;pagenum='.$i;
+		}
+			
+		$num_pages = getNumPagesPriceRange(5000,90000,0,$row->brand_id,6);
+		for($i = 1; $i <= $num_pages; $i++){		
+			$url_array[] = '/'.$_SESSION['global_url_word'].getUrlText($row->name).'/category.html?catId=0&amp;brandId='.$row->brand_id.'&amp;priceBottom=5000&amp;priceTop=90000&amp;pageRows=6&amp;pagenum='.$i;
+		}
+		$num_pages = getNumPagesPriceRange(5000,90000,0,$row->brand_id,12);
+		for($i = 1; $i <= $num_pages; $i++){		
+			$url_array[] = '/'.$_SESSION['global_url_word'].getUrlText($row->name).'/category.html?catId=0&amp;brandId='.$row->brand_id.'&amp;priceBottom=5000&amp;priceTop=90000&amp;pageRows=12&amp;pagenum='.$i;
+		}
+		$num_pages = getNumPagesPriceRange(5000,90000,0,$row->brand_id,24);
+		for($i = 1; $i <= $num_pages; $i++){		
+			$url_array[] = '/'.$_SESSION['global_url_word'].getUrlText($row->name).'/category.html?catId=0&amp;brandId='.$row->brand_id.'&amp;priceBottom=5000&amp;priceTop=90000&amp;pageRows=24&amp;pagenum='.$i;
+		}
+		$num_pages = getNumPagesPriceRange(5000,90000,0,$row->brand_id,30);
+		for($i = 1; $i <= $num_pages; $i++){		
+			$url_array[] = '/'.$_SESSION['global_url_word'].getUrlText($row->name).'/category.html?catId=0&amp;brandId='.$row->brand_id.'&amp;priceBottom=5000&amp;priceTop=90000&amp;pageRows=30&amp;pagenum='.$i;
+		}
+			
+	}
+
+
+
+	/*
+	foreach($url_array as $v){
+		echo $v;
+		echo "<br />";	
+	}
+	*/
+	
+	
+	
+	
+	$sql = "SELECT item_id, seo_url, show_in_cart, show_in_showroom  
+			FROM item
+			WHERE profile_account_id = '".$_SESSION['profile_account_id']."'
+			AND item.date_inactive > NOW()
+			AND item.date_active <= NOW()
+			AND active = '1'";
+	$result = mysql_query ($sql);
+	if(!$result)die(mysql_error());	
+	while($row = mysql_fetch_object($result)){
+	
+		$sql = "SELECT cat_id
+				FROM item_to_category
+				WHERE item_id = '".$row->item_id."'";  
+		$res = mysql_query ($sql);
+		if(!$res)die(mysql_error());	
+		if(mysql_num_rows($res) > 0){
+			$obj = mysql_fetch_object($res);
+			$cat_id = $obj->cat_id; 	
+		}else{
+			$cat_id = 0;
+		}
+		
+		if($row->show_in_cart){
+			$url_array[] = '/'.$_SESSION['global_url_word'].$row->seo_url.'/product.html?itemId='.$row->item_id."&amp;catId=".$cat_id;
+		}
+		
+		if($row->show_in_showroom){
+			$url_array[] = '/'.$_SESSION['global_url_word'].$row->seo_url.'/showroom-product.html?itemId='.$row->item_id."&amp;catId=".$cat_id;					
+		}
+	}
+	
+
+
+	$entries[] = new xml_sitemap_entry('/', '1.0', 'daily');
+
+	$path = $_SERVER['DOCUMENT_ROOT']."/saas-customers";
+	
+	if (!file_exists($path)) {
+		mkdir($path);         
+	}
+	
+	$path .= "/".$_SESSION['profile_account_id'];
+			
+	if (!file_exists($path)) {
+		mkdir($path);         
+	}
+
+	$path .= "/sitemap";
+
+	if (!file_exists($path)) {
+		mkdir($path);         
+	}
+			
+	$files = glob($path."/*"); // get all file names
+	foreach($files as $file){ // iterate files
+		if(is_file($file)) unlink($file); // delete file			
+	}
+	
+	$i = 1;
+	$file_num = 1;
+	//$file_ext = '.xml';
+	//$file_ext = '.xml.gz';
+	$file_ext = '.gz';
+	
+	$file_name = 'sitemap'.$file_num.$file_ext;
+	
+	//echo count($url_array);
+	//echo "<br />";
+	
+	foreach($url_array as $j => $url){
+
+		$entries[] = new xml_sitemap_entry($url, '0.5', 'daily');
+		
+		//echo $j."   <a href='".$ste_root.$url."' target='_blank'>".$url."</a>";
+		//echo "<br />";
+		
+		if($i % 1000 == 0){
+			//if($i % 50 == 0){
+			//echo "<br />";
+			//echo $file_num;
+			//echo "<br />";
+			//echo $file_name;
+			//echo "<br />";
+			$conf = new xml_sitemap_generator_config;
+			$file_name = 'sitemap'.$file_num.$file_ext;
+
+			if(substr_count($domain,'.') > 1){	
+				$conf->setDomain($domain);				
+			}else{
+				$conf->setDomain('www.'.$domain);
+			}
+			$conf->setPath($path);
+			$conf->setFilename($file_name);
+			$conf->setEntries($entries);			
+			$generator = new xml_sitemap_generator($conf);
+			$generator->write();	
+
+			$file_num++;			
+			unset($entries);
+		}
+		$i++;
+	}
+
+	if(isset($entries)){
+		$file_name = 'sitemap'.$file_num.$file_ext;
+		$conf = new xml_sitemap_generator_config;
+		if(substr_count($domain,'.') > 1){	
+			$conf->setDomain($domain);				
+		}else{
+			$conf->setDomain('www.'.$domain);
+		}
+		$conf->setPath($path);
+		$conf->setFilename($file_name);
+		$conf->setEntries($entries);			
+		$generator = new xml_sitemap_generator($conf);
+		$generator->write();
+		unset($entries);	
+	}
+	
+	//echo $file_num;
+	
+	$i = 1;
+	while($i <= $file_num){		
+		
+		$file_name = 'sitemap'.$i.$file_ext;		
+		$entries[] = new xml_sitemap_entry('/'.$file_name, '9', 'daily');	
+		$i++;
+						
+	}
+	
+
+	if(isset($entries)){
+		$conf = new xml_sitemap_generator_config;
+		$file_name = 'sitemap'.$file_ext;
+		if(substr_count($domain,'.') > 1){	
+			$conf->setDomain($domain);				
+		}else{
+			$conf->setDomain('www.'.$domain);
+		}
+		$conf->setPath($path);
+		$conf->setFilename($file_name);
+		$conf->setEntries($entries);			
+		$generator = new xml_sitemap_generator($conf);
+		$generator->write();
+	}
+
+
+	$msg = "Sitemaps Created";
+
+}
+
+require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/doc_header.php"); 
+
+?>
+
+
+<style>
+.spinner {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-left: -50px; /* half width of the spinner gif */
+    margin-top: -50px; /* half height of the spinner gif */
+    text-align:center;
+    z-index:1234;
+    overflow: auto;
+    width: 100px; /* width of the spinner gif */
+    height: 102px; /*hight of the spinner gif +2px to fix IE8 issue */
+}
+
+</style>
+
+<script>
+
+
+var submitted = false;
+function doSubmit() {
+	if (!submitted) {
+		submitted = true;
+		ProgressImg = document.getElementById('inprogress_img');
+		document.getElementById("inprogress").style.visibility = "visible";
+		setTimeout("ProgressImg.src = ProgressImg.src",1000);
+		return true;
+	}else{
+		return false;
+	}
+}
+
+
+$(document).ready(function() {
+
+		//$('#spinner').show();	
+
+});	
+
+//$(window).load(function(){
+	  //$('#spinner').hide();
+//});
+
+</script>
+
+</head>
+<body>
+<?php
+	require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/manage-header.php");
+	require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/manage-top-nav.php");
+?>
+<div class="manage_page_container">
+	<div class="manage_side_nav">
+		<?php 
+        require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/manage-side-nav.php");
+        ?>
+	</div>
+	<div class="manage_main">
+	
+    <!--
+    <div id="spinner" class="spinner" style="display:none;">
+        <img src="<?php //echo $ste_root; ?>/images/progress.gif" alt="Loading"/>
+    </div>
+    -->
+    	<?php 
+		
+		require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/class.admin_bread_crumb.php");	
+		$bread_crumb = new AdminBreadCrumb;
+		$bread_crumb->reSet();
+		$bread_crumb->add("CMS", $ste_root."manage/cms/cms-landing.php");
+		$bread_crumb->add("SEO", "");
+        echo $bread_crumb->output();
+		
+        require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/manage-content-top.php");
+        
+		//SEO section tabbed sub-navigation
+        require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/seo-section-tabs.php");
+        $db_selected = dbSelect(SITE_N_DATABASE);
+		
+		
+		
+		//$string = "Test";
+		//$zipped = gzencode($string);
+		//echo "<textarea>".$zipped."</textarea>";
+		
+		
+		
+		
+		//$file = 'sitemap.gz';
+		// Open the file to get existing content
+		//$current = file_get_contents($file);
+		//echo $current;
+		
+		// Append a new person to the file
+		//$current .= "John Smith\n";
+		// Write the contents back to the file
+		
+		
+		//file_put_contents($file, $zipped);
+		//$filename = "sitemap.gz";
+		//echo "|".strtolower(substr($filename,-2))."|";
+		
+		?>
+		<br /><br /><br />
+        
+        
+            <p style="visibility:hidden" id="inprogress"> <img id="inprogress_img" src="<?php echo $ste_root; ?>/images/progress.gif"> Please Wait... </p>
+
+        
+        
+		
+		<?php 
+
+        if($admin_access->cms_level > 1){
+            //echo "<button class='btn btn-success btn-large' name='edit_global_word' type='submit' value='Submit'><i class='icon-ok icon-white'></i> Save Changes</button>"; 
+        
+			//echo "<a class='btn btn-success btn-large' href='sitemap-generator.php?action=generate'>Generate Sitemap</a>";		
+		
+		
+		?>
+    
+        <form action="sitemap-generator.php" method="get" onSubmit="doSubmit()">
+        	<input type="hidden" name="action" value="generate">
+        	<button class='btn btn-success btn-large'>Generate Sitemap</button>         
+        </form>
+     
+        
+        <?php
+		
+		
+		
+		
+		}else{?>
+            <div class="alert"><span class="fltlft"><i class="icon-warning-sign"></i></span> Sorry, you don't have the permissions to edit this item.</div>
+        <?php } ?>
+  	</div>
+        
+    <p class="clear"></p>
+	<?php 
+	require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/manage-footer.php");
+	?>
+</div>
+</body>
+</html>
+<?php $db_dis = dbDisconnect(); ?>

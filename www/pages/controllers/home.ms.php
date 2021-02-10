@@ -113,7 +113,7 @@ if(!$shop_by1_hide){
 
 	foreach($cats as $val){
 
-	$img = "./saascustuploads/".$_SESSION['profile_account_id']."/cart/medium/".$val['img_file_name'];
+	$img = "./saascustuploads/".$_SESSION['profile_account_id']."/cart/medium/".$val['file_name'];
 	$url_str = $nav->getCatUrl($val['name'],$val['profile_cat_id'],'showroom');			
 
 	$shop_by1_block .= "<div 
@@ -163,7 +163,7 @@ if(!$shop_by2_hide){
 						border-style:solid;'>";
 	$shop_by2_block .= "<a href='".$url_str."'>";	
 	
-	$img = "./saascustuploads/".$_SESSION['profile_account_id']."/cart/medium/wide/".$val['img_file_name'];
+	$img = "./saascustuploads/".$_SESSION['profile_account_id']."/cart/medium/wide/".$val['file_name'];
 	$shop_by2_block .= "<img width='525' height='406' src='".$img."' />";
 	}else{
 		$shop_by2_block .= "<div style='float:left; 
@@ -173,7 +173,7 @@ if(!$shop_by2_hide){
 								border-style:solid;'>";
 	$shop_by2_block .= "<a href='".$url_str."'>";	
 		
-	$img = "./saascustuploads/".$_SESSION['profile_account_id']."/cart/medium/".$val['img_file_name'];
+	$img = "./saascustuploads/".$_SESSION['profile_account_id']."/cart/medium/".$val['file_name'];
 	$shop_by2_block .= "<img width='460' height='406'src='".$img."' />";
 	}
 

@@ -1,0 +1,159 @@
+#
+Options +FollowSymlinks
+#RewriteBase /
+RewriteEngine on
+#RewriteCond %{SCRIPT_FILENAME} -f 
+#RewriteCond %{SCRIPT_FILENAME} -d 
+#
+#
+
+#php_value upload_max_filesize 20M
+#php_value post_max_size 20M
+#php_value max_input_time 2400
+
+# require www without hard coding
+RewriteCond %{HTTP_HOST} ^[^.]+\.[^.]+$
+RewriteCond %{HTTPS}s ^on(s)|
+RewriteRule ^ http%1://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+
+#RewriteCond %{http_host} ^organizetogo.com [NC]
+#RewriteCond %{https} !on [NC]
+#RewriteRule ^(.*)$ http://www.organizetogo.com/$1 [R=301,L]
+
+#suPHP_ConfigPath /home/onlinecl/public_html
+#suPHP_ConfigPath /home/organize/public_html
+
+# prevent infinite loops
+RewriteCond %{ENV:REDIRECT_STATUS} 200
+RewriteRule .* - [L]
+
+
+RewriteRule ^$ template_default.php?slug=home
+RewriteRule ^closet-accessory-cart.html?$ shopping-cart2.php
+RewriteRule ^page/([^/\.]+).html?$ added-page.php?slug=$1 [L]
+RewriteRule ^social-network/([^/\.]+)?$ template_sn.php?slug=$1 [L]
+RewriteRule ^social-network/([^/\.]+)/([0-9]+)?$ template_sn.php?slug=$1&q_id=$2 [L]
+
+
+RewriteRule ^idea-folder.html?$ ideastemplate.php?slug=idea-folder
+RewriteRule ^([^/\.]+)/idea-folder.html?$ ideastemplate.php?slug=idea-folder
+
+
+
+RewriteRule ^([^/\.]+)/user/([0-9]+)/idea-folder/([0-9]+)/?$ ideastemplate.php?slug=$1&author_id=$2&folder_id=$3 [L]
+RewriteRule ^([^/\.]+)/user/([0-9]+)/idea/([0-9]+)/idea-folder/([0-9]+)/?$ ideastemplate.php?slug=$1&author_id=$2&idea_id=$3&folder_id=$4 [L]
+
+
+# store product
+#site.com/{global-word}/{cat1}/{cat2}/{item-name}/product.html?id=
+RewriteRule ^product\.html$ template_shop_details.php [L]
+RewriteRule ^([^.]+)/product\.html$ template_shop_details.php [L]
+RewriteRule ^([^.]+)/([^.]+)/product\.html$ template_shop_details.php [L]
+RewriteRule ^([^.]+)/([^.]+)/([^.]+)/product\.html$ template_shop_details.php [L]
+RewriteRule ^([^.]+)/([^.]+)/([^.]+)/([^.]+)/product\.html$ template_shop_details.php [L]
+
+# showroom product
+RewriteRule ^showroom-product\.html$ template_showroom_details.php [L]
+RewriteRule ^([^.]+)/showroom-product\.html$ template_showroom_details.php [L]
+RewriteRule ^([^.]+)/([^.]+)/showroom-product\.html$ template_showroom_details.php [L]
+RewriteRule ^([^.]+)/([^.]+)/([^.]+)/showroom-product\.html$ template_showroom_details.php [L]
+RewriteRule ^([^.]+)/([^.]+)/([^.]+)//([^.]+)/showroom-product\.html$ template_showroom_details.php [L]
+
+# store
+#site.com/{editable-word}/{cat1}/{this-cat}/shop.html?id=
+RewriteRule ^category\.html$ template_shop.php [L]
+RewriteRule ^([^.]+)/category\.html$ template_shop.php [L]
+RewriteRule ^([^.]+)/([^.]+)/category\.html$ template_shop.php [L]
+RewriteRule ^([^.]+)/([^.]+)/([^.]+)/category\.html$ template_shop.php [L]
+
+# showroom
+#site.com/{editable-word}/{cat1}/{this-cat}/showroom.html?id=
+RewriteRule ^showroom\.html$ template_showroom.php [L]
+RewriteRule ^([^.]+)/showroom\.html$ template_showroom.php [L]
+RewriteRule ^([^.]+)/([^.]+)/showroom\.html$ template_showroom.php [L]
+RewriteRule ^([^.]+)/([^.]+)/([^.]+)/showroom\.html$ template_showroom.php [L]
+
+#shopping cart
+RewriteRule ^shopping-cart.html?$ shopping-cart2.php [L]
+RewriteRule ^([^/\.]+)/shopping-cart.html?$ shopping-cart2.php [L]
+
+
+#checkout
+RewriteRule ^checkout.html?$ checkout2.php [L]
+RewriteRule ^([^/\.]+)/checkout.html?$ checkout2.php [L]
+
+
+
+RewriteRule ^app.html$ /app/index.php [L]
+RewriteRule ^app$ /app/index.php [L] [L]
+
+
+
+#blog
+#RewriteRule ^blog.html$ template_default.php
+#RewriteRule ^([^/\.]+)/blog.html$ template_default.php
+RewriteRule ^([^/\.]+)/([^/\.]+)/blog.html$ template_default.php
+RewriteRule ^([^/\.]+)/([^/\.]+)/([^/\.]+).blog.html$ template_default.php
+
+
+
+
+#fixed pages
+#site.com/{global-word}/{seo-page-name}.html?id=
+RewriteRule ^([^/\.]+).html?$ template_default.php?slug=$1 [QSA,L]
+#RewriteRule ^([^/\.app]+)/([^/\.]+).html?$ template_default.php?slug=$2 [QSA,L]
+RewriteRule ^(?!app)([^/\.]+)/([^/\.]+).html?$ template_default.php?slug=$2 [QSA,L]
+
+#lightbox
+RewriteRule ^lb/([^/\.]+)?$ lightbox.php?slug=$1 [QSA,L]
+
+
+
+
+RewriteRule ^([^/\.]+)/catalog/([0-9]+)/?$ template_showroom.php?seo=$1&slug=showroom-sub-category&sr_cat_id=$2 [L]
+RewriteRule ^([^/\.]+)/catalog/([^/\.]+)/([0-9]+)/?$ template_showroom.php?seo=$1&slug=showroom-sub-category&cat_name=$2&sr_cat_id=$3 [L]
+RewriteRule ^([^/\.]+)/catalog.html?$ template_showroom.php?seo=$1&slug=showroom-main [L]
+RewriteRule ^([^/\.]+)/blog-cat/([0-9]+)/?$ template_default.php?seo=$1&slug=$1&blog-cat=$2 [L]
+RewriteRule ^([^/\.]+)/news.html$ template_default.php?seo=$1&type=news [L]
+RewriteRule ^([^/\.]+)/blog-page/([0-9]+)/?$ template_default.php?seo=$1&slug=$1&blog-page=$2 [L]
+RewriteRule ^([^/\.]+)/blog-post/([0-9]+)/?$ template_default.php?seo=$1&slug=$1&blog-post=$2 [L]
+
+
+
+
+#OLD
+RewriteRule ^([^/\.]+)/item/([^/\.]+)/([0-9]+)/([0-9]+)/?$  template_shop_details.php?seo=$1&item_name=$2&item_id=$3&cat_id=$4 [L]
+RewriteRule ^([^/\.]+)/showroom-item/([^/\.]+)/([0-9]+)/([0-9]+)/?$  template_showroom_details.php?seo=$1&item_name=$2&item_id=$3&cat_id=$4 [L]
+RewriteRule ^([^/\.]+)/category/([^/\.]+)/([0-9]+)/?$ template_shop.php?seo=$1&slug=category&cat_name=$2&cat_id=$3 [L]
+
+RewriteRule ^([^/\.]+)/brand/([^/\.]+)/([0-9]+)/?$ template_shop.php?seo=$1&slug=brand&name=$2&brand_id=$3 [L]
+RewriteRule ^([^/\.]+)/brand/all-brands/?$ template_shop.php?slug=brand-landing [L]
+RewriteRule ^([^/\.]+)/range/([0-9]+)/([0-9]+)/?$ template_shop.php?seo=$1&slug=price_range&price_bottom=$2&price_top=$3 [L]
+RewriteRule ^([^/\.]+)/brand/alpha/([^/\.]+)/?$ template_shop.php?seo=$1&slug=brand&alpha=$2 [L]
+RewriteRule ^([^/\.]+)/shop.html?$ template_shop.php?seo=$1&slug=custom-closets-store [L]
+
+RewriteRule ^([^/\.]+)/your-items.html?$ shopping-cart2.php?seo=$1
+
+RewriteRule ^lb/([^/\.]+)/([0-9]+)?$ lightbox.php?slug=$1&design_id=$2 [L]
+RewriteRule ^lb/([^/\.]+)?$ lightbox.php?slug=$1 [L]
+
+
+
+#RewriteRule ^account/([^/\.]+).html?$ template_default.php?slug=$1 [L]
+#RewriteRule ^account/([^/\.]+)/([0-9]+)?$ template_default.php?slug=$1&order_id=$2 [L]
+
+
+
+Options -Indexes
+
+ErrorDocument 404 /404.html
+
+#dynamic content
+#:::::
+#RewriteCond %{http_host} ^www.organizetogo.com [NC]
+RewriteRule ^sitemap.xml$ saas-customers/1/sitemap/sitemap.gz
+#RewriteCond %{http_host} ^www.organizetogo.com [NC]
+RewriteRule ^robots.txt$ saas-customers/1/sitemap/robots.txt
+
+#::::::

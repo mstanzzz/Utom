@@ -1,0 +1,562 @@
+>
+> Thank you for your response, Mike.
+>
+>  
+>
+> Below is the complete list of approved shipping codes for Costco. I have highlighted the ones that I believe correspond to this PO. You will want to verify that this is correct. Please advise.
+>
+>  
+>
+> ANBS_G2            <-- -->   A&B Courier - Basic Service
+>
+> ANBS_CG            <-- -->   A&B Courier - Ground
+>
+> ANBS_DS             <-- -->   A&B Courier - Threshold Service
+>
+> PYLR      <-- -->   A. Duie Pyle Inc.
+>
+> PYLR_SE               <-- -->   A. Duie Pyle Inc. - 2nd Day
+>
+> PYLR_ND             <-- -->   A. Duie Pyle Inc. - Next Day
+>
+> PYLR_DS              <-- -->   A. Duie Pyle Inc. - Threshold Service
+>
+> ABFS      <-- -->   ABF
+>
+> ABFS_SE              <-- -->   ABF - 2nd Day
+>
+> ABFS_G2             <-- -->   ABF - Basic Service
+>
+> ABFS_09              <-- -->   ABF - Delivery and Install
+>
+> ADIC_09               <-- -->   Ace Delivery - Deliver and Install
+>
+> AERO_G2            <-- -->   Aeronet - Basic Service
+>
+> AERO_DS             <-- -->   Aeronet - Threshold Service
+>
+> AIRB_ND                 -->      Airborne Freight Corp - Overnight Express
+>
+> AGRP_G2            <-- -->   Airgroup Express - Basic Service
+>
+> AGRP_09             <-- -->   Airgroup Express - Delivery and Install
+>
+> AGRP_DS            <-- -->   Airgroup Express - Threshold Service
+>
+> AITW_G2             <-- -->   AIT Worldwide Logistics - Basic Service
+>
+> AITW_09              <-- -->   AIT Worldwide Logistics - Delivery and Install
+>
+> AITW_DS             <-- -->   AIT Worldwide Logistics - Threshold Service
+>
+> TWMC_G2          <-- -->   Alero Wordwide - Basic Service
+>
+> TWMC_09           <-- -->   Alero Wordwide - Delivery and Install
+>
+> TWMC_DS          <-- -->   Alero Wordwide - Threshold Service
+>
+> AAIE_G2              <-- -->   ALG Worldwide Logistics - Basic Service
+>
+> AAIE_09               <-- -->   ALG Worldwide Logistics - Delivery and Install
+>
+> AAIE_DS              <-- -->   ALG Worldwide Logistics - Threshold Service
+>
+> ASAQ_G2            <-- -->   Allstates Worldcargo - Basic Service
+>
+> ASAQ_09             <-- -->   Allstates Worldcargo - Delivery and Install
+>
+> ASAQ_DS            <-- -->   Allstates Worldcargo - Threshold Service
+>
+> AFMI     <-- -->   Alto Freight
+>
+> AMEX    <-- -->   Apex Motor Express Ltd.
+>
+> AVRT     <-- -->   Averitt Express
+>
+> AVRT_G2             <-- -->   Averitt Express - Basic Service
+>
+> BMGI_G2            <-- -->   Beltmann Logistics - Basic Service
+>
+> BMGI_09             <-- -->   Beltmann Logistics - Delivery and Install
+>
+> BTVP     <-- -->   Best Overnite
+>
+> BTVP_G2             <-- -->   Best Overnite - Basic Service
+>
+> BEST      <-- -->   Bestar
+>
+> BVLL_G2              <-- -->   Brewer VanLine Logistics
+>
+> BVLL_09               <-- -->   Brewer VanLine Logistics - Deliver and Install
+>
+> BVLL_DS              <-- -->   Brewer VanLine Logistics - Threshold Service
+>
+> CAOE     <-- -->   California Overnight
+>
+> CAOE_SE             <-- -->   California Overnight - 2nd Day
+>
+> CAOE_ND            <-- -->   California Overnight - Next Day
+>
+> CG          <-- -->   Canada Post - Expedited Parcel
+>
+> CG_SE   <-- -->   Canada Post - Xpresspost
+>
+> CFWL_G2            <-- -->   Canadian Freightways - Basic Service
+>
+> CNPL     <-- -->   Canpar
+>
+> CNPL_SE              <-- -->   Canpar - 2nd Day
+>
+> CENF_G2             <-- -->   Central Freight Lines - Basic Service
+>
+> CETR      <-- -->   Central Transport Inc.
+>
+> CEVA_G2             <-- -->   CEVA Logistics - Basic Service
+>
+> CEVA_09              <-- -->   CEVA Logistics - Delivery and Install
+>
+> CEVA_DS             <-- -->   CEVA Logistics - Threshold Service
+>
+> CLKE      <-- -->   Clarke Transport
+>
+> CWCE    <-- -->   Conway
+>
+> CWCE_SE             <-- -->   Conway - 2nd Day
+>
+> CFNS     <-- -->   Custom Freight Systems, Inc.
+>
+> CGLY_DS              <-- -->   Custom Global Logistics - Threshold Service
+>
+> DTST      <-- -->   DATS Trucking Inc.
+>
+> DAYR     <-- -->   Day & Ross
+>
+> DYLT_G2              <-- -->   Daylight Transport - Basic Service
+>
+> DAFG    <-- -->   Dayton Freight
+>
+> DPHE     <-- -->   Dependable Highway Express
+>
+> DPHE_G2             <-- -->   Dependable Highway Express - Basic Service
+>
+> RDMD   <-- -->   Diamond Delivery
+>
+> ECHS_G2             <-- -->   Echo Global Logistics - Basic Service
+>
+> ECHS_09              <-- -->   Echo Global Logistics - Delivery and Install
+>
+> ECHS_DS              <-- -->   Echo Global Logistics - Threshold Service
+>
+> EXLA      <-- -->   Estes Express Lines
+>
+> EXLA_SE               <-- -->   Estes Express Lines - 2nd Day
+>
+> EXLA_G2              <-- -->   Estes Express Lines - Basic Service
+>
+> EXLA_09               <-- -->   Estes Express Lines - Delivery and Install
+>
+> EXLA_DS              <-- -->   Estes Express Lines - Threshold Service
+>
+> EFWW_G2          <-- -->   Estes Forwarding Worldwide - Basic Service
+>
+> EFWW_09           <-- -->   Estes Forwarding Worldwide - Delivery and Install
+>
+> EFWW_DS           <-- -->   Estes Forwarding Worldwide - Threshold Service
+>
+> EXDO     <-- -->   Expeditor's International of Washington
+>
+> EXNS     <-- -->   Express Transport
+>
+> EXNS_SE              <-- -->   Express Transport - 2nd Day
+>
+> FMTP_G2            <-- -->   Farmore Transportation Services - Basic Service
+>
+> FMTP_DS            <-- -->   Farmore Transportation Services -Threshold Service
+>
+> FASC      <-- -->   Fastfrate
+>
+> FASC_G2             <-- -->   Fastfrate - Basic Service
+>
+> FASC_09              <-- -->   Fastfrate - Delivery and Install
+>
+> FASC_DS              <-- -->   Fastfrate - Threshold Service
+>
+> FSTK_G2              <-- -->   Fastrek - Basic Service
+>
+> FSTK_DS              <-- -->   Fastrek - Threshold Service
+>
+> FEDX_SE              <-- -->   Fedex 2nd Day
+>
+> FEDF      <-- -->   FEDEX Freight
+>
+> FXFC      <-- -->   Fedex Freight Canada
+>
+> FEDX_CG             <-- -->   Fedex Ground
+>
+> FEDX_09              <-- -->   FEDEX Home Service
+>
+> FDE_IE  <-- -->   FEDEX International Economy
+>
+> FDE_SG                <-- -->   FEDEX International Ground
+>
+> FDE_IX  <-- -->   FEDEX International Priority
+>
+> FEDX_ND             <-- -->   Fedex Next Day
+>
+> FXSP      <-- -->   Fedex SmartPost
+>
+> FEDX_3D              <-- -->   Fedex Three Day
+>
+> FSCF_G2              <-- -->   Frontier Supply Chain Solutions - Basic
+>
+> FSCF_09               <-- -->   Frontier Supply Chain Solutions - Install
+>
+> FSCF_DS              <-- -->   Frontier Supply Chain Solutions - Threshold
+>
+> GCMP   <-- -->   Genwest
+>
+> GBCF_G2             <-- -->   GlobeCon Freight Systems - Basic Service
+>
+> GBCF_09              <-- -->   GlobeCon Freight Systems - Deliver and Install
+>
+> GBCF_DS             <-- -->   GlobeCon Freight Systems - Threshold Service
+>
+> HLGR_G2             <-- -->   Harrah Logistics - Basic Service
+>
+> HLGR_09              <-- -->   Harrah Logistics - Delivery and Install
+>
+> HLGR_DS             <-- -->   Harrah Logistics - Threshold Service
+>
+> HDIR_G2              <-- -->   HEP Direct - Basic Service
+>
+> HDIR_09               <-- -->   HEP Direct - Delivery and Install
+>
+> HDIR_DS              <-- -->   HEP Direct - Threshold Service
+>
+> HRCF_G2             <-- -->   Hercules Freight - Basic Service
+>
+> HRCF_09              <-- -->   Hercules Freight - Delivery and Install
+>
+> HRCF_DS             <-- -->   Hercules Freight - Threshold Service
+>
+> HWDQ_G2          <-- -->   Hollywood Delivery Services - Basic Service
+>
+> BEKN_G2             <-- -->   Home Direct USA - Basic Service
+>
+> BEKN_09              <-- -->   Home Direct USA - Premium (White Glove)
+>
+> BEKN_DS             <-- -->   Home Direct USA - Threshold Service
+>
+> HJBT_G2              <-- -->   JB Hunt - Basic Service
+>
+> HJBT_09               <-- -->   JB Hunt - Delivery and Install
+>
+> HJBT_DS              <-- -->   JB Hunt - Threshold Service
+>
+> KIDY       <-- -->   Kindersley Transport
+>
+> KIDY_G2              <-- -->   Kindersley Transport - Basic Service
+>
+> KTAI_G2              <-- -->   Kingsway Transport - Basic Service
+>
+> KTAI_09               <-- -->   Kingsway Transport - Delivery and Install
+>
+> KTAI_DS               <-- -->   Kingsway Transport - Threshold Service
+>
+> LMEF     <-- -->   Loomis Express
+>
+> LMEF_G2             <-- -->   Loomis Express - Basic Service
+>
+> LTL_G2 <--          LTL Basic Service
+>
+> LTL_DS  <--          LTL Threshold Service
+>
+> LTL_09  <--          LTL White Glove
+>
+> LYAF_SE               <-- -->   Lynden Transport 2 Day Saver
+>
+> LYAF_G2              <-- -->   Lynden Transport Curbside Delivery
+>
+> LYAF_ND             <-- -->   Lynden Transport Next Day Priority
+>
+> LTIA_DS               <-- -->   Lynden Transport Threshold Service
+>
+> LTIA_09                <-- -->   Lynden White Glove
+>
+> MFRC_G2            <-- -->   Mainfreight - Basic Service
+>
+> MFRC_09             <-- -->   Mainfreight - Delivery and Install
+>
+> MFRC_DS            <-- -->   Mainfreight - Threshold Service
+>
+> MYRY_G2            <-- -->   Mallory Alexander - Basic Service
+>
+> MYRY_09             <-- -->   Mallory Alexander - Delivery and Install
+>
+> MANI_G2            <-- -->   Manitoulin Transport - Basic Service
+>
+> MANI_09             <-- -->   Manitoulin Transport - Delivery and Install
+>
+> MANI_DS            <-- -->   Manitoulin Transport - Threshold Service
+>
+> MFSY_G2            <-- -->   Manna Distribution Services - Basic Service
+>
+> MFSY_09             <-- -->   Manna Distribution Services - Delivery and Install
+>
+> MFSY_DS             <-- -->   Manna Distribution Services - Threshold Service
+>
+> MXZN_G2           <-- -->   Mazin Furniture - Basic Service
+>
+> MXZN_09            <-- -->   Mazin Furniture - Delivery and Install
+>
+> MXZN_DS           <-- -->   Mazin Furniture - Threshold Service
+>
+> NEMF_G2           <-- -->   New England Motor Freight - Basic Service
+>
+> NPME_G2           <-- -->   New Penn Motor Express - Basic Service
+>
+> NDLV_G2            <-- -->   NonstopDelivery - Basic Service
+>
+> NDLV_09             <-- -->   NonstopDelivery - Delivery and Install
+>
+> NDLV_DS             <-- -->   NonstopDelivery - Threshold Service
+>
+> NA          <-- -->   Not Applicable- no shipping required
+>
+> OAKH_G2            <-- -->   Oak Harbor Freight Lines, Inc. - Basic Service
+>
+> ODFL     <-- -->   Old Dominion
+>
+> ODFL_G2             <-- -->   Old Dominion - Basic Service
+>
+> ODFL_09              <-- -->   Old Dominion - Delivery and Install
+>
+> ODFL_DS             <-- -->   Old Dominion - Threshold Service
+>
+> EMSY_G2            <-- -->   Ontrac - Basic Service
+>
+> OTHR     <-- -->   Other
+>
+> OVNT    <-- -->   Overnite
+>
+> PAAF     <-- -->   Pilot Freight Services
+>
+> PAAF_G2             <-- -->   Pilot Freight Services - Basic Service
+>
+> PAAF_09              <-- -->   Pilot Freight Services - Delivery and Install
+>
+> PAAF_DS             <-- -->   Pilot Freight Services - Threshold Service
+>
+> PITD       <-- -->   PITT Ohio
+>
+> DPIT       <-- -->   PITT Ohio/Direct Ship
+>
+> PLYC_09               <-- -->   Plycon Transportation - Delivery and Install
+>
+> ATVL_G2             <-- -->   Primex Global Services - Basic Service
+>
+> PRLA_SE              <-- -->   Purolator Courier, 2nd day
+>
+> PRLA_CG             <-- -->   Purolator Courier, ground
+>
+> PRFR_G2             <-- -->   Purolator Freight - Basic Service
+>
+> QKNE_ND           <-- -->   QRC Logistics Ltd. - Next Day
+>
+> RNLO     <-- -->   R & L Carriers
+>
+> RNLO_SE             <-- -->   R & L Carriers - 2nd Day
+>
+> RNLO_G2            <-- -->   R & L Carriers - Basic Service
+>
+> RNLO_ND            <-- -->   R & L Carriers - Next Day
+>
+> RNLO_DS             <-- -->   R & L Carriers - Threshold Service
+>
+> RDFS_G2             <-- -->   Road Runner - Basic Service
+>
+> RDFS_09              <-- -->   Road Runner - Delivery and Install
+>
+> RDFS_DS              <-- -->   Road Runner - Threshold Service
+>
+> RDWY        -->      Roadway
+>
+> TRRB      <-- -->   Robert Transport
+>
+> TRRB_G2             <-- -->   Robert Transport - Basic Service
+>
+> SAIA_G2              <-- -->   Saia Motor Freight - Basic Service
+>
+> SDCR_G2             <-- -->   Sameday Worldwide - Basic Service
+>
+> SDCR_09              <-- -->   Sameday Worldwide - Delivery and Install
+>
+> SDCR_CG             <-- -->   Sameday Worldwide - Expedited Ground
+>
+> SDCR_DS             <-- -->   Sameday Worldwide - Threshold Service
+>
+> SEKW    <-- -->   Seko
+>
+> SEKW_G2            <-- -->   Seko - Basic Service
+>
+> SEKW_09             <-- -->   Seko - Delivery, Install, Haul Away
+>
+> SEKW_DS            <-- -->   Seko - Threshold Service
+>
+> SBDA_G2             <-- -->   Service by Dawn - Basic Service
+>
+> SBDA_09              <-- -->   Service by Dawn - Delivery and Install
+>
+> SBDA_DS             <-- -->   Service by Dawn - Threshold Service
+>
+> SHA        <-- -->   Shaw private carrier
+>
+> SEFL       <-- -->   Southeastern Freight Lines
+>
+> SEFL_G2               <-- -->   Southeastern Freight Lines - Basic Service
+>
+> SMF_ND              <-- -->   Special Moments Flowers & Gifts Ltd.
+>
+> SPCG_G2             <-- -->   Specialized Transportation - Basic Service
+>
+> SPCG_09              <-- -->   Specialized Transportation - Delivery and Install
+>
+> SPCG_DS             <-- -->   Specialized Transportation - Threshold Service
+>
+> BUFM_G2           <-- -->   Speedy Transport - Basic Service
+>
+> BUFM_DS           <-- -->   Speedy Transport - Threshold Service
+>
+> SUND_09             <-- -->   Sun Delivery, Inc. - Delivery and Install
+>
+> SXLX_G2              <-- -->   Suntrax Logistics - Basic Service
+>
+> SXLX_09               <-- -->   Suntrax Logistics - Delivery and Install
+>
+> SXLX_DS              <-- -->   Suntrax Logistics - Threshold Service
+>
+> DELL_CG              <-- -->   Tandem Carriers - UPS and Purolator
+>
+> CTBV_G2             <-- -->   The Custom Companies, Inc. - Basic Service
+>
+> CTBV_09              <-- -->   The Custom Companies, Inc. - Delivery and Install
+>
+> CTBV_DS             <-- -->   The Custom Companies, Inc. - Threshold Service
+>
+> TDAH_G2            <-- -->   Total Transportation Services-Basic Service
+>
+> TDAH_09             <-- -->   Total Transportation Services-Delivery and Install
+>
+> TDAH_DS             <-- -->   Total Transportation Services-Threshold
+>
+> TFFC_G2              <-- -->   Traffic Tech - Basic Service
+>
+> TFFC_09               <-- -->   Traffic Tech - Delivery and Install
+>
+> TFFC_DS              <-- -->   Traffic Tech - Threshold Service
+>
+> TRWE    <-- -->   Transaction Wireless
+>
+> PTQL_G2             <-- -->   TST Overland Express - Basic Service
+>
+> UNSP    <--          Unspecified
+>
+> UPSN_SE             <-- -->   UPS 2nd Day Air
+>
+> UPSET_SE                -->      UPS 2nd Day Air, Signature Required
+>
+> UPSN_3D            <-- -->   UPS 3 Day Select
+>
+> UPSC_ND            <-- -->   UPS Express Saver (Next Day)
+>
+> UPGS    <-- -->   UPS Freight (service level unspecified)
+>
+> UPGF_G2            <-- -->   UPS Freight - Basic Service
+>
+> UPSN_CG            <-- -->   UPS Ground
+>
+> UPSET_CG              -->      UPS Ground, Signature Required
+>
+> UPSN_FC             <-- -->   UPS Mail Innovations - Standard
+>
+> UPSN_ND           <-- -->   UPS Next Day Air
+>
+> UPSET_ND              -->      UPS Next Day Air, Signature Required
+>
+> HMES    <-- -->   USF Holland
+>
+> RETL       <-- -->   USF Reddaway
+>
+> USPSB_FC           <-- -->   USPS First Class Mail
+>
+> USPS_BC             <-- -->   USPS Package Services (Parcel Post)
+>
+> USPS_PO             <-- -->   USPS Periodicals
+>
+> USPS_PB             <-- -->   USPS Priority Mail
+>
+> VKMF_G2           <-- -->   Van Kam Freightways - Basic Service
+>
+> LDSI_G2               <-- -->   Vast+Lodeso - Basic Service
+>
+> LDSI_09                <-- -->   Vast+Lodeso - Delivery and Install
+>
+> LDSI_DS               <-- -->   Vast+Lodeso - Threshold Service
+>
+> VSXP     <-- -->   Vision Express
+>
+> VSXP_G2             <-- -->   Vision Express - Basic Service
+>
+> VITY       <-- -->   Vitran Canada
+>
+> VITY_G2               <-- -->   Vitran Canada - Basic Service
+>
+> WCNE_CG           <-- -->   Western Canada Express
+>
+> WTVA_09            <-- -->   Wilson Trucking -  Delivery and Install
+>
+> WTVA_G2           <-- -->   Wilson Trucking - Basic Service
+>
+> WTVA_DS           <-- -->   Wilson Trucking - Threshold Service
+>
+> RDWY_G2           <-- -->   YRC - Basic Service
+>
+> RDWY_09            <-- -->   YRC - Delivery and Install
+>
+> RDWY_DS            <-- -->   YRC - Threshold Service
+>
+>  
+>
+> Send/Receive Options
+>
+> --> Vendor Can Send
+>
+> <-- Merchant Can Send
+>
+> <--> Merchant/Vendor Can Send
+>
+>  
+>
+> If you have any questions, please don't hesitate to contact us directly.
+>
+>  
+>
+> Thank you,
+>
+>  
+>
+> Jessicca
+>
+> Client Services
+>
+> Commerce Technologies, Inc.
+>
+> 255 Fuller Road, Suite 327
+>
+> Albany, NY  12203-3640
+>
+> 518-810-0700  option 2
+>
+> 518-810-0701 Fax
+>
+> www.commercehub.com

@@ -11,28 +11,20 @@ echo $shop_by2_block;
 echo "<br />";
 echo "<hr />";
 echo "<br />";
-echo "<hr />";
-
-echo "<br />";
 echo "top_1: ".$top_1; 
 echo "<br />";
 echo "top_2: ".$top_2; 
 echo "<br />";
 echo "top_3: ".$top_3; 
 echo "<br />";
-
-
 echo "p_1_head: ".$p_1_head; 
 echo "<br />";
-
 echo "p_1_text: ".$p_1_text; 
 echo "<br />";
-
 echo "p_2_head: ".$p_2_head; 
 echo "<br />";
 echo "p_2_text: ".$p_2_text; 
 echo "<br />";
-
 echo "p_3_head: ".$p_3_head; 
 echo "<br />";
 echo "p_3_text: ".$p_3_text; 
@@ -58,8 +50,9 @@ echo "p_8_head: ".$p_8_head;
 echo "<br />";
 echo "p_8_text: ".$p_8_text; 
 echo "<br />";
-
 */
+
+
 ?>
 <!--
 If I understand correctly, 
@@ -78,10 +71,9 @@ https://xd.adobe.com/view/f98ae207-af56-4b3b-9587-f1858b7ce7b4-acd9/screen/4b1dd
 Let me know if this answers your question?
 -->
 
-	<?php	
-	require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php"); 	
-	?>	
-
+<?php	
+require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php"); 	
+?>	
 		<section class="home-mobile-buttons-block covid-block">
 			<div class="wrapper">
 				<div class="container-fluid">

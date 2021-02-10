@@ -105,7 +105,7 @@ if($show_kit_assoc_items > 0){
 							
 				
 		$block .="<span class='product-image'>".$details_link;				
-		$block .= "<img src='".SITEROOT."/saascustuploads/".$_SESSION['profile_account_id']."/cart/".$imgdir."/".$value["img_file_name"]."' 
+		$block .= "<img src='".SITEROOT."/saascustuploads/".$_SESSION['profile_account_id']."/cart/".$imgdir."/".$value["file_name"]."' 
 					 alt='".stripAllSlashes($value['img_alt_text'])."'/></a></span>";
 								
 

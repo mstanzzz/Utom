@@ -1,0 +1,4 @@
+AuthType Basic
+AuthName "manage"
+AuthUserFile "/home/onlinecl/.htpasswds/public_html/manage/passwd"
+#require valid-user

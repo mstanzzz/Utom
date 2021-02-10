@@ -1,0 +1,760 @@
+<?xml version="1.0"?>
+<OrderMessageBatch batchNumber="293277270" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="S:\VENDOR~1\XSD's\Costco\Costco_Order.xsd">
+	<partnerID name="CW BANDN" roleType="vendor">cw_bandn</partnerID>
+	<hubOrder transactionID="106170111">
+		<participatingParty name="Costco" roleType="merchant" participationCode="From:">costco</participatingParty>
+		<sendersIdForReceiver>01010101010</sendersIdForReceiver>
+		<orderId>106170111</orderId>
+		<lineCount>1</lineCount>
+		<poNumber>00000033568603</poNumber>
+		<orderDate>20100319</orderDate>
+		<shipTo personPlaceID="PP106446110"/>
+		<billTo personPlaceID="PP106446111"/>
+		<shippingCode>UNSP</shippingCode>
+		<custOrderNumber>4417-68604</custOrderNumber>
+		<poHdrData>
+			<reqShipDate>20100319</reqShipDate>
+			<custOrderNumber>4417-68604</custOrderNumber>
+		</poHdrData>
+		<lineItem>
+			<lineItemId>106157106</lineItemId>
+			<orderLineNumber>1</orderLineNumber>
+			<merchantLineNumber>1</merchantLineNumber>
+			<qtyOrdered>3</qtyOrdered>
+			<unitOfMeasure>EA</unitOfMeasure>
+			<description>Sample item description for line 1</description>
+			<merchantSKU>99990101</merchantSKU>
+			<vendorSKU>88880101</vendorSKU>
+			<unitCost>25.0000</unitCost>
+			<shippingCode>UNSP</shippingCode>
+			<requestedArrivalDate>20100324</requestedArrivalDate>
+			<poLineData>
+				<unitShippingWeight weightUnit="LB">123</unitShippingWeight>
+			</poLineData>
+		</lineItem>
+		<personPlace personPlaceID="PP106446110">
+			<name1>John Doe</name1>
+			<address1>1 Fuller Rd</address1>
+			<city>Albany</city>
+			<state>NY</state>
+			<country>US</country>
+			<postalCode>12203</postalCode>
+			<email>johndoe@sample.com</email>
+			<dayPhone>5188100700</dayPhone>
+			<partnerPersonPlaceId>151,456,789</partnerPersonPlaceId>
+			<personPlaceData>
+				<companyName>ABC Company Name</companyName>
+			</personPlaceData>
+		</personPlace>
+		<personPlace personPlaceID="PP106446111">
+			<name1>Mary Smith</name1>
+			<address1>1 Stewart St</address1>
+			<city>Itahca</city>
+			<state>NY</state>
+			<country>US</country>
+			<postalCode>14850</postalCode>
+			<email>marysmith@sample.com</email>
+			<dayPhone>6072725555</dayPhone>
+			<partnerPersonPlaceId>151,456,789</partnerPersonPlaceId>
+			<personPlaceData>
+				<companyName>XYZ Company</companyName>
+			</personPlaceData>
+		</personPlace>
+	</hubOrder>
+	<hubOrder transactionID="106170112">
+		<participatingParty name="Costco" roleType="merchant" participationCode="From:">costco</participatingParty>
+		<sendersIdForReceiver>01010101010</sendersIdForReceiver>
+		<orderId>106170112</orderId>
+		<lineCount>1</lineCount>
+		<poNumber>00000033568606</poNumber>
+		<orderDate>20100319</orderDate>
+		<shipTo personPlaceID="PP106446112"/>
+		<billTo personPlaceID="PP106446113"/>
+		<shippingCode>UNSP</shippingCode>
+		<custOrderNumber>4417-68607</custOrderNumber>
+		<poHdrData>
+			<reqShipDate>20100319</reqShipDate>
+			<custOrderNumber>4417-68607</custOrderNumber>
+		</poHdrData>
+		<lineItem>
+			<lineItemId>106157107</lineItemId>
+			<orderLineNumber>1</orderLineNumber>
+			<merchantLineNumber>6</merchantLineNumber>
+			<qtyOrdered>2</qtyOrdered>
+			<unitOfMeasure>EA</unitOfMeasure>
+			<description>Sample item description for line 1</description>
+			<merchantSKU>99990201</merchantSKU>
+			<vendorSKU>88880201</vendorSKU>
+			<unitCost>9.0000</unitCost>
+			<shippingCode>UNSP</shippingCode>
+			<requestedArrivalDate>20100324</requestedArrivalDate>
+			<poLineData>
+				<unitShippingWeight weightUnit="LB">123</unitShippingWeight>
+			</poLineData>
+		</lineItem>
+		<personPlace personPlaceID="PP106446112">
+			<name1>Jane Smith</name1>
+			<address1>2 Woodbridge Ave</address1>
+			<city>Edison</city>
+			<state>NJ</state>
+			<country>US</country>
+			<postalCode>08837</postalCode>
+			<email>janesmith@sample.com</email>
+			<dayPhone>7329855555</dayPhone>
+			<partnerPersonPlaceId>33,345,678</partnerPersonPlaceId>
+			<personPlaceData>
+				<companyName>ABC Company Name</companyName>
+			</personPlaceData>
+		</personPlace>
+		<personPlace personPlaceID="PP106446113">
+			<name1>Jane Smith</name1>
+			<address1>2 Woodbridge Ave</address1>
+			<city>Edison</city>
+			<state>NJ</state>
+			<country>US</country>
+			<postalCode>08837</postalCode>
+			<email>janesmith@sample.com</email>
+			<dayPhone>7329855555</dayPhone>
+			<partnerPersonPlaceId>33,345,678</partnerPersonPlaceId>
+			<personPlaceData>
+				<companyName>XYZ Company</companyName>
+			</personPlaceData>
+		</personPlace>
+	</hubOrder>
+	<hubOrder transactionID="106170113">
+		<participatingParty name="Costco" roleType="merchant" participationCode="From:">costco</participatingParty>
+		<sendersIdForReceiver>01010101010</sendersIdForReceiver>
+		<orderId>106170113</orderId>
+		<lineCount>2</lineCount>
+		<poNumber>00000033568609</poNumber>
+		<orderDate>20100319</orderDate>
+		<shipTo personPlaceID="PP106446114"/>
+		<billTo personPlaceID="PP106446115"/>
+		<shippingCode>UPSN_CG</shippingCode>
+		<custOrderNumber>4417-68610</custOrderNumber>
+		<poHdrData>
+			<reqShipDate>20100319</reqShipDate>
+			<custOrderNumber>4417-68610</custOrderNumber>
+		</poHdrData>
+		<lineItem>
+			<lineItemId>106157108</lineItemId>
+			<orderLineNumber>1</orderLineNumber>
+			<merchantLineNumber>3</merchantLineNumber>
+			<qtyOrdered>2</qtyOrdered>
+			<unitOfMeasure>EA</unitOfMeasure>
+			<description>Sample item description for line 1</description>
+			<merchantSKU>99990301</merchantSKU>
+			<vendorSKU>88880301</vendorSKU>
+			<unitCost>8.0000</unitCost>
+			<shippingCode>UPSN_CG</shippingCode>
+			<requestedArrivalDate>20100324</requestedArrivalDate>
+			<poLineData>
+				<unitShippingWeight weightUnit="LB">123</unitShippingWeight>
+			</poLineData>
+		</lineItem>
+		<lineItem>
+			<lineItemId>106157109</lineItemId>
+			<orderLineNumber>2</orderLineNumber>
+			<merchantLineNumber>5</merchantLineNumber>
+			<qtyOrdered>1</qtyOrdered>
+			<unitOfMeasure>EA</unitOfMeasure>
+			<description>Sample item description for line 2</description>
+			<merchantSKU>99990302</merchantSKU>
+			<vendorSKU>88880302</vendorSKU>
+			<unitCost>3.0000</unitCost>
+			<shippingCode>UPSN_CG</shippingCode>
+			<requestedArrivalDate>20100324</requestedArrivalDate>
+			<poLineData>
+				<unitShippingWeight weightUnit="LB">123</unitShippingWeight>
+			</poLineData>
+		</lineItem>
+		<personPlace personPlaceID="PP106446115">
+			<name1>Bill Johnson</name1>
+			<address1>Apartment 3B</address1>
+			<address2>3 Falke Plaza</address2>
+			<city>Sterling</city>
+			<state>VA</state>
+			<country>US</country>
+			<postalCode>20166</postalCode>
+			<email>billjohnson@sample.com</email>
+			<dayPhone>7034355555</dayPhone>
+			<partnerPersonPlaceId>151,099,999</partnerPersonPlaceId>
+			<personPlaceData>
+				<companyName>XYZ Company</companyName>
+			</personPlaceData>
+		</personPlace>
+		<personPlace personPlaceID="PP106446114">
+			<name1>Tom Smith</name1>
+			<address1>3 Westmere Parkway</address1>
+			<city>Richmond</city>
+			<state>VA</state>
+			<country>US</country>
+			<postalCode>23233</postalCode>
+			<email>tomsmith@sample.com</email>
+			<dayPhone>8042765555</dayPhone>
+			<partnerPersonPlaceId>151,099,999</partnerPersonPlaceId>
+			<personPlaceData>
+				<companyName>ABC Company Name</companyName>
+			</personPlaceData>
+		</personPlace>
+	</hubOrder>
+	<hubOrder transactionID="106170114">
+		<participatingParty name="Costco" roleType="merchant" participationCode="From:">costco</participatingParty>
+		<sendersIdForReceiver>01010101010</sendersIdForReceiver>
+		<orderId>106170114</orderId>
+		<lineCount>2</lineCount>
+		<poNumber>00000033568612</poNumber>
+		<orderDate>20100319</orderDate>
+		<shipTo personPlaceID="PP106446116"/>
+		<billTo personPlaceID="PP106446117"/>
+		<shippingCode>UPSN_CG</shippingCode>
+		<custOrderNumber>4417-68613</custOrderNumber>
+		<poHdrData>
+			<reqShipDate>20100319</reqShipDate>
+			<custOrderNumber>4417-68613</custOrderNumber>
+		</poHdrData>
+		<lineItem>
+			<lineItemId>106157110</lineItemId>
+			<orderLineNumber>1</orderLineNumber>
+			<merchantLineNumber>1</merchantLineNumber>
+			<qtyOrdered>3</qtyOrdered>
+			<unitOfMeasure>EA</unitOfMeasure>
+			<description>Sample item description for line 1</description>
+			<merchantSKU>99990401</merchantSKU>
+			<vendorSKU>88880401</vendorSKU>
+			<unitCost>10.0000</unitCost>
+			<shippingCode>UPSN_CG</shippingCode>
+			<requestedArrivalDate>20100324</requestedArrivalDate>
+			<poLineData>
+				<unitShippingWeight weightUnit="LB">123</unitShippingWeight>
+			</poLineData>
+		</lineItem>
+		<lineItem>
+			<lineItemId>106157111</lineItemId>
+			<orderLineNumber>2</orderLineNumber>
+			<merchantLineNumber>2</merchantLineNumber>
+			<qtyOrdered>1</qtyOrdered>
+			<unitOfMeasure>EA</unitOfMeasure>
+			<description>Sample item description for line 2</description>
+			<merchantSKU>99990402</merchantSKU>
+			<vendorSKU>88880402</vendorSKU>
+			<unitCost>5.0000</unitCost>
+			<shippingCode>UPSN_CG</shippingCode>
+			<requestedArrivalDate>20100324</requestedArrivalDate>
+			<poLineData>
+				<unitShippingWeight weightUnit="LB">123</unitShippingWeight>
+			</poLineData>
+		</lineItem>
+		<personPlace personPlaceID="PP106446117">
+			<name1>Mike Jones</name1>
+			<address1>4 La Holla Village Dr</address1>
+			<city>San Diego</city>
+			<state>CA</state>
+			<country>US</country>
+			<postalCode>92122</postalCode>
+			<email>mikejones@sample.com</email>
+			<dayPhone>8585525555</dayPhone>
+			<partnerPersonPlaceId>15,669,971</partnerPersonPlaceId>
+			<personPlaceData>
+				<companyName>XYZ Company</companyName>
+			</personPlaceData>
+		</personPlace>
+		<personPlace personPlaceID="PP106446116">
+			<name1>Joe Sample</name1>
+			<address1>Care of: Jane Sample</address1>
+			<address2>4 Jamboree Rd</address2>
+			<city>Newport Beach</city>
+			<state>CA</state>
+			<country>US</country>
+			<postalCode>92260</postalCode>
+			<email>joesample@sample.com</email>
+			<dayPhone>9496755555</dayPhone>
+			<partnerPersonPlaceId>15,669,971</partnerPersonPlaceId>
+			<personPlaceData>
+				<companyName>ABC Company Name</companyName>
+			</personPlaceData>
+		</personPlace>
+	</hubOrder>
+	<hubOrder transactionID="106170115">
+		<participatingParty name="Costco" roleType="merchant" participationCode="From:">costco</participatingParty>
+		<sendersIdForReceiver>01010101010</sendersIdForReceiver>
+		<orderId>106170115</orderId>
+		<lineCount>2</lineCount>
+		<poNumber>00000033568615</poNumber>
+		<orderDate>20100319</orderDate>
+		<shipTo personPlaceID="PP106446118"/>
+		<billTo personPlaceID="PP106446119"/>
+		<shippingCode>UNSP</shippingCode>
+		<custOrderNumber>4417-68616</custOrderNumber>
+		<poHdrData>
+			<reqShipDate>20100319</reqShipDate>
+			<custOrderNumber>4417-68616</custOrderNumber>
+		</poHdrData>
+		<lineItem>
+			<lineItemId>106157112</lineItemId>
+			<orderLineNumber>1</orderLineNumber>
+			<merchantLineNumber>1</merchantLineNumber>
+			<qtyOrdered>5</qtyOrdered>
+			<unitOfMeasure>EA</unitOfMeasure>
+			<description>Sample item description for line 1</description>
+			<merchantSKU>99990501</merchantSKU>
+			<vendorSKU>88880501</vendorSKU>
+			<unitCost>75.0000</unitCost>
+			<shippingCode>UNSP</shippingCode>
+			<requestedArrivalDate>20100324</requestedArrivalDate>
+			<poLineData>
+				<unitShippingWeight weightUnit="LB">123</unitShippingWeight>
+			</poLineData>
+		</lineItem>
+		<lineItem>
+			<lineItemId>106157113</lineItemId>
+			<orderLineNumber>2</orderLineNumber>
+			<merchantLineNumber>4</merchantLineNumber>
+			<qtyOrdered>2</qtyOrdered>
+			<unitOfMeasure>EA</unitOfMeasure>
+			<description>Sample item description for line 2</description>
+			<merchantSKU>99990502</merchantSKU>
+			<vendorSKU>88880502</vendorSKU>
+			<unitCost>12.5000</unitCost>
+			<shippingCode>UNSP</shippingCode>
+			<requestedArrivalDate>20100324</requestedArrivalDate>
+			<poLineData>
+				<unitShippingWeight weightUnit="LB">123</unitShippingWeight>
+			</poLineData>
+		</lineItem>
+		<personPlace personPlaceID="PP106446118">
+			<name1>Mary Doe</name1>
+			<address1>5 Busch Blvd</address1>
+			<city>Tampa</city>
+			<state>FL</state>
+			<country>US</country>
+			<postalCode>33612</postalCode>
+			<email>marydoe@sample.com</email>
+			<dayPhone>8139555555</dayPhone>
+			<partnerPersonPlaceId>151,456,888</partnerPersonPlaceId>
+			<personPlaceData>
+				<companyName>ABC Company Name</companyName>
+			</personPlaceData>
+		</personPlace>
+		<personPlace personPlaceID="PP106446119">
+			<name1>Mary Doe</name1>
+			<address1>5 Busch Blvd</address1>
+			<city>Tampa</city>
+			<state>FL</state>
+			<country>US</country>
+			<postalCode>33612</postalCode>
+			<email>marydoe@sample.com</email>
+			<dayPhone>8139555555</dayPhone>
+			<partnerPersonPlaceId>151,456,888</partnerPersonPlaceId>
+			<personPlaceData>
+				<companyName>XYZ Company</companyName>
+			</personPlaceData>
+		</personPlace>
+	</hubOrder>
+	<hubOrder transactionID="106170116">
+		<participatingParty name="Costco" roleType="merchant" participationCode="From:">costco</participatingParty>
+		<sendersIdForReceiver>01010101010</sendersIdForReceiver>
+		<orderId>106170116</orderId>
+		<lineCount>2</lineCount>
+		<poNumber>00000033568618</poNumber>
+		<orderDate>20100319</orderDate>
+		<shipTo personPlaceID="PP106446120"/>
+		<billTo personPlaceID="PP106446121"/>
+		<shippingCode>UNSP</shippingCode>
+		<custOrderNumber>4417-68619</custOrderNumber>
+		<poHdrData>
+			<reqShipDate>20100319</reqShipDate>
+			<custOrderNumber>4417-68619</custOrderNumber>
+		</poHdrData>
+		<lineItem>
+			<lineItemId>106157114</lineItemId>
+			<orderLineNumber>1</orderLineNumber>
+			<merchantLineNumber>1</merchantLineNumber>
+			<qtyOrdered>5</qtyOrdered>
+			<unitOfMeasure>EA</unitOfMeasure>
+			<description>Sample item description for line 1</description>
+			<merchantSKU>99990601</merchantSKU>
+			<vendorSKU>88880601</vendorSKU>
+			<unitCost>3.0000</unitCost>
+			<shippingCode>UNSP</shippingCode>
+			<requestedArrivalDate>20100324</requestedArrivalDate>
+			<poLineData>
+				<unitShippingWeight weightUnit="LB">123</unitShippingWeight>
+			</poLineData>
+		</lineItem>
+		<lineItem>
+			<lineItemId>106157115</lineItemId>
+			<orderLineNumber>2</orderLineNumber>
+			<merchantLineNumber>2</merchantLineNumber>
+			<qtyOrdered>3</qtyOrdered>
+			<unitOfMeasure>EA</unitOfMeasure>
+			<description>Sample item description for line 2</description>
+			<merchantSKU>99990602</merchantSKU>
+			<vendorSKU>88880602</vendorSKU>
+			<unitCost>35.0000</unitCost>
+			<shippingCode>UNSP</shippingCode>
+			<requestedArrivalDate>20100324</requestedArrivalDate>
+			<poLineData>
+				<unitShippingWeight weightUnit="LB">123</unitShippingWeight>
+			</poLineData>
+		</lineItem>
+		<personPlace personPlaceID="PP106446120">
+			<name1>Lisa Smith</name1>
+			<address1>6 West Loop South</address1>
+			<city>Houston</city>
+			<state>TX</state>
+			<country>US</country>
+			<postalCode>77027</postalCode>
+			<email>lisasmith@sample.com</email>
+			<dayPhone>7139615555</dayPhone>
+			<partnerPersonPlaceId>151,456,891</partnerPersonPlaceId>
+			<personPlaceData>
+				<companyName>ABC Company Name</companyName>
+			</personPlaceData>
+		</personPlace>
+		<personPlace personPlaceID="PP106446121">
+			<name1>Mary Doe</name1>
+			<address1>6 Quorum Drive</address1>
+			<city>Dallas</city>
+			<state>TX</state>
+			<country>US</country>
+			<postalCode>75240</postalCode>
+			<email>marydoe@sample.com</email>
+			<dayPhone>9727265555</dayPhone>
+			<partnerPersonPlaceId>151,456,891</partnerPersonPlaceId>
+			<personPlaceData>
+				<companyName>XYZ Company</companyName>
+			</personPlaceData>
+		</personPlace>
+	</hubOrder>
+	<hubOrder transactionID="106170117">
+		<participatingParty name="Costco" roleType="merchant" participationCode="From:">costco</participatingParty>
+		<sendersIdForReceiver>01010101010</sendersIdForReceiver>
+		<orderId>106170117</orderId>
+		<lineCount>1</lineCount>
+		<poNumber>00000033568621</poNumber>
+		<orderDate>20100319</orderDate>
+		<shipTo personPlaceID="PP106446122"/>
+		<billTo personPlaceID="PP106446123"/>
+		<shippingCode>UNSP</shippingCode>
+		<custOrderNumber>4417-68622</custOrderNumber>
+		<poHdrData>
+			<reqShipDate>20100319</reqShipDate>
+			<custOrderNumber>4417-68622</custOrderNumber>
+		</poHdrData>
+		<lineItem>
+			<lineItemId>106157116</lineItemId>
+			<orderLineNumber>1</orderLineNumber>
+			<merchantLineNumber>1</merchantLineNumber>
+			<qtyOrdered>3</qtyOrdered>
+			<unitOfMeasure>EA</unitOfMeasure>
+			<description>Sample item description for line 1</description>
+			<merchantSKU>99990701</merchantSKU>
+			<vendorSKU>88880701</vendorSKU>
+			<unitCost>15.0000</unitCost>
+			<shippingCode>UNSP</shippingCode>
+			<requestedArrivalDate>20100324</requestedArrivalDate>
+			<poLineData>
+				<unitShippingWeight weightUnit="LB">123</unitShippingWeight>
+			</poLineData>
+		</lineItem>
+		<personPlace personPlaceID="PP106446122">
+			<name1>Mary Johnson</name1>
+			<address1>7 Ocean Ave</address1>
+			<city>Kennebunkport</city>
+			<state>ME</state>
+			<country>US</country>
+			<postalCode>04046</postalCode>
+			<email>maryjohnson@sample.com</email>
+			<dayPhone>2079675555</dayPhone>
+			<partnerPersonPlaceId>151,456,899</partnerPersonPlaceId>
+			<personPlaceData>
+				<companyName>ABC Company Name</companyName>
+			</personPlaceData>
+		</personPlace>
+		<personPlace personPlaceID="PP106446123">
+			<name1>John Doe</name1>
+			<address1>7 Edan Street</address1>
+			<city>Bar Harbor</city>
+			<state>ME</state>
+			<country>US</country>
+			<postalCode>04609</postalCode>
+			<email>johndoe@sample.com</email>
+			<dayPhone>2072885555</dayPhone>
+			<partnerPersonPlaceId>151,456,899</partnerPersonPlaceId>
+			<personPlaceData>
+				<companyName>XYZ Company</companyName>
+			</personPlaceData>
+		</personPlace>
+	</hubOrder>
+	<hubOrder transactionID="106170118">
+		<participatingParty name="Costco" roleType="merchant" participationCode="From:">costco</participatingParty>
+		<sendersIdForReceiver>01010101010</sendersIdForReceiver>
+		<orderId>106170118</orderId>
+		<lineCount>1</lineCount>
+		<poNumber>00000033568624</poNumber>
+		<orderDate>20100319</orderDate>
+		<shipTo personPlaceID="PP106446124"/>
+		<billTo personPlaceID="PP106446125"/>
+		<shippingCode>UPSN_CG</shippingCode>
+		<custOrderNumber>4417-68625</custOrderNumber>
+		<poHdrData>
+			<reqShipDate>20100319</reqShipDate>
+			<custOrderNumber>4417-68625</custOrderNumber>
+		</poHdrData>
+		<lineItem>
+			<lineItemId>106157117</lineItemId>
+			<orderLineNumber>1</orderLineNumber>
+			<merchantLineNumber>1</merchantLineNumber>
+			<qtyOrdered>5</qtyOrdered>
+			<unitOfMeasure>EA</unitOfMeasure>
+			<description>Sample item description for line 1</description>
+			<merchantSKU>99990801</merchantSKU>
+			<vendorSKU>88880801</vendorSKU>
+			<unitCost>75.0000</unitCost>
+			<shippingCode>UPSN_CG</shippingCode>
+			<requestedArrivalDate>20100324</requestedArrivalDate>
+			<poLineData>
+				<unitShippingWeight weightUnit="LB">123</unitShippingWeight>
+			</poLineData>
+		</lineItem>
+		<personPlace personPlaceID="PP106446125">
+			<name1>John Doe</name1>
+			<address1>Suite 8 Luxury Apts</address1>
+			<address2>8 Stonebridge Drive</address2>
+			<city>Columbia</city>
+			<state>SC</state>
+			<country>US</country>
+			<postalCode>29210</postalCode>
+			<email>johndoe@sample.com</email>
+			<dayPhone>8037985555</dayPhone>
+			<partnerPersonPlaceId>151,456,904</partnerPersonPlaceId>
+			<personPlaceData>
+				<companyName>XYZ Company</companyName>
+			</personPlaceData>
+		</personPlace>
+		<personPlace personPlaceID="PP106446124">
+			<name1>Jim Smith</name1>
+			<address1>Apartment 8</address1>
+			<address2>8 Waterside Drive</address2>
+			<city>Hilton Head</city>
+			<state>SC</state>
+			<country>US</country>
+			<postalCode>29928</postalCode>
+			<email>jimsmith@sample.com</email>
+			<dayPhone>8438425555</dayPhone>
+			<partnerPersonPlaceId>151,456,904</partnerPersonPlaceId>
+			<personPlaceData>
+				<companyName>ABC Company Name</companyName>
+			</personPlaceData>
+		</personPlace>
+	</hubOrder>
+	<hubOrder transactionID="106170119">
+		<participatingParty name="Costco" roleType="merchant" participationCode="From:">costco</participatingParty>
+		<sendersIdForReceiver>01010101010</sendersIdForReceiver>
+		<orderId>106170119</orderId>
+		<lineCount>10</lineCount>
+		<poNumber>00000033568627</poNumber>
+		<orderDate>20100319</orderDate>
+		<shipTo personPlaceID="PP106446126"/>
+		<billTo personPlaceID="PP106446127"/>
+		<shippingCode>UPSN_CG</shippingCode>
+		<custOrderNumber>4417-68628</custOrderNumber>
+		<poHdrData>
+			<reqShipDate>20100319</reqShipDate>
+			<custOrderNumber>4417-68628</custOrderNumber>
+			<giftMessage>Sample Order Level Message</giftMessage>
+		</poHdrData>
+		<lineItem>
+			<lineItemId>106157118</lineItemId>
+			<orderLineNumber>1</orderLineNumber>
+			<merchantLineNumber>1</merchantLineNumber>
+			<qtyOrdered>10</qtyOrdered>
+			<unitOfMeasure>EA</unitOfMeasure>
+			<description>Sample detailed item description for line 1 which provides extended information for this line to demonstrate an extendded line item description.</description>
+			<merchantSKU>99990901</merchantSKU>
+			<vendorSKU>88880901</vendorSKU>
+			<unitCost>2.0000</unitCost>
+			<shippingCode>UPSN_CG</shippingCode>
+			<requestedArrivalDate>20100324</requestedArrivalDate>
+			<poLineData>
+				<unitShippingWeight weightUnit="LB">123</unitShippingWeight>
+			</poLineData>
+		</lineItem>
+		<lineItem>
+			<lineItemId>106157119</lineItemId>
+			<orderLineNumber>2</orderLineNumber>
+			<merchantLineNumber>2</merchantLineNumber>
+			<qtyOrdered>9</qtyOrdered>
+			<unitOfMeasure>EA</unitOfMeasure>
+			<description>Sample detailed item description for line 2 which provides extended information for this line to demonstrate an extendded line item description.</description>
+			<merchantSKU>99990902</merchantSKU>
+			<vendorSKU>88880902</vendorSKU>
+			<unitCost>2.5000</unitCost>
+			<shippingCode>UPSN_CG</shippingCode>
+			<requestedArrivalDate>20100324</requestedArrivalDate>
+			<poLineData>
+				<unitShippingWeight weightUnit="LB">123</unitShippingWeight>
+			</poLineData>
+		</lineItem>
+		<lineItem>
+			<lineItemId>106157120</lineItemId>
+			<orderLineNumber>3</orderLineNumber>
+			<merchantLineNumber>3</merchantLineNumber>
+			<qtyOrdered>8</qtyOrdered>
+			<unitOfMeasure>EA</unitOfMeasure>
+			<description>Sample detailed item description for line 3 which provides extended information for this line to demonstrate an extendded line item description.</description>
+			<merchantSKU>99990903</merchantSKU>
+			<vendorSKU>88880903</vendorSKU>
+			<unitCost>3.0000</unitCost>
+			<shippingCode>UPSN_CG</shippingCode>
+			<requestedArrivalDate>20100324</requestedArrivalDate>
+			<poLineData>
+				<unitShippingWeight weightUnit="LB">123</unitShippingWeight>
+			</poLineData>
+		</lineItem>
+		<lineItem>
+			<lineItemId>106157121</lineItemId>
+			<orderLineNumber>4</orderLineNumber>
+			<merchantLineNumber>4</merchantLineNumber>
+			<qtyOrdered>7</qtyOrdered>
+			<unitOfMeasure>EA</unitOfMeasure>
+			<description>Sample detailed item description for line 4 which provides extended information for this line to demonstrate an extendded line item description.</description>
+			<merchantSKU>99990904</merchantSKU>
+			<vendorSKU>88880904</vendorSKU>
+			<unitCost>3.5000</unitCost>
+			<shippingCode>UPSN_CG</shippingCode>
+			<requestedArrivalDate>20100324</requestedArrivalDate>
+			<poLineData>
+				<unitShippingWeight weightUnit="LB">123</unitShippingWeight>
+			</poLineData>
+		</lineItem>
+		<lineItem>
+			<lineItemId>106157122</lineItemId>
+			<orderLineNumber>5</orderLineNumber>
+			<merchantLineNumber>5</merchantLineNumber>
+			<qtyOrdered>6</qtyOrdered>
+			<unitOfMeasure>EA</unitOfMeasure>
+			<description>Sample detailed item description for line 5 which provides extended information for this line to demonstrate an extendded line item description.</description>
+			<merchantSKU>99990905</merchantSKU>
+			<vendorSKU>88880905</vendorSKU>
+			<unitCost>4.0000</unitCost>
+			<shippingCode>UPSN_CG</shippingCode>
+			<requestedArrivalDate>20100324</requestedArrivalDate>
+			<poLineData>
+				<unitShippingWeight weightUnit="LB">123</unitShippingWeight>
+			</poLineData>
+		</lineItem>
+		<lineItem>
+			<lineItemId>106157123</lineItemId>
+			<orderLineNumber>6</orderLineNumber>
+			<merchantLineNumber>6</merchantLineNumber>
+			<qtyOrdered>5</qtyOrdered>
+			<unitOfMeasure>EA</unitOfMeasure>
+			<description>Sample detailed item description for line 6 which provides extended information for this line to demonstrate an extendded line item description.</description>
+			<merchantSKU>99990906</merchantSKU>
+			<vendorSKU>88880906</vendorSKU>
+			<unitCost>4.5000</unitCost>
+			<shippingCode>UPSN_CG</shippingCode>
+			<requestedArrivalDate>20100324</requestedArrivalDate>
+			<poLineData>
+				<unitShippingWeight weightUnit="LB">123</unitShippingWeight>
+			</poLineData>
+		</lineItem>
+		<lineItem>
+			<lineItemId>106157124</lineItemId>
+			<orderLineNumber>7</orderLineNumber>
+			<merchantLineNumber>7</merchantLineNumber>
+			<qtyOrdered>4</qtyOrdered>
+			<unitOfMeasure>EA</unitOfMeasure>
+			<description>Sample detailed item description for line 7 which provides extended information for this line to demonstrate an extendded line item description.</description>
+			<merchantSKU>99990907</merchantSKU>
+			<vendorSKU>88880907</vendorSKU>
+			<unitCost>5.0000</unitCost>
+			<shippingCode>UPSN_CG</shippingCode>
+			<requestedArrivalDate>20100324</requestedArrivalDate>
+			<poLineData>
+				<unitShippingWeight weightUnit="LB">123</unitShippingWeight>
+			</poLineData>
+		</lineItem>
+		<lineItem>
+			<lineItemId>106157125</lineItemId>
+			<orderLineNumber>8</orderLineNumber>
+			<merchantLineNumber>8</merchantLineNumber>
+			<qtyOrdered>3</qtyOrdered>
+			<unitOfMeasure>EA</unitOfMeasure>
+			<description>Sample detailed item description for line 8 which provides extended information for this line to demonstrate an extendded line item description.</description>
+			<merchantSKU>99990908</merchantSKU>
+			<vendorSKU>88880908</vendorSKU>
+			<unitCost>5.5000</unitCost>
+			<shippingCode>UPSN_CG</shippingCode>
+			<requestedArrivalDate>20100324</requestedArrivalDate>
+			<poLineData>
+				<unitShippingWeight weightUnit="LB">123</unitShippingWeight>
+			</poLineData>
+		</lineItem>
+		<lineItem>
+			<lineItemId>106157126</lineItemId>
+			<orderLineNumber>9</orderLineNumber>
+			<merchantLineNumber>9</merchantLineNumber>
+			<qtyOrdered>2</qtyOrdered>
+			<unitOfMeasure>EA</unitOfMeasure>
+			<description>Sample detailed item description for line 9 which provides extended information for this line to demonstrate an extendded line item description.</description>
+			<merchantSKU>99990909</merchantSKU>
+			<vendorSKU>88880909</vendorSKU>
+			<unitCost>6.0000</unitCost>
+			<shippingCode>UPSN_CG</shippingCode>
+			<requestedArrivalDate>20100324</requestedArrivalDate>
+			<poLineData>
+				<unitShippingWeight weightUnit="LB">123</unitShippingWeight>
+			</poLineData>
+		</lineItem>
+		<lineItem>
+			<lineItemId>106157127</lineItemId>
+			<orderLineNumber>10</orderLineNumber>
+			<merchantLineNumber>10</merchantLineNumber>
+			<qtyOrdered>1</qtyOrdered>
+			<unitOfMeasure>EA</unitOfMeasure>
+			<description>Sample detailed item description for line 10 which provides extended information for this line to demonstrate an extendded line item description.</description>
+			<merchantSKU>99990910</merchantSKU>
+			<vendorSKU>88880910</vendorSKU>
+			<unitCost>6.5000</unitCost>
+			<shippingCode>UPSN_CG</shippingCode>
+			<requestedArrivalDate>20100324</requestedArrivalDate>
+			<poLineData>
+				<unitShippingWeight weightUnit="LB">123</unitShippingWeight>
+			</poLineData>
+		</lineItem>
+		<personPlace personPlaceID="PP106446127">
+			<name1>Paula Jones</name1>
+			<address1>9 Main St</address1>
+			<address2>Apt 9</address2>
+			<city>Moab</city>
+			<state>UT</state>
+			<country>US</country>
+			<postalCode>84532</postalCode>
+			<email>paulajones@sample.com</email>
+			<dayPhone>4352595555</dayPhone>
+			<partnerPersonPlaceId>151,456,906</partnerPersonPlaceId>
+			<personPlaceData>
+				<companyName>XYZ Company</companyName>
+			</personPlaceData>
+		</personPlace>
+		<personPlace personPlaceID="PP106446126">
+			<name1>Mike Jones</name1>
+			<address1>Suite 9 - High Towers</address1>
+			<address2>9 Wakara Way</address2>
+			<city>Salt Lake City</city>
+			<state>UT</state>
+			<country>US</country>
+			<postalCode>84108</postalCode>
+			<email>mikejones@sample.com</email>
+			<dayPhone>8015315555</dayPhone>
+			<partnerPersonPlaceId>151,456,906</partnerPersonPlaceId>
+			<personPlaceData>
+				<companyName>ABC Company Name</companyName>
+			</personPlaceData>
+		</personPlace>
+	</hubOrder>
+	<messageCount>9</messageCount>
+</OrderMessageBatch>

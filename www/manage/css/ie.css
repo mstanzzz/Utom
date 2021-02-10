@@ -1,0 +1,90 @@
+/*===================================================
+   IE 7 Overrides to mimic CSS3 and fix layout
+===================================================*/
+.btn {
+	filter: none;
+	background: #cdcdcd url('/images/iebg-btn.gif') repeat-x top left;
+}
+.categoryoptions {
+	position: static;
+	float: right;	
+}
+.btn-warning {
+	filter: none;
+	background: #F63;	
+}
+.btn-primary {
+	filter: none;
+	background: #2a6477 url('/images/iebg-btn-primary.gif') repeat-x top left;	
+}
+.btn-success, button.btn-success {
+	filter: none;
+	background: #638e4d url('/images/iebg-btn-success.gif') repeat-x top left;
+	padding: 8px;	
+}
+.page_actions .btn-success {
+	margin-top: -17px;	
+}
+.btn-danger {
+	filter: none;
+	background: #a13e3e url('/images/iebg-btn-danger.gif') repeat-x top left;	
+}
+.radiotoggle .switch,
+.checkboxtoggle .switch,
+.data_table .radiotoggle .switch,
+.data_table .checkboxtoggle .switch {
+	filter: none;
+	background: #f5f6f6 url('/images/ie-switchbg.png') no-repeat top left;	
+}
+#manage_navigation{
+	margin-left: -16px;
+}
+#manage_navigation li a {
+	background-image: url('/images/iebg-navigation.gif');
+	background-repeat: repeat-x;
+	filter: none;	
+}
+#manage_navigation li ul li{
+	position: relative;
+	left: -16px;
+}
+#manage_navigation li ul li a {
+	background-image: none;	
+}
+#manage_navigation a:hover {
+	background-color: #56899a;
+	color: #ffffff;
+	background-image: none;
+}
+.lightboxcontent {
+	padding: 2% 10% 10%;	
+}
+.colcontainer .threecols {
+	margin-right: 1%;
+	width: 32%;
+	float: left;	
+}
+.colcontainer .twocols, [class^="ask_"] .colcontainer .twocols,
+[class*=" ask_"] .colcontainer .twocols{
+	margin-right: 1%;
+	width: 48%;
+	float: left;
+}
+.affixed-right {
+	width: 259px;
+	padding: 10px 10px 35px 25px;
+	background: transparent url('/images/ie-affixshadow.png') no-repeat bottom left;	
+}
+.affixed-top {
+	padding: 10px 10px 35px 25px;
+	background: transparent url('/images/ie-affixshadow-top.png') no-repeat bottom left;	
+}
+input[type='text'], input[type="search"], .askinput, .lightboxholder input[type="text"], .lightboxholder input[type="password"], #leave_comment .textarea_regular {
+	border: 1px solid #eeeeee;	
+}
+.activity_feed_holder .activity_feed {
+	width: 165px;	
+}
+.manage_main {
+	padding-bottom: 20px;	
+}

@@ -671,9 +671,9 @@ $item_array = $this->getItemDataFromSingleCat($cat_id,$price_bottom, $price_top,
 				
 				if($img_res->num_rows > 0){
 					$img_obj = $img_res->fetch_object();
-					$t[$i]["img_file_name"] = $img_obj->file_name;
+					$t[$i]["file_name"] = $img_obj->file_name;
 				}else{
-					$t[$i]["img_file_name"] = '';
+					$t[$i]["file_name"] = '';
 				}
 	
 				$i++;
@@ -775,9 +775,9 @@ $item_array = $this->getItemDataFromSingleCat($cat_id,$price_bottom, $price_top,
 				
 				if($img_res->num_rows > 0){
 					$img_obj = $img_res->fetch_object();
-					$t[$i]["img_file_name"] = $img_obj->file_name;
+					$t[$i]["file_name"] = $img_obj->file_name;
 				}else{
-					$t[$i]["img_file_name"] = '';
+					$t[$i]["file_name"] = '';
 				}
 	
 				$i++;

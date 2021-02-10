@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConfirmMessageBatch xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="S:\VENDOR~1\XSD's\Costco\Costco_confirm.xsd">
+	<partnerID roleType="vendor">testvendor</partnerID>
+	<hubConfirm>
+		<!-- This hubConfirm contains a shipment for a single line purchase order that ships in the same package -->
+		<participatingParty participationCode="To:">costco</participatingParty>
+		<partnerTrxID>00012</partnerTrxID>
+		<partnerTrxDate>20091216</partnerTrxDate>
+		<poNumber>00154888</poNumber>
+		<trxData>
+			<vendorsInvoiceNumber>01221100</vendorsInvoiceNumber>
+		</trxData>
+		<hubAction>
+			<action>v_ship</action>
+			<merchantLineNumber>2</merchantLineNumber>
+			<trxVendorSKU>0012554</trxVendorSKU>
+			<trxMerchantSKU>8847447</trxMerchantSKU>
+			<trxQty>2</trxQty>
+			<packageDetailLink packageDetailID="A_000021A" />
+		</hubAction>
+		<packageDetail packageDetailID="A_000021A">
+			<shipDate>200912016</shipDate>
+			<serviceLevel1>UPSN_CG</serviceLevel1>
+			<trackingNumber>1Z0093774898494</trackingNumber>
+			<shippingWeight weightUnit="LB">1.0</shippingWeight>
+		</packageDetail>
+	</hubConfirm>
+	<hubConfirm>
+		<!-- This hubConfirm contains a cancel for a single line purchase order.
+				Please have your Vendor Implementation Rep give you the actionCodes-->
+		<participatingParty participationCode="To:">costco</participatingParty>
+		<partnerTrxID>00011</partnerTrxID>
+		<partnerTrxDate>20091216</partnerTrxDate>
+		<poNumber>00154889</poNumber>
+		<hubAction>
+			<action>v_cancel</action>
+			<actionCode>out_of_stock</actionCode>
+			<merchantLineNumber>2</merchantLineNumber>
+			<trxVendorSKU>0012555</trxVendorSKU>
+			<trxMerchantSKU>8847445</trxMerchantSKU>
+			<trxQty>1</trxQty>
+		</hubAction>
+	</hubConfirm>
+	<hubConfirm>
+		<!-- This hubConfirm contains a shipment for a multi line purchase order that ships in the same package -->
+		<participatingParty participationCode="To:">costco</participatingParty>
+		<partnerTrxID>00013</partnerTrxID>
+		<partnerTrxDate>20091216</partnerTrxDate>
+		<poNumber>00154889</poNumber>
+		<trxData>
+			<vendorsInvoiceNumber>01221109</vendorsInvoiceNumber>
+		</trxData>
+		<hubAction>
+			<action>v_ship</action>
+			<merchantLineNumber>2</merchantLineNumber>
+			<trxVendorSKU>0012554</trxVendorSKU>
+			<trxMerchantSKU>8847447</trxMerchantSKU>
+			<trxQty>1</trxQty>
+			<packageDetailLink packageDetailID="A_000021B" />
+		</hubAction>
+		<hubAction>
+			<action>v_ship</action>
+			<merchantLineNumber>4</merchantLineNumber>
+			<trxVendorSKU>0012557</trxVendorSKU>
+			<trxMerchantSKU>8847477</trxMerchantSKU>
+			<trxQty>1</trxQty>
+			<packageDetailLink packageDetailID="A_000021B" />
+		</hubAction>
+		<packageDetail packageDetailID="A_000021B">
+			<shipDate>200912016</shipDate>
+			<serviceLevel1>UPSN_CG</serviceLevel1>
+			<trackingNumber>1Z0093774898495</trackingNumber>
+			<shippingWeight weightUnit="LB">2.0</shippingWeight>
+		</packageDetail>
+	</hubConfirm>
+	<hubConfirm>
+		<!-- This hubConfirm contains a shipment for a mult line purchase order that ships in different packages -->
+		<participatingParty participationCode="To:">costco</participatingParty>
+		<partnerTrxID>00013</partnerTrxID>
+		<partnerTrxDate>20091216</partnerTrxDate>
+		<poNumber>00154894</poNumber>
+		<trxData>
+			<vendorsInvoiceNumber>01221100</vendorsInvoiceNumber>
+		</trxData>
+		<hubAction>
+			<action>v_ship</action>
+			<merchantLineNumber>1</merchantLineNumber>
+			<trxVendorSKU>0012554</trxVendorSKU>
+			<trxMerchantSKU>8847447</trxMerchantSKU>
+			<trxQty>1</trxQty>
+			<packageDetailLink packageDetailID="A_000021C" />
+		</hubAction>
+		<hubAction>
+			<action>v_ship</action>
+			<merchantLineNumber>2</merchantLineNumber>
+			<trxVendorSKU>00125522</trxVendorSKU>
+			<trxMerchantSKU>8842227</trxMerchantSKU>
+			<trxQty>1</trxQty>
+			<packageDetailLink packageDetailID="A_000021D" />
+		</hubAction>
+		<packageDetail packageDetailID="A_000021C">
+			<shipDate>200912016</shipDate>
+			<serviceLevel1>UPSN_CG</serviceLevel1>
+			<trackingNumber>1Z00937748988784</trackingNumber>
+			<shippingWeight weightUnit="LB">1.0</shippingWeight>
+		</packageDetail>
+		<packageDetail packageDetailID="A_000021D">
+			<shipDate>200912016</shipDate>
+			<serviceLevel1>UPSN_CG</serviceLevel1>
+			<trackingNumber>1Z009377482122784</trackingNumber>
+			<shippingWeight weightUnit="LB">1.0</shippingWeight>
+		</packageDetail>
+	</hubConfirm>
+	<messageCount>4</messageCount>
+</ConfirmMessageBatch>

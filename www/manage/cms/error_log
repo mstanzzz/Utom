@@ -1,0 +1,6 @@
+[15-Jun-2012 10:54:48] PHP Warning:  require_once(../includes/config.php) [<a href='function.require-once'>function.require-once</a>]: failed to open stream: No such file or directory in /home/organize/public_html/manage/cms/start.php on line 2
+[15-Jun-2012 10:54:48] PHP Fatal error:  require_once() [<a href='function.require'>function.require</a>]: Failed opening required '../includes/config.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/organize/public_html/manage/cms/start.php on line 2
+[16-Aug-2012 13:08:40] PHP Parse error:  syntax error, unexpected $end in /home/onlinecl/public_html/manage/cms/footer-nav.php on line 40
+[16-Aug-2012 13:10:16] PHP Parse error:  syntax error, unexpected $end in /home/onlinecl/public_html/manage/cms/footer-nav.php on line 139
+[17-Aug-2012 11:30:12] PHP Parse error:  syntax error, unexpected $end in /home/onlinecl/public_html/manage/cms/navbar-submenu.php on line 150
+[17-Aug-2012 11:46:47] PHP Parse error:  syntax error, unexpected $end in /home/onlinecl/public_html/manage/cms/navbar-submenu.php on line 227

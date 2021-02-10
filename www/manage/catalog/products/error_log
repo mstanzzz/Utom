@@ -1,0 +1,8 @@
+[02-Dec-2012 10:54:08] PHP Parse error:  syntax error, unexpected $end in /home/onlinecl/public_html/manage/catalog/products/item.php on line 493
+[02-Dec-2012 12:32:41] PHP Warning:  Unterminated comment starting line 145 in /home/onlinecl/public_html/manage/catalog/products/edit-item.php on line 145
+[02-Dec-2012 12:32:41] PHP Fatal error:  fatal flex scanner internal error--end of buffer missed in /home/onlinecl/public_html/manage/catalog/products/edit-item.php on line 145
+[02-Dec-2012 14:22:06] PHP Parse error:  syntax error, unexpected $end in /home/onlinecl/public_html/manage/catalog/products/add-item.php on line 180
+[02-Dec-2012 14:27:10] PHP Parse error:  syntax error, unexpected $end in /home/onlinecl/public_html/manage/catalog/products/add-item.php on line 180
+[02-Dec-2012 16:23:22] PHP Parse error:  syntax error, unexpected $end in /home/onlinecl/public_html/manage/catalog/products/add-item.php on line 180
+[02-Dec-2012 16:37:49] PHP Parse error:  syntax error, unexpected $end in /home/onlinecl/public_html/manage/catalog/products/add-item.php on line 849
+[02-Dec-2012 16:59:02] PHP Parse error:  syntax error, unexpected $end in /home/onlinecl/public_html/manage/catalog/products/add-item.php on line 106
