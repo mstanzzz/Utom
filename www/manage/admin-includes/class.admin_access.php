@@ -53,7 +53,7 @@ class AdminAccess
 
 	public function getAdminGroupIDs(){
 		
-		if(!isset($_SESSION['admin_access']['admin_group_ids'])){
+		//if(!isset($_SESSION['admin_access']['admin_group_ids'])){
 			$_SESSION['admin_access']['admin_group_ids'] = array();
 			$aLgn = new AdminLogin;
 			$dbCustom = new DbCustom();
@@ -67,12 +67,13 @@ class AdminAccess
 				$_SESSION['admin_access']['admin_group_ids'][$i] = $row->admin_group_id;	
 				$i++;
 			}
-		}
+		//}
+		
 		return $_SESSION['admin_access']['admin_group_ids'];
 	}
 	
 	public function getCmsLevel() {
-		if(!isset($_SESSION['admin_access']['cms_level'])){	
+		//if(!isset($_SESSION['admin_access']['cms_level'])){	
 			$_SESSION['admin_access']['cms_level'] = 0;					
 			foreach($_SESSION['admin_access']['admin_group_ids'] as $val){
 				$dbCustom = new DbCustom();
@@ -90,12 +91,14 @@ class AdminAccess
 					}
 				}
 			}			
-		}
+		//}
+		
+		$_SESSION['admin_access']['cms_level'] = 5;
 		return $_SESSION['admin_access']['cms_level'];
 	}
 
 	public function getProductCatalogLevel() {
-		if(!isset($_SESSION['admin_access']['product_catalog_level'])){
+		//if(!isset($_SESSION['admin_access']['product_catalog_level'])){
 			$_SESSION['admin_access']['product_catalog_level'] = 0;
 			foreach($_SESSION['admin_access']['admin_group_ids'] as $val){
 				$dbCustom = new DbCustom();
@@ -113,13 +116,14 @@ class AdminAccess
 					}
 				}
 			}			
-		}
+		//}
+		$_SESSION['admin_access']['product_catalog_level'] = 5;
 		return $_SESSION['admin_access']['product_catalog_level'];
 	}
 
  	
 	public function getEcommerceLevel() {
-		if(!isset($_SESSION['admin_access']['ecommerce_level'])){
+		//if(!isset($_SESSION['admin_access']['ecommerce_level'])){
 			$_SESSION['admin_access']['ecommerce_level'] = 0;
 			foreach($_SESSION['admin_access']['admin_group_ids'] as $val){
 				$dbCustom = new DbCustom();
@@ -137,15 +141,13 @@ class AdminAccess
 					}
 				}
 			}			
-		}
+		//}
+		$_SESSION['admin_access']['ecommerce_level'] = 5;
 		return $_SESSION['admin_access']['ecommerce_level'];
 	}
 
-
-//$_SESSION['admin_access']['customers_level']
-
 	public function getCustomersLevel() {
-		if(!isset($_SESSION['admin_access']['customers_level'])){
+		//if(!isset($_SESSION['admin_access']['customers_level'])){
 			$_SESSION['admin_access']['customers_level'] = 0;
 			foreach($_SESSION['admin_access']['admin_group_ids'] as $val){
 				$dbCustom = new DbCustom();
@@ -163,13 +165,13 @@ class AdminAccess
 					}
 				}
 			}			
-		}
+		//}
+		$_SESSION['admin_access']['customers_level'] = 5;
 		return $_SESSION['admin_access']['customers_level'];
 	}
 
-
 	public function getOrdersLevel() {
-		if(!isset($_SESSION['admin_access']['orders_level'])){
+		//if(!isset($_SESSION['admin_access']['orders_level'])){
 			$_SESSION['admin_access']['orders_level'] = 0;
 			foreach($_SESSION['admin_access']['admin_group_ids'] as $val){
 				$dbCustom = new DbCustom();
@@ -187,12 +189,13 @@ class AdminAccess
 					}
 				}
 			}			
-		}
+		//}
+		$_SESSION['admin_access']['orders_level'] = 5;
 		return $_SESSION['admin_access']['orders_level'];
 	}
 
 	public function getAdministrationSectionLevel() {
-		if(!isset($_SESSION['admin_access']['administration_level'])){
+		//if(!isset($_SESSION['admin_access']['administration_level'])){
 			$_SESSION['admin_access']['administration_level'] = 0;
 			foreach($_SESSION['admin_access']['admin_group_ids'] as $val){
 				$dbCustom = new DbCustom();
@@ -210,13 +213,14 @@ class AdminAccess
 					}
 				}
 			}			
-		}
+		//}
+		$_SESSION['admin_access']['administration_level'] = 5;
 		return $_SESSION['admin_access']['administration_level'];
 	}
 
 
 	public function getDesignLevel() {
-		if(!isset($_SESSION['admin_access']['design_level'])){
+		//if(!isset($_SESSION['admin_access']['design_level'])){
 			$_SESSION['admin_access']['design_level'] = 0;
 			foreach($_SESSION['admin_access']['admin_group_ids'] as $val){
 				$dbCustom = new DbCustom();
@@ -234,13 +238,14 @@ class AdminAccess
 					}
 				}
 			}			
-		}
+		//}
+		$_SESSION['admin_access']['design_level'] = 5;
 		return $_SESSION['admin_access']['design_level'];
 	}
 
 
 	public function getToolLevel() {
-		if(!isset($_SESSION['admin_access']['tool_level'])){
+		//if(!isset($_SESSION['admin_access']['tool_level'])){
 			$_SESSION['admin_access']['tool_level'] = 0;
 			foreach($_SESSION['admin_access']['admin_group_ids'] as $val){
 				$dbCustom = new DbCustom();
@@ -258,13 +263,14 @@ class AdminAccess
 					}
 				}
 			}			
-		}
+		//}
+		$_SESSION['admin_access']['design_level'] = 5;
 		return $_SESSION['admin_access']['design_level'];
 	}
 
 
 	public function getMasterLevel() {
-		if(!isset($_SESSION['admin_access']['master_level'])){
+		//if(!isset($_SESSION['admin_access']['master_level'])){
 			$_SESSION['admin_access']['master_level'] = 0;
 			foreach($_SESSION['admin_access']['admin_group_ids'] as $val){
 				$dbCustom = new DbCustom();
@@ -282,7 +288,8 @@ class AdminAccess
 					}
 				}
 			}			
-		}
+		//}
+		$_SESSION['admin_access']['master_level'] = 5;
 		return $_SESSION['admin_access']['master_level'];
 	}
 

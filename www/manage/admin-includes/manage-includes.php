@@ -5,6 +5,10 @@ require_once($_SERVER['DOCUMENT_ROOT']."/includes/class.admin_login.php");
 require_once($_SERVER['DOCUMENT_ROOT']."/includes/accessory_cart_functions.php");
 require_once($_SERVER['DOCUMENT_ROOT']."/includes/class.module.php");
 require_once($_SERVER['DOCUMENT_ROOT']."/includes/class.category.php"); 
+
+
+//unset($_SESSION['admin_access']);
+
 require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/class.admin_access.php"); 
 require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/manage_functions.php");
 $aLgn = new AdminLogin;
@@ -85,9 +89,7 @@ if(strpos($_SERVER['DOCUMENT_ROOT'], '/var/www/') !== false) {
 	$ste_root = SITEROOT.'/';
 }
 
-
 //echo "<br />";
 //echo "ste_root:  ".$ste_root;
 //echo "<br />";
-
 ?>

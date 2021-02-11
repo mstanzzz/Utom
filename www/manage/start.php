@@ -14,12 +14,12 @@ $db = $dbCustom->getDbConnect(USER_DATABASE);
 $sql = "UPDATE user
 		SET user_type_id = '7'
 		WHERE username = 'mark.stanz@gmail.com'";
-//$result = $dbCustom->getResult($db,$sql);	
+$result = $dbCustom->getResult($db,$sql);	
 
 $sql = "UPDATE user
 		SET user_type_id = '7'
 		WHERE username = 'admin'";
-//$result = $dbCustom->getResult($db,$sql);	
+$result = $dbCustom->getResult($db,$sql);	
 
 
 
@@ -27,6 +27,7 @@ $sql = "UPDATE user
 //echo "<br />";
 //echo "DOCUMENT_ROOT  ".$_SERVER['DOCUMENT_ROOT'];
 //echo "<br />";
+
 
 require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php'); 
 ?>
