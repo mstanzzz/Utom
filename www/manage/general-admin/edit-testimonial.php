@@ -227,7 +227,7 @@ $(document).ready(function () {
                 
 				<fieldset class="colcontainer">
 					<label>Testimonial</label>
-					<textarea  name="content" class="wysiwyg" id="wysiwyg"><?php echo stripAllSlashes($content); ?></textarea>
+					<textarea  name="content" class="wysiwyg" id="wysiwyg"><?php echo stripslashes($content); ?></textarea>
 				</fieldset>
                 
                 

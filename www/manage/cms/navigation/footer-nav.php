@@ -228,7 +228,7 @@ if(!$strip){
 						//begin row
 						$block .= '<tr>';
 						//nav label
-						$block .= '<td>'.stripAllSlashes($row->label).'</td>';	
+						$block .= '<td>'.stripslashes($row->label).'</td>';	
 						//nav destination url
 						$db = $dbCustom->getDbConnect(SITE_N_DATABASE);
 						$sql = "SELECT page_name, seo_name

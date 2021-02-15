@@ -44,7 +44,7 @@ while($cat_row = $result->fetch_object()){
 			$img_obj = $img_res->fetch_object();
 			$block .= "<img src='".$_SERVER['DOCUMENT_ROOT']."/saascustuploads/".$_SESSION['profile_account_id']."/cms/".$img_obj->file_name."' alt='".$spec_row->img_alt_text."'>";
 		}
-		$block .= '<h5>'.stripAllSlashes($spec_row->name).'</h5>';
+		$block .= '<h5>'.stripslashes($spec_row->name).'</h5>';
 		$block .= stripslashes($spec_row->description);
 		$i++;
 	}

@@ -96,7 +96,7 @@ $(document).ready(function() {
 						if ($cat_id == $row->process_cat_id) {
 							$selected = "selected";
 						}
-						$block .= "<option value='".$row->process_cat_id."' ".$selected.">".stripAllSlashes($row->category_name)."</option>";
+						$block .= "<option value='".$row->process_cat_id."' ".$selected.">".stripslashes($row->category_name)."</option>";
 					}
 					$block .= "</select>";			
 					echo $block;
@@ -105,7 +105,7 @@ $(document).ready(function() {
 			</fieldset>
 			<fieldset class="colcontainer">
 				<label>Process Content</label>
-				<textarea  name="content" class="wysiwyg" id="wysiwyg"><?php echo stripAllSlashes($object->content); ?></textarea>        
+				<textarea  name="content" class="wysiwyg" id="wysiwyg"><?php echo stripslashes($object->content); ?></textarea>        
 			</fieldset>
 		</div>
 		<div class="savebar">

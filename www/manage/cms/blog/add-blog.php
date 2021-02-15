@@ -250,7 +250,7 @@ function get_query_str(){
 						</div>
 					</div>
 					<div class="colcontainer">
-						<textarea id="wysiwyg" class="wysiwyg" name="content"><?php echo stripAllSlashes($_SESSION["temp_blog_fields"]["content"]); ?></textarea>
+						<textarea id="wysiwyg" class="wysiwyg" name="content"><?php echo stripslashes($_SESSION["temp_blog_fields"]["content"]); ?></textarea>
 					</div>
 				</fieldset>
 				<fieldset class="edit_images">

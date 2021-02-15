@@ -404,7 +404,7 @@ function regularSubmit() {
                        </div>
 				<div class="colcontainer">
 				<legend>Intro Content</legend>
-				<textarea id="content" class="wysiwyg" name="content"><?php echo stripAllSlashes($_SESSION['temp_page_fields']['content']); ?></textarea>
+				<textarea id="content" class="wysiwyg" name="content"><?php echo stripslashes($_SESSION['temp_page_fields']['content']); ?></textarea>
 				</div>
 			</fieldset>
 
@@ -491,7 +491,7 @@ function regularSubmit() {
 					while($row = $result->fetch_object()) {
 						$block = "<tr>";
 						//question
-						$block .= "<td valign='middle'>".stripAllslashes($row->question)."</td>";
+						$block .= "<td valign='middle'>".stripslashes($row->question)."</td>";
 						//category	
 						$sql = "SELECT category_name 
 								FROM faq_category 
@@ -504,14 +504,14 @@ function regularSubmit() {
 						}else{
 							$category_name = '';
 						}
-						$block .= "<td valign='middle'><br />".stripAllSlashes($category_name)."</td>";
+						$block .= "<td valign='middle'><br />".stripslashes($category_name)."</td>";
 						//answer
 						
-						//$shc = stripAllslashes($row->answere);
+						//$shc = stripslashes($row->answere);
 						//$answerStr = (string)$shc;
 						$shortenedAnswer = substr($row->answere, 0, 100);
 						//$shortenedAnswer = "test";	
-						$block .= "<td valign='middle'>".stripAllSlashes($shortenedAnswer)."...</td>";
+						$block .= "<td valign='middle'>".stripslashes($shortenedAnswer)."...</td>";
 						//edit btn
 	
 		

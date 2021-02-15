@@ -1,4 +1,7 @@
 <?php
+
+/*
+
 $db = $dbCustom->getDbConnect(SITE_N_DATABASE);
 
 $sql = "SELECT *
@@ -92,6 +95,8 @@ if($result->num_rows > 0){
 	$img_2_file_name = '';
 }	
 
+
+*/
 $sql = "SELECT file_name
 		FROM image
 		WHERE img_id = '".$img_3_id."'";				

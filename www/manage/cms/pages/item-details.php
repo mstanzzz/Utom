@@ -263,13 +263,13 @@ NOTE: This pages lands on template_shop_details.php
 				<label>p_1_head</label>
 				<input type="text" name="p_1_head"  style="width:520px" value="<?php echo prepFormInputStr($_SESSION['temp_page_fields']['p_1_head']); ?>">
 	<label>p_1_text</label>
-	<textarea id="p_1_text" class="wysiwyg" name="p_1_text"><?php echo stripAllSlashes($_SESSION['temp_page_fields']['p_1_text']); ?></textarea>
+	<textarea id="p_1_text" class="wysiwyg" name="p_1_text"><?php echo stripslashes($_SESSION['temp_page_fields']['p_1_text']); ?></textarea>
 	
 				<label>p_2_head</label>
 				<input type="text" name="p_2_head"  style="width:520px" value="<?php echo prepFormInputStr($_SESSION['temp_page_fields']['p_2_head']); ?>">
 				
 	<label>p_2_text</label>
-	<textarea id="p_2_text" class="wysiwyg" name="p_2_text"><?php echo stripAllSlashes($_SESSION['temp_page_fields']['p_2_text']); ?></textarea>
+	<textarea id="p_2_text" class="wysiwyg" name="p_2_text"><?php echo stripslashes($_SESSION['temp_page_fields']['p_2_text']); ?></textarea>
 
 
 			</div>

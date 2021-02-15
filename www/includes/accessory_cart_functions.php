@@ -175,7 +175,7 @@ function get_details_heading($item_id){
 		
 		$heading2 = "<h2>".strip_tags(trim($item_array['short_description']))."</h2>";
 		
-		$heading = stripAllSlashes($heading1.$heading2);
+		$heading = stripslashes($heading1.$heading2);
 	
 	}
 	
@@ -920,7 +920,7 @@ function getFooterNavVendMan()
 		while($row = $result->fetch_object()) {
 			$block .= '<li>';
 			$block .= "<a href='".$_SERVER['DOCUMENT_ROOT']."/".$_SESSION['global_url_word'].getUrlText($row->name)."/category.html?vendManId=".$row->vend_man_id."'>";
-			$block .= StripAllSlashes($row->name).'</a>';			
+			$block .= stripslashes($row->name).'</a>';			
 			$block .= '</li>';
 		}
 		$block .= '</ul></div>';
@@ -1711,7 +1711,7 @@ function getShortNavLabel($name, $short_name, $char_limit = 26){
 		$label = $name;
 	}				
 
-	$full_label = stripAllSlashes($label);
+	$full_label = stripslashes($label);
 	$char_length = strlen($full_label);
 	if($char_length > $char_limit){
 		$label = substr($full_label ,0 ,$char_limit);				
@@ -2450,32 +2450,32 @@ function get_details_tabs_and_review($item_id){
 				$tabs_block .="<h5 class='muted'> SKU #: ".$item_array['sku']."</h5>";
 			}
 			
-			//$tabs_block .= $item_array['description'].$item_array['description'].$item_array['description'].$item_array['description'].trim(stripAllSlashes($item_array['description']));
-			$tabs_block .= trim(stripAllSlashes($item_array['description']));
+			//$tabs_block .= $item_array['description'].$item_array['description'].$item_array['description'].$item_array['description'].trim(stripslashes($item_array['description']));
+			$tabs_block .= trim(stripslashes($item_array['description']));
 			if($attr_block != ''){
-				$tabs_block .= stripAllSlashes($attr_block);	
+				$tabs_block .= stripslashes($attr_block);	
 			}
 			$tabs_block .= "</div>";	
 		}
 
 		if($reviews_block != ''){
 			$active = ($item_array['description'] == '' && $attr_block == '') ? 'active': ''; 
-			$tabs_block .= "<div class='tab-pane ".$active."' id='reviews'>".stripAllSlashes($reviews_block)."</div>";						
+			$tabs_block .= "<div class='tab-pane ".$active."' id='reviews'>".stripslashes($reviews_block)."</div>";						
 		}
 		
 		if($specs_block != ''){
 			$active = ($item_array['description'] == '' && $reviews_block == '' && $attr_block == '') ? 'active': '';
-			$tabs_block .= "<div class='tab-pane ".$active."' id='specifications'>".stripAllSlashes($specs_block)."</div>";
+			$tabs_block .= "<div class='tab-pane ".$active."' id='specifications'>".stripslashes($specs_block)."</div>";
 		}
 
 		if($docs_block != ''){
 			$active = ($item_array['description'] == '' && $attr_block == '' && $reviews_block == '' && $specs_block == '') ? 'active' : ''; 
-			$tabs_block .= "<div class='tab-pane ".$active."' id='documents'>".stripAllSlashes($docs_block)."</div>";						
+			$tabs_block .= "<div class='tab-pane ".$active."' id='documents'>".stripslashes($docs_block)."</div>";						
 		}
 		
 		if($item_array['is_kit'] && $item_array['show_meas_form_tab'] > 0){
 			$active = ($item_array['description'] == '' && $attr_block == '' && $reviews_block == '' && $specs_block == '' && $docs_block == '') ? "class='active'" : ''; 
-			$tabs_block .= "<div class='tab-pane ".$active."' id='google_survey'>".stripAllSlashes($google_survey_block)."</div>";
+			$tabs_block .= "<div class='tab-pane ".$active."' id='google_survey'>".stripslashes($google_survey_block)."</div>";
 		}
 		
 		$tabs_block .= "</div>";

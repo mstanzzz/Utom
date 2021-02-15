@@ -289,7 +289,7 @@ if(!$strip){
 						while($row = $result->fetch_object()){
 							$block .= "<tr>";	
 							//label
-							$block .= "<td>".stripAllSlashes($row->label)."</td>";
+							$block .= "<td>".stripslashes($row->label)."</td>";
 							
 							
 							if($row->keyword_landing_id > 0){

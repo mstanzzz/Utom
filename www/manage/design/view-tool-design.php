@@ -154,7 +154,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php');
 	<a href="#" onClick="window.print();return false" class="btn btn-large"><i class="icon-print"></i> Print Page</a><br /><br />
     <a href="<?php echo $url_str; ?>"class="btn btn-large"><i class="icon-arrow-left"></i> Go Back</a><br />
 	
-    <h1>Design Name: <?php echo stripAllSlashes($file_name);   ?></h1>
+    <h1>Design Name: <?php echo stripslashes($file_name);   ?></h1>
 
 	<?php 
 	if($customer_name != ''){		

@@ -284,7 +284,7 @@ if($result->num_rows > 0){
 					
 					$block .= "<tr>";
 					
-					$block .= "<td>".stripAllSlashes($row->label)."</td>";	
+					$block .= "<td>".stripslashes($row->label)."</td>";	
 					
 					
 					

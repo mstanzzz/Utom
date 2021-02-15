@@ -526,7 +526,7 @@ if(!$strip){
 								$block .= "<li role='treeitem' aria-expanded='true' id='".$top_cat['cat_id']."'>"; 
 								$block .= "<a tabindex='-1' class='tree-parent' onclick='show_children(".$top_cat['cat_id'].")'"; 
 								$block .= "data-imageurl='".$ste_root."/saascustuploads/".$_SESSION['profile_account_id']."/cart/thumb/".$top_cat['file_name']."'"; 
-								$block .= "data-catid='".$top_cat['cat_id']."' data-cattype='topcat'>".stripAllSlashes($top_cat['name'])."</a>";
+								$block .= "data-catid='".$top_cat['cat_id']."' data-cattype='topcat'>".stripslashes($top_cat['name'])."</a>";
 								$block .= "<ul role='group' class='childrenplaceholder'></ul></li>";
 							}
 							echo $block;
@@ -681,8 +681,8 @@ if(!$strip){
 			$block .= "</td>";
 			
 			//product Name
-			//$block .= "<td>".stripAllSlashes($row->name)."    ".$row->item_id."</td>";
-			$block .= "<td>".stripAllSlashes($row->name)."</td>";
+			//$block .= "<td>".stripslashes($row->name)."    ".$row->item_id."</td>";
+			$block .= "<td>".stripslashes($row->name)."</td>";
 			
 			//product ID
 			//$block .= "<td>".$row->prod_number."</td>";
@@ -696,7 +696,7 @@ if(!$strip){
                     AND item_to_category.item_id = '".$row->item_id."'";
 			$res = $dbCustom->getResult($db,$sql);		
             while($cg_row = $res->fetch_object()) {
-                $block .= "<br />".stripAllSlashes($cg_row->name);	
+                $block .= "<br />".stripslashes($cg_row->name);	
             }
             $block .= "</td>";    
 
@@ -742,8 +742,8 @@ if(!$strip){
 					$block .= "<td  colspan='2'></td>";
 				}
 				
-				//$block .= " ".stripAllSlashes($child_row->name)."  --- ".$child_row->item_id."</td>";
-				$block .= "<td>".stripAllSlashes($child_row->name)."</td>";
+				//$block .= " ".stripslashes($child_row->name)."  --- ".$child_row->item_id."</td>";
+				$block .= "<td>".stripslashes($child_row->name)."</td>";
 				
 			
 				$sql = "SELECT DISTINCT category.name  
@@ -755,7 +755,7 @@ if(!$strip){
 
 				$block .= "<td>";						
 				while($cg_row = $res->fetch_object()) {
-					$block .= "<br />".stripAllSlashes($cg_row->name);	
+					$block .= "<br />".stripslashes($cg_row->name);	
 				}
 				$block .= "</td>";      
 				

@@ -300,7 +300,7 @@ function regularSubmit() {
                         
                 <div class="colcontainer"> 
                 	<label>Intro Content</label>
-                    <textarea id="content" class="wysiwyg" name="content"><?php echo stripAllSlashes($_SESSION['temp_page_fields']['content']); ?></textarea>
+                    <textarea id="content" class="wysiwyg" name="content"><?php echo stripslashes($_SESSION['temp_page_fields']['content']); ?></textarea>
                 </div>
             </fieldset>
             

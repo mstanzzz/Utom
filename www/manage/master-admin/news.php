@@ -294,7 +294,7 @@ $result = $dbCustom->getResult($db,$sql);
 							$block .= "<td>$row->title</td>";
 							
 							//content preview
-							$content = stripAllSlashes($row->content);
+							$content = stripslashes($row->content);
 							$contentSnippet = substr($content,0,100);
 
 							$block .= "<td>$contentSnippet</td>";

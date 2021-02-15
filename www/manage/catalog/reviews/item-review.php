@@ -374,7 +374,7 @@ if(!$strip){
 			
 						$block .= "<tr>";
 						//Reviewer Name
-						$block .= "<td>".stripAllSlashes($row->name)."</td>";
+						$block .= "<td>".stripslashes($row->name)."</td>";
 									
 
 						$star_style = '';
@@ -401,7 +401,7 @@ if(!$strip){
 						}
 						$block .= "<td>".$publish_date."</td>";
 						//Product
-						$block .= "<td>".stripAllSlashes($row->item_name)."</td>";
+						$block .= "<td>".stripslashes($row->item_name)."</td>";
 						
 						
 						$url_str = "edit-item-review.php";						

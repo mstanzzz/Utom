@@ -166,7 +166,7 @@ $result = $dbCustom->getResult($db,$sql);
 						while($row = $result->fetch_object()) {
 							$sel = '';
 							if($policy_cat_id == $row->policy_cat_id) $sel = "selected";
-							$block .= "<option value='".$row->policy_cat_id."'".$sel.">".stripAllSlashes($row->category_name)."</option>";
+							$block .= "<option value='".$row->policy_cat_id."'".$sel.">".stripslashes($row->category_name)."</option>";
 						}
 						$block .= "</select>";			
 						echo $block;
@@ -175,7 +175,7 @@ $result = $dbCustom->getResult($db,$sql);
 			</fieldset>
 			<fieldset class="colcontainer">
 				<legend>Policy Content</legend>
-				<textarea  name="content" class="wysiwyg" id="wysiwyg" ><?php echo stripAllSlashes($content); ?></textarea>
+				<textarea  name="content" class="wysiwyg" id="wysiwyg" ><?php echo stripslashes($content); ?></textarea>
 			</fieldset>
 		</div>
 		<div class="savebar">

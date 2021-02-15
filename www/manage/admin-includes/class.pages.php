@@ -59,6 +59,7 @@ class Pages{
 				VALUES('".$new_img_id."', '0', 'Title Here', '".$new_profile_account_id."')";		
 		$l_res = $dbCustom->getResult($db,$sql);
 		
+		/*
 		$sql = "INSERT INTO design 
 			(content1, content2, content3, content4, last_update, profile_account_id) 
 		VALUES ('You can use our email form if your closet is square or rectangular in shape. If you have a closet with an obscure shape then you will need to fax us your dimensions.'
@@ -67,7 +68,7 @@ class Pages{
 				,'Use our online design program to build your custom closet system. Our program allows you to build, save, and change your design at your convenience.'
 				, '".$ts."', '".$new_profile_account_id."')"; 
 		$result = $dbCustom->getResult($db,$sql);
-		
+		*/
 		
 		$sql = "INSERT INTO design_email_content 
 			(content, last_update, profile_account_id) 
@@ -340,7 +341,7 @@ class Pages{
 		}
 
 
-		$sql = "INSERT INTO in_home_consultation 
+		$sql = "INSERT INTO free_in_home_consults 
 			(content, last_update, profile_account_id) 
 			VALUES ('Add Content', '".$ts."', '".$new_profile_account_id."')"; 
 		$result = $dbCustom->getResult($db,$sql);
@@ -751,6 +752,24 @@ class Pages{
 			";	
 	$result = $dbCustom->getResult($db,$sql);			
 			
+
+
+
+// ADDED
+			$sql = "
+			INSERT INTO page_seo
+			(
+			page_name
+			,seo_name
+			,profile_account_id
+			)VALUES(
+			'free-in-home-consults'
+			,'free-in-home-consults'
+			,'".$new_profile_account_id."'			
+			)	
+			";	
+	$result = $dbCustom->getResult($db,$sql);			
+
 			
 			$sql = "
 			INSERT INTO page_seo
@@ -922,8 +941,8 @@ class Pages{
 			,seo_name
 			,profile_account_id
 			)VALUES(
-			'design'
-			,'design'
+			'we-design'
+			,'we-design'
 			,'".$new_profile_account_id."'			
 			)	
 			";	
@@ -1076,20 +1095,6 @@ class Pages{
 			";	
 	$result = $dbCustom->getResult($db,$sql);			
 
-
-			$sql = "
-			INSERT INTO page_seo
-			(
-			page_name
-			,seo_name
-			,profile_account_id
-			)VALUES(
-			'in-home-consultation'
-			,'in-home-consultation'
-			,'".$new_profile_account_id."'			
-			)	
-			";	
-	$result = $dbCustom->getResult($db,$sql);			
 
 
 			$sql = "
@@ -1550,7 +1555,7 @@ class Pages{
 		$sql = "DELETE FROM logo WHERE profile_account_id = '".$profile_account_id."'"; 		
 		$result = $dbCustom->getResult($db,$sql);		
 
-		$sql = "DELETE FROM design 
+		$sql = "DELETE FROM we_design 
 				WHERE profile_account_id = '".$profile_account_id."'";
 		$result = $dbCustom->getResult($db,$sql);
 
@@ -1620,7 +1625,7 @@ class Pages{
 		$result = $dbCustom->getResult($db,$sql);
 		
 
-		$sql = "DELETE FROM in_home_consultation 
+		$sql = "DELETE FROM free_in_home_consultation 
 				WHERE profile_account_id = '".$profile_account_id."'";
 		$result = $dbCustom->getResult($db,$sql);
 		
@@ -2037,10 +2042,9 @@ class Pages{
 		}
 
 		if(!$module->hasDesignServicesModule($profile_account_id)){
-			$sql = "AND page_name != 'in-home-consultation'
-					AND page_name != 'we-design-fax'
+			$sql = "AND page_name != 'we-design-fax'
 					AND page_name != 'email-design'
-					AND page_name != 'design'";	
+					AND page_name != 'we-design'";	
 		}
 
 		$result = $dbCustom->getResult($db,$sql);
@@ -2086,17 +2090,14 @@ class Pages{
         $sql = "SELECT * FROM page_seo 
 		WHERE profile_account_id = '".$profile_account_id."'
 		AND added_page_id = '0'		
-		AND page_name != 'account'
 		AND page_name != 'order-history'
 		AND page_name != 'order-receipt'
-		AND page_name != 'account-designs'
 		AND page_name != 'app'
 		AND page_name != 'blog-more'
 		AND page_name != 'checkout'
 		AND page_name != 'default'
 		AND page_name != 'email-us'
 		AND page_name != 'give-testimonial'
-		AND page_name != 'home'
 		AND page_name != 'news'
 		AND page_name != 'news-more'
 		AND page_name != 'quick-installation'
@@ -2144,6 +2145,10 @@ class Pages{
 			$page_list_array[$i]['page_name'] = $row->page_name;
 
 			$page_list_array[$i]['mssl'] = $row->mssl;
+
+
+
+
 
 
 
@@ -2228,53 +2233,13 @@ class Pages{
 			}
 
 
-
-			if($row->page_name == "we-design-fax"){
-
-
-				
-		        $sql = "SELECT max(we_design_fax_id) AS id FROM we_design_fax 
-				WHERE profile_account_id = '".$profile_account_id."'";
-				$p_res = $dbCustom->getResult($db,$sql);
-				if($p_res->num_rows > 0){
-					
-					$p_obj = $p_res->fetch_object();
-					
-					$page_id = $p_obj->id;	
-				}else{
-					$page_id = 0;
-				}
-				
-				$page_list_array[$i]['page_id'] = $page_id;
-				$page_list_array[$i]['page_manage_path'] = "fax-a-design-plan.php?fax_a_design_plan_id=".$page_id;							
-
-
-
-
-				
-				
-		        $sql = "SELECT max(we_design_fax_id) AS id FROM we_design_fax 
-				WHERE profile_account_id = '".$profile_account_id."'";
-				$p_res = $dbCustom->getResult($db,$sql);
-				
-				$p_obj = $p_res->fetch_object();
-				$page_list_array[$i]["page_id"] = $p_obj->id;
-				$page_list_array[$i]["page_manage_path"] = "we-design-fax.php?we_design_fax_id=".$p_obj->id;							
-
-			}
-
-
-
-			// might not use
 			if($row->page_name == 'fax-a-design-plan'){
 				
 		        $sql = "SELECT max(fax_a_design_plan_id) AS id FROM fax_a_design_plan 
 				WHERE profile_account_id = '".$profile_account_id."'";
 				$p_res = $dbCustom->getResult($db,$sql);
 				if($p_res->num_rows > 0){
-					
 					$p_obj = $p_res->fetch_object();
-					
 					$page_id = $p_obj->id;	
 				}else{
 					$page_id = 0;
@@ -2282,6 +2247,24 @@ class Pages{
 				
 				$page_list_array[$i]['page_id'] = $page_id;
 				$page_list_array[$i]['page_manage_path'] = "fax-a-design-plan.php?fax_a_design_plan_id=".$page_id;							
+
+			}
+
+
+			if($row->page_name == 'we-design'){
+				
+		        $sql = "SELECT max(we_design_id) AS id FROM we_design 
+				WHERE profile_account_id = '".$profile_account_id."'";
+				$p_res = $dbCustom->getResult($db,$sql);
+				if($p_res->num_rows > 0){
+					$p_obj = $p_res->fetch_object();
+					$page_id = $p_obj->id;	
+				}else{
+					$page_id = 0;
+				}
+				
+				$page_list_array[$i]['page_id'] = $page_id;
+				$page_list_array[$i]['page_manage_path'] = "we-design.php?we_design_id=".$page_id;							
 
 			}
 
@@ -2304,11 +2287,14 @@ class Pages{
 			}
 			
 
-			if($row->page_name == 'in-home-consultation'){
-		        $sql = "SELECT max(in_home_consultation_id) AS id FROM in_home_consultation 
+			if($row->page_name == 'free-in-home-consults'){
+		        $sql = "SELECT max(free_in_home_consults_id) AS id FROM free_in_home_consults 
 				WHERE profile_account_id = '".$profile_account_id."'";
 				
 				$p_res = $dbCustom->getResult($db,$sql);
+
+
+
 				if($p_res->num_rows > 0){
 					
 					$p_obj = $p_res->fetch_object();
@@ -2318,7 +2304,7 @@ class Pages{
 					$page_id = 0;
 				}
 				$page_list_array[$i]['page_id'] = $page_id;
-				$page_list_array[$i]['page_manage_path'] = "in-home-consultation.php?in_home_consultation_id=".$page_id;							
+				$page_list_array[$i]['page_manage_path'] = "free-in-home-consults.php?free_in_home_consults_id=".$page_id;							
 
 			}
 			
@@ -2426,8 +2412,8 @@ class Pages{
 			}
 			
 
-			if($row->page_name == 'installation'){
-		        $sql = "SELECT max(installation_id) AS id FROM installation 
+			if($row->page_name == 'diy-instructions'){
+		        $sql = "SELECT max(diy_instructions_id) AS id FROM diy_instructions 
 				WHERE profile_account_id = '".$profile_account_id."'";
 				$p_res = $dbCustom->getResult($db,$sql);
 				
@@ -2438,7 +2424,7 @@ class Pages{
 					$page_id = 0;
 				}
 				$page_list_array[$i]['page_id'] = $page_id;
-				$page_list_array[$i]['page_manage_path'] = "installation.php?installation_id=".$page_id;							
+				$page_list_array[$i]['page_manage_path'] = "diy-instructions.php?diy_instructions_id=".$page_id;							
 
 			}
 			
@@ -2709,7 +2695,7 @@ class Pages{
 		AND added_page_id = '0'		
 		AND (page_name = 'email-design'
 		OR page_name = 'we-design-fax'
-		OR page_name = 'in-home-consultation'
+		OR page_name = 'free-in-home-consults'
 		OR page_name = 'design'	
 		)";
 		$sql .= "ORDER BY page_name";
@@ -2736,14 +2722,14 @@ class Pages{
 
 			$page_list_array[$i]['mssl'] = $row->mssl;
 			
-			if($row->page_name == "in-home-consultation"){
-		        $sql = "SELECT max(in_home_consultation_id) AS id FROM in_home_consultation 
+			if($row->page_name == "free-in-home-consults"){
+		        $sql = "SELECT max(free_in_home_consults_id) AS id FROM free_in_home_consults 
 				WHERE profile_account_id = '".$profile_account_id."'";
 				$p_res = $dbCustom->getResult($db,$sql);
 				
 				$p_obj = $p_res->fetch_object();
 				$page_list_array[$i]["page_id"] = $p_obj->id;
-				$page_list_array[$i]["page_manage_path"] = "in-home-consultation.php?in_home_consultation_id=".$p_obj->id;							
+				$page_list_array[$i]["page_manage_path"] = "free-in-home-consults.php?free_in_home_consults_id=".$p_obj->id;							
 
 			}
 
@@ -2775,14 +2761,14 @@ class Pages{
 			}
 
 
-			if($row->page_name == "design"){
-		        $sql = "SELECT max(design_id) AS id FROM design 
+			if($row->page_name == "we-design"){
+		        $sql = "SELECT max(we_design_id) AS id FROM we_design 
 				WHERE profile_account_id = '".$profile_account_id."'";
 				$p_res = $dbCustom->getResult($db,$sql);
 				
 				$p_obj = $p_res->fetch_object();
 				$page_list_array[$i]["page_id"] = $p_obj->id;
-				$page_list_array[$i]["page_manage_path"] = "design.php?design_id=".$p_obj->id;							
+				$page_list_array[$i]["page_manage_path"] = "we-design.php?we_design_id=".$p_obj->id;							
 			}
 
 			$i++;

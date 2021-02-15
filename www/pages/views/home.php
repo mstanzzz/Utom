@@ -74,6 +74,7 @@ Let me know if this answers your question?
 <?php	
 require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php"); 	
 ?>	
+
 		<section class="home-mobile-buttons-block covid-block">
 			<div class="wrapper">
 				<div class="container-fluid">
@@ -124,6 +125,10 @@ require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php");
 				</div>
 			</div>
 		</section>
+
+
+
+
 
 		<section class="first-fixed-block covid-block home-page clearfix">
 			<div class="container-fluid">
@@ -932,33 +937,31 @@ vehicular. lobortis. Nullam ut aliquet enim. Donec feugiat fringilla massa ut se
 			</section>
 		</main>
 
-		<div class="scrollToTopBlock">
-			<div class="people-working">
-				<img src="images/people-working-call-center_@2x.png" alt="" class="people-working__image">
 
-				<div class="people-working__wrapper">
-					<div class="people-working__content">
-						<p class="people-working__text">Hi! I'm the Virtual assistant, and I'm here to help you.</p>
-					</div>
-				</div>
-			</div>
+<div class="scrollToTopBlock">
+<div class="people-working">
+<img src="images/people-working-call-center_@2x.png" alt="" class="people-working__image">
+<div class="people-working__wrapper">
+<div class="people-working__content">
+<p class="people-working__text">Hi! I'm the Virtual assistant, and I'm here to help you.</p>
+</div>
+</div>
+</div>
+<a href="#" title="" class="scrollToTop js-to-top">
+<img src="images/arrows.svg" alt="">
+</a>
+</div>
 
-			<a href="#" title="" class="scrollToTop js-to-top">
-				<img src="images/arrows.svg" alt="">
-			</a>
-		</div>
+<div class="mobile-show">
+<div class="mobile-footer-buttons">
+<a href="#" title="" class="mobile-footer-buttons__first">you design</a>
+<a href="#" title="" class="mobile-footer-buttons__second"><img src="images/icon-save.svg" alt="" class="img-fluid"></a>
+<a href="#" title="" class="mobile-footer-buttons__third">we design</a>
+</div>
+</div>
 
-		<div class="mobile-show">
-			<div class="mobile-footer-buttons">
-				<a href="#" title="" class="mobile-footer-buttons__first">you design</a>
-				<a href="#" title="" class="mobile-footer-buttons__second"><img src="images/icon-save.svg" alt="" class="img-fluid"></a>
-				<a href="#" title="" class="mobile-footer-buttons__third">we design</a>
-			</div>
-		</div>
-
-
-	<?php
-	require_once($_SERVER['DOCUMENT_ROOT'].'/includes/footer.php');
-	?>
+<?php
+require_once($_SERVER['DOCUMENT_ROOT'].'/includes/footer.php');
+?>
 
 

@@ -1,21 +1,11 @@
 <?php
 
-
 $db = $dbCustom->getDbConnect(SITE_N_DATABASE);
-
-
-
-
 $sql = "SELECT *
 		FROM services
 		WHERE services.services_id = (SELECT MAX(services_id) FROM services WHERE profile_account_id = '".$_SESSION['profile_account_id']."')";
 $result = $dbCustom->getResult($db,$sql);
-
 //echo $result->num_rows;
-
-
-
-
 if($result->num_rows > 0){
 	
 	$object = $result->fetch_object();
@@ -26,6 +16,12 @@ if($result->num_rows > 0){
 	$top_1 = stripslashes($object->top_1);
 	$top_2 = stripslashes($object->top_2);
 	$top_3 = stripslashes($object->top_3);
+	$top_4 = stripslashes($object->top_4);
+	$service_1_text = stripslashes($object->service_1_text);
+	$service_2_text = stripslashes($object->service_2_text);
+	$service_3_text = stripslashes($object->service_3_text);
+	$service_4_text = stripslashes($object->service_4_text);
+	
 	$p_1_head = stripslashes($object->p_1_head);
 	$p_1_text = stripslashes($object->p_1_text);
 	$p_2_head = stripslashes($object->p_2_head);

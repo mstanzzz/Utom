@@ -129,7 +129,7 @@ $(document).ready(function() {
 							<label>Name</label>
 						</div>
 						<div class="twocols">
-							<input type="text" name="name" value="<?php echo stripAllSlashes($name); ?>" maxlength="160" />
+							<input type="text" name="name" value="<?php echo stripslashes($name); ?>" maxlength="160" />
 						</div>
 					</div>
 					<div class="colcontainer formcols">

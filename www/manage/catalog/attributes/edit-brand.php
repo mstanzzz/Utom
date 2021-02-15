@@ -131,7 +131,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php');
 							}
 							$block .= "<div class='threecols'>
 							<input name='vend_man_ids[]' class='leftlabel' type='checkbox' value='".$v_row->vend_man_id."' $checked>";
-							$block .= "<label class='form_label'>".stripAllSlashes($v_row->name)."</label></div>";
+							$block .= "<label class='form_label'>".stripslashes($v_row->name)."</label></div>";
 						}
 						echo $block;
 						?>

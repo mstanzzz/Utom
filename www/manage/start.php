@@ -10,6 +10,7 @@ if(isset($_GET["nl"])){
 	$msg = "You have been redirected from a restricted area.";	
 }
 
+/*
 $db = $dbCustom->getDbConnect(USER_DATABASE);
 $sql = "UPDATE user
 		SET user_type_id = '7'
@@ -20,13 +21,64 @@ $sql = "UPDATE user
 		SET user_type_id = '7'
 		WHERE username = 'admin'";
 $result = $dbCustom->getResult($db,$sql);	
-
+*/
 
 
 //echo "REQUEST_URI  ".$_SERVER['REQUEST_URI'];
 //echo "<br />";
 //echo "DOCUMENT_ROOT  ".$_SERVER['DOCUMENT_ROOT'];
 //echo "<br />";
+
+
+/*
+$db = $dbCustom->getDbConnect(SITE_N_DATABASE);
+$sql = "UPDATE page_seo 
+		SET page_name = 'free-in-home-consults'
+		WHERE page_name = 'in-home-consultation';"; 
+$result = $dbCustom->getResult($db,$sql);
+$sql = "SELECT page_name FROM page_seo WHERE page_name LIKE '%in-home%'"; 
+$result = $dbCustom->getResult($db,$sql);
+echo $result->num_rows;
+while($row = $result->fetch_object()){
+	echo $row->page_name;
+	echo "<br />";	
+}
+$db = $dbCustom->getDbConnect(SITE_N_DATABASE);
+
+$sql = "UPDATE page_seo 
+		SET page_name = 'diy_instructions'
+		WHERE page_name = 'installation';"; 
+$result = $dbCustom->getResult($db,$sql);
+
+$sql = "SELECT page_name FROM page_seo WHERE page_name LIKE '%inst%'"; 
+$result = $dbCustom->getResult($db,$sql);
+echo $result->num_rows;
+while($row = $result->fetch_object()){
+	echo $row->page_name;
+	echo "<br />";	
+}
+
+
+$db = $dbCustom->getDbConnect(SITE_N_DATABASE);
+
+$sql = "UPDATE page_seo 
+		SET page_name = 'we-design'
+		WHERE page_name = 'design';"; 
+$result = $dbCustom->getResult($db,$sql);
+
+
+
+$sql = "SELECT page_name FROM page_seo WHERE page_name LIKE '%design%'"; 
+$result = $dbCustom->getResult($db,$sql);
+echo $result->num_rows;
+while($row = $result->fetch_object()){
+	echo $row->page_name;
+	echo "<br />";	
+}
+
+*/
+
+
 
 
 require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php'); 
@@ -76,7 +128,7 @@ $(document).ready(function(){
 </script>
 </head>
 <body>
-|
+
 <?php 
 require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-header.php');
 require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-top-nav.php');
@@ -223,7 +275,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-top-nav.ph
 				
 				while($row = $result->fetch_object()) {
 					
-					$block .= "<h3>".stripAllSlashes($row->title)."</h3>";
+					$block .= "<h3>".stripslashes($row->title)."</h3>";
 					$date_posted = date("F j, Y",$row->last_update);
 					$time_posted = date("g:i a", $row->last_update);	
 					$block .= "<p class='postedby'>Posted ".$date_posted." at ".$time_posted." by ".$row->author."</p>";
@@ -255,7 +307,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-top-nav.ph
 					$date_posted = date("F j, Y",$row->last_update);
 					$time_posted = date("g:i a", $row->last_update);	
 					$block .= "<p class='postedby'>Posted ".$date_posted." at ".$time_posted." by ".$row->author."</p>";
-					$block .= stripAllSlashes($row->content);
+					$block .= stripslashes($row->content);
 					$block .= "<hr />";
 				}
 				echo $block;

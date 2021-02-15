@@ -69,7 +69,7 @@ $result = $dbCustom->getResult($db,$sql);
 	<div class="fltrt"><a href="#" onClick="window.print();return false" class="btn btn-large"><i class="icon-print"></i> Print Page</a><br /><br />
     <a href="<?php echo $url_str; ?>" target="_top" class="btn btn-large"><i class="icon-arrow-left"></i> Go Back</a><br /></div>
 	<h1><?php if ($object->is_costco){echo "Costco Customer "; }?>Design Request <?php echo $design_email_id; ?></h1>
-	<h2><?php echo stripAllSlashes($object->name);   ?><br /><?php echo date("F j, Y, g:i a", $object->date_submitted); ?></h2>
+	<h2><?php echo stripslashes($object->name);   ?><br /><?php echo date("F j, Y, g:i a", $object->date_submitted); ?></h2>
 	<table border="0" cellpadding="6" width="100%">
 		<tr>
 			<td class="section_heading" colspan="4"><strong>Contact Info</strong></td>
@@ -95,7 +95,7 @@ $result = $dbCustom->getResult($db,$sql);
 		if($object->name != ''){ 
 			echo "<tr>";
 			echo "<td ><label>Name</label></td>";
-			echo "<td >".stripAllSlashes($object->name)."</td>"; 
+			echo "<td >".stripslashes($object->name)."</td>"; 
 			echo "</tr>";
 		}
 		
@@ -140,7 +140,7 @@ if($zip != -1){
 			if($ret_city != ''){ 
 				echo "<tr>";
 				echo "<td ><label>City</label></td>";
-				echo "<td>".stripAllSlashes($ret_city)."</td>";
+				echo "<td>".stripslashes($ret_city)."</td>";
 				echo "</tr>";
 			}
 			
@@ -151,7 +151,7 @@ if($zip != -1){
 			
 			echo "<tr>";
 			echo "<td ><label>State</label></td>";
-			echo "<td>".stripAllSlashes($ret_state)."</td>";
+			echo "<td>".stripslashes($ret_state)."</td>";
 			echo "</tr>";
 			
 		}
@@ -177,7 +177,7 @@ if($zip != -1){
 		if($object->city != '' || $object->state || $object->zip){ 
 			echo "<tr>";
 			echo "<td ><label>Location</label></td>";
-			echo "<td>".stripAllSlashes($object->city).", ".$object->state." ".$object->zip."</td>";
+			echo "<td>".stripslashes($object->city).", ".$object->state." ".$object->zip."</td>";
 			echo "</tr>";
 		}
 		*/
@@ -248,7 +248,7 @@ if($zip != -1){
 		 if(trim($object->comments) != ''){		 
 			echo "<tr>";
 			echo "<td ><label>Comments</label></td>";
-			echo "<td >".stripAllSlashes($object->comments)."</td>"; 
+			echo "<td >".stripslashes($object->comments)."</td>"; 
 			echo "</tr>";		 
 		 }
 		 ?>

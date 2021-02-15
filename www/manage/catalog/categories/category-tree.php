@@ -300,7 +300,7 @@ if(!$strip){
 $block .= "<li role='treeitem' aria-expanded='true' id='".$top_cat['cat_id']."'>"; 
 $block .= "<a tabindex='-1' class='tree-parent' onclick='show_children(".$top_cat['cat_id'].")'"; 
 $block .= "data-imageurl='".$ste_root."/saascustuploads/".$_SESSION['profile_account_id']."/cart/small/".$top_cat['file_name']."'"; 
-$block .= "data-catid='".$top_cat['cat_id']."' data-cattype='topcat'>".stripAllSlashes($top_cat['name'])."</a>";
+$block .= "data-catid='".$top_cat['cat_id']."' data-cattype='topcat'>".stripslashes($top_cat['name'])."</a>";
 $block .= "<ul role='group' class='childrenplaceholder'></ul></li>"; 
 							}
 							echo $block;

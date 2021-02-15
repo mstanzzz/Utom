@@ -7,12 +7,18 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/includes/class.store_data.php');
 require_once($_SERVER['DOCUMENT_ROOT'].'/includes/class.nav.php');
 require_once($_SERVER['DOCUMENT_ROOT'].'/includes/class.customer_login.php');
 require_once($_SERVER['DOCUMENT_ROOT'].'/includes/class.seo.php');
+require_once($_SERVER['DOCUMENT_ROOT'].'/includes/class.company.php');
 
 $lgn = new CustomerLogin;
 $store_data = new StoreData;
 $cart = new ShoppingCart;
 $item = new ShoppingCartItem;
 $nav = new Nav;
+
+$company = new Company;
+$company_display_info = $company->getCompanyDisplayInfo();
+//print_r($company_display_info);
+//echo $company_display_info['company_phone'];
 
 $seo = new Seo;
 // needed to prevent checkout refresh
@@ -30,10 +36,6 @@ $seo->setMeta($slug);
 
 $ret_page =  (isset($_GET['ret_page'])) ? $_GET['ret_page'] : 'home';
 
-
-
-
-
 function url_origin($s, $use_forwarded_host = false )
 {
     $ssl      = (!empty($s['HTTPS'] ) && $s['HTTPS'] == 'on' );
@@ -50,8 +52,8 @@ function full_url( $s, $use_forwarded_host = false )
     return url_origin( $s, $use_forwarded_host ) . $s['REQUEST_URI'];
 }
 $absolute_url = full_url($_SERVER);
-echo "<hr />";
-echo $absolute_url;
+//echo "<hr />";
+//echo $absolute_url;
 $parts = Explode('/', $absolute_url);
 
 //print_r($parts);
@@ -91,6 +93,16 @@ $ste_root = preg_replace('/(\/+)/','/',$ste_root);
 
 
 
+
+$db = $dbCustom->getDbConnect(SITE_N_DATABASE);
+
+$sql = "SELECT *
+		FROM free_in_home_consults
+		WHERE profile_account_id = '".$_SESSION['profile_account_id']."'";
+//$result = $dbCustom->getResult($db,$sql);
+//echo $result->num_rows;
+//exit;
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -100,7 +112,7 @@ $ste_root = preg_replace('/(\/+)/','/',$ste_root);
 <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
 <title>ClosetsToGo</title>
 <meta name="description" content="home description">		
-<link href="<?php echo $ste_root; ?>app.817468c87337ff942bbc.css" rel="stylesheet">
+<link href="app.css" rel="stylesheet">
 
 <script>
 
@@ -139,6 +151,8 @@ if(file_exists($_SERVER['DOCUMENT_ROOT']."/pages/views/".$page.".php")){
 }
 
 ?>
+
+
 <script>
 function getScreenWidth(){
 	var h = $(window).height();
@@ -146,7 +160,8 @@ function getScreenWidth(){
 	alert("------- width:"+w);
 }
 </script>
-<script src="app.669db1a51d7b95182b73.js"></script>
+<script src="app.js"></script>
+
 </body>
 </html>
 

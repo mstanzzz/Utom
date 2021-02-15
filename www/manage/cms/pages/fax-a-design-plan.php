@@ -12,12 +12,26 @@ $page = "fax-a-design-plan";
 
 $db = $dbCustom->getDbConnect(SITE_N_DATABASE);
 
+/*
+$sql = "UPDATE page_seo 
+		SET page_name = 'fax-a-design-plan'
+		WHERE page_name = 'we-design-fax';"; 
+$result = $dbCustom->getResult($db,$sql);
+$sql = "SELECT page_name FROM page_seo WHERE page_name LIKE '%fax%'"; 
+$result = $dbCustom->getResult($db,$sql);
+echo $result->num_rows;
+while($row = $result->fetch_object()){
+	echo $row->page_name;
+	echo "<br />";	
+}
+*/
+
+
 $ts = time();
 
 // add if not exist
 $sql = "SELECT fax_a_design_plan_id FROM fax_a_design_plan WHERE profile_account_id = '".$_SESSION['profile_account_id']."'"; 
 $result = $dbCustom->getResult($db,$sql);
-
 if($result->num_rows == 0){
 	$sql = "INSERT INTO fax_a_design_plan 
 		(profile_account_id) 
@@ -32,6 +46,7 @@ if(!is_numeric($_SESSION['fax_a_design_plan_id'])) $_SESSION['fax_a_design_plan_
 $msg = (isset($_GET['msg'])) ? $_GET['msg'] : '';
 
 if(isset($_POST['update_fax_a_design_plan'])){
+
 
 	$_SESSION['fax_a_design_plan_id'] = isset($_POST['fax_a_design_plan_id'])? $_POST['fax_a_design_plan_id'] : 0;
 	if(!is_numeric($_SESSION['fax_a_design_plan_id'])) $_SESSION['fax_a_design_plan_id'] = 0;
@@ -54,6 +69,11 @@ if(isset($_POST['update_fax_a_design_plan'])){
 	
 	$p_2_head = isset($_POST['p_2_head'])? addslashes(trim($_POST['p_2_head'])) : '';
 	$p_2_text = isset($_POST['p_2_text'])? addslashes(trim($_POST['p_2_text'])) : '';
+
+
+
+	$p_head_tips = isset($_POST['p_head_tips'])? addslashes(trim($_POST['p_head_tips'])) : '';
+
 
 	$p_3_head = isset($_POST['p_3_head'])? addslashes(trim($_POST['p_3_head'])) : '';
 	$p_3_text = isset($_POST['p_3_text'])? addslashes(trim($_POST['p_3_text'])) : '';
@@ -87,6 +107,9 @@ if(isset($_POST['update_fax_a_design_plan'])){
 	$_SESSION['temp_page_fields']['p_1_text'] = $p_1_text;	
 	$_SESSION['temp_page_fields']['p_2_head'] = $p_2_head;	
 	$_SESSION['temp_page_fields']['p_2_text'] = $p_2_text;	
+	
+	$_SESSION['temp_page_fields']['p_head_tips'] = $p_head_tips;	
+	
 	$_SESSION['temp_page_fields']['p_3_head'] = $p_3_head;	
 	$_SESSION['temp_page_fields']['p_3_text'] = $p_3_text;	
 	$_SESSION['temp_page_fields']['p_4_head'] = $p_4_head;	
@@ -107,13 +130,14 @@ if(isset($_POST['update_fax_a_design_plan'])){
 	$_SESSION['temp_page_fields']['img_1_id'] = $img_1_id;	
 	$_SESSION['temp_page_fields']['img_2_id'] = $img_2_id;	
 	$_SESSION['temp_page_fields']['img_3_id'] = $img_3_id;	
-	
-	
+
+
 	$stmt = $db->prepare("UPDATE fax_a_design_plan
 						SET
 						top_1 = ?
 						,top_2 = ?
-						,top_3 = ?						
+						,top_3 = ?
+						,p_head_tips = ?						
 						,p_1_head = ?
 						,p_1_text = ? 												
 						,p_2_head = ?
@@ -132,17 +156,16 @@ if(isset($_POST['update_fax_a_design_plan'])){
 						,p_8_text = ?	
 						,p_9_head = ?  
 						,p_9_text = ?
-						,p_10_head = ?  
-						,p_10_text = ?	
 						
 						WHERE fax_a_design_plan_id = ?");
 						
 		//echo 'Error-1 UPDATE   '.$db->error;
-		
-	if(!$stmt->bind_param("sssssssssssssssssssssssi"
+
+	if(!$stmt->bind_param("ssssssssssssssssssssssi"
 						,$top_1
 						,$top_2
 						,$top_3
+						,$p_head_tips
 						,$p_1_head
 						,$p_1_text									
 						,$p_2_head
@@ -161,8 +184,6 @@ if(isset($_POST['update_fax_a_design_plan'])){
 						,$p_8_text
 						,$p_9_head  
 						,$p_9_text
-						,$p_10_head  
-						,$p_10_text
 						,$_SESSION['fax_a_design_plan_id'])){
 							
 		echo 'Error-2 UPDATE   '.$db->error;
@@ -446,6 +467,21 @@ function regularSubmit() {
 				
 	<label>p_2_text</label>
 	<textarea id="p_2_text" class="wysiwyg" name="p_2_text"><?php echo stripslashes($_SESSION['temp_page_fields']['p_2_text']); ?></textarea>
+
+
+
+
+	<label>p_head_tips</label>
+	<input type="text" name="p_head_tips"  style="width:520px" value="<?php echo stripslashes($_SESSION['temp_page_fields']['p_head_tips']); ?>">
+	
+	
+
+
+	
+	
+	
+
+
 
 				<label>p_3_head</label>
 				<input type="text" name="p_3_head"  style="width:520px" value="<?php echo stripslashes($_SESSION['temp_page_fields']['p_3_head']); ?>">

@@ -265,7 +265,7 @@ if(!$strip){
 									$res = $dbCustom->getResult($db,$sql);	
 									while($v_row = $res->fetch_object()) {
 										$selected = ($v_row->vend_man_id == $_SESSION["temp_fields"]["parent_vend_man_id"]) ? "selected" : '';
-										echo "<option value='".$v_row->vend_man_id."' $selected>".stripAllSlashes($v_row->name)."</option>";
+										echo "<option value='".$v_row->vend_man_id."' $selected>".stripslashes($v_row->name)."</option>";
 									}
 						
 								?>
@@ -305,7 +305,7 @@ if(!$strip){
                     
 					<div class="colcontainer formcols">
 						<label>Description</label>
-						<textarea class="wysiwyg small" id="wysiwyg1" name="description"><?php echo stripAllSlashes($_SESSION["temp_fields"]['description']); ?></textarea>
+						<textarea class="wysiwyg small" id="wysiwyg1" name="description"><?php echo stripslashes($_SESSION["temp_fields"]['description']); ?></textarea>
 					</div>
 					<div class="colcontainer formcols">
 						<div class="twocols">
@@ -343,7 +343,7 @@ if(!$strip){
 						$res = $dbCustom->getResult($db,$sql);		
 						while($v_row = $res->fetch_object()) {
 							$sel = (is_in_options($v_row->brand_id))? "selected" : '';
-							$block .= "<option value='".$v_row->brand_id."' $sel>".stripAllSlashes($v_row->name)."</option>";
+							$block .= "<option value='".$v_row->brand_id."' $sel>".stripslashes($v_row->name)."</option>";
 						}
 						$block .= "</select>";
 						$block .= '';

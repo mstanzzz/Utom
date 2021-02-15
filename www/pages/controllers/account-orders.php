@@ -1,4 +1,6 @@
 <?php
+
+/*
 require_once($_SERVER['DOCUMENT_ROOT'].'/includes/class.customer_account.php');
 require_once($_SERVER['DOCUMENT_ROOT'].'/includes/class.order.php');
 $order = new Order;
@@ -35,6 +37,8 @@ $orders_block = '';
 $search_order_num = '';
 $date_from = '';
 $date_to = '';
+
+
 							
 $order_array = $order->getOrderArray($customer_id, 0, $search_order_num,  $date_from, $date_to);	
 							
@@ -60,5 +64,6 @@ if(count($order_array) > 0){
 	$orders_block = "No Orders Yet.";	
 }
 
+*/
 							
 ?>							

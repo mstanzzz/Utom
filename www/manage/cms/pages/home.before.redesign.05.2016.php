@@ -1022,7 +1022,7 @@ function regularSubmit() {
 									$block .= "<td valign='top'><img src='".$ste_root."/saascustuploads/".$_SESSION['profile_account_id']."/cms/banner/small/".$row->file_name."' 
 									width='90%' /></td>";
 									//image name
-									$block .= "<td valign='top'>".stripAllSlashes($row->title)."</td>";	
+									$block .= "<td valign='top'>".stripslashes($row->title)."</td>";	
 									
 									//active (on/off)
 									$active = (!$row->hide) ? "checked='checked'" : '';
@@ -1317,7 +1317,7 @@ function regularSubmit() {
                     <br />
 					Upper Right Head Text				
 					<div class="colcontainer">
-                        <textarea id="p_right_head_text" class="wysiwyg" name="p_right_head_text"><?php echo stripAllSlashes($_SESSION['temp_page_fields']['p_right_head_text']); ?></textarea>
+                        <textarea id="p_right_head_text" class="wysiwyg" name="p_right_head_text"><?php echo stripslashes($_SESSION['temp_page_fields']['p_right_head_text']); ?></textarea>
 					</div>
 
 
@@ -1519,7 +1519,7 @@ function regularSubmit() {
                         
                         
                     <label>Content Below Image</label>
-					<textarea id="content_short3" class="wysiwyg small" name="content_short3"><?php echo stripAllSlashes($_SESSION['temp_page_fields']['content_short3']); ?></textarea>
+					<textarea id="content_short3" class="wysiwyg small" name="content_short3"><?php echo stripslashes($_SESSION['temp_page_fields']['content_short3']); ?></textarea>
                         
 				</fieldset>
 

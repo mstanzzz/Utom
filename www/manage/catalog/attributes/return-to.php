@@ -204,7 +204,7 @@ if($result->num_rows < 1){
 			$block .= "<td>&nbsp;</td>";
 		}
 
-		$block .= "<td valign='top'>".stripAllSlashes($row->name)."</td>";
+		$block .= "<td valign='top'>".stripslashes($row->name)."</td>";
 		$block .= "</tr>";
 		echo $block;
     }

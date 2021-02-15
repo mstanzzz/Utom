@@ -106,12 +106,12 @@ if($show_kit_assoc_items > 0){
 				
 		$block .="<span class='product-image'>".$details_link;				
 		$block .= "<img src='".SITEROOT."/saascustuploads/".$_SESSION['profile_account_id']."/cart/".$imgdir."/".$value["file_name"]."' 
-					 alt='".stripAllSlashes($value['img_alt_text'])."'/></a></span>";
+					 alt='".stripslashes($value['img_alt_text'])."'/></a></span>";
 								
 
 
 		$block .="<span class='product_name'>"; //add this to css. Make font smaller and break text into multiple lines to prevent it intruding on price
-		$block .="<h3>".$details_link.stripAllSlashes($value['name'])."</a></h3>";
+		$block .="<h3>".$details_link.stripslashes($value['name'])."</a></h3>";
 		$block .="</span>";
 
 

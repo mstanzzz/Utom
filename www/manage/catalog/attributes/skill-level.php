@@ -222,8 +222,8 @@ if($total_rows < 1){
 				while($row = $result->fetch_object()) {
 				$j =  $j +1;
 					$block .= "<tr>"; 
-					$block .= "<td valign='middle'>".stripAllSlashes($row->level_name)."</td>";
-					$block .= "<td valign='middle'>".stripAllSlashes($row->description)."</td>";
+					$block .= "<td valign='middle'>".stripslashes($row->level_name)."</td>";
+					$block .= "<td valign='middle'>".stripslashes($row->description)."</td>";
 					
 					$disabled = ($admin_access->product_catalog_level < 2)? "disabled" : '';
 					

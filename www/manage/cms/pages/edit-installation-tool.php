@@ -187,7 +187,7 @@ function get_query_str(){
 					</div>
 				</div>
 				<label>Tool Description</label>
-				<textarea  cols="88" id="description" name="description"><?php echo stripAllSlashes($_SESSION['temp_page_fields']['description']) ?></textarea>
+				<textarea  cols="88" id="description" name="description"><?php echo stripslashes($_SESSION['temp_page_fields']['description']) ?></textarea>
 			</fieldset>
 		</div>
 		<div class="savebar">

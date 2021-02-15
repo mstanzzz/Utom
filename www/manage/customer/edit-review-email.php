@@ -209,14 +209,14 @@ function regularSubmit() {
                 	
                     <label>Hi [customer name]</label>
                 
-                    <textarea id="content_auto" class="wysiwyg" name="content_auto"><?php echo stripAllSlashes($content_auto); ?></textarea>
+                    <textarea id="content_auto" class="wysiwyg" name="content_auto"><?php echo stripslashes($content_auto); ?></textarea>
             </fieldset>
 
             <fieldset class="edit_content">
             	
                 <legend>Content For Manual Review Request Email <i class="icon-minus-sign icon-white"></i></legend>
                 <label>Hi [customer name]</label>
-                    <textarea id="content_manual" class="wysiwyg" name="content_manual"><?php echo stripAllSlashes($content_manual); ?></textarea>
+                    <textarea id="content_manual" class="wysiwyg" name="content_manual"><?php echo stripslashes($content_manual); ?></textarea>
             </fieldset>
             
 

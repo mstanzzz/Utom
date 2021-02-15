@@ -52,7 +52,7 @@ foreach ($top_cats as $top_cat) {
 	
 		$block .= "<li role='treeitem' aria-expanded='true' id='".$top_cat['cat_id']."'>"; 
 		$block .= "<a tabindex='-1' class='tree-parent' onclick='show_children(".$top_cat['cat_id'].")'  data-catid='".$top_cat['cat_id']."' data-cattype='topcat'>
-		<img src='".$ste_root."/saascustuploads/".$_SESSION['profile_account_id']."/cart/thumb/".$top_cat['file_name']."' />".stripAllSlashes($top_cat['name'])."</a>";
+		<img src='".$ste_root."/saascustuploads/".$_SESSION['profile_account_id']."/cart/thumb/".$top_cat['file_name']."' />".stripslashes($top_cat['name'])."</a>";
 		$checked = inArray($top_cat['cat_id'], $_SESSION["temp_cats"], "cat_id") ? "checked='checked'" : '';
 		$block .= "<input class='checkbox' onclick='updateOptions()' type='checkbox' id='".$top_cat['cat_id']."' value='".$top_cat['cat_id']."' ".$checked." />
 		<input type='hidden' value='".$top_cat['name']."' name='categoryname' class='categoryname' />";
@@ -95,7 +95,7 @@ function getChildren($cat_id, $domain, $subject_cat_id, $max_depth, $dbCustom){
 	
 			$block .= "<li role='treeitem' aria-expanded='true' id='".$row->cat_id."'>";
 			$block .= "<a tabindex='-1' class='tree-parent' onclick='show_children(".$row->cat_id.")' >";
-			$block .= "<img  src='".$ste_root."/saascustuploads/".$_SESSION['profile_account_id']."/cart/tiny/".$file_name."'/>".stripAllSlashes($row->name)."</a>";
+			$block .= "<img  src='".$ste_root."/saascustuploads/".$_SESSION['profile_account_id']."/cart/tiny/".$file_name."'/>".stripslashes($row->name)."</a>";
 			$checked = inArray($row->cat_id, $_SESSION["temp_cats"], "cat_id") ? "checked='checked'" : '';
 			$block .= "<input class='checkbox' onclick='updateOptions()' type='checkbox' id='".$row->cat_id."' value='".$row->cat_id."' ".$checked." /><input type='hidden' value='".$row->name."' name='categoryname' class='categoryname' />"	;
 			$block .= "<ul role='group' class='childrenplaceholder'>";

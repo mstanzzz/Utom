@@ -229,8 +229,8 @@ function send_password_reset(){
 				}
 				
 
-				//$tmp_block .= "<a href='".$url_str."' class='$active'>".stripAllSlashes($label)."     ".$top_cat_val['destination']."</a>";
-				$tmp_block .= "<a href='".$top_url_str."' class='$active'>".stripAllSlashes($label)."</a>";
+				//$tmp_block .= "<a href='".$url_str."' class='$active'>".stripslashes($label)."     ".$top_cat_val['destination']."</a>";
+				$tmp_block .= "<a href='".$top_url_str."' class='$active'>".stripslashes($label)."</a>";
 
 
 				if($has_sub_nav){
@@ -259,11 +259,11 @@ function send_password_reset(){
 						}else{
 							$url_str = $nav->getCatUrl($child_cat_val['name'], $child_cat_val['profile_cat_id'], 'shop');
 						}
-						//$sub_tmp_block .= "<li><a href='".$url_str."' class='$active'>".stripAllSlashes($label)."   ".$child_cat_val['destination']."</a></li>";
+						//$sub_tmp_block .= "<li><a href='".$url_str."' class='$active'>".stripslashes($label)."   ".$child_cat_val['destination']."</a></li>";
 						
 						if($i < 3){
 						
-							$sub_tmp_block .= "<li><a href='".$url_str."' class='$active'>".stripAllSlashes($label)."</a></li>";
+							$sub_tmp_block .= "<li><a href='".$url_str."' class='$active'>".stripslashes($label)."</a></li>";
 						
 						}else{
 							$sub_tmp_block .= "<li><a href='".$top_url_str."' class='$active'>More</a></li>";
@@ -385,7 +385,7 @@ function send_password_reset(){
 					$url_str = $nav->getCatUrl($home_cat_val['name'], $home_cat_val['profile_cat_id'], 'shop');
 				}
 					
-				$tmp_block .= "<a href='".$url_str."' class='$active'>".stripAllSlashes($label)."</a>";
+				$tmp_block .= "<a href='".$url_str."' class='$active'>".stripslashes($label)."</a>";
 
 
 				if($has_sub_nav){
@@ -411,7 +411,7 @@ function send_password_reset(){
 							$url_str = $nav->getCatUrl($child_cat_val['name'], $child_cat_val['profile_cat_id'], 'shop');
 						}
 		
-						$sub_tmp_block .= "<li><a href='".$url_str."' class='$active'>".stripAllSlashes($label)."</a></li>'";
+						$sub_tmp_block .= "<li><a href='".$url_str."' class='$active'>".stripslashes($label)."</a></li>'";
 
 					}
 					

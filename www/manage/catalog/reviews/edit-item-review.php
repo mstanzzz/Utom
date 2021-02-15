@@ -172,7 +172,7 @@ if(!$strip){
 							<label>Product</label>
 						</div>
 						<div class="twocols">
-							<?php echo stripAllSlashes($item_name); ?>
+							<?php echo stripslashes($item_name); ?>
 						</div>
 					</div>
 					<div class="colcontainer formcols">
@@ -225,7 +225,7 @@ if(!$strip){
 							<label>Review </label>
 						</div>
 						<div class="twocols">
-							<textarea name="review" class="wysiwyg" id="wysiwyg1" ><?php echo stripAllSlashes($review); ?></textarea>
+							<textarea name="review" class="wysiwyg" id="wysiwyg1" ><?php echo stripslashes($review); ?></textarea>
 						</div>
 					</div>
 					<div class="colcontainer formcols">

@@ -270,7 +270,7 @@ function get_query_str(){
 							<label>Substitute Name</label>
 						</div>
 						<div class="twocols">
-							<input type="text" name="substitute_by" value="<?php echo stripAllSlashes($_SESSION["temp_blog_fields"]["substitute_by"]); ?>" maxlength="80" />
+							<input type="text" name="substitute_by" value="<?php echo stripslashes($_SESSION["temp_blog_fields"]["substitute_by"]); ?>" maxlength="80" />
 						</div>
 					</div>
 					<div class="colcontainer formcols">

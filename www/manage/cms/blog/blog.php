@@ -291,7 +291,7 @@ function regularSubmit() {
 							while($row = $result->fetch_object()) {
 								$block = "<tr>"; 				
 								//Post Title
-								$block .= "<td valign='top'>".stripAllSlashes($row->title)."</td>";
+								$block .= "<td valign='top'>".stripslashes($row->title)."</td>";
 								//Category
 								$db = $dbCustom->getDbConnect(SITE_N_DATABASE);
 								$sql = "SELECT name FROM blog_category WHERE blog_cat_id = '".$row->blog_cat_id."'";

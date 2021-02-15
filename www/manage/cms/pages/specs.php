@@ -303,11 +303,11 @@ function regularSubmit() {
 						}
 						$block .= "</td>";
 						
-						$block .= "<td>".stripAllSlashes($row->name)."</td>";
+						$block .= "<td>".stripslashes($row->name)."</td>";
 
-						$block .= "<td>".stripAllSlashes($row->description)."</td>";
+						$block .= "<td>".stripslashes($row->description)."</td>";
 
-						$block .= "<td>".stripAllSlashes($row->category_name)."</td>";
+						$block .= "<td>".stripslashes($row->category_name)."</td>";
 
 						// fancybox fancybox.iframe
 						$block .= "<td valign='top'>

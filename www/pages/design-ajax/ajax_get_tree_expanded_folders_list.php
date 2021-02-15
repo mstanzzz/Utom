@@ -60,7 +60,7 @@ foreach ($top_cats as $top_cat) {
 	$block .= "<li role='treeitem' aria-expanded='true' id='".$top_cat['cat_id']."'>"; 
 	$block .= "<a tabindex='-1' class='tree-parent' 
 	data-imageurl='".$_SERVER['DOCUMENT_ROOT']."/saascustuploads/".$_SESSION['profile_account_id']."/cart/tiny/".$top_cat['file_name']."' 
-	data-catid='".$top_cat['cat_id']."' data-cattype='topcat'>".stripAllSlashes($top_cat['name'])."</a>";
+	data-catid='".$top_cat['cat_id']."' data-cattype='topcat'>".stripslashes($top_cat['name'])."</a>";
 	$block .= "<ul role='group' class='childrenplaceholder'>".getChildren($top_cat['cat_id'], $domain, $max_depth, $dbCustom)."</ul></li>"; 
 }
 echo $block;
@@ -102,7 +102,7 @@ function getChildren($cat_id, $domain, $max_depth, $dbCustom){
 			
 			$block .= "<a href='#' tabindex='-1' class='tree-parent' onclick='show_children(".$row->cat_id.")' 
 			data-imageurl='".$_SERVER['DOCUMENT_ROOT']."/saascustuploads/".$_SESSION['profile_account_id']."/cart/small/".$file_name."' 
-			data-catid=".$row->cat_id."'>".stripAllSlashes($row->name)."</a>";	
+			data-catid=".$row->cat_id."'>".stripslashes($row->name)."</a>";	
 			//subcategory name
 			$block .= "<ul role='group' class='childrenplaceholder'>".getChildren($row->cat_id, $domain, $max_depth, $dbCustom)."</ul></li>";	
 		}

@@ -193,7 +193,7 @@ function regularSubmit() {
 				<input type="text" name="top_2"  style="width:520px" value="<?php echo prepFormInputStr($_SESSION['temp_page_fields']['top_2']); ?>">
 
 	<label>p_1_text</label>
-	<textarea id="p_1_text" class="wysiwyg" name="p_1_text"><?php echo stripAllSlashes($_SESSION['temp_page_fields']['p_1_text']); ?></textarea>
+	<textarea id="p_1_text" class="wysiwyg" name="p_1_text"><?php echo stripslashes($_SESSION['temp_page_fields']['p_1_text']); ?></textarea>
 	        
 			</div>
 

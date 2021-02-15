@@ -152,7 +152,7 @@ function validate(theform){
 			</div>
 			 <div class="colcontainer"> 
                 	<label>Content</label>
-                    <textarea id="content" class="wysiwyg" name="content"><?php echo stripAllSlashes($object->content); ?></textarea>
+                    <textarea id="content" class="wysiwyg" name="content"><?php echo stripslashes($object->content); ?></textarea>
              </div>
         	
         </form>

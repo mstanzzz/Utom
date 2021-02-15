@@ -153,7 +153,7 @@ $result = $dbCustom->getResult($db,$sql);		$object = $result->fetch_object();
 					</div>
 					<div class="colcontainer">
 						<label>Content</label>
-						<textarea  name="content" id="wysiwyg1" class="wysiwyg small"><?php echo stripAllSlashes($object->content); ?></textarea>
+						<textarea  name="content" id="wysiwyg1" class="wysiwyg small"><?php echo stripslashes($object->content); ?></textarea>
 					</div>
 				</fieldset>
 			</div>

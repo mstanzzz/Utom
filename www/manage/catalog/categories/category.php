@@ -802,8 +802,8 @@ $block .= "<img  src='".$ste_root."/saascustuploads/".$_SESSION['profile_account
 
 						
 					//Category Name
-						//$block .= "<td valign='middle' width='50px'>".stripAllSlashes($sub_cat['name'])."   ".$sub_cat['cat_id']."</td>";
-						$block .= "<td valign='middle' width='50px'>".stripAllSlashes($sub_cat['name'])."</td>";
+						//$block .= "<td valign='middle' width='50px'>".stripslashes($sub_cat['name'])."   ".$sub_cat['cat_id']."</td>";
+						$block .= "<td valign='middle' width='50px'>".stripslashes($sub_cat['name'])."</td>";
 						
 						
 						//Parent Category
@@ -816,8 +816,8 @@ $block .= "<img  src='".$ste_root."/saascustuploads/".$_SESSION['profile_account
 						
 						$block .= "<td valign='middle' width='50px'>";
 						while($cg_row = $res->fetch_object()) {
-							//$block .= stripAllSlashes($cg_row->name)."  ".$cg_row->cat_id."<br />";
-							$block .= stripAllSlashes($cg_row->name)."<br />";	
+							//$block .= stripslashes($cg_row->name)."  ".$cg_row->cat_id."<br />";
+							$block .= stripslashes($cg_row->name)."<br />";	
 						}
 							$block .= "</td>";
 						//Products

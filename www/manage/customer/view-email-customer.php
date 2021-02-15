@@ -199,7 +199,7 @@ $(document).ready(function() {
 						<label>Name</label>
 					</div>
 					<div class='twocols'>
-						<?php echo stripAllSlashes($name); ?>
+						<?php echo stripslashes($name); ?>
 					</div>
 				</div>
 				<div class='colcontainer formcols'>
@@ -223,9 +223,9 @@ $(document).ready(function() {
 						<label>Address</label>
 					</div>
 					<div class='twocols'>
-						<p><?php echo stripAllSlashes($address_one); ?><br />
-						<?php echo stripAllSlashes($address_two); ?><br />
-						<?php echo stripAllSlashes($city); ?>, <?php echo $state; ?> <?php echo $zip; ?></p>
+						<p><?php echo stripslashes($address_one); ?><br />
+						<?php echo stripslashes($address_two); ?><br />
+						<?php echo stripslashes($city); ?>, <?php echo $state; ?> <?php echo $zip; ?></p>
 					</div>
 				</div>
 				<div class='colcontainer formcols'>
@@ -240,18 +240,18 @@ $(document).ready(function() {
 				<div class='colcontainer'>
 					<div class='twocols'>
 						<label>Shipping Address</label>
-						<p><?php echo stripAllSlashes($shipping_name_first).' '.stripAllSlashes($shipping_name_last); ?><br />
+						<p><?php echo stripslashes($shipping_name_first).' '.stripslashes($shipping_name_last); ?><br />
 						<?php echo $shipping_address_one; ?><br />
 						<?php echo $shipping_address_two; ?><br />
-						<?php echo stripAllSlashes($shipping_city).', '.$shipping_state.' '.$shipping_zip; ?></p>
+						<?php echo stripslashes($shipping_city).', '.$shipping_state.' '.$shipping_zip; ?></p>
 						<p><?php echo $shipping_phone_one; ?></p>
 					</div>
 					<div class='twocols'>
 						<label>Billing Address</label>
-						<p><?php echo stripAllSlashes($billing_name_first).' '.stripAllSlashes($billing_name_last); ?><br />
-						<?php echo stripAllSlashes($billing_address_one); ?><br />
-						<?php echo stripAllSlashes($billing_address_two); ?><br />
-						<?php echo stripAllSlashes($billing_city).', '.$billing_state.' '.$billing_zip; ?></p>
+						<p><?php echo stripslashes($billing_name_first).' '.stripslashes($billing_name_last); ?><br />
+						<?php echo stripslashes($billing_address_one); ?><br />
+						<?php echo stripslashes($billing_address_two); ?><br />
+						<?php echo stripslashes($billing_city).', '.$billing_state.' '.$billing_zip; ?></p>
 					</div>
 				</div>
 </body>

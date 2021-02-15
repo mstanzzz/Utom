@@ -92,7 +92,7 @@ $result = $dbCustom->getResult($db,$sql);		$object = $result->fetch_object();
 				</div>
 			</fieldset>
 			<label>Guide/Tip Content</label>
-			<textarea  name="content" class="wysiwyg"><?php echo stripAllSlashes($object->content); ?></textarea>
+			<textarea  name="content" class="wysiwyg"><?php echo stripslashes($object->content); ?></textarea>
 			</fieldset>
 		</div>
 		<div class="savebar">

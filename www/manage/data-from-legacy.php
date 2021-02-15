@@ -1016,7 +1016,7 @@ $db = $dbCustom->getDbConnect(SITE_N_DATABASE);
 
 $result = $dbCustom->getResult($db,$sql);		
 		while($row = $result->fetch_object()){
-			echo $row->blog_cat_id."   ".stripAllSlashes($row->name);
+			echo $row->blog_cat_id."   ".stripslashes($row->name);
 			echo "<br />";
 		}	
 echo "<br />";echo "<br />";

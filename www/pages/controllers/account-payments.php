@@ -1,4 +1,5 @@
 <?php
+/*
 require_once($_SERVER['DOCUMENT_ROOT'].'/includes/class.customer_account.php');
 require_once($_SERVER['DOCUMENT_ROOT'].'/includes/class.order.php');
 $order = new Order;
@@ -25,12 +26,9 @@ while($row = $result->fetch_object()){
 
 }
 
-
-
 $sql = "DELETE
 		FROM braintree_transaction
 		WHERE order_id = '0'";
-
 //$result = $dbCustom->getResult($db,$sql);
 
 
@@ -89,6 +87,7 @@ foreach($transaction_array as $val){
 }
 $transaction_block .= "</table>";
 
+*/
 
 //echo $transaction_block;
 

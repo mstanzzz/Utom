@@ -215,7 +215,7 @@ function goto_isfancybox(url){
 					</div>
 				</div>
 				<label>Spec Item Content</label>
-				<textarea id="wysiwyg" class="wysiwyg small" name="description"><?php echo stripAllSlashes($_SESSION["temp_page_fields"]['description']); ?></textarea>
+				<textarea id="wysiwyg" class="wysiwyg small" name="description"><?php echo stripslashes($_SESSION["temp_page_fields"]['description']); ?></textarea>
 			</fieldset>
 		</div>
 	</form>

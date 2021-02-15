@@ -50,7 +50,7 @@ $qty = (isset($_GET["qty"])) ? $_GET["qty"] : 1;
 							$block .= "<img src='".$_SERVER['DOCUMENT_ROOT']."/saascustuploads/".$_SESSION['profile_account_id']."/cart/tiny/".$cart_array["image_file"]."' alt='' /></a>";
 							$block .= "</td>";
 							$block .= "<td><a href='".$itemDetailsLink."'>";
-							$cart_item_name = stripAllSlashes($cart_array['name']); 
+							$cart_item_name = stripslashes($cart_array['name']); 
 							if(strlen($cart_item_name) > $max_name_len){
 								$block .=  substr($cart_item_name, 0 , $max_name_len);
 								$block .= "...";

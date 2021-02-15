@@ -309,7 +309,7 @@ function show_msg(msg){
 					while($row = $result->fetch_object()) {
 						$block = "<tr>";					
 						$block .= "<td valign='middle'>".$row->username."</td>";
-						$block .= "<td valign='middle'>".stripAllSlashes($row->name)."</td>";
+						$block .= "<td valign='middle'>".stripslashes($row->name)."</td>";
 						if($aLgn->isLocked('', '', $row->user_id)){ 
 							$block .= "<td valign='middle'>";
 							$block .= "<form action='admin-users.php' method='post'>";

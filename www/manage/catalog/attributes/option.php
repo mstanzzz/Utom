@@ -253,7 +253,7 @@ $(document).ready(function() {
 				<?php
 				$block = "<tr>"; 
 				while($row = $result->fetch_object()) {
-					$block .= "<td valign='top'>".stripAllSlashes($row->opt_name)."</td>";
+					$block .= "<td valign='top'>".stripslashes($row->opt_name)."</td>";
 					$block .= "<td><a class='btn btn-primary confirm confirm-edit'>
 					<i class='icon-cog icon-white'></i> Edit<input type='hidden' class='itemId' id='".$row->opt_id."' value='".$row->opt_id."' />
 					<input type='hidden' class='contentToEdit' id='".$row->opt_id."' value=\"".prepFormInputStr($row->opt_name)."\" /></a></td>";

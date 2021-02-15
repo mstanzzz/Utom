@@ -383,7 +383,7 @@ Select new Image </a>
 				<div class="colcontainer formcols">
 
 						<label>Tool Tip</label>
-						<textarea name="tool_tip" /><?php echo stripAllSlashes($_SESSION['temp_cat_fields']['tool_tip']); ?></textarea>
+						<textarea name="tool_tip" /><?php echo stripslashes($_SESSION['temp_cat_fields']['tool_tip']); ?></textarea>
 				</div>
 				<div class="colcontainer">
 				<label>Key Words</label>
@@ -392,7 +392,7 @@ Select new Image </a>
 
 				<div class="colcontainer formcols">
 					<label>Description</label>
-					<textarea name="description"  class="wysiwyg small" id="wysiwyg1" /><?php echo stripAllSlashes($_SESSION['temp_cat_fields']['description']); ?></textarea>
+					<textarea name="description"  class="wysiwyg small" id="wysiwyg1" /><?php echo stripslashes($_SESSION['temp_cat_fields']['description']); ?></textarea>
 				</div>
                 
 			</fieldset>

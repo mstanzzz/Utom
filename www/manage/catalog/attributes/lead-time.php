@@ -227,7 +227,7 @@ if($total_rows < 1){
     $j =  $j +1;
     	$block .= "<tr>"; 
 		$block .= "<td valign='middle'>".$row->lead_time."</td>";
-		$block .= "<td>".stripAllSlashes($row->description)."</td>";
+		$block .= "<td>".stripslashes($row->description)."</td>";
 		
 		$disabled = ($admin_access->product_catalog_level < 2)? "disabled" : '';
 		

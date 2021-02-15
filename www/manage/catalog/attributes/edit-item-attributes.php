@@ -370,7 +370,7 @@ $(document).ready(function() {
 <div class="manage_page_container lightbox">
 	<div class="manage_main">
 	<?php
-		$page_title .= stripAllSlashes($_SESSION['temp_item_fields']['name']);
+		$page_title .= stripslashes($_SESSION['temp_item_fields']['name']);
 
 		if($parent_name != ''){		
 			$page_title .=  '<br />Child of: '.$parent_name;

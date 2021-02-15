@@ -214,7 +214,7 @@ $(document).ready(function(){
                 <div class="colcontainer">			
                     If there is a custom url, selectable page will be ignored.<br />
                     <label>Custom URL</label>
-                    <input type="text" name="custom_url" value="<?php echo stripAllSlashes($custom_url); ?>" style="width:300px;">
+                    <input type="text" name="custom_url" value="<?php echo stripslashes($custom_url); ?>" style="width:300px;">
                 </div>            
                 <br />
                 <div class="colcontainer">

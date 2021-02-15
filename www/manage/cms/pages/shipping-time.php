@@ -339,7 +339,7 @@ function regularSubmit() {
 						</div>
 					</div>
 					<div class="colcontainer">
-						<textarea id="content" class="wysiwyg" name="content"><?php echo stripAllSlashes($_SESSION['temp_page_fields']['content']); ?></textarea>
+						<textarea id="content" class="wysiwyg" name="content"><?php echo stripslashes($_SESSION['temp_page_fields']['content']); ?></textarea>
 					</div>
 				</fieldset>
 				<fieldset class="edit_images">

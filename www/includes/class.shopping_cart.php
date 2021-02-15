@@ -675,7 +675,7 @@ class ShoppingCart {
 			$block .= "</td>";
 			$block .= "<td><a href='".$itemDetailsLink."'>";
 										
-			$cart_item_name = stripAllSlashes($val['name']); 
+			$cart_item_name = stripslashes($val['name']); 
 			if(strlen($cart_item_name) > 12){
 				$block .=  substr($cart_item_name, 0 , 12);
 				$block .= "...";

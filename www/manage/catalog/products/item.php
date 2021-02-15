@@ -318,7 +318,7 @@ if($cat_id > 0){
 	$result = $dbCustom->getResult($db,$sql);		
 	if($result->num_rows > 0){
 		$c_obj = $result->fetch_object();		
-		$cat_name = stripAllSlashes($c_obj->name);
+		$cat_name = stripslashes($c_obj->name);
 		$page_title = $cat_name." Products"; 
 		
 		/*
@@ -365,7 +365,7 @@ if($cat_id > 0){
 	if(!$c_res)die(mysql_error());
 	if(mysql_num_rows($c_res) > 0){
 		$c_obj = mysql_fetch_object($c_res);		
-		$parent_cat_name = stripAllSlashes($c_obj->name);
+		$parent_cat_name = stripslashes($c_obj->name);
 		$page_title = $parent_cat_name." Products"; 
 
 		$bc_data_out = explode('|',$c_obj->seo_list);
@@ -763,7 +763,7 @@ while($row = $result->fetch_object()) {
 	$block .= "<img width='100' src='".$t_img."'>";
 	$block .= "</td>";
 	
-	$block .= "<td>".stripAllSlashes($row->name)."    ".$row->item_id."</td>";
+	$block .= "<td>".stripslashes($row->name)."    ".$row->item_id."</td>";
 	//$block .= "<td>".$row->prod_number."</td>";
 	$block .= "<td>".$row->sku."</td>";
 	//product Categories
@@ -774,7 +774,7 @@ while($row = $result->fetch_object()) {
                     AND item_to_category.item_id = '".$row->item_id."'";
 	$res = $dbCustom->getResult($db,$sql);		
 	while($cg_row = $res->fetch_object()) {
-		$block .= "<br />".stripAllSlashes($cg_row->name);	
+		$block .= "<br />".stripslashes($cg_row->name);	
 	}
 	$block .= "</td>";     
 	$disabled = ($admin_access->product_catalog_level < 2)? "disabled" : '';
@@ -845,7 +845,7 @@ while($row = $result->fetch_object()) {
 
 		$block .= "<td>";						
 		while($cg_row = $res->fetch_object()) {
-			$block .= "<br />".stripAllSlashes($cg_row->name);	
+			$block .= "<br />".stripslashes($cg_row->name);	
 		}
 		$block .= "</td>";     
 		$checked = ($child_row->active)? "checked='checked'" : ''; 

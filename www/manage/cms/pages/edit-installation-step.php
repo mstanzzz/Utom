@@ -204,7 +204,7 @@ function get_query_str(){
 					</div>
 				</div>
 				<label>Step Description</label>
-				<textarea class="wysiwyg small" id="wysiwyg" name="description"><?php echo stripAllSlashes($_SESSION['temp_page_fields']['description']); ?></textarea>
+				<textarea class="wysiwyg small" id="wysiwyg" name="description"><?php echo stripslashes($_SESSION['temp_page_fields']['description']); ?></textarea>
 			</fieldset>
 		
 		

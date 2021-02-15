@@ -954,7 +954,7 @@ function regularSubmit() {
 						$block = "<tr>";
 						foreach($_SESSION['temp_page_fields']['temp_tabs'] as $key => $val){
 									
-							$block .= "<td valign='top'>".stripAllSlashes($val['tab_text'])."</td>";	
+							$block .= "<td valign='top'>".stripslashes($val['tab_text'])."</td>";	
 									
 							$active = ($val['active']) ? "checked='checked'" : '';
 										

@@ -341,12 +341,12 @@ function regularSubmit() {
                         </div>
 					<div class="colcontainer">
                     <label>Intro Content</label>
-					<textarea id="intro" class="wysiwyg" name="intro"><?php echo stripAllSlashes($_SESSION['temp_page_fields']['intro']); ?></textarea>
+					<textarea id="intro" class="wysiwyg" name="intro"><?php echo stripslashes($_SESSION['temp_page_fields']['intro']); ?></textarea>
 					</div>
 
 					<div class="colcontainer">
                     <label>Content</label>
-					<textarea id="content" class="wysiwyg" name="content"><?php echo stripAllSlashes($_SESSION['temp_page_fields']['content']); ?></textarea>
+					<textarea id="content" class="wysiwyg" name="content"><?php echo stripslashes($_SESSION['temp_page_fields']['content']); ?></textarea>
 					</div>
 
 				</fieldset>

@@ -437,55 +437,55 @@ function regularSubmit() {
 				<label>p_1_head</label>
 				<input type="text" name="p_1_head"  style="width:520px" value="<?php echo prepFormInputStr($_SESSION['temp_page_fields']['p_1_head']); ?>">
 	<label>p_1_text</label>
-	<textarea id="p_1_text" class="wysiwyg" name="p_1_text"><?php echo stripAllSlashes($_SESSION['temp_page_fields']['p_1_text']); ?></textarea>
+	<textarea id="p_1_text" class="wysiwyg" name="p_1_text"><?php echo stripslashes($_SESSION['temp_page_fields']['p_1_text']); ?></textarea>
 	
 				<label>p_2_head</label>
 				<input type="text" name="p_2_head"  style="width:520px" value="<?php echo prepFormInputStr($_SESSION['temp_page_fields']['p_2_head']); ?>">
 				
 	<label>p_2_text</label>
-	<textarea id="p_2_text" class="wysiwyg" name="p_2_text"><?php echo stripAllSlashes($_SESSION['temp_page_fields']['p_2_text']); ?></textarea>
+	<textarea id="p_2_text" class="wysiwyg" name="p_2_text"><?php echo stripslashes($_SESSION['temp_page_fields']['p_2_text']); ?></textarea>
 
 				<label>p_3_head</label>
 				<input type="text" name="p_3_head"  style="width:520px" value="<?php echo prepFormInputStr($_SESSION['temp_page_fields']['p_3_head']); ?>">
 				
 	<label>p_3_text</label>
-	<textarea id="p_3_text" class="wysiwyg" name="p_3_text"><?php echo stripAllSlashes($_SESSION['temp_page_fields']['p_3_text']); ?></textarea>
+	<textarea id="p_3_text" class="wysiwyg" name="p_3_text"><?php echo stripslashes($_SESSION['temp_page_fields']['p_3_text']); ?></textarea>
 	
 				<label>p_4_head</label>
 				<input type="text" name="p_4_head"  style="width:520px" value="<?php echo prepFormInputStr($_SESSION['temp_page_fields']['p_4_head']); ?>">
 
 	<label>p_4_text</label>
-	<textarea id="p_4_text" class="wysiwyg" name="p_4_text"><?php echo stripAllSlashes($_SESSION['temp_page_fields']['p_4_text']); ?></textarea>
+	<textarea id="p_4_text" class="wysiwyg" name="p_4_text"><?php echo stripslashes($_SESSION['temp_page_fields']['p_4_text']); ?></textarea>
 
 	
 				<label>p_5_head</label>
 				<input type="text" name="p_5_head"  style="width:520px" value="<?php echo prepFormInputStr($_SESSION['temp_page_fields']['p_5_head']); ?>">
 	<label>p_5_text</label>
-	<textarea id="p_5_text" class="wysiwyg" name="p_5_text"><?php echo stripAllSlashes($_SESSION['temp_page_fields']['p_5_text']); ?></textarea>
+	<textarea id="p_5_text" class="wysiwyg" name="p_5_text"><?php echo stripslashes($_SESSION['temp_page_fields']['p_5_text']); ?></textarea>
 
 	
 				<label>p_6_head</label>
 				<input type="text" name="p_6_head"  style="width:520px" value="<?php echo prepFormInputStr($_SESSION['temp_page_fields']['p_6_head']); ?>">
 	<label>p_6_text</label>
-	<textarea id="p_6_text" class="wysiwyg" name="p_6_text"><?php echo stripAllSlashes($_SESSION['temp_page_fields']['p_6_text']); ?></textarea>
+	<textarea id="p_6_text" class="wysiwyg" name="p_6_text"><?php echo stripslashes($_SESSION['temp_page_fields']['p_6_text']); ?></textarea>
 
 				<label>p_7_head</label>
 				<input type="text" name="p_7_head"  style="width:520px" value="<?php echo prepFormInputStr($_SESSION['temp_page_fields']['p_7_head']); ?>">
 	<label>p_7_text</label>
-	<textarea id="p_7_text" class="wysiwyg" name="p_7_text"><?php echo stripAllSlashes($_SESSION['temp_page_fields']['p_7_text']); ?></textarea>
+	<textarea id="p_7_text" class="wysiwyg" name="p_7_text"><?php echo stripslashes($_SESSION['temp_page_fields']['p_7_text']); ?></textarea>
 
 
 				<label>p_8_head</label>
 				<input type="text" name="p_8_head"  style="width:520px" value="<?php echo prepFormInputStr($_SESSION['temp_page_fields']['p_8_head']); ?>">
 
 	<label>p_8_text</label>
-	<textarea id="p_8_text" class="wysiwyg" name="p_8_text"><?php echo stripAllSlashes($_SESSION['temp_page_fields']['p_8_text']); ?></textarea>
+	<textarea id="p_8_text" class="wysiwyg" name="p_8_text"><?php echo stripslashes($_SESSION['temp_page_fields']['p_8_text']); ?></textarea>
 		
 				<label>p_9_head</label>
 				<input type="text" name="p_9_head"  style="width:520px" value="<?php echo prepFormInputStr($_SESSION['temp_page_fields']['p_9_head']); ?>">
 
 	<label>p_9_text</label>
-	<textarea id="p_9_text" class="wysiwyg" name="p_9_text"><?php echo stripAllSlashes($_SESSION['temp_page_fields']['p_9_text']); ?></textarea>
+	<textarea id="p_9_text" class="wysiwyg" name="p_9_text"><?php echo stripslashes($_SESSION['temp_page_fields']['p_9_text']); ?></textarea>
 
 
 

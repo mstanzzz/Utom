@@ -199,7 +199,7 @@ if($total_rows < 1){
 	while($row = $result->fetch_object()) {
 		$j =  $j +1;
 		$block .= "<tr>"; 
-		$block .= "<td valign='middle' width='300px'>".stripAllSlashes($row->name)."</td>";
+		$block .= "<td valign='middle' width='300px'>".stripslashes($row->name)."</td>";
 		
 		$disabled = ($admin_access->product_catalog_level < 2)? "disabled" : '';
 		

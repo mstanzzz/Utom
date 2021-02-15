@@ -87,13 +87,13 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php');
         	
         	<div class="colcontainer">
             	<label>Tab Text</label>
-                <input type="text" name="tab_text" value="<?php echo stripAllSlashes($tab_text); ?>" />
+                <input type="text" name="tab_text" value="<?php echo stripslashes($tab_text); ?>" />
             
             </div>
         
 			
 				<label>Content</label>
-				<textarea class="wysiwyg" id="wysiwyg"  name="content" style="width:800px!important; height:800px!important;" ><?php echo stripAllSlashes($content); ?></textarea>
+				<textarea class="wysiwyg" id="wysiwyg"  name="content" style="width:800px!important; height:800px!important;" ><?php echo stripslashes($content); ?></textarea>
 			
        	</fieldset>
 

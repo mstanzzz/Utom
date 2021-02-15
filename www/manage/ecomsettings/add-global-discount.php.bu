@@ -266,7 +266,7 @@ function show_msg(msg) {
 						<label>Description</label>
 					</div>
 					<div class="twocols">
-						<textarea class="wysiwyg small" id="wysiwyg" name="description"><?php echo  stripAllSlashes($_SESSION['temp_page_fields']['description']); ?></textarea> 
+						<textarea class="wysiwyg small" id="wysiwyg" name="description"><?php echo  stripslashes($_SESSION['temp_page_fields']['description']); ?></textarea> 
 					</div> 
 				</div>
 				<div class="colcontainer formcols">

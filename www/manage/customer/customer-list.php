@@ -170,7 +170,7 @@ if(isset($_POST['email_customer'])){
 		if($email_body != ''){
 			$message .= "<div style='float:left; width:140px; text-align:right;'></div>";
 			$support_issue = str_replace('\r\n', '<br />', $email_body); 
-			$message .= "<div style='float:left; padding-left:12px; text-align:left;'>".stripAllSlashes($email_body)."</div>";
+			$message .= "<div style='float:left; padding-left:12px; text-align:left;'>".stripslashes($email_body)."</div>";
 			$message .= "<div style='clear:both;'></div>";							
 		}	
 		
@@ -629,7 +629,7 @@ $search_str = (isset($_REQUEST["search_string"])) ?  trim(addslashes($_REQUEST["
 					
 					$block = '';
 					while($row = $result->fetch_object()) {
-						$block .= "<tr><td>".stripAllSlashes($row->name)."</td>";
+						$block .= "<tr><td>".stripslashes($row->name)."</td>";
 						$block .= "<td>".$row->username."</td>";
 						//$block .= "<td>".$row->id."</td>";
 						$block .= "<td>".date("m/d/Y",strtotime($row->created))."</td>"; 

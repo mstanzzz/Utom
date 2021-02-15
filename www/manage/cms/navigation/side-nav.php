@@ -313,7 +313,7 @@ if(!$strip){
 						while($row = $result->fetch_object()){
 							$block .= "<tr>";
 							//nav label
-							$block .= '<td>'.stripAllSlashes($row->label).'</td>';	
+							$block .= '<td>'.stripslashes($row->label).'</td>';	
 							//nav url
 							if($row->cat_id > 0){
 							

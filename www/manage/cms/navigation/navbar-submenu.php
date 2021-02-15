@@ -283,7 +283,7 @@ if(!$strip){
 		$result = $dbCustom->getResult($db,$sql);		
 		if($result->num_rows > 0){
 			$nbl_obj = $result->fetch_object();
-			$current_subnav_line = "You're Editing the Subnavigation for <strong>".stripAllSlashes($nbl_obj->label)."</strong>.";			 
+			$current_subnav_line = "You're Editing the Subnavigation for <strong>".stripslashes($nbl_obj->label)."</strong>.";			 
 			$current_subnav = stripslashes($nbl_obj->label);
 		}else{
 			$current_subnav_line = '';
@@ -370,7 +370,7 @@ if(!$strip){
 					while($row = $result->fetch_object()){
 							$block .= '<tr>';
 							//nav label
-							$block .= '<td>'.stripAllSlashes($row->label).'</td>';	
+							$block .= '<td>'.stripslashes($row->label).'</td>';	
 							//nav url
 							if($row->cat_id > 0){
 							

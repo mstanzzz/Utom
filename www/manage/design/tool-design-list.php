@@ -275,7 +275,7 @@ $result = $dbCustom->getResult($db,$sql);
 						
 						$block .= "<td valign='top'>".$cust_name."</td>";	
 													
-						$block .= "<td valign='top'>".stripAllSlashes($row->file_name)."</td>";	
+						$block .= "<td valign='top'>".stripslashes($row->file_name)."</td>";	
 						
 						// purchased
 						// in shopping cart

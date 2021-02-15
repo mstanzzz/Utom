@@ -9,8 +9,6 @@ $page_title = "Editing: free-in-home-consults";
 $page_group = "free-in-home-consults";
 $page = "free-in-home-consults";
 
-	
-
 $db = $dbCustom->getDbConnect(SITE_N_DATABASE);
 
 $ts = time();
@@ -77,6 +75,8 @@ if(isset($_POST['update_free_in_home_consults'])){
 	$p_9_head = isset($_POST['p_9_head'])? addslashes(trim($_POST['p_9_head'])) : '';
 	$p_9_text = isset($_POST['p_9_text'])? addslashes(trim($_POST['p_9_text'])) : '';	
 
+
+
 	$_SESSION['temp_page_fields']['top_1'] = $top_1;	
 	$_SESSION['temp_page_fields']['top_2'] = $top_2;	
 	$_SESSION['temp_page_fields']['top_3'] = $top_3;	
@@ -102,8 +102,7 @@ if(isset($_POST['update_free_in_home_consults'])){
 	$_SESSION['temp_page_fields']['img_1_id'] = $img_1_id;	
 	$_SESSION['temp_page_fields']['img_2_id'] = $img_2_id;	
 	$_SESSION['temp_page_fields']['img_3_id'] = $img_3_id;	
-	
-	
+
 	$stmt = $db->prepare("UPDATE free_in_home_consults
 						SET
 						top_1 = ?
@@ -130,8 +129,7 @@ if(isset($_POST['update_free_in_home_consults'])){
 						
 						WHERE free_in_home_consults_id = ?");
 						
-		echo 'Error-1 UPDATE   '.$db->error;
-		
+		//echo 'Error-1 UPDATE   '.$db->error;
 	if(!$stmt->bind_param("sssssssssssssssssssssi"
 						,$top_1
 						,$top_2
@@ -157,7 +155,7 @@ if(isset($_POST['update_free_in_home_consults'])){
 						,$_SESSION['free_in_home_consults_id'])){
 							
 		echo 'Error-2 UPDATE   '.$db->error;
-		
+
 	}else{
 		$stmt->execute();
 		$stmt->close();				
@@ -236,90 +234,44 @@ if($result->num_rows > 0){
 	$p_2_text = '';
 	$p_3_head = ''; 
 	$p_3_text = '';
-	
 	$p_4_head = '';
 	$p_4_text = ''; 
-	
 	$p_5_head = '';  
 	$p_5_text = ''; 
-	
 	$p_6_head = '';  
 	$p_6_text = ''; 
 	$p_7_head = '';  
 	$p_7_text = '';
-
 	$p_8_head = '';  
 	$p_8_text = '';
+	$p_9_head = '';  
+	$p_9_text = '';
 
 }
-	$_SESSION['temp_page_fields']['top_1'] = $top_1;	
-	$_SESSION['temp_page_fields']['top_2'] = $top_2;	
-	$_SESSION['temp_page_fields']['top_3'] = $top_3;	
+if(!isset($_SESSION['temp_page_fields']['top_1'])) $_SESSION['temp_page_fields']['top_1'] = $top_1;
+if(!isset($_SESSION['temp_page_fields']['top_2'])) $_SESSION['temp_page_fields']['top_2'] = $top_2;
+if(!isset($_SESSION['temp_page_fields']['top_3'])) $_SESSION['temp_page_fields']['top_3'] = $top_3;
+if(!isset($_SESSION['temp_page_fields']['p_1_head'])) $_SESSION['temp_page_fields']['p_1_head'] = $p_1_head;
+if(!isset($_SESSION['temp_page_fields']['p_1_text'])) $_SESSION['temp_page_fields']['p_1_text'] = $p_1_text;
+if(!isset($_SESSION['temp_page_fields']['p_2_head'])) $_SESSION['temp_page_fields']['p_2_head'] = $p_2_head;
+if(!isset($_SESSION['temp_page_fields']['p_2_text'])) $_SESSION['temp_page_fields']['p_2_text'] = $p_2_text;
+if(!isset($_SESSION['temp_page_fields']['p_3_head'])) $_SESSION['temp_page_fields']['p_3_head'] = $p_3_head;
+if(!isset($_SESSION['temp_page_fields']['p_3_text'])) $_SESSION['temp_page_fields']['p_3_text'] = $p_3_text;
+if(!isset($_SESSION['temp_page_fields']['p_4_head'])) $_SESSION['temp_page_fields']['p_4_head'] = $p_4_head;
+if(!isset($_SESSION['temp_page_fields']['p_4_text'])) $_SESSION['temp_page_fields']['p_4_text'] = $p_4_text;
+if(!isset($_SESSION['temp_page_fields']['p_5_head'])) $_SESSION['temp_page_fields']['p_5_head'] = $p_5_head;
+if(!isset($_SESSION['temp_page_fields']['p_5_text'])) $_SESSION['temp_page_fields']['p_5_text'] = $p_5_text;
+if(!isset($_SESSION['temp_page_fields']['p_6_head'])) $_SESSION['temp_page_fields']['p_6_head'] = $p_6_head;
+if(!isset($_SESSION['temp_page_fields']['p_6_text'])) $_SESSION['temp_page_fields']['p_6_text'] = $p_6_text;
+if(!isset($_SESSION['temp_page_fields']['p_7_head'])) $_SESSION['temp_page_fields']['p_7_head'] = $p_7_head;
+if(!isset($_SESSION['temp_page_fields']['p_7_text'])) $_SESSION['temp_page_fields']['p_7_text'] = $p_7_text;
+if(!isset($_SESSION['temp_page_fields']['p_8_head'])) $_SESSION['temp_page_fields']['p_8_head'] = $p_8_head;
+if(!isset($_SESSION['temp_page_fields']['p_8_text'])) $_SESSION['temp_page_fields']['p_8_text'] = $p_8_text;
 
-	$_SESSION['temp_page_fields']['p_1_head'] = $p_1_head;	
-	$_SESSION['temp_page_fields']['p_1_text'] = $p_1_text;	
+if(!isset($_SESSION['temp_page_fields']['img_1_id'])) $_SESSION['temp_page_fields']['img_1_id'] = $img_1_id;
+if(!isset($_SESSION['temp_page_fields']['img_2_id'])) $_SESSION['temp_page_fields']['img_2_id'] = $img_2_id;
+if(!isset($_SESSION['temp_page_fields']['img_3_id'])) $_SESSION['temp_page_fields']['img_3_id'] = $img_3_id;
 
-	$_SESSION['temp_page_fields']['p_2_head'] = $p_2_head;	
-	$_SESSION['temp_page_fields']['p_2_text'] = $p_2_text;	
-
-	$_SESSION['temp_page_fields']['p_3_head'] = $p_3_head;	
-	$_SESSION['temp_page_fields']['p_3_text'] = $p_3_text;	
-
-	$_SESSION['temp_page_fields']['p_4_head'] = $p_4_head;	
-	$_SESSION['temp_page_fields']['p_4_text'] = $p_4_text;	
-
-	$_SESSION['temp_page_fields']['p_5_head'] = $p_5_head;	
-	$_SESSION['temp_page_fields']['p_5_text'] = $p_5_text;	
-
-	$_SESSION['temp_page_fields']['p_6_head'] = $p_6_head;	
-	$_SESSION['temp_page_fields']['p_6_text'] = $p_6_text;	
-
-	$_SESSION['temp_page_fields']['p_7_head'] = $p_7_head;	
-	$_SESSION['temp_page_fields']['p_7_text'] = $p_7_text;	
-
-	$_SESSION['temp_page_fields']['p_8_head'] = $p_8_head;	
-	$_SESSION['temp_page_fields']['p_8_text'] = $p_8_text;	
-	
-	$_SESSION['temp_page_fields']['p_9_head'] = $p_9_head;	
-	$_SESSION['temp_page_fields']['p_9_text'] = $p_9_text;	
-
-	$_SESSION['temp_page_fields']['img_1_id'] = $img_1_id;	
-	$_SESSION['temp_page_fields']['img_2_id'] = $img_2_id;	
-	$_SESSION['temp_page_fields']['img_3_id'] = $img_3_id;	
-
-
-$sql = "SELECT file_name
-		FROM image
-		WHERE img_id = '".$_SESSION['temp_page_fields']['img_1_id']."'";				
-$result = $dbCustom->getResult($db,$sql);
-if($result->num_rows > 0){
-	$object = $result->fetch_object();
-	$img_1_file_name = $img_obj->file_name;
-}else{
-	$img_1_file_name = '';
-}	
-
-$sql = "SELECT file_name
-		FROM image
-		WHERE img_id = '".$_SESSION['temp_page_fields']['img_2_id']."'";				
-$result = $dbCustom->getResult($db,$sql);
-if($result->num_rows > 0){
-	$object = $result->fetch_object();
-	$img_2_file_name = $img_obj->file_name;
-}else{
-	$img_2_file_name = '';
-}	
-
-$sql = "SELECT file_name
-		FROM image
-		WHERE img_id = '".$_SESSION['temp_page_fields']['img_3_id']."'";				
-$result = $dbCustom->getResult($db,$sql);
-if($result->num_rows > 0){
-	$object = $result->fetch_object();
-	$img_3_file_name = $img_obj->file_name;
-}else{
-	$img_3_file_name = '';
-}	
 
 
 require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php'); 
@@ -337,27 +289,14 @@ $(document).ready(function() {
 	});
 });
 	
-	
-	tinyMCE.init({
-        // General options
-        mode : "specific_textareas",
-        editor_selector : "wysiwyg",
-        theme : "advanced",
-        skin : "o2k7",
-        plugins : "table,advhr,advlink,emotions,inlinepopups,insertdatetime,searchreplace,paste,style",
-        // Theme options
-        theme_advanced_buttons1 :"bold,italic,underline,strikethrough,|,styleselect,formatselect,fontsizeselect,|,forecolor,backcolor",
-        theme_advanced_buttons2 : "justifyleft,justifycenter,justifyright,justifyfull,|,bullist,numlist,|,outdent,indent,blockquote,|,cut,copy,paste,pastetext,pasteword,|,undo,redo,|,link,unlink,",
-		theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,code",
-        theme_advanced_toolbar_location : "top",
-        theme_advanced_toolbar_align : "left",
-        theme_advanced_statusbar_location : "bottom",
-        theme_advanced_resizing : true,
-		theme_advanced_resize_horizontal : false,
-		forced_root_block : false
 
-	});
-	
+tinymce.init({
+	selector: 'textarea',
+	plugins: 'advlist link image lists code',
+	forced_root_block : false
+
+});
+
 
 function ajax_set_page_session(){
 	
@@ -440,55 +379,55 @@ function regularSubmit() {
 				<label>p_1_head</label>
 				<input type="text" name="p_1_head"  style="width:520px" value="<?php echo prepFormInputStr($_SESSION['temp_page_fields']['p_1_head']); ?>">
 	<label>p_1_text</label>
-	<textarea id="p_1_text" class="wysiwyg" name="p_1_text"><?php echo stripAllSlashes($_SESSION['temp_page_fields']['p_1_text']); ?></textarea>
+	<textarea id="p_1_text" class="wysiwyg" name="p_1_text"><?php echo stripslashes($_SESSION['temp_page_fields']['p_1_text']); ?></textarea>
 	
 				<label>p_2_head</label>
 				<input type="text" name="p_2_head"  style="width:520px" value="<?php echo prepFormInputStr($_SESSION['temp_page_fields']['p_2_head']); ?>">
 				
 	<label>p_2_text</label>
-	<textarea id="p_2_text" class="wysiwyg" name="p_2_text"><?php echo stripAllSlashes($_SESSION['temp_page_fields']['p_2_text']); ?></textarea>
+	<textarea id="p_2_text" class="wysiwyg" name="p_2_text"><?php echo stripslashes($_SESSION['temp_page_fields']['p_2_text']); ?></textarea>
 
 				<label>p_3_head</label>
 				<input type="text" name="p_3_head"  style="width:520px" value="<?php echo prepFormInputStr($_SESSION['temp_page_fields']['p_3_head']); ?>">
 				
 	<label>p_3_text</label>
-	<textarea id="p_3_text" class="wysiwyg" name="p_3_text"><?php echo stripAllSlashes($_SESSION['temp_page_fields']['p_3_text']); ?></textarea>
+	<textarea id="p_3_text" class="wysiwyg" name="p_3_text"><?php echo stripslashes($_SESSION['temp_page_fields']['p_3_text']); ?></textarea>
 	
 				<label>p_4_head</label>
 				<input type="text" name="p_4_head"  style="width:520px" value="<?php echo prepFormInputStr($_SESSION['temp_page_fields']['p_4_head']); ?>">
 
 	<label>p_4_text</label>
-	<textarea id="p_4_text" class="wysiwyg" name="p_4_text"><?php echo stripAllSlashes($_SESSION['temp_page_fields']['p_4_text']); ?></textarea>
+	<textarea id="p_4_text" class="wysiwyg" name="p_4_text"><?php echo stripslashes($_SESSION['temp_page_fields']['p_4_text']); ?></textarea>
 
 	
 				<label>p_5_head</label>
 				<input type="text" name="p_5_head"  style="width:520px" value="<?php echo prepFormInputStr($_SESSION['temp_page_fields']['p_5_head']); ?>">
 	<label>p_5_text</label>
-	<textarea id="p_5_text" class="wysiwyg" name="p_5_text"><?php echo stripAllSlashes($_SESSION['temp_page_fields']['p_5_text']); ?></textarea>
+	<textarea id="p_5_text" class="wysiwyg" name="p_5_text"><?php echo stripslashes($_SESSION['temp_page_fields']['p_5_text']); ?></textarea>
 
 	
 				<label>p_6_head</label>
 				<input type="text" name="p_6_head"  style="width:520px" value="<?php echo prepFormInputStr($_SESSION['temp_page_fields']['p_6_head']); ?>">
 	<label>p_6_text</label>
-	<textarea id="p_6_text" class="wysiwyg" name="p_6_text"><?php echo stripAllSlashes($_SESSION['temp_page_fields']['p_6_text']); ?></textarea>
+	<textarea id="p_6_text" class="wysiwyg" name="p_6_text"><?php echo stripslashes($_SESSION['temp_page_fields']['p_6_text']); ?></textarea>
 
 				<label>p_7_head</label>
 				<input type="text" name="p_7_head"  style="width:520px" value="<?php echo prepFormInputStr($_SESSION['temp_page_fields']['p_7_head']); ?>">
 	<label>p_7_text</label>
-	<textarea id="p_7_text" class="wysiwyg" name="p_7_text"><?php echo stripAllSlashes($_SESSION['temp_page_fields']['p_7_text']); ?></textarea>
+	<textarea id="p_7_text" class="wysiwyg" name="p_7_text"><?php echo stripslashes($_SESSION['temp_page_fields']['p_7_text']); ?></textarea>
 
 
 				<label>p_8_head</label>
 				<input type="text" name="p_8_head"  style="width:520px" value="<?php echo prepFormInputStr($_SESSION['temp_page_fields']['p_8_head']); ?>">
 
 	<label>p_8_text</label>
-	<textarea id="p_8_text" class="wysiwyg" name="p_8_text"><?php echo stripAllSlashes($_SESSION['temp_page_fields']['p_8_text']); ?></textarea>
+	<textarea id="p_8_text" class="wysiwyg" name="p_8_text"><?php echo stripslashes($_SESSION['temp_page_fields']['p_8_text']); ?></textarea>
 		
 				<label>p_9_head</label>
 				<input type="text" name="p_9_head"  style="width:520px" value="<?php echo prepFormInputStr($_SESSION['temp_page_fields']['p_9_head']); ?>">
 
 	<label>p_9_text</label>
-	<textarea id="p_9_text" class="wysiwyg" name="p_9_text"><?php echo stripAllSlashes($_SESSION['temp_page_fields']['p_9_text']); ?></textarea>
+	<textarea id="p_9_text" class="wysiwyg" name="p_9_text"><?php echo stripslashes($_SESSION['temp_page_fields']['p_9_text']); ?></textarea>
 
 
 

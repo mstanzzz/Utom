@@ -300,7 +300,7 @@ echo getPagination($total_rows, $rows_per_page, $pagenum, $truncate, $last, "des
 						$block .= "<tr>"; 
 						// strip all slashes
 						$block .= "<td valign='top'>".stripSlashes($row->name)."</td>";			
-						//$block .= "<td valign='top'>".stripAllSlashes($row->city)." ".$row->state."</td>";
+						//$block .= "<td valign='top'>".stripslashes($row->city)." ".$row->state."</td>";
 						$block .= "<td valign='top'>".$row->email."</td>";								
 						$block .= "<td valign='top'>".date("F j, Y, g:i a", $row->date_submitted)."</td>";			
 						$block .= "<td valign='top'>".$row->user_id;

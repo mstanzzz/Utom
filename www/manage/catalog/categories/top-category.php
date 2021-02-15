@@ -743,7 +743,7 @@ $block .= "<img  src='".$ste_root."/saascustuploads/".$_SESSION['profile_account
 						$block .= "</td>";
 							
 							//category name
-							$block .= "<td valign='middle' width='200px'>".stripAllSlashes($top_cat['name'])."</td>"; //$top_cat['show_in_showroom']
+							$block .= "<td valign='middle' width='200px'>".stripslashes($top_cat['name'])."</td>"; //$top_cat['show_in_showroom']
 							//show on home page
 							if($top_cat['show_on_home_page']){
 								$block .= "<td valign='middle' width='80px'>Yes</td>";

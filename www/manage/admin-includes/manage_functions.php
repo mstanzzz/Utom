@@ -388,7 +388,7 @@ function setActiveTab($tab)
 
 function prepFormInputStr($str)
 {
-	return stripAllSlashes(htmlentities($str,ENT_QUOTES));
+	return stripslashes(htmlentities($str,ENT_QUOTES));
 }
 
 

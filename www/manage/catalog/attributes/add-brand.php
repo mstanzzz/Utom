@@ -97,7 +97,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php');
 								$checked = ($v_row->vend_man_id == $vend_man_id) ? "checked" : '';
 								
 								$block .= "<div class='threecols'><input class='leftlabel' name='vend_man_ids[]' type='checkbox' value='".$v_row->vend_man_id."' $checked>";
-								$block .= "<label class='form_label'>".stripAllSlashes($v_row->name)."</label></div>";
+								$block .= "<label class='form_label'>".stripslashes($v_row->name)."</label></div>";
 							}
 			
 							echo $block;

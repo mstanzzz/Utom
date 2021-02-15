@@ -112,7 +112,7 @@ exit;
 
 		$message .= "<div style='float:left; width:140px; text-align:right;'></div>";
 		$support_issue = str_replace('\r\n', '<br />', $email_body); 
-		$message .= "<div style='float:left; padding-left:12px; text-align:left;'>".stripAllSlashes($email_body)."</div>";
+		$message .= "<div style='float:left; padding-left:12px; text-align:left;'>".stripslashes($email_body)."</div>";
 		$message .= "<div style='clear:both;'></div>";							
 		
 		$message .= $close_body;
@@ -150,7 +150,7 @@ exit;
 	
 			$message .= "<div style='float:left; width:140px; text-align:right;'></div>";
 			$support_issue = str_replace('\r\n', '<br />', $email_body); 
-			$message .= "<div style='float:left; padding-left:12px; text-align:left;'>".stripAllSlashes($email_body)."</div>";
+			$message .= "<div style='float:left; padding-left:12px; text-align:left;'>".stripslashes($email_body)."</div>";
 			$message .= "<div style='clear:both;'></div>";							
 			
 			$message .= $close_body;
@@ -307,7 +307,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php');
 				$email_array[] = $row->username;
 	
 				$block .= '<tr>';
-				$block .= '<td>'.stripAllSlashes($row->name).'</td>';
+				$block .= '<td>'.stripslashes($row->name).'</td>';
 
 				$block .= '<td>'.$row->username.'</td>';
 				
@@ -352,7 +352,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php');
 
 					$block .= '<tr>';
 					
-					$block .= '<td>'.stripAllSlashes(trim($row->name)).'</td>';
+					$block .= '<td>'.stripslashes(trim($row->name)).'</td>';
 	
 					$block .= '<td>'.trim($row->email).'</td>';
 	

@@ -83,7 +83,7 @@ if($cat_id > 0){
 	$result = $dbCustom->getResult($db,$sql);		
 	if($result->num_rows > 0){
 		$c_obj = $result->fetch_object();		
-		$cat_name = stripAllSlashes($c_obj->name);
+		$cat_name = stripslashes($c_obj->name);
 		$page_title = $cat_name." Products"; 
 
 	}
@@ -331,8 +331,8 @@ function regularSubmit() {
 			$block .= "</td>";
 			
 			//product Name
-			//$block .= "<td>".stripAllSlashes($row->name)."    ".$row->item_id."</td>";
-			$block .= "<td>".stripAllSlashes($row->name)."</td>";
+			//$block .= "<td>".stripslashes($row->name)."    ".$row->item_id."</td>";
+			$block .= "<td>".stripslashes($row->name)."</td>";
 			
 			//product ID
 			//$block .= "<td>".$row->prod_number."</td>";
@@ -346,7 +346,7 @@ function regularSubmit() {
                     AND item_to_category.item_id = '".$row->item_id."'";
 			$res = $dbCustom->getResult($db,$sql);		
             while($cg_row = $res->fetch_object()) {
-                $block .= "<br />".stripAllSlashes($cg_row->name);	
+                $block .= "<br />".stripslashes($cg_row->name);	
             }
             $block .= "</td>";     
 
@@ -417,8 +417,8 @@ function regularSubmit() {
 					$block .= "<td colspan='3'>";
 				}
 				
-				//$block .= " ".stripAllSlashes($child_row->name)."  --- ".$child_row->item_id."</td>";
-				$block .= " ".stripAllSlashes($child_row->name)."</td>";
+				//$block .= " ".stripslashes($child_row->name)."  --- ".$child_row->item_id."</td>";
+				$block .= " ".stripslashes($child_row->name)."</td>";
 				
 				$block .= "<td>".$child_row->sku."</td>";
 				
@@ -432,7 +432,7 @@ function regularSubmit() {
 
 				$block .= "<td>";						
 				while($cg_row = $res->fetch_object()) {
-					$block .= "<br />".stripAllSlashes($cg_row->name);	
+					$block .= "<br />".stripslashes($cg_row->name);	
 				}
 				$block .= "</td>";     
 

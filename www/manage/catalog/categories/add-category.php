@@ -385,7 +385,7 @@ if(!$strip){
 				</div>
 				<div class="colcontainer">
 					<label>Tool tip</label>
-					<input name="tool_tip" type="text" value="<?php echo stripAllSlashes($_SESSION['temp_cat_fields']['tool_tip']); ?>" />
+					<input name="tool_tip" type="text" value="<?php echo stripslashes($_SESSION['temp_cat_fields']['tool_tip']); ?>" />
 				</div>
 				<div class="colcontainer">
 				<label>Key Words</label>
@@ -393,7 +393,7 @@ if(!$strip){
 				</div>
 				<div class="colcontainer">
 				<label>Description</label>
-				<textarea class="wysiwyg small" id="wysiwyg2"  name="description"><?php echo stripAllSlashes($_SESSION['temp_cat_fields']['description']); ?></textarea>
+				<textarea class="wysiwyg small" id="wysiwyg2"  name="description"><?php echo stripslashes($_SESSION['temp_cat_fields']['description']); ?></textarea>
 				</div>
 			</fieldset>
             

@@ -222,13 +222,13 @@ function regularSubmit() {
                         
                 <div class="colcontainer"> 
                     <label>Intro Content</label>
-                    <textarea id="intro" class="wysiwyg" name="intro"><?php //echo stripAllSlashes($_SESSION['temp_page_fields']['intro']); ?></textarea>
+                    <textarea id="intro" class="wysiwyg" name="intro"><?php //echo stripslashes($_SESSION['temp_page_fields']['intro']); ?></textarea>
                 </div>
 				-->
                 	
                 <div class="colcontainer"> 
                 	<label>Email Body to Customer</label>
-                    <textarea id="input_content" class="wysiwyg" name="content"><?php echo stripAllSlashes($content); ?></textarea>
+                    <textarea id="input_content" class="wysiwyg" name="content"><?php echo stripslashes($content); ?></textarea>
                 </div>
             </fieldset>
             

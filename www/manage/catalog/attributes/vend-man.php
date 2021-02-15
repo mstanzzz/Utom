@@ -322,7 +322,7 @@ if(!$strip){
 						$j =  $j +1;
 						$block .= "<tr>";
 						//vendor name
-						$block .= "<td valign='middle' >".stripAllSlashes($row->name)."</td>";
+						$block .= "<td valign='middle' >".stripslashes($row->name)."</td>";
 						//vendor parent
 						$sql = "SELECT name 
 								FROM vend_man
@@ -332,7 +332,7 @@ if(!$strip){
 						$block .= "<td valign='middle' >";
 						if($res->num_rows){
 							$v_obj = $res->fetch_object();
-							$block .= stripAllSlashes($v_obj->name)."<br />";
+							$block .= stripslashes($v_obj->name)."<br />";
 						}		
 						$block .= "</td>";
 						//brands
@@ -344,7 +344,7 @@ if(!$strip){
 						$res = $dbCustom->getResult($db,$sql);		
 						$block .= "<td valign='middle' >";
 						while($v_row = $res->fetch_object()){
-							$block .= stripAllSlashes($v_row->name)."<br />";
+							$block .= stripslashes($v_row->name)."<br />";
 						}		
 						$block .= "</td>";
 						

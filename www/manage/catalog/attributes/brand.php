@@ -389,8 +389,8 @@ if($result->num_rows < 1){
 	while($row = $result->fetch_object()) {
     	$j =  $j +1;
         $block .= "<tr>"; 
-		$block .= "<td><strong>".stripAllSlashes($row->name)."</strong></td>";
-		$block .= "<td>".stripAllSlashes($row->web_site)."</td>";
+		$block .= "<td><strong>".stripslashes($row->name)."</strong></td>";
+		$block .= "<td>".stripslashes($row->web_site)."</td>";
 		
 		
 		$sql = "SELECT name 
@@ -401,7 +401,7 @@ if($result->num_rows < 1){
 		$res = $dbCustom->getResult($db,$sql);		
 		$block .= "<td valign='middle' >";
     	while($v_row = $res->fetch_object()){
-			$block .= stripAllSlashes($v_row->name).", ";
+			$block .= stripslashes($v_row->name).", ";
 		}
 		
 		$block .= "</td>";

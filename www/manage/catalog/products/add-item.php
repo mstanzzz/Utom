@@ -1092,17 +1092,17 @@ show_associated_kits_toggle
 					</div>
 					<div class="colcontainer">
 						<label>Short Description</label>
-						<textarea cols="80" name="short_description"><?php echo stripAllSlashes($_SESSION['temp_item_fields']["short_description"]); ?></textarea>
+						<textarea cols="80" name="short_description"><?php echo stripslashes($_SESSION['temp_item_fields']["short_description"]); ?></textarea>
 					<!-- class="wysiwyg small" id="wysiwyg1" -->
                     
                     </div>
 					<div class="colcontainer">
 						<label>Full Description</label>
-						<textarea class="wysiwyg" id="wysiwyg2"  name="description"><?php echo stripAllSlashes($_SESSION['temp_item_fields']['description']); ?></textarea>
+						<textarea class="wysiwyg" id="wysiwyg2"  name="description"><?php echo stripslashes($_SESSION['temp_item_fields']['description']); ?></textarea>
 					</div>
 					<div class="colcontainer">
 						<label>Specifications (additional information)</label>
-                        <textarea class="wysiwyg small" id="wysiwyg3"  name="additional_information"><?php echo stripAllSlashes($_SESSION['temp_item_fields']["additional_information"]); ?></textarea>
+                        <textarea class="wysiwyg small" id="wysiwyg3"  name="additional_information"><?php echo stripslashes($_SESSION['temp_item_fields']["additional_information"]); ?></textarea>
 					</div>
 				</fieldset>
                 
@@ -1676,11 +1676,11 @@ show_associated_kits_toggle
                     
 					<div class="colcontainer">
                    	<label>Back Order Message</label>
-						<textarea  name="back_order_message" class="wysiwyg small" id="wysiwyg4" ><?php echo stripAllSlashes($_SESSION['temp_item_fields']["back_order_message"]); ?></textarea>
+						<textarea  name="back_order_message" class="wysiwyg small" id="wysiwyg4" ><?php echo stripslashes($_SESSION['temp_item_fields']["back_order_message"]); ?></textarea>
 					</div>
 					<div class="colcontainer">
 						<label>In stock message</label>
-						<textarea  name="in_stock_message" class="wysiwyg small" id="wysiwyg5" ><?php echo stripAllSlashes($_SESSION['temp_item_fields']["in_stock_message"]); ?></textarea>
+						<textarea  name="in_stock_message" class="wysiwyg small" id="wysiwyg5" ><?php echo stripslashes($_SESSION['temp_item_fields']["in_stock_message"]); ?></textarea>
 					</div>
 				</fieldset>
 				
@@ -2073,7 +2073,7 @@ $url_str = preg_replace('/(\/+)/','/',$url_str);
                     <br /><br />
                     <div class="colcontainer">
 						<label>Text in document tabbed area</label>
-						<textarea  name="doc_area_text" class="wysiwyg small" id="wysiwyg6" ><?php echo stripAllSlashes($_SESSION['temp_item_fields']["doc_area_text"]); ?></textarea>
+						<textarea  name="doc_area_text" class="wysiwyg small" id="wysiwyg6" ><?php echo stripslashes($_SESSION['temp_item_fields']["doc_area_text"]); ?></textarea>
 					</div>
 				</fieldset>
 

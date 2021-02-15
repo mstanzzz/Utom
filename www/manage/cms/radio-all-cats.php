@@ -82,7 +82,7 @@ foreach ($top_cats as $top_cat) {
 		
 	$c_block .= "<input type='radio' name='cat_id' value='".$top_cat['cat_id']."' ".$checked." />";
 		
-	$c_block .= stripAllSlashes($top_cat['name'])."</a>";
+	$c_block .= stripslashes($top_cat['name'])."</a>";
 		
 	$c_block .= "<ul role='group' class='childrenplaceholder'>".getChildren($top_cat['cat_id'], $domain, $subject_cat_id, $max_depth)."</ul></li>";
 }
@@ -137,7 +137,7 @@ function getChildren($cat_id, $domain, $subject_cat_id, $max_depth){
 			
 			$block .= "<input type='radio' name='cat_id' value='".$row->cat_id."' ".$checked." />";
 			
-			$block .= stripAllSlashes($row->name)."</a>";
+			$block .= stripslashes($row->name)."</a>";
 			
 			
 			$block .= "<ul role='group' class='childrenplaceholder'>";

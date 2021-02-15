@@ -264,7 +264,7 @@ class Nav {
 			while($row = $result->fetch_object()){
 				$_SESSION['navbar_labels'][$i]['url'] =  '';
 				$do_increment = 1;
-				$_SESSION['navbar_labels'][$i]['label'] = stripAllSlashes($row->label); 
+				$_SESSION['navbar_labels'][$i]['label'] = stripslashes($row->label); 
 				$_SESSION['navbar_labels'][$i]['id'] = $row->navbar_label_id;
 				$_SESSION['navbar_labels'][$i]['submenu_content_type'] = $row->submenu_content_type;
 				
@@ -371,7 +371,7 @@ class Nav {
 			
 			$i = 0;
 			while($row = $result->fetch_object()){
-				$_SESSION['footer_nav_labels'][$i]['label'] = stripAllSlashes($row->label); 
+				$_SESSION['footer_nav_labels'][$i]['label'] = stripslashes($row->label); 
 				$_SESSION['footer_nav_labels'][$i]['id'] = $row->footer_nav_label_id;
 				$_SESSION['footer_nav_labels'][$i]['submenu_content_type'] = $row->submenu_content_type;
 				
@@ -982,7 +982,7 @@ class Nav {
 			$result = $dbCustom->getResult($db,$sql);			
 			$i = 0;
 			while($row = $result->fetch_object()){
-				$t[$i]['label']= stripAllSlashes($row->label);	
+				$t[$i]['label']= stripslashes($row->label);	
 				if($row->cat_id > 0){
 					$db = $dbCustom->getDbConnect(CART_DATABASE);
 					$sql = "SELECT show_in_cart
@@ -1057,7 +1057,7 @@ class Nav {
 			$result = $dbCustom->getResult($db,$sql);			
 			if($result->num_rows > 0){
 				$object = $result->fetch_object();
-				$_SESSION['side_nav_heading'] = stripAllSlashes($object->heading);
+				$_SESSION['side_nav_heading'] = stripslashes($object->heading);
 			}else{
 				$_SESSION['side_nav_heading'] = '';	
 			}
@@ -1103,7 +1103,7 @@ class Nav {
 							$label = $val['name'];
 						}	
 
-						$full_label = stripAllSlashes($label);
+						$full_label = stripslashes($label);
 						$char_length = strlen($full_label);
 //						if($char_length > $char_limit){
 //							$label = substr($full_label ,0 ,$char_limit);				
@@ -1133,7 +1133,7 @@ class Nav {
 						}else{
 							$label = $val['name'];
 						}	
-						$full_label = stripAllSlashes($label);
+						$full_label = stripslashes($label);
 						$char_length = strlen($full_label);
 						if($char_length > $char_limit){
 							$label = substr($full_label ,0 ,$char_limit);				
@@ -1148,7 +1148,7 @@ $block .= "<li><a href='"."/".getUrlText($val['name'])."/category.html?brandId="
 				}elseif($submenu_content_type == 3){
 					$t = $this->getSideLabels();
 					foreach($t as $val){
-						$full_label = stripAllSlashes($val['label']);
+						$full_label = stripslashes($val['label']);
 						$char_length = strlen($full_label);
 						if($char_length > $char_limit){
 							$label = substr($full_label ,0 ,$char_limit);				
@@ -1167,7 +1167,7 @@ $block .= "<li><a href='"."/".getUrlText($val['name'])."/category.html?brandId="
 							$label = $val['name'];
 						}	
 
-						$full_label = stripAllSlashes($label);
+						$full_label = stripslashes($label);
 						$char_length = strlen($full_label);
 //						if($char_length > $char_limit){
 //							$label = substr($full_label ,0 ,$char_limit);				
@@ -1418,7 +1418,7 @@ $block .= "<li><a href='"."/".getUrlText($val['name'])."/category.html?brandId="
 				$url_str = $this->getCatUrl($child_cat_val['name'],$child_cat_val['profile_cat_id'],'shop');
 			}
 			
-			$ret_block .= "<li><a href='".$url_str."' $active>".stripAllSlashes($label)."</a></li>";			
+			$ret_block .= "<li><a href='".$url_str."' $active>".stripslashes($label)."</a></li>";			
 			
 			
 					
@@ -1487,7 +1487,7 @@ $block .= "<li><a href='"."/".getUrlText($val['name'])."/category.html?brandId="
 					$ret_block .= "<a href='"."/".$_SESSION['global_url_word'].$val['url']."' $active >";
 				}
 				
-				$ret_block .= StripAllSlashes($val['label'])."</a>";			
+				$ret_block .= stripslashes($val['label'])."</a>";			
 					
 				$total_char_len = $sub_list_data['total_char_len'];
 						

@@ -15,7 +15,7 @@ $heading = '';
 if($item_array['brand_name'] != '') $heading .= $item_array['brand_name'].' ';
 $heading .= trim($item_array['name']);	
 //$heading .= trim($item_array['short_description']).' ';	
-$heading = stripAllSlashes($heading);
+$heading = stripslashes($heading);
 
 
 $pic = get_details_pic($item_id);

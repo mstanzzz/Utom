@@ -228,7 +228,7 @@ $(document).ready(function() {
 				</div>
 				<div class="colcontainer">
 						<label>Tool tip</label>
-						<input type="text" id="tool_tip" name="tool_tip"  value="<?php echo stripAllSlashes($_SESSION['temp_cat_fields']['tool_tip']); ?>" />
+						<input type="text" id="tool_tip" name="tool_tip"  value="<?php echo stripslashes($_SESSION['temp_cat_fields']['tool_tip']); ?>" />
 				</div>
 
    				<div class="colcontainer">
@@ -238,7 +238,7 @@ $(document).ready(function() {
 
 				<div class="colcontainer">
 				<label>Description</label>
-				<textarea class="wysiwyg small" id="wysiwyg2"  name="description"><?php echo stripAllSlashes($_SESSION['temp_cat_fields']['description']); ?></textarea>
+				<textarea class="wysiwyg small" id="wysiwyg2"  name="description"><?php echo stripslashes($_SESSION['temp_cat_fields']['description']); ?></textarea>
 				</div>
 			</fieldset>
 			<fieldset class="colcontainer radiocols">

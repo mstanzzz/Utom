@@ -98,11 +98,11 @@ $result = $dbCustom->getResult($db,$sql);		$object = $result->fetch_object();
 			</fieldset>
 			<fieldset class="colcontainer">
 				<label>Question</label>
-				<textarea class="wysiwyg small" name="question"><?php echo stripAllSlashes($object->question); ?></textarea>
+				<textarea class="wysiwyg small" name="question"><?php echo stripslashes($object->question); ?></textarea>
 			</fieldset>
 			<fieldset class="colcontainer">
 				<label>Answer</label>
-				<textarea class="wysiwyg small" name="answere"><?php echo stripAllSlashes($object->answere); ?></textarea>
+				<textarea class="wysiwyg small" name="answere"><?php echo stripslashes($object->answere); ?></textarea>
 			</fieldset>
 		</div>
 		<div class="savebar">

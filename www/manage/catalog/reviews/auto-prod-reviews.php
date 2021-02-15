@@ -378,7 +378,7 @@ $result = $dbCustom->getResult($db,$sql);
 			
 						$block .= "<tr>";
 						//Reviewer Name
-						$block .= "<td>".stripAllSlashes($row->name)."</td>";
+						$block .= "<td>".stripslashes($row->name)."</td>";
 									
 
 						$star_style = '';
@@ -405,7 +405,7 @@ $result = $dbCustom->getResult($db,$sql);
 						}
 						$block .= "<td>".$publish_date."</td>";
 						//Product
-						$block .= "<td>".stripAllSlashes($row->item_name)."</td>";
+						$block .= "<td>".stripslashes($row->item_name)."</td>";
 						
 						
 						$url_str = "edit-item-review.php";						

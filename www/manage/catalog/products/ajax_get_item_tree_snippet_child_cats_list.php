@@ -38,7 +38,7 @@ while($row = $result->fetch_object()) {
 	
 	$block .= "<li title='' role='treeitem' aria-expanded='false' id='".$row->cat_id."'>";
 	$block .= "<a tabindex='-1' class='tree-parent tree-parent-collapsed' onclick='show_children(".$row->cat_id.")' >";
-	$block .= "<img  src='".$ste_root."/saascustuploads/".$_SESSION['profile_account_id']."/cart/tiny/".$file_name."'/>".StripAllSlashes($row->name);
+	$block .= "<img  src='".$ste_root."/saascustuploads/".$_SESSION['profile_account_id']."/cart/tiny/".$file_name."'/>".stripslashes($row->name);
 	
 	$checked = inArray($row->cat_id, $_SESSION['temp_item_cats'], 'cat_id') ? "checked='checked'" : '';
 	
