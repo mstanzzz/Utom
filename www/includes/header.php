@@ -269,7 +269,7 @@
 												<a href="#" title="">Home</a>
 											</div>
 										</li>
-<li><a href="showroom.html" title="" class="active">Rooms</a></li>
+<li><a href="<?php echo $ste_root."showroom-detail-view-categories.html"; ?>" title="" class="active">Rooms</a></li>
 										<li><a href="#" title="">Features</a></li>
 <li><a href="shop.html" title="">Accessories</a></li>
 										<li><a href="#" title="">Why Closets To Go</a></li>

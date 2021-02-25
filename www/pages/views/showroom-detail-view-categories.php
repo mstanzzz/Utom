@@ -1,11 +1,24 @@
+<!--
+From Jeff 02/16/2021
 
+linked from header main navigation "ROOMS"   
+http://clients2.atomsolutions.net/ClosetsToGo-website/showroom-detail-view-categories.html  
+Categories ranked by overall views within it. (maybe this shouls always be most popular top categories)  
 
+Once a user selects the image/category, go to  
+http://clients2.atomsolutions.net/ClosetsToGo-website/organizer-landing-page.html  
+(the order of images displayed are based on overall views) 
+allowing the user to further refine their search by applying filters.  
 
+I'm not really sure where the browse by room link you provided came from as it appears 
+to be an older version which was replaced by the Room Gallery page on the link provided above.
+
+???
+-->
 
 <?php	
 require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php"); 	
 ?>	
-
 
 <section class="first-fixed-block covid-block clearfix">
 	<figure class="first-fixed-block__img-group" style="background-image: url('../../images/showroom-detail-view-header.png');">
@@ -24,62 +37,64 @@ require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php");
 		
 <main class="main hero-block clearfix">
 	<section class="breadcrumb-block desktop-show">
-				<div class="wrapper">
-					<div class="container-fluid">
-						<div class="row">
-							<div class="col-12">
-								<div class="breadcrumb-block__wrapper" aria-label="breadcrumb">
-									<ul class="breadcrumb">
-										<li class="breadcrumb-item"><a href="#" title="">Home</a></li>
-										<li class="breadcrumb-item active" aria-current="page" title="">Room Gallery</li>
-									</ul>
-								</div>
-							</div>
+		<div class="wrapper">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-12">
+						<div class="breadcrumb-block__wrapper" aria-label="breadcrumb">
+							<ul class="breadcrumb">
+								<li class="breadcrumb-item"><a href="../../" title="">Home</a></li>
+								<li class="breadcrumb-item active" aria-current="page" title="">Room Gallery</li>
+							</ul>
 						</div>
 					</div>
 				</div>
-			</section>
+			</div>
+		</div>
+	</section>
 
-			<section class="simple-block">
-				<div class="wrapper">
-					<div class="container-fluid">
-						<div class="row">
-							<div class="col-12">
-								<div class="simple-block__border no-border p-0">
-									<div class="row">
-										<div class="col-12">
-											<div class="simple-block__heading">
-												<h2 class="simple-block__heading--heading text-center">Room Gallery</h2>
-											</div>
-										</div>
+	<section class="simple-block">
+		<div class="wrapper">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-12">
+						<div class="simple-block__border no-border p-0">
+							<div class="row">
+								<div class="col-12">
+									<div class="simple-block__heading">
+										<h2 class="simple-block__heading--heading text-center">Room Gallery</h2>
 									</div>
-									<div class="row">
-										<div class="col-12">
-											<div class="simple-block__text">
-											<p class="text-center">
-												Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam. voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet
-											</p>
-										</div>
-										</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-12">
+									<div class="simple-block__text">
+										<p class="text-center">
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam. voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet
+										</p>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</section>
+			</div>
+		</div>
+	</section>
 
-			<section class="showroom-detail-block">
-				<div class="wrapper">
-					<div class="container-fluid">
-						<div class="row">
-							<div class="col-12 col-lg-6">
-								
+	<section class="showroom-detail-block">
+		<div class="wrapper">
+			<div class="container-fluid">
+				<div class="row">						
+					<?php
+					echo $cat_block;
+					?>
+					
+					<!--
+					<div class="col-12 col-lg-6">								
 								<figure class="showroom-detail-block__wrapper-with-border">
 									<figcaption class="showroom-detail-block__images">
-										
 										<img src="../../images/showroom-categories-1.png" alt="" class="img-fluid">
-										
 										<div class="showroom-detail-block__images--actions">
 												
 											<button class="image-button-share">
@@ -91,11 +106,11 @@ require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php");
 												</svg>
 											</button>
 
-											<a href="showroom-detail-view-category.html" title="" class="image-button-open"></a>
+											<a href="organizer-landing-page.html" title="" class="image-button-open"></a>
 												
 										</div>
 										<div class="mobile-show">
-											<a href="showroom-detail-view-category.html" class="link-button">
+											<a href="organizer-landing-page.html" class="link-button">
 												explore now
 												<svg xmlns="http://www.w3.org/2000/svg" width="20.8" height="14.623" viewBox="0 0 20.8 14.623">
 													<path id="left-arrow_3_" data-name="left-arrow(3)" d="M14.014,4.9a.737.737,0,1,0-1.048,1.038l5.314,5.314H.744A.738.738,0,0,0,0,11.982a.747.747,0,0,0,.744.744H18.281l-5.314,5.3a.752.752,0,0,0,0,1.048.734.734,0,0,0,1.048,0l6.573-6.573a.739.739,0,0,0,0-1.038Z" transform="translate(0.001 -4.676)"></path>
@@ -104,7 +119,7 @@ require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php");
 										</div>
 									</figcaption>
 
-									<a href="showroom-detail-view-category.html" title="" class="showroom-detail-block__heading">Custom Closet Organizers for Wardrobes</a>
+									<a href="organizer-landing-page.html" title="" class="showroom-detail-block__heading">Custom Closet Organizers for Wardrobes</a>
 								</figure>
 							</div>
 							<div class="col-12 col-lg-6">
@@ -121,19 +136,19 @@ require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php");
 												</svg>
 											</button>
 
-											<a href="#" title="" class="image-button-open"></a>
+											<a href="organizer-landing-page.html" title="" class="image-button-open"></a>
 										</div>
 										<div class="mobile-show">
-											<a href="#" class="link-button">
+											<a href="organizer-landing-page.html" class="link-button">
 												explore now
 												<svg xmlns="http://www.w3.org/2000/svg" width="20.8" height="14.623" viewBox="0 0 20.8 14.623">
 													<path id="left-arrow_3_" data-name="left-arrow(3)" d="M14.014,4.9a.737.737,0,1,0-1.048,1.038l5.314,5.314H.744A.738.738,0,0,0,0,11.982a.747.747,0,0,0,.744.744H18.281l-5.314,5.3a.752.752,0,0,0,0,1.048.734.734,0,0,0,1.048,0l6.573-6.573a.739.739,0,0,0,0-1.038Z" transform="translate(0.001 -4.676)"></path>
 												</svg>
-											</a>
+											</a
 										</div>
 									</figcaption>
 
-									<a href="#" title="" class="showroom-detail-block__heading">Pantry Storage</a>
+									<a href="organizer-landing-page.html" title="" class="showroom-detail-block__heading">Pantry Storage</a>
 								</figure>
 							</div>
 							<div class="col-12 col-lg-6">
@@ -150,10 +165,10 @@ require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php");
 												</svg>
 											</button>
 
-											<a href="#" title="" class="image-button-open"></a>
+											<a href="organizer-landing-page.html" title="" class="image-button-open"></a>
 										</div>
 										<div class="mobile-show">
-											<a href="#" class="link-button">
+											<a href="organizer-landing-page.html" class="link-button">
 												explore now
 												<svg xmlns="http://www.w3.org/2000/svg" width="20.8" height="14.623" viewBox="0 0 20.8 14.623">
 													<path id="left-arrow_3_" data-name="left-arrow(3)" d="M14.014,4.9a.737.737,0,1,0-1.048,1.038l5.314,5.314H.744A.738.738,0,0,0,0,11.982a.747.747,0,0,0,.744.744H18.281l-5.314,5.3a.752.752,0,0,0,0,1.048.734.734,0,0,0,1.048,0l6.573-6.573a.739.739,0,0,0,0-1.038Z" transform="translate(0.001 -4.676)"></path>
@@ -161,7 +176,7 @@ require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php");
 											</a>
 										</div>
 									</figcaption>
-									<a href="#" title="" class="showroom-detail-block__heading">Garage Storage Systems</a>
+									<a href="organizer-landing-page.html" title="" class="showroom-detail-block__heading">Garage Storage Systems</a>
 								</figure>
 							</div>
 							<div class="col-12 col-lg-6">
@@ -177,10 +192,10 @@ require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php");
 													<path id="Path_209" data-name="Path 209" d="M21.25,0A21.25,21.25,0,1,0,42.5,21.25,21.333,21.333,0,0,0,21.25,0ZM17.484,21.556l6.348,3.794a5.112,5.112,0,1,1-1.181,2.195l-5.96-3.562a5,5,0,1,1-.3-5.842l6.193-3.46a5.046,5.046,0,1,1,1.069,2.255L17.43,20.413a2.916,2.916,0,0,1,.054,1.143Z" fill="#384765"/>
 												</svg>
 											</button>
-											<a href="#" title="" class="image-button-open"></a>
+											<a href="organizer-landing-page.html" title="" class="image-button-open"></a>
 										</div>
 										<div class="mobile-show">
-											<a href="#" class="link-button">
+											<a href="organizer-landing-page.html" class="link-button">
 												explore now
 												<svg xmlns="http://www.w3.org/2000/svg" width="20.8" height="14.623" viewBox="0 0 20.8 14.623">
 													<path id="left-arrow_3_" data-name="left-arrow(3)" d="M14.014,4.9a.737.737,0,1,0-1.048,1.038l5.314,5.314H.744A.738.738,0,0,0,0,11.982a.747.747,0,0,0,.744.744H18.281l-5.314,5.3a.752.752,0,0,0,0,1.048.734.734,0,0,0,1.048,0l6.573-6.573a.739.739,0,0,0,0-1.038Z" transform="translate(0.001 -4.676)"></path>
@@ -188,7 +203,7 @@ require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php");
 											</a>
 										</div>
 									</figcaption>
-									<a href="#" title="" class="showroom-detail-block__heading">Laundry and Craft Storage</a>
+									<a href="organizer-landing-page.html" title="" class="showroom-detail-block__heading">Laundry and Craft Storage</a>
 								</figure>
 							</div>
 							<div class="col-12 col-lg-6">
@@ -205,10 +220,10 @@ require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php");
 												</svg>
 											</button>
 
-											<a href="#" title="" class="image-button-open"></a>
+											<a href="organizer-landing-page.html" title="" class="image-button-open"></a>
 										</div>
 										<div class="mobile-show">
-											<a href="#" class="link-button">
+											<a href="organizer-landing-page.html" class="link-button">
 												explore now
 												<svg xmlns="http://www.w3.org/2000/svg" width="20.8" height="14.623" viewBox="0 0 20.8 14.623">
 													<path id="left-arrow_3_" data-name="left-arrow(3)" d="M14.014,4.9a.737.737,0,1,0-1.048,1.038l5.314,5.314H.744A.738.738,0,0,0,0,11.982a.747.747,0,0,0,.744.744H18.281l-5.314,5.3a.752.752,0,0,0,0,1.048.734.734,0,0,0,1.048,0l6.573-6.573a.739.739,0,0,0,0-1.038Z" transform="translate(0.001 -4.676)"></path>
@@ -216,7 +231,7 @@ require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php");
 											</a>
 										</div>
 									</figcaption>
-									<a href="#" title="" class="showroom-detail-block__heading">Office Organization</a>
+									<a href="organizer-landing-page.html" title="" class="showroom-detail-block__heading">Office Organization</a>
 								</figure>
 							</div>
 							<div class="col-12 col-lg-6">
@@ -233,10 +248,10 @@ require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php");
 												</svg>
 											</button>
 
-											<a href="#" title="" class="image-button-open"></a>
+											<a href="organizer-landing-page.html" title="" class="image-button-open"></a>
 										</div>
 										<div class="mobile-show">
-											<a href="#" class="link-button">
+											<a href="organizer-landing-page.html" class="link-button">
 												explore now
 												<svg xmlns="http://www.w3.org/2000/svg" width="20.8" height="14.623" viewBox="0 0 20.8 14.623">
 													<path id="left-arrow_3_" data-name="left-arrow(3)" d="M14.014,4.9a.737.737,0,1,0-1.048,1.038l5.314,5.314H.744A.738.738,0,0,0,0,11.982a.747.747,0,0,0,.744.744H18.281l-5.314,5.3a.752.752,0,0,0,0,1.048.734.734,0,0,0,1.048,0l6.573-6.573a.739.739,0,0,0,0-1.038Z" transform="translate(0.001 -4.676)"></path>
@@ -244,7 +259,7 @@ require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php");
 											</a>
 										</div>
 									</figcaption>
-									<a href="#" title="" class="showroom-detail-block__heading">Wall Beds</a>
+									<a href="organizer-landing-page.html" title="" class="showroom-detail-block__heading">Wall Beds</a>
 								</figure>
 							</div>
 							<div class="col-12 col-lg-6">
@@ -261,10 +276,10 @@ require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php");
 												</svg>
 											</button>
 
-											<a href="#" title="" class="image-button-open"></a>
+											<a href="organizer-landing-page.html" title="" class="image-button-open"></a>
 										</div>
 										<div class="mobile-show">
-											<a href="#" class="link-button">
+											<a href="organizer-landing-page.html" class="link-button">
 												explore now
 												<svg xmlns="http://www.w3.org/2000/svg" width="20.8" height="14.623" viewBox="0 0 20.8 14.623">
 													<path id="left-arrow_3_" data-name="left-arrow(3)" d="M14.014,4.9a.737.737,0,1,0-1.048,1.038l5.314,5.314H.744A.738.738,0,0,0,0,11.982a.747.747,0,0,0,.744.744H18.281l-5.314,5.3a.752.752,0,0,0,0,1.048.734.734,0,0,0,1.048,0l6.573-6.573a.739.739,0,0,0,0-1.038Z" transform="translate(0.001 -4.676)"></path>
@@ -272,12 +287,15 @@ require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php");
 											</a>
 										</div>
 									</figcaption>
-									<a href="#" title="" class="showroom-detail-block__heading">Closet Organizer Colors</a>
+									<a href="organizer-landing-page.html" title="" class="showroom-detail-block__heading">Closet Organizer Colors</a>
 								</figure>
-							</div>
-						</div>
 					</div>
+					-->	
+					
+					
 				</div>
+			</div>
+		</div>
 	</section>
 </main>
 		

@@ -187,9 +187,14 @@
 
 <a style="float:left; margin:6px;" href="showroom-detail-view-product.html">showroom-detail-view-product</a>
 
+<a style="float:left; margin:6px;" href="organizer-landing-page.html">organizer-landing-page</a>
+
+
 <a style="float:left; margin:6px;" href="shopping-cart.html">shopping-cart</a>
 
 <a style="float:left; margin:6px;" href="checkout.html">checkout</a>
+
+<a style="float:left; margin:6px;" href="order.html">order</a>
 
 <a style="float:left; margin:6px;" href="diy-instructions.html">diy-instructions</a>
 		
@@ -200,6 +205,14 @@
 <a style="float:left; margin:6px;" href="we-design.html">we-design</a>
 
 <a style="float:left; margin:6px;" href="specifications.html">specifications</a>
+
+<a style="float:left; margin:6px;" href="login.html">login</a>
+
+
+<a style="float:left; margin:6px;" href="showroom.html">showroom (test)</a>
+
+
+
 
 <a style="float:left; margin:6px;" href="account.html">account</a>
 

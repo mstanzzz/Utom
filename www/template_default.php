@@ -87,20 +87,16 @@ if($lev <= 3){
 	$ste_root = './';
 }
 $ste_root = preg_replace('/(\/+)/','/',$ste_root);
+
+if(strpos($_SERVER['DOCUMENT_ROOT'], '/var/www/') !== false) {
+	$ste_root = preg_replace('/(\/+)/','/',$ste_root);
+}else{
+	$ste_root = SITEROOT.'/';
+}
+
 //echo "<br />";
 //echo $ste_root;
 //echo "<br />";
-
-
-
-
-$db = $dbCustom->getDbConnect(SITE_N_DATABASE);
-
-$sql = "SELECT *
-		FROM free_in_home_consults
-		WHERE profile_account_id = '".$_SESSION['profile_account_id']."'";
-//$result = $dbCustom->getResult($db,$sql);
-//echo $result->num_rows;
 //exit;
 
 ?>
@@ -112,7 +108,7 @@ $sql = "SELECT *
 <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
 <title>ClosetsToGo</title>
 <meta name="description" content="home description">		
-<link href="app.css" rel="stylesheet">
+<link href="<?php echo $ste_root."app.css" ?>" rel="stylesheet">
 
 <script>
 
@@ -129,13 +125,13 @@ function getScreenWidth(){
 
 </head>
 <body>
-
+<!--
 <a style="float:right; margin:10px;" href="<?php echo $ste_root; ?>home.html"> HOME </a>
 <a style="float:right; margin:10px;" href="<?php echo $ste_root; ?>shopping-cart.html"> CART </a>
 <a style="float:right; margin:10px;" href="<?php echo $ste_root; ?>shop.html">Shop</a>
 <a style="float:right; margin:10px;" href="<?php echo $ste_root; ?>showroom.html">Showroom</a>
 <br />
-
+-->
 <?php
 echo "<hr />";
 echo "page: ".$page;

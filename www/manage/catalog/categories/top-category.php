@@ -1,8 +1,6 @@
 <?php
 require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
 
-
-
 require_once($_SERVER['DOCUMENT_ROOT'].'/includes/class.nav.php');
 
 $progress = new SetupProgress;
@@ -401,10 +399,82 @@ if(isset($_POST['del_cat_id'])){
 			WHERE cat_id = '".$cat_id."'";
 	$result = $dbCustom->getResult($db,$sql);
 	
-	
-	
-	$msg = 'Your change is now live.';
 
+	$sql = "SELECT img_id
+			FROM category
+			WHERE cat_id = '".$cat_id."'";
+	$result = $dbCustom->getResult($db,$sql);
+	if($result->num_rows > 0){	
+		$object = $result->fetch_object();
+		$img_id = $object->img_id; 
+			
+		$sql = "SELECT file_name
+				FROM image
+				WHERE img_id = '".$img_id."'";
+		$res = $dbCustom->getResult($db,$sql);
+		if($res->num_rows > 0){	
+			$obj = $res->fetch_object();
+			
+			echo $file_name = $obj->file_name; 
+			
+			$p = $_SERVER['DOCUMENT_ROOT']."/saascustuploads/".$_SESSION['profile_account_id']."/cart/full/".$file_name;
+			if(file_exists($p)) unlink($p);
+
+			$p = $_SERVER['DOCUMENT_ROOT']."/saascustuploads/".$_SESSION['profile_account_id']."/cart/tiny/".$file_name;
+			if(file_exists($p)) unlink($p);
+
+			$p = $_SERVER['DOCUMENT_ROOT']."/saascustuploads/".$_SESSION['profile_account_id']."/cart/thumb/".$file_name;
+			if(file_exists($p)) unlink($p);
+						
+			$p = $_SERVER['DOCUMENT_ROOT']."/saascustuploads/".$_SESSION['profile_account_id']."/cart/small/".$file_name;
+			if(file_exists($p)) unlink($p);
+						
+			$p = $_SERVER['DOCUMENT_ROOT']."/saascustuploads/".$_SESSION['profile_account_id']."/cart/medium/".$file_name;
+			if(file_exists($p)) unlink($p);
+						
+			$p = $_SERVER['DOCUMENT_ROOT']."/saascustuploads/".$_SESSION['profile_account_id']."/cart/large/".$file_name;
+			if(file_exists($p)) unlink($p);
+			
+			/* **** wide **** */
+			$p = $_SERVER['DOCUMENT_ROOT']."/saascustuploads/".$_SESSION['profile_account_id']."/cart/tiny/wide/".$file_name;
+			if(file_exists($p)) unlink($p);
+
+			$p = $_SERVER['DOCUMENT_ROOT']."/saascustuploads/".$_SESSION['profile_account_id']."/cart/thumb/wide/".$file_name;
+			if(file_exists($p)) unlink($p);
+						
+			$p = $_SERVER['DOCUMENT_ROOT']."/saascustuploads/".$_SESSION['profile_account_id']."/cart/small/wide/".$file_name;
+			if(file_exists($p)) unlink($p);
+						
+			$p = $_SERVER['DOCUMENT_ROOT']."/saascustuploads/".$_SESSION['profile_account_id']."/cart/medium/wide/".$file_name;
+			if(file_exists($p)) unlink($p);
+						
+			$p = $_SERVER['DOCUMENT_ROOT']."/saascustuploads/".$_SESSION['profile_account_id']."/cart/large/wide/".$file_name;
+			if(file_exists($p)) unlink($p);
+			
+			/* **** extra wide **** */
+			$p = $_SERVER['DOCUMENT_ROOT']."/saascustuploads/".$_SESSION['profile_account_id']."/cart/tiny/exwide/".$file_name;
+			if(file_exists($p)) unlink($p);
+
+			$p = $_SERVER['DOCUMENT_ROOT']."/saascustuploads/".$_SESSION['profile_account_id']."/cart/thumb/exwide/".$file_name;
+			if(file_exists($p)) unlink($p);
+						
+			$p = $_SERVER['DOCUMENT_ROOT']."/saascustuploads/".$_SESSION['profile_account_id']."/cart/small/exwide/".$file_name;
+			if(file_exists($p)) unlink($p);
+						
+			$p = $_SERVER['DOCUMENT_ROOT']."/saascustuploads/".$_SESSION['profile_account_id']."/cart/medium/exwide/".$file_name;
+			if(file_exists($p)) unlink($p);
+						
+			$p = $_SERVER['DOCUMENT_ROOT']."/saascustuploads/".$_SESSION['profile_account_id']."/cart/large/exwide/".$file_name;
+			if(file_exists($p)) unlink($p);
+			
+			$sql = sprintf("DELETE FROM image 
+							WHERE img_id = '%u'
+							AND profile_account_id = '%u'", $img_id, $_SESSION['profile_account_id']);
+			$result = $dbCustom->getResult($db,$sql);
+
+		}		
+	}	
+	$msg = 'Your change is now live.';
 }
 
 unset($_SESSION['temp_cat_fields']);
@@ -443,8 +513,8 @@ function regularSubmit() {
 <body <?php //if($strip){ echo "class='lightbox'"; }?>>
 <?php
 if(!$strip){ 
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-header.php');
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-top-nav.php');
+	//require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-header.php');
+	//require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-top-nav.php');
 }
 ?>
 <div class="manage_page_container <?php if($strip){ echo 'lightbox'; }?>">
@@ -473,7 +543,7 @@ if(!$strip){
 			echo $admin_bread_crumb->output();
 		}
         require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-content-top.php');
-        require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/category-section-tabs.php");
+        //require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/category-section-tabs.php");
 				
 		$total_top_cats = array();
 		$top_cats = array();
@@ -622,7 +692,7 @@ $sql .= " AND (category.cat_id = '".$search_str."%' || category.profile_cat_id =
 					<?php
 
 
-        $url_str = $ste_root."manage/catalog/add-top-category.php"; 
+        $url_str = $ste_root."manage/catalog/categories/add-top-category.php"; 
 		$url_str = preg_replace('/(\/+)/','/',$url_str);
 					
 					$url_str .= "?strip=".$strip;
@@ -634,8 +704,8 @@ $sql .= " AND (category.cat_id = '".$search_str."%' || category.profile_cat_id =
 		
 					?>
                     
-                    <a class="btn btn-large btn-primary <?php //if(!$strip){ echo "fancybox fancybox.iframe"; } ?>" 
-                    href="<?php echo $url_str ?>"><i class="icon-plus icon-white"></i> Add Top Category </a>
+<a class="btn btn-large btn-primary <?php //if(!$strip){ echo "fancybox fancybox.iframe"; } ?>" 
+                    href="<?php echo $url_str ?>"><i class="icon-plus icon-white"></i>Add Top Category </a>
                     <!--<button href="#" class="btn btn-success btn-large"><i class="icon-ok icon-white"></i> Save Changes </button>-->                
 		
 <a onClick="regularSubmit();" href="#" class="btn btn-success btn-large"><i class="icon-ok icon-white"></i> Save Changes </a>
@@ -674,22 +744,6 @@ $url_str = preg_replace('/(\/+)/','/',$url_str);
         
 	        <input type="hidden" name="set_active_and_display_order" value="1">
 
-
-<?php
-/*
-echo "<br />";
-echo "<br />";
-echo "<br />";
-echo $ste_root."/saascustuploads/".$_SESSION['profile_account_id']."/cart/thumb/1a_cc.jpg";
-echo "<br />";
-echo "<img src='".$ste_root."/saascustuploads/".$_SESSION['profile_account_id']."/cart/thumb/1a_cc.jpg' />";
-echo "<br />";
-echo "<br />";
-echo "<br />";
-*/
-?>
-
-
 			<div class="data_table">
 				<?php require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/tablesort.php"); ?>	
                 <table cellpadding="10" cellspacing="0">
@@ -708,14 +762,14 @@ echo "<br />";
                             Display Order
                             <i <?php addSortAttr('display_order',false); ?>></i>
                             </th>
-                            <th>Products</th>
+                            <th width="10%">Products</th>
 							<th width="10%" <?php addSortAttr('active',true); ?>>
                             Active
                             <i <?php addSortAttr('active',false); ?>></i>
                             </th>
- 							<th width="17%">Subcategories</th>
+
 							<th width="10%">Edit</th>
-							<th width="5%">Delete</th>
+							<th width="10%">Delete</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -728,7 +782,6 @@ echo "<br />";
 							
 							$block .= "<tr>"; 
 							$block .= "<td valign='middle'>";
-							
 
 						if(!$strip){
 $block .= "<a class='fancybox' href='".$ste_root."/saascustuploads/".$_SESSION['profile_account_id']."/tmp/pre-crop/".$top_cat['file_name']."'>";
@@ -743,7 +796,8 @@ $block .= "<img  src='".$ste_root."/saascustuploads/".$_SESSION['profile_account
 						$block .= "</td>";
 							
 							//category name
-							$block .= "<td valign='middle' width='200px'>".stripslashes($top_cat['name'])."</td>"; //$top_cat['show_in_showroom']
+							$block .= "<td valign='middle' width='200px'>".stripslashes($top_cat['name'])."</td>"; 
+							
 							//show on home page
 							if($top_cat['show_on_home_page']){
 								$block .= "<td valign='middle' width='80px'>Yes</td>";
@@ -756,13 +810,9 @@ $block .= "<img  src='".$ste_root."/saascustuploads/".$_SESSION['profile_account
 							<input type='text' name='display_order[]' value='".$top_cat["display_order"]."'/>
 							<input type='hidden' name='cat_id[]' value='".$top_cat['cat_id']."' /></td>";
 		
-		
 							$block .= "<td valign='middle'><a class='btn btn-primary btn-small' href='../products/item.php?cat_id=".$top_cat['cat_id']."'>Products</a></td>";
-
-			
-									
+	
 							$disabled = ($admin_access->product_catalog_level < 2)? "disabled" : '';
-			
 
 							//active (on/off)
 							$checked = ($top_cat["active"])? "checked='checked'" : ''; 
@@ -774,8 +824,8 @@ $block .= "<img  src='".$ste_root."/saascustuploads/".$_SESSION['profile_account
 							<input type='checkbox' class='checkboxinput' name='active[]' value='".$top_cat['cat_id']."' ".$checked." /></div></td>";	
 		
 							//subcategories
-							$block .= "<td valign='middle'><a class='btn btn-primary' 
-							href='category.php?parent_cat_id=".$top_cat['cat_id']."'><i class='icon-cog icon-white'></i> Subcategories</a></td>";
+							//$block .= "<td valign='middle'><a class='btn btn-primary' 
+							//href='category.php?parent_cat_id=".$top_cat['cat_id']."'><i class='icon-cog icon-white'></i> Subcategories</a></td>";
 		
 							$url_str = "edit-top-category.php";
 							$url_str .= "?cat_id=".$top_cat['cat_id'];

@@ -3,6 +3,7 @@
 class Category {
 
 
+
 	function getMaxItemCatId($item_id)
 	{		
 		$ret = 0;

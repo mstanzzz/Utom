@@ -450,28 +450,13 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php');
 
 <script>
 
-	tinyMCE.init({
-        // General options
-        mode : "specific_textareas",
-        editor_selector : "wysiwyg",
-        theme : "advanced",
-        skin : "o2k7",
-        plugins : "table,advhr,advlink,emotions,inlinepopups,insertdatetime,searchreplace,paste,style",
-        // Theme options
-        theme_advanced_buttons1 :"bold,italic,underline,strikethrough,|,styleselect,formatselect,fontsizeselect,|,forecolor,backcolor",
-        theme_advanced_buttons2 : "justifyleft,justifycenter,justifyright,justifyfull,|,bullist,numlist,|,outdent,indent,blockquote,|,cut,copy,paste,pastetext,pasteword,|,undo,redo,|,link,unlink,",
-		theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,",
-        theme_advanced_toolbar_location : "top",
-        theme_advanced_toolbar_align : "left",
-        theme_advanced_statusbar_location : "bottom",
-        theme_advanced_resizing : true,
-        theme_advanced_resize_horizontal : false,
-	content_css : "../../../css/mce.css"
-	});
 
+tinymce.init({
+	selector: 'textarea',
+	plugins: 'advlist link image lists code',
+	forced_root_block : false
 
-
-
+});
 //=======================================
 // DEFINE VALIDATION FUNCTIONS
 //=======================================
@@ -1674,19 +1659,7 @@ echo $obj->show_associated_kits."       ".$obj->show_videos;
                     
 				</fieldset>
 
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-
+              
 				<fieldset class="edit_page" id="product_categories">
 					<legend>Categories &amp; Keywords<i class="icon-minus-sign icon-white"></i></legend>
 					<div class="alert alert-info"><strong>Note:</strong> You can manage and add new categories from the 
@@ -1706,7 +1679,9 @@ echo $obj->show_associated_kits."       ".$obj->show_videos;
 						</div>
 					</div>
 					<div class="colcontainer">
-						<?php require_once($_SERVER['DOCUMENT_ROOT']."/manage/catalog/products/item-category-tree-snippet.php"); ?>
+
+<?php require_once($_SERVER['DOCUMENT_ROOT']."/manage/catalog/products/item-category-tree-snippet.php"); ?>
+
 					</div>
 				</fieldset>
 
@@ -2168,7 +2143,7 @@ echo $obj->show_associated_kits."       ".$obj->show_videos;
 					echo "<br />";
 
 				$url_str= $ste_root.'manage/catalog/products/become-associated-kit-item.php';
-	$url_str = preg_replace('/(\/+)/','/',$url_str);
+				$url_str = preg_replace('/(\/+)/','/',$url_str);
 												
 						$url_str.= "?parent_item_id=".$_SESSION['item_id'];
 						$url_str.= "&ret_page=edit-item";				

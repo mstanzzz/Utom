@@ -397,29 +397,94 @@ if(isset($_POST['del_cat_id'])){
 
 	$cat_id = $_POST['del_cat_id'];
 
-/*
-	$sql = "SELECT name
+
+	$sql = "SELECT img_id
 			FROM category
 			WHERE cat_id = '".$cat_id."'";
-$result = $dbCustom->getResult($db,$sql);	
-	$obj = $result->fetch_object();
-	$name = $obj->name; 
-*/
+	$result = $dbCustom->getResult($db,$sql);
+	if($result->num_rows > 0){	
+		$object = $result->fetch_object();
+		$img_id = $object->img_id; 
+			
+		$sql = "SELECT file_name
+				FROM image
+				WHERE img_id = '".$img_id."'";
+		$res = $dbCustom->getResult($db,$sql);
+		if($res->num_rows > 0){	
+			$obj = $res->fetch_object();
+			
+			echo $file_name = $obj->file_name; 
+			
+			$p = $_SERVER['DOCUMENT_ROOT']."/saascustuploads/".$_SESSION['profile_account_id']."/cart/full/".$file_name;
+			if(file_exists($p)) unlink($p);
+
+			$p = $_SERVER['DOCUMENT_ROOT']."/saascustuploads/".$_SESSION['profile_account_id']."/cart/tiny/".$file_name;
+			if(file_exists($p)) unlink($p);
+
+			$p = $_SERVER['DOCUMENT_ROOT']."/saascustuploads/".$_SESSION['profile_account_id']."/cart/thumb/".$file_name;
+			if(file_exists($p)) unlink($p);
+						
+			$p = $_SERVER['DOCUMENT_ROOT']."/saascustuploads/".$_SESSION['profile_account_id']."/cart/small/".$file_name;
+			if(file_exists($p)) unlink($p);
+						
+			$p = $_SERVER['DOCUMENT_ROOT']."/saascustuploads/".$_SESSION['profile_account_id']."/cart/medium/".$file_name;
+			if(file_exists($p)) unlink($p);
+						
+			$p = $_SERVER['DOCUMENT_ROOT']."/saascustuploads/".$_SESSION['profile_account_id']."/cart/large/".$file_name;
+			if(file_exists($p)) unlink($p);
+			
+			/* **** wide **** */
+			$p = $_SERVER['DOCUMENT_ROOT']."/saascustuploads/".$_SESSION['profile_account_id']."/cart/tiny/wide/".$file_name;
+			if(file_exists($p)) unlink($p);
+
+			$p = $_SERVER['DOCUMENT_ROOT']."/saascustuploads/".$_SESSION['profile_account_id']."/cart/thumb/wide/".$file_name;
+			if(file_exists($p)) unlink($p);
+						
+			$p = $_SERVER['DOCUMENT_ROOT']."/saascustuploads/".$_SESSION['profile_account_id']."/cart/small/wide/".$file_name;
+			if(file_exists($p)) unlink($p);
+						
+			$p = $_SERVER['DOCUMENT_ROOT']."/saascustuploads/".$_SESSION['profile_account_id']."/cart/medium/wide/".$file_name;
+			if(file_exists($p)) unlink($p);
+						
+			$p = $_SERVER['DOCUMENT_ROOT']."/saascustuploads/".$_SESSION['profile_account_id']."/cart/large/wide/".$file_name;
+			if(file_exists($p)) unlink($p);
+			
+			/* **** extra wide **** */
+			$p = $_SERVER['DOCUMENT_ROOT']."/saascustuploads/".$_SESSION['profile_account_id']."/cart/tiny/exwide/".$file_name;
+			if(file_exists($p)) unlink($p);
+
+			$p = $_SERVER['DOCUMENT_ROOT']."/saascustuploads/".$_SESSION['profile_account_id']."/cart/thumb/exwide/".$file_name;
+			if(file_exists($p)) unlink($p);
+						
+			$p = $_SERVER['DOCUMENT_ROOT']."/saascustuploads/".$_SESSION['profile_account_id']."/cart/small/exwide/".$file_name;
+			if(file_exists($p)) unlink($p);
+						
+			$p = $_SERVER['DOCUMENT_ROOT']."/saascustuploads/".$_SESSION['profile_account_id']."/cart/medium/exwide/".$file_name;
+			if(file_exists($p)) unlink($p);
+						
+			$p = $_SERVER['DOCUMENT_ROOT']."/saascustuploads/".$_SESSION['profile_account_id']."/cart/large/exwide/".$file_name;
+			if(file_exists($p)) unlink($p);
+			
+			$sql = sprintf("DELETE FROM image 
+							WHERE img_id = '%u'
+							AND profile_account_id = '%u'", $img_id, $_SESSION['profile_account_id']);
+			$result = $dbCustom->getResult($db,$sql);
+
+		}	
+	
+	}
+
 
 	$sql = "DELETE FROM child_cat_to_parent_cat 
 			WHERE child_cat_id = '".$cat_id."'";
 	$result = $dbCustom->getResult($db,$sql);	
 
-
 	$sql = "DELETE FROM category_to_attr 
 			WHERE cat_id = '".$cat_id."'";
 	$result = $dbCustom->getResult($db,$sql);
 	
-
-
 	$sql = sprintf("DELETE FROM category WHERE cat_id = '%u'", $cat_id);
 	$result = $dbCustom->getResult($db,$sql);
-	
 
 	$msg = "Your change is now live.";
 

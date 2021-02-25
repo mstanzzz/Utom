@@ -44,7 +44,6 @@ $object = $result->fetch_object();
 $p = $_SERVER['DOCUMENT_ROOT']."/saascustuploads/".$_SESSION['profile_account_id']."/cart/full/".$object->file_name;
 if(file_exists($p)) unlink($p);
 
-
 $p = $_SERVER['DOCUMENT_ROOT']."/saascustuploads/".$_SESSION['profile_account_id']."/cart/tiny/".$object->file_name;
 if(file_exists($p)) unlink($p);
 

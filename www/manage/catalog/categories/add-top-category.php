@@ -66,25 +66,13 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php');
 
 ?>
 <script type="text/javascript" language="javascript">
-		tinyMCE.init({
-        // General options
-        mode : "specific_textareas",
-        editor_selector : "wysiwyg",
-        theme : "advanced",
-        skin : "o2k7",
-        plugins : "table,advhr,advlink,emotions,inlinepopups,insertdatetime,searchreplace,paste,style",
-        // Theme options
-        theme_advanced_buttons1 :"bold,italic,underline,strikethrough,|,styleselect,formatselect,fontsizeselect,|,forecolor,backcolor",
-        theme_advanced_buttons2 : "justifyleft,justifycenter,justifyright,justifyfull,|,bullist,numlist,|,outdent,indent,blockquote,|,cut,copy,paste,pastetext,pasteword,|,undo,redo,|,link,unlink,",
-		theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,",
-        theme_advanced_toolbar_location : "top",
-        theme_advanced_toolbar_align : "left",
-        theme_advanced_statusbar_location : "bottom",
-        theme_advanced_resizing : true,
-        theme_advanced_resize_horizontal : false,
-	content_css : "../../../css/mce.css"
-	});
 
+tinymce.init({
+	selector: 'textarea',
+	plugins: 'advlist link image lists code',
+	forced_root_block : false
+
+});
 
 
 function get_query_str(){
@@ -190,7 +178,7 @@ if(!$strip){
 
 	<?php
 
-        $url_str = $ste_root."manage/catalog/top-category.php"; 
+        $url_str = $ste_root."manage/catalog/categories/top-category.php"; 
 		$url_str = preg_replace('/(\/+)/','/',$url_str);
 
 	$url_str .= "?pagenum=".$_SESSION['paging']['pagenum'];
@@ -409,14 +397,7 @@ echo "<br />";
 						</div>
 				</div>
 			</fieldset>
-			<fieldset>
-				<legend>Parent Categories 
-                <div style="font-size:12px;">Note: If parent categories are selected, this category becomes a child category and is no longer a top category </div>
-                </legend>
-					<?php
-						require_once($_SERVER['DOCUMENT_ROOT']."/manage/catalog/categories/category-tree-snippet.php"); 
-					?>
-			</fieldset>
+			
 		</div>
 		
 	</form>

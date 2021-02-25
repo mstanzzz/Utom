@@ -28,7 +28,7 @@ if($site == "local"){
 	define("DB_HOST", "localhost");
 	define('DB_USERNAME', 'ctgtest_ctgtest');
 	define('DB_PSWD', 'ctgtest01A');	
-	define('SITEROOT', 'http://storittek.com/');
+	define('SITEROOT', 'http://storittek.com');
 
 }
 

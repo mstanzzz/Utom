@@ -8,40 +8,35 @@
 	$top_cats = array();
 	$item_cats = array();
 	
-		$sql = "SELECT cat_id, name, img_id, show_on_home_page 
-				FROM category 
-				WHERE profile_account_id = '".$_SESSION['profile_account_id']."'
-				ORDER BY name";
-		$result = $dbCustom->getResult($db,$sql);				
-		$i = 0;
-		while($row = $result->fetch_object()) {
-	
-			$sql = "SELECT child_cat_to_parent_cat_id 
-					FROM child_cat_to_parent_cat
-					WHERE child_cat_to_parent_cat.child_cat_id = '".$row->cat_id."'";
-			$res = $dbCustom->getResult($db,$sql);
-			if(!$res->num_rows > 0){
-				$top_cats[$i]['cat_id'] = $row->cat_id;
-				$top_cats[$i]['name'] = $row->name;
-				$top_cats[$i]['show_on_home_page'] = $row->show_on_home_page;
-				$sql = "SELECT file_name 
-						FROM image
-						WHERE img_id = '".$row->img_id."'";
-				$img_res = $dbCustom->getResult($db,$sql);
-				if($img_res->num_rows > 0){
-					$img_obj = $img_res->fetch_object();
-					$top_cats[$i]['file_name'] = $img_obj->file_name;
-				}else{
-					$top_cats[$i]['file_name'] = '';					
-				}	
-				$i++;
-			}
+	$sql = "SELECT cat_id, name, img_id, show_on_home_page 
+			FROM category 
+			WHERE profile_account_id = '".$_SESSION['profile_account_id']."'
+			ORDER BY name";
+	$result = $dbCustom->getResult($db,$sql);				
+	$i = 0;
+	while($row = $result->fetch_object()) {
+					
+		$top_cats[$i]['cat_id'] = $row->cat_id;
+		$top_cats[$i]['name'] = $row->name;
+		$top_cats[$i]['show_on_home_page'] = $row->show_on_home_page;
+		$sql = "SELECT file_name 
+				FROM image
+				WHERE img_id = '".$row->img_id."'";
+		$img_res = $dbCustom->getResult($db,$sql);
+		if($img_res->num_rows > 0){
+			$img_obj = $img_res->fetch_object();
+			$top_cats[$i]['file_name'] = $img_obj->file_name;
+		}else{
+			$top_cats[$i]['file_name'] = '';					
+		}	
+		$i++;
 			
-		}
+			
+	}
 	
 	if(!isset($_SESSION['temp_item_cats'])) $_SESSION['temp_item_cats'] = array();
 		
-	 if($cat_id > 0){
+	if($cat_id > 0){
 		if(!inArray($cat_id, $_SESSION['temp_item_cats'], 'cat_id')){
 			$sql = "SELECT name 
 					FROM category 
@@ -54,25 +49,13 @@
 				$_SESSION['temp_item_cats'][$i]['name'] = $c_obj->name;
 			}
 		}
-	 }
+	}
 
 	
 ?>
 
 <script type="text/javascript">
 
-
-function show_children(cat_id){
-	var wheel = "<li><img src='<?php echo $ste_root; ?>/images/progress.gif' style='width:25px;height:auto;'></li>";
-	$("li#"+cat_id+" > ul.childrenplaceholder").html(wheel);
-	$.ajaxSetup({ cache: false}); 
-	$.ajax({
-		url: '<?php echo $ste_root; ?>/manage/catalog/products/ajax_get_item_tree_snippet_child_cats_list.php?cat_id='+cat_id+'&item_id='+<?php echo $item_id; ?>,
-		success: function(data) {
-			$("li#"+cat_id+" > ul.childrenplaceholder").html(data);
-		}
-	});
-}
 
 function setCatBox(){
 	var $optarr = $("select.selectedCats");
@@ -95,10 +78,10 @@ function setCatBox(){
 			}
 	?>
 
-		var option = "<option title='<?php echo $cat_tooltip; ?>' id='<?php echo $val['cat_id']; ?>' value='<?php echo $val['cat_id']; ?>' ><?php echo $val['name']; ?></option>";
-		var opt = $(option);
-		$optarr.append(opt);
-		opt.attr("selected","selected");
+	var option = "<option title='<?php echo $cat_tooltip; ?>' id='<?php echo $val['cat_id']; ?>' value='<?php echo $val['cat_id']; ?>' ><?php echo $val['name']; ?></option>";
+	var opt = $(option);
+	$optarr.append(opt);
+	opt.attr("selected","selected");
 
 	<?php	
 	} }
@@ -281,31 +264,34 @@ $(document).ready(function(){
 	setCatBox();
 
 	
-
-
 });
 
 </script>
 <script type="text/javascript" src="<?php $ste_root;?>/js/categorytree.js"></script>
-		<label>Search for and Select Categories using the category tree. As select and deselect categories from the tree, the searchbox will display the selected categories.</label>
-		<select style="width: 90%;" multiple="multiple" class="selectedCats chosen" data-placeholder='Search and Select Categories' name="chosen_categories[]">
-		</select>
+		
+<label>Search for and Select Categories. The searchbox will display the selected categories.</label>
+<select style="width: 90%;" multiple="multiple" class="selectedCats chosen" 
+data-placeholder='Search and Select Categories' name="chosen_categories[]">
 
-		<div class="mT10 mB10"><a class="btn btn-large btn-primary expand-all">Expand All Categories </a></div>
-		<ul id="categorytree" role="tree" class="tree selectcattree">
-			<?php
-				$j = 0;
-				$block = '';
-				foreach ($top_cats as $top_cat) {
-					$j++;
-					$block .= "<li role='treeitem' aria-expanded='true' id='".$top_cat['cat_id']."'>"; 
-					$block .= "<a tabindex='-1' class='tree-parent tree-parent-collapsed' onclick='show_children(".$top_cat['cat_id'].")'  
-					data-catid='".$top_cat['cat_id']."' data-cattype='topcat'><img src='".$ste_root."/saascustuploads/".$_SESSION['profile_account_id']."/cart/tiny/".$top_cat['file_name']."' />".$top_cat['name'].'';
-					$checked = inArray($top_cat['cat_id'], $_SESSION['temp_item_cats'], 'cat_id') ? "checked='checked'" : '';
-					$block .= "<input class='checkbox' onclick='updateOptions(".$top_cat['cat_id'].")' type='checkbox' id='".$top_cat['cat_id']."' value='".$top_cat['cat_id']."' ".$checked." />
-					<input type='hidden' value='".$top_cat['name']."' name='categoryname' class='categoryname' /></a>";
-					$block .= "<ul role='group' class='childrenplaceholder'></ul></li>"; 
-				}
-				echo $block;
-			?>
-		</ul>
+</select>
+
+<ul id="categorytree" role="tree" class="tree selectcattree">
+<?php
+$j = 0;
+$block = '';
+foreach ($top_cats as $top_cat) {
+	$j++;
+	$block .= "<li role='treeitem' aria-expanded='true' id='".$top_cat['cat_id']."'>"; 
+	$block .= "<a tabindex='-1' class='tree-parent tree-parent-collapsed' ";   
+	$block .= "data-catid='".$top_cat['cat_id']."' data-cattype='topcat'>";
+	$block .= "<img src='".$ste_root."/saascustuploads/".$_SESSION['profile_account_id']."/cart/tiny/".$top_cat['file_name']."' />".$top_cat['name'].'';
+	$checked = inArray($top_cat['cat_id'], $_SESSION['temp_item_cats'], 'cat_id') ? "checked='checked'" : '';
+	$block .= "<input class='checkbox' onclick='updateOptions(".$top_cat['cat_id'].")' ";
+	$block .= " type='checkbox' id='".$top_cat['cat_id']."' value='".$top_cat['cat_id']."' ".$checked." />";
+	$block .= "<input type='hidden' value='".$top_cat['name']."' name='categoryname' class='categoryname' /></a>";
+	$block .= "<ul role='group' class='childrenplaceholder'></ul></li>"; 
+				
+}
+echo $block;
+?>
+</ul>

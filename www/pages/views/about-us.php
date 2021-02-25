@@ -503,17 +503,9 @@ require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php");
 			</div>
 		</div>
 
-
-
-
-
-
-	<?php
-	require_once($_SERVER['DOCUMENT_ROOT'].'/includes/footer.php');
-	?>
-		
-		
-		
+<?php
+require_once($_SERVER['DOCUMENT_ROOT'].'/includes/footer.php');
+?>
 
 		<!-- Modal mobile campany block -->
 		<div class="modal about-us-modal fade" id="mobile-company-full-description" tabindex="-1" role="dialog" aria-labelledby="mobile-company-full-description-title" aria-hidden="true">

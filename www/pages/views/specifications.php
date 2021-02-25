@@ -1,6 +1,12 @@
 
 
 
+
+
+<?php	
+require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php"); 	
+?>	
+
 <section class="first-fixed-block covid-block clearfix">
 <figure class="first-fixed-block__img-group" style="background-image: url('../../images/specification-header.png');">
 <figcaption class="first-fixed-block__img-group--text-block">
@@ -15,10 +21,6 @@ Panolam, Flakeboard, and other high quality American companies.</p>
 </section>
 		
 
-
-<?php	
-require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php"); 	
-?>	
 
 <main class="main clearfix">
 	<section class="breadcrumb-block">

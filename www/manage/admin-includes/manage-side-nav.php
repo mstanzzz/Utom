@@ -116,7 +116,7 @@ $cat_block .= "<li><span class='circle'>".multipleDirectories($catalog_open,0)."
 $cat_block .= "<a href='".$ste_root."/manage/catalog/catalog-landing.php'"; 
 $cat_block .= multipleDirectories($catalog_open,1)."'>Catalog</a>";
 $cat_block .= "<ul ".multipleDirectories($catalog_open,1).">";
-$cat_block .= "<li><a href='".$ste_root."manage/catalog/categories/category-tree.php' >Manage Categories</a></li>";
+$cat_block .= "<li><a href='".$ste_root."manage/catalog/categories/top-category.php' >Manage Categories</a></li>";
 $cat_block .= "<li><a href='".$ste_root."manage/catalog/products/item.php'>Products</a></li>";
 $cat_block .= "<li><a href='".$ste_root."manage/catalog/attributes/set-custom-attributes.php'>Product Attributes</a></li>";
 $cat_block .= "<li><a href='".$ste_root."manage/catalog/reviews/item-review.php'>Product Reviews</a></li>";

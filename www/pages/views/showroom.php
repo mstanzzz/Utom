@@ -1,17 +1,4 @@
 <?php 
-require_once('includes/config.php');
-require_once('includes/accessory_cart_functions.php');
-require_once('includes/class.shopping_cart.php');
-require_once('includes/class.shopping_cart_item.php');
-require_once("includes/class.store_data.php");
-require_once('includes/class.nav.php');
-require_once('includes/class.customer_login.php');
-
-$store_data = new StoreData;
-$cart = new ShoppingCart;
-$item = new ShoppingCartItem;
-$nav = new Nav;
-$lgn = new CustomerLogin;
 
 $cat_id = (isset($_GET['cat_id']))? $_GET['cat_id'] : 0;
 $profile_cat_id = (isset($_GET['prodCatId']))? $_GET['prodCatId'] : 0;
