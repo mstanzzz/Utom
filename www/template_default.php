@@ -94,11 +94,6 @@ if(strpos($_SERVER['DOCUMENT_ROOT'], '/var/www/') !== false) {
 	$ste_root = SITEROOT.'/';
 }
 
-//echo "<br />";
-//echo $ste_root;
-//echo "<br />";
-//exit;
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -136,6 +131,10 @@ function getScreenWidth(){
 echo "<hr />";
 echo "page: ".$page;
 echo "<hr />";
+echo "<br />";
+//echo $ste_root;
+//echo "<br />";
+//exit;
 
 //echo file_exists($_SERVER['DOCUMENT_ROOT']."/pages/controllers/".$page.".php");
 if(file_exists($_SERVER['DOCUMENT_ROOT']."/pages/controllers/".$page.".php")){
@@ -145,6 +144,14 @@ if(file_exists($_SERVER['DOCUMENT_ROOT']."/pages/controllers/".$page.".php")){
 if(file_exists($_SERVER['DOCUMENT_ROOT']."/pages/views/".$page.".php")){
 	require_once($_SERVER['DOCUMENT_ROOT']."/pages/views/".$page.".php"); 											
 }
+
+echo "<hr />";
+echo "<br />";
+echo "<hr />";
+echo "<br />";
+echo "<hr />";
+echo "<br />";
+echo $ste_root;
 
 ?>
 

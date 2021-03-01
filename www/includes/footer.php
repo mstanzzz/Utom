@@ -204,17 +204,22 @@
 		
 <a style="float:left; margin:6px;" href="we-design.html">we-design</a>
 
+<a style="float:left; margin:6px;" href="you-design.html">you-design</a>
+
 <a style="float:left; margin:6px;" href="specifications.html">specifications</a>
 
 <a style="float:left; margin:6px;" href="login.html">login</a>
 
-
 <a style="float:left; margin:6px;" href="showroom.html">showroom (test)</a>
 
-
-
-
 <a style="float:left; margin:6px;" href="account.html">account</a>
+
+<a style="float:left; margin:6px;" href="account-idea-folder.html">account-idea-folder</a>
+
+<a style="float:left; margin:6px;" href="account-idea-folder-details.html">account-idea-folder-details</a>
+
+<a style="float:left; margin:6px;" href="account-idea-folder-empty.html">account-idea-folder-empty</a>
+
 
 <span style="clear:both;"></span>
 
@@ -223,6 +228,11 @@
 		</div>
 	</div>
 </footer>
+
+
+
+
+
 
 
 

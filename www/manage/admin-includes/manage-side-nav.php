@@ -174,6 +174,7 @@ $cust_block .= "</li>";
 echo $cust_block;
 
 
+
 $adm_block = '';
 $adm_block .= "<li><span class='circle'>";
 $adm_block .= multipleDirectories($admin_open,0);
@@ -182,11 +183,11 @@ $adm_block .= "<a href='".$ste_root."manage/general-admin/admin-landing.php'> Ad
 $adm_block .= " <ul ";
 $adm_block .= multipleDirectories($admin_open,1);
 $adm_block .= " >";
-$adm_block .= "<li><a href='".$ste_root."manage/general-admin/edit-company-profile'>Basic Settings</a></li>";
-$adm_block .= "<li><a href='".$ste_root."manage/general-admin/add-on-change-request'>Add-ons Change Request</a></li>";
-$adm_block .= "<li><a href='".$ste_root."manage/general-admin/add-ons'>Add-ons Toggle</a></li>";
-$adm_block .= "<li><a href='".$ste_root."manage/admin-users/admin-users'>Manage Users</a></li>";
-$adm_block .= "<li><a href='".$ste_root."manage/general-admin/states'>Location Settings</a></li>";			
+$adm_block .= "<li><a href='".$ste_root."manage/general-admin/edit-company-profile.php'>Basic Settings</a></li>";
+$adm_block .= "<li><a href='".$ste_root."manage/general-admin/add-on-change-request.php'>Add-ons Change Request</a></li>";
+$adm_block .= "<li><a href='".$ste_root."manage/general-admin/add-ons.php'>Add-ons Toggle</a></li>";
+$adm_block .= "<li><a href='".$ste_root."manage/admin-users/admin-users.php'>Manage Users</a></li>";
+$adm_block .= "<li><a href='".$ste_root."manage/general-admin/states.php'>Location Settings</a></li>";			
 $adm_block .= "</ul>";
 $adm_block .= "</li>";
 

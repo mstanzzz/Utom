@@ -1,17 +1,4 @@
 <?php 
-require_once('includes/config.php');
-require_once('includes/accessory_cart_functions.php');
-require_once('includes/class.shopping_cart.php');
-require_once('includes/class.shopping_cart_item.php');
-require_once("includes/class.store_data.php");
-require_once('includes/class.nav.php');
-require_once('includes/class.customer_login.php');
-
-$store_data = new StoreData;
-$cart = new ShoppingCart;
-$item = new ShoppingCartItem;
-$nav = new Nav;
-$lgn = new CustomerLogin;
 
 $cat_id = (isset($_GET['CatId']))? $_GET['CatId'] : 0;
 if(!is_numeric($cat_id)) $cat_id = 0;
@@ -30,6 +17,7 @@ if($cat_id > 0){
 //echo $cat_id;
 //exit;
 
+
 $cat_block = '';
 $i = 0;
 foreach($items_array as $val){
@@ -39,14 +27,49 @@ foreach($items_array as $val){
 	$i++;			
 	//$url_str = $nav->getCatUrl($val['name'], $val['profile_cat_id'], 'showroom');		
 	//$url_str = "showroom-detail-view-category.html";				
-	$url_str = "organizer-landing-page.html";		
-	$nm = stripSlashes($val['name']);
-	$name = get_shorter($nm, 30);
+	//$url_str = "organizer-landing-page.html";		
+	
+	$nm = stripSlashes($val['name']);	
+	$nm = $nav->getUrlText($nm);
+	
+	// THIS FUNCTIONS ALSO ADDS DOTS 
+	//$name = get_shorter($nm, 20);
+	//$name = str_replace (".." ,"." ,$name);
+	
+	$name = substr($nm,0,60);	
+	//echo "name:  ".$name; 
+	//echo "<br />";
+	//echo $url_str;
+	//exit;
+		
+	// IS THIS A SHOWROOM ITEM 	
+	if($val['show_in_cart']){
+	//if(0){	
+		//...com/closet-organizers/showroom-76/reach-in-craft-closet-organizer.html
+		//$url_str = $ste_root."/category-".$val['item_id']."/".$name.".html";		
+		$url_str = $ste_root."product-".$val['item_id']."/".$name.".html";
+		
+		//echo $url_str;
+		//exit;		
+		
+	}else{
+	
+		// IS THIS A SHOWROOM ITEM 
+	
+		$url_str = $ste_root."/category-".$val['item_id']."/".$name.".html";
+		//$url_str = $ste_root."product-".$val['item_id']."/".$name.".html";
+		
+		
+	}
+
+	
+
 
 	if($i % 5 == 1){
 			
 		$img = $ste_root."saascustuploads/".$_SESSION['profile_account_id']."/cart/medium/wide/".$val['file_name'];
 		//$img = "../../images/showroom-1.png";
+
 
 		$cat_block .= "<div class='col-12 col-lg-6 hidden-box open'>";
 		$cat_block .= "<figure class='showroom-block__item'>";
@@ -54,7 +77,7 @@ foreach($items_array as $val){
 		$cat_block .= "<figcaption class='showroom-block__item--wrapper'>";
 		$cat_block .= "<div class='showroom-block__item--content'>";
 		$cat_block .= "<h2>Showroom product preview</h2>";
-		$cat_block .= "<a href='#' title='' class='link-button'>";
+		$cat_block .= "<a href='".$url_str."' title='' class='link-button'>";
 		$cat_block .= "Explore now";
 		$cat_block .= "<svg xmlns='http://www.w3.org/2000/svg' width='20.8' height='14.623' viewBox='0 0 20.8 14.623'>";
 		$cat_block .= "<path id='left-arrow_3_' data-name='left-arrow(3)'"; 
@@ -83,7 +106,7 @@ foreach($items_array as $val){
 		$cat_block .= "<figcaption class='showroom-block__item--wrapper'>";
 		$cat_block .= "<div class='showroom-block__item--content'>";
 		$cat_block .= "<h2>Showroom product preview</h2>";
-		$cat_block .= "<a href='#' title='' class='link-button'>";
+		$cat_block .= "<a href='".$url_str."' title='' class='link-button'>";
 		$cat_block .= "Explore now";
 		$cat_block .= "<svg xmlns='http://www.w3.org/2000/svg' width='20.8' height='14.623' viewBox='0 0 20.8 14.623'>";
 		$cat_block .= "<path id='left-arrow_3_' data-name='left-arrow(3)'";

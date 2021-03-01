@@ -216,7 +216,19 @@ foreach($cats as $val){
 	
 	$i++;
 	
-	$url_str = $nav->getCatUrl($val['name'],$val['profile_cat_id'],'showroom');			
+	//$url_str = $nav->getCatUrl($val['name'],$val['profile_cat_id'],'showroom');			
+	$nm = stripSlashes($val['name']);	
+	$nm = $nav->getUrlText($nm);
+	
+	// THIS FUNCTIONS ALSO ADDS DOTS 
+	//$name = get_shorter($nm, 20);
+	//$name = str_replace (".." ,"." ,$name);
+	
+	$name = substr($nm,0,60);	
+
+	//....com/showroom-category-120/kitchen.html
+	$url_str = $ste_root."showroom-category-".$val['cat_id']."/".$name.".html";
+		
 
 	if($i % 5 == 1){		
 		$shoroom_images .= "<div class='col-12 col-lg-6 hidden-box open'>";

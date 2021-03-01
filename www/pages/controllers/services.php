@@ -57,21 +57,16 @@ if($result->num_rows > 0){
 	$p_2_text = '';
 	$p_3_head = ''; 
 	$p_3_text = '';
-	
 	$p_4_head = '';
 	$p_4_text = ''; 
-	
 	$p_5_head = '';  
 	$p_5_text = ''; 
-	
 	$p_6_head = '';  
 	$p_6_text = ''; 
 	$p_7_head = '';  
 	$p_7_text = '';
-
 	$p_8_head = '';  
 	$p_8_text = '';
-
 	$p_9_head = '';  
 	$p_9_text = '';	
 	

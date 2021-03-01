@@ -16,9 +16,6 @@ $result = $dbCustom->getResult($db,$sql);
 
 //echo $result->num_rows;
 
-
-
-
 if($result->num_rows > 0){
 	
 	$object = $result->fetch_object();
@@ -116,6 +113,17 @@ if($result->num_rows > 0){
 }else{
 	$img_3_file_name = '';
 }	 
+
+
+// GET item_id
+// getitem details
+
+
+
+
+
+
+
 
 ?>
 

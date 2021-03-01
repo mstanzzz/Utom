@@ -1,70 +1,70 @@
 
-		
 
 <?php	
 require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php"); 	
-?>			
+?>	
 <main class="main showroom-detail-product clearfix">
 	<section class="breadcrumb-block showroom-detail-page desktop-show">
-				<div class="wrapper">
-					<div class="container-fluid">
-						<div class="row">
-							<div class="col-12">
-								<div class="breadcrumb-block__wrapper" aria-label="breadcrumb">
-									<ul class="breadcrumb">
-										<li class="breadcrumb-item"><a href="#" title="">Home</a></li>
-										<li class="breadcrumb-item"><a href="showroom-detail-view-categories.html" title="">Room Gallery</a></li>
-										<li class="breadcrumb-item"><a href="showroom-detail-view-category.html" title="">Master closet Organizers</a></li>
-										<li class="breadcrumb-item active" aria-current="page" title="">Product</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+	<div class="wrapper">
+	<div class="container-fluid">
+	<div class="row">
+	<div class="col-12">
+	<div class="breadcrumb-block__wrapper" aria-label="breadcrumb">
+	<ul class="breadcrumb">
+	<li class="breadcrumb-item"><a href="../../" title="">Home</a></li>
+	<li class="breadcrumb-item"><a href="showroom-detail-view-categories.html" title="">Room Gallery</a></li>
+	<li class="breadcrumb-item"><a href="showroom-detail-view-category.html" title="">Master closet Organizers</a></li>
+	<li class="breadcrumb-item active" aria-current="page" title="">Product</li>
+	</ul>
+	</div>
+	</div>
+	</div>
+	</div>
+	</div>
 	</section>
 
 	<section class="simple-block showroom-detail-product-heading">
-				<div class="wrapper">
-					<div class="container-fluid">
-						<div class="row">
-							<div class="col-12">
-								<div class="simple-block__border no-border p-0">
-									<div class="row">
-										<div class="col-12">
-											<div class="simple-block__heading">
-												<a href="showroom-detail-view-category.html" title="" class="showroom-detail-product-heading-back">
-													<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z"/></svg>
-												</a>
+		<div class="wrapper">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-12">
+						<div class="simple-block__border no-border p-0">
+							<div class="row">
+								<div class="col-12">
+									<div class="simple-block__heading">
+										<a href="showroom-detail-view-category.html" title="" class="showroom-detail-product-heading-back">
+											<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z"/></svg>
+										</a>
+<h2 class="simple-block__heading--heading text-center">
+<!--
+Closet Organizers: Custom-designed by you, quality-built by us.
+-->
+<?php
+echo stripcslashes($item_array['name']);
+?>
 
-												<h2 class="simple-block__heading--heading text-center">Closet Organizers: Custom-designed by you, quality-built by us.</h2>
-												
-												<a href="showroom-detail-view-categories.html" title="" class="showroom-detail-product-heading-close">
-													<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g transform="translate(0 -0.001)"><g transform="translate(0 0.001)"><path d="M13.326,12l10.4-10.4A.938.938,0,0,0,22.4.275L12,10.675,1.6.275A.938.938,0,0,0,.274,1.6L10.674,12,.274,22.4A.938.938,0,0,0,1.6,23.726L12,13.327l10.4,10.4A.938.938,0,0,0,23.725,22.4Z" transform="translate(0 -0.001)"/></g></g></svg>
-												</a>
-											</div>
-										</div>
+</h2>												
+										<a href="showroom-detail-view-categories.html" title="" class="showroom-detail-product-heading-close">
+											<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g transform="translate(0 -0.001)"><g transform="translate(0 0.001)"><path d="M13.326,12l10.4-10.4A.938.938,0,0,0,22.4.275L12,10.675,1.6.275A.938.938,0,0,0,.274,1.6L10.674,12,.274,22.4A.938.938,0,0,0,1.6,23.726L12,13.327l10.4,10.4A.938.938,0,0,0,23.725,22.4Z" transform="translate(0 -0.001)"/></g></g></svg>
+										</a>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
+			</div>
+		</div>
 	</section>
 
-	<!--			CAROUSEL SECTION-->
+			<!--			CAROUSEL SECTION-->
 	<section class="two-elements-block clearfix">
-		<div class="wrapper">
-			<div class="container-fluid">
-				<div class="row">
-					<div class="col-12 col-lg-6">
-						<div class="caro-wrap js-switch-carosel-mobile-wrap">
-							<div class="showroom-detail-product__carousel image-gallery js-switch-carosel-mobile">
-								<a href="images/showroom-1.png" title="Lorem ipsum">
-									<img src="../../images/showroom-1.png" alt="" class="img-fluid">
-								</a>
-										
-										<!--
+				<div class="wrapper">
+					<div class="container-fluid">
+						<div class="row">
+							<div class="col-12 col-lg-6">
+								<div class="caro-wrap js-switch-carosel-mobile-wrap">
+									<div class="showroom-detail-product__carousel image-gallery js-switch-carosel-mobile">
 										<a href="images/showroom-1.png" title="Lorem ipsum">
 											<img src="../../images/showroom-1.png" alt="" class="img-fluid">
 										</a>
@@ -98,13 +98,11 @@ require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php");
 										<a href="images/showroom-1.png" title="Lorem ipsum">
 											<img src="../../images/showroom-1.png" alt="" class="img-fluid">
 										</a>
-										-->
-							</div>
-							<div class="showroom-detail-product__carousel-nav">
-								<div>
-									<img src="../../images/showroom-1.png" alt="" class="img-fluid prod-detail__nav-img">
-								</div>
-										
+										<a href="images/showroom-1.png" title="Lorem ipsum">
+											<img src="../../images/showroom-1.png" alt="" class="img-fluid">
+										</a>
+									</div>
+									<div class="showroom-detail-product__carousel-nav">
 										<div>
 											<img src="../../images/showroom-1.png" alt="" class="img-fluid prod-detail__nav-img">
 										</div>
@@ -138,294 +136,306 @@ require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php");
 										<div>
 											<img src="../../images/showroom-1.png" alt="" class="img-fluid prod-detail__nav-img">
 										</div>
-										
-							</div>
+										<div>
+											<img src="../../images/showroom-1.png" alt="" class="img-fluid prod-detail__nav-img">
+										</div>
+									</div>
 
 									
-							<div class="row">
-								<div class="col-12">
-									<div class="back-to-filters-wrap js-back-to-filters">
-										<a href="#" title="" class="back-to-filters" data-default-text="back to filters" data-second-text="you design">
-											back to filters
-										</a>
+									<div class="row">
+										<div class="col-12">
+											<div class="back-to-filters-wrap js-back-to-filters">
+												<a href="#" title="" class="back-to-filters" data-default-text="back to filters" data-second-text="you design">
+													back to filters
+												</a>
+											</div>
+										</div>
+									</div>
+
+									<div class="showroom-detail-product__more-informations more-Installations">
+										<p class="showroom-detail-product__more-informations--heading">Instruction and related video's</p>
+
+										<p>Closet organizers are the ultimate do it yourself project. They not only make your life simpler, they also bring about a lifetime of satisfaction. The Closets To Go closet organizers are the easiest to design and assemble. From our easy-to-adjust hanging bracket to the pre-assembly of all your hardware fittings and labeled panels, we've virtually made reading instructions a thing of the past. Our custom closet organizers are the easiest to install in the nation, guaranteed!</p>
+										<p>They're also constructed with high-quality, environmentally-friendly materials made right here in the United States. Carefully constructed exactly to your specifications, our closet organizers can solve a number of organizational issues, whether it be more space for kitchen storage, a new place in your garage to store seasonal items and tools or a room to showcase your exquisite fashion taste. It's easy to get started - simply click "Start Designing" below to request a complimentary closet design or try your hand at our easy-to-use online closet design software. Whatever it is you're looking for, our custom closet organizers will satisfy all your space saving and organizational needs. Experience the Closets To Go difference and see why nationwide customers are repeat customers!</p>
+									</div>
+
+									<div class="showroom-detail-product__more-informations more-videos">
+										<p class="showroom-detail-product__more-informations--heading">Instruction and related video's</p>
+
+										<p>Closet organizers are the ultimate do it yourself project. They not only make your life simpler, they also bring about a lifetime of satisfaction. The Closets To Go closet organizers are the easiest to design and assemble. From our easy-to-adjust hanging bracket to the pre-assembly of all your hardware fittings and labeled panels, we've virtually made reading instructions a thing of the past. Our custom closet organizers are the easiest to install in the nation, guaranteed!</p>
+										<p>They're also constructed with high-quality, environmentally-friendly materials made right here in the United States. Carefully constructed exactly to your specifications, our closet organizers can solve a number of organizational issues, whether it be more space for kitchen storage, a new place in your garage to store seasonal items and tools or a room to showcase your exquisite fashion taste. It's easy to get started - simply click "Start Designing" below to request a complimentary closet design or try your hand at our easy-to-use online closet design software. Whatever it is you're looking for, our custom closet organizers will satisfy all your space saving and organizational needs. Experience the Closets To Go difference and see why nationwide customers are repeat customers!</p>
 									</div>
 								</div>
 							</div>
-
-							<div class="showroom-detail-product__more-informations more-Installations">
-								<p class="showroom-detail-product__more-informations--heading">Instruction and related video's</p>
-								<p>Closet organizers are the ultimate do it yourself project. They not only make your life simpler, they also bring about a lifetime of satisfaction. The Closets To Go closet organizers are the easiest to design and assemble. From our easy-to-adjust hanging bracket to the pre-assembly of all your hardware fittings and labeled panels, we've virtually made reading instructions a thing of the past. Our custom closet organizers are the easiest to install in the nation, guaranteed!</p>
-								<p>They're also constructed with high-quality, environmentally-friendly materials made right here in the United States. Carefully constructed exactly to your specifications, our closet organizers can solve a number of organizational issues, whether it be more space for kitchen storage, a new place in your garage to store seasonal items and tools or a room to showcase your exquisite fashion taste. It's easy to get started - simply click "Start Designing" below to request a complimentary closet design or try your hand at our easy-to-use online closet design software. Whatever it is you're looking for, our custom closet organizers will satisfy all your space saving and organizational needs. Experience the Closets To Go difference and see why nationwide customers are repeat customers!</p>
-							</div>
-							<div class="showroom-detail-product__more-informations more-videos">
-								<p class="showroom-detail-product__more-informations--heading">Instruction and related video's</p>
-								<p>Closet organizers are the ultimate do it yourself project. They not only make your life simpler, they also bring about a lifetime of satisfaction. The Closets To Go closet organizers are the easiest to design and assemble. From our easy-to-adjust hanging bracket to the pre-assembly of all your hardware fittings and labeled panels, we've virtually made reading instructions a thing of the past. Our custom closet organizers are the easiest to install in the nation, guaranteed!</p>
-								<p>They're also constructed with high-quality, environmentally-friendly materials made right here in the United States. Carefully constructed exactly to your specifications, our closet organizers can solve a number of organizational issues, whether it be more space for kitchen storage, a new place in your garage to store seasonal items and tools or a room to showcase your exquisite fashion taste. It's easy to get started - simply click "Start Designing" below to request a complimentary closet design or try your hand at our easy-to-use online closet design software. Whatever it is you're looking for, our custom closet organizers will satisfy all your space saving and organizational needs. Experience the Closets To Go difference and see why nationwide customers are repeat customers!</p>
-							</div>
-						</div>
-					</div>
-					<div class="col-12 col-lg-6">
-						<div class="row">
-							<div class="col-12">
-								<div class="product-nav-wrap showroom-detail-product-nav">
-									<div class="product-nav-wrap__content">
-										<button class="product-nav-wrap__prev" style="display: none;">
-											<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z"/></svg>
-										</button>
-										<ul class="nav nav-pills product-nav" id="pills-tab" role="tablist">
-													
-											<li class="nav-item">
-												<a class="nav-link product-nav__link active" id="pills-description-tab" data-toggle="pill" href="#pills-description" role="tab" aria-controls="pills-description" aria-selected="true">Description</a>
-											</li>
-											<li class="nav-item">
-												<a class="nav-link product-nav__link" id="pills-options-tab" data-toggle="pill" href="#pills-options" role="tab" aria-controls="pills-options" aria-selected="false">Options</a>
-											</li>
-											<li class="nav-item">
-												<a class="nav-link product-nav__link" id="pills-specifications-tab" data-toggle="pill" href="#pills-specifications" role="tab" aria-controls="pills-specifications" aria-selected="false">Specifications</a>
-											</li>
-											<li class="nav-item">
-												<a class="nav-link product-nav__link" id="pills-Installations-tab" data-more-information=".more-Installations" data-toggle="pill" href="#pills-Installations" role="tab" aria-controls="pills-Installations" aria-selected="false">Installations</a>
-											</li>
-											<li class="nav-item">
-												<a class="nav-link product-nav__link" id="pills-media-tab" data-more-information=".more-videos"  data-toggle="pill" href="#pills-media" role="tab" aria-controls="pills-media" aria-selected="false">Media</a>
-											</li>
-										</ul>
-										<button class="product-nav-wrap__next" style="display: flex;">
-											<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
-										</button>
-									</div>
-								</div>
-								<div class="tab-content product-tab-content showroom-detail-product-tab-content" id="pills-tabContent">
-									<div class="tab-pane fade show active" id="pills-description" role="tabpanel" aria-labelledby="pills-description-tab">
-										<div class="tab-content__text-wrap js-text-wrap">
-											<p class="tab-content__text-wrap--title">
-											Closet organizers skillfully crafted with superior quality materials at affordable prices. Guaranteed easy install and ships free.
-											</p>
-											<div class="tab-content__text-wrap--content js-hidden-text small-text">
-												<p class="tab-content__text-wrap--text">
-												Closet organizers are the ultimate do it yourself project. They not only make your life simpler, they also bring about a lifetime of satisfaction. The Closets To Go closet organizers are the easiest to design and assemble. From our easy-to-adjust hanging bracket to the pre-assembly of all your hardware fittings and labeled panels, we've virtually made reading instructions a thing of the past. Our custom closet organizers are the easiest to install in the nation, guaranteed! They're also constructed with high-quality, environmentally-friendly materials made right here in the United States. Carefully constructed exactly to your specifications, our closet organizers can solve a number of organizational issues, whether it be more space for kitchen storage, a new place in your garage to store seasonal items and tools or a room to showcase your exquisite fashion taste. It's easy to get started - simply click "Start Designing" below to request a complimentary closet design or try your hand at our easy-to-use online closet design software. Whatever it is you're looking for, our custom closet organizers will satisfy all your space saving and organizational needs. Experience the Closets To Go difference and see why nationwide customers are repeat customers!
-												</p>
-											</div>
-										</div>
-
-										<button data-readall="Read all" data-readless="Read less" class="product-tab-content__link mt-2 p-0 mb-0 js-btn-read-all-text">
-											<span>Read all</span>
-										</button>
-
-										<div class="you-we-design-buttons">
-											<a href="#" title="" class="you-design">You design</a>
-											<a href="#" title="" class="we-design">We design</a>
-											<div class="product-purchase__buttons">
-												<button class="product-purchase__buttons--share">
-													<svg xmlns="http://www.w3.org/2000/svg" width="23.547" height="25.688" viewBox="0 0 23.547 25.688"><defs><style>.share-no-background{fill:#384765;}</style></defs><g transform="translate(0)"><path class="share-no-background" d="M321.625,19.479A3.478,3.478,0,1,1,318.147,16a3.479,3.479,0,0,1,3.478,3.478Zm0,0" transform="translate(-298.881 -15.197)"></path><path class="share-no-background" d="M302.949,8.563a4.281,4.281,0,1,1,4.281-4.281A4.286,4.286,0,0,1,302.949,8.563Zm0-6.957a2.676,2.676,0,1,0,2.676,2.676,2.679,2.679,0,0,0-2.676-2.676Zm0,0" transform="translate(-283.683 0)"></path><path class="share-no-background" d="M321.625,360.811a3.478,3.478,0,1,1-3.478-3.479A3.478,3.478,0,0,1,321.625,360.811Zm0,0" transform="translate(-298.881 -339.404)"></path><path class="share-no-background" d="M302.949,349.895a4.281,4.281,0,1,1,4.281-4.281A4.286,4.286,0,0,1,302.949,349.895Zm0-6.957a2.676,2.676,0,1,0,2.676,2.676A2.679,2.679,0,0,0,302.949,342.938Zm0,0" transform="translate(-283.683 -324.207)"></path><path class="share-no-background" d="M22.957,190.146a3.479,3.479,0,1,1-3.479-3.479A3.479,3.479,0,0,1,22.957,190.146Zm0,0" transform="translate(-15.197 -177.303)"></path><path class="share-no-background" d="M4.281,179.23a4.281,4.281,0,1,1,4.281-4.281,4.286,4.286,0,0,1-4.281,4.281Zm0-6.957a2.676,2.676,0,1,0,2.676,2.676,2.679,2.679,0,0,0-2.676-2.676Zm0,0" transform="translate(0 -162.105)"></path><path class="share-no-background" d="M115.42,98.019a1.07,1.07,0,0,1-.531-2l9.931-5.662a1.07,1.07,0,1,1,1.06,1.86l-9.932,5.662a1.063,1.063,0,0,1-.529.14Zm0,0" transform="translate(-108.611 -85.688)"></path><path class="share-no-background" d="M125.372,274.022a1.064,1.064,0,0,1-.529-.14l-9.932-5.662a1.07,1.07,0,0,1,1.06-1.86l9.932,5.662a1.07,1.07,0,0,1-.531,2Zm0,0" transform="translate(-108.633 -252.862)"></path></g></svg>
+							<div class="col-12 col-lg-6">
+								<div class="row">
+									<div class="col-12">
+										<div class="product-nav-wrap showroom-detail-product-nav">
+											<div class="product-nav-wrap__content">
+												<button class="product-nav-wrap__prev" style="display: none;">
+													<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z"/></svg>
 												</button>
-												<button class="product-purchase__buttons--idea-folder">
-													<svg id="Save" xmlns="http://www.w3.org/2000/svg" width="25.6" height="23.023" viewBox="0 0 25.6 23.023">
-														<path id="Path_205" data-name="Path 205" d="M25.6,4.963v7.6a1,1,0,0,1-1,1h-.55a1,1,0,0,1-.724-.31L18.974,8.69l-7.748,9.89a1,1,0,0,1-.787.383h0a1,1,0,0,1-.787-.384L7.006,15.195,5.592,17.034a1,1,0,0,1-1.585-1.22l2.2-2.861A1,1,0,0,1,7,12.563H7a1,1,0,0,1,.788.384L10.44,16.34l7.672-9.794a1,1,0,0,1,1.511-.073L23.6,10.642V4.963a2,2,0,0,0-2-2H4a2,2,0,0,0-2,2v14a2,2,0,0,0,2,2h6.55a1,1,0,0,1,0,2H4a4,4,0,0,1-4-4v-14a4,4,0,0,1,4-4H21.6A4,4,0,0,1,25.6,4.963ZM4,7.563a3,3,0,1,1,3,3A3,3,0,0,1,4,7.563Zm2,0a1,1,0,1,0,1-1A1,1,0,0,0,6,7.563Z" transform="translate(0 -0.963)" fill="#00fbff"></path>
-														<path id="Path_207" data-name="Path 207" d="M11.836-4.736H8.076v3.76H6.1v-3.76H2.324V-6.719H6.1V-10.5H8.076v3.779h3.76Z" transform="translate(13.1 24)" fill="#00fbff"></path>
-													</svg>
-												</button>
-												<button class="product-purchase__buttons--pdf">
-													PDF
+												<ul class="nav nav-pills product-nav" id="pills-tab" role="tablist">
+													<li class="nav-item">
+														<a class="nav-link product-nav__link active" id="pills-description-tab" data-toggle="pill" href="#pills-description" role="tab" aria-controls="pills-description" aria-selected="true">Description</a>
+													</li>
+													<li class="nav-item">
+														<a class="nav-link product-nav__link" id="pills-options-tab" data-toggle="pill" href="#pills-options" role="tab" aria-controls="pills-options" aria-selected="false">Options</a>
+													</li>
+													<li class="nav-item">
+														<a class="nav-link product-nav__link" id="pills-specifications-tab" data-toggle="pill" href="#pills-specifications" role="tab" aria-controls="pills-specifications" aria-selected="false">Specifications</a>
+													</li>
+													<li class="nav-item">
+														<a class="nav-link product-nav__link" id="pills-Installations-tab" data-more-information=".more-Installations" data-toggle="pill" href="#pills-Installations" role="tab" aria-controls="pills-Installations" aria-selected="false">Installations</a>
+													</li>
+													<li class="nav-item">
+														<a class="nav-link product-nav__link" id="pills-media-tab" data-more-information=".more-videos"  data-toggle="pill" href="#pills-media" role="tab" aria-controls="pills-media" aria-selected="false">Media</a>
+													</li>
+												</ul>
+												<button class="product-nav-wrap__next" style="display: flex;">
+													<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
 												</button>
 											</div>
 										</div>
-									</div>
-									<div class="tab-pane fade" id="pills-options" role="tabpanel" aria-labelledby="pills-options-tab">
-										<div class="tab-content__options--wrapper">
-											<div class="row">
-												<div class="col-12 col-lg-auto">
-													<p class="tab-content__options--heading js-show-hiden-options">Colors</p>															
-													<div class="tab-content__options--content">
-														<div class="house-checkbox">
-															<input class="custom-checkbox" id="checkbox-1" type="checkbox" value="value1" checked>
-															<label for="checkbox-1">(Default)</label>
-														</div>
-														<div class="house-checkbox">
-															<input class="custom-checkbox" id="checkbox-2" type="checkbox" value="value2">
-															<label for="checkbox-2">Black</label>
-														</div>
-														<div class="house-checkbox">
-															<input class="custom-checkbox" id="checkbox-3" type="checkbox" value="value3">
-															<label for="checkbox-3">Green</label>
-														</div>
-														<div class="house-checkbox">
-															<input class="custom-checkbox" id="checkbox-4" type="checkbox" value="value4">
-															<label for="checkbox-4">Red</label>
-														</div>
-														<div class="house-checkbox">
-															<input class="custom-checkbox" id="checkbox-5" type="checkbox" value="value5">
-															<label for="checkbox-5">Gray</label>
-														</div>
-														<div class="house-checkbox">															
-															<input class="custom-checkbox" id="checkbox-6" type="checkbox" value="value6">
-															<label for="checkbox-6">Blue</label>
-														</div>
-														<div class="house-checkbox">															
-															<input class="custom-checkbox" id="checkbox-7" type="checkbox" value="value7">
-															<label for="checkbox-7">Pink</label>
-														</div>
-														<div class="house-checkbox">															
-															<input class="custom-checkbox" id="checkbox-8" type="checkbox" value="value8">
-															<label for="checkbox-8">Purpule</label>
-														</div>
+										<div class="tab-content product-tab-content showroom-detail-product-tab-content" id="pills-tabContent">
+											<div class="tab-pane fade show active" id="pills-description" role="tabpanel" aria-labelledby="pills-description-tab">
+												<div class="tab-content__text-wrap js-text-wrap">
+													<p class="tab-content__text-wrap--title">
+														Closet organizers skillfully crafted with superior quality materials at affordable prices. Guaranteed easy install and ships free.
+													</p>
+
+													<div class="tab-content__text-wrap--content js-hidden-text small-text">
+														<p class="tab-content__text-wrap--text">
+															Closet organizers are the ultimate do it yourself project. They not only make your life simpler, they also bring about a lifetime of satisfaction. The Closets To Go closet organizers are the easiest to design and assemble. From our easy-to-adjust hanging bracket to the pre-assembly of all your hardware fittings and labeled panels, we've virtually made reading instructions a thing of the past. Our custom closet organizers are the easiest to install in the nation, guaranteed! They're also constructed with high-quality, environmentally-friendly materials made right here in the United States. Carefully constructed exactly to your specifications, our closet organizers can solve a number of organizational issues, whether it be more space for kitchen storage, a new place in your garage to store seasonal items and tools or a room to showcase your exquisite fashion taste. It's easy to get started - simply click "Start Designing" below to request a complimentary closet design or try your hand at our easy-to-use online closet design software. Whatever it is you're looking for, our custom closet organizers will satisfy all your space saving and organizational needs. Experience the Closets To Go difference and see why nationwide customers are repeat customers!
+														</p>
 													</div>
 												</div>
-												<div class="col-12 col-lg-auto">
-													<p class="tab-content__options--heading js-show-hiden-options">Fabric</p>
-													<div class="tab-content__options--content">
-														<div class="house-checkbox">
-															<input class="custom-checkbox" id="checkbox-9" type="checkbox" value="value9" checked>
-															<label for="checkbox-9">100% Cotton</label>
-														</div>
-														<div class="house-checkbox">
-															<input class="custom-checkbox" id="checkbox-10" type="checkbox" value="value10">
-															<label for="checkbox-10">100% Playester</label>
-														</div>
-														<div class="house-checkbox">
-															<input class="custom-checkbox" id="checkbox-11" type="checkbox" value="value11">
-															<label for="checkbox-11">Bamboo fiber</label>
-														</div>
-														<div class="house-checkbox">
-															<input class="custom-checkbox" id="checkbox-12" type="checkbox" value="value12">
-															<label for="checkbox-12">Canvas</label>
-														</div>
-														<div class="house-checkbox">
-															<input class="custom-checkbox" id="checkbox-13" type="checkbox" value="value13">
-															<label for="checkbox-13">Linen</label>
-														</div>
-													</div>
-												</div>
-												<div class="col-12 col-lg-auto">
-													<p class="tab-content__options--heading js-show-hiden-options">Material</p>
-													<div class="tab-content__options--content">
-														<div class="house-checkbox">
-															<input class="custom-checkbox" id="checkbox-14" type="checkbox" value="value14" checked>
-															<label for="checkbox-14">Bamboo</label>
-														</div>
-														<div class="house-checkbox">
-															<input class="custom-checkbox" id="checkbox-15" type="checkbox" value="value15">
-															<label for="checkbox-15">Ceramic</label>
-														</div>
-														<div class="house-checkbox">
-															<input class="custom-checkbox" id="checkbox-16" type="checkbox" value="value16">
-															<label for="checkbox-16">Fabric</label>
-														</div>
-														<div class="house-checkbox">
-															<input class="custom-checkbox" id="checkbox-17" type="checkbox" value="value17">
-															<label for="checkbox-17">Glass</label>
-														</div>
-														<div class="house-checkbox">
-															<input class="custom-checkbox" id="checkbox-18" type="checkbox" value="value18">
-															<label for="checkbox-18">Metal</label>
-														</div>
-													</div>
-												</div>
-												<div class="col-12 col-lg-auto">
-													<p class="tab-content__options--heading js-show-hiden-options">Specification</p>
-													<div class="tab-content__options--content">
-														<div class="house-checkbox">
-															<input class="custom-checkbox" id="checkbox-19" type="checkbox" value="value19" checked>
-															<label for="checkbox-19">80*60*40cm</label>
-														</div>
-														<div class="house-checkbox">
-															<input class="custom-checkbox" id="checkbox-20" type="checkbox" value="value20">
-															<label for="checkbox-20">60*40*30cm</label>
-														</div>
-														<div class="house-checkbox">
-															<input class="custom-checkbox" id="checkbox-21" type="checkbox" value="value21">
-															<label for="checkbox-21">50*40*30cm</label>
-														</div>
-														<div class="house-checkbox">
-															<input class="custom-checkbox" id="checkbox-22" type="checkbox" value="value22">
-															<label for="checkbox-22">40*40*25cm</label>
-														</div>
-														<div class="house-checkbox">
-															<input class="custom-checkbox" id="checkbox-23" type="checkbox" value="value23">
-															<label for="checkbox-23">33*15*85cm</label>
-														</div>
-													</div>
-												</div>
-												<div class="col-12 col-lg-auto">
-													<p class="tab-content__options--heading js-show-hiden-options">Size</p>
-													<div class="tab-content__options--content">
-														<div class="house-checkbox">
-															<input class="custom-checkbox" id="checkbox-24" type="checkbox" value="value24" checked>
-															<label for="checkbox-24">S</label>
-														</div>
-														<div class="house-checkbox">
-															<input class="custom-checkbox" id="checkbox-25" type="checkbox" value="value25">
-															<label for="checkbox-25">M</label>
-														</div>
-														<div class="house-checkbox">
-															<input class="custom-checkbox" id="checkbox-26" type="checkbox" value="value26">
-															<label for="checkbox-26">L</label>
-														</div>
-														<div class="house-checkbox">
-															<input class="custom-checkbox" id="checkbox-27" type="checkbox" value="value27">
-															<label for="checkbox-27">XL</label>
-														</div>
-														<div class="house-checkbox">
-															<input class="custom-checkbox" id="checkbox-28" type="checkbox" value="value28">
-															<label for="checkbox-28">XXL</label>
-														</div>
-													</div>
-												</div>
-												<div class="col-12 col-lg-auto">
-													<p class="tab-content__options--heading js-show-hiden-options">Shape</p>
-													<div class="tab-content__options--content">
-														<div class="house-checkbox">
-															<input class="custom-checkbox" id="checkbox-29" type="checkbox" value="value29" checked>
-															<label for="checkbox-29">Round</label>
-														</div>
-														<div class="house-checkbox">
-															<input class="custom-checkbox" id="checkbox-30" type="checkbox" value="value30">
-															<label for="checkbox-30">Square</label>
-														</div>
-														<div class="house-checkbox">
-															<input class="custom-checkbox" id="checkbox-31" type="checkbox" value="value31">
-															<label for="checkbox-31">Polygon</label>
-														</div>
-														<div class="house-checkbox">
-															<input class="custom-checkbox" id="checkbox-32" type="checkbox" value="value32">
-															<label for="checkbox-32">Rectangle</label>
-														</div>
+
+												<button data-readall="Read all" data-readless="Read less" class="product-tab-content__link mt-2 p-0 mb-0 js-btn-read-all-text">
+													<span>Read all</span>
+												</button>
+
+												<div class="you-we-design-buttons">
+													<a href="#" title="" class="you-design">You design</a>
+													<a href="#" title="" class="we-design">We design</a>
+
+													<div class="product-purchase__buttons">
+														<button class="product-purchase__buttons--share">
+															<svg xmlns="http://www.w3.org/2000/svg" width="23.547" height="25.688" viewBox="0 0 23.547 25.688"><defs><style>.share-no-background{fill:#384765;}</style></defs><g transform="translate(0)"><path class="share-no-background" d="M321.625,19.479A3.478,3.478,0,1,1,318.147,16a3.479,3.479,0,0,1,3.478,3.478Zm0,0" transform="translate(-298.881 -15.197)"></path><path class="share-no-background" d="M302.949,8.563a4.281,4.281,0,1,1,4.281-4.281A4.286,4.286,0,0,1,302.949,8.563Zm0-6.957a2.676,2.676,0,1,0,2.676,2.676,2.679,2.679,0,0,0-2.676-2.676Zm0,0" transform="translate(-283.683 0)"></path><path class="share-no-background" d="M321.625,360.811a3.478,3.478,0,1,1-3.478-3.479A3.478,3.478,0,0,1,321.625,360.811Zm0,0" transform="translate(-298.881 -339.404)"></path><path class="share-no-background" d="M302.949,349.895a4.281,4.281,0,1,1,4.281-4.281A4.286,4.286,0,0,1,302.949,349.895Zm0-6.957a2.676,2.676,0,1,0,2.676,2.676A2.679,2.679,0,0,0,302.949,342.938Zm0,0" transform="translate(-283.683 -324.207)"></path><path class="share-no-background" d="M22.957,190.146a3.479,3.479,0,1,1-3.479-3.479A3.479,3.479,0,0,1,22.957,190.146Zm0,0" transform="translate(-15.197 -177.303)"></path><path class="share-no-background" d="M4.281,179.23a4.281,4.281,0,1,1,4.281-4.281,4.286,4.286,0,0,1-4.281,4.281Zm0-6.957a2.676,2.676,0,1,0,2.676,2.676,2.679,2.679,0,0,0-2.676-2.676Zm0,0" transform="translate(0 -162.105)"></path><path class="share-no-background" d="M115.42,98.019a1.07,1.07,0,0,1-.531-2l9.931-5.662a1.07,1.07,0,1,1,1.06,1.86l-9.932,5.662a1.063,1.063,0,0,1-.529.14Zm0,0" transform="translate(-108.611 -85.688)"></path><path class="share-no-background" d="M125.372,274.022a1.064,1.064,0,0,1-.529-.14l-9.932-5.662a1.07,1.07,0,0,1,1.06-1.86l9.932,5.662a1.07,1.07,0,0,1-.531,2Zm0,0" transform="translate(-108.633 -252.862)"></path></g></svg>
+														</button>
+														<button class="product-purchase__buttons--idea-folder">
+															<svg id="Save" xmlns="http://www.w3.org/2000/svg" width="25.6" height="23.023" viewBox="0 0 25.6 23.023">
+																<path id="Path_205" data-name="Path 205" d="M25.6,4.963v7.6a1,1,0,0,1-1,1h-.55a1,1,0,0,1-.724-.31L18.974,8.69l-7.748,9.89a1,1,0,0,1-.787.383h0a1,1,0,0,1-.787-.384L7.006,15.195,5.592,17.034a1,1,0,0,1-1.585-1.22l2.2-2.861A1,1,0,0,1,7,12.563H7a1,1,0,0,1,.788.384L10.44,16.34l7.672-9.794a1,1,0,0,1,1.511-.073L23.6,10.642V4.963a2,2,0,0,0-2-2H4a2,2,0,0,0-2,2v14a2,2,0,0,0,2,2h6.55a1,1,0,0,1,0,2H4a4,4,0,0,1-4-4v-14a4,4,0,0,1,4-4H21.6A4,4,0,0,1,25.6,4.963ZM4,7.563a3,3,0,1,1,3,3A3,3,0,0,1,4,7.563Zm2,0a1,1,0,1,0,1-1A1,1,0,0,0,6,7.563Z" transform="translate(0 -0.963)" fill="#00fbff"></path>
+																<path id="Path_207" data-name="Path 207" d="M11.836-4.736H8.076v3.76H6.1v-3.76H2.324V-6.719H6.1V-10.5H8.076v3.779h3.76Z" transform="translate(13.1 24)" fill="#00fbff"></path>
+															</svg>
+														</button>
+														<button class="product-purchase__buttons--pdf">
+															PDF
+														</button>
 													</div>
 												</div>
 											</div>
-										</div>
-									</div>
-									<div class="tab-pane fade" id="pills-specifications" role="tabpanel" aria-labelledby="pills-specifications-tab">
-										<div class="tab-content__specifications">
-											<p class="tab-content__specifications--heading">Drawer Specifications</p>
-											<div class="row row-with-desctop-border-bottom">
-												<div class="col-12 col-lg-6">
-													<div class="first-fixed-block__text-group--items">
-														<img src="../../images/package.svg" alt="">
-														<div class="first-fixed-block__text-group--text">
-															<p>2K 457</p>
-															<p>Successful DIY Installations</p>
-														</div>
-													</div>
-												</div>
-												<div class="col-12 col-lg-6">
-													<div class="block-stars__wrapper">
-														<img src="../../images/Rectangle12.png" alt="" class="block-stars__wrapper--image">
-														<div class="block-stars__wrapper--text">
-															<div class="stars-container">
-																<img src="../../images/star.svg" alt="">
-																<img src="../../images/star.svg" alt="">
-																<img src="../../images/star.svg" alt="">
-																<img src="../../images/star.svg" alt="">
-																<img src="../../images/star.svg" alt="">
+											<div class="tab-pane fade" id="pills-options" role="tabpanel" aria-labelledby="pills-options-tab">
+												<div class="tab-content__options--wrapper">
+													<div class="row">
+														<div class="col-12 col-lg-auto">
+															<p class="tab-content__options--heading js-show-hiden-options">Colors</p>
+															
+															<div class="tab-content__options--content">
+																<div class="house-checkbox">
+																	<input class="custom-checkbox" id="checkbox-1" type="checkbox" value="value1" checked>
+																	<label for="checkbox-1">(Default)</label>
+																</div>
+																<div class="house-checkbox">
+																	<input class="custom-checkbox" id="checkbox-2" type="checkbox" value="value2">
+																	<label for="checkbox-2">Black</label>
+																</div>
+																<div class="house-checkbox">
+																	<input class="custom-checkbox" id="checkbox-3" type="checkbox" value="value3">
+																	<label for="checkbox-3">Green</label>
+																</div>
+																<div class="house-checkbox">
+																	<input class="custom-checkbox" id="checkbox-4" type="checkbox" value="value4">
+																	<label for="checkbox-4">Red</label>
+																</div>
+																<div class="house-checkbox">
+																	<input class="custom-checkbox" id="checkbox-5" type="checkbox" value="value5">
+																	<label for="checkbox-5">Gray</label>
+																</div>
+																<div class="house-checkbox">															
+																	<input class="custom-checkbox" id="checkbox-6" type="checkbox" value="value6">
+																	<label for="checkbox-6">Blue</label>
+																</div>
+																<div class="house-checkbox">															
+																	<input class="custom-checkbox" id="checkbox-7" type="checkbox" value="value7">
+																	<label for="checkbox-7">Pink</label>
+																</div>
+																<div class="house-checkbox">															
+																	<input class="custom-checkbox" id="checkbox-8" type="checkbox" value="value8">
+																	<label for="checkbox-8">Purpule</label>
+																</div>
 															</div>
-															<p class="first-text">Aubree W. Charlotte, North Carolina</p>
-															<p>Just had a successful installation!</p>
+														</div>
+														<div class="col-12 col-lg-auto">
+															<p class="tab-content__options--heading js-show-hiden-options">Fabric</p>
+
+															<div class="tab-content__options--content">
+																<div class="house-checkbox">
+																	<input class="custom-checkbox" id="checkbox-9" type="checkbox" value="value9" checked>
+																	<label for="checkbox-9">100% Cotton</label>
+																</div>
+																<div class="house-checkbox">
+																	<input class="custom-checkbox" id="checkbox-10" type="checkbox" value="value10">
+																	<label for="checkbox-10">100% Playester</label>
+																</div>
+																<div class="house-checkbox">
+																	<input class="custom-checkbox" id="checkbox-11" type="checkbox" value="value11">
+																	<label for="checkbox-11">Bamboo fiber</label>
+																</div>
+																<div class="house-checkbox">
+																	<input class="custom-checkbox" id="checkbox-12" type="checkbox" value="value12">
+																	<label for="checkbox-12">Canvas</label>
+																</div>
+																<div class="house-checkbox">
+																	<input class="custom-checkbox" id="checkbox-13" type="checkbox" value="value13">
+																	<label for="checkbox-13">Linen</label>
+																</div>
+															</div>
+														</div>
+														<div class="col-12 col-lg-auto">
+															<p class="tab-content__options--heading js-show-hiden-options">Material</p>
+
+															<div class="tab-content__options--content">
+																<div class="house-checkbox">
+																	<input class="custom-checkbox" id="checkbox-14" type="checkbox" value="value14" checked>
+																	<label for="checkbox-14">Bamboo</label>
+																</div>
+																<div class="house-checkbox">
+																	<input class="custom-checkbox" id="checkbox-15" type="checkbox" value="value15">
+																	<label for="checkbox-15">Ceramic</label>
+																</div>
+																<div class="house-checkbox">
+																	<input class="custom-checkbox" id="checkbox-16" type="checkbox" value="value16">
+																	<label for="checkbox-16">Fabric</label>
+																</div>
+																<div class="house-checkbox">
+																	<input class="custom-checkbox" id="checkbox-17" type="checkbox" value="value17">
+																	<label for="checkbox-17">Glass</label>
+																</div>
+																<div class="house-checkbox">
+																	<input class="custom-checkbox" id="checkbox-18" type="checkbox" value="value18">
+																	<label for="checkbox-18">Metal</label>
+																</div>
+															</div>
+														</div>
+														<div class="col-12 col-lg-auto">
+															<p class="tab-content__options--heading js-show-hiden-options">Specification</p>
+
+															<div class="tab-content__options--content">
+																<div class="house-checkbox">
+																	<input class="custom-checkbox" id="checkbox-19" type="checkbox" value="value19" checked>
+																	<label for="checkbox-19">80*60*40cm</label>
+																</div>
+																<div class="house-checkbox">
+																	<input class="custom-checkbox" id="checkbox-20" type="checkbox" value="value20">
+																	<label for="checkbox-20">60*40*30cm</label>
+																</div>
+																<div class="house-checkbox">
+																	<input class="custom-checkbox" id="checkbox-21" type="checkbox" value="value21">
+																	<label for="checkbox-21">50*40*30cm</label>
+																</div>
+																<div class="house-checkbox">
+																	<input class="custom-checkbox" id="checkbox-22" type="checkbox" value="value22">
+																	<label for="checkbox-22">40*40*25cm</label>
+																</div>
+																<div class="house-checkbox">
+																	<input class="custom-checkbox" id="checkbox-23" type="checkbox" value="value23">
+																	<label for="checkbox-23">33*15*85cm</label>
+																</div>
+															</div>
+														</div>
+														<div class="col-12 col-lg-auto">
+															<p class="tab-content__options--heading js-show-hiden-options">Size</p>
+
+															<div class="tab-content__options--content">
+																<div class="house-checkbox">
+																	<input class="custom-checkbox" id="checkbox-24" type="checkbox" value="value24" checked>
+																	<label for="checkbox-24">S</label>
+																</div>
+																<div class="house-checkbox">
+																	<input class="custom-checkbox" id="checkbox-25" type="checkbox" value="value25">
+																	<label for="checkbox-25">M</label>
+																</div>
+																<div class="house-checkbox">
+																	<input class="custom-checkbox" id="checkbox-26" type="checkbox" value="value26">
+																	<label for="checkbox-26">L</label>
+																</div>
+																<div class="house-checkbox">
+																	<input class="custom-checkbox" id="checkbox-27" type="checkbox" value="value27">
+																	<label for="checkbox-27">XL</label>
+																</div>
+																<div class="house-checkbox">
+																	<input class="custom-checkbox" id="checkbox-28" type="checkbox" value="value28">
+																	<label for="checkbox-28">XXL</label>
+																</div>
+															</div>
+														</div>
+														<div class="col-12 col-lg-auto">
+															<p class="tab-content__options--heading js-show-hiden-options">Shape</p>
+
+															<div class="tab-content__options--content">
+																<div class="house-checkbox">
+																	<input class="custom-checkbox" id="checkbox-29" type="checkbox" value="value29" checked>
+																	<label for="checkbox-29">Round</label>
+																</div>
+																<div class="house-checkbox">
+																	<input class="custom-checkbox" id="checkbox-30" type="checkbox" value="value30">
+																	<label for="checkbox-30">Square</label>
+																</div>
+																<div class="house-checkbox">
+																	<input class="custom-checkbox" id="checkbox-31" type="checkbox" value="value31">
+																	<label for="checkbox-31">Polygon</label>
+																</div>
+																<div class="house-checkbox">
+																	<input class="custom-checkbox" id="checkbox-32" type="checkbox" value="value32">
+																	<label for="checkbox-32">Rectangle</label>
+																</div>
+															</div>
 														</div>
 													</div>
 												</div>
 											</div>
-											<div class="row">
+											<div class="tab-pane fade" id="pills-specifications" role="tabpanel" aria-labelledby="pills-specifications-tab">
+												<div class="tab-content__specifications">
+													<p class="tab-content__specifications--heading">Drawer Specifications</p>
+													<div class="row row-with-desctop-border-bottom">
+														<div class="col-12 col-lg-6">
+															<div class="first-fixed-block__text-group--items">
+																<img src="../../images/package.svg" alt="">
+																<div class="first-fixed-block__text-group--text">
+																	<p>2K 457</p>
+																	<p>Successful DIY Installations</p>
+																</div>
+															</div>
+														</div>
+														<div class="col-12 col-lg-6">
+															<div class="block-stars__wrapper">
+																<img src="../../images/Rectangle12.png" alt="" class="block-stars__wrapper--image">
+																<div class="block-stars__wrapper--text">
+																	<div class="stars-container">
+																		<img src="../../images/star.svg" alt="">
+																		<img src="../../images/star.svg" alt="">
+																		<img src="../../images/star.svg" alt="">
+																		<img src="../../images/star.svg" alt="">
+																		<img src="../../images/star.svg" alt="">
+																	</div>
+																	<p class="first-text">Aubree W. Charlotte, North Carolina</p>
+																	<p>Just had a successful installation!</p>
+																</div>
+															</div>
+														</div>
+													</div>
+													<div class="row">
 														<div class="col-12 mobile-text-center">
 															<a href="#" class="link-button mt-4 mb-0">
 																download pdf
@@ -845,7 +855,6 @@ require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php");
 															<iframe class="yvideo" width="100%" height="100%" src="https://www.youtube.com/embed/Wb0JINqX71w?autoplay=0&amp;enablejsapi=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
 														</div>
 													</div>
-													
 												</div>
 											</div>
 										</div>
@@ -912,82 +921,82 @@ require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php");
 
 
 	<section class="four-elements-block showroom-detail-product">
-		<div class="wrapper">
-			<div class="container-fluid">
-				<div class="row showroom-detail-product-row">
-					<div class="col-12 col-lg-3 showroom-detail-product-col-lg">
-						<div class="showroom-detail-product-video">
-							<div class="embed-responsive embed-responsive-4by3">
-								<iframe class="yvideo" width="100%" height="100%" src="https://www.youtube.com/embed/Wb0JINqX71w?autoplay=0&amp;enablejsapi=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+				<div class="wrapper">
+					<div class="container-fluid">
+						<div class="row showroom-detail-product-row">
+							<div class="col-12 col-lg-3 showroom-detail-product-col-lg">
+								<div class="showroom-detail-product-video">
+									<div class="embed-responsive embed-responsive-4by3">
+										<iframe class="yvideo" width="100%" height="100%" src="https://www.youtube.com/embed/Wb0JINqX71w?autoplay=0&amp;enablejsapi=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+									</div>
+								</div>
 							</div>
-						</div>
-					</div>
-					<div class="col-12 col-lg-3 showroom-detail-product-col-lg">
-						<div class="we-design-block__form">
-							<form action="">
-								<div class="row">
-									<div class="col-12">
-										<h3 class="we-design-block__form--heading">Request a Free Design</h3>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-12 desktop-show">
-										<div class="row showroom-detail-product-row">
-											<div class="col-6 showroom-detail-product-col-lg">
-												<div class="form-group">
-													<input type="text" class="form-control we-design-block__form--input" name="first-name" placeholder="First name">
-												</div>
+							<div class="col-12 col-lg-3 showroom-detail-product-col-lg">
+								<div class="we-design-block__form">
+									<form action="">
+										<div class="row">
+											<div class="col-12">
+												<h3 class="we-design-block__form--heading">Request a Free Design</h3>
 											</div>
-											<div class="col-6 showroom-detail-product-col-lg">
-												<div class="form-group">
-													<input type="text" class="form-control we-design-block__form--input" name="Last-name" placeholder="Last name">
+										</div>
+										<div class="row">
+											<div class="col-12 desktop-show">
+												<div class="row showroom-detail-product-row">
+													<div class="col-6 showroom-detail-product-col-lg">
+														<div class="form-group">
+															<input type="text" class="form-control we-design-block__form--input" name="first-name" placeholder="First name">
+														</div>
+													</div>
+													<div class="col-6 showroom-detail-product-col-lg">
+														<div class="form-group">
+															<input type="text" class="form-control we-design-block__form--input" name="Last-name" placeholder="Last name">
+														</div>
+													</div>
+												</div>
+												<div class="row showroom-detail-product-row mt-2">
+													<div class="col-6 showroom-detail-product-col-lg">
+														<div class="form-group">
+															<input type="text" class="form-control we-design-block__form--input" name="phone" placeholder="Phone number">
+														</div>
+													</div>
+													<div class="col-6 showroom-detail-product-col-lg">
+														<div class="form-group">
+															<input type="text" class="form-control we-design-block__form--input" name="zip-code" placeholder="Zip code">
+														</div>
+													</div>
+												</div>
+												<div class="row showroom-detail-product-row mt-2">
+													<div class="col-12 showroom-detail-product-col-lg">
+														<div class="form-group">
+															<input type="email" class="form-control we-design-block__form--input" name="email" placeholder="E-mail">
+														</div>
+													</div>
 												</div>
 											</div>
 										</div>
-										<div class="row showroom-detail-product-row mt-2">
-											<div class="col-6 showroom-detail-product-col-lg">
-												<div class="form-group">
-													<input type="text" class="form-control we-design-block__form--input" name="phone" placeholder="Phone number">
-												</div>
-											</div>
-											<div class="col-6 showroom-detail-product-col-lg">
-												<div class="form-group">
-													<input type="text" class="form-control we-design-block__form--input" name="zip-code" placeholder="Zip code">
-												</div>
+										<div class="row mt-2">
+											<div class="col-12 text-center">
+												<button type="submit" class="btn btn-primary">Submit Request</button>
 											</div>
 										</div>
-										<div class="row showroom-detail-product-row mt-2">
-											<div class="col-12 showroom-detail-product-col-lg">
-												<div class="form-group">
-													<input type="email" class="form-control we-design-block__form--input" name="email" placeholder="E-mail">
-												</div>
-											</div>
-										</div>
-									</div>
+									</form>
 								</div>
-								<div class="row mt-2">
-									<div class="col-12 text-center">
-										<button type="submit" class="btn btn-primary">Submit Request</button>
-									</div>
-								</div>
-							</form>
-						</div>
-					</div>
-					<div class="col-12 col-lg-3 showroom-detail-product-col-lg">
-						<div class="showroom-detail-product-design">
-							<p class="showroom-detail-product-design__img">
-								<svg id="vector6" xmlns="http://www.w3.org/2000/svg" width="78.3" height="78.3" viewBox="0 0 78.3 78.3">
+							</div>
+							<div class="col-12 col-lg-3 showroom-detail-product-col-lg">
+								<div class="showroom-detail-product-design">
+									<p class="showroom-detail-product-design__img">
+										<svg id="vector6" xmlns="http://www.w3.org/2000/svg" width="78.3" height="78.3" viewBox="0 0 78.3 78.3">
 											<g id="Group_612" data-name="Group 612"><g id="Group_611" data-name="Group 611"><path id="Path_427" data-name="Path 427" d="M76.006,0H66.83a2.294,2.294,0,0,0-2.294,2.294V4.588h-18.9a6.88,6.88,0,0,0-12.975,0h-18.9V2.294A2.294,2.294,0,0,0,11.47,0H2.294A2.294,2.294,0,0,0,0,2.294V11.47a2.294,2.294,0,0,0,2.294,2.294H11.47a2.294,2.294,0,0,0,2.294-2.294V9.145H23.3a30.137,30.137,0,0,0-13.912,23.5,6.879,6.879,0,1,0,4.6.046,25.614,25.614,0,0,1,19-22.749,6.878,6.878,0,0,0,12.327,0,25.613,25.613,0,0,1,19,22.749,6.884,6.884,0,1,0,4.6-.046A30.084,30.084,0,0,0,55,9.176h9.539V11.47a2.294,2.294,0,0,0,2.294,2.294h9.176A2.294,2.294,0,0,0,78.3,11.47V2.294A2.294,2.294,0,0,0,76.006,0ZM9.176,9.176H4.588V4.588H9.176Zm2.447,32.268a2.294,2.294,0,1,1,2.294-2.294A2.3,2.3,0,0,1,11.623,41.444ZM39.15,9.176a2.294,2.294,0,1,1,2.294-2.294A2.3,2.3,0,0,1,39.15,9.176Zm27.527,27.68a2.294,2.294,0,1,1-2.294,2.294A2.3,2.3,0,0,1,66.677,36.856Zm7.035-27.68H69.124V4.588h4.588Z" fill="#fff"/></g></g>
 											<g id="Group_614" data-name="Group 614" transform="translate(18.504 18.506)"><g id="Group_613" data-name="Group 613"><path id="Path_428" data-name="Path 428" d="M161.906,149.557,143.554,122.03l0,0-.02-.029c-.031-.046-.065-.09-.1-.133a2.294,2.294,0,0,0-3.673.133l-.02.029,0,0-18.352,27.527a2.294,2.294,0,0,0,.287,2.895,29.063,29.063,0,0,1,8.283,16.96,11.819,11.819,0,0,0-1.026.93,11.627,11.627,0,0,0-3.341,8.168,2.294,2.294,0,0,0,2.294,2.294h27.527a2.294,2.294,0,0,0,2.294-2.294,11.628,11.628,0,0,0-3.341-8.168,11.825,11.825,0,0,0-1.026-.93,29.059,29.059,0,0,1,8.283-16.96A2.294,2.294,0,0,0,161.906,149.557Zm-20.26-1.021a2.294,2.294,0,1,1-2.294,2.294A2.3,2.3,0,0,1,141.646,148.536Zm-11.079,27.68a7.007,7.007,0,0,1,6.491-4.741h9.176a7.007,7.007,0,0,1,6.491,4.741Zm18.457-8.98a11.271,11.271,0,0,0-2.79-.349h-9.176a11.263,11.263,0,0,0-2.79.349,33.662,33.662,0,0,0-8.052-16.654l13.136-19.7v13.464a6.882,6.882,0,1,0,4.588,0V130.879l13.136,19.7A33.657,33.657,0,0,0,149.024,167.237Z" transform="translate(-121 -121.01)" fill="#fff"/></g></g>
-								</svg>
-							</p>
-							<p class="showroom-detail-product-design__text">Start design</p>
-						</div>
-					</div>
-					<div class="col-12 col-lg-3 showroom-detail-product-col-lg">
-						<div class="showroom-detail-product-specification">
-							<p class="showroom-detail-product-specification__img">
-							<svg xmlns="http://www.w3.org/2000/svg" width="78.347" height="78.3" viewBox="0 0 78.347 78.3">
+										</svg>
+									</p>
+									<p class="showroom-detail-product-design__text">Start design</p>
+								</div>
+							</div>
+							<div class="col-12 col-lg-3 showroom-detail-product-col-lg">
+								<div class="showroom-detail-product-specification">
+									<p class="showroom-detail-product-specification__img">
+										<svg xmlns="http://www.w3.org/2000/svg" width="78.347" height="78.3" viewBox="0 0 78.347 78.3">
 											<g id="vector7" transform="translate(0 -0.153)">
 												<g id="Group_617" data-name="Group 617" transform="translate(6.528 13.164)"><g id="Group_616" data-name="Group 616"><path id="Path_429" data-name="Path 429" d="M47.561,85.179a4.9,4.9,0,0,0-4.9,4.9v13.058h3.264V90.076a1.632,1.632,0,0,1,1.632-1.632H86.734V85.179Z" transform="translate(-42.664 -85.179)" fill="#fff"/></g></g>
 												<g id="Group_619" data-name="Group 619" transform="translate(6.528 44.176)"><g id="Group_618" data-name="Group 618"><path id="Path_430" data-name="Path 430" d="M47.561,305.8a1.632,1.632,0,0,1-1.632-1.632V287.845H42.664v16.322a4.9,4.9,0,0,0,4.9,4.9H63.883V305.8Z" transform="translate(-42.664 -287.845)" fill="#fff"/></g></g>
@@ -1006,216 +1015,214 @@ require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php");
 												<g id="Group_645" data-name="Group 645" transform="translate(62.024 36.015)"><g id="Group_644" data-name="Group 644"><rect id="Rectangle_66" data-name="Rectangle 66" width="3.264" height="3.264" fill="#fff"/></g></g>
 												<g id="Group_647" data-name="Group 647" transform="translate(68.553 36.015)"><g id="Group_646" data-name="Group 646"><rect id="Rectangle_67" data-name="Rectangle 67" width="3.264" height="3.264" fill="#fff"/></g></g>
 											</g>
-							</svg>
-							</p>
-							<p class="showroom-detail-product-specification__text">Closet specifications</p>
-						</div>
-					</div>
-					<div class="col-12 col-lg-3 showroom-detail-product-col-lg">
-						<div class="showroom-detail-product-images-block">
-							<div class="showroom-detail-product-images-block__image">
-								<img src="../../images/showroom-detail-product-1.png" alt="" class="img-fluid">
+										</svg>
+									</p>
+									<p class="showroom-detail-product-specification__text">Closet specifications</p>
+								</div>
 							</div>
-							<p class="showroom-detail-product-images-block__text">View Sample Closet Organizers</p>
-							<a href="#" title="" class="showroom-detail-product-images-block__button link-button mb-0">
-								Explore now
-								<svg xmlns="http://www.w3.org/2000/svg" width="20.8" height="14.623" viewBox="0 0 20.8 14.623">
-									<path id="left-arrow_3_" data-name="left-arrow(3)" d="M14.014,4.9a.737.737,0,1,0-1.048,1.038l5.314,5.314H.744A.738.738,0,0,0,0,11.982a.747.747,0,0,0,.744.744H18.281l-5.314,5.3a.752.752,0,0,0,0,1.048.734.734,0,0,0,1.048,0l6.573-6.573a.739.739,0,0,0,0-1.038Z" transform="translate(0.001 -4.676)"></path>
-								</svg>
-							</a>
-						</div>
-					</div>
-					<div class="col-12 col-lg-3 showroom-detail-product-col-lg">
-						<div class="showroom-detail-product-images-block">
-							<div class="showroom-detail-product-images-block__image">
-								<img src="../../images/showroom-detail-product-2.png" alt="" class="img-fluid">
+							<div class="col-12 col-lg-3 showroom-detail-product-col-lg">
+								<div class="showroom-detail-product-images-block">
+									<div class="showroom-detail-product-images-block__image">
+										<img src="../../images/showroom-detail-product-1.png" alt="" class="img-fluid">
+									</div>
+									<p class="showroom-detail-product-images-block__text">View Sample Closet Organizers</p>
+									<a href="#" title="" class="showroom-detail-product-images-block__button link-button mb-0">
+										Explore now
+										<svg xmlns="http://www.w3.org/2000/svg" width="20.8" height="14.623" viewBox="0 0 20.8 14.623">
+											<path id="left-arrow_3_" data-name="left-arrow(3)" d="M14.014,4.9a.737.737,0,1,0-1.048,1.038l5.314,5.314H.744A.738.738,0,0,0,0,11.982a.747.747,0,0,0,.744.744H18.281l-5.314,5.3a.752.752,0,0,0,0,1.048.734.734,0,0,0,1.048,0l6.573-6.573a.739.739,0,0,0,0-1.038Z" transform="translate(0.001 -4.676)"></path>
+										</svg>
+									</a>
+								</div>
 							</div>
-							<p class="showroom-detail-product-images-block__text">Closet Organizer Accessories</p>
-							<a href="#" title="" class="showroom-detail-product-images-block__button link-button mb-0">
-								Explore now
-								<svg xmlns="http://www.w3.org/2000/svg" width="20.8" height="14.623" viewBox="0 0 20.8 14.623">
-									<path id="left-arrow_3_" data-name="left-arrow(3)" d="M14.014,4.9a.737.737,0,1,0-1.048,1.038l5.314,5.314H.744A.738.738,0,0,0,0,11.982a.747.747,0,0,0,.744.744H18.281l-5.314,5.3a.752.752,0,0,0,0,1.048.734.734,0,0,0,1.048,0l6.573-6.573a.739.739,0,0,0,0-1.038Z" transform="translate(0.001 -4.676)"></path>
-								</svg>
-							</a>
-						</div>
-					</div>
-					<div class="col-12 col-lg-3 showroom-detail-product-col-lg">
-						<div class="showroom-detail-product-images-block">
-							<div class="showroom-detail-product-images-block__image">
-								<img src="../../images/showroom-detail-product-3.png" alt="" class="img-fluid">
+							<div class="col-12 col-lg-3 showroom-detail-product-col-lg">
+								<div class="showroom-detail-product-images-block">
+									<div class="showroom-detail-product-images-block__image">
+										<img src="../../images/showroom-detail-product-2.png" alt="" class="img-fluid">
+									</div>
+									<p class="showroom-detail-product-images-block__text">Closet Organizer Accessories</p>
+									<a href="#" title="" class="showroom-detail-product-images-block__button link-button mb-0">
+										Explore now
+										<svg xmlns="http://www.w3.org/2000/svg" width="20.8" height="14.623" viewBox="0 0 20.8 14.623">
+											<path id="left-arrow_3_" data-name="left-arrow(3)" d="M14.014,4.9a.737.737,0,1,0-1.048,1.038l5.314,5.314H.744A.738.738,0,0,0,0,11.982a.747.747,0,0,0,.744.744H18.281l-5.314,5.3a.752.752,0,0,0,0,1.048.734.734,0,0,0,1.048,0l6.573-6.573a.739.739,0,0,0,0-1.038Z" transform="translate(0.001 -4.676)"></path>
+										</svg>
+									</a>
+								</div>
 							</div>
-							<p class="showroom-detail-product-images-block__text">Decorative Closet Handles and Knobs</p>
-							<a href="#" title="" class="showroom-detail-product-images-block__button link-button mb-0">
-								Explore now
-								<svg xmlns="http://www.w3.org/2000/svg" width="20.8" height="14.623" viewBox="0 0 20.8 14.623">
-									<path id="left-arrow_3_" data-name="left-arrow(3)" d="M14.014,4.9a.737.737,0,1,0-1.048,1.038l5.314,5.314H.744A.738.738,0,0,0,0,11.982a.747.747,0,0,0,.744.744H18.281l-5.314,5.3a.752.752,0,0,0,0,1.048.734.734,0,0,0,1.048,0l6.573-6.573a.739.739,0,0,0,0-1.038Z" transform="translate(0.001 -4.676)"></path>
-								</svg>
-							</a>
-						</div>
-					</div>
-					<div class="col-12 col-lg-3 showroom-detail-product-col-lg">
-						<div class="showroom-detail-product-images-block">
-							<div class="showroom-detail-product-images-block__image">
-								<img src="../../images/showroom-detail-product-4.png" alt="" class="img-fluid">
+							<div class="col-12 col-lg-3 showroom-detail-product-col-lg">
+								<div class="showroom-detail-product-images-block">
+									<div class="showroom-detail-product-images-block__image">
+										<img src="../../images/showroom-detail-product-3.png" alt="" class="img-fluid">
+									</div>
+									<p class="showroom-detail-product-images-block__text">Decorative Closet Handles and Knobs</p>
+									<a href="#" title="" class="showroom-detail-product-images-block__button link-button mb-0">
+										Explore now
+										<svg xmlns="http://www.w3.org/2000/svg" width="20.8" height="14.623" viewBox="0 0 20.8 14.623">
+											<path id="left-arrow_3_" data-name="left-arrow(3)" d="M14.014,4.9a.737.737,0,1,0-1.048,1.038l5.314,5.314H.744A.738.738,0,0,0,0,11.982a.747.747,0,0,0,.744.744H18.281l-5.314,5.3a.752.752,0,0,0,0,1.048.734.734,0,0,0,1.048,0l6.573-6.573a.739.739,0,0,0,0-1.038Z" transform="translate(0.001 -4.676)"></path>
+										</svg>
+									</a>
+								</div>
 							</div>
-							<p class="showroom-detail-product-images-block__text">Custom Closet Organizer Colors</p>
-							<a href="#" title="" class="showroom-detail-product-images-block__button link-button mb-0">
-								Explore now
-								<svg xmlns="http://www.w3.org/2000/svg" width="20.8" height="14.623" viewBox="0 0 20.8 14.623">
-									<path id="left-arrow_3_" data-name="left-arrow(3)" d="M14.014,4.9a.737.737,0,1,0-1.048,1.038l5.314,5.314H.744A.738.738,0,0,0,0,11.982a.747.747,0,0,0,.744.744H18.281l-5.314,5.3a.752.752,0,0,0,0,1.048.734.734,0,0,0,1.048,0l6.573-6.573a.739.739,0,0,0,0-1.038Z" transform="translate(0.001 -4.676)"></path>
-								</svg>
-							</a>
+							<div class="col-12 col-lg-3 showroom-detail-product-col-lg">
+								<div class="showroom-detail-product-images-block">
+									<div class="showroom-detail-product-images-block__image">
+										<img src="../../images/showroom-detail-product-4.png" alt="" class="img-fluid">
+									</div>
+									<p class="showroom-detail-product-images-block__text">Custom Closet Organizer Colors</p>
+									<a href="#" title="" class="showroom-detail-product-images-block__button link-button mb-0">
+										Explore now
+										<svg xmlns="http://www.w3.org/2000/svg" width="20.8" height="14.623" viewBox="0 0 20.8 14.623">
+											<path id="left-arrow_3_" data-name="left-arrow(3)" d="M14.014,4.9a.737.737,0,1,0-1.048,1.038l5.314,5.314H.744A.738.738,0,0,0,0,11.982a.747.747,0,0,0,.744.744H18.281l-5.314,5.3a.752.752,0,0,0,0,1.048.734.734,0,0,0,1.048,0l6.573-6.573a.739.739,0,0,0,0-1.038Z" transform="translate(0.001 -4.676)"></path>
+										</svg>
+									</a>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-		</div>
 	</section>
 
-	
 	<section class="four-elements-block showroom-detail-product desktop-show">
-		<div class="wrapper">
-			<div class="container-fluid">
-				<div class="row">
-					<div class="col-12">
-						<h2 class="four-elements-block__heading text-center">Customers reviews</h2>
+				<div class="wrapper">
+					<div class="container-fluid">
+						<div class="row">
+							<div class="col-12">
+								<h2 class="four-elements-block__heading text-center">Customers reviews</h2>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-12 col-lg-4 mb-4">
+								<div class="block-stars__wrapper">
+									<img src="../../images/Rectangle12.png" alt="" class="block-stars__wrapper--image">
+									<div class="block-stars__wrapper--text">
+										<div class="stars-container">
+											<img src="../../images/star.svg" alt="">
+											<img src="../../images/star.svg" alt="">
+											<img src="../../images/star.svg" alt="">
+											<img src="../../images/star.svg" alt="">
+											<img src="../../images/star.svg" alt="">
+										</div>
+										<p class="first-text">Aubree W. Charlotte, North Carolina</p>
+										<p>Just had a successful installation!</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-12 col-lg-4 mb-4">
+								<div class="block-stars__wrapper">
+									<img src="../../images/Rectangle12.png" alt="" class="block-stars__wrapper--image">
+									<div class="block-stars__wrapper--text">
+										<div class="stars-container">
+											<img src="../../images/star.svg" alt="">
+											<img src="../../images/star.svg" alt="">
+											<img src="../../images/star.svg" alt="">
+											<img src="../../images/star.svg" alt="">
+											<img src="../../images/star.svg" alt="">
+										</div>
+										<p class="first-text">Aubree W. Charlotte, North Carolina</p>
+										<p>Just had a successful installation!</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-12 col-lg-4 mb-4">
+								<div class="block-stars__wrapper">
+									<img src="../../images/Rectangle12.png" alt="" class="block-stars__wrapper--image">
+									<div class="block-stars__wrapper--text">
+										<div class="stars-container">
+											<img src="../../images/star.svg" alt="">
+											<img src="../../images/star.svg" alt="">
+											<img src="../../images/star.svg" alt="">
+											<img src="../../images/star.svg" alt="">
+											<img src="../../images/star.svg" alt="">
+										</div>
+										<p class="first-text">Aubree W. Charlotte, North Carolina</p>
+										<p>Just had a successful installation!</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-12 col-lg-4 mb-4">
+								<div class="block-stars__wrapper">
+									<img src="../../images/Rectangle12.png" alt="" class="block-stars__wrapper--image">
+									<div class="block-stars__wrapper--text">
+										<div class="stars-container">
+											<img src="../../images/star.svg" alt="">
+											<img src="../../images/star.svg" alt="">
+											<img src="../../images/star.svg" alt="">
+											<img src="../../images/star.svg" alt="">
+											<img src="../../images/star.svg" alt="">
+										</div>
+										<p class="first-text">Aubree W. Charlotte, North Carolina</p>
+										<p>Just had a successful installation!</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-12 col-lg-4 mb-4">
+								<div class="block-stars__wrapper">
+									<img src="../../images/Rectangle12.png" alt="" class="block-stars__wrapper--image">
+									<div class="block-stars__wrapper--text">
+										<div class="stars-container">
+											<img src="../../images/star.svg" alt="">
+											<img src="../../images/star.svg" alt="">
+											<img src="../../images/star.svg" alt="">
+											<img src="../../images/star.svg" alt="">
+											<img src="../../images/star.svg" alt="">
+										</div>
+										<p class="first-text">Aubree W. Charlotte, North Carolina</p>
+										<p>Just had a successful installation!</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-12 col-lg-4 mb-4">
+								<div class="block-stars__wrapper">
+									<img src="../../images/Rectangle12.png" alt="" class="block-stars__wrapper--image">
+									<div class="block-stars__wrapper--text">
+										<div class="stars-container">
+											<img src="../../images/star.svg" alt="">
+											<img src="../../images/star.svg" alt="">
+											<img src="../../images/star.svg" alt="">
+											<img src="../../images/star.svg" alt="">
+											<img src="../../images/star.svg" alt="">
+										</div>
+										<p class="first-text">Aubree W. Charlotte, North Carolina</p>
+										<p>Just had a successful installation!</p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-12 text-center">
+								<a href="#" title="" class="red-link mt-3">
+									See all reviews
+								</a>
+							</div>
+						</div>
 					</div>
 				</div>
-				<div class="row">
-					<div class="col-12 col-lg-4 mb-4">
-						<div class="block-stars__wrapper">
-							<img src="../../images/Rectangle12.png" alt="" class="block-stars__wrapper--image">
-							<div class="block-stars__wrapper--text">
-								<div class="stars-container">
-									<img src="../../images/star.svg" alt="">
-									<img src="../../images/star.svg" alt="">
-									<img src="../../images/star.svg" alt="">
-									<img src="../../images/star.svg" alt="">
-									<img src="../../images/star.svg" alt="">
-								</div>
-								<p class="first-text">Aubree W. Charlotte, North Carolina</p>
-								<p>Just had a successful installation!</p>
-							</div>
-						</div>
-					</div>
-					<div class="col-12 col-lg-4 mb-4">
-						<div class="block-stars__wrapper">
-							<img src="../../images/Rectangle12.png" alt="" class="block-stars__wrapper--image">
-							<div class="block-stars__wrapper--text">
-								<div class="stars-container">
-									<img src="../../images/star.svg" alt="">
-									<img src="../../images/star.svg" alt="">
-									<img src="../../images/star.svg" alt="">
-									<img src="../../images/star.svg" alt="">
-									<img src="../../images/star.svg" alt="">
-								</div>
-								<p class="first-text">Aubree W. Charlotte, North Carolina</p>
-								<p>Just had a successful installation!</p>
-							</div>
-						</div>
-					</div>
-					<div class="col-12 col-lg-4 mb-4">
-						<div class="block-stars__wrapper">
-							<img src="../../images/Rectangle12.png" alt="" class="block-stars__wrapper--image">
-							<div class="block-stars__wrapper--text">
-								<div class="stars-container">
-									<img src="../../images/star.svg" alt="">
-									<img src="../../images/star.svg" alt="">
-									<img src="../../images/star.svg" alt="">
-									<img src="../../images/star.svg" alt="">
-									<img src="../../images/star.svg" alt="">
-								</div>
-								<p class="first-text">Aubree W. Charlotte, North Carolina</p>
-								<p>Just had a successful installation!</p>
-							</div>
-						</div>
-					</div>
-					<div class="col-12 col-lg-4 mb-4">
-						<div class="block-stars__wrapper">
-							<img src="../../images/Rectangle12.png" alt="" class="block-stars__wrapper--image">
-							<div class="block-stars__wrapper--text">
-								<div class="stars-container">
-									<img src="../../images/star.svg" alt="">
-									<img src="../../images/star.svg" alt="">
-									<img src="../../images/star.svg" alt="">
-									<img src="../../images/star.svg" alt="">
-									<img src="../../images/star.svg" alt="">
-								</div>
-								<p class="first-text">Aubree W. Charlotte, North Carolina</p>
-								<p>Just had a successful installation!</p>
-							</div>
-						</div>
-					</div>
-					<div class="col-12 col-lg-4 mb-4">
-						<div class="block-stars__wrapper">
-							<img src="../../images/Rectangle12.png" alt="" class="block-stars__wrapper--image">
-							<div class="block-stars__wrapper--text">
-								<div class="stars-container">
-									<img src="../../images/star.svg" alt="">
-									<img src="../../images/star.svg" alt="">
-									<img src="../../images/star.svg" alt="">
-									<img src="../../images/star.svg" alt="">
-									<img src="../../images/star.svg" alt="">
-								</div>
-								<p class="first-text">Aubree W. Charlotte, North Carolina</p>
-								<p>Just had a successful installation!</p>
-							</div>
-						</div>
-					</div>
-					<div class="col-12 col-lg-4 mb-4">
-						<div class="block-stars__wrapper">
-							<img src="../../images/Rectangle12.png" alt="" class="block-stars__wrapper--image">
-							<div class="block-stars__wrapper--text">
-								<div class="stars-container">
-									<img src="../../images/star.svg" alt="">
-									<img src="../../images/star.svg" alt="">
-									<img src="../../images/star.svg" alt="">
-									<img src="../../images/star.svg" alt="">
-									<img src="../../images/star.svg" alt="">
-								</div>
-								<p class="first-text">Aubree W. Charlotte, North Carolina</p>
-								<p>Just had a successful installation!</p>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-12 text-center">
-						<a href="#" title="" class="red-link mt-3">
-							See all reviews
-						</a>
-					</div>
-				</div>
-			</div>
-		</div>
 	</section>
 </main>
 
+		<div class="scrollToTopBlock">
+			<div class="people-working">
+				<img src="../../images/people-working-call-center_@2x.png" alt="" class="people-working__image">
 
+				<div class="people-working__wrapper">
+					<div class="people-working__content">
+						<p class="people-working__text">Hi! I'm the Virtual assistant, and I'm here to help you.</p>
+					</div>
+				</div>
+			</div>
 
+			<a href="#" class="scrollToTop js-to-top">
+				<img src="../../images/arrows.svg" alt="">
+			</a>
+		</div>
 
-<div class="scrollToTopBlock">
-<div class="people-working">
-<img src="images/people-working-call-center_@2x.png" alt="" class="people-working__image">
-<div class="people-working__wrapper">
-<div class="people-working__content">
-<p class="people-working__text">Hi! I'm the Virtual assistant, and I'm here to help you.</p>
-</div>
-</div>
-</div>
-<a href="#" title="" class="scrollToTop js-to-top">
-<img src="images/arrows.svg" alt="">
-</a>
-</div>
-<div class="mobile-show">
-	<div class="mobile-footer-buttons">
-	<a href="#" class="mobile-footer-buttons__first">you design</a>
-	<a href="#" class="mobile-footer-buttons__second"><img src="../../images/icon-save.svg" alt="" class="img-fluid"></a>
-	<a href="#" class="mobile-footer-buttons__third">we design</a>
-	</div>
-</div>
-
-
+		<div class="mobile-show">
+			<div class="mobile-footer-buttons">
+				<a href="#" title="" class="mobile-footer-buttons__first">you design</a>
+				<a href="#" title="" class="mobile-footer-buttons__second"><img src="../../images/icon-save.svg" alt="" class="img-fluid"></a>
+				<a href="#" title="" class="mobile-footer-buttons__third">we design</a>
+			</div>
+		</div>
+	
 <?php
 require_once($_SERVER['DOCUMENT_ROOT'].'/includes/footer.php');
 ?>

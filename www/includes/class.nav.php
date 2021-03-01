@@ -81,6 +81,9 @@ class Nav {
 		$t = str_replace ("/" ,"-" ,$t);
 		$t = preg_replace( '/[^a-zA-Z0-9-]+/', '', $t );	
 		$t = str_replace ("--" ,"-" ,$t);
+		//$t = str_replace (".." ,"." ,$t);		
+		//$t = preg_replace('/[.,]/', '', $t);
+		
 		return strtolower($t); 
 	}
 

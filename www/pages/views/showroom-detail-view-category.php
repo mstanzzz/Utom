@@ -25,27 +25,34 @@ require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php");
 					<div class="organizer-filters-block__wrapper js-filters-box">
 						<div class="my-custom-select-wrapper">
 							<div class="my-custom-select">
-								<div class="my-custom-select__trigger"><span>Style</span>
+								<div class="my-custom-select__trigger">
+<span>Style</span>
+
 									<div class="arrow"></div>
 								</div>
 								<div class="my-custom-options">
-											<span class="my-custom-option js-defaulf-state selected" data-value="Style">Style</span>
-											<span class="my-custom-option" data-value="All">All</span>
-											<span class="my-custom-option" data-value="Traditional">Traditional</span>
-											<span class="my-custom-option" data-value="Contemporary">Contemporary</span>
-											<span class="my-custom-option" data-value="Modern">Modern</span>
-											<span class="my-custom-option" data-value="Minimalist">Minimalist</span>
-											<span class="my-custom-option" data-value="Industrial">Industrial</span>
-											<span class="my-custom-option" data-value="Shabby Chic">Shabby Chic</span>
-											<span class="my-custom-option" data-value="Rustic">Rustic</span>
-											<span class="my-custom-option" data-value="Luxurious">Luxurious</span>
+
+<span class="my-custom-option js-defaulf-state selected" data-value="Style">Style</span>
+<span class="my-custom-option" data-value="All">All</span>
+<span class="my-custom-option" data-value="Traditional">Traditional</span>
+<span class="my-custom-option" data-value="Contemporary">Contemporary</span>
+<span class="my-custom-option" data-value="Modern">Modern</span>
+<span class="my-custom-option" data-value="Minimalist">Minimalist</span>
+<span class="my-custom-option" data-value="Industrial">Industrial</span>
+<span class="my-custom-option" data-value="Shabby Chic">Shabby Chic</span>
+<span class="my-custom-option" data-value="Rustic">Rustic</span>
+<span class="my-custom-option" data-value="Luxurious">Luxurious</span>
+
 								</div>
 							</div>
 						</div>
 
 						<div class="my-custom-select-wrapper">
 							<div class="my-custom-select">
-								<div class="my-custom-select__trigger"><span>Room</span>
+								<div class="my-custom-select__trigger">
+
+<span>Room</span>
+
 									<div class="arrow"></div>
 								</div>
 								<div class="my-custom-options">

@@ -44,7 +44,10 @@ class StoreData {
 						,item.name
 						,image.file_name
 						,item.short_description
-						,item.description											
+						,item.description
+						,item.show_in_cart
+						,item.show_in_showroom
+						
 				FROM item, item_to_category, image
 				WHERE item.item_id = item_to_category.item_id
 				AND item.img_id = image.img_id
@@ -60,7 +63,8 @@ class StoreData {
 				$t[$i]['file_name'] = $row->file_name;
 				$t[$i]['short_description'] = $row->short_description;
 				$t[$i]['description'] = $row->description;
-				
+				$t[$i]['show_in_cart'] = $row->show_in_cart;
+				$t[$i]['show_in_showroom'] = $row->show_in_showroom;				
 				$i++;
 		}
 		return $t;

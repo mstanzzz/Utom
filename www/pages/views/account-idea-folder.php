@@ -1,11 +1,8 @@
 
 
-
 <?php	
 require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php"); 	
 ?>	
-
-
 <section class="home-mobile-buttons-block account-nav covid-block">
 	<div class="wrapper">
 		<div class="container-fluid">
@@ -629,13 +626,16 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/includes/footer.php');
 							<form>
 								<div class="row">
 									<div class="col-12 col-lg-4 mb-2">
-										<div class="account-block__form--house-image">
-											<img src="../../images/photo.svg" alt="" class="account-block__form--house-image-defaltImg js-my-house-defalt-img">
-											
-											<a href="" data-lightbox="roadtrip" data-title="Lorem ipsum">
-												<img src="xxxHTMLLINKxxx0.91801327020264980.8543398919421896xxx" alt="" class="js-my-house-img-view img-fluid" style="display: none;">
-											</a>
-										</div>
+<div class="account-block__form--house-image">
+
+<img src="../../images/photo.svg" alt="" class="account-block__form--house-image-defaltImg js-my-house-defalt-img">
+
+<a href="" data-lightbox="roadtrip" data-title="Lorem ipsum">
+<img src="xxxHTMLLINKxxx0.91801327020264980.8543398919421896xxx" alt="" class="js-my-house-img-view img-fluid" style="display: none;">
+</a>
+
+</div>
+						
 									</div>
 									<div class="col-12 col-lg-4 mb-2">
 
@@ -646,8 +646,10 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/includes/footer.php');
 										<div class="row">
 											<div class="col-12 mb-2">
 												<div class="form-group">
-													<label for="house-name" class="label-riquired">Add/Edit house title</label>
-													<input type="text" class="form-control mt-2" name="house-name" placeholder="Add/Edit house title">
+
+<label for="house-name" class="label-riquired">Add/Edit house title</label>
+<input type="text" class="form-control mt-2" name="house-name" placeholder="Add/Edit house title">
+												
 												</div>
 											</div>
 										</div>
@@ -656,17 +658,22 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/includes/footer.php');
 											<div class="col-12 mb-2">
 												<p class="mb-1">Add room/s</p>
 												<div class="dropdown">
-													<label class="dropdown-label" data-default-text="Choose one or more room/s">Choose one or more room/s</label>
+<label class="dropdown-label" data-default-text="Choose one or more room/s">
+Choose one or more room/s
+</label>
 													
 													<div class="dropdown-list">
 														<div class="checkbox">
-															<input type="checkbox" class="check custom-checkbox" id="checkbox-1" value="value1">
-															<label for="checkbox-1">Living Room</label>
+														
+														
+<input type="checkbox" class="check custom-checkbox" id="checkbox-1" value="value1">
+<label for="checkbox-1">Living Room</label>
 														</div>
 														
 														<div class="checkbox">
-															<input class="check custom-checkbox" id="checkbox-2" type="checkbox" value="value2">
-															<label for="checkbox-2">Bedroom</label>
+														
+<input class="check custom-checkbox" id="checkbox-2" type="checkbox" value="value2">
+<label for="checkbox-2">Bedroom</label>
 														</div>
 														
 														<div class="checkbox">
@@ -757,14 +764,27 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/includes/footer.php');
 											</div>
 										</div>
 
+
+
 										<div class="row js-desctop-file-position">
 											<div class="col-12 mb-2">
 												<div class="form-group">
-													<div class="my-house-image-upload__wrapper">														
-														<input type="file" class="my-house-image-upload__file js-img-up" name="my-house-image-upload">
-														<svg xmlns="http://www.w3.org/2000/svg" width="33.001" height="33" viewBox="0 0 33.001 33"><defs><style>.upload{fill:#384765;}</style></defs><g transform="translate(0 -0.003)"><g transform="translate(0 0.003)"><path class="upload" d="M16.5,0A16.5,16.5,0,1,0,33,16.5,16.5,16.5,0,0,0,16.5,0ZM12.207,8.966l3.488-3.488a1.163,1.163,0,0,1,.826-.342h.017a1.165,1.165,0,0,1,.826.342l3.488,3.488A1.168,1.168,0,1,1,19.2,10.618L17.658,9.076v6.259a1.168,1.168,0,1,1-2.337,0V9.156l-1.463,1.462a1.168,1.168,0,0,1-1.652-1.652ZM25.474,23.028h0c0,1.577-1.546,2.812-3.521,2.812h-10.9c-1.974,0-3.521-1.235-3.521-2.812V15.437c0-1.577,1.546-2.813,3.521-2.813h1.472a2.776,2.776,0,0,0,1.022,0h.067v2.282H11.048c-.8,0-1.238.4-1.238.53v7.591c0,.132.439.53,1.238.53H21.953c.8,0,1.238-.4,1.238-.53V15.437c0-.132-.439-.53-1.238-.53H19.37V12.625h.158a2.714,2.714,0,0,0,1.01,0h1.415c1.974,0,3.521,1.236,3.521,2.813v7.591Z" transform="translate(0 -0.003)"/></g></g></svg>
-														<label for="my-house-image-upload" class="house-image-upload__label">Upload/change cover image</label>
-													</div>
+
+<div class="my-house-image-upload__wrapper">														
+<input type="file" class="my-house-image-upload__file js-img-up" name="my-house-image-upload">
+													<svg xmlns="http://www.w3.org/2000/svg" width="33.001" height="33" viewBox="0 0 33.001 33">
+													<defs>
+													<style>.upload{fill:#384765;}</style>
+													</defs>
+													<g transform="translate(0 -0.003)">
+													<g transform="translate(0 0.003)">
+													<path class="upload" d="M16.5,0A16.5,16.5,0,1,0,33,16.5,16.5,16.5,0,0,0,16.5,0ZM12.207,8.966l3.488-3.488a1.163,1.163,0,0,1,.826-.342h.017a1.165,1.165,0,0,1,.826.342l3.488,3.488A1.168,1.168,0,1,1,19.2,10.618L17.658,9.076v6.259a1.168,1.168,0,1,1-2.337,0V9.156l-1.463,1.462a1.168,1.168,0,0,1-1.652-1.652ZM25.474,23.028h0c0,1.577-1.546,2.812-3.521,2.812h-10.9c-1.974,0-3.521-1.235-3.521-2.812V15.437c0-1.577,1.546-2.813,3.521-2.813h1.472a2.776,2.776,0,0,0,1.022,0h.067v2.282H11.048c-.8,0-1.238.4-1.238.53v7.591c0,.132.439.53,1.238.53H21.953c.8,0,1.238-.4,1.238-.53V15.437c0-.132-.439-.53-1.238-.53H19.37V12.625h.158a2.714,2.714,0,0,0,1.01,0h1.415c1.974,0,3.521,1.236,3.521,2.813v7.591Z" transform="translate(0 -0.003)"/>
+													</g>
+													</g>
+													</svg>
+<label for="my-house-image-upload" class="house-image-upload__label">Upload/change cover image</label>
+</div>
+
 												</div>
 											</div>
 										</div>
