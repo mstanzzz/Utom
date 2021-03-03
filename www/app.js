@@ -29447,7 +29447,7 @@
 
 						reader.onload = function (e) {
 							
-							// Added by Mark
+							// Added by Mark Stanz
 							$.ajax({
 								method: "POST",
 								url: "pages/account-ajax/ajax-add-blob-image.php",
@@ -29457,7 +29457,7 @@
 							}).fail(function() {
 								//console.log("failed");
 							});
-							// End Mark
+							// End Mark Stanz
 
 							$('.js-y-house-defalt-img').hide();
 							
