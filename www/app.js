@@ -29441,16 +29441,34 @@
 
 				$('.js-img-up').on('change', function () {
 					if (this.files && this.files[0]) {
+						
 						var reader = new FileReader(),
 							changedInput = this;
 
 						reader.onload = function (e) {
-							$('.js-my-house-defalt-img').hide();
+							
+							// Added by Mark
+							$.ajax({
+								method: "POST",
+								url: "pages/account-ajax/ajax-add-blob-image.php",
+								data: {blob_image: e.target.result}
+							}).done(function(data) {
+								//console.log(data);								
+							}).fail(function() {
+								//console.log("failed");
+							});
+							// End Mark
+
+							$('.js-y-house-defalt-img').hide();
+							
 							$('.js-my-house-img-view').attr('src', e.target.result).show().parent('a').attr('href', e.target.result);
+							
 							$(changedInput).siblings('label').text($(changedInput).val().split('\\').pop());
+							
 						};
 
 						reader.readAsDataURL(this.files[0]);
+						
 					}
 				}); // select all saved houses
 
