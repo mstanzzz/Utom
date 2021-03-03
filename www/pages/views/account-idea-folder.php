@@ -628,7 +628,8 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/includes/footer.php');
 									<div class="col-12 col-lg-4 mb-2">
 <div class="account-block__form--house-image">
 
-<img src="../../images/photo.svg" alt="" class="account-block__form--house-image-defaltImg js-my-house-defalt-img">
+<img src="../../images/photo.svg" alt="" 
+class="account-block__form--house-image-defaltImg js-my-house-defalt-img">
 
 <a href="" data-lightbox="roadtrip" data-title="Lorem ipsum">
 <img src="xxxHTMLLINKxxx0.91801327020264980.8543398919421896xxx" alt="" class="js-my-house-img-view img-fluid" style="display: none;">
@@ -647,8 +648,8 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/includes/footer.php');
 											<div class="col-12 mb-2">
 												<div class="form-group">
 
-<label for="house-name" class="label-riquired">Add/Edit house title</label>
-<input type="text" class="form-control mt-2" name="house-name" placeholder="Add/Edit house title">
+													<label for="house-name" class="label-riquired">Add/Edit house title</label>
+													<input type="text" class="form-control mt-2" name="house-name" placeholder="Add/Edit house title">
 												
 												</div>
 											</div>
@@ -658,22 +659,19 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/includes/footer.php');
 											<div class="col-12 mb-2">
 												<p class="mb-1">Add room/s</p>
 												<div class="dropdown">
-<label class="dropdown-label" data-default-text="Choose one or more room/s">
-Choose one or more room/s
-</label>
+													<label class="dropdown-label" data-default-text="Choose one or more room/s">
+													Choose one or more room/s
+													</label>
 													
 													<div class="dropdown-list">
 														<div class="checkbox">
-														
-														
-<input type="checkbox" class="check custom-checkbox" id="checkbox-1" value="value1">
-<label for="checkbox-1">Living Room</label>
+															<input type="checkbox" class="check custom-checkbox" id="checkbox-1" value="value1">
+															<label for="checkbox-1">Living Room</label>
 														</div>
 														
 														<div class="checkbox">
-														
-<input class="check custom-checkbox" id="checkbox-2" type="checkbox" value="value2">
-<label for="checkbox-2">Bedroom</label>
+															<input class="check custom-checkbox" id="checkbox-2" type="checkbox" value="value2">
+															<label for="checkbox-2">Bedroom</label>
 														</div>
 														
 														<div class="checkbox">
@@ -764,14 +762,14 @@ Choose one or more room/s
 											</div>
 										</div>
 
-
-
 										<div class="row js-desctop-file-position">
 											<div class="col-12 mb-2">
 												<div class="form-group">
 
-<div class="my-house-image-upload__wrapper">														
-<input type="file" class="my-house-image-upload__file js-img-up" name="my-house-image-upload">
+													<div class="my-house-image-upload__wrapper">														
+<input type="file" 
+class="my-house-image-upload__file js-img-up" 
+name="my-house-image-upload">
 													<svg xmlns="http://www.w3.org/2000/svg" width="33.001" height="33" viewBox="0 0 33.001 33">
 													<defs>
 													<style>.upload{fill:#384765;}</style>
@@ -782,7 +780,9 @@ Choose one or more room/s
 													</g>
 													</g>
 													</svg>
-<label for="my-house-image-upload" class="house-image-upload__label">Upload/change cover image</label>
+													
+<label for="my-house-image-upload" 
+	class="house-image-upload__label">Upload/change cover image</label>
 </div>
 
 												</div>
@@ -818,6 +818,21 @@ Choose one or more room/s
 				</div>
 			</div>
 		</div>
+
+<?php
+// test
+/*
+$db = $dbCustom->getDbConnect(CART_DATABASE);
+$sql = "SELECT blob_image
+		FROM blob_image";
+$result = $dbCustom->getResult($db,$sql);
+while($row = $result->fetch_object()){	
+	echo "<img src='".$row->blob_image."'/>";
+	echo "<br />";
+}
+*/
+									
+?>
 
 		<!-- Modal manage saved houses -->
 		<div class="modal fade" id="manageHouses" tabindex="-1" role="dialog" aria-labelledby="#manageHousesTitle" aria-hidden="true">
