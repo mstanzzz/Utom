@@ -1,17 +1,4 @@
 <?php
-
-
-
-if(strpos($_SERVER['REQUEST_URI'], 'onlinecl/' )){
-$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT'].'/storittek';
-}elseif(strpos($_SERVER['REQUEST_URI'], "designitpro" )){
-$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT'].'/designitpro';
-}elseif(strpos($_SERVER['REQUEST_URI'], 'otg-site' )){
-$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT'].'/otg-site';
-}else{
-$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT'];
-}
-
 require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
 
 $progress = new SetupProgress;
@@ -48,12 +35,17 @@ if($result->num_rows > 0){
 	$this_name = $object->name;
 	$spec_cat_id = $object->spec_cat_id;
 	$description = $object->description;
+	$spec_details = $object->spec_details;
+	
+	
+	
 	$this_img_id = $object->img_id;		
 
 }else{
 	$this_name = '';
 	$spec_cat_id = '';
 	$description = '';
+	$spec_details = '';
 	$this_img_id = 0;			
 }
 
@@ -63,29 +55,22 @@ if(!isset($_SESSION['img_id'])) $_SESSION['img_id'] = $this_img_id;
 if(!isset($_SESSION["temp_page_fields"]['name'])) $_SESSION["temp_page_fields"]['name'] = $this_name;
 if(!isset($_SESSION["temp_page_fields"]["spec_cat_id"])) $_SESSION["temp_page_fields"]["spec_cat_id"] = $spec_cat_id;
 if(!isset($_SESSION["temp_page_fields"]['description'])) $_SESSION["temp_page_fields"]['description'] = $description;
+if(!isset($_SESSION["temp_page_fields"]['spec_details'])) $_SESSION["temp_page_fields"]['spec_details'] = $spec_details;
+
+
+
+
 
 require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php');
 
 
 ?>
 <script>
-tinyMCE.init({
-// General options
-mode : "specific_textareas",
-editor_selector : "wysiwyg",
-theme : "advanced",
-skin : "o2k7",
-plugins : "table,advhr,advlink,emotions,inlinepopups,insertdatetime,searchreplace,paste,style",
-// Theme options
-theme_advanced_buttons1 :"bold,italic,underline,strikethrough,|,styleselect,formatselect,fontsizeselect,|,forecolor,backcolor",
-theme_advanced_buttons2 : "justifyleft,justifycenter,justifyright,justifyfull,|,bullist,numlist,|,outdent,indent,blockquote,|,cut,copy,paste,pastetext,pasteword,|,undo,redo,|,link,unlink,",
-theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,",
-theme_advanced_toolbar_location : "top",
-theme_advanced_toolbar_align : "left",
-theme_advanced_statusbar_location : "bottom",
-theme_advanced_resizing : true,
-theme_advanced_resize_horizontal : false,
-		forced_root_block : false
+
+tinymce.init({
+	selector: 'textarea',
+	plugins: 'advlist link image lists code',
+	forced_root_block : false
 
 });
 
@@ -189,9 +174,23 @@ function goto_isfancybox(url){
 						<label>Spec Item Title</label>
 					</div>
 					<div class="twocols">
-						<input type="text" name="name" value="<?php echo prepFormInputStr($_SESSION["temp_page_fields"]['name']); ?>" />
+						<input type="text" name="name" value="<?php echo stripslashes($_SESSION["temp_page_fields"]['name']); ?>" />
 					</div>
 				</div>
+				
+				<div class="colcontainer formcols">
+					<div class="twocols">
+						<label>spec_details</label>
+					</div>
+					<div class="twocols">
+						<input type="text" name="spec_details" 
+						value="<?php echo stripslashes($_SESSION["temp_page_fields"]['spec_details']); ?>" />
+					</div>
+				</div>
+				
+				
+				
+				
 				<div class="colcontainer formcols">
 					<div class="twocols">
 						<label>Spec Item Category</label>
@@ -215,7 +214,7 @@ function goto_isfancybox(url){
 					</div>
 				</div>
 				<label>Spec Item Content</label>
-				<textarea id="wysiwyg" class="wysiwyg small" name="description"><?php echo stripslashes($_SESSION["temp_page_fields"]['description']); ?></textarea>
+<textarea id="wysiwyg" class="wysiwyg" name="description"><?php echo stripslashes($_SESSION["temp_page_fields"]['description']); ?></textarea>
 			</fieldset>
 		</div>
 	</form>

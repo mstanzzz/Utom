@@ -30,8 +30,8 @@ if($ret_err){
 	echo "Error";
 	echo "<br />";
 	
-	$url_str = $ste_root."manage/crop-tool.php";
-	$url_str = preg_replace('/(\/+)/','/',$url_str);
+	$url_str = "crop-tool.php";
+	//$url_str = preg_replace('/(\/+)/','/',$url_str);
 	//echo $url_str;
 	
 	echo "<br />";
@@ -41,7 +41,11 @@ if($ret_err){
 }
 
 
-/*
+/*   
+echo "img_type ".$_SESSION['img_type'];
+echo "<br />";
+echo "<br />";
+
 echo "<br />";
 echo "crop_n: ".$_SESSION['crop_n'];
 echo "<br />";
@@ -80,6 +84,39 @@ $src_h = $new_height;
 
 $preview = '';
 
+
+
+if(strpos($_SESSION['img_type'], 'hero') !== false){
+
+$new_path_fn = "../saascustuploads/".$_SESSION['profile_account_id']."/cms/".$orig_img_fn;
+	
+	//10:4
+	$dst_w = 1030;
+	$dst_h = 412;
+	$dst_img = imageCreateTrueColor($dst_w,$dst_h);
+	imagecopyresampled($dst_img, $canvas, 0, 0, 0, 0, $dst_w, $dst_h, $src_w, $src_h);
+	imagejpeg($dst_img,$new_path_fn,88);
+
+	$db = $dbCustom->getDbConnect(SITE_N_DATABASE);
+	$sql = "INSERT INTO image (file_name, profile_account_id) 
+			VALUES ('".$orig_img_fn."', '".$_SESSION['profile_account_id']."')";
+	$r = $dbCustom->getResult($db,$sql);
+	$_SESSION['img_id'] = $db->insert_id; 					
+
+	
+}
+
+
+
+
+
+//echo "<br />";
+//echo $_SESSION['img_id'];
+//echo "<br />";
+//echo $orig_img_fn;
+//exit;
+
+
 	if($_SESSION['crop_n'] == 1){
 
 		$db = $dbCustom->getDbConnect(CART_DATABASE);
@@ -104,13 +141,6 @@ $preview = '';
 
 	}	
 
-
-
-//echo "<br />";
-//echo $_SESSION['img_id'];
-//echo "<br />";
-//echo $orig_img_fn;
-//exit;
 
 if(strpos($_SESSION['img_type'], 'cart') !== false){
 

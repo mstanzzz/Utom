@@ -1,6 +1,5 @@
-
-
 <?php	
+if(!isset($cust_name)) $cust_name = 'Joe';
 require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php"); 	
 ?>	
 <section class="home-mobile-buttons-block account-nav covid-block">
@@ -62,8 +61,10 @@ require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php");
 								<span class="account-block__navigation--user-plus">
 									<svg xmlns="http://www.w3.org/2000/svg" width="42.5" height="42.5" viewBox="0 0 42.5 42.5"><defs><style>.add-showroom{fill:#02adb0;}</style></defs><path class="add-showroom" d="M21.25,0A21.25,21.25,0,1,0,42.5,21.25,21.274,21.274,0,0,0,21.25,0Zm9.3,23.021H23.021v7.526a1.771,1.771,0,1,1-3.541,0V23.021H11.953a1.771,1.771,0,0,1,0-3.541h7.526V11.953a1.771,1.771,0,0,1,3.541,0v7.526h7.526a1.771,1.771,0,1,1,0,3.541Zm0,0"/></svg>
 								</span>
-								</a>
-								<h4 class="account-block__navigation--user-heading">Hi, Joro</h4>
+		
+	<h4 class="account-block__navigation--user-heading">
+	Hi, <?php echo $cust_name; ?>
+	</h4>
 								</div>
 								<div class="mobile-show">
 									<div class="account-block__navigation--user active js-not-login-txt">
@@ -156,7 +157,13 @@ require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php");
 					<div class="col-12 col-lg-9">
 						<div class="account-block__wellcome">
 							<p class="account-block__wellcome--heading"><span class="wellome-txt">Welcome,</span> Super Administrator! <span>How are you today?</span></p>
-							<p class="account-block__wellcome--text">27 May 2020, Monday</p>
+							<p class="account-block__wellcome--text">
+<?php 
+$ts = time();
+echo date("d D Y, l", $ts);
+?>
+
+							</p>
 						</div>
 						<div class="account-block__general-info idea-folder">
 							<div class="account-block__general-info--image idea-folder-img">
@@ -242,531 +249,317 @@ require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php");
 							</div>
 						</div>
 
-								<!-- My houses block -->
-								<div class="account-block__details idea-folder active" id="my-houses">
-									<div class="row">
-										<div class="col-6 col-lg-4">
-											<figure class="my-house__wrapper">
-												<figcaption class="my-house__content">
-													
-													<div class="my-house__img--group">
-														<img src="../../images/my-house-1.png" alt="" class="img-fluid my-house__img--img">
+<script>
 
-														<a href="account-idea-folder-details.html" class="my-house__link-fixed mobile-show"></a>
+function submit_to_details(idea_folder_id, blob_image_id,name){
+	
+	var idd = document.getElementById(idea_folder_id);	
+	idd.submit();
+	//alert("idd "+idd);
+	
+}
 
-														<div class="my-house__img--text">
-															
-															<a href="account-idea-folder-details.html" class="my-house__link-fixed"></a>
+function set_delete_idea_folder(folder_id,blob_image_id,name){
+//function set_delete_idea_folder(folder_id, blob_image_id){
+//function set_delete_idea_folder(folder_id){
+//function set_delete_idea_folder(){
+	
+	//alert("xxxxxxxxxx");
+	//alert("folder_id: "+folder_id);
+	//alert("blob_image_id: "+blob_image_id);
+	//alert("name: "+name);
+	
+	document.getElementById("del_idea_folder_id").value = folder_id;
+	document.getElementById("blob_image_id").value = blob_image_id;
+	document.getElementById("deleteHouseTitle").innerHTML = name;
+	document.getElementById("inside_deleteHouseTitle").innerHTML = name;
 
-															<div class="row">
-																<div class="col-9">
-																	<p class="first-text">Created room/s:</p>
-																</div>
-																<div class="col-3">
-																	<p class="second-text">3</p>
-																</div>
-															</div>
-															<div class="row">
-																<div class="col-9">
-																	<p class="first-text">Saved item/s:</p>
-																</div>
-																<div class="col-3">
-																	<p class="second-text">15</p>
-																</div>
-															</div>
-															
-															<div class="my-house__img--buttons">
-																<button class="shere">
-																	<svg id="share" xmlns="http://www.w3.org/2000/svg" width="42.5" height="42.5" viewBox="0 0 42.5 42.5">
-																		<path id="Path_226" data-name="Path 226" d="M2.5,0A2.5,2.5,0,1,1,0,2.5,2.5,2.5,0,0,1,2.5,0Z" transform="translate(10 19)" fill="#384765"/>
-																		<path id="Path_225" data-name="Path 225" d="M2.5,0A2.5,2.5,0,1,1,0,2.5,2.5,2.5,0,0,1,2.5,0Z" transform="translate(25 26)" fill="#384765"/>
-																		<path id="Path_224" data-name="Path 224" d="M2.5,0A2.5,2.5,0,1,1,0,2.5,2.5,2.5,0,0,1,2.5,0Z" transform="translate(25 11)" fill="#384765"/>
-																		<path id="Path_209" data-name="Path 209" d="M21.25,0A21.25,21.25,0,1,0,42.5,21.25,21.333,21.333,0,0,0,21.25,0ZM17.484,21.556l6.348,3.794a5.112,5.112,0,1,1-1.181,2.195l-5.96-3.562a5,5,0,1,1-.3-5.842l6.193-3.46a5.046,5.046,0,1,1,1.069,2.255L17.43,20.413a2.916,2.916,0,0,1,.054,1.143Z" fill="#384765"/>
-																	</svg>
-																</button>
-																<button class="delete" data-toggle="modal" data-target="#deleteHouse">
-																	<svg xmlns="http://www.w3.org/2000/svg" width="43" height="43" viewBox="0 0 43 43">
-																		<g id="trash" transform="translate(11.363 9.917)">
-																			<circle id="Ellipse_36" data-name="Ellipse 36" cx="21.5" cy="21.5" r="21.5" transform="translate(-11.363 -9.917)" fill="#fb561b"/>
-																			<path id="Path_408" data-name="Path 408" d="M63.808,128.863a1.849,1.849,0,0,0,1.914,1.655H73.9a1.882,1.882,0,0,0,1.947-1.687l1.33-13.886H62.186Z" transform="translate(-59.104 -107.806)" fill="#fff"/>
-																			<path id="Path_409" data-name="Path 409" d="M33.059,2.92H27.024V1.882A1.817,1.817,0,0,0,25.274,0H21.087a1.817,1.817,0,0,0-1.85,1.783q0,.049,0,.1V2.92H13.2a.649.649,0,0,0,0,1.3H33.059a.649.649,0,1,0,0-1.3ZM25.726,1.882V2.92H20.535V1.882a.519.519,0,0,1,.552-.584h4.088a.519.519,0,0,1,.554.481A.513.513,0,0,1,25.726,1.882Z" transform="translate(-12.554 0)" fill="#fff"/>
-																		</g>
-																	</svg>
-																</button>
-															</div>
-														</div>
-													</div>
+}
 
-													<a  href="account-idea-folder-details.html" class="my-house__heading">Title house name 1</a>
-												</figcaption>
-											</figure>
-										</div>
-										<div class="col-6 col-lg-4">
-											<figure class="my-house__wrapper">
-												<figcaption class="my-house__content">
-													
-													<div class="my-house__img--group">
-														<img src="../../images/my-house-2.png" alt="" class="img-fluid my-house__img--img">
+</script>
 
-														<a href="#" class="my-house__link-fixed mobile-show"></a>
+<!-- My houses block -->
+<div class="account-block__details idea-folder active" id="my-houses">
+	<div class="row">
 
-														<div class="my-house__img--text">
-															
-															<a href="#" class="my-house__link-fixed"></a>
+<?php
 
-															<div class="row">
-																<div class="col-9">
-																	<p class="first-text">Created room/s:</p>
-																</div>
-																<div class="col-3">
-																	<p class="second-text">3</p>
-																</div>
-															</div>
-															<div class="row">
-																<div class="col-9">
-																	<p class="first-text">Saved item/s:</p>
-																</div>
-																<div class="col-3">
-																	<p class="second-text">15</p>
-																</div>
-															</div>
-															
-															<div class="my-house__img--buttons">
-																<button class="shere">
-																	<svg id="share" xmlns="http://www.w3.org/2000/svg" width="42.5" height="42.5" viewBox="0 0 42.5 42.5">
-																		<path id="Path_226" data-name="Path 226" d="M2.5,0A2.5,2.5,0,1,1,0,2.5,2.5,2.5,0,0,1,2.5,0Z" transform="translate(10 19)" fill="#384765"/>
-																		<path id="Path_225" data-name="Path 225" d="M2.5,0A2.5,2.5,0,1,1,0,2.5,2.5,2.5,0,0,1,2.5,0Z" transform="translate(25 26)" fill="#384765"/>
-																		<path id="Path_224" data-name="Path 224" d="M2.5,0A2.5,2.5,0,1,1,0,2.5,2.5,2.5,0,0,1,2.5,0Z" transform="translate(25 11)" fill="#384765"/>
-																		<path id="Path_209" data-name="Path 209" d="M21.25,0A21.25,21.25,0,1,0,42.5,21.25,21.333,21.333,0,0,0,21.25,0ZM17.484,21.556l6.348,3.794a5.112,5.112,0,1,1-1.181,2.195l-5.96-3.562a5,5,0,1,1-.3-5.842l6.193-3.46a5.046,5.046,0,1,1,1.069,2.255L17.43,20.413a2.916,2.916,0,0,1,.054,1.143Z" fill="#384765"/>
-																	</svg>
-																</button>
-																<button class="delete" data-toggle="modal" data-target="#deleteHouse">
-																	<svg xmlns="http://www.w3.org/2000/svg" width="43" height="43" viewBox="0 0 43 43">
-																		<g id="trash" transform="translate(11.363 9.917)">
-																			<circle id="Ellipse_36" data-name="Ellipse 36" cx="21.5" cy="21.5" r="21.5" transform="translate(-11.363 -9.917)" fill="#fb561b"/>
-																			<path id="Path_408" data-name="Path 408" d="M63.808,128.863a1.849,1.849,0,0,0,1.914,1.655H73.9a1.882,1.882,0,0,0,1.947-1.687l1.33-13.886H62.186Z" transform="translate(-59.104 -107.806)" fill="#fff"/>
-																			<path id="Path_409" data-name="Path 409" d="M33.059,2.92H27.024V1.882A1.817,1.817,0,0,0,25.274,0H21.087a1.817,1.817,0,0,0-1.85,1.783q0,.049,0,.1V2.92H13.2a.649.649,0,0,0,0,1.3H33.059a.649.649,0,1,0,0-1.3ZM25.726,1.882V2.92H20.535V1.882a.519.519,0,0,1,.552-.584h4.088a.519.519,0,0,1,.554.481A.513.513,0,0,1,25.726,1.882Z" transform="translate(-12.554 0)" fill="#fff"/>
-																		</g>
-																	</svg>
-																</button>
-															</div>
-														</div>
-													</div>
 
-													<a  href="#" class="my-house__heading">Title house name 2</a>
-												</figcaption>
-											</figure>
-										</div>
-										<div class="col-6 col-lg-4">
-											<figure class="my-house__wrapper">
-												<figcaption class="my-house__content">
-													
-													<div class="my-house__img--group">
-														<img src="../../images/my-house-3.png" alt="" class="img-fluid my-house__img--img">
 
-														<a href="#" class="my-house__link-fixed mobile-show"></a>
+if(count($houses_array) == 0){
+	echo "<div class='col-12'>";
+	echo "<p class='idea-folder-empty-house__heading'>No houses!</p>";
+	echo "<p class='idea-folder-empty-house__text'>
+	You can add houses by choosing above option \"Add hose\"</p>
+	</div>";
+}
 
-														<div class="my-house__img--text">
-															
-															<a href="#" class="my-house__link-fixed"></a>
+foreach($houses_array as $val){
+	//echo $val['blob_image'];
+	//echo "<br />";
 
-															<div class="row">
-																<div class="col-9">
-																	<p class="first-text">Created room/s:</p>
-																</div>
-																<div class="col-3">
-																	<p class="second-text">3</p>
-																</div>
-															</div>
-															<div class="row">
-																<div class="col-9">
-																	<p class="first-text">Saved item/s:</p>
-																</div>
-																<div class="col-3">
-																	<p class="second-text">15</p>
-																</div>
-															</div>
-															
-															<div class="my-house__img--buttons">
-																<button class="shere">
-																	<svg id="share" xmlns="http://www.w3.org/2000/svg" width="42.5" height="42.5" viewBox="0 0 42.5 42.5">
-																		<path id="Path_226" data-name="Path 226" d="M2.5,0A2.5,2.5,0,1,1,0,2.5,2.5,2.5,0,0,1,2.5,0Z" transform="translate(10 19)" fill="#384765"/>
-																		<path id="Path_225" data-name="Path 225" d="M2.5,0A2.5,2.5,0,1,1,0,2.5,2.5,2.5,0,0,1,2.5,0Z" transform="translate(25 26)" fill="#384765"/>
-																		<path id="Path_224" data-name="Path 224" d="M2.5,0A2.5,2.5,0,1,1,0,2.5,2.5,2.5,0,0,1,2.5,0Z" transform="translate(25 11)" fill="#384765"/>
-																		<path id="Path_209" data-name="Path 209" d="M21.25,0A21.25,21.25,0,1,0,42.5,21.25,21.333,21.333,0,0,0,21.25,0ZM17.484,21.556l6.348,3.794a5.112,5.112,0,1,1-1.181,2.195l-5.96-3.562a5,5,0,1,1-.3-5.842l6.193-3.46a5.046,5.046,0,1,1,1.069,2.255L17.43,20.413a2.916,2.916,0,0,1,.054,1.143Z" fill="#384765"/>
-																	</svg>
-																</button>
-																<button class="delete" data-toggle="modal" data-target="#deleteHouse">
-																	<svg xmlns="http://www.w3.org/2000/svg" width="43" height="43" viewBox="0 0 43 43">
-																		<g id="trash" transform="translate(11.363 9.917)">
-																			<circle id="Ellipse_36" data-name="Ellipse 36" cx="21.5" cy="21.5" r="21.5" transform="translate(-11.363 -9.917)" fill="#fb561b"/>
-																			<path id="Path_408" data-name="Path 408" d="M63.808,128.863a1.849,1.849,0,0,0,1.914,1.655H73.9a1.882,1.882,0,0,0,1.947-1.687l1.33-13.886H62.186Z" transform="translate(-59.104 -107.806)" fill="#fff"/>
-																			<path id="Path_409" data-name="Path 409" d="M33.059,2.92H27.024V1.882A1.817,1.817,0,0,0,25.274,0H21.087a1.817,1.817,0,0,0-1.85,1.783q0,.049,0,.1V2.92H13.2a.649.649,0,0,0,0,1.3H33.059a.649.649,0,1,0,0-1.3ZM25.726,1.882V2.92H20.535V1.882a.519.519,0,0,1,.552-.584h4.088a.519.519,0,0,1,.554.481A.513.513,0,0,1,25.726,1.882Z" transform="translate(-12.554 0)" fill="#fff"/>
-																		</g>
-																	</svg>
-																</button>
-															</div>
-														</div>
-													</div>
+	$arg_str = $val['idea_folder_id'].",".$val['blob_image_id'].",'".$val['name']."'";							
 
-													<a  href="#" class="my-house__heading">Title house name 3</a>
-												</figcaption>
-											</figure>
-										</div>
-										<div class="col-6 col-lg-4">
-											<figure class="my-house__wrapper">
-												<figcaption class="my-house__content">
-													
-													<div class="my-house__img--group">
-														<img src="../../images/my-house-1.png" alt="" class="img-fluid my-house__img--img">
 
-														<a href="#" class="my-house__link-fixed mobile-show"></a>
+?>
 
-														<div class="my-house__img--text">
-															
-															<a href="#" class="my-house__link-fixed"></a>
 
-															<div class="row">
-																<div class="col-9">
-																	<p class="first-text">Created room/s:</p>
-																</div>
-																<div class="col-3">
-																	<p class="second-text">3</p>
-																</div>
-															</div>
-															<div class="row">
-																<div class="col-9">
-																	<p class="first-text">Saved item/s:</p>
-																</div>
-																<div class="col-3">
-																	<p class="second-text">15</p>
-																</div>
-															</div>
-															
-															<div class="my-house__img--buttons">
-																<button class="shere">
-																	<svg id="share" xmlns="http://www.w3.org/2000/svg" width="42.5" height="42.5" viewBox="0 0 42.5 42.5">
-																		<path id="Path_226" data-name="Path 226" d="M2.5,0A2.5,2.5,0,1,1,0,2.5,2.5,2.5,0,0,1,2.5,0Z" transform="translate(10 19)" fill="#384765"/>
-																		<path id="Path_225" data-name="Path 225" d="M2.5,0A2.5,2.5,0,1,1,0,2.5,2.5,2.5,0,0,1,2.5,0Z" transform="translate(25 26)" fill="#384765"/>
-																		<path id="Path_224" data-name="Path 224" d="M2.5,0A2.5,2.5,0,1,1,0,2.5,2.5,2.5,0,0,1,2.5,0Z" transform="translate(25 11)" fill="#384765"/>
-																		<path id="Path_209" data-name="Path 209" d="M21.25,0A21.25,21.25,0,1,0,42.5,21.25,21.333,21.333,0,0,0,21.25,0ZM17.484,21.556l6.348,3.794a5.112,5.112,0,1,1-1.181,2.195l-5.96-3.562a5,5,0,1,1-.3-5.842l6.193-3.46a5.046,5.046,0,1,1,1.069,2.255L17.43,20.413a2.916,2.916,0,0,1,.054,1.143Z" fill="#384765"/>
-																	</svg>
-																</button>
-																<button class="delete" data-toggle="modal" data-target="#deleteHouse">
-																	<svg xmlns="http://www.w3.org/2000/svg" width="43" height="43" viewBox="0 0 43 43">
-																		<g id="trash" transform="translate(11.363 9.917)">
-																			<circle id="Ellipse_36" data-name="Ellipse 36" cx="21.5" cy="21.5" r="21.5" transform="translate(-11.363 -9.917)" fill="#fb561b"/>
-																			<path id="Path_408" data-name="Path 408" d="M63.808,128.863a1.849,1.849,0,0,0,1.914,1.655H73.9a1.882,1.882,0,0,0,1.947-1.687l1.33-13.886H62.186Z" transform="translate(-59.104 -107.806)" fill="#fff"/>
-																			<path id="Path_409" data-name="Path 409" d="M33.059,2.92H27.024V1.882A1.817,1.817,0,0,0,25.274,0H21.087a1.817,1.817,0,0,0-1.85,1.783q0,.049,0,.1V2.92H13.2a.649.649,0,0,0,0,1.3H33.059a.649.649,0,1,0,0-1.3ZM25.726,1.882V2.92H20.535V1.882a.519.519,0,0,1,.552-.584h4.088a.519.519,0,0,1,.554.481A.513.513,0,0,1,25.726,1.882Z" transform="translate(-12.554 0)" fill="#fff"/>
-																		</g>
-																	</svg>
-																</button>
-															</div>
-														</div>
-													</div>
 
-													<a  href="#" class="my-house__heading">Title house name 1</a>
-												</figcaption>
-											</figure>
-										</div>
-										<div class="col-6 col-lg-4">
-											<figure class="my-house__wrapper">
-												<figcaption class="my-house__content">
-													
-													<div class="my-house__img--group">
-														<img src="../../images/my-house-2.png" alt="" class="img-fluid my-house__img--img">
 
-														<a href="#" class="my-house__link-fixed mobile-show"></a>
 
-														<div class="my-house__img--text">
-															
-															<a href="#" class="my-house__link-fixed"></a>
+<form
+	id="<?php echo $val['idea_folder_id']; ?>" 
+	name="<?php echo $val['idea_folder_id']; ?>" 
+	action="account-idea-folder-details.html" method="post">
+<input type="hidden" name="idea_folder_id" value="<?php echo $val['idea_folder_id'];  ?>" >
+</form>	
 
-															<div class="row">
-																<div class="col-9">
-																	<p class="first-text">Created room/s:</p>
-																</div>
-																<div class="col-3">
-																	<p class="second-text">3</p>
-																</div>
-															</div>
-															<div class="row">
-																<div class="col-9">
-																	<p class="first-text">Saved item/s:</p>
-																</div>
-																<div class="col-3">
-																	<p class="second-text">15</p>
-																</div>
-															</div>
-															
-															<div class="my-house__img--buttons">
-																<button class="shere">
-																	<svg id="share" xmlns="http://www.w3.org/2000/svg" width="42.5" height="42.5" viewBox="0 0 42.5 42.5">
-																		<path id="Path_226" data-name="Path 226" d="M2.5,0A2.5,2.5,0,1,1,0,2.5,2.5,2.5,0,0,1,2.5,0Z" transform="translate(10 19)" fill="#384765"/>
-																		<path id="Path_225" data-name="Path 225" d="M2.5,0A2.5,2.5,0,1,1,0,2.5,2.5,2.5,0,0,1,2.5,0Z" transform="translate(25 26)" fill="#384765"/>
-																		<path id="Path_224" data-name="Path 224" d="M2.5,0A2.5,2.5,0,1,1,0,2.5,2.5,2.5,0,0,1,2.5,0Z" transform="translate(25 11)" fill="#384765"/>
-																		<path id="Path_209" data-name="Path 209" d="M21.25,0A21.25,21.25,0,1,0,42.5,21.25,21.333,21.333,0,0,0,21.25,0ZM17.484,21.556l6.348,3.794a5.112,5.112,0,1,1-1.181,2.195l-5.96-3.562a5,5,0,1,1-.3-5.842l6.193-3.46a5.046,5.046,0,1,1,1.069,2.255L17.43,20.413a2.916,2.916,0,0,1,.054,1.143Z" fill="#384765"/>
-																	</svg>
-																</button>
-																<button class="delete" data-toggle="modal" data-target="#deleteHouse">
-																	<svg xmlns="http://www.w3.org/2000/svg" width="43" height="43" viewBox="0 0 43 43">
-																		<g id="trash" transform="translate(11.363 9.917)">
-																			<circle id="Ellipse_36" data-name="Ellipse 36" cx="21.5" cy="21.5" r="21.5" transform="translate(-11.363 -9.917)" fill="#fb561b"/>
-																			<path id="Path_408" data-name="Path 408" d="M63.808,128.863a1.849,1.849,0,0,0,1.914,1.655H73.9a1.882,1.882,0,0,0,1.947-1.687l1.33-13.886H62.186Z" transform="translate(-59.104 -107.806)" fill="#fff"/>
-																			<path id="Path_409" data-name="Path 409" d="M33.059,2.92H27.024V1.882A1.817,1.817,0,0,0,25.274,0H21.087a1.817,1.817,0,0,0-1.85,1.783q0,.049,0,.1V2.92H13.2a.649.649,0,0,0,0,1.3H33.059a.649.649,0,1,0,0-1.3ZM25.726,1.882V2.92H20.535V1.882a.519.519,0,0,1,.552-.584h4.088a.519.519,0,0,1,.554.481A.513.513,0,0,1,25.726,1.882Z" transform="translate(-12.554 0)" fill="#fff"/>
-																		</g>
-																	</svg>
-																</button>
-															</div>
-														</div>
-													</div>
 
-													<a  href="#" class="my-house__heading">Title house name 2</a>
-												</figcaption>
-											</figure>
-										</div>
-										<div class="col-6 col-lg-4">
-											<figure class="my-house__wrapper">
-												<figcaption class="my-house__content">
-													
-													<div class="my-house__img--group">
-														<img src="../../images/my-house-3.png" alt="" class="img-fluid my-house__img--img">
 
-														<a href="#" class="my-house__link-fixed mobile-show"></a>
-
-														<div class="my-house__img--text">
-															
-															<a href="#" class="my-house__link-fixed"></a>
-
-															<div class="row">
-																<div class="col-9">
-																	<p class="first-text">Created room/s:</p>
-																</div>
-																<div class="col-3">
-																	<p class="second-text">3</p>
-																</div>
-															</div>
-															<div class="row">
-																<div class="col-9">
-																	<p class="first-text">Saved item/s:</p>
-																</div>
-																<div class="col-3">
-																	<p class="second-text">15</p>
-																</div>
-															</div>
-															
-															<div class="my-house__img--buttons">
-																<button class="shere">
-																	<svg id="share" xmlns="http://www.w3.org/2000/svg" width="42.5" height="42.5" viewBox="0 0 42.5 42.5">
-																		<path id="Path_226" data-name="Path 226" d="M2.5,0A2.5,2.5,0,1,1,0,2.5,2.5,2.5,0,0,1,2.5,0Z" transform="translate(10 19)" fill="#384765"/>
-																		<path id="Path_225" data-name="Path 225" d="M2.5,0A2.5,2.5,0,1,1,0,2.5,2.5,2.5,0,0,1,2.5,0Z" transform="translate(25 26)" fill="#384765"/>
-																		<path id="Path_224" data-name="Path 224" d="M2.5,0A2.5,2.5,0,1,1,0,2.5,2.5,2.5,0,0,1,2.5,0Z" transform="translate(25 11)" fill="#384765"/>
-																		<path id="Path_209" data-name="Path 209" d="M21.25,0A21.25,21.25,0,1,0,42.5,21.25,21.333,21.333,0,0,0,21.25,0ZM17.484,21.556l6.348,3.794a5.112,5.112,0,1,1-1.181,2.195l-5.96-3.562a5,5,0,1,1-.3-5.842l6.193-3.46a5.046,5.046,0,1,1,1.069,2.255L17.43,20.413a2.916,2.916,0,0,1,.054,1.143Z" fill="#384765"/>
-																	</svg>
-																</button>
-																<button class="delete" data-toggle="modal" data-target="#deleteHouse">
-																	<svg xmlns="http://www.w3.org/2000/svg" width="43" height="43" viewBox="0 0 43 43">
-																		<g id="trash" transform="translate(11.363 9.917)">
-																			<circle id="Ellipse_36" data-name="Ellipse 36" cx="21.5" cy="21.5" r="21.5" transform="translate(-11.363 -9.917)" fill="#fb561b"/>
-																			<path id="Path_408" data-name="Path 408" d="M63.808,128.863a1.849,1.849,0,0,0,1.914,1.655H73.9a1.882,1.882,0,0,0,1.947-1.687l1.33-13.886H62.186Z" transform="translate(-59.104 -107.806)" fill="#fff"/>
-																			<path id="Path_409" data-name="Path 409" d="M33.059,2.92H27.024V1.882A1.817,1.817,0,0,0,25.274,0H21.087a1.817,1.817,0,0,0-1.85,1.783q0,.049,0,.1V2.92H13.2a.649.649,0,0,0,0,1.3H33.059a.649.649,0,1,0,0-1.3ZM25.726,1.882V2.92H20.535V1.882a.519.519,0,0,1,.552-.584h4.088a.519.519,0,0,1,.554.481A.513.513,0,0,1,25.726,1.882Z" transform="translate(-12.554 0)" fill="#fff"/>
-																		</g>
-																	</svg>
-																</button>
-															</div>
-														</div>
-													</div>
-
-													<a  href="#" class="my-house__heading">Title house name 3</a>
-												</figcaption>
-											</figure>
-										</div>
-									</div>
-								</div>
+<div class="col-6 col-lg-4" 
+onClick="submit_to_details(<?php echo $arg_str;  ?>)">
+	<figure class="my-house__wrapper">
+		<figcaption class="my-house__content">
+			<div class="my-house__img--group">
+				<img src="<?php echo $val['blob_image']; ?>" alt="" class="img-fluid my-house__img--img">
+				<!--
+				<a href="account-idea-folder-details.html?idea_folder_id=<?php echo $val['idea_folder_id'];  ?>" 
+				class="my-house__link-fixed mobile-show"></a>
+				-->
+				<div class="my-house__img--text">
+					<!--
+					<a href="account-idea-folder-details.html?idea_folder_id=<?php echo $val['idea_folder_id'];  ?>" class="my-house__link-fixed"></a>
+					-->
+					<div class="row">
+						<div class="col-9">
+							<p class="first-text">Created room/s:</p>
+						</div>
+						<div class="col-3">
+						<p class="second-text">
+							<?php echo $val['num_rooms']; ?>
+						</p>
+						</div>
+					</div>
+						<div class="row">
+							<div class="col-9">
+								<p class="first-text">Saved item/s:</p>
 							</div>
+							<div class="col-3">
+								<p class="second-text">
+								<?php echo $val['saves_items']; ?>
+								</p>
+							</div>
+						</div>
+						<div class="my-house__img--buttons">							
+							<button class="shere">
+								<svg id="share" xmlns="http://www.w3.org/2000/svg" width="42.5" height="42.5" viewBox="0 0 42.5 42.5">
+								<path id="Path_226" data-name="Path 226" d="M2.5,0A2.5,2.5,0,1,1,0,2.5,2.5,2.5,0,0,1,2.5,0Z" transform="translate(10 19)" fill="#384765"/>
+								<path id="Path_225" data-name="Path 225" d="M2.5,0A2.5,2.5,0,1,1,0,2.5,2.5,2.5,0,0,1,2.5,0Z" transform="translate(25 26)" fill="#384765"/>
+								<path id="Path_224" data-name="Path 224" d="M2.5,0A2.5,2.5,0,1,1,0,2.5,2.5,2.5,0,0,1,2.5,0Z" transform="translate(25 11)" fill="#384765"/>
+								<path id="Path_209" data-name="Path 209" d="M21.25,0A21.25,21.25,0,1,0,42.5,21.25,21.333,21.333,0,0,0,21.25,0ZM17.484,21.556l6.348,3.794a5.112,5.112,0,1,1-1.181,2.195l-5.96-3.562a5,5,0,1,1-.3-5.842l6.193-3.46a5.046,5.046,0,1,1,1.069,2.255L17.43,20.413a2.916,2.916,0,0,1,.054,1.143Z" fill="#384765"/>
+								</svg>
+							</button>							
+
+<button onClick="set_delete_idea_folder(<?php echo $arg_str; ?>)" class="delete" data-toggle="modal" data-target="#deleteHouse">
+
+								
+								<svg xmlns="http://www.w3.org/2000/svg" width="43" height="43" viewBox="0 0 43 43">
+									<g id="trash" transform="translate(11.363 9.917)">
+										<circle id="Ellipse_36" data-name="Ellipse 36" cx="21.5" cy="21.5" r="21.5" transform="translate(-11.363 -9.917)" fill="#fb561b"/>
+										<path id="Path_408" data-name="Path 408" d="M63.808,128.863a1.849,1.849,0,0,0,1.914,1.655H73.9a1.882,1.882,0,0,0,1.947-1.687l1.33-13.886H62.186Z" transform="translate(-59.104 -107.806)" fill="#fff"/>
+										<path id="Path_409" data-name="Path 409" d="M33.059,2.92H27.024V1.882A1.817,1.817,0,0,0,25.274,0H21.087a1.817,1.817,0,0,0-1.85,1.783q0,.049,0,.1V2.92H13.2a.649.649,0,0,0,0,1.3H33.059a.649.649,0,1,0,0-1.3ZM25.726,1.882V2.92H20.535V1.882a.519.519,0,0,1,.552-.584h4.088a.519.519,0,0,1,.554.481A.513.513,0,0,1,25.726,1.882Z" transform="translate(-12.554 0)" fill="#fff"/>
+									</g>
+								</svg>
+							</button>
 						</div>
 					</div>
 				</div>
-			</section>
-		</main>
 
-		<div class="scrollToTopBlock">
-			<div class="people-working">
-				<img src="../../images/people-working-call-center_@2x.png" alt="" class="people-working__image">
+				<!--
+				<a href="account-idea-folder-details.html?idea_folder_id=<?php echo $val['idea_folder_id'];  ?>" 
+				class="my-house__heading">
+				name
+				</a>
+				-->	
+			<?php echo $val['name']; ?>
+
+		</figcaption>
+	</figure>
+</div>
+
+<?php
 	
-				<div class="people-working__wrapper">
-					<div class="people-working__content">
-						<p class="people-working__text">Hi! I'm the Virtual assistant, and I'm here to help you.</p>
-					</div>
+}
+
+?>
+
+
+<div class="col-6 col-lg-4">
+	<figure class="my-house__wrapper">
+	<figcaption class="my-house__content">
+	<div class="my-house__img--group">
+		<img src="../../images/my-house-3.png" alt="" class="img-fluid my-house__img--img">
+		<a href="#" class="my-house__link-fixed mobile-show"></a>
+		<div class="my-house__img--text">
+			<a href="#" class="my-house__link-fixed"></a>
+			<div class="row">
+				<div class="col-9">
+					<p class="first-text">Created room/s:</p>
+				</div>
+				<div class="col-3">
+					<p class="second-text">3</p>
 				</div>
 			</div>
-	
-			<a href="#" class="scrollToTop js-to-top">
-				<img src="../../images/arrows.svg" alt="">
-			</a>
+			<div class="row">
+				<div class="col-9">
+					<p class="first-text">Saved item/s:</p>
+				</div>
+				<div class="col-3">
+					<p class="second-text">15</p>
+				</div>
+			</div>
+			
+			<div class="my-house__img--buttons">
+				<button class="shere">
+				<svg id="share" xmlns="http://www.w3.org/2000/svg" width="42.5" height="42.5" viewBox="0 0 42.5 42.5">
+				<path id="Path_226" data-name="Path 226" d="M2.5,0A2.5,2.5,0,1,1,0,2.5,2.5,2.5,0,0,1,2.5,0Z" transform="translate(10 19)" fill="#384765"/>
+				<path id="Path_225" data-name="Path 225" d="M2.5,0A2.5,2.5,0,1,1,0,2.5,2.5,2.5,0,0,1,2.5,0Z" transform="translate(25 26)" fill="#384765"/>
+				<path id="Path_224" data-name="Path 224" d="M2.5,0A2.5,2.5,0,1,1,0,2.5,2.5,2.5,0,0,1,2.5,0Z" transform="translate(25 11)" fill="#384765"/>
+				<path id="Path_209" data-name="Path 209" d="M21.25,0A21.25,21.25,0,1,0,42.5,21.25,21.333,21.333,0,0,0,21.25,0ZM17.484,21.556l6.348,3.794a5.112,5.112,0,1,1-1.181,2.195l-5.96-3.562a5,5,0,1,1-.3-5.842l6.193-3.46a5.046,5.046,0,1,1,1.069,2.255L17.43,20.413a2.916,2.916,0,0,1,.054,1.143Z" fill="#384765"/>
+				</svg>
+				</button>
+
+<button class="delete" data-toggle="modal" data-target="#deleteHouse">
+
+<svg xmlns="http://www.w3.org/2000/svg" width="43" height="43" viewBox="0 0 43 43">
+<g id="trash" transform="translate(11.363 9.917)">
+<circle id="Ellipse_36" data-name="Ellipse 36" cx="21.5" cy="21.5" r="21.5" transform="translate(-11.363 -9.917)" fill="#fb561b"/>
+<path id="Path_408" data-name="Path 408" d="M63.808,128.863a1.849,1.849,0,0,0,1.914,1.655H73.9a1.882,1.882,0,0,0,1.947-1.687l1.33-13.886H62.186Z" transform="translate(-59.104 -107.806)" fill="#fff"/>
+<path id="Path_409" data-name="Path 409" d="M33.059,2.92H27.024V1.882A1.817,1.817,0,0,0,25.274,0H21.087a1.817,1.817,0,0,0-1.85,1.783q0,.049,0,.1V2.92H13.2a.649.649,0,0,0,0,1.3H33.059a.649.649,0,1,0,0-1.3ZM25.726,1.882V2.92H20.535V1.882a.519.519,0,0,1,.552-.584h4.088a.519.519,0,0,1,.554.481A.513.513,0,0,1,25.726,1.882Z" transform="translate(-12.554 0)" fill="#fff"/>
+</g>
+</svg>
+
+</button>
+
+</div>
+</div>
+</div>
+<a  href="#" class="my-house__heading">Title house name 3</a>
+</figcaption>
+</figure>
+</div>
+
+
+
+
+
+
+
+																		
+							
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+
+
+<div class="scrollToTopBlock">
+	<div class="people-working">
+		<img src="../../images/people-working-call-center_@2x.png" alt="" class="people-working__image">
+		<div class="people-working__wrapper">
+			<div class="people-working__content">
+			<p class="people-working__text">Hi! I'm the Virtual assistant, and I'm here to help you.</p>
+			</div>
 		</div>
+	</div>
+	<a href="#" class="scrollToTop js-to-top">
+	<img src="../../images/arrows.svg" alt="">
+	</a>
+</div>
+
 
 <?php
 require_once($_SERVER['DOCUMENT_ROOT'].'/includes/footer.php');
 ?>
 
 
-		<!-- Modal New house -->
-		<div class="modal houses-modal fade" id="newHouse" tabindex="-1" role="dialog" aria-labelledby="#newHouseTitle" aria-hidden="true">
-			<div class="modal-dialog modal-dialog-centered" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title" id="newHouseTitle"><span>Add house</span></h5>
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-					<div class="modal-body">
-						<div class="account-block__form">
-							<form>
-								<div class="row">
-									<div class="col-12 col-lg-4 mb-2">
-<div class="account-block__form--house-image">
-
-<img src="../../images/photo.svg" alt="" 
-class="account-block__form--house-image-defaltImg js-my-house-defalt-img">
-
-<a href="" data-lightbox="roadtrip" data-title="Lorem ipsum">
-<img src="xxxHTMLLINKxxx0.91801327020264980.8543398919421896xxx" alt="" class="js-my-house-img-view img-fluid" style="display: none;">
-</a>
-
+<!-- Modal New house -->
+<div class="modal houses-modal fade" id="newHouse" tabindex="-1" role="dialog" aria-labelledby="#newHouseTitle" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered" role="document">
+<div class="modal-content">
+<div class="modal-header">
+<h5 class="modal-title" id="newHouseTitle"><span>Add house</span></h5>
+<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+<span aria-hidden="true">&times;</span>
+</button>
 </div>
-						
-									</div>
-									<div class="col-12 col-lg-4 mb-2">
+<div class="modal-body">
+<div class="account-block__form">
 
-										<div class="row js-mobile-file-position">
 
-										</div>
+<form action="account-idea-folder.html" method="post">
+	<input type="hidden" name="add_house" value="1">
 
-										<div class="row">
-											<div class="col-12 mb-2">
-												<div class="form-group">
+<input id="house_blob_image" type="hidden" name="house_blob_image" value="no blob image data">
 
-													<label for="house-name" class="label-riquired">Add/Edit house title</label>
-													<input type="text" class="form-control mt-2" name="house-name" placeholder="Add/Edit house title">
-												
-												</div>
-											</div>
-										</div>
+	<div class="row">
+		<div class="col-12 col-lg-4 mb-2">
+			<div class="account-block__form--house-image">
+				<img src="../../images/photo.svg" alt="" class="account-block__form--house-image-defaltImg js-my-house-defalt-img">
 
-										<div class="row">
-											<div class="col-12 mb-2">
-												<p class="mb-1">Add room/s</p>
-												<div class="dropdown">
-													<label class="dropdown-label" data-default-text="Choose one or more room/s">
-													Choose one or more room/s
-													</label>
-													
-													<div class="dropdown-list">
-														<div class="checkbox">
-															<input type="checkbox" class="check custom-checkbox" id="checkbox-1" value="value1">
-															<label for="checkbox-1">Living Room</label>
-														</div>
-														
-														<div class="checkbox">
-															<input class="check custom-checkbox" id="checkbox-2" type="checkbox" value="value2">
-															<label for="checkbox-2">Bedroom</label>
-														</div>
-														
-														<div class="checkbox">
-															<input class="check custom-checkbox" id="checkbox-3" type="checkbox" value="value3">
-															<label for="checkbox-3">Kitchen</label>
-														</div>
-														
-														<div class="checkbox">
-															<input class="check custom-checkbox" id="checkbox-3" type="checkbox" value="value3">
-															<label for="checkbox-3">Kitchen</label>
-														</div>
-														
-														<div class="checkbox">
-															<input class="check custom-checkbox" id="checkbox-4" type="checkbox" value="value4">
-															<label for="checkbox-4">Dining Room</label>
-														</div>
-														
-														<div class="checkbox">
-															<input class="check custom-checkbox" id="checkbox-5" type="checkbox" value="value5">
-															<label for="checkbox-5">Family Room</label>
-														</div>
-														
-														<div class="checkbox">
-															<input class="check custom-checkbox" id="checkbox-6" type="checkbox" value="value6">
-															<label for="checkbox-6">Guest Room</label>
-														</div>
-														
-														<div class="checkbox">
-															<input class="check custom-checkbox" id="checkbox-7" type="checkbox" value="value7">
-															<label for="checkbox-7">Bathroom</label>
-														</div>
-														
-														<div class="checkbox">
-															<input class="check custom-checkbox" id="checkbox-8" type="checkbox" value="value8">
-															<label for="checkbox-8">Game Room</label>
-														</div>
-														
-														<div class="checkbox">
-															<input class="check custom-checkbox" id="checkbox-9" type="checkbox" value="value9">
-															<label for="checkbox-9">Basement</label>
-														</div>
-														
-														<div class="checkbox">
-															<input class="check custom-checkbox" id="checkbox-10" type="checkbox" value="value10">
-															<label for="checkbox-10">Home Office</label>
-														</div>
-														
-														<div class="checkbox">
-															<input class="check custom-checkbox" id="checkbox-11" type="checkbox" value="value11">
-															<label for="checkbox-11">Nursery</label>
-														</div>
-														
-														<div class="checkbox">
-															<input class="check custom-checkbox" id="checkbox-12" type="checkbox" value="value12">
-															<label for="checkbox-12">Playroom</label>
-														</div>
-														
-														<div class="checkbox">
-															<input class="check custom-checkbox" id="checkbox-13" type="checkbox" value="value13">
-															<label for="checkbox-13">Library</label>
-														</div>
-														
-														<div class="checkbox">
-															<input class="check custom-checkbox" id="checkbox-14" type="checkbox" value="value14">
-															<label for="checkbox-14">Storage Room</label>
-														</div>
-														
-														<div class="checkbox">
-															<input class="check custom-checkbox" id="checkbox-15" type="checkbox" value="value15">
-															<label for="checkbox-15">Gym Room</label>
-														</div>
-														
-														<div class="checkbox">
-															<input class="check custom-checkbox" id="checkbox-16" type="checkbox" value="value16">
-															<label for="checkbox-16">Garage</label>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
+				<a href="" data-lightbox="roadtrip" data-title="Lorem ipsum">
+				<img src="xxxHTMLLINKxxx0.91801327020264980.8543398919421896xxx" alt="" class="js-my-house-img-view img-fluid" style="display: none;">
+				</a>
 
-										<div class="row">
-											<div class="col-12 mb-2">
-												<div class="form-group">
-													<label for="house-custom-room">Add custom room</label>
-													<input type="text" class="form-control mt-2" name="house-custom-room" placeholder="(ex. my big garage)">
-												</div>
-											</div>
-										</div>
+			</div>						
+		</div>
+		<div class="col-12 col-lg-4 mb-2">
+			<div class="row js-mobile-file-position">
 
-										<div class="row js-desctop-file-position">
-											<div class="col-12 mb-2">
-												<div class="form-group">
+			</div>
+			<div class="row">
+				<div class="col-12 mb-2">
+					<div class="form-group">
+						<label for="house-name" class="label-riquired">Add/Edit house title</label>
+<input type="text" class="form-control mt-2" name="house_name" placeholder="Add/Edit house title">										
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-12 mb-2">
+					<p class="mb-1">Add room/s</p>
+					<div class="dropdown">
+						<label class="dropdown-label" data-default-text="Choose one or more room/s">
+							Choose one or more room/s
+						</label>											
+						<div class="dropdown-list">
+<?php
+echo $rooms_block;
+?>
+						</div>
+					</div>
+				</div>
+			</div>
 
-													<div class="my-house-image-upload__wrapper">														
+			<div class="row">
+				<div class="col-12 mb-2">
+					<div class="form-group">
+						<label for="house-custom-room">Add custom room</label>
+<input type="text" class="form-control mt-2" name="house_custom_room" placeholder="(ex. my big garage)">
+					</div>
+				</div>
+			</div>
+
+			<div class="row js-desctop-file-position">
+				<div class="col-12 mb-2">
+					<div class="form-group">
+						<div class="my-house-image-upload__wrapper">														
+
+
 <input type="file" 
 class="my-house-image-upload__file js-img-up" 
 name="my-house-image-upload">
@@ -783,56 +576,43 @@ name="my-house-image-upload">
 													
 <label for="my-house-image-upload" 
 	class="house-image-upload__label">Upload/change cover image</label>
-</div>
-
-												</div>
-											</div>
-										</div>
-
-										<div class="row js-mobile-row-action">
-											<div class="col-6 js-col-delete">
-												<button type="submit" class="btn btn-secondary w-100"><span>delete house</span></button>
-											</div>
-											<div class="col-6 js-col-edit-add">
-												<button type="submit" class="btn btn-primary w-100"><span>confirm</span></button>										
-											</div>
-										</div>
-									</div>
-									<div class="col-12 col-lg-4">
-										<div class="form-group text-max-height">
-											<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy</p>
-										</div>
-									</div>
-								</div>
-								<div class="row js-row-action">
-									<div class="col-4 js-col-delete">
-										<button type="submit" class="btn btn-secondary w-100"><span>delete house</span></button>
-									</div>
-									<div class="col-4 js-col-edit-add">
-										<button type="submit" class="btn btn-primary w-100"><span>confirm</span></button>										
-									</div>
-								</div>
-							</form>
+						
 						</div>
 					</div>
 				</div>
 			</div>
+			<div class="row js-mobile-row-action">
+				<div class="col-6 js-col-delete">
+					<button type="submit" class="btn btn-secondary w-100"><span>delete house</span></button>
+				</div>
+				<div class="col-6 js-col-edit-add">
+					<button type="submit" class="btn btn-primary w-100"><span>confirm</span></button>										
+				</div>
+			</div>
+		
 		</div>
+		<div class="col-12 col-lg-4">
+			<div class="form-group text-max-height">
+				<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy</p>
+			</div>
+		</div>
+	</div>
+	<div class="row js-row-action">
+		<div class="col-4 js-col-delete">
+			<button type="submit" class="btn btn-secondary w-100"><span>delete house</span></button>
+		</div>
+		<div class="col-4 js-col-edit-add">
+			<button type="submit" class="btn btn-primary w-100"><span>confirm</span></button>										
+		</div>
+	</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>
 
-<?php
-// test
-/*
-$db = $dbCustom->getDbConnect(CART_DATABASE);
-$sql = "SELECT blob_image
-		FROM blob_image";
-$result = $dbCustom->getResult($db,$sql);
-while($row = $result->fetch_object()){	
-	echo "<img src='".$row->blob_image."'/>";
-	echo "<br />";
-}
-*/
-									
-?>
+
 
 		<!-- Modal manage saved houses -->
 		<div class="modal fade" id="manageHouses" tabindex="-1" role="dialog" aria-labelledby="#manageHousesTitle" aria-hidden="true">
@@ -1074,35 +854,44 @@ while($row = $result->fetch_object()){
 require_once($_SERVER['DOCUMENT_ROOT'].'/includes/footer.php');
 ?>
 	
-		<!-- Modal delete -->
-		<div class="modal fade" id="deleteHouse" tabindex="-1" role="dialog" aria-labelledby="#deleteHouseTitle" aria-hidden="true">
-			<div class="modal-dialog modal-sm modal-dialog-centered" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title" id="deleteHouseTitle"><span>XXXX</span></h5>
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-					<div class="modal-body">
-						<div class="account-block__form">
-							<form>
-								<div class="row mb-3">
-									<div class="col-12">
-										<p class="js-delete-text">You are about to delete <span style="color: #17C3C6">XXXX</span>.<br /> Are you sure that you want to continue?</p>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-12">
-										<button type="submit" class="btn btn-secondary w-100">continue</button>
-									</div>
-								</div>
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
+
+<!-- Modal delete -->
+<div class="modal fade" id="deleteHouse" tabindex="-1" role="dialog" aria-labelledby="#deleteHouseTitle" aria-hidden="true">
+<div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+<div class="modal-content">
+<div class="modal-header">
+	<h5 class="modal-title" id="deleteHouseTitle"><span>xxxx</span></h5>
+	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		<span aria-hidden="true">&times;</span>
+	</button>
+</div>
+<div class="modal-body">
+<div class="account-block__form">
+	
+	<form action="account-idea-folder.html" method="post">
+	<input type="hidden" id="del_idea_folder_id" name="del_idea_folder_id" >
+	<input type="hidden" id="blob_image_id" name="blob_image_id" >
+	<div class="row mb-3">
+		<div class="col-12">
+		<p class="js-delete-text">You are about to delete 
+		<span id="inside_deleteHouseTitle" style="color: #17C3C6">XXXX</span>.<br /> Are you sure that you want to continue?</p>
 		</div>
+	</div>
+	<div class="row">
+		<div class="col-12">
+			<button type="submit" class="btn btn-secondary w-100">continue</button>
+		</div>
+	</div>	
+	</form>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
 
 		<!-- Modal alert confirmation -->
 		<div class="modal fade confirm-modal" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="#confirmModalTitle" aria-hidden="true">

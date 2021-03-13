@@ -34,6 +34,14 @@ if(isset($_POST["specs_content_id"])){
 	$sidebar_content = trim(addslashes($_POST["sidebar_content"]));
 	$img_id = $_POST['img_id'];
 
+
+	$content = (isset($_POST['content']))? trim(addslashes($_POST['content'])) : '';
+
+
+	$sidebar_heading = (isset($_POST['sidebar_heading']))? trim(addslashes($_POST['sidebar_heading'])) : '';
+
+
+
 	$mssl = (isset($_POST['mssl']))? 1 : 0;
 	$seo_name = trim(addslashes($_POST['seo_name']));
 	$seo_name = str_replace (" ", "-" , $seo_name);
@@ -71,6 +79,9 @@ if(isset($_POST['add_spec'])){
 	$img_id = $_POST['img_id']; 
 	
 	
+	$spec_details = trim(addslashes($_POST['spec_details']));
+	
+	
 	$sql = sprintf("INSERT INTO spec 
 					(name, description, spec_cat_id, img_id, profile_account_id) 
 					VALUES ('%s','%s','%u','%u','%u')", 
@@ -88,11 +99,15 @@ if(isset($_POST['add_spec'])){
 
 if(isset($_POST['edit_spec'])){
 	
-	$name = trim(addslashes($_POST['name']));
-	$description = trim(addslashes($_POST['description'])); 
-	$spec_cat_id = $_POST['spec_cat_id']; 
-	$spec_id = $_POST['spec_id']; 
-	$img_id = $_POST['img_id'];
+	
+	
+	$name = isset($_POST['name']) ? trim(addslashes($_POST['name'])) : '';
+	$description = isset($_POST['description']) ? trim(addslashes($_POST['description'])) : '';
+	
+	$spec_cat_id = isset($_POST['spec_cat_id']) ? $_POST['spec_cat_id'] : 0;
+	$spec_id = isset($_POST['spec_id']) ? $_POST['spec_id'] : 0;
+	$img_id = isset($_POST['img_id']) ? $_POST['img_id'] : 0;
+
 
 	$sql = sprintf("UPDATE spec 
 					SET name = '%s'

@@ -15,6 +15,11 @@ $cart = new ShoppingCart;
 $item = new ShoppingCartItem;
 $nav = new Nav;
 
+$cust_id = $lgn->getCustId();
+
+$id = (isset($_GET['id'])) ? addslashes($_GET['id']) : 1;
+if(!is_numeric($id)) $id = 0;
+
 $company = new Company;
 $company_display_info = $company->getCompanyDisplayInfo();
 //print_r($company_display_info);
@@ -141,6 +146,7 @@ if(file_exists($_SERVER['DOCUMENT_ROOT']."/pages/controllers/".$page.".php")){
 	require_once($_SERVER['DOCUMENT_ROOT']."/pages/controllers/".$page.".php"); 											
 }
 
+
 if(file_exists($_SERVER['DOCUMENT_ROOT']."/pages/views/".$page.".php")){
 	require_once($_SERVER['DOCUMENT_ROOT']."/pages/views/".$page.".php"); 											
 }
@@ -164,6 +170,7 @@ function getScreenWidth(){
 }
 </script>
 <script src="app.js"></script>
+<script src="ms.js"></script>
 
 </body>
 </html>

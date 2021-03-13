@@ -82,13 +82,13 @@ if($lev <= 3){
 }else{
 	$ste_root = './';
 }
+$ste_root = preg_replace('/(\/+)/','/',$ste_root);
 
-if(strpos($_SERVER['DOCUMENT_ROOT'], '/var/www/') !== false) {
-	$ste_root = preg_replace('/(\/+)/','/',$ste_root);
-}else{
-	$ste_root = SITEROOT.'/';
-}
-
+//if(strpos($_SERVER['DOCUMENT_ROOT'], '/var/www/') !== false) {
+	//$ste_root = preg_replace('/(\/+)/','/',$ste_root);
+//}else{
+	//$ste_root = SITEROOT.'/';
+//}
 //echo "<br />";
 //echo "ste_root:  ".$ste_root;
 //echo "<br />";

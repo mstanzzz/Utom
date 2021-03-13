@@ -412,3 +412,131 @@ AH00558: apache2: Could not reliably determine the server's fully qualified doma
 AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.18.0.3. Set the 'ServerName' directive globally to suppress this message
 [Mon Feb 08 19:49:20.654458 2021] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.38 (Debian) PHP/7.4.2 configured -- resuming normal operations
 [Mon Feb 08 19:49:20.660943 2021] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+[Tue Feb 09 08:05:48.141240 2021] [autoindex:error] [pid 26] [client 172.18.0.1:32842] AH01276: Cannot serve directory /var/www/html/saascustuploads/1/cart/large/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive, referer: http://localhost/showroom.html
+[Tue Feb 09 08:07:11.600453 2021] [autoindex:error] [pid 19] [client 172.18.0.1:32882] AH01276: Cannot serve directory /var/www/html/saascustuploads/1/cart/large/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive, referer: http://localhost/showroom.html
+[Tue Feb 09 08:09:11.445486 2021] [autoindex:error] [pid 18] [client 172.18.0.1:32906] AH01276: Cannot serve directory /var/www/html/saascustuploads/1/cart/large/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive, referer: http://localhost/showroom.html
+[Tue Feb 09 08:09:49.314782 2021] [autoindex:error] [pid 35] [client 172.18.0.1:32928] AH01276: Cannot serve directory /var/www/html/saascustuploads/1/cart/large/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive, referer: http://localhost/showroom.html
+[Tue Feb 09 08:10:26.242751 2021] [autoindex:error] [pid 33] [client 172.18.0.1:32952] AH01276: Cannot serve directory /var/www/html/saascustuploads/1/cart/large/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive, referer: http://localhost/showroom.html
+[Tue Feb 09 08:16:40.273982 2021] [autoindex:error] [pid 37] [client 172.18.0.1:32976] AH01276: Cannot serve directory /var/www/html/saascustuploads/1/cart/large/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive, referer: http://localhost/showroom.html
+[Tue Feb 09 08:18:12.211041 2021] [autoindex:error] [pid 19] [client 172.18.0.1:33002] AH01276: Cannot serve directory /var/www/html/saascustuploads/1/cart/large/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive, referer: http://localhost/showroom.html
+[Tue Feb 09 08:18:32.709237 2021] [autoindex:error] [pid 34] [client 172.18.0.1:33024] AH01276: Cannot serve directory /var/www/html/saascustuploads/1/cart/large/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive, referer: http://localhost/showroom.html
+[Tue Feb 09 08:25:39.748275 2021] [autoindex:error] [pid 38] [client 172.18.0.1:33350] AH01276: Cannot serve directory /var/www/html/saascustuploads/1/cart/large/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive, referer: http://localhost/showroom.html
+[Tue Feb 09 08:25:54.217774 2021] [autoindex:error] [pid 41] [client 172.18.0.1:33372] AH01276: Cannot serve directory /var/www/html/saascustuploads/1/cart/large/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive, referer: http://localhost/showroom.html
+[Tue Feb 09 08:26:17.211887 2021] [autoindex:error] [pid 30] [client 172.18.0.1:33398] AH01276: Cannot serve directory /var/www/html/saascustuploads/1/cart/large/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive, referer: http://localhost/showroom.html
+[Tue Feb 09 08:26:47.795084 2021] [autoindex:error] [pid 42] [client 172.18.0.1:33418] AH01276: Cannot serve directory /var/www/html/saascustuploads/1/cart/large/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive, referer: http://localhost/showroom.html
+[Tue Feb 09 08:26:59.959117 2021] [autoindex:error] [pid 39] [client 172.18.0.1:33444] AH01276: Cannot serve directory /var/www/html/saascustuploads/1/cart/large/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive, referer: http://localhost/showroom.html
+[Tue Feb 09 17:03:24.208481 2021] [mpm_prefork:notice] [pid 1] AH00170: caught SIGWINCH, shutting down gracefully
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.18.0.5. Set the 'ServerName' directive globally to suppress this message
+[Thu Feb 11 18:57:14.890789 2021] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.38 (Debian) PHP/7.4.2 configured -- resuming normal operations
+[Thu Feb 11 18:57:14.891291 2021] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+[Thu Feb 11 22:04:07.871672 2021] [mpm_prefork:notice] [pid 1] AH00170: caught SIGWINCH, shutting down gracefully
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.18.0.5. Set the 'ServerName' directive globally to suppress this message
+[Thu Feb 11 22:04:39.849525 2021] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.38 (Debian) PHP/7.4.2 configured -- resuming normal operations
+[Thu Feb 11 22:04:39.850044 2021] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+[Fri Feb 12 23:23:16.250841 2021] [php7:error] [pid 32] [client 172.18.0.1:36940] script '/var/www/html/contact-us.php' not found or unable to stat, referer: http://localhost/services.html
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.18.0.3. Set the 'ServerName' directive globally to suppress this message
+[Sat Feb 13 00:52:39.141102 2021] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.38 (Debian) PHP/7.4.2 configured -- resuming normal operations
+[Sat Feb 13 00:52:39.142632 2021] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.18.0.3. Set the 'ServerName' directive globally to suppress this message
+[Sat Feb 13 02:49:30.981365 2021] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.38 (Debian) PHP/7.4.2 configured -- resuming normal operations
+[Sat Feb 13 02:49:31.006714 2021] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.18.0.3. Set the 'ServerName' directive globally to suppress this message
+[Sat Feb 13 18:10:56.835793 2021] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.38 (Debian) PHP/7.4.2 configured -- resuming normal operations
+[Sat Feb 13 18:10:56.841148 2021] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.18.0.2. Set the 'ServerName' directive globally to suppress this message
+[Mon Feb 15 09:00:17.632119 2021] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.38 (Debian) PHP/7.4.2 configured -- resuming normal operations
+[Mon Feb 15 09:00:17.633963 2021] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.18.0.3. Set the 'ServerName' directive globally to suppress this message
+[Mon Feb 15 09:38:48.790595 2021] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.38 (Debian) PHP/7.4.2 configured -- resuming normal operations
+[Mon Feb 15 09:38:48.807833 2021] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.18.0.3. Set the 'ServerName' directive globally to suppress this message
+[Mon Feb 15 18:21:45.731707 2021] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.38 (Debian) PHP/7.4.2 configured -- resuming normal operations
+[Mon Feb 15 18:21:45.746933 2021] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.18.0.3. Set the 'ServerName' directive globally to suppress this message
+[Fri Feb 19 09:43:15.342757 2021] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.38 (Debian) PHP/7.4.2 configured -- resuming normal operations
+[Fri Feb 19 09:43:15.362163 2021] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+[Fri Feb 19 12:37:32.970572 2021] [autoindex:error] [pid 33] [client 172.18.0.1:43270] AH01276: Cannot serve directory /var/www/html/saascustuploads/1/cart/thumb/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive, referer: http://localhost/manage/catalog/categories/category.php?parent_cat_id=0&strip=0&pagenum=1&sortby=&a_d=a&truncate=1
+[Fri Feb 19 15:20:26.717983 2021] [php7:error] [pid 56] [client 172.18.0.1:38168] script '/var/www/html/manage/catalog/add-top-category.php' not found or unable to stat, referer: http://localhost/manage/catalog/categories/top-category.php
+[Fri Feb 19 15:22:10.077107 2021] [php7:error] [pid 55] [client 172.18.0.1:38362] script '/var/www/html/manage/catalog/add-top-category.php' not found or unable to stat, referer: http://localhost/manage/catalog/categories/top-category.php
+[Fri Feb 19 15:26:47.931997 2021] [php7:error] [pid 63] [client 172.18.0.1:40222] script '/var/www/html/manage/catalog/top-category.php' not found or unable to stat, referer: http://localhost/manage/catalog/categories/add-top-category.php
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.18.0.2. Set the 'ServerName' directive globally to suppress this message
+[Sat Feb 20 17:09:08.485425 2021] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.38 (Debian) PHP/7.4.2 configured -- resuming normal operations
+[Sat Feb 20 17:09:08.487409 2021] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.18.0.2. Set the 'ServerName' directive globally to suppress this message
+[Sat Feb 20 18:28:09.199038 2021] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.38 (Debian) PHP/7.4.2 configured -- resuming normal operations
+[Sat Feb 20 18:28:09.201667 2021] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+[Sat Feb 20 23:39:59.091912 2021] [autoindex:error] [pid 42] [client 172.18.0.1:60494] AH01276: Cannot serve directory /var/www/html/saascustuploads/1/cart/thumb/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive, referer: http://localhost/manage/catalog/categories/top-category.php?pagenum=1&sortby=&a_d=a&truncate=1
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.18.0.3. Set the 'ServerName' directive globally to suppress this message
+[Sun Feb 21 20:39:57.412558 2021] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.38 (Debian) PHP/7.4.2 configured -- resuming normal operations
+[Sun Feb 21 20:39:57.423245 2021] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.18.0.3. Set the 'ServerName' directive globally to suppress this message
+[Tue Feb 23 23:59:20.671517 2021] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.38 (Debian) PHP/7.4.2 configured -- resuming normal operations
+[Tue Feb 23 23:59:20.674581 2021] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.18.0.2. Set the 'ServerName' directive globally to suppress this message
+[Fri Feb 26 10:28:37.117383 2021] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.38 (Debian) PHP/7.4.2 configured -- resuming normal operations
+[Fri Feb 26 10:28:37.137639 2021] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.18.0.3. Set the 'ServerName' directive globally to suppress this message
+[Fri Feb 26 12:45:20.029170 2021] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.38 (Debian) PHP/7.4.2 configured -- resuming normal operations
+[Fri Feb 26 12:45:20.121484 2021] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.18.0.3. Set the 'ServerName' directive globally to suppress this message
+[Fri Feb 26 22:22:44.022793 2021] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.38 (Debian) PHP/7.4.2 configured -- resuming normal operations
+[Fri Feb 26 22:22:44.042970 2021] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.18.0.3. Set the 'ServerName' directive globally to suppress this message
+[Sat Feb 27 00:56:13.405607 2021] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.38 (Debian) PHP/7.4.2 configured -- resuming normal operations
+[Sat Feb 27 00:56:13.414201 2021] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.18.0.3. Set the 'ServerName' directive globally to suppress this message
+[Sat Feb 27 18:42:15.540406 2021] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.38 (Debian) PHP/7.4.2 configured -- resuming normal operations
+[Sat Feb 27 18:42:15.543215 2021] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.18.0.3. Set the 'ServerName' directive globally to suppress this message
+[Sat Feb 27 19:19:35.397992 2021] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.38 (Debian) PHP/7.4.2 configured -- resuming normal operations
+[Sat Feb 27 19:19:35.421859 2021] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.18.0.3. Set the 'ServerName' directive globally to suppress this message
+[Sat Feb 27 20:16:37.934074 2021] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.38 (Debian) PHP/7.4.2 configured -- resuming normal operations
+[Sat Feb 27 20:16:37.936365 2021] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.18.0.3. Set the 'ServerName' directive globally to suppress this message
+[Sat Feb 27 20:45:10.201102 2021] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.38 (Debian) PHP/7.4.2 configured -- resuming normal operations
+[Sat Feb 27 20:45:10.202937 2021] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.18.0.3. Set the 'ServerName' directive globally to suppress this message
+[Mon Mar 01 05:12:55.687609 2021] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.38 (Debian) PHP/7.4.2 configured -- resuming normal operations
+[Mon Mar 01 05:12:55.787341 2021] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.18.0.3. Set the 'ServerName' directive globally to suppress this message
+[Mon Mar 01 06:31:32.676024 2021] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.38 (Debian) PHP/7.4.2 configured -- resuming normal operations
+[Mon Mar 01 06:31:32.733202 2021] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.18.0.3. Set the 'ServerName' directive globally to suppress this message
+[Thu Mar 04 14:18:35.626040 2021] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.38 (Debian) PHP/7.4.2 configured -- resuming normal operations
+[Thu Mar 04 14:18:35.662068 2021] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.18.0.3. Set the 'ServerName' directive globally to suppress this message
+[Fri Mar 05 23:07:22.361834 2021] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.38 (Debian) PHP/7.4.2 configured -- resuming normal operations
+[Fri Mar 05 23:07:22.382354 2021] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.18.0.3. Set the 'ServerName' directive globally to suppress this message
+[Sun Mar 07 16:25:48.029223 2021] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.38 (Debian) PHP/7.4.2 configured -- resuming normal operations
+[Sun Mar 07 16:25:48.030941 2021] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.18.0.2. Set the 'ServerName' directive globally to suppress this message
+[Sun Mar 07 23:53:48.926953 2021] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.38 (Debian) PHP/7.4.2 configured -- resuming normal operations
+[Sun Mar 07 23:53:48.943855 2021] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.18.0.3. Set the 'ServerName' directive globally to suppress this message
+[Mon Mar 08 11:01:51.711428 2021] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.38 (Debian) PHP/7.4.2 configured -- resuming normal operations
+[Mon Mar 08 11:01:51.714486 2021] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.18.0.3. Set the 'ServerName' directive globally to suppress this message
+[Thu Mar 11 17:46:50.595114 2021] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.38 (Debian) PHP/7.4.2 configured -- resuming normal operations
+[Thu Mar 11 17:46:50.597832 2021] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.18.0.4. Set the 'ServerName' directive globally to suppress this message
+[Fri Mar 12 02:33:10.381238 2021] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.38 (Debian) PHP/7.4.2 configured -- resuming normal operations
+[Fri Mar 12 02:33:10.381814 2021] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+[Fri Mar 12 02:58:40.274764 2021] [autoindex:error] [pid 28] [client 172.18.0.1:33636] AH01276: Cannot serve directory /var/www/html/saascustuploads/1/cart/thumb/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive, referer: http://localhost/manage/cms/pages/showroom.php?showroom_id=1
+[Fri Mar 12 03:01:06.836631 2021] [autoindex:error] [pid 33] [client 172.18.0.1:33884] AH01276: Cannot serve directory /var/www/html/saascustuploads/1/cart/thumb/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive, referer: http://localhost/manage/catalog/products/edit-item.php?is_new_img=1&cat_id=&img_typehero
+[Fri Mar 12 03:01:06.910692 2021] [autoindex:error] [pid 33] [client 172.18.0.1:33884] AH01276: Cannot serve directory /var/www/html/saascustuploads/1/cart/medium/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive, referer: http://localhost/manage/catalog/products/edit-item.php?is_new_img=1&cat_id=&img_typehero
+[Fri Mar 12 03:01:22.675587 2021] [autoindex:error] [pid 31] [client 172.18.0.1:34594] AH01276: Cannot serve directory /var/www/html/saascustuploads/1/cart/thumb/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive, referer: http://localhost/manage/catalog/products/edit-item.php?is_new_img=1&cat_id=&img_type
+[Fri Mar 12 03:01:22.750374 2021] [autoindex:error] [pid 31] [client 172.18.0.1:34594] AH01276: Cannot serve directory /var/www/html/saascustuploads/1/cart/medium/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive, referer: http://localhost/manage/catalog/products/edit-item.php?is_new_img=1&cat_id=&img_type
+[Fri Mar 12 03:01:39.209012 2021] [autoindex:error] [pid 33] [client 172.18.0.1:35264] AH01276: Cannot serve directory /var/www/html/saascustuploads/1/cart/thumb/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive, referer: http://localhost/manage/cms/pages/showroom.php?showroom_id=1
+[Fri Mar 12 03:03:02.782919 2021] [php7:error] [pid 28] [client 172.18.0.1:35384] script '/var/www/html/manage/cms/pages/edit-item.php' not found or unable to stat, referer: http://localhost/manage/upload-pre-crop.php?ret_page=edit-item&ret_dir=products&ret_path=cms/pages&upload_new_img=1
+[Fri Mar 12 03:07:44.140307 2021] [php7:error] [pid 29] [client 172.18.0.1:35534] script '/var/www/html/manage/cms/pages/edit-item.php' not found or unable to stat, referer: http://localhost/manage/upload-pre-crop.php?ret_page=edit-item&ret_dir=products&ret_path=cms/pages&upload_new_img=1
+[Fri Mar 12 03:07:54.968851 2021] [autoindex:error] [pid 27] [client 172.18.0.1:35850] AH01276: Cannot serve directory /var/www/html/saascustuploads/1/cart/thumb/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive, referer: http://localhost/manage/cms/pages/showroom.php?showroom_id=1
+[Fri Mar 12 03:08:50.767533 2021] [autoindex:error] [pid 34] [client 172.18.0.1:36282] AH01276: Cannot serve directory /var/www/html/saascustuploads/1/cart/thumb/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive, referer: http://localhost/manage/cms/pages/showroom.php
+[Fri Mar 12 03:25:17.358767 2021] [autoindex:error] [pid 21] [client 172.18.0.1:37124] AH01276: Cannot serve directory /var/www/html/saascustuploads/1/cms/full/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive, referer: http://localhost/manage/cms/pages/showroom.php
+[Fri Mar 12 03:28:41.616053 2021] [autoindex:error] [pid 34] [client 172.18.0.1:37402] AH01276: Cannot serve directory /var/www/html/saascustuploads/1/cms/full/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive, referer: http://localhost/manage/cms/pages/showroom.php
+[Fri Mar 12 03:51:10.656659 2021] [autoindex:error] [pid 22] [client 172.18.0.1:38542] AH01276: Cannot serve directory /var/www/html/saascustuploads/1/cms/full/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive, referer: http://localhost/manage/cms/pages/showroom.php
+[Fri Mar 12 19:08:06.888692 2021] [mpm_prefork:notice] [pid 1] AH00170: caught SIGWINCH, shutting down gracefully
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.18.0.5. Set the 'ServerName' directive globally to suppress this message
+[Fri Mar 12 23:51:12.876022 2021] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.38 (Debian) PHP/7.4.2 configured -- resuming normal operations
+[Fri Mar 12 23:51:12.876521 2021] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'

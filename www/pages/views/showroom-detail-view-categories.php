@@ -17,11 +17,39 @@ to be an older version which was replaced by the Room Gallery page on the link p
 -->
 
 <?php	
-require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php"); 	
+
+if(!isset($hero_file_name)) $hero_file_name = '';
+
+
+
+
+if($hero_file_name == ''){
+	
+	$hero = '../../images/showroom-detail-view-header.png';
+	
+}else{
+
+	$hero = '';
+
+	$hero .= "../../saascustuploads/";
+	$hero .= $_SESSION['profile_account_id'];
+	$hero .= "/cms/";
+	$hero .= $hero_file_name;
+	//$hero = preg_replace('/(\/+)/','/',$im);
+
+}
+
+//echo "hero ".$hero;
+//exit;
+require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php"); 
+
 ?>	
 
 <section class="first-fixed-block covid-block clearfix">
-	<figure class="first-fixed-block__img-group" style="background-image: url('../../images/showroom-detail-view-header.png');">
+	<figure class="first-fixed-block__img-group" 
+
+style="background-image: url('<?php echo $hero; ?>');">
+
 		<figcaption class="first-fixed-block__img-group--text-block">
 			<div class="wrapper">
 				<h1 class="first-fixed-block__img-group--heading text-center">Closet Organizer Showroom</h1>

@@ -152,7 +152,12 @@ require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php");
 							<div class="col-12 col-lg-9">
 								<div class="account-block__wellcome">
 									<p class="account-block__wellcome--heading"><span class="wellome-txt">Welcome,</span> Super Administrator! <span>How are you today?</span></p>
-									<p class="account-block__wellcome--text">27 May 2020, Monday</p>
+									<p class="account-block__wellcome--text">
+<?php 
+$ts = time();
+echo date("d D Y, l", $ts);
+?>
+									</p>
 								</div>
 
 								<div class="account-block__general-info account-payment">

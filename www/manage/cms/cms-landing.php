@@ -7,7 +7,7 @@ $module = new Module;
 $page_title = "Content Management";
 $page_group = "content-management";
 	
-	
+unset($_SESSION['img_id']);	
 
 require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php'); 
 ?>

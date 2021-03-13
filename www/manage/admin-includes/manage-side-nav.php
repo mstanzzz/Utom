@@ -104,11 +104,17 @@ $cms_block .= "<li><a href='".$ste_root."manage/cms/footer/edit-footer.php'>Foot
 $cms_block .= "<li><a href='".$ste_root."manage/cms/social-media/edit-social-media-links.php?firstload=1'>Social Media</a></li>";                
 $cms_block .= "<li><a href='".$ste_root."manage/cms/keyword-landing/keyword-landing-page-list.php'>keyword-landing</a></li>";                
 $cms_block .= "<li><a href='".$ste_root."manage/cms/design-services/design-services-pages.php'>Design Services</a></li>";                
+
+
+
+$cms_block .= "<li><a href='".$ste_root."manage/cms/design-services/idea-folder.php'>Idea Folder</a></li>";
+
 $cms_block .= "<li><a href='".$ste_root."manage/cms/email-content/email-content-landing.php'>Design Request Page</a></li>";                
 $cms_block .= "</ul>";
 $cms_block .= "</li>";
 
 echo $cms_block;
+
 
 
 $cat_block = '';

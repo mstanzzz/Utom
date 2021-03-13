@@ -585,7 +585,7 @@ $search_str = (isset($_REQUEST["search_string"])) ?  trim(addslashes($_REQUEST["
             <?php 
 			if($total_rows > $rows_per_page){
 				$uid1 = $s_customer_id;		
-				echo getPagination($total_rows, $rows_per_page, $pagenum, $truncate, $last, "customer/customer-list.php", $sortby, $a_d, $uid1, 0, $search_str); 
+echo getPagination($total_rows, $rows_per_page, $pagenum, $truncate, $last, "../customer/customer-list.php", $sortby, $a_d, $uid1, 0, $search_str); 
 				echo "<br /><br /><br />";
 			}
 		
@@ -687,7 +687,7 @@ $search_str = (isset($_REQUEST["search_string"])) ?  trim(addslashes($_REQUEST["
             <?php 
 			if($total_rows > $rows_per_page){
 				$uid1 = $s_customer_id;		
-				echo getPagination($total_rows, $rows_per_page, $pagenum, $truncate, $last, "customer/customer-list.php", $sortby, $a_d, $uid1, 0, $search_str); 
+echo getPagination($total_rows, $rows_per_page, $pagenum, $truncate, $last, "../customer/customer-list.php", $sortby, $a_d, $uid1, 0, $search_str); 
 			}
 
 			?>

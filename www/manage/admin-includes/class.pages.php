@@ -473,10 +473,22 @@ class Pages{
 		$result = $dbCustom->getResult($db,$sql);
 		
 
+		/* OLD SITE
 		$sql = "INSERT INTO showroom 
 			(last_update, profile_account_id) 
 			VALUES ('".$ts."', '".$new_profile_account_id."')"; 
 		$result = $dbCustom->getResult($db,$sql);
+		*/
+
+		
+		//showroom-detail-view-categories
+		$sql = "INSERT INTO showroom 
+			(last_update, profile_account_id) 
+			VALUES ('".$ts."', '".$new_profile_account_id."')"; 
+		$result = $dbCustom->getResult($db,$sql);
+
+
+
 
 
 		
@@ -843,7 +855,7 @@ class Pages{
 	$result = $dbCustom->getResult($db,$sql);			
 			
 
-
+	//showroom-detail-view-categories
 			$sql = "
 			INSERT INTO page_seo
 			(
@@ -2041,11 +2053,11 @@ class Pages{
 			$sql .= "AND active = '1'";
 		}
 
-		if(!$module->hasDesignServicesModule($profile_account_id)){
+		//if(!$module->hasDesignServicesModule($profile_account_id)){
 			$sql = "AND page_name != 'we-design-fax'
 					AND page_name != 'email-design'
 					AND page_name != 'we-design'";	
-		}
+		//}
 
 		$result = $dbCustom->getResult($db,$sql);
         
@@ -2102,7 +2114,6 @@ class Pages{
 		AND page_name != 'news-more'
 		AND page_name != 'quick-installation'
 		AND page_name != 'shop'
-		AND page_name != 'showroom-details'
 		AND page_name != 'signup-form'
 		AND page_name != 'social-network'
 		AND page_name != 'social-network-about'
@@ -2150,6 +2161,17 @@ class Pages{
 
 
 
+			//showroom-detail-view-categories
+
+
+
+
+			if($row->page_name == 'showroom'){
+				
+				$sql = "SELECT max(showroom_id) AS id FROM showroom 
+				WHERE profile_account_id = '".$profile_account_id."'";
+				
+			}
 
 
 			if($row->page_name == 'support'){

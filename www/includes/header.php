@@ -1,4 +1,6 @@
-
+<?php
+if(!isset($cust_name)) $cust_name = 'Joe';
+?>
 <header class="header-covid  clearfix">
 	<div class="first-header">
 		<!-- <div class="wrapper"> -->
@@ -57,12 +59,18 @@
 							<div class="dropdown dropdown-about js-account-wrap">
 								<p class="dropdown-toggle account" id="dropdownAccountButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								<img src="../../images/user(4).svg" alt="" class="m-0 img-fluid"/>
-								<span class="account-name">Hi, Joro</span>
+<span class="account-name">
+Hi, <?php echo $cust_name; ?>
+</span>
 								</p>
 								<div class="dropdown-menu account" aria-labelledby="dropdownAccountButton">
 									<div class="dropdown-menu--content">
 						
-<a class="dropdown-item account-menu-visible js-account-login" title="" href="#">Login</a>
+<a class="dropdown-item account-menu-visible js-account-login" title="" 
+	href="<?php echo $ste_root."login.html"; ?>">
+	Login
+</a>
+
 <a class="dropdown-item account-menu-visible" title="" href="<?php echo $ste_root."account.html"; ?>">Register</a>
 <a class="dropdown-item account-menu-hidden" title="" href="<?php echo $ste_root."account.html"; ?>">Dashboard</a>
 <a class="dropdown-item account-menu-hidden" title="" href="<?php echo $ste_root."account-settings.html"; ?>">Account settings</a>

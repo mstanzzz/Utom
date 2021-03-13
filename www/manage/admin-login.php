@@ -8,6 +8,7 @@ $header_str =  "Location: start.php";
 header($header_str);			
 
 
+
 /*
 if(!isset($_SESSION['login_attempts'])) $_SESSION['login_attempts'] = 0; 
 $hours_to_lock = 24; 

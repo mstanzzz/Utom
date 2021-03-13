@@ -9,8 +9,6 @@ $module = new Module;
 $page_title = "Edit Product: ";
 $page_group = "item";
 
-	
-
 $firstload =  (isset($_GET['firstload'])) ? $_GET['firstload'] : 0;
 if($firstload){
 	unset($_SESSION['cat_id']);
@@ -22,7 +20,6 @@ if(!is_numeric($img_id)) $img_id = 0;
 if($img_id > 0){
 	$_SESSION['img_id'] = $img_id;
 }
-
 
 $pagenum = (isset($_GET['pagenum'])) ? $_GET['pagenum'] : 0;
 if(!isset($_SESSION['paging']['pagenum'])) $_SESSION['paging']['pagenum'] = $pagenum;
@@ -85,7 +82,6 @@ if(!isset($_SESSION['temp_videos'])){
 		$i++;
 	}
 }
-
 
 
 if(isset($_POST['selected_video'])){
@@ -875,34 +871,6 @@ $(document).ready(function() {
 		}
 	});
 	
-
-	//=======================================
-	// Apply Valid8 to appropriate Fields
-	//=======================================
-
-	//$("#product_name, #product_number, #sku, #price_flat, #is_taxable, #datepicker1, #show_in_cart, #show_in_showroom, #weight").valid8();
-
-	//$("#product_name").valid8();
-
-	/* make this not required but must be numeric
-	$('#price_flat').valid8({
-		'jsFunctions': [
-			{ function: IsNumeric, values: function(){
-					return { sText: $('#price_flat').val()}
-				}
-			}
-		]
-	});
-	$('#price_wholesale').valid8({
-		'jsFunctions': [
-			{ function: IsNumeric, values: function(){
-					return { sText: $('#price_wholesale').val()}
-				}
-			}
-		]
-	});
-	*/
-
 	
 	set_attr_section();
 
@@ -931,8 +899,11 @@ $(document).ready(function() {
 <?php
 $_SESSION['crop_n'] = 1;
 $_SESSION['img_type'] = 'cart';
-$url_str= $ste_root."manage/upload-pre-crop.php"; 
-	$url_str = preg_replace('/(\/+)/','/',$url_str);
+
+$url_str= "../../upload-pre-crop.php"; 
+//$url_str = preg_replace('/(\/+)/','/',$url_str);
+//echo $url_str;
+//exit;
 
 $url_str.= "?ret_page=edit-item";
 $url_str.= "&ret_dir=products";
@@ -944,12 +915,6 @@ $url_str.= "&parent_cat_id=".$_SESSION['parent_cat_id'];
 $url_str.= "&cat_id=".$_SESSION['cat_id'];		
 ?>
 <a class="btn btn-info" href="<?php echo $url_str; ?>">Upload Image </a>
-                        
-
-
-
-
-
 
 	<?php
 		require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/class.admin_bread_crumb.php");	
@@ -969,16 +934,14 @@ $url_str.= "&cat_id=".$_SESSION['cat_id'];
 		$db = $dbCustom->getDbConnect(CART_DATABASE);
 
 		
-		
-		
 		if($_SESSION['ret_page'] == 'category-tree'){
 			$url_str= $ste_root.'manage/catalog/categories/category-tree.php';
 	$url_str = preg_replace('/(\/+)/','/',$url_str);
 
 		}else{
 
-			$url_str= $ste_root.'manage/catalog/products/item.php';
-	$url_str = preg_replace('/(\/+)/','/',$url_str);
+			$url_str= 'item.php';
+			//$url_str = preg_replace('/(\/+)/','/',$url_str);
 			
 			$url_str.= '?parent_item_id='.$_SESSION['item_id'];
 			$url_str.= '&parent_cat_id='.$_SESSION['parent_cat_id'];
@@ -1018,10 +981,9 @@ echo "<img src='".$ste_root."/saascustuploads/".$_SESSION['profile_account_id'].
 			<input type="hidden" name="edit_item" value="1" />
             <div class="page_actions edit_page"> 
 				<?php 
-		
 
-				$url_str= $ste_root.'manage/catalog/products/add-item.php';
-	$url_str = preg_replace('/(\/+)/','/',$url_str);
+				$url_str= 'add-item.php';
+				//$url_str = preg_replace('/(\/+)/','/',$url_str);
 
 				$url_str.= "?parent_item_id=".$_SESSION['item_id'];
 				$url_str.= "&ret_page=edit-item";				
@@ -1044,8 +1006,8 @@ echo "<img src='".$ste_root."/saascustuploads/".$_SESSION['profile_account_id'].
 						if(getNumChildItems($_SESSION['item_id']) > 0){
 						
 					
-							$url_str= $ste_root.'manage/catalog/products/edit-item.php';
-			$url_str = preg_replace('/(\/+)/','/',$url_str);
+							$url_str= 'edit-item.php';
+							//$url_str = preg_replace('/(\/+)/','/',$url_str);
 
 							$url_str.= "?action=remove_children";
 							$url_str.= "&parent_item_id=".$_SESSION['item_id'];
@@ -1062,8 +1024,8 @@ echo "<img src='".$ste_root."/saascustuploads/".$_SESSION['profile_account_id'].
 						}
 							
 								
-					$url_str= $ste_root.'manage/catalog/products/become-child-item.php';
-				$url_str = preg_replace('/(\/+)/','/',$url_str);
+						$url_str= 'become-child-item.php';
+						//$url_str = preg_replace('/(\/+)/','/',$url_str);
 			
 						$url_str.= "?parent_cat_id=".$_SESSION['parent_cat_id'];
 						$url_str.= "&cat_id=".$_SESSION['cat_id'];						
@@ -1072,19 +1034,14 @@ echo "<img src='".$ste_root."/saascustuploads/".$_SESSION['profile_account_id'].
 						$url_str.= "&a_d=".$_SESSION['paging']['a_d'];
 						$url_str.= "&truncate=".$_SESSION['paging']['truncate'];
 						$url_str.= '&search_str='.$_SESSION['search_str'];
-							
-						
 						
 						echo "<hr /><a id='make_child_of' class='btn btn-primary' href='".$url_str."'><i class='icon-plus icon-white'></i> Make this child of another product</a>";
 						
 					}else{
 						
-						$url_str= $ste_root.'manage/catalog/products/edit-item.php';
-				$url_str = preg_replace('/(\/+)/','/',$url_str);
-									
-						$url_str.= "?action=remove_as_child";
-						
-						
+						$url_str= 'edit-item.php';
+						//$url_str = preg_replace('/(\/+)/','/',$url_str);									
+						$url_str.= "?action=remove_as_child";												
 						echo "<hr /><a id='remove_as_child' class='btn btn-primary' href='".$url_str."'><i class='icon-plus icon-white'></i> Make this NOT a child of another product</a>";
 						
 					}
@@ -1111,12 +1068,11 @@ echo "<img src='".$ste_root."/saascustuploads/".$_SESSION['profile_account_id'].
 				<?php
 				if($_SESSION['ret_page'] == 'category-tree'){
 					$url_str= $ste_root.'manage/catalog/categories/category-tree.php';
-			$url_str = preg_replace('/(\/+)/','/',$url_str);
+					$url_str = preg_replace('/(\/+)/','/',$url_str);
 
 				}else{					               				
-					$url_str= $ste_root.'manage/catalog/products/item.php';
-				$url_str = preg_replace('/(\/+)/','/',$url_str);
-
+					$url_str= 'item.php';
+					//$url_str = preg_replace('/(\/+)/','/',$url_str);
 					$url_str.= "?parent_item_id=".$_SESSION['item_id'];
 					$url_str.= "&parent_cat_id=".$_SESSION['parent_cat_id'];
 					$url_str.= "&cat_id=".$_SESSION['cat_id'];		
@@ -1472,8 +1428,8 @@ echo $obj->show_associated_kits."       ".$obj->show_videos;
 				$_SESSION['img_type'] = 'cart';
 							
 						
-						$url_str= $ste_root."manage/upload-pre-crop.php"; 
-				$url_str = preg_replace('/(\/+)/','/',$url_str);
+						$url_str= "../../upload-pre-crop.php"; 
+						//$url_str = preg_replace('/(\/+)/','/',$url_str);
 						
 						$url_str.= "?ret_page=edit-item";
 						
@@ -2292,7 +2248,7 @@ echo $obj->show_associated_kits."       ".$obj->show_videos;
 						</div>
 						<?php
 						$url_str= $ste_root."manage/catalog/select-document.php";               				
-	$url_str = preg_replace('/(\/+)/','/',$url_str);
+						$url_str = preg_replace('/(\/+)/','/',$url_str);
 
                             $url_str.= "?ret_page=edit-item";
                             $url_str.= "&ret_dir=products";
@@ -2309,10 +2265,7 @@ echo $obj->show_associated_kits."       ".$obj->show_videos;
 						<label>Text in document tabbed area</label>
 						<textarea  name="doc_area_text" class="wysiwyg small" id="wysiwyg6" ><?php echo stripslashes($_SESSION['temp_item_fields']["doc_area_text"]); ?></textarea>
 					</div>
-				</fieldset>
-
-                
-                
+				</fieldset>                
 			</div>
 		</form>
         

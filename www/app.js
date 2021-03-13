@@ -29409,6 +29409,7 @@
 					$(this).hide();
 					$('.account-block__collapse').removeClass('open');
 				});
+				
 				$('.my-order .account-block__collapse--header').on('click', function () {
 					if ($(window).width() > 992) {
 						if ($(this).hasClass('collapsed')) {
@@ -29421,6 +29422,7 @@
 						$(this).parents('.my-order').siblings().find('.js-read-button span').text($(this).find('.js-read-button').attr('data-readAll'));
 					}
 				});
+				
 				$('.account-block__collapse--header').on('click', function () {
 					if ($(window).width() > 992) {
 						$(this).parents('.card').siblings().find('.account-block__details--edit-button').show();
@@ -29446,19 +29448,12 @@
 							changedInput = this;
 
 						reader.onload = function (e) {
-							
-							// Added by Mark Stanz
-							$.ajax({
-								method: "POST",
-								url: "pages/account-ajax/ajax-add-blob-image.php",
-								data: {blob_image: e.target.result}
-							}).done(function(data) {
-								//console.log(data);								
-							}).fail(function() {
-								//console.log("failed");
-							});
-							// End Mark Stanz
 
+							// Added by Mark Stanz
+							$("#house_blob_image").val();
+							$("#house_blob_image").val(e.target.result);
+							// End by Mark Stanz
+							
 							$('.js-y-house-defalt-img').hide();
 							
 							$('.js-my-house-img-view').attr('src', e.target.result).show().parent('a').attr('href', e.target.result);
