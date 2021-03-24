@@ -14,110 +14,101 @@ $msg = (isset($_GET['msg'])) ? $_GET['msg'] : '';
 
 $ts = time();
 
-// add if not exist
-$sql = "SELECT specs_content_id FROM specs_content WHERE profile_account_id = '".$_SESSION['profile_account_id']."'"; 
-$result = $dbCustom->getResult($db,$sql);
+if(!isset($_SESSION['specs_content_id'])) $_SESSION['specs_content_id'] = 0;
+$specs_content_id = (isset($_GET['specs_content_id'])) ? $_GET['specs_content_id'] : '';
+if($specs_content_id > 0) $_SESSION['specs_content_id'] = $specs_content_id;
 
-if($result->num_rows == 0){
-	$sql = "INSERT INTO specs_content 
-		(content, last_update, profile_account_id) 
-		VALUES ('Add Content', '".$ts."', '".$_SESSION['profile_account_id']."')"; 
-	$result = $dbCustom->getResult($db,$sql);
+if($_SESSION['specs_content_id'] == 0){
+	$_SESSION['specs_content_id'] = get_max_specs_content_id();
 }
 
+
 if(isset($_POST["specs_content_id"])){
+	$specs_content_id = (isset($_POST['specs_content_id']))? $_POST['specs_content_id'] : 0;
+	if($specs_content_id > 0) $_SESSION['specs_content_id'] = $specs_content_id;
+	if($_SESSION['specs_content_id'] == 0){
+		$_SESSION['specs_content_id'] = get_max_specs_content_id();
+	}
+
+	$p_1_text = (isset($_POST['p_1_text']))? trim(addslashes($_POST['p_1_text'])) : '';
+	$p_2_text = (isset($_POST['p_2_text']))? trim(addslashes($_POST['p_2_text'])) : '';
+
+	//$img_id = (isset($_POST['img_id']))? $_POST['img_id'] : 0;
+	//if(!is_numeric($img_id)) $img_id = 0;
 	
-	$specs_content_id = $_POST["specs_content_id"];
+	$svg_id = (isset($_POST['svg_id']))? $_POST['svg_id'] : 0;
+	if(!is_numeric($svg_id)) $svg_id = 0;
 	
-	$content = trim(addslashes($_POST["content"])); 
-	$sidebar_heading = trim(addslashes($_POST["sidebar_heading"])); 
-	$sidebar_content = trim(addslashes($_POST["sidebar_content"]));
-	$img_id = $_POST['img_id'];
-
-
-	$content = (isset($_POST['content']))? trim(addslashes($_POST['content'])) : '';
-
-
-	$sidebar_heading = (isset($_POST['sidebar_heading']))? trim(addslashes($_POST['sidebar_heading'])) : '';
-
-
-
-	$mssl = (isset($_POST['mssl']))? 1 : 0;
-	$seo_name = trim(addslashes($_POST['seo_name']));
-	$seo_name = str_replace (" ", "-" , $seo_name);
-	$title = trim(addslashes($_POST['title']));
-	$keywords = trim(addslashes($_POST['keywords']));
-	$description = trim(addslashes($_POST['description']));
-	$page_heading = trim(addslashes($_POST["page_heading"]));
-
-	require_once($_SERVER['DOCUMENT_ROOT']."/manage/cms/insert_page_seo.php");
+	
 	
 	$sql = sprintf("UPDATE specs_content 
-					SET content = '%s'
-						,sidebar_heading = '%s'
-						,sidebar_content = '%s'
-						,img_id = '%u'
-						,last_update = '%u' 						
-						WHERE specs_content_id = '%u'", 
-	$content, $sidebar_heading, $sidebar_content, $img_id, time(), $specs_content_id);
+					SET p_1_text = '%s'
+						,p_2_text = '%s'
+						,svg_id = '%u'
+					WHERE specs_content_id = '%u'", 
+	$p_1_text, $p_2_text, $img_id, $_SESSION['specs_content_id']);
 	$result = $dbCustom->getResult($db,$sql);
 		
 
-	require_once($_SERVER['DOCUMENT_ROOT']."/manage/cms/insert_page_breadcrumb.php");
+	//require_once($_SERVER['DOCUMENT_ROOT']."/manage/cms/insert_page_breadcrumb.php");
 
 	$msg = "Your change is now live.";
+
 	
 }
+
+
 
 
 
 if(isset($_POST['add_spec'])){
 
-	$name = trim(addslashes($_POST['name']));
-	$description = trim(addslashes($_POST['description'])); 
-	$spec_cat_id = $_POST['spec_cat_id']; 
-	$img_id = $_POST['img_id']; 
+	$name = (isset($_POST['name']))? trim(addslashes($_POST['name'])) : '';
+	$description = (isset($_POST['description']))? trim(addslashes($_POST['description'])) : '';
+	$spec_details = (isset($_POST['spec_details']))? trim(addslashes($_POST['spec_details'])) : '';
+
+	$svg_id = (isset($_POST['svg_id']))? $_POST['svg_id'] : 0;
+	if(!is_numeric($svg_id)) $svg_id = 0;
 	
-	
-	$spec_details = trim(addslashes($_POST['spec_details']));
-	
+	//$spec_cat_id = (isset($_POST['img_id']))? $_POST['spec_cat_id'] : 0;	
+	//$img_id = (isset($_POST['img_id']))? $_POST['img_id'] : 0;
+	//if(!is_numeric($spec_cat_id)) $spec_cat_id = 0;	
 	
 	$sql = sprintf("INSERT INTO spec 
-					(name, description, spec_cat_id, img_id, profile_account_id) 
-					VALUES ('%s','%s','%u','%u','%u')", 
-	$name, $description, $spec_cat_id, $img_id, $_SESSION['profile_account_id']);
-	$result = $dbCustom->getResult($db,$sql);
-	
+					(name, description, spec_details, svg_id, profile_account_id) 
+					VALUES ('%s','%s','%s','%u','%u')", 
+	$name, $description, $spec_details, $svg_id, $_SESSION['profile_account_id']);
+	$result = $dbCustom->getResult($db,$sql);	
 
 	$msg = "Your change is live.";
-	
-	
+		
 }
 
 
 
-
-if(isset($_POST['edit_spec'])){
-	
-	
+if(isset($_POST['update_spec'])){
 	
 	$name = isset($_POST['name']) ? trim(addslashes($_POST['name'])) : '';
 	$description = isset($_POST['description']) ? trim(addslashes($_POST['description'])) : '';
+	$spec_details = (isset($_POST['spec_details']))? trim(addslashes($_POST['spec_details'])) : '';
+	$spec_id = (isset($_POST['spec_id']))? $_POST['spec_id'] : 0;
+	$svg_id = (isset($_POST['svg_id']))? $_POST['svg_id'] : 0;
+
+	//$spec_cat_id = (isset($_POST['img_id']))? $_POST['spec_cat_id'] : 0;
+	//$img_id = (isset($_POST['img_id']))? $_POST['img_id'] : 0;
+	//if(!is_numeric($spec_cat_id)) $spec_cat_id = 0;
+	//if(!is_numeric($img_id)) $img_id = 0;
 	
-	$spec_cat_id = isset($_POST['spec_cat_id']) ? $_POST['spec_cat_id'] : 0;
-	$spec_id = isset($_POST['spec_id']) ? $_POST['spec_id'] : 0;
-	$img_id = isset($_POST['img_id']) ? $_POST['img_id'] : 0;
+	if(!is_numeric($spec_id)) $spec_id = 0;	
+	if(!is_numeric($svg_id)) $svg_id = 0;
 
-
-	$sql = sprintf("UPDATE spec 
-					SET name = '%s'
-					,description = '%s' 
-					,spec_cat_id = '%u'
-					,img_id = '%u'
-					WHERE spec_id = '%u'", 
-	$name, $description, $spec_cat_id, $img_id, $spec_id);
+	$sql = "UPDATE spec 
+			SET name = '".$name."'
+				,description = '".$description."'
+				,spec_details = '".$spec_details."'			
+				,svg_id = '".$svg_id."'
+			WHERE spec_id = '".$spec_id."'";
 	$result = $dbCustom->getResult($db,$sql);
-	
 
 	$msg = "Your change is live.";
 
@@ -134,39 +125,16 @@ if(isset($_POST["del_spec"])){
 	$msg = "Item Deleted.";
 }
 
-
-
-
-
-unset($_SESSION['img_id']);
-unset($_SESSION['new_img_id']);
 unset($_SESSION['temp_page_fields']);
 unset($_SESSION['spec_id']);
-unset($_SESSION['specs_content_id']);
-
 
 require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php'); 
 
 ?>
 <script>
 
-$(document).ready(function() {
-	$('.fancybox').fancybox({
-		autoSize : false,
-		height : 800,
-		width : 900	
-	});
-});
-
-
-function previewSubmit() {
-  document.form.action = '<?php echo $ste_root; ?>/pages/preview/preview.php';
-  document.form.target = '_blank'; 
-  document.form.submit();
-}	
-
 function regularSubmit() {
-  document.form.action = '<?php echo $current_page; ?>';
+  document.form.action = 'specs.php';
   document.form.target = '_self'; 
   document.form.submit(); 
 }	
@@ -187,21 +155,10 @@ function regularSubmit() {
 	</div>
 	<div class="manage_main">
 		<?php 
-        
-        
-   		require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/class.admin_bread_crumb.php");	
-		$bread_crumb = new AdminBreadCrumb;
-		$bread_crumb->reSet();
-		$bread_crumb->add("CMS", $ste_root."manage/cms/cms-landing.php");
-		$bread_crumb->add("Pages", $ste_root."manage/cms/pages/page.php");
-		$bread_crumb->add("Specs", '');
-        echo $bread_crumb->output();
-        require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-content-top.php');
-        
-		//specs section tabbed sub-navigation
         require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/specs-section-tabs.php");
-		$db = $dbCustom->getDbConnect(SITE_N_DATABASE);        
-   ?>
+
+
+		?>
 			<div class="page_actions"> 
             
             <!--  fancybox fancybox.iframe -->
@@ -219,6 +176,8 @@ function regularSubmit() {
 
 
 <?php
+			$db = $dbCustom->getDbConnect(SITE_N_DATABASE);        
+
 			$sortby = (isset($_GET['sortby'])) ? trim(mysql_escape_string($_GET['sortby'])) : '';
 			$a_d = (isset($_GET['a_d'])) ? $_GET['a_d'] : 'a';
 			
@@ -229,25 +188,19 @@ function regularSubmit() {
 			// get total number of rows
 			$sql = "SELECT spec.name
 						,spec.description 
-						,spec_category.category_name
-						,spec.img_id
+						,spec.spec_details
+						,spec.svg_id
 						,spec.spec_id
-					FROM spec, spec_category
-					WHERE spec.spec_cat_id = spec_category.spec_cat_id 
-					AND spec.profile_account_id = '".$_SESSION['profile_account_id']."'
-					";		
-
+					FROM spec
+					WHERE spec.profile_account_id = '".$_SESSION['profile_account_id']."'";		
 			if(isset($_POST["product_search"])){
 				$search_str = trim(addslashes($_POST["product_search"]));
 				$sql .= " AND (name like '%".$search_str."%' || name like '%".$search_str."%')";
 			}
-		
-			
-								
+							
 			$db = $dbCustom->getDbConnect(SITE_N_DATABASE);
 			$nmx_res = $dbCustom->getResult($db,$sql);
 			
-
 			$total_rows = $nmx_res->num_rows;
 			$rows_per_page = 10;
 			$last = ceil($total_rows/$rows_per_page); 
@@ -277,44 +230,41 @@ function regularSubmit() {
 				}
 				
 			}else{
-				$sql .= " ORDER BY category_name, name".$limit;					
+				$sql .= " ORDER BY name".$limit;					
 			}
 				
 			$db = $dbCustom->getDbConnect(SITE_N_DATABASE);
-	$result = $dbCustom->getResult($db,$sql);			
+			$result = $dbCustom->getResult($db,$sql);			
 			
 			if($total_rows > $rows_per_page){
                 echo getPagination($total_rows, $rows_per_page, $pagenum, $truncate, $last, "cms/pages/specs.php", $sortby, $a_d);
 			}
+
+
 			?>
 			<br />
 
 			<div class="data_table">
-				<?php require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/tablesort.php"); ?>
 				<table cellpadding="10" cellspacing="0">
-					<thead>
-						<tr>
-							<th width="10%">Image</th>
-							<th width="20%" <?php addSortAttr('name',true); ?>>Title <i <?php addSortAttr('name',false); ?>></i></th>
-							<th width="30%" <?php addSortAttr('description',true); ?>>Content <i <?php addSortAttr('description',false); ?>></i> </th>
-							<th width="20%">Category</th>
-							<th width="15%">Edit</th>
-							<th width="5%">Delete</th>
-						</tr>
-					</thead>
-					<tbody>
+					<tr>
+						<td width="10%">SVG Icon</td>
+						<td width="20%">Spec Name</td>		
+						<td width="30%">Description </td>
+						<td width="20%">spec_details</td>
+						<td width="15%">Edit</td>
+						<td width="5%">Delete</td>
+					</tr>
 					<?php
 					while($row = $result->fetch_object()) {
 						$block = "<tr>";
 					
-						$sql = "SELECT file_name FROM image WHERE img_id = '".$row->img_id."'";
+						$sql = "SELECT svg_code FROM svg WHERE svg_id = '".$row->svg_id."'";
 						$img_res = $dbCustom->getResult($db,$sql);
-						;
-						$block .= "<td valign='middle'>";
+										
+						$block .= "<td>";		
 						if($img_res->num_rows){
-						$img_obj = $img_res->fetch_object();
-						$block .= "<a href='".$ste_root."/saascustuploads/".$_SESSION['profile_account_id']."/cms/".$img_obj->file_name."'>
-						<img  src='".$ste_root."/saascustuploads/".$_SESSION['profile_account_id']."/cms/".$img_obj->file_name."'></a>";							
+							$img_obj = $img_res->fetch_object();						
+							$block .= stripslashes($img_obj->svg_code); 
 						}
 						$block .= "</td>";
 						
@@ -322,14 +272,14 @@ function regularSubmit() {
 
 						$block .= "<td>".stripslashes($row->description)."</td>";
 
-						$block .= "<td>".stripslashes($row->category_name)."</td>";
+						$block .= "<td>".stripslashes($row->spec_details)."</td>";
 
-						// fancybox fancybox.iframe
-						$block .= "<td valign='top'>
+					
+						$block .= "<td>
 						<a class='btn btn-primary' href='edit-spec.php?firstload=1&spec_id=".$row->spec_id."'>
 						<i class='icon-cog icon-white'></i> Edit</a></td>";
 						
-						$block .= "<td valign='top'><a class='btn btn-danger  confirm' href='#'><i class='icon-remove icon-white'></i>
+						$block .= "<td><a class='btn btn-danger  confirm' href='#'>Delete
 						<input type='hidden' class='itemId' value='".$row->spec_id."' id='".$row->spec_id."' /></a></td>";
 						
 						
@@ -338,117 +288,13 @@ function regularSubmit() {
 				?>
 
 
-				
-                <!--
-
-
-
-						<tr>
-							<td><img src="<?php echo $ste_root;?>/images/drawer-openings.jpg" /></td>
-							<td>Drawer Openings</td>
-							<td><ul>
-									<li>30" with full ext. slides</li>
-									<li>39" on hutches</li>
-								</ul></td>
-							<td>Drawer Specifications</td>
-							<td><a class='btn btn-primary  fancybox fancybox.iframe' href='edit-spec-item.php?guide_tip_id=1&ret_page=specs'><i class='icon-cog icon-white'></i> Edit</a></td>
-								</td>
-							<td><a class='btn btn-danger  confirm' href='#delete'><i class='icon-remove icon-white'></i>
-								<input class='itemId' id='1' value='1' type='hidden' />
-								</a></td>
-						
-                        
-                        </tr>
-						<tr>
-							<td><img src="<?php echo $ste_root;?>/images/drawer-widths.jpg" /></td>
-							<td>Drawer Widths</td>
-							<td><ul>
-									<li>21" - 24" - 27"</li>
-									<li>30" - 32"</li>
-								</ul></td>
-							<td>Drawer Specifications</td>
-							<td><a class='btn btn-primary  fancybox fancybox.iframe' href='edit-spec-item.php?guide_tip_id=2&ret_page=specs'><i class='icon-cog icon-white'></i> Edit</a></td>
-								</td>
-							<td><a class='btn btn-danger  confirm' href='#delete'><i class='icon-remove icon-white'></i>
-								<input class='itemId' id='2' value='2' type='hidden' />
-								</a></td>
-						</tr>
-						<tr>
-							<td><img src="<?php echo $ste_root;?>/images/drawer-faceheight.jpg" /></td>
-							<td>Drawer Face Heights</td>
-							<td><ul>
-									<li>5" - 7.5" - 10"</li>
-								</ul></td>
-							<td>Drawer Specifications</td>
-							<td><a class='btn btn-primary  fancybox fancybox.iframe' href='edit-spec-item.php?guide_tip_id=3&ret_page=specs'><i class='icon-cog icon-white'></i> Edit</a></td>
-								</td>
-							<td><a class='btn btn-danger  confirm' href='#delete'><i class='icon-remove icon-white'></i>
-								<input class='itemId' id='3' value='3' type='hidden' />
-								</a></td>
-						</tr>
-						<tr>
-							<td><img src="<?php echo $ste_root;?>/images/basket-width.jpg" /></td>
-							<td>Basket Width</td>
-							<td><ul>
-									<li>9.25" - 21" - 24"</li>
-								</ul></td>
-							<td>Basket Specifications</td>
-							<td><a class='btn btn-primary  fancybox fancybox.iframe' href='edit-spec-item.php?guide_tip_id=4&ret_page=specs'><i class='icon-cog icon-white'></i> Edit</a></td>
-								</td>
-							<td><a class='btn btn-danger  confirm' href='#delete'><i class='icon-remove icon-white'></i>
-								<input class='itemId' id='4' value='4' type='hidden' />
-								</a></td>
-						</tr>
-						<tr>
-							<td><img src="<?php echo $ste_root;?>/images/basket-height.jpg" /></td>
-							<td>Basket Height</td>
-							<td><ul>
-									<li>6" - 10" - 17"</li>
-								</ul></td>
-							<td>Basket Specifications</td>
-							<td><a class='btn btn-primary  fancybox fancybox.iframe' href='edit-spec-item.php?guide_tip_id=5&ret_page=specs'><i class='icon-cog icon-white'></i> Edit</a></td>
-								</td>
-							<td><a class='btn btn-danger  confirm' href='#delete'><i class='icon-remove icon-white'></i>
-								<input class='itemId' id='5' value='5' type='hidden' />
-								</a></td>
-						</tr>
-						<tr>
-							<td><img src="<?php echo $ste_root;?>/images/basket-depth.jpg" /></td>
-							<td>Basket Depth</td>
-							<td><ul>
-									<li>12" - 15"</li>
-								</ul></td>
-							<td>Basket Specifications</td>
-							<td><a class='btn btn-primary  fancybox fancybox.iframe' href='edit-spec-item.php?guide_tip_id=6&ret_page=specs'><i class='icon-cog icon-white'></i> Edit</a></td>
-								</td>
-							<td><a class='btn btn-danger  confirm' href='#delete'><i class='icon-remove icon-white'></i>
-								<input class='itemId' id='6' value='6' type='hidden' />
-								</a></td>
-						</tr>
-						<tr>
-							<td><img src="<?php echo $ste_root;?>/images/shelfrod-width.jpg" /></td>
-							<td>Shelf/Rod Widths</td>
-							<td><ul>
-									<li>12" - 16" - 18"</li>
-									<li>21" - 24" - 27"</li>
-									<li>30" - 32" - 36"</li>
-								</ul></td>
-							<td>Shelf/Rod Specifications</td>
-							<td><a class='btn btn-primary  fancybox fancybox.iframe' href='edit-spec-item.php?guide_tip_id=6&ret_page=specs'><i class='icon-cog icon-white'></i> Edit</a></td>
-								</td>
-							<td><a class='btn btn-danger  confirm' href='#delete'><i class='icon-remove icon-white'></i>
-								<input class='itemId' id='6' value='6' type='hidden' />
-								</a></td>
-						</tr>
-                        -->
-					</tbody>
 				</table>
 			</div>
 	</div>
 	<p class="clear"></p>
 	<?php 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-footer.php');
-?>
+	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-footer.php');
+	?>
 </div>
 
 <div id="content-delete" class="confirm-content">

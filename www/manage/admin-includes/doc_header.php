@@ -11,7 +11,7 @@
 <title><?php echo (isset($page_title)) ? $page_title : '' ?> | Site Management</title>
 
 <link href="<?php echo $ste_root; ?>manage/js/fancybox2/source/jquery.fancybox.css?v=2.1.4" media="screen"  type="text/css" rel="stylesheet"/>
-<link href="<?php echo $ste_root; ?>manage/css/manageStyle.css?v=2" media="screen" type="text/css" rel="stylesheet"/>
+<link href="<?php echo $ste_root; ?>manage/css/manageStyle.css?v=1" media="screen" type="text/css" rel="stylesheet"/>
 <link href="<?php echo $ste_root; ?>manage/js/chosen/chosen.css" media="screen" type="text/css" rel="stylesheet"/>
 <link href="<?php echo $ste_root; ?>manage/css/jquery.multiselect.css" media="screen" type="text/css" rel="stylesheet"/>
 <link href="<?php echo $ste_root; ?>manage/jquery.multiselect.filter.css" media="screen" type="text/css" rel="stylesheet"/>

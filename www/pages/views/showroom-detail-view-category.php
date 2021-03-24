@@ -415,7 +415,7 @@ require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php");
 
 <div class="scrollToTopBlock">
 <div class="people-working">
-<img src="images/people-working-call-center_@2x.png" alt="" class="people-working__image">
+<img src="../../images/people-working-call-center_@2x.png" alt="" class="people-working__image">
 <div class="people-working__wrapper">
 <div class="people-working__content">
 <p class="people-working__text">Hi! I'm the Virtual assistant, and I'm here to help you.</p>
@@ -423,7 +423,7 @@ require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php");
 </div>
 </div>
 <a href="#" title="" class="scrollToTop js-to-top">
-<img src="images/arrows.svg" alt="">
+<img src="../../images/arrows.svg" alt="">
 </a>
 </div>
 <div class="mobile-show">

@@ -58,6 +58,18 @@ class Pages{
 					(img_id, hide, title, profile_account_id)
 				VALUES('".$new_img_id."', '0', 'Title Here', '".$new_profile_account_id."')";		
 		$l_res = $dbCustom->getResult($db,$sql);
+
+
+
+
+
+		$sql = "INSERT INTO features 
+			(content, last_update, profile_account_id) 
+			VALUES ('features content goes here', '".$ts."', '".$new_profile_account_id."')"; 
+		$result = $dbCustom->getResult($db,$sql);
+
+
+
 		
 		/*
 		$sql = "INSERT INTO design 
@@ -777,6 +789,23 @@ class Pages{
 			)VALUES(
 			'free-in-home-consults'
 			,'free-in-home-consults'
+			,'".$new_profile_account_id."'			
+			)	
+			";	
+	$result = $dbCustom->getResult($db,$sql);			
+
+
+
+
+			$sql = "
+			INSERT INTO page_seo
+			(
+			page_name
+			,seo_name
+			,profile_account_id
+			)VALUES(
+			'features'
+			,'features'
 			,'".$new_profile_account_id."'			
 			)	
 			";	
@@ -1572,6 +1601,13 @@ class Pages{
 		$result = $dbCustom->getResult($db,$sql);
 
 
+		$sql = "DELETE FROM features 
+				WHERE profile_account_id = '".$profile_account_id."'";
+		$result = $dbCustom->getResult($db,$sql);
+
+
+
+
 		$sql = "DELETE FROM design_email_content 
 				WHERE profile_account_id = '".$profile_account_id."'";
 		$result = $dbCustom->getResult($db,$sql);
@@ -2160,11 +2196,7 @@ class Pages{
 
 
 
-
 			//showroom-detail-view-categories
-
-
-
 
 			if($row->page_name == 'showroom'){
 				
@@ -2190,6 +2222,29 @@ class Pages{
 				
 				$page_list_array[$i]['page_id'] = $page_id;
 				$page_list_array[$i]['page_manage_path'] = "support.php?support_id=".$page_id;							
+
+			}
+
+
+			//features
+			if($row->page_name == 'features'){
+				
+				
+		        $sql = "SELECT max(features_id) AS id FROM features 
+				WHERE profile_account_id = '".$profile_account_id."'";
+				
+				$p_res = $dbCustom->getResult($db,$sql);
+				if($p_res->num_rows > 0){
+					
+					$p_obj = $p_res->fetch_object();
+					
+					$page_id = $p_obj->id;	
+				}else{
+					$page_id = 0;
+				}
+				
+				$page_list_array[$i]['page_id'] = $page_id;
+				$page_list_array[$i]['page_manage_path'] = "features.php?features_id=".$page_id;							
 
 			}
 

@@ -64,9 +64,9 @@ $result = $dbCustom->getResult($db,$sql);$object = $result->fetch_object();
         	
 		<table border="0" cellpadding="8">
         <tr>
-        <td><div class="head">Name</div><input type="text" name="name" value="<?php echo prepFormInputStr($object->name); ?>" maxlength="160" size="30" /></td>
+        <td><div class="head">Name</div><input type="text" name="name" value="<?php echo stripslashes($object->name); ?>" maxlength="160" size="30" /></td>
         <td>Email Address<br /><input type="text" name="email" value="<?php echo $object->email; ?>" maxlength="160" size="30"  /></td>
-        <td>City State<br /><input type="text" name="city_state" value="<?php echo prepFormInputStr($object->city_state); ?>" maxlength="160" size="30" /></td>
+        <td>City State<br /><input type="text" name="city_state" value="<?php echo stripslashes($object->city_state); ?>" maxlength="160" size="30" /></td>
         </tr>
         <tr>
         <td colspan="3">

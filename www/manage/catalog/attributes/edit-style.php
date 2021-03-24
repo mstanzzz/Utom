@@ -55,7 +55,7 @@ $result = $dbCustom->getResult($db,$sql);
        	<input id="style_id" type="hidden" name="style_id" value="<?php echo $style_id;  ?>" />
 
             <div class="head">style name</div><br />
-            <input type="text" name="name" value="<?php echo prepFormInputStr($object->name); ?>" style="width:300px" />
+            <input type="text" name="name" value="<?php echo stripslashes($object->name); ?>" style="width:300px" />
             <br />
             <div style="float:left; padding-right:100px; padding-top:15px;">
                 <input name="edit_style" type="submit" value="Save" />

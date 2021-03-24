@@ -13,6 +13,9 @@ $page_title = "Editing: Showroom";
 $page_group = "showroom";
 $page = "showroom";
 
+if(!isset($_SESSION['img_id'])) $_SESSION['img_id'] = 0;
+
+
 $db = $dbCustom->getDbConnect(SITE_N_DATABASE);
 
 $ts = time();
@@ -215,7 +218,7 @@ echo "<br />";
 $db = $dbCustom->getDbConnect(SITE_N_DATABASE);
 $sql = "SELECT file_name 
 		FROM image
-		WHERE img_id = '1'";
+		WHERE img_id = '".$_SESSION['img_id']."'";
 $img_res = $dbCustom->getResult($db,$sql);
 
 echo "num_rows ".$img_res->num_rows;
@@ -285,7 +288,7 @@ $url_str.= "&upload_new_img=1";
 				
 
 <label>p_1_head</label>
-<input type="text" name="p_1_head"  style="width:520px" value="<?php echo prepFormInputStr($_SESSION['temp_page_fields']['p_1_head']); ?>">
+<input type="text" name="p_1_head"  style="width:520px" value="<?php echo stripslashes($_SESSION['temp_page_fields']['p_1_head']); ?>">
 
 <label>p_1_text</label>
 <textarea id="p_1_text" class="wysiwyg" name="p_1_text"><?php echo stripslashes($_SESSION['temp_page_fields']['p_1_text']); ?></textarea>

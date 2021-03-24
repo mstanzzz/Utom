@@ -192,7 +192,7 @@ function goto_isfancybox(url){
 					<label>Image Alt Tag Text</label>
 				</div>
 				<div class="twocols">
-					<input type="text"  name="img_alt_text" value="<?php echo prepFormInputStr($_SESSION['temp_banner_fields']['img_alt_text']); ?>" />
+					<input type="text"  name="img_alt_text" value="<?php echo stripslashes($_SESSION['temp_banner_fields']['img_alt_text']); ?>" />
 				</div>
 			</fieldset>
             
@@ -201,7 +201,7 @@ function goto_isfancybox(url){
 					<label>Title</label>
 				</div>
 				<div class="twocols">
-					<input type="text"  name="title" value="<?php echo prepFormInputStr($_SESSION['temp_banner_fields']['title']); ?>" />
+					<input type="text"  name="title" value="<?php echo stripslashes($_SESSION['temp_banner_fields']['title']); ?>" />
 				</div>
 			</fieldset>
 			<fieldset class="colcontainer formcols">

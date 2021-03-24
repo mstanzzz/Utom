@@ -44,7 +44,7 @@ $result = $dbCustom->getResult($db,$sql);$object = $result->fetch_object();
         
         	<div style="float:left; width:560px;">
                 <div class="head">Return To</div><br />
-                <input type="text" name="name" value="<?php echo prepFormInputStr($object->name); ?>" style="width:300px" />
+                <input type="text" name="name" value="<?php echo stripslashes($object->name); ?>" style="width:300px" />
 
                
             </div> 

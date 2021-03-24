@@ -179,7 +179,7 @@ function get_query_str(){
                        	<label>Image Alt Tag Text</label>
                     </div>
                     <div class="twocols">
-                       	<input id="img_alt_text" type="text" name="img_alt_text" value="<?php echo prepFormInputStr($_SESSION["temp_page_fields"]['img_alt_text']);; ?>" />
+                       	<input id="img_alt_text" type="text" name="img_alt_text" value="<?php echo stripslashes($_SESSION["temp_page_fields"]['img_alt_text']);; ?>" />
                     </div>
 				</div>
 
@@ -192,7 +192,7 @@ function get_query_str(){
 						<label>Step name</label>
 					</div>
 					<div class="twocols">
-						<input type="text" id="name" name="name" value="<?php echo prepFormInputStr($_SESSION['temp_page_fields']['name']); ?>" />
+						<input type="text" id="name" name="name" value="<?php echo stripslashes($_SESSION['temp_page_fields']['name']); ?>" />
 					</div>
 				</div>
 				<div class="colcontainer formcols">

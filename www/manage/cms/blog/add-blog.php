@@ -183,7 +183,7 @@ function get_query_str(){
 							<label>Post Title</label>
 						</div>
 						<div class="twocols">
-							<input type="text" name="title" value="<?php echo prepFormInputStr($_SESSION["temp_blog_fields"]['title']); ?>" maxlength="255" />
+							<input type="text" name="title" value="<?php echo stripslashes($_SESSION["temp_blog_fields"]['title']); ?>" maxlength="255" />
 						</div>
 					</div>
 					<div class="colcontainer formcols">
@@ -216,7 +216,7 @@ function get_query_str(){
 							<label>Substitute Name</label>
 						</div>
 						<div class="twocols">
-							<input type="text" name="substitute_by" value="<?php echo prepFormInputStr($_SESSION["temp_blog_fields"]["substitute_by"]); ?>" maxlength="80" />
+							<input type="text" name="substitute_by" value="<?php echo stripslashes($_SESSION["temp_blog_fields"]["substitute_by"]); ?>" maxlength="80" />
 						</div>
 					</div>
 					<div class="colcontainer formcols">

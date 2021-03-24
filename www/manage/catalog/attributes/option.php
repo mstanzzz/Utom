@@ -256,7 +256,7 @@ $(document).ready(function() {
 					$block .= "<td valign='top'>".stripslashes($row->opt_name)."</td>";
 					$block .= "<td><a class='btn btn-primary confirm confirm-edit'>
 					<i class='icon-cog icon-white'></i> Edit<input type='hidden' class='itemId' id='".$row->opt_id."' value='".$row->opt_id."' />
-					<input type='hidden' class='contentToEdit' id='".$row->opt_id."' value=\"".prepFormInputStr($row->opt_name)."\" /></a></td>";
+					<input type='hidden' class='contentToEdit' id='".$row->opt_id."' value=\"".stripslashes($row->opt_name)."\" /></a></td>";
 					$block .= "<td valign='middle'><a class='btn btn-danger confirm'><i class='icon-remove icon-white'></i><input type='hidden' id='".$row->opt_id."' class='itemId' value='".$row->opt_id."' /></a></td>";
 					$block .= "</tr>";
 				}

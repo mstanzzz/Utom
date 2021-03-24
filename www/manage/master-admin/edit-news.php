@@ -140,7 +140,7 @@ $result = $dbCustom->getResult($db,$sql);		$object = $result->fetch_object();
 							<label>Author</label>
 						</div>
 						<div class="twocols">
-							<input type="text" name="author" value="<?php echo prepFormInputStr($object->author); ?>"/>
+							<input type="text" name="author" value="<?php echo stripslashes($object->author); ?>"/>
 						</div>
 					</div>
 					<div class="colcontainer formcols">
@@ -148,7 +148,7 @@ $result = $dbCustom->getResult($db,$sql);		$object = $result->fetch_object();
 							<label>Title</label>
 						</div>
 						<div class="twocols">
-							<input type="text" name="title"  value="<?php echo prepFormInputStr($object->title); ?>" />
+							<input type="text" name="title"  value="<?php echo stripslashes($object->title); ?>" />
 						</div>
 					</div>
 					<div class="colcontainer">

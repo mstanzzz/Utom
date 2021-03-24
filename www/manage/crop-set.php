@@ -41,11 +41,13 @@ if($ret_err){
 }
 
 
-/*   
+/*
+echo "KKKKK_specs_content_id ".$_SESSION['specs_content_id'];
+echo "<br />";
+echo "<br />";
 echo "img_type ".$_SESSION['img_type'];
 echo "<br />";
 echo "<br />";
-
 echo "<br />";
 echo "crop_n: ".$_SESSION['crop_n'];
 echo "<br />";
@@ -68,7 +70,6 @@ $w_y2 = $x2/2;
 echo $w_y2;
 exit;
 */
-
 
 $temp_cropped = $_SERVER['DOCUMENT_ROOT']."/saascustuploads/".$_SESSION['profile_account_id']."/tmp/new_cropped".time().".jpg";
 
@@ -103,6 +104,8 @@ $new_path_fn = "../saascustuploads/".$_SESSION['profile_account_id']."/cms/".$or
 	$r = $dbCustom->getResult($db,$sql);
 	$_SESSION['img_id'] = $db->insert_id; 					
 
+	//echo $_SESSION['img_id'];
+	//exit;
 	
 }
 
@@ -116,8 +119,29 @@ $new_path_fn = "../saascustuploads/".$_SESSION['profile_account_id']."/cms/".$or
 //echo $orig_img_fn;
 //exit;
 
+if(strpos($_SESSION['img_type'], 'spec') !== false){
+
+$new_path_fn = "../saascustuploads/".$_SESSION['profile_account_id']."/cms/".$orig_img_fn;
+
+	$dst_w = 620;
+	$dst_h = 620;
+	$dst_img = imageCreateTrueColor($dst_w,$dst_h);
+	imagecopyresampled($dst_img, $canvas, 0, 0, 0, 0, $dst_w, $dst_h, $src_w, $src_h);
+	imagejpeg($dst_img,$new_path_fn,88);
+
+	$db = $dbCustom->getDbConnect(SITE_N_DATABASE);
+	$sql = "INSERT INTO image (file_name, profile_account_id) 
+			VALUES ('".$orig_img_fn."', '".$_SESSION['profile_account_id']."')";
+	$r = $dbCustom->getResult($db,$sql);
+	$_SESSION['img_id'] = $db->insert_id; 					
+
+}
+
+
+if(strpos($_SESSION['img_type'], 'cart') !== false){
 
 	if($_SESSION['crop_n'] == 1){
+
 
 		$db = $dbCustom->getDbConnect(CART_DATABASE);
 		$sql = "INSERT INTO image (file_name, profile_account_id) 
@@ -125,26 +149,8 @@ $new_path_fn = "../saascustuploads/".$_SESSION['profile_account_id']."/cms/".$or
 		$r = $dbCustom->getResult($db,$sql);
 		$_SESSION['img_id'] = $db->insert_id; 					
 
-		/*
-		$sql = "SELECT file_name
-				FROM image
-				WHERE img_id = '".$_SESSION['img_id']."'";
-		$re = $dbCustom->getResult($db,$sql);
-		if($re->num_rows > 0){
-			$object = $re->fetch_object();
-			$name = $object->name;
-			
-			echo $object->file_name;
-			
-		}
-		*/
-
-	}	
 
 
-if(strpos($_SESSION['img_type'], 'cart') !== false){
-
-	if($_SESSION['crop_n'] == 1){
 
 $new_path_fn = "../saascustuploads/".$_SESSION['profile_account_id']."/cart/large/".$orig_img_fn;
 

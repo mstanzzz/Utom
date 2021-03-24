@@ -146,7 +146,7 @@ $result = $dbCustom->getResult($db,$sql);
                        	<label>Image Alt Tag Text</label>
                     </div>
                     <div class="twocols">
-                       	<input id="img_alt_text" type="text" name="img_alt_text" value="<?php echo prepFormInputStr($img_alt_text); ?>" />
+                       	<input id="img_alt_text" type="text" name="img_alt_text" value="<?php echo stripslashes($img_alt_text); ?>" />
                     </div>
 				</div>
 

@@ -58,7 +58,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php');
         
         	<div style="float:left; width:560px;">
                 <div class="head">Name</div>
-                <input type="text" name="name" value="<?php echo prepFormInputStr($name); ?>" style="width:300px" />
+                <input type="text" name="name" value="<?php echo stripslashes($name); ?>" style="width:300px" />
             </div> 
                    
         	<div style="float:left; width:560px; padding-top:15px;">

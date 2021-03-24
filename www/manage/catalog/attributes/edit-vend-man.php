@@ -245,7 +245,7 @@ if(!$strip){
 							<label>Vendor Name</label>
 						</div>
 						<div class="twocols">
-      						<input type="text" name="name" value="<?php echo prepFormInputStr($_SESSION["temp_fields"]['name']); ?>" />
+      						<input type="text" name="name" value="<?php echo stripslashes($_SESSION["temp_fields"]['name']); ?>" />
 						</div>
 					</div>
 					<div class="colcontainer formcols">
@@ -359,7 +359,7 @@ if(!$strip){
 							<label>Website</label>
 						</div>
 						<div class="twocols">
-      						<input type="text" name="web_site" value="<?php echo prepFormInputStr($_SESSION["temp_fields"]["web_site"]); ?>" />
+      						<input type="text" name="web_site" value="<?php echo stripslashes($_SESSION["temp_fields"]["web_site"]); ?>" />
 						</div>
 					</div>
                     <div class="colcontainer formcols">
@@ -367,7 +367,7 @@ if(!$strip){
 							<label>Contact Person's Name</label>
 						</div>
 						<div class="twocols">
-      						<input type="text" name="contact_name" value="<?php echo prepFormInputStr($_SESSION["temp_fields"]["contact_name"]); ?>" />
+      						<input type="text" name="contact_name" value="<?php echo stripslashes($_SESSION["temp_fields"]["contact_name"]); ?>" />
 						</div>
 					</div>
 					<div class="colcontainer formcols">
@@ -375,7 +375,7 @@ if(!$strip){
 							<label>Contact Person's Email Address</label>
 						</div>
 						<div class="twocols">
-      						<input type="text" name="contact_email" value="<?php echo prepFormInputStr($_SESSION["temp_fields"]["contact_email"]); ?>" />
+      						<input type="text" name="contact_email" value="<?php echo stripslashes($_SESSION["temp_fields"]["contact_email"]); ?>" />
 						</div>
 					</div>
 					<div class="colcontainer formcols">

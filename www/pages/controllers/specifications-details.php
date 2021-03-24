@@ -32,7 +32,10 @@ if($result->num_rows > 0){
 	$name = "No Name";
 	$description = "No description";
 }
-					
+		
+
+
+		
 ?>	
 
 

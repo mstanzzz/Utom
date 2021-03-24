@@ -327,7 +327,7 @@ function regularSubmit() {
                                 <label>Page Name</label>
                             </div>
                             <div class="twocols">
-                                <input type="text" id="page_heading" name="page_heading" value="<?php echo prepFormInputStr($_SESSION['temp_page_fields']['page_heading']); ?>" />
+                                <input type="text" id="page_heading" name="page_heading" value="<?php echo stripslashes($_SESSION['temp_page_fields']['page_heading']); ?>" />
                             </div>
                         </div>
                         
@@ -391,7 +391,7 @@ function regularSubmit() {
                             <label>Image Alt Tag Text</label>
                         </div>
                         <div class="twocols">
-                            <input id="img_alt_text" type="text" name="img_alt_text" value="<?php echo prepFormInputStr($_SESSION["temp_page_fields"]['img_alt_text']); ?>" />
+                            <input id="img_alt_text" type="text" name="img_alt_text" value="<?php echo stripslashes($_SESSION["temp_page_fields"]['img_alt_text']); ?>" />
                         </div>
                     </div>
 

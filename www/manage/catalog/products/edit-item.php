@@ -1094,7 +1094,7 @@ echo "<img src='".$ste_root."/saascustuploads/".$_SESSION['profile_account_id'].
 							<label>Product Name</label>
 						</div>
 						<div class="twocols">
-							<input id="product_name" type="text" name="name" value="<?php echo prepFormInputStr($_SESSION['temp_item_fields']['name']); ?>" />
+							<input id="product_name" type="text" name="name" value="<?php echo stripslashes($_SESSION['temp_item_fields']['name']); ?>" />
 						</div>
 					</div>
 					<div class="colcontainer formcols">
@@ -1483,7 +1483,7 @@ echo $obj->show_associated_kits."       ".$obj->show_videos;
 							<label>Main Image Alt Text</label>
 						</div>
 						<div class="twocols">
-							<input type="text" name="img_alt_text" value="<?php echo prepFormInputStr($_SESSION['temp_item_fields']['img_alt_text']); ?>" />
+							<input type="text" name="img_alt_text" value="<?php echo stripslashes($_SESSION['temp_item_fields']['img_alt_text']); ?>" />
 						</div>
 					</div>
 
@@ -1631,7 +1631,7 @@ echo $obj->show_associated_kits."       ".$obj->show_videos;
 						<div class="twocols">
                         
                         
-							<input type="text" name="keywords" value="<?php echo prepFormInputStr($_SESSION['temp_item_fields']['keywords']); ?>" />
+							<input type="text" name="keywords" value="<?php echo stripslashes($_SESSION['temp_item_fields']['keywords']); ?>" />
 						</div>
 					</div>
 					<div class="colcontainer">
@@ -1956,7 +1956,7 @@ echo $obj->show_associated_kits."       ".$obj->show_videos;
 						</div>
 						<div class="twocols">
                        
-							<input type="text" id="weight" name="weight" class="appended" value="<?php echo prepFormInputStr($_SESSION['temp_item_fields']["weight"]); ?>" />
+							<input type="text" id="weight" name="weight" class="appended" value="<?php echo stripslashes($_SESSION['temp_item_fields']["weight"]); ?>" />
                             <span class="append-input">lbs</span>
 						</div>
 					</div>

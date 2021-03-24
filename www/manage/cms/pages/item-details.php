@@ -251,22 +251,22 @@ NOTE: This pages lands on template_shop_details.php
 				
 			<div class="colcontainer">                
 				<label>top_1</label>
-				<input type="text" name="top_1"  style="width:520px" value="<?php echo prepFormInputStr($_SESSION['temp_page_fields']['top_1']); ?>">
+				<input type="text" name="top_1"  style="width:520px" value="<?php echo stripslashes($_SESSION['temp_page_fields']['top_1']); ?>">
                     
 				<label>top_2</label>
-				<input type="text" name="top_2"  style="width:520px" value="<?php echo prepFormInputStr($_SESSION['temp_page_fields']['top_2']); ?>">
+				<input type="text" name="top_2"  style="width:520px" value="<?php echo stripslashes($_SESSION['temp_page_fields']['top_2']); ?>">
 
 				<label>top_3</label>
-				<input type="text" name="top_3"  style="width:520px" value="<?php echo prepFormInputStr($_SESSION['temp_page_fields']['top_3']); ?>">
+				<input type="text" name="top_3"  style="width:520px" value="<?php echo stripslashes($_SESSION['temp_page_fields']['top_3']); ?>">
 
 
 				<label>p_1_head</label>
-				<input type="text" name="p_1_head"  style="width:520px" value="<?php echo prepFormInputStr($_SESSION['temp_page_fields']['p_1_head']); ?>">
+				<input type="text" name="p_1_head"  style="width:520px" value="<?php echo stripslashes($_SESSION['temp_page_fields']['p_1_head']); ?>">
 	<label>p_1_text</label>
 	<textarea id="p_1_text" class="wysiwyg" name="p_1_text"><?php echo stripslashes($_SESSION['temp_page_fields']['p_1_text']); ?></textarea>
 	
 				<label>p_2_head</label>
-				<input type="text" name="p_2_head"  style="width:520px" value="<?php echo prepFormInputStr($_SESSION['temp_page_fields']['p_2_head']); ?>">
+				<input type="text" name="p_2_head"  style="width:520px" value="<?php echo stripslashes($_SESSION['temp_page_fields']['p_2_head']); ?>">
 				
 	<label>p_2_text</label>
 	<textarea id="p_2_text" class="wysiwyg" name="p_2_text"><?php echo stripslashes($_SESSION['temp_page_fields']['p_2_text']); ?></textarea>

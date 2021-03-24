@@ -137,7 +137,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php');
 			<div class="colcontainer">
 				<div class="twocols">
 					<label>Label</label>
-					<input type="text" name="label" value="<?php echo prepFormInputStr($label); ?>"  >
+					<input type="text" name="label" value="<?php echo stripslashes($label); ?>"  >
 				</div>
                 
 

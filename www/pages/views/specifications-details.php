@@ -173,100 +173,35 @@ Wardrobe Tubes Specification
 															allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
 															allowfullscreen=""></iframe>
 										</div>
-										<a href="../../images/showroom-1.png" title="Lorem ipsum">
-											<img src="../../images/showroom-1.png" alt="" class="img-fluid">
-										</a>
-										<a href="../../images/showroom-1.png" title="Lorem ipsum">
-											<img src="../../images/showroom-1.png" alt="" class="img-fluid">
-										</a>
-										<a href="../../images/showroom-1.png" title="Lorem ipsum">
-											<img src="../../images/showroom-1.png" alt="" class="img-fluid">
-										</a>
-										<a href="../../images/showroom-1.png" title="Lorem ipsum">
-											<img src="../../images/showroom-1.png" alt="" class="img-fluid">
-										</a>
-										<a href="../../images/showroom-1.png" title="Lorem ipsum">
-											<img src="../../images/showroom-1.png" alt="" class="img-fluid">
-										</a>
-										<a href="../../images/showroom-1.png" title="Lorem ipsum">
-											<img src="../../images/showroom-1.png" alt="" class="img-fluid">
-										</a>
-										<a href="../../images/showroom-1.png" title="Lorem ipsum">
-											<img src="../../images/showroom-1.png" alt="" class="img-fluid">
-										</a>
-										<a href="../../images/showroom-1.png" title="Lorem ipsum">
-											<img src="../../images/showroom-1.png" alt="" class="img-fluid">
-										</a>
-										<a href="../../images/showroom-1.png" title="Lorem ipsum">
-											<img src="../../images/showroom-1.png" alt="" class="img-fluid">
-										</a>
-										<a href="../../images/showroom-1.png" title="Lorem ipsum">
-											<img src="../../images/showroom-1.png" alt="" class="img-fluid">
-										</a>
-										<a href="../../images/showroom-1.png" title="Lorem ipsum">
-											<img src="../../images/showroom-1.png" alt="" class="img-fluid">
-										</a>
-										<a href="../../images/showroom-1.png" title="Lorem ipsum">
-											<img src="../../images/showroom-1.png" alt="" class="img-fluid">
-										</a>
+										
+<?php
+for($i = 0; $i < 12; $i++){
+echo "<a href='../../images/showroom-1.png' title='Lorem ipsum'>";
+echo "<img src='../../images/showroom-1.png' class='img-fluid'>";
+echo "</a>";
+}
+?>
+										
+										
 									</div>
 								</div>
 							</div>
 							<div class="row">
 								<div class="col-12">
 									<div class="product-detail__carousel-nav">
-										<div>
-											<img src="../../images/img-video.png" alt=""
-														 class="img-fluid prod-detail__nav-img">
-										</div>
-										<div>
-											<img src="../../images/showroom-1.png" alt=""
-														 class="img-fluid prod-detail__nav-img">
-										</div>
-										<div>
-											<img src="../../images/showroom-1.png" alt=""
-													class="img-fluid prod-detail__nav-img">
-										</div>
-										<div>
-											<img src="../../images/showroom-1.png" alt=""
-														 class="img-fluid prod-detail__nav-img">
-										</div>
-										<div>
-											<img src="../../images/showroom-1.png" alt=""
-														 class="img-fluid prod-detail__nav-img">
-										</div>
-										<div>
-											<img src="../../images/showroom-1.png" alt=""
-														 class="img-fluid prod-detail__nav-img">
-										</div>
-										<div>
-											<img src="../../images/showroom-1.png" alt=""
-														 class="img-fluid prod-detail__nav-img">
-										</div>
-										<div>
-											<img src="../../images/showroom-1.png" alt=""
-														 class="img-fluid prod-detail__nav-img">
-										</div>
-										<div>
-											<img src="../../images/showroom-1.png" alt=""
-														 class="img-fluid prod-detail__nav-img">
-										</div>
-										<div>
-											<img src="../../images/showroom-1.png" alt=""
-														 class="img-fluid prod-detail__nav-img">
-										</div>
-										<div>
-											<img src="../../images/showroom-1.png" alt=""
-														 class="img-fluid prod-detail__nav-img">
-										</div>
-										<div>
-											<img src="../../images/showroom-1.png" alt=""
-														 class="img-fluid prod-detail__nav-img">
-										</div>
-										<div>
-											<img src="../../images/showroom-1.png" alt=""
-														 class="img-fluid prod-detail__nav-img">
-										</div>
+<?php
+for($i = 0; $i < 12; $i++){
+echo "<a href='../../images/showroom-1.png' title='Lorem ipsum'>";
+echo "<img src='../../images/img-video.png' class='img-fluid prod-detail__nav-img'>";
+echo "</a>";
+}
+?>
+<!--
+<div>
+<img src="../../images/showroom-1.png" alt=""
+class="img-fluid prod-detail__nav-img">
+</div>
+-->										
 									</div>
 								</div>
 							</div>
@@ -633,112 +568,46 @@ Wardrobe Tubes Specifications
 																</div>
 															</div>
 														</div>
-														<div class="row">
-															<div class="col-12 col-lg-6">
-																<a href="#" title=""
-																   class="specification-detial-wrap__download-link">
-																	<span class="specification-detial-wrap__download-link--img">
-																		<svg xmlns="http://www.w3.org/2000/svg"
-																			 width="26" height="33.724"
-																			 viewBox="0 0 26 33.724"><defs><style>.files {
-                                                                            fill: #DB440D;
-                                                                        }</style></defs><g transform="translate(0 0)"><path
-																				class="files"
-																				d="M293.269,256h-4.215A1.054,1.054,0,0,0,288,257.054v8.431a1.054,1.054,0,0,0,1.054,1.054h4.215a2.108,2.108,0,0,0,2.108-2.108v-6.323A2.108,2.108,0,0,0,293.269,256Zm0,8.431h-3.162v-6.323h3.162Z"
-																				transform="translate(-274.592 -239.138)"></path><path
-																				class="files"
-																				d="M422.323,258.108V256h-5.269A1.054,1.054,0,0,0,416,257.054v9.485h2.108v-4.215h4.215v-2.108h-4.215v-2.108Z"
-																				transform="translate(-396.323 -239.138)"></path><path
-																				class="files"
-																				d="M1.514,30.562V3.161c0-.582.339-1.054.757-1.054H13.622V6.323c0,1.164.678,2.108,1.514,2.108h3.027v3.162h1.514V7.377a1.3,1.3,0,0,0-.219-.748L14.916.305A.667.667,0,0,0,14.379,0H2.27C1.016,0,0,1.415,0,3.161v27.4c0,1.746,1.016,3.162,2.27,3.162h5.3V31.616H2.27C1.852,31.616,1.514,31.144,1.514,30.562Z"
-																				transform="translate(0 0)"></path><path
-																				class="files"
-																				d="M165.269,256h-4.215A1.054,1.054,0,0,0,160,257.054v9.485h2.108v-3.162h3.162a2.108,2.108,0,0,0,2.108-2.108v-3.162A2.108,2.108,0,0,0,165.269,256Zm0,5.269h-3.162v-3.162h3.162Z"
-																				transform="translate(-152.551 -239.138)"></path></g></svg>
-																	</span>
-																	Download instructions
-																</a>
-															</div>
-															<div class="col-12 col-lg-6">
-																<a href="#" title=""
-																   class="specification-detial-wrap__download-link">
-																	<span class="specification-detial-wrap__download-link--img">
-																		<svg xmlns="http://www.w3.org/2000/svg"
-																			 width="26" height="33.724"
-																			 viewBox="0 0 26 33.724"><defs><style>.files {
-                                                                            fill: #DB440D;
-                                                                        }</style></defs><g transform="translate(0 0)"><path
-																				class="files"
-																				d="M293.269,256h-4.215A1.054,1.054,0,0,0,288,257.054v8.431a1.054,1.054,0,0,0,1.054,1.054h4.215a2.108,2.108,0,0,0,2.108-2.108v-6.323A2.108,2.108,0,0,0,293.269,256Zm0,8.431h-3.162v-6.323h3.162Z"
-																				transform="translate(-274.592 -239.138)"></path><path
-																				class="files"
-																				d="M422.323,258.108V256h-5.269A1.054,1.054,0,0,0,416,257.054v9.485h2.108v-4.215h4.215v-2.108h-4.215v-2.108Z"
-																				transform="translate(-396.323 -239.138)"></path><path
-																				class="files"
-																				d="M1.514,30.562V3.161c0-.582.339-1.054.757-1.054H13.622V6.323c0,1.164.678,2.108,1.514,2.108h3.027v3.162h1.514V7.377a1.3,1.3,0,0,0-.219-.748L14.916.305A.667.667,0,0,0,14.379,0H2.27C1.016,0,0,1.415,0,3.161v27.4c0,1.746,1.016,3.162,2.27,3.162h5.3V31.616H2.27C1.852,31.616,1.514,31.144,1.514,30.562Z"
-																				transform="translate(0 0)"></path><path
-																				class="files"
-																				d="M165.269,256h-4.215A1.054,1.054,0,0,0,160,257.054v9.485h2.108v-3.162h3.162a2.108,2.108,0,0,0,2.108-2.108v-3.162A2.108,2.108,0,0,0,165.269,256Zm0,5.269h-3.162v-3.162h3.162Z"
-																				transform="translate(-152.551 -239.138)"></path></g></svg>
-																	</span>
-																	Download instructions 2
-																</a>
-															</div>
-															<div class="col-12 col-lg-6">
-																<a href="#" title=""
-																   class="specification-detial-wrap__download-link">
-																	<span class="specification-detial-wrap__download-link--img">
-																		<svg xmlns="http://www.w3.org/2000/svg"
-																			 width="26" height="33.724"
-																			 viewBox="0 0 26 33.724"><defs><style>.files {
-                                                                            fill: #DB440D;
-                                                                        }</style></defs><g transform="translate(0 0)"><path
-																				class="files"
-																				d="M293.269,256h-4.215A1.054,1.054,0,0,0,288,257.054v8.431a1.054,1.054,0,0,0,1.054,1.054h4.215a2.108,2.108,0,0,0,2.108-2.108v-6.323A2.108,2.108,0,0,0,293.269,256Zm0,8.431h-3.162v-6.323h3.162Z"
-																				transform="translate(-274.592 -239.138)"></path><path
-																				class="files"
-																				d="M422.323,258.108V256h-5.269A1.054,1.054,0,0,0,416,257.054v9.485h2.108v-4.215h4.215v-2.108h-4.215v-2.108Z"
-																				transform="translate(-396.323 -239.138)"></path><path
-																				class="files"
-																				d="M1.514,30.562V3.161c0-.582.339-1.054.757-1.054H13.622V6.323c0,1.164.678,2.108,1.514,2.108h3.027v3.162h1.514V7.377a1.3,1.3,0,0,0-.219-.748L14.916.305A.667.667,0,0,0,14.379,0H2.27C1.016,0,0,1.415,0,3.161v27.4c0,1.746,1.016,3.162,2.27,3.162h5.3V31.616H2.27C1.852,31.616,1.514,31.144,1.514,30.562Z"
-																				transform="translate(0 0)"></path><path
-																				class="files"
-																				d="M165.269,256h-4.215A1.054,1.054,0,0,0,160,257.054v9.485h2.108v-3.162h3.162a2.108,2.108,0,0,0,2.108-2.108v-3.162A2.108,2.108,0,0,0,165.269,256Zm0,5.269h-3.162v-3.162h3.162Z"
-																				transform="translate(-152.551 -239.138)"></path></g></svg>
-																	</span>
-																	Download instructions 3
-																</a>
-															</div>
-															<div class="col-12 col-lg-6">
-																<a href="#" title=""
-																   class="specification-detial-wrap__download-link">
-																	<span class="specification-detial-wrap__download-link--img">
-																		<svg xmlns="http://www.w3.org/2000/svg"
-																			 width="26" height="33.724"
-																			 viewBox="0 0 26 33.724"><defs><style>.files {
-                                                                            fill: #DB440D;
-                                                                        }</style></defs><g transform="translate(0 0)"><path
-																				class="files"
-																				d="M293.269,256h-4.215A1.054,1.054,0,0,0,288,257.054v8.431a1.054,1.054,0,0,0,1.054,1.054h4.215a2.108,2.108,0,0,0,2.108-2.108v-6.323A2.108,2.108,0,0,0,293.269,256Zm0,8.431h-3.162v-6.323h3.162Z"
-																				transform="translate(-274.592 -239.138)"></path><path
-																				class="files"
-																				d="M422.323,258.108V256h-5.269A1.054,1.054,0,0,0,416,257.054v9.485h2.108v-4.215h4.215v-2.108h-4.215v-2.108Z"
-																				transform="translate(-396.323 -239.138)"></path><path
-																				class="files"
-																				d="M1.514,30.562V3.161c0-.582.339-1.054.757-1.054H13.622V6.323c0,1.164.678,2.108,1.514,2.108h3.027v3.162h1.514V7.377a1.3,1.3,0,0,0-.219-.748L14.916.305A.667.667,0,0,0,14.379,0H2.27C1.016,0,0,1.415,0,3.161v27.4c0,1.746,1.016,3.162,2.27,3.162h5.3V31.616H2.27C1.852,31.616,1.514,31.144,1.514,30.562Z"
-																				transform="translate(0 0)"></path><path
-																				class="files"
-																				d="M165.269,256h-4.215A1.054,1.054,0,0,0,160,257.054v9.485h2.108v-3.162h3.162a2.108,2.108,0,0,0,2.108-2.108v-3.162A2.108,2.108,0,0,0,165.269,256Zm0,5.269h-3.162v-3.162h3.162Z"
-																				transform="translate(-152.551 -239.138)"></path></g></svg>
-																	</span>
-																	Download instructions 4
-																</a>
-															</div>
-														</div>
-													</div>
-												</div>
+														
+<div class="row">
+<?php
+for($i = 0; $i < 6; $i++){
+?>
+
+<div class="col-12 col-lg-6">
+<a href="#" title="" class="specification-detial-wrap__download-link">
+<span class="specification-detial-wrap__download-link--img">
+<svg xmlns="http://www.w3.org/2000/svg" width="26" height="33.724"
+viewBox="0 0 26 33.724"><defs><style>.files {
+fill: #DB440D;
+}
+</style>
+</defs>
+<g transform="translate(0 0)"><path class="files"
+d="M293.269,256h-4.215A1.054,1.054,0,0,0,288,257.054v8.431a1.054,1.054,0,0,0,1.054,1.054h4.215a2.108,2.108,0,0,0,2.108-2.108v-6.323A2.108,2.108,0,0,0,293.269,256Zm0,8.431h-3.162v-6.323h3.162Z"
+transform="translate(-274.592 -239.138)"></path><path
+class="files"
+d="M422.323,258.108V256h-5.269A1.054,1.054,0,0,0,416,257.054v9.485h2.108v-4.215h4.215v-2.108h-4.215v-2.108Z"
+transform="translate(-396.323 -239.138)"></path><path
+class="files"
+d="M1.514,30.562V3.161c0-.582.339-1.054.757-1.054H13.622V6.323c0,1.164.678,2.108,1.514,2.108h3.027v3.162h1.514V7.377a1.3,1.3,0,0,0-.219-.748L14.916.305A.667.667,0,0,0,14.379,0H2.27C1.016,0,0,1.415,0,3.161v27.4c0,1.746,1.016,3.162,2.27,3.162h5.3V31.616H2.27C1.852,31.616,1.514,31.144,1.514,30.562Z"
+transform="translate(0 0)"></path><path
+class="files"
+d="M165.269,256h-4.215A1.054,1.054,0,0,0,160,257.054v9.485h2.108v-3.162h3.162a2.108,2.108,0,0,0,2.108-2.108v-3.162A2.108,2.108,0,0,0,165.269,256Zm0,5.269h-3.162v-3.162h3.162Z"
+transform="translate(-152.551 -239.138)"></path></g></svg>
+</span>
+Download instructions 4
+</a>
+</div>
+
+<?php
+}
+?>
+</div>
 											</div>
 										</div>
+									</div>
+								</div>
 
 								<div class="card-collapse">
 									<div class="card-collapse__header collapsed" id="heading-three"
@@ -757,78 +626,27 @@ Wardrobe Tubes Specifications
 												 data-parent="#accordion">
 										<div class="card-collapse__body">
 											<div class="specification-detial-wrap__video-wrap">
-												<div class="specification-detial-wrap__video-wrap--video">
-													<div class="embed-responsive embed-responsive-4by3">
-														<iframe class="yvideo" width="100%" height="100%"
-																		src="https://www.youtube.com/embed/Wb0JINqX71w?autoplay=0&amp;enablejsapi=1"
-																		frameborder="0"
-																		allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-																		allowfullscreen=""></iframe>
-													</div>
-													<p class="specification-detial-wrap__video-wrap--video__title">
-														Product description
-													</p>
-												</div>
-												<div class="specification-detial-wrap__video-wrap--video">
-													<div class="embed-responsive embed-responsive-4by3">
-														<iframe class="yvideo" width="100%" height="100%"
-																		src="https://www.youtube.com/embed/Wb0JINqX71w?autoplay=0&amp;enablejsapi=1"
-																		frameborder="0"
-																		allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-																		allowfullscreen=""></iframe>
-													</div>
-													<p class="specification-detial-wrap__video-wrap--video__title">
-														Product description
-													</p>
-												</div>
-												<div class="specification-detial-wrap__video-wrap--video">
-													<div class="embed-responsive embed-responsive-4by3">
-														<iframe class="yvideo" width="100%" height="100%"
-																		src="https://www.youtube.com/embed/Wb0JINqX71w?autoplay=0&amp;enablejsapi=1"
-																		frameborder="0"
-																		allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-																		allowfullscreen=""></iframe>
-													</div>
-													<p class="specification-detial-wrap__video-wrap--video__title">
-														Product description
-													</p>
-												</div>
-												<div class="specification-detial-wrap__video-wrap--video">
-													<div class="embed-responsive embed-responsive-4by3">
-														<iframe class="yvideo" width="100%" height="100%"
-																		src="https://www.youtube.com/embed/Wb0JINqX71w?autoplay=0&amp;enablejsapi=1"
-																		frameborder="0"
-																		allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-																		allowfullscreen=""></iframe>
-													</div>
-													<p class="specification-detial-wrap__video-wrap--video__title">
-														Product description
-													</p>
-												</div>
-												<div class="specification-detial-wrap__video-wrap--video">
-													<div class="embed-responsive embed-responsive-4by3">
-														<iframe class="yvideo" width="100%" height="100%"
-																		src="https://www.youtube.com/embed/Wb0JINqX71w?autoplay=0&amp;enablejsapi=1"
-																		frameborder="0"
-																		allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-																		allowfullscreen=""></iframe>
-													</div>
-													<p class="specification-detial-wrap__video-wrap--video__title">
-														Product description
-													</p>
-												</div>
-												<div class="specification-detial-wrap__video-wrap--video">
-													<div class="embed-responsive embed-responsive-4by3">
-														<iframe class="yvideo" width="100%" height="100%"
-																		src="https://www.youtube.com/embed/Wb0JINqX71w?autoplay=0&amp;enablejsapi=1"
-																		frameborder="0"
-																		allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-																		allowfullscreen=""></iframe>
-													</div>
-													<p class="specification-detial-wrap__video-wrap--video__title">
-														Product description
-													</p>
-												</div>
+
+<?php
+for($i = 0; $i < 12; $i++){
+?>
+<div class="specification-detial-wrap__video-wrap--video">
+	<div class="embed-responsive embed-responsive-4by3">
+		<iframe class="yvideo" width="100%" height="100%"
+		src="https://www.youtube.com/embed/Wb0JINqX71w?autoplay=0&amp;enablejsapi=1"
+		frameborder="0"
+		allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+		allowfullscreen=""></iframe>
+	</div>
+	<p class="specification-detial-wrap__video-wrap--video__title">
+		Product description
+	</p>
+</div>
+<?php
+}
+?>
+												
+												
 											</div>
 										</div>
 									</div>
@@ -895,8 +713,6 @@ Wardrobe Tubes Specifications
 		<a href="#" class="mobile-footer-buttons__third">we design</a>
 	</div>
 </div>
-
-
 
 
 <?php

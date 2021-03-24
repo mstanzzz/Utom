@@ -331,7 +331,7 @@ $result = $dbCustom->getResult($db,$sql);
 							<label>company</label>
 						</div>
 						<div class="twocols">
-							<input type="text" name="company"  maxlength="160" size="30" value="<?php echo prepFormInputStr($company);  ?>" />
+							<input type="text" name="company"  maxlength="160" size="30" value="<?php echo stripslashes($company);  ?>" />
 						</div>
 					</div>
 					<div class="colcontainer">
@@ -369,7 +369,7 @@ $result = $dbCustom->getResult($db,$sql);
 							<label>Administrator name</label>
 						</div>
 						<div class="twocols">
-							<input type="text" name="admin_name"  maxlength="160" size="30" value="<?php echo prepFormInputStr($admin_name);  ?>"/>
+							<input type="text" name="admin_name"  maxlength="160" size="30" value="<?php echo stripslashes($admin_name);  ?>"/>
 						</div>
 					</div>
 					<div class="colcontainer">
@@ -442,7 +442,7 @@ $result = $dbCustom->getResult($db,$sql);
 							<label>first name</label>
 						</div>
 						<div class="twocols">
-							<input type="text" name="name_first"  maxlength="160" size="30" value="<?php echo prepFormInputStr($name_first);  ?>" />
+							<input type="text" name="name_first"  maxlength="160" size="30" value="<?php echo stripslashes($name_first);  ?>" />
 						</div>
 					</div>
 					<div class="colcontainer">
@@ -450,7 +450,7 @@ $result = $dbCustom->getResult($db,$sql);
 							<label>last name</label>
 						</div>
 						<div class="twocols">
-							<input type="text" name="name_last"  maxlength="160" size="30" value="<?php echo prepFormInputStr($name_last);  ?>" />
+							<input type="text" name="name_last"  maxlength="160" size="30" value="<?php echo stripslashes($name_last);  ?>" />
 						</div>
 					</div>
 					<div class="colcontainer">
@@ -466,7 +466,7 @@ $result = $dbCustom->getResult($db,$sql);
 							<label>address</label>
 						</div>
 						<div class="twocols">
-							<input type="text" name="address"  maxlength="160" size="30" value="<?php echo prepFormInputStr($address);  ?>" />
+							<input type="text" name="address"  maxlength="160" size="30" value="<?php echo stripslashes($address);  ?>" />
 						</div>
 					</div>
 					<div class="colcontainer">
@@ -474,7 +474,7 @@ $result = $dbCustom->getResult($db,$sql);
 							<label>city</label>
 						</div>
 						<div class="twocols">
-							<input type="text" name="city"  maxlength="160" size="30" value="<?php echo prepFormInputStr($city);  ?>" />
+							<input type="text" name="city"  maxlength="160" size="30" value="<?php echo stripslashes($city);  ?>" />
 						</div>
 					</div>
 					<div class="colcontainer">

@@ -252,7 +252,7 @@ function get_query_str(){
 						<label>Address line 1</label>
 					</div>
 					<div class="twocols">
-						<input type="text" name="address_one" value="<?php echo prepFormInputStr($address_one); ?>" maxlength="100"/>
+						<input type="text" name="address_one" value="<?php echo stripslashes($address_one); ?>" maxlength="100"/>
 					</div>
 				</div>
 				
@@ -270,7 +270,7 @@ function get_query_str(){
 						<label>City</label>
 					</div>
 					<div class="twocols">
-						<input type="text" name="city" value="<?php echo prepFormInputStr($city); ?>" maxlength="100"/>
+						<input type="text" name="city" value="<?php echo stripslashes($city); ?>" maxlength="100"/>
 					</div>
 				</div>
                 
@@ -306,11 +306,11 @@ function get_query_str(){
                 <div class="colcontainer">
 					<div class="twocols">
 						<label>Phone 1</label>
-						<input type="text" name="phone_one" value="<?php echo prepFormInputStr($phone_one); ?>" maxlength="100"/>
+						<input type="text" name="phone_one" value="<?php echo stripslashes($phone_one); ?>" maxlength="100"/>
 					</div>
 					<div class="twocols">
 						<label>Phone 2</label>
-						<input type="text" name="phone_two" value="<?php echo prepFormInputStr($phone_two); ?>" maxlength="100"/>
+						<input type="text" name="phone_two" value="<?php echo stripslashes($phone_two); ?>" maxlength="100"/>
 					</div>
 				</div>
                 -->
@@ -323,7 +323,7 @@ function get_query_str(){
 						<label>Ship to first name</label>
 					</div>
 					<div class="twocols">
-						<input type="text" name="shipping_name_first" value="<?php echo prepFormInputStr($shipping_name_first); ?>" maxlength="100"/>
+						<input type="text" name="shipping_name_first" value="<?php echo stripslashes($shipping_name_first); ?>" maxlength="100"/>
 					</div>
 				</div>
 				<div class="colcontainer formcols">
@@ -331,7 +331,7 @@ function get_query_str(){
 						<label>Ship to last name</label>
 					</div>
 					<div class="twocols">
-						<input type="text" name="shipping_name_last" value="<?php echo prepFormInputStr($shipping_name_last); ?>" maxlength="100"/>
+						<input type="text" name="shipping_name_last" value="<?php echo stripslashes($shipping_name_last); ?>" maxlength="100"/>
 					</div>
 				</div>
 				<div class="colcontainer formcols">
@@ -339,7 +339,7 @@ function get_query_str(){
 						<label>Shipping address line 1</label>
 					</div>
 					<div class="twocols">
-						<input type="text" name="shipping_address_one" value="<?php echo prepFormInputStr($shipping_address_one); ?>" maxlength="100"/>
+						<input type="text" name="shipping_address_one" value="<?php echo stripslashes($shipping_address_one); ?>" maxlength="100"/>
 					</div>
 				</div>
 				<div class="colcontainer formcols">
@@ -347,7 +347,7 @@ function get_query_str(){
 						<label>Shipping address line 2</label>
 					</div>
 					<div class="twocols">
-						<input type="text" name="shipping_address_two" value="<?php echo prepFormInputStr($shipping_address_two); ?>" maxlength="100"/>
+						<input type="text" name="shipping_address_two" value="<?php echo stripslashes($shipping_address_two); ?>" maxlength="100"/>
 					</div>
 				</div>
 				<div class="colcontainer formcols">
@@ -355,7 +355,7 @@ function get_query_str(){
 						<label>Shipping city</label>
 					</div>
 					<div class="twocols">
-						<input type="text" name="shipping_city" value="<?php echo prepFormInputStr($shipping_city); ?>" maxlength="100"/>
+						<input type="text" name="shipping_city" value="<?php echo stripslashes($shipping_city); ?>" maxlength="100"/>
 					</div>
 				</div>
 				<div class="colcontainer">
@@ -398,7 +398,7 @@ function get_query_str(){
 						<label>Billing first name</label>
 					</div>
 					<div class="twocols">
-						<input type="text" name="billing_name_first" value="<?php echo prepFormInputStr($billing_name_first); ?>" maxlength="100"/>
+						<input type="text" name="billing_name_first" value="<?php echo stripslashes($billing_name_first); ?>" maxlength="100"/>
 					</div>
 				</div>
 				<div class="colcontainer formcols">
@@ -406,7 +406,7 @@ function get_query_str(){
 						<label>Billing last name</label>
 					</div>
 					<div class="twocols">
-						<input type="text" name="billing_name_last" value="<?php echo prepFormInputStr($billing_name_last); ?>" maxlength="100"/>
+						<input type="text" name="billing_name_last" value="<?php echo stripslashes($billing_name_last); ?>" maxlength="100"/>
 					</div>
 				</div>
                 
@@ -415,7 +415,7 @@ function get_query_str(){
 						<label>Billing address line 1</label>
 					</div>
 					<div class="twocols">
-						<input type="text" name="billing_address_one" value="<?php echo prepFormInputStr($billing_address_one); ?>" maxlength="100"/>
+						<input type="text" name="billing_address_one" value="<?php echo stripslashes($billing_address_one); ?>" maxlength="100"/>
 					</div>
 				</div>
 				<div class="colcontainer formcols">
@@ -423,7 +423,7 @@ function get_query_str(){
 						<label>Billing address line 2</label>
 					</div>
 					<div class="twocols">
-						<input type="text" name="billing_address_two" value="<?php echo prepFormInputStr($billing_address_two); ?>" maxlength="100"/>
+						<input type="text" name="billing_address_two" value="<?php echo stripslashes($billing_address_two); ?>" maxlength="100"/>
 					</div>
 				</div>
 				<div class="colcontainer formcols">
@@ -431,7 +431,7 @@ function get_query_str(){
 						<label>Billing city</label>
 					</div>
 					<div class="twocols">
-						<input type="text" name="billing_city" value="<?php echo prepFormInputStr($billing_city); ?>" maxlength="100"/>
+						<input type="text" name="billing_city" value="<?php echo stripslashes($billing_city); ?>" maxlength="100"/>
 					</div>
 				</div>
 				<div class="colcontainer">

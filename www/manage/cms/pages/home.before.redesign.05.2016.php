@@ -1064,7 +1064,7 @@ function regularSubmit() {
 				
 					<div class="colcontainer">                
    					<label>Shop by Category heading</label>
-                    <input type="text" name="shop_by_heading1"  style="width:520px" value="<?php echo prepFormInputStr($_SESSION['temp_page_fields']['shop_by_heading1']); ?>">
+                    <input type="text" name="shop_by_heading1"  style="width:520px" value="<?php echo stripslashes($_SESSION['temp_page_fields']['shop_by_heading1']); ?>">
 					
                     <div style="clear:both;"></div>
                     
@@ -1112,7 +1112,7 @@ function regularSubmit() {
 					<br /><br /><br />
 					<div class="colcontainer">                
    					<label>Shop by Showroom Heading</label>
-            		<input type="text" name="shop_by_heading2" style="width:520px" value="<?php echo prepFormInputStr($_SESSION['temp_page_fields']['shop_by_heading2']); ?>">
+            		<input type="text" name="shop_by_heading2" style="width:520px" value="<?php echo stripslashes($_SESSION['temp_page_fields']['shop_by_heading2']); ?>">
 					
                     <div style="clear:both;"></div>
                     
@@ -1169,12 +1169,12 @@ function regularSubmit() {
 				
 					<div class="colcontainer">                
    					<label>Costco Shop by Category heading</label>
-                    <input type="text" name="costco_shop_by_heading1"  style="width:520px" value="<?php echo prepFormInputStr($_SESSION['temp_page_fields']['costco_shop_by_heading1']); ?>">
+                    <input type="text" name="costco_shop_by_heading1"  style="width:520px" value="<?php echo stripslashes($_SESSION['temp_page_fields']['costco_shop_by_heading1']); ?>">
                     </div>
 
 					<div class="colcontainer">                
    					<label>Costco Shop by Showroom Heading</label>
-            		<input type="text" name="costco_shop_by_heading2" style="width:520px" value="<?php echo prepFormInputStr($_SESSION['temp_page_fields']['costco_shop_by_heading2']); ?>">
+            		<input type="text" name="costco_shop_by_heading2" style="width:520px" value="<?php echo stripslashes($_SESSION['temp_page_fields']['costco_shop_by_heading2']); ?>">
 					</div>
 					
                     <br /><br /><br />
@@ -1230,10 +1230,10 @@ function regularSubmit() {
 					</div>
 					<br /><br />
 
-            		<input type="hidden" name="content_heading" value="<?php echo prepFormInputStr($_SESSION['temp_page_fields']['content_heading']); ?>">
-            		<input type="hidden" name="content_heading_url" value="<?php echo prepFormInputStr($_SESSION['temp_page_fields']['content_heading_url']); ?>">
-            		<input type="hidden" name="content_heading_page_seo_id" value="<?php echo prepFormInputStr($_SESSION['temp_page_fields']['content_heading_page_seo_id']); ?>">
-            		<input type="hidden" name="content_heading_cat_id" value="<?php echo prepFormInputStr($_SESSION['temp_page_fields']['content_heading_cat_id']); ?>">
+            		<input type="hidden" name="content_heading" value="<?php echo stripslashes($_SESSION['temp_page_fields']['content_heading']); ?>">
+            		<input type="hidden" name="content_heading_url" value="<?php echo stripslashes($_SESSION['temp_page_fields']['content_heading_url']); ?>">
+            		<input type="hidden" name="content_heading_page_seo_id" value="<?php echo stripslashes($_SESSION['temp_page_fields']['content_heading_page_seo_id']); ?>">
+            		<input type="hidden" name="content_heading_cat_id" value="<?php echo stripslashes($_SESSION['temp_page_fields']['content_heading_cat_id']); ?>">
                     
 					<div class="colcontainer">
                     <legend>Main Content</legend>
@@ -1382,13 +1382,13 @@ function regularSubmit() {
 						
 					?>
                         
-            		<input type="hidden" name="link_url" value="<?php echo prepFormInputStr($_SESSION['temp_page_fields']['link_url']); ?>">
-            		<input type="hidden" name="link_page_seo_id" value="<?php echo prepFormInputStr($_SESSION['temp_page_fields']['link_page_seo_id']); ?>">
-            		<input type="hidden" name="link_cat_id" value="<?php echo prepFormInputStr($_SESSION['temp_page_fields']['link_cat_id']); ?>">
+            		<input type="hidden" name="link_url" value="<?php echo stripslashes($_SESSION['temp_page_fields']['link_url']); ?>">
+            		<input type="hidden" name="link_page_seo_id" value="<?php echo stripslashes($_SESSION['temp_page_fields']['link_page_seo_id']); ?>">
+            		<input type="hidden" name="link_cat_id" value="<?php echo stripslashes($_SESSION['temp_page_fields']['link_cat_id']); ?>">
 
 
 						<label>Alt Text For Image</label>
-						<input type="text" name="img_alt_text" value="<?php echo prepFormInputStr($_SESSION['temp_page_fields']['img_alt_text']); ?>">
+						<input type="text" name="img_alt_text" value="<?php echo stripslashes($_SESSION['temp_page_fields']['img_alt_text']); ?>">
 
 						<br /><br />
 
@@ -1512,10 +1512,10 @@ function regularSubmit() {
 						
 					?>
                         
-            		<input type="hidden" name="link_1_label" value="<?php echo prepFormInputStr($_SESSION['temp_page_fields']['link_1_label']); ?>">                     
-            		<input type="hidden" name="link_1_url" value="<?php echo prepFormInputStr($_SESSION['temp_page_fields']['link_1_url']); ?>">
-            		<input type="hidden" name="link_1_page_seo_id" value="<?php echo prepFormInputStr($_SESSION['temp_page_fields']['link_1_page_seo_id']); ?>">
-            		<input type="hidden" name="link_1_cat_id" value="<?php echo prepFormInputStr($_SESSION['temp_page_fields']['link_1_cat_id']); ?>">
+            		<input type="hidden" name="link_1_label" value="<?php echo stripslashes($_SESSION['temp_page_fields']['link_1_label']); ?>">                     
+            		<input type="hidden" name="link_1_url" value="<?php echo stripslashes($_SESSION['temp_page_fields']['link_1_url']); ?>">
+            		<input type="hidden" name="link_1_page_seo_id" value="<?php echo stripslashes($_SESSION['temp_page_fields']['link_1_page_seo_id']); ?>">
+            		<input type="hidden" name="link_1_cat_id" value="<?php echo stripslashes($_SESSION['temp_page_fields']['link_1_cat_id']); ?>">
                         
                         
                     <label>Content Below Image</label>

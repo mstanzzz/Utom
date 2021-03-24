@@ -44,9 +44,9 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php');
 		
          	?>			
 			<div class="subnav_buttons">
+	<ul>
 
-subnav_buttons
-				<ul>
+<li><a href="<?php echo $ste_root;?>manage/cms/svg/svg.php"  class="landingbtn logoimg"><span>SVG Icons</span></a></li>
 
 <li><a href="<?php echo $ste_root;?>manage/cms/logo/logo.php"  class="landingbtn logoimg"><span>Logo Image</span></a></li>
 <li><a href="<?php echo $ste_root;?>manage/cms/navigation/navbar.php" class="landingbtn logoimg"><span>Navigation</span></a></li>

@@ -463,7 +463,7 @@ $(document).ready(function() {
 					<div class="colcontainer">
                     	<div class="colcontainer formcols">
 						<?php
-							echo prepFormInputStr($_SESSION['temp_item_fields']['name']);
+							echo stripslashes($_SESSION['temp_item_fields']['name']);
 							echo "<br />";
 							
 							$sql = "SELECT file_name FROM image

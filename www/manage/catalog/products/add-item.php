@@ -1048,7 +1048,7 @@ show_associated_kits_toggle
 						</div>
 						<div class="twocols">
 							<input type="text" id="product_name" class="required" name="name" 
-                            value="<?php echo prepFormInputStr($_SESSION['temp_item_fields']['name']); ?>" />
+                            value="<?php echo stripslashes($_SESSION['temp_item_fields']['name']); ?>" />
 						</div>
 					</div>
 					<div class="colcontainer formcols">

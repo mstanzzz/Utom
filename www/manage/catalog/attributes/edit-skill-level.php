@@ -59,7 +59,7 @@ $result = $dbCustom->getResult($db,$sql);
         
         	<div style="float:left; width:560px;">
                 <div class="head">level name</div><br />
-                <input type="text" name="level_name" value="<?php echo prepFormInputStr($object->level_name); ?>" style="width:300px" />
+                <input type="text" name="level_name" value="<?php echo stripslashes($object->level_name); ?>" style="width:300px" />
 
                
             </div> 

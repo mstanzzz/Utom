@@ -1,8 +1,6 @@
 <?php
-
 require_once($_SERVER['DOCUMENT_ROOT']."/includes/accessory_cart_functions.php");
 require_once($_SERVER['DOCUMENT_ROOT'].'/includes/class.store_data.php');
-
 
 function getPDFStepSize($max_count){
 
@@ -10,8 +8,26 @@ function getPDFStepSize($max_count){
 }
 
 
+function get_max_specs_content_id(){
+
+	$dbCustom = new DbCustom();
+	$db = $dbCustom->getDbConnect(SITE_N_DATABASE);
+	$sql = "SELECT specs_content_id
+			FROM specs_content
+			WHERE specs_content.specs_content_id = (SELECT MAX(specs_content_id) 
+										FROM specs_content 
+										WHERE profile_account_id = '".$_SESSION['profile_account_id']."')";
+	$result = $dbCustom->getResult($db,$sql);
+	if($result->num_rows > 0){
+		$object = $result->fetch_object();
+		return $object->specs_content_id;			
+	}	
+	return 0;
+}
+
+
 function getRegion($state = "OR"){
-	
+
 	if($state == 'FL'
 		|| $state == 'GA'
 		|| $state == 'SC'
@@ -31,7 +47,6 @@ function getRegion($state = "OR"){
 		return 'ma';	
 	}
 	
-	
 	if($state == 'CT'
 		|| $state == 'RI'		
 		|| $state == 'MA'
@@ -42,7 +57,6 @@ function getRegion($state = "OR"){
 	){
 		return 'ne';	
 	}
-	
 	
 		
 	if($state == 'AL'
@@ -104,6 +118,7 @@ function getRegion($state = "OR"){
 		return 'pc';	
 	}
 
+
 	return 'none';	
 	
 }
@@ -154,17 +169,14 @@ function cut_name_from_front($name, $limit){
 	
 	return $new_name;
 	
+
 }
-
-
-
 
 
 
 
 function rename_cart_images_in_dirs($old_file_name, $new_file_name, $tmp='', $domain){
 	
-
 	
 if($old_file_name != '' && $new_file_name != ''){
 	
@@ -192,8 +204,6 @@ $from 	= $_SERVER['DOCUMENT_ROOT']."/saascustuploads/".$_SESSION['profile_accoun
 $to 	= $_SERVER['DOCUMENT_ROOT']."/saascustuploads/".$_SESSION['profile_account_id']."/cart/full/".$new_file_name;	
 if(file_exists($from))rename($from , $to);
 
-/* ***  WIDE *** */
-	
 $from 	= $_SERVER['DOCUMENT_ROOT']."/saascustuploads/".$_SESSION['profile_account_id']."/cart/tiny/wide/".$old_file_name;
 $to 	= $_SERVER['DOCUMENT_ROOT']."/saascustuploads/".$_SESSION['profile_account_id']."/cart/tiny/wide/".$new_file_name;	
 if(file_exists($from)) rename($from,$to);
@@ -218,9 +228,6 @@ $from 	= $_SERVER['DOCUMENT_ROOT']."/saascustuploads/".$_SESSION['profile_accoun
 $to 	= $_SERVER['DOCUMENT_ROOT']."/saascustuploads/".$_SESSION['profile_account_id']."/cart/full/wide/".$new_file_name;	
 if(file_exists($from))rename($from , $to);
 
-
-
-/* *** EXWIDE *** */
 	
 $from 	= $_SERVER['DOCUMENT_ROOT']."/saascustuploads/".$_SESSION['profile_account_id']."/cart/tiny/exwide/".$old_file_name;
 $to 	= $_SERVER['DOCUMENT_ROOT']."/saascustuploads/".$_SESSION['profile_account_id']."/cart/tiny/exwide/".$new_file_name;	
@@ -247,14 +254,9 @@ $to 	= $_SERVER['DOCUMENT_ROOT']."/saascustuploads/".$_SESSION['profile_account_
 if(file_exists($from))rename($from , $to);
 
 
-// /saascustuploads/".$_SESSION['profile_account_id']."/cart/large/wide/".$orig_img_fn;
-
-
-
-
 
 }
-	
+
 }
 
 
@@ -272,7 +274,7 @@ function getOriginalCatName($cat_id){
 	}else{
 		return '';
 	}
-	
+
 }
 
 
@@ -291,7 +293,7 @@ function getOriginalItemName($item_id){
 	}else{
 		return '';
 	}
-	
+
 }
 
 
@@ -304,11 +306,11 @@ function update_cart_image_file_name_in_db($img_id, $new_file_name){
 			WHERE img_id = '".$img_id."'";
 	$result = $dbCustom->getResult($db,$sql);
 	
-	
 }
 
-function getNumChildItems($item_id){
 
+function getNumChildItems($item_id){
+	
 	$dbCustom = new DbCustom();
 	$db = $dbCustom->getDbConnect(CART_DATABASE);
 	$sql = "SELECT item_id
@@ -321,9 +323,8 @@ function getNumChildItems($item_id){
 }
 
 
-
 function getCatDestination($cat_id, $show_in_cart, $show_in_showroom){
-
+	
 	$store_data = new StoreData;
 	$dbCustom = new DbCustom();
 	$db = $dbCustom->getDbConnect(CART_DATABASE);
@@ -343,7 +344,9 @@ function getCatDestination($cat_id, $show_in_cart, $show_in_showroom){
 
 	return $dest;
 	
+
 }
+
 
 function getRevewReqEmailText($type = 'auto'){
 
@@ -371,13 +374,11 @@ function getRevewReqEmailText($type = 'auto'){
 		return $content_manual;				
 	}
 	
-	
 }
 
 
 
-function setActiveTab($tab)
-{
+function setActiveTab($tab){
 	if(strpos($_SERVER['REQUEST_URI'],"/".$tab) > 0){
 		return "class='active'";	
 	}else{
@@ -386,14 +387,10 @@ function setActiveTab($tab)
 }
 
 
-function prepFormInputStr($str)
-{
-	return stripslashes(htmlentities($str,ENT_QUOTES));
-}
 
 
-// this is used for bread crumbs and dynamic html titles
 function getParentCatListData($cat_id){
+
 	$ret_array = array();
 	$dbCustom = new DbCustom();
 	$db = $dbCustom->getDbConnect(CART_DATABASE);
@@ -411,9 +408,12 @@ function getParentCatListData($cat_id){
 		$ret_array['seo_url'] = $object->seo_url;		 	
 	}
 	return $ret_array;
+
 }
+
+
 function getItemSeoList($item_id, $name){
-	
+
 	$item_seo_list = getUrlText($name);
 	
 	$dbCustom = new DbCustom();
@@ -428,10 +428,13 @@ function getItemSeoList($item_id, $name){
 		$list = getCatSeoList($object->cat_id);
 		$item_seo_list = $list.'|'.$item_seo_list;			
 	}
-	return $item_seo_list;		
+	return $item_seo_list;	
+
 }
 
+
 function getItemSeoUrl($item_id, $name = ''){
+	
 	$ret = '';
 	$dbCustom = new DbCustom();
 	$db = $dbCustom->getDbConnect(CART_DATABASE);
@@ -462,9 +465,12 @@ function getItemSeoUrl($item_id, $name = ''){
 		$ret .= getUrlText($name).'/';
 	}
 	return $ret;
+
 }
 
+
 function getCatSeoList($cat_id){
+	
 	$cat_seo_list = '';
 	$dbCustom = new DbCustom();
 	$db = $dbCustom->getDbConnect(CART_DATABASE);	
@@ -489,33 +495,16 @@ function getCatSeoList($cat_id){
 		}
 	}
 	return $cat_seo_list;
+	
 }
 
 function getCatSeoUrl($cat_id, $name){
 	$ret = '';
-	
-	/*
-	$dbCustom = new DbCustom();
-	$db = $dbCustom->getDbConnect(CART_DATABASE);
-	$sql = sprintf("SELECT category.name
-		FROM child_cat_to_parent_cat, category
-		WHERE child_cat_to_parent_cat.parent_cat_id = category.cat_id
-		AND child_cat_to_parent_cat.child_cat_id = '%u'", $cat_id);
-	
-	$result = $dbCustom->getResult($db,$sql);
-	
-	if($result->num_rows > 0){
-		$object = $result->fetch_object();
-		$ret .= getUrlText($object->name)."/";
-	}
-	*/
-	
-	$ret .= getUrlText($name);
 	return $ret;
 }
 
-
 function reSetAllItemSeoUrlAndList(){
+	
 	$dbCustom = new DbCustom();
 	$db = $dbCustom->getDbConnect(CART_DATABASE);
 	$sql = "SELECT item_id, name
@@ -525,7 +514,6 @@ function reSetAllItemSeoUrlAndList(){
 	
 	while($row = $result->fetch_object()){
 		
-		//$seo_url = getItemSeoUrl($row->item_id,$row->name);
 		
 		$seo_url = getItemSeoUrl($row->item_id);
 		
@@ -543,10 +531,12 @@ function reSetAllItemSeoUrlAndList(){
 		$res = $dbCustom->getResult($db,$sql);
 				
 	}
+	
 }
 
 
 function reSetAllCatSeoUrlAndList(){
+	
 	$dbCustom = new DbCustom();
 	$db = $dbCustom->getDbConnect(CART_DATABASE);
 	$sql = "SELECT cat_id, name
@@ -571,10 +561,13 @@ function reSetAllCatSeoUrlAndList(){
 		$result = $dbCustom->getResult($db,$sql);
 
 	}
+
+
 }
 
-// FOR ALL CUSTOMERS
+
 function reSetAllItemSeoUrlAndListGlobal(){
+	
 	$dbCustom = new DbCustom();
 	$db = $dbCustom->getDbConnect(CART_DATABASE);
 	$sql = "SELECT item_id, name
@@ -601,11 +594,12 @@ function reSetAllItemSeoUrlAndListGlobal(){
 		$result = $dbCustom->getResult($db,$sql);
 		
 	}
+
 }
 
 
-// FOR ALL CUSTOMERS
 function reSetAllCatSeoUrlAndListGlobal(){
+	
 	$dbCustom = new DbCustom();
 	$db = $dbCustom->getDbConnect(CART_DATABASE);
 	$sql = "SELECT cat_id, name
@@ -630,6 +624,7 @@ function reSetAllCatSeoUrlAndListGlobal(){
 				
 
 	}
+
 }
 
 
@@ -649,8 +644,6 @@ function getPagination($total_rows = 0
 	,$parent_cat_id = 0
 	,$strip = 0){
 
-	// uid1 and uid2 can be used for anything you want to pass on the url
-	// truncate is nolonger used. 
 
 	$previous = $pagenum-1;
 	$next = $pagenum+1;
@@ -663,16 +656,6 @@ function getPagination($total_rows = 0
 		$start = 1;
 		$end = 10;		
 	}
-
-/*
-echo "<br />";
-echo "<br />";
-echo "path ".$path;
-echo "<br />";
-echo "<br />";
-echo $ste_root."manage/".$path;
-exit;
-*/
 
 	if($end > $last) $end = $last; 
 	
@@ -717,11 +700,13 @@ exit;
 	$block .= "</div>";
 	
 	return $block;
-		
+	
 }
+
 
 function deleteProfile($profile_account_id){
 
+	
 	$ret = 1;
 
 	$dbCustom = new DbCustom();
@@ -792,13 +777,14 @@ function deleteProfile($profile_account_id){
 
 	return $ret;
 	
+
 }
 
 
 
 
-function getProfileType()
-{
+function getProfileType(){
+	
 	$dbCustom = new DbCustom();	
 	$db = $dbCustom->getDbConnect(USER_DATABASE);
 	$sql = "SELECT profile_account_type.name
@@ -812,16 +798,15 @@ function getProfileType()
 	}else{
 		$account_type = "non_parent";
 	}
-	
-	
+		
 	return $account_type;
 		
 }
 
 
 
-function isProfileChild($profile_account_id)
-{
+function isProfileChild($profile_account_id){
+	
 	$ret = 0;
 	$dbCustom = new DbCustom();	
 	$db = $dbCustom->getDbConnect(USER_DATABASE);
@@ -834,10 +819,12 @@ function isProfileChild($profile_account_id)
 		$ret = 1;
 	}
 	return $ret;
+
 }
 
 
 function getChildProfiles($profile_account_id){
+	
 	
 	$ret_array = array();
 	$dbCustom = new DbCustom();
@@ -859,7 +846,7 @@ function getChildProfiles($profile_account_id){
 
 
 function getParentProfileId($profile_account_id){
-
+	
 	$ret = 0;
 	$dbCustom = new DbCustom();
 	$db = $dbCustom->getDbConnect(USER_DATABASE);
@@ -872,12 +859,13 @@ function getParentProfileId($profile_account_id){
 		$ret = $object->id;	
 	}
 	return $ret;
+
 }
 
 
 
-function getPaymentProcessorId()
-{
+function getPaymentProcessorId(){
+
 	$dbCustom = new DbCustom();
 	$db = $dbCustom->getDbConnect(USER_DATABASE);
 	$sql = "SELECT payment_processor_id
@@ -896,8 +884,8 @@ function getPaymentProcessorId()
 }
 
 
-function getMaxCatId()
-{
+function getMaxCatId(){
+	
 	$dbCustom = new DbCustom();
 	$db = $dbCustom->getDbConnect(CART_DATABASE);
 	$sql = "SELECT MAX(cat_id) as maxcat
@@ -915,8 +903,9 @@ function getMaxCatId()
 		
 }
 
-function categoryHasChildren($cat_id){
 
+function categoryHasChildren($cat_id){
+	
 	$ret = 0;
 	$dbCustom = new DbCustom();
 	$db = $dbCustom->getDbConnect(CART_DATABASE);
@@ -930,11 +919,13 @@ function categoryHasChildren($cat_id){
 	}
 	
 	return $ret;
+
 }
 
 
 function getItemCats($item_id){
-
+	
+	
 	$ret_array = array();
 	$dbCustom = new DbCustom();
 	$db = $dbCustom->getDbConnect(CART_DATABASE);
@@ -953,14 +944,12 @@ function getItemCats($item_id){
 	
 	return $ret_array;
 	
+	
 }
 
 
-
-
-
 function getCatParentCats($cat_id){
-
+	
 	$ret_array = array();
 	
 	if($cat_id > 0){
@@ -990,7 +979,7 @@ function getCatParentCats($cat_id){
 	
 	
 	return $ret_array;
-	
+
 }
 
 
@@ -1011,6 +1000,7 @@ function getItemAttrOptionsArray($item_id){
 		$i++;
 	}
 	return $ret_array;
+	
 }
 
 
@@ -1019,7 +1009,6 @@ function getCatAttrArray($cat_id){
 	$ret_array = array();
 	$dbCustom = new DbCustom();
 	$db = $dbCustom->getDbConnect(CART_DATABASE);
-
 	
 	$sql = "SELECT attribute_id
 			FROM  category_to_attr 
@@ -1032,14 +1021,14 @@ function getCatAttrArray($cat_id){
 	}
 	
 	return $ret_array;
+
 }
 
 
 function getFixedPartName($part_id){
-
+	
 	$dbCustom = new DbCustom();
 	$db = $dbCustom->getDbConnect(COMPONENTS_DATABASE);
-
 	
 	$sql = "SELECT part_name		
 			FROM parts
@@ -1051,11 +1040,13 @@ function getFixedPartName($part_id){
 	}
 	
 	return "";
+	
 
 }
 
 
 function getConstructedPartName($part_id){
+	
 	$dbCustom = new DbCustom();
 	$db = $dbCustom->getDbConnect(COMPONENTS_DATABASE);
 
@@ -1073,6 +1064,8 @@ function getConstructedPartName($part_id){
 }
 
 function getConstructedPartTypeID($part_id){
+	
+	
 	$dbCustom = new DbCustom();
 	$db = $dbCustom->getDbConnect(COMPONENTS_DATABASE);
 
@@ -1084,6 +1077,7 @@ function getConstructedPartTypeID($part_id){
 		$object = $result->fetch_object(); 
 		return $object->part_type_id;	
 	}
+	
 	
 	return "";
 
@@ -1091,6 +1085,7 @@ function getConstructedPartTypeID($part_id){
 
 
 function getFixedPartTypeID($part_id){
+	
 	$dbCustom = new DbCustom();
 	$db = $dbCustom->getDbConnect(COMPONENTS_DATABASE);
 
@@ -1106,7 +1101,5 @@ function getFixedPartTypeID($part_id){
 	return "";
 
 }
-
-
 
 ?>

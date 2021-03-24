@@ -45,7 +45,7 @@ $object = $result->fetch_object();
         <form name="edit_attribute" action="attribute.php" method="post">
        	<input id="attribute_id" type="hidden" name="attribute_id" value="<?php echo $attribute_id;  ?>" />
             <div class="head">Attribute name</div><br />
-            <input type="text" name="attribute_name" value="<?php echo prepFormInputStr($object->attribute_name); ?>" style="width:300px" />
+            <input type="text" name="attribute_name" value="<?php echo stripslashes($object->attribute_name); ?>" style="width:300px" />
             <br />
             <div style="float:left; padding-right:100px; padding-top:15px;">
                 <input name="edit_attribute" type="submit" value="Save" />

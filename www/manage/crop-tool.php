@@ -46,7 +46,6 @@ echo "<br />";
 echo "<br />";
 echo "<br />";
 
-
 $fromfancybox = (isset($_REQUEST["fromfancybox"])) ? $_REQUEST["fromfancybox"] : 0;
 
 if(strpos($_SESSION['img_type'], 'cart') !== false){
@@ -83,6 +82,7 @@ $op_b = "minWidth: 600, minHeight: 300, maxWidth: 1600, maxHeight: 800, aspectRa
 }
 
 require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php'); 
+
 ?>
 <link href="./js/css/ui-lightness/jquery-ui-1.8.7.custom.css" rel="Stylesheet" type="text/css" />
 <link href="./js/css/jquery.cropzoom.css" rel="Stylesheet" type="text/css" />
@@ -169,6 +169,9 @@ function validate(){
 </div>
 -->
 <?php
+
+
+
 /*
 if(!isset($_SESSION['ret_path'])) $_SESSION['ret_path'] = 'catalog/categories';
 if($_SESSION['ret_path'] == '') $_SESSION['ret_path'] = 'catalog/categories';
@@ -212,6 +215,8 @@ if($_SESSION['crop_n'] == 2){
 if($_SESSION['crop_n'] > 2){
 	echo "Doing Extra Wide Crop";
 }
+
+
 ?>
 
 <div style="margin-top:8px;">
@@ -247,8 +252,6 @@ onsubmit="return validate();"
 //echo "<br />";
 //echo $f_path.$_SESSION['pre_cropped_fn'];
 //echo "<br />";
-
-
 echo " 
 <div class='original'>
 <img id='pre_cropped' src='".$f_path.$_SESSION['pre_cropped_fn']."' />

@@ -1,17 +1,4 @@
 <?php
-
-
-
-if(strpos($_SERVER['REQUEST_URI'], 'storittek/')){ 
-	$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
-}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro' )){  
-	$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT'].'/designitpro'; 
-}elseif(strpos($_SERVER['REQUEST_URI'], 'otg-site' )){  
-	$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT'].'/otg-site'; 
-}else{
-	$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT']; 	
-}
-
 require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
 
 $module = new Module;
@@ -69,7 +56,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php');
             	<?php if($link != 'link'){ ?>
 				<div class="colcontainer">
 					<label>Text</label>
-            		<input style="width:520px" type="text" name="text" value="<?php echo prepFormInputStr($text); ?>">
+            		<input style="width:520px" type="text" name="text" value="<?php echo stripslashes($text); ?>">
 				</div>
 				<?php }else{
 					echo "<input type='hidden' name='text' value=''>";	
@@ -92,7 +79,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php');
 				<div class="colcontainer">
    	                If there is a custom url, selectable page  will be ignored.<br />
 					<label>Custom URL</label>
-            		<input style="width:520px" type="text" name="custom_url" value="<?php echo prepFormInputStr($custom_url); ?>">
+            		<input style="width:520px" type="text" name="custom_url" value="<?php echo stripslashes($custom_url); ?>">
 				</div>
 
             <br />
