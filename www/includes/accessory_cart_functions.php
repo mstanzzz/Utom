@@ -5,6 +5,31 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/includes/class.shipping.php');
 require_once($_SERVER['DOCUMENT_ROOT'].'/includes/class.module.php');
 require_once($_SERVER['DOCUMENT_ROOT'].'/includes/class.seo.php');
 
+
+
+function get_svg_block($svg_id){
+		
+	$dbCustom = new DbCustom();
+	$db = $dbCustom->getDbConnect(SITE_N_DATABASE);
+	
+	$svg = '';
+	
+	$sql = "SELECT svg_code
+			FROM svg 
+			WHERE svg_id = '".$svg_id."'";
+	$result = $dbCustom->getResult($db,$sql);			
+	if($result->num_rows > 0){
+		$object = $result->fetch_object();						
+		$svg_code = stripcslashes($object->svg_code);
+		//echo $svg_code
+	}
+	
+	return $svg_code;	
+
+}
+
+
+
 function obj_to_array($obj){
 	return json_decode(json_encode((array)$obj),1);	
 }

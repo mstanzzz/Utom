@@ -201,7 +201,7 @@ function setRegularSubmit() {
                                 <label>Page Heading</label>
                             </div>
                             <div class="twocols">
-                                <input type="text" id="page_heading" name="page_heading" value="<?php echo prepFormInputStr($_SESSION['temp_page_fields']['page_heading']); ?>" />
+                                <input type="text" id="page_heading" name="page_heading" value="<?php echo stripslashes($_SESSION['temp_page_fields']['page_heading']); ?>" />
                             </div>
                         </div>
 

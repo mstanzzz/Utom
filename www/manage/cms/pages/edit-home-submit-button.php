@@ -70,7 +70,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php');
         <label>Button Text</label>
         </div>
         <div class="twocols">
-        <input id="button_text" type="text" name="button_text" value="<?php echo prepFormInputStr($button_text); ?>" />
+        <input id="button_text" type="text" name="button_text" value="<?php echo stripslashes($button_text); ?>" />
         </div>
     </div>
     

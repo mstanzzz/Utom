@@ -62,7 +62,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php');
 			<fieldset class="colcontainer">
 				<div class="twocols">
 					<label>Label</label>
-            		<input type="text" name="label" value="<?php echo prepFormInputStr($object->label); ?>">
+            		<input type="text" name="label" value="<?php echo stripslashes($object->label); ?>">
 				</div>
 				<div class="twocols">
             		<label>Page Name</label>

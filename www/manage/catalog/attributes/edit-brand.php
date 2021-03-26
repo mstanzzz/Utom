@@ -91,11 +91,11 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php');
 			<fieldset class="colcontainer formcols">
 				<div class="colcontainer">
 					<label>Brand Name</label>
-					<input style="width:600px;" type="text" name="name" value="<?php echo prepFormInputStr($object->name); ?>" />
+					<input style="width:600px;" type="text" name="name" value="<?php echo stripslashes($object->name); ?>" />
 				</div>
 				<div class="colcontainer">
 					<label>Short name for website navigation</label>
-					<input style="width:230px;" type="text" name="short_name" value="<?php echo prepFormInputStr($object->short_name); ?>" />
+					<input style="width:230px;" type="text" name="short_name" value="<?php echo stripslashes($object->short_name); ?>" />
 				</div>
 			</fieldset>
 			<fieldset class="colcontainer formcols">

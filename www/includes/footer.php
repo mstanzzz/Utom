@@ -208,6 +208,9 @@
 
 <a style="float:left; margin:6px;" href="specifications.html">specifications</a>
 
+<a style="float:left; margin:6px;" href="features.html">features</a>
+
+
 <a style="float:left; margin:6px;" href="login.html">login</a>
 
 <a style="float:left; margin:6px;" href="showroom.html">showroom (test)</a>

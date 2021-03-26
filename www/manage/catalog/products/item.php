@@ -491,9 +491,7 @@ while($r = $result->fetch_object()){
 
 
 
-
 require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php'); 
-
 
 ?>
 <script>
@@ -553,7 +551,6 @@ function regularSubmit() {
 	
 	//echo getItemSeoList(101, 'tie rack');
 	
-	
 ?>
 <!--<a onClick="test();">TEST</a>-->
 <div class="manage_page_container">
@@ -570,6 +567,8 @@ function regularSubmit() {
 		echo $bread_crumb->output();
 		
         require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-content-top.php');
+
+
 
 		$db = $dbCustom->getDbConnect(CART_DATABASE);
 
@@ -687,7 +686,7 @@ function regularSubmit() {
 		
 		$result = $dbCustom->getResult($db,$sql);		
 		
-		$url_str= $ste_root.'manage/catalog/products/item.php';
+		$url_str= 'item.php';
 	$url_str = preg_replace('/(\/+)/','/',$url_str);
 		
 		$url_str.= "?cat_id=".$cat_id;
@@ -705,30 +704,20 @@ function regularSubmit() {
                     <input type="text" name="search_str" class="searchbox" placeholder="Find a Product" />
                     <button type="submit" class="btn btn-primary btn-large" value="search"><i class="icon-search icon-white"></i></button>
                 </form>
-    
-
-
-
-	</div>
+				</div>
+			
 			  	<?php
                 if($admin_access->product_catalog_level > 1){ 
 					
-					$url_str= $ste_root.'manage/catalog/products/item.php';
-	$url_str = preg_replace('/(\/+)/','/',$url_str);
+					$url_str= 'item.php';
+					//$url_str = preg_replace('/(\/+)/','/',$url_str);
 					
 					?>
 					<a class="btn btn-large btn-primary" href="<?php echo $url_str; ?>">List All Products </a>            
 					
 					<?php
 
-					$url_str = $ste_root.'manage/catalog/products/add-item.php';
-					
-					echo "<br />";
-					echo  $url_str; 
-					echo "<br />";
-					
-					
-	$url_str = preg_replace('/(\/+)/','/',$url_str);
+					$url_str = 'add-item.php';
 
 					$url_str.= "?cat_id=".$cat_id;
 					$url_str.= "&firstload=1";
@@ -748,8 +737,10 @@ function regularSubmit() {
 	
     
        	<?php
-		$url_str= $ste_root.'manage/catalog/products/item.php';
-	$url_str = preg_replace('/(\/+)/','/',$url_str);
+
+
+		$url_str= 'item.php';
+		//$url_str = preg_replace('/(\/+)/','/',$url_str);
 
 		$url_str.= "?parent_cat_id=".$parent_cat_id;
 		$url_str.= "&cat_id=".$cat_id;
@@ -864,9 +855,9 @@ while($row = $result->fetch_object()) {
 			<span class='offtext'>OFF</span>
 			<input type='checkbox' class='checkboxinput' name='active[]' value='".$row->item_id."' ".$checked." /></div></td>";	
 
-	// Add Child
-	$url_str= $ste_root.'manage/catalog/products/add-item.php';
-	$url_str = preg_replace('/(\/+)/','/',$url_str);
+			// Add Child
+			$url_str= 'add-item.php';
+			//$url_str = preg_replace('/(\/+)/','/',$url_str);
 			$url_str.= "?parent_item_id=".$row->item_id;
 			$url_str.= "&parent_cat_id=".$parent_cat_id;
 			$url_str.= "&cat_id=".$cat_id;
@@ -877,8 +868,10 @@ while($row = $result->fetch_object()) {
 			$url_str.= "&search_str=".$search_str;
 	
 	$block .= "<td><a class='btn btn-small btn-primary' href='".$url_str."'><i class='icon-plus icon-white'></i> Child</a><br />";
-	$url_str= $ste_root.'manage/catalog/products/edit-item.php';
-	$url_str = preg_replace('/(\/+)/','/',$url_str);
+	
+	
+			$url_str= 'edit-item.php';
+			//$url_str = preg_replace('/(\/+)/','/',$url_str);
 
 			$url_str.= "?item_id=".$row->item_id;
 			$url_str.= "&firstload=1";
@@ -890,15 +883,28 @@ while($row = $result->fetch_object()) {
 			$url_str.= "&truncate=".$truncate;
 			$url_str.= "&search_str=".$search_str;
 
-	$block .= "<td><a class='btn btn-primary btn-small' 
-			href='".$url_str."'><i class='icon-cog icon-white'></i> Edit</a></td>";
+	
+	
+	$block .= "<td>";
+	$block .= "<a class='btn btn-primary btn-small'"; 
+	$block .= " href='".$url_str."'><i class='icon-cog icon-white'></i> Edit</a>";
+	$block .= "</td>";
+
+
+//$block .= "<td>";
+//$block	.= $url_str;
+//$block .= "</td>";
+
 			
-	$block .= "<td valign='middle'>
-			<a class='btn btn-danger confirm ".$disabled." '>
-			<i class='icon-remove icon-white'></i>
-			<input type='hidden' id='".$row->item_id."' class='itemId' value='".$row->item_id."' /></a></td>";
+	$block .= "<td valign='middle'>";
+	$block .= "<a class='btn btn-danger confirm ".$disabled." '>";
+	$block .= "<i class='icon-remove icon-white'></i>";
+	$block .= "<input type='hidden' id='".$row->item_id."' class='itemId' value='".$row->item_id."' /></a>";
+	$block .= "</td>";
 			
 	$block .= "</tr>";
+
+
 
 	while($child_row = $child_res->fetch_object()) {
 		$items_from_this_page .= $child_row->item_id.",";
@@ -927,14 +933,17 @@ while($row = $result->fetch_object()) {
 		}
 		$block .= "</td>";     
 		$checked = ($child_row->active)? "checked='checked'" : ''; 
-		$block	.= "<td align='center' valign='middle' >
-				<div class='checkboxtoggle on ".$disabled." '> 
+		$block	.= "<td align='center' valign='middle' >";
+				
+				
+				$block	.= "<div class='checkboxtoggle on ".$disabled." '> 
 				<span class='ontext'>ON</span>
 				<a class='switch on' href='#'></a>
 				<span class='offtext'>OFF</span>
 				<input type='checkbox' class='checkboxinput' name='active[]' value='".$child_row->item_id."' ".$checked." /></div></td>";	
-				$url_str= $ste_root.'manage/catalog/products/edit-item.php';
-				$url_str = preg_replace('/(\/+)/','/',$url_str);
+				
+				$url_str= 'edit-item.php';
+				//$url_str = preg_replace('/(\/+)/','/',$url_str);
 				
 				$url_str.= "?item_id=".$child_row->item_id;
 				$url_str.= "&parent_cat_id=".$parent_cat_id;
@@ -944,12 +953,25 @@ while($row = $result->fetch_object()) {
 				$url_str.= "&a_d=".$a_d;
 				$url_str.= "&truncate=".$truncate;
 				$url_str.= "&search_str=".$search_str;
+
+
+$block .= "<td>";
+$block .= "<a class='btn btn-primary btn-small' href='".$url_str."'>";
+$block .= "<i class='icon-cog icon-white'></i> Edit</a>";
+$block .= "</td>";
+			
+
 								
-		$block .= "<td><a class='btn btn-primary btn-small' href='".$url_str."'><i class='icon-cog icon-white'></i> Edit</a></td>";
-			$block .= "<td valign='middle'><a class='btn btn-danger confirm'><i class='icon-remove icon-white'></i><input type='hidden' id='".$child_row->item_id."' class='itemId' value='".$child_row->item_id."' /></a></td>";	
+//$block .= "<td><a class='btn btn-primary btn-small' href='".$url_str."'><i class='icon-cog icon-white'></i> Edit</a></td>";
+
+$block .= "<td valign='middle'><a class='btn btn-danger confirm'><i class='icon-remove icon-white'></i><input type='hidden' id='".$child_row->item_id."' class='itemId' value='".$child_row->item_id."' /></a></td>";	
 			$block .= "</tr>";	
 	}
+
 			
+
+//echo $ste_root;
+//exit;
 			
 			
 	

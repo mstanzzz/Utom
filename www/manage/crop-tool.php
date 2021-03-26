@@ -38,6 +38,14 @@ if(!isset($_SESSION['img_id']))$_SESSION['img_id'] = 0;
 if(!isset($_SESSION['img_type'])) $_SESSION['img_type'] = 'cart';
 
 
+// TEST
+//$_SESSION['img_type'] = 'hero';
+
+echo $_SESSION['img_type'];
+echo "<br />";
+echo "<br />";
+echo "<br />";
+
 $fromfancybox = (isset($_REQUEST["fromfancybox"])) ? $_REQUEST["fromfancybox"] : 0;
 
 if(strpos($_SESSION['img_type'], 'cart') !== false){
@@ -59,11 +67,22 @@ $op_b = "minWidth: 600, minHeight: 300, maxWidth: 1600, maxHeight: 800, aspectRa
 
 }elseif(strpos($_SESSION['ret_page'], 'tool-admin') !== false){
 	$op_b = "minWidth: 280, minHeight: 280, maxWidth: 2000, maxHeight: 2000, aspectRatio: '1:1', handles: true,"; 
+
+}elseif(strpos($_SESSION['img_type'], 'hero') !== false){
+
+	$op_b = "minWidth: 600
+	, minHeight: 300
+	, maxWidth: 2000
+	, maxHeight: 1200
+	, aspectRatio: '10:4'
+	, handles: true,"; 
+
 }else{
 	$op_b = "minWidth: 480, minHeight: 480, maxWidth: 1020, maxHeight: 1020, aspectRatio: '1:1', handles: true,"; 
 }
 
 require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php'); 
+
 ?>
 <link href="./js/css/ui-lightness/jquery-ui-1.8.7.custom.css" rel="Stylesheet" type="text/css" />
 <link href="./js/css/jquery.cropzoom.css" rel="Stylesheet" type="text/css" />
@@ -150,6 +169,9 @@ function validate(){
 </div>
 -->
 <?php
+
+
+
 /*
 if(!isset($_SESSION['ret_path'])) $_SESSION['ret_path'] = 'catalog/categories';
 if($_SESSION['ret_path'] == '') $_SESSION['ret_path'] = 'catalog/categories';
@@ -178,8 +200,6 @@ $ret_dest = $_SESSION['ret_path'].'/'.$_SESSION['ret_page'].'.php?is_new_img=1&c
 $ret_dest = $_SESSION['ret_dir'].'/'.$_SESSION['ret_page'].'.php?is_new_img=1&cat_id='.$_SESSION['cat_id'].'&img_type'.$_SESSION['img_type'];	
 }
 
-
-
 if(strpos($_SESSION['ret_path'], 'cms') !== false){
 	$f_path = "../saascustuploads/".$_SESSION['profile_account_id']."/cms/full/";				
 }else{
@@ -195,11 +215,14 @@ if($_SESSION['crop_n'] == 2){
 if($_SESSION['crop_n'] > 2){
 	echo "Doing Extra Wide Crop";
 }
+
+
 ?>
 
 <div style="margin-top:8px;">
 
-<a style="margin-right:30px;" class="btn btn-info"  href="<?php echo $ret_dest; ?>"> Cancel </a>
+<a style="margin-right:30px;" class="btn btn-info"  
+href="<?php echo $ret_dest; ?>"> Cancel </a>
 
 Use the handles in the corners and the sides to enlarge the crop area. Drag the box to the area you want in the final image.
 <!--
@@ -229,8 +252,6 @@ onsubmit="return validate();"
 //echo "<br />";
 //echo $f_path.$_SESSION['pre_cropped_fn'];
 //echo "<br />";
-
-
 echo " 
 <div class='original'>
 <img id='pre_cropped' src='".$f_path.$_SESSION['pre_cropped_fn']."' />

@@ -284,7 +284,7 @@ if(!$strip){
                 <div style="clear:both"></div>
                 <br /><br />
                 <label>Heading</label>
-                <input type="text" name="heading" value="<?php echo prepFormInputStr($heading); ?>">
+                <input type="text" name="heading" value="<?php echo stripslashes($heading); ?>">
                 
                 
                 

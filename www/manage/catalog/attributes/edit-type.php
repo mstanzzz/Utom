@@ -52,7 +52,7 @@ $result = $dbCustom->getResult($db,$sql);	$object = $result->fetch_object();
        	<input id="type_id" type="hidden" name="type_id" value="<?php echo $type_id;  ?>" />
 
             <div class="head">type name</div><br />
-            <input type="text" name="name" value="<?php echo prepFormInputStr($object->name); ?>" style="width:300px" />
+            <input type="text" name="name" value="<?php echo stripslashes($object->name); ?>" style="width:300px" />
             <br />
             <div style="float:left; padding-right:100px; padding-top:15px;">
                 <input name="edit_type" type="submit" value="Save" />

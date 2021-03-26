@@ -279,17 +279,17 @@ if(!$strip){
 
 				<div class="colcontainer">
 				<label>Material Name</label>
-				<input style="width:600px;" name="material_name" type="text" value="<?php echo prepFormInputStr($_SESSION['temp_fields']['material_name']); ?>" />
+				<input style="width:600px;" name="material_name" type="text" value="<?php echo stripslashes($_SESSION['temp_fields']['material_name']); ?>" />
 				</div>                
 
 				<div class="colcontainer">
 				<label>Material Name</label>
-				<input style="width:600px;" name="mat_color" type="text" value="<?php echo prepFormInputStr($_SESSION['temp_fields']['mat_color']); ?>" />
+				<input style="width:600px;" name="mat_color" type="text" value="<?php echo stripslashes($_SESSION['temp_fields']['mat_color']); ?>" />
 				</div>                
 
 				<div class="colcontainer">
 				<label>Material Name</label>
-				<input style="width:600px;" name="mat_alpha" type="text" value="<?php echo prepFormInputStr($_SESSION['temp_fields']['mat_alpha']); ?>" />
+				<input style="width:600px;" name="mat_alpha" type="text" value="<?php echo stripslashes($_SESSION['temp_fields']['mat_alpha']); ?>" />
 				</div>                
 
 

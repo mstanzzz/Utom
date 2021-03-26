@@ -9,8 +9,6 @@ $module = new Module;
 $page_title = "Add New Product";
 $page_group = "item";
 
-	
-
 $firstload =  (isset($_GET['firstload'])) ? $_GET['firstload'] : 0;
 if($firstload){
 	unset($_SESSION['cat_id']);
@@ -23,7 +21,6 @@ if(!is_numeric($img_id)) $img_id = 0;
 if($img_id > 0){
 	$_SESSION['img_id'] = $img_id;
 }
-
 
 $pagenum = (isset($_GET['pagenum'])) ? $_GET['pagenum'] : 0;
 if(!isset($_SESSION['paging']['pagenum'])) $_SESSION['paging']['pagenum'] = $pagenum;
@@ -957,17 +954,16 @@ show_associated_kits_toggle
 		
 		if($_SESSION['ret_page'] == '/category-tree'){
 
-			$url_str = $ste_root."manage/categories/category-tree.php";				
+			$url_str = "../categories/category-tree.php";				
 
 		}else{
 			//if($_SESSION['ret_dir'] != ''){
 				$url_str = $ste_root."manage/".$_SESSION['ret_dir']."/".$_SESSION['ret_page'].".php";				
 			//}else{
-				$url_str= 'item.php';
-				$url_str = $ste_root."manage/catalog/products/item.php";
+				$url_str = "item.php";
 			//}
 			
-	$url_str = preg_replace('/(\/+)/','/',$url_str);
+		$url_str = preg_replace('/(\/+)/','/',$url_str);
 			$url_str.= '?parent_cat_id='.$_SESSION['parent_cat_id'];
 			$url_str.= '&cat_id='.$_SESSION['cat_id'];		
 			$url_str.= '&pagenum='.$_SESSION['paging']['pagenum'];
@@ -1018,12 +1014,12 @@ show_associated_kits_toggle
 				
 					
 				if($_SESSION['ret_page'] == 'category-tree'){
-					$url_str= $ste_root.'manage/catalog/categories/category-tree.php';
-	$url_str = preg_replace('/(\/+)/','/',$url_str);
+					$url_str= '../categories/category-tree.php';
+	//$url_str = preg_replace('/(\/+)/','/',$url_str);
 
 				}else{					               				
-					$url_str= $ste_root.'manage/catalog/products/item.php';
-	$url_str = preg_replace('/(\/+)/','/',$url_str);
+					$url_str= 'item.php';
+					//$url_str = preg_replace('/(\/+)/','/',$url_str);
 
 					$url_str.= "?parent_item_id=".$_SESSION['temp_item_fields']['parent_item_id'];
 					$url_str.= "&parent_cat_id=".$_SESSION['parent_cat_id'];
@@ -1035,8 +1031,8 @@ show_associated_kits_toggle
 					$url_str.= '&search_str='.$_SESSION['search_str'];
 				}
 
-	$url_str = $ste_root."manage/catalog/products/item.php";	 
-	$url_str = preg_replace('/(\/+)/','/',$url_str);
+	$url_str = "item.php";	 
+	//$url_str = preg_replace('/(\/+)/','/',$url_str);
 
 				?>
 				<a href="<?php echo $url_str; ?>" class="btn">
@@ -1052,7 +1048,7 @@ show_associated_kits_toggle
 						</div>
 						<div class="twocols">
 							<input type="text" id="product_name" class="required" name="name" 
-                            value="<?php echo prepFormInputStr($_SESSION['temp_item_fields']['name']); ?>" />
+                            value="<?php echo stripslashes($_SESSION['temp_item_fields']['name']); ?>" />
 						</div>
 					</div>
 					<div class="colcontainer formcols">
@@ -1373,8 +1369,8 @@ show_associated_kits_toggle
                         </div>
                         
                     <?php
-						$url_str= $ste_root."manage/catalog/select-image.php";               				
-	$url_str = preg_replace('/(\/+)/','/',$url_str);
+						$url_str= "../select-image.php";               				
+						//$url_str = preg_replace('/(\/+)/','/',$url_str);
 
 						
 						$url_str.= "?ret_page=add-item";
@@ -1419,8 +1415,8 @@ show_associated_kits_toggle
 						}
 					}
 
-						$url_str= $ste_root."manage/upload-pre-crop.php";               				
-	$url_str = preg_replace('/(\/+)/','/',$url_str);
+						$url_str= "../../upload-pre-crop.php";               				
+						//$url_str = preg_replace('/(\/+)/','/',$url_str);
 
 						$url_str.= "?ret_page=add-item";
 						$url_str.= "&ret_dir=products";
@@ -1437,8 +1433,8 @@ show_associated_kits_toggle
                         	<i class="icon-plus icon-white"></i> Upload New Gallery Image </a>
 						</div>
 						<?php
-							$url_str= $ste_root."manage/catalog/select-image.php";               				
-	$url_str = preg_replace('/(\/+)/','/',$url_str);
+							$url_str= "../select-image.php";               				
+							//$url_str = preg_replace('/(\/+)/','/',$url_str);
 
                             $url_str.= "?ret_page=add-item";
                             $url_str.= "&ret_dir=products";
@@ -1485,8 +1481,8 @@ show_associated_kits_toggle
 						$block .= "<td>".stripslashes($val['description'])."</td>";
 						
 
-					$url_str= $ste_root.'manage/catalog/products/edit-item-video.php';
-	$url_str = preg_replace('/(\/+)/','/',$url_str);
+					$url_str= 'edit-item-video.php';
+					//$url_str = preg_replace('/(\/+)/','/',$url_str);
 						
 						$url_str.= "?ret_page=add-item";
 						$url_str.= "&video_id=".$val['video_id'];
@@ -1502,8 +1498,8 @@ show_associated_kits_toggle
 					</tbody>
 				</table>
 				<?php                     				
-				$url_str= $ste_root.'manage/catalog/products/add-item-video.php';
-	$url_str = preg_replace('/(\/+)/','/',$url_str);
+				$url_str= 'add-item-video.php';
+				//$url_str = preg_replace('/(\/+)/','/',$url_str);
 						
 				$url_str.= "?ret_page=add-item";
 				?>
@@ -1514,11 +1510,9 @@ show_associated_kits_toggle
                         	<i class="icon-plus icon-white"></i> Add Video </a>
 						</div>
 						<?php
-					$url_str= $ste_root.'manage/catalog/products/select-item-video.php';
+					$url_str= 'select-item-video.php';
 					$url_str.= "?ret_page=add-item";
 					
-	$url_str = preg_replace('/(\/+)/','/',$url_str);
-
                         ?>                    
                         <div class="twocols"> 
                             <a class="btn btn-primary fancybox fancybox.iframe" href="<?php echo $url_str; ?>">
@@ -2006,8 +2000,8 @@ show_associated_kits_toggle
 						$block .= "<td>".$val['name']."</td>";
 						$block .= "<td>".$val['file_name']."</td>";
 
-						$url_str= $ste_root."manage/catalog/edit-document.php";						
-$url_str = preg_replace('/(\/+)/','/',$url_str);
+						$url_str= "../edit-document.php";						
+						//$url_str = preg_replace('/(\/+)/','/',$url_str);
 						
 						$url_str.= "?document_id=".$val['document_id'];
                         $url_str.= "&ret_page=edit-item";
@@ -2030,15 +2024,11 @@ $url_str = preg_replace('/(\/+)/','/',$url_str);
 
                     <div class="colcontainer">
                     	<?php
-						$url_str= $ste_root."manage/catalog/doc-upload.php";
-
-	$url_str = preg_replace('/(\/+)/','/',$url_str);
-						
+						$url_str= "../doc-upload.php";
 						$url_str.= "?ret_page=add-item";
 						$url_str.= "&ret_dir=products";
 						$url_str.= "&parent_cat_id=".$_SESSION['parent_cat_id'];
 						$url_str.= "&cat_id=".$_SESSION['cat_id'];
-						
 						?>
                         
                         <div class="twocols"> 
@@ -2046,14 +2036,11 @@ $url_str = preg_replace('/(\/+)/','/',$url_str);
                         	<i class="icon-plus icon-white"></i> Upload Document </a>
 						</div>
 						<?php
-						$url_str= $ste_root."manage/catalog/select-document.php";               				
-	$url_str = preg_replace('/(\/+)/','/',$url_str);
-                        
-
+						$url_str= "../select-document.php";               				
 						$url_str.= "?ret_page=add-item";
-                            $url_str.= "&ret_dir=products";
-                            $url_str.= "&parent_cat_id=".$_SESSION['parent_cat_id'];
-                            $url_str.= "&cat_id=".$_SESSION['cat_id'];		  
+						$url_str.= "&ret_dir=products";
+						$url_str.= "&parent_cat_id=".$_SESSION['parent_cat_id'];
+						$url_str.= "&cat_id=".$_SESSION['cat_id'];		  
                         ?>                    
                         <div class="twocols"> 
                             <a class="btn btn-large btn-primary fancybox fancybox.iframe" href="<?php echo $url_str; ?>">

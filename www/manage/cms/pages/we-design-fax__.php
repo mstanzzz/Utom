@@ -367,7 +367,7 @@ function regularSubmit() {
                                 <label>Page Name</label>
                             </div>
                             <div class="twocols">
-                                <input id='page_heading' type="text" name="page_heading" value="<?php echo prepFormInputStr($_SESSION['temp_page_fields']['page_heading']); ?>" />
+                                <input id='page_heading' type="text" name="page_heading" value="<?php echo stripslashes($_SESSION['temp_page_fields']['page_heading']); ?>" />
                             </div>
                         </div>
                         
@@ -482,7 +482,7 @@ function regularSubmit() {
 	                    <label>Design Fax Number</label>
                     </div>
                     <div class="twocols">
-    	                <input id='design_fax_number' type="text" name="design_fax_number"  value="<?php echo prepFormInputStr($_SESSION['temp_page_fields']['design_fax_number']); ?>">            
+    	                <input id='design_fax_number' type="text" name="design_fax_number"  value="<?php echo stripslashes($_SESSION['temp_page_fields']['design_fax_number']); ?>">            
                     </div>
                 </div>                
                 

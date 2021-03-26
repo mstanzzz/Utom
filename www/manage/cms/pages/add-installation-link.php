@@ -136,7 +136,7 @@ function get_query_str(){
         <label>Button Text</label>
         </div>
         <div class="twocols">
-        <input id="button_text" type="text" name="button_text" value="<?php echo prepFormInputStr($_SESSION['temp_istallation_link_fields']['button_text']); ?>" />
+        <input id="button_text" type="text" name="button_text" value="<?php echo stripslashes($_SESSION['temp_istallation_link_fields']['button_text']); ?>" />
         </div>
     </div>
 

@@ -10,6 +10,9 @@ unset($_SESSION['pre_cropped_fn']);
 $fromfancybox = (isset($_REQUEST["fromfancybox"])) ? $_REQUEST["fromfancybox"] : 0;
 //$_SESSION["fromfancybox"] = $fromfancybox;
 
+
+	if(isset($_GET['specs_content_id'])) $_SESSION['specs_content_id'] = $_GET['specs_content_id'];
+
 // finish
 	if(isset($_GET['finish_name']))	$_SESSION['tmp_vars']['finish_name'] = $_GET['finish_name'];
 	if(isset($_GET['type_id']))	$_SESSION['tmp_vars']['type_id'] = $_GET['type_id'];
@@ -92,6 +95,10 @@ $fromfancybox = (isset($_REQUEST["fromfancybox"])) ? $_REQUEST["fromfancybox"] :
 	if(isset($_GET['width_constraints_id']))	$_SESSION['tmp_vars']['width_constraints_id'] = $_GET['width_constraints_id'];
 
 
+
+
+
+
 if(isset($_GET['part_id'])) $_SESSION['part_id'] = $_GET['part_id']; 
 if(isset($_GET['material_id'])) $_SESSION['material_id'] = $_GET['material_id']; 
 if(isset($_GET['panel_id'])) $_SESSION['panel_id'] = $_GET['panel_id']; 
@@ -115,13 +122,16 @@ if(isset($_GET['ret_dir'])) $_SESSION['ret_dir'] = $_GET['ret_dir'];
 if(isset($_GET['ret_path'])) $_SESSION['ret_path'] = $_GET['ret_path']; 
 if(isset($_GET['crop_n'])) $_SESSION['crop_n'] = $_GET['crop_n']; 
 
+
+if(isset($_GET['spec_id'])) $_SESSION['spec_id'] = $_GET['spec_id']; 
+//echo $_SESSION['spec_id'];
+
 if(!isset($_SESSION['img_type'])) $_SESSION['img_type'] = '';
 if(!isset($_SESSION['ret_page'])) $_SESSION['ret_page'] = '';
 if(!isset($_SESSION['ret_dir'])) $_SESSION['ret_dir'] = '';
 if(!isset($_SESSION['ret_path'])) $_SESSION['ret_path'] = '';
 if(!isset($_SESSION['crop_n'])) $_SESSION['crop_n'] = 0;
 
-$db = $dbCustom->getDbConnect(SITE_N_DATABASE);
 
 $msg = '';
 
@@ -310,6 +320,7 @@ function location_fb(url){
 
 <?php
 /*
+
 echo "<br />";
 echo "_SESSION['img_type ".$_SESSION['img_type'];
 echo "<br />";
@@ -323,7 +334,12 @@ echo "_SESSION['crop_n ".$_SESSION['crop_n'];
 echo "<br />";
 echo "<br />";
 echo "<br />";
-*/			
+
+echo "img_type ".$_SESSION['img_type'];
+echo "<br />";
+echo "spec_id ".$_SESSION['spec_id'];
+*/
+
 ?>
 <div class='lightboxholder'>
 	<form action="upload-pre-crop.php" method="post" enctype="multipart/form-data" onSubmit="return check_file()" target="_self">
@@ -357,9 +373,11 @@ if(isset($_SESSION['ret_path'])){
 
 <br /><br /><br />
 
-           	<input type="button" value="Cancel" class="btn btn-large" onClick="location_fb('<?php echo 	$ret_dest; ?>');" />
+
+<input type="button" value="Cancel" class="btn btn-large" onClick="location_fb('<?php echo 	$ret_dest; ?>');" />
 			
-            <button type="submit" name="submit" class="btn btn-success btn-large" onClick="document.getElementById('inprogress').style.visibility='visible'">Upload</button>
+<button type="submit" name="submit" class="btn btn-success btn-large" 
+onClick="document.getElementById('inprogress').style.visibility='visible'">Upload</button>
 
 
         </div>

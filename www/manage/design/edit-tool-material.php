@@ -155,13 +155,13 @@ function validate(theform){
 
 				<div class="colcontainer">
 				<label>Material Name</label>
-				<input style="width:600px;" name="mat_name" type="text" value="<?php echo prepFormInputStr($_SESSION['temp_fields']['mat_name']); ?>" />
+				<input style="width:600px;" name="mat_name" type="text" value="<?php echo stripslashes($_SESSION['temp_fields']['mat_name']); ?>" />
 				</div>                
 
 
 				<div class="colcontainer">
 				<label>Product Number</label>
-				<input style="width:100px;" name="prod_num" type="text" value="<?php echo prepFormInputStr($_SESSION['temp_fields']['prod_num']); ?>" />
+				<input style="width:100px;" name="prod_num" type="text" value="<?php echo stripslashes($_SESSION['temp_fields']['prod_num']); ?>" />
 				</div>                
 
 

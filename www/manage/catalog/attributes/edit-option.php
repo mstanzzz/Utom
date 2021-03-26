@@ -42,7 +42,7 @@ $result = $dbCustom->getResult($db,$sql);$object = $result->fetch_object();
         <form name="edit_opt" action="option.php?attribute_id=<?php echo $attribute_id;  ?>" method="post">
        	<input id="opt_id" type="hidden" name="opt_id" value="<?php echo $opt_id;  ?>" />
             <div class="head">Attribute name</div><br />
-            <input type="text" name="opt_name" value="<?php echo prepFormInputStr($object->opt_name); ?>" style="width:300px" />
+            <input type="text" name="opt_name" value="<?php echo stripslashes($object->opt_name); ?>" style="width:300px" />
             <br />
             <div style="float:left; padding-right:100px; padding-top:15px;">
                 <input name="edit_opt" type="submit" value="Save" />

@@ -1038,7 +1038,7 @@ function regularSubmit() {
                             <label>URL Page Name</label>
                         </div>
                         <div class="twocols">
-                            <input id="url_name" type="text" name="url_name" value="<?php echo prepFormInputStr($_SESSION['temp_page_fields']['url_name']); ?>" />
+                            <input id="url_name" type="text" name="url_name" value="<?php echo stripslashes($_SESSION['temp_page_fields']['url_name']); ?>" />
                         </div>
                     </div>
                 
@@ -1047,7 +1047,7 @@ function regularSubmit() {
                             <label>Meta Title</label>
                         </div>
                         <div class="twocols">
-                            <input id="meta_title" type="text" name="meta_title" value="<?php echo prepFormInputStr($_SESSION['temp_page_fields']['meta_title']); ?>" />
+                            <input id="meta_title" type="text" name="meta_title" value="<?php echo stripslashes($_SESSION['temp_page_fields']['meta_title']); ?>" />
                         </div>
                     </div>
 
@@ -1056,7 +1056,7 @@ function regularSubmit() {
                             <label>Meta Keywords</label>
                         </div>
                         <div class="twocols">
-                            <textarea id="meta_keywords" name="meta_keywords" cols="20" rows="6"><?php echo prepFormInputStr($_SESSION['temp_page_fields']['meta_keywords']); ?></textarea>
+                            <textarea id="meta_keywords" name="meta_keywords" cols="20" rows="6"><?php echo stripslashes($_SESSION['temp_page_fields']['meta_keywords']); ?></textarea>
                         </div>
                     </div>
                 
@@ -1065,7 +1065,7 @@ function regularSubmit() {
                             <label>Meta Description</label>
                         </div>
                         <div class="twocols">
-                            <textarea id="meta_description" name="meta_description" cols="20" rows="6"><?php echo prepFormInputStr($_SESSION['temp_page_fields']['meta_description']); ?></textarea>
+                            <textarea id="meta_description" name="meta_description" cols="20" rows="6"><?php echo stripslashes($_SESSION['temp_page_fields']['meta_description']); ?></textarea>
                         </div>
                     </div>
             	</div>

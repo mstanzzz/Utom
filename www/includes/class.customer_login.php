@@ -434,6 +434,8 @@ class CustomerLogin {
 		return $ret;
 		
 	}
+	
+	
 
 	function isLogedIn() {
 

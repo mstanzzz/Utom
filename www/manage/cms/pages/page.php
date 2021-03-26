@@ -7,7 +7,10 @@ $progress = new SetupProgress;
 
 $pages = new Pages;
 
+unset($_SESSION['img_id']);
+
 $db = $dbCustom->getDbConnect(SITE_N_DATABASE);
+
 
 //$sql = "DELETE FROM page_seo WHERE page_name = 'item-details'";
 //$result = $dbCustom->getResult($db,$sql);
@@ -477,7 +480,7 @@ function regularSubmit() {
 						<td valign="middle">
                         <?php
 						
-echo $page_v['page_manage_path'];						
+//echo $page_v['page_manage_path'];						
 //echo "page_id:".$page_v['page_id']; 
 echo "<a class='btn btn-primary ".$disabled." '"; 
 echo "href='".$page_v['page_manage_path']."'>"; 

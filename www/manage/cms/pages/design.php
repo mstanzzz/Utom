@@ -187,10 +187,10 @@ function regularSubmit() {
 			<div class="colcontainer"> 
 
 				<label>top_1</label>
-				<input type="text" name="top_1"  style="width:520px" value="<?php echo prepFormInputStr($_SESSION['temp_page_fields']['top_1']); ?>">
+				<input type="text" name="top_1"  style="width:520px" value="<?php echo stripslashes($_SESSION['temp_page_fields']['top_1']); ?>">
                     
 				<label>top_2</label>
-				<input type="text" name="top_2"  style="width:520px" value="<?php echo prepFormInputStr($_SESSION['temp_page_fields']['top_2']); ?>">
+				<input type="text" name="top_2"  style="width:520px" value="<?php echo stripslashes($_SESSION['temp_page_fields']['top_2']); ?>">
 
 	<label>p_1_text</label>
 	<textarea id="p_1_text" class="wysiwyg" name="p_1_text"><?php echo stripslashes($_SESSION['temp_page_fields']['p_1_text']); ?></textarea>

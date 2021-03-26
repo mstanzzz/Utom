@@ -1,16 +1,19 @@
 <?php
+
+
 error_reporting(E_ALL);
 require_once($_SERVER['DOCUMENT_ROOT']."/includes/config.php"); 
 require_once($_SERVER['DOCUMENT_ROOT']."/includes/class.admin_login.php");
 require_once($_SERVER['DOCUMENT_ROOT']."/includes/accessory_cart_functions.php");
 require_once($_SERVER['DOCUMENT_ROOT']."/includes/class.module.php");
 require_once($_SERVER['DOCUMENT_ROOT']."/includes/class.category.php"); 
-
-
 //unset($_SESSION['admin_access']);
-
 require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/class.admin_access.php"); 
+
+
+
 require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/manage_functions.php");
+
 $aLgn = new AdminLogin;
 $module = new Module;
 $admin_access = new AdminAccess;
@@ -22,6 +25,9 @@ require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/class.setup_progr
 //require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/class.backup.php"); 
 //require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/restrict_redirect.php"); 
 require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/login_timeout.php"); 
+
+
+
 
 // remove excess slashes on this url
 if(substr_count($_SERVER['REQUEST_URI'] , '//' ) > 0) {	
@@ -82,13 +88,13 @@ if($lev <= 3){
 }else{
 	$ste_root = './';
 }
+$ste_root = preg_replace('/(\/+)/','/',$ste_root);
 
-if(strpos($_SERVER['DOCUMENT_ROOT'], '/var/www/') !== false) {
-	$ste_root = preg_replace('/(\/+)/','/',$ste_root);
-}else{
-	$ste_root = SITEROOT.'/';
-}
-
+//if(strpos($_SERVER['DOCUMENT_ROOT'], '/var/www/') !== false) {
+	//$ste_root = preg_replace('/(\/+)/','/',$ste_root);
+//}else{
+	//$ste_root = SITEROOT.'/';
+//}
 //echo "<br />";
 //echo "ste_root:  ".$ste_root;
 //echo "<br />";

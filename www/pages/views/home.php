@@ -132,7 +132,7 @@ require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php");
 		<div class="row">
 			<div class="col-12 col-lg-8">
 				<figure class="first-fixed-block__img-group" style="background-image: url(images/9041-image-Mission-Home-Country-Commons-with-Alicia.JPG);">
-				<!-- <img src="images/transitional-kitchen.png" alt="" class="first-fixed-block__img-group--img" id="js-image-height"> -->
+				<!-- <img src="../../images/transitional-kitchen.png" alt="" class="first-fixed-block__img-group--img" id="js-image-height"> -->
 					<figcaption class="first-fixed-block__img-group--text-block">
 						<div class="wrapper">
 							<h1 class="first-fixed-block__img-group--heading dark-color" style="color:#18C4C7">
@@ -171,21 +171,21 @@ echo $top_3;
 				<div class="first-fixed-block__text-group">
 					<div class="first-fixed-block__text-group--wrapper">
 						<div class="first-fixed-block__text-group--items">
-							<img src="images/package.svg" alt="">
+							<img src="../../images/package.svg" alt="">
 							<div class="first-fixed-block__text-group--text">
 								<p>2K 457</p>
 								<p>Successful DIY Installations</p>
 							</div>
 						</div>
 						<div class="first-fixed-block__text-group--items">
-							<img src="images/Group156.svg" alt="">
+							<img src="../../images/Group156.svg" alt="">
 							<div class="first-fixed-block__text-group--text">
 								<p>10k 214</p>
 								<p>Current users in <span class="first-text">design tool</span></p>
 							</div>
 						</div>
 						<div class="first-fixed-block__text-group--items">
-							<img src="images/Group156.svg" alt="">
+							<img src="../../images/Group156.svg" alt="">
 							<div class="first-fixed-block__text-group--text">
 								<p>6k 873</p>
 								<p>Current users <span class="second-text">submitting designs</span></p>
@@ -194,14 +194,14 @@ echo $top_3;
 
 						<div class="first-fixed-block__text-group--items">
 							<div class="block-stars__wrapper">
-								<img src="images/Rectangle12.png" alt="" class="block-stars__wrapper--image">
+								<img src="../../images/Rectangle12.png" alt="" class="block-stars__wrapper--image">
 								<div class="block-stars__wrapper--text">
 									<div class="stars-container">
-										<img src="images/star.svg" alt="">
-										<img src="images/star.svg" alt="">
-										<img src="images/star.svg" alt="">
-										<img src="images/star.svg" alt="">
-										<img src="images/star.svg" alt="">
+										<img src="../../images/star.svg" alt="">
+										<img src="../../images/star.svg" alt="">
+										<img src="../../images/star.svg" alt="">
+										<img src="../../images/star.svg" alt="">
+										<img src="../../images/star.svg" alt="">
 									</div>
 									<p class="first-text">Aubree W. Charlotte, North Carolina</p>
 									<p>Just had a successful installation!</p>
@@ -257,42 +257,42 @@ finest wood panel products from Roseburg Forest Products Panolam,Flakeboard...
 											</div>
 											<div class="second-block__first--comments">
 												<div class="block-stars__wrapper">
-													<img src="images/Rectangle12.png" alt="" class="block-stars__wrapper--image">
+													<img src="../../images/Rectangle12.png" alt="" class="block-stars__wrapper--image">
 													<div class="block-stars__wrapper--text">
 														<div class="stars-container">
-															<img src="images/star.svg" alt="">
-															<img src="images/star.svg" alt="">
-															<img src="images/star.svg" alt="">
-															<img src="images/star.svg" alt="">
-															<img src="images/star.svg" alt="">
+															<img src="../../images/star.svg" alt="">
+															<img src="../../images/star.svg" alt="">
+															<img src="../../images/star.svg" alt="">
+															<img src="../../images/star.svg" alt="">
+															<img src="../../images/star.svg" alt="">
 														</div>
 														<p class="first-text">Aubree W. Charlotte, North Carolina</p>
 														<p>Just had a successful installation!</p>
 													</div>
 												</div>
 												<div class="block-stars__wrapper">
-													<img src="images/Rectangle12.png" alt="" class="block-stars__wrapper--image">
+													<img src="../../images/Rectangle12.png" alt="" class="block-stars__wrapper--image">
 													<div class="block-stars__wrapper--text">
 														<div class="stars-container">
-															<img src="images/star.svg" alt="">
-															<img src="images/star.svg" alt="">
-															<img src="images/star.svg" alt="">
-															<img src="images/star.svg" alt="">
-															<img src="images/star.svg" alt="">
+															<img src="../../images/star.svg" alt="">
+															<img src="../../images/star.svg" alt="">
+															<img src="../../images/star.svg" alt="">
+															<img src="../../images/star.svg" alt="">
+															<img src="../../images/star.svg" alt="">
 														</div>
 														<p class="first-text">Aubree W. Charlotte, North Carolina</p>
 														<p>Just had a successful installation!</p>
 													</div>
 												</div>
 												<div class="block-stars__wrapper">
-													<img src="images/Rectangle12.png" alt="" class="block-stars__wrapper--image">
+													<img src="../../images/Rectangle12.png" alt="" class="block-stars__wrapper--image">
 													<div class="block-stars__wrapper--text">
 														<div class="stars-container">
-															<img src="images/star.svg" alt="">
-															<img src="images/star.svg" alt="">
-															<img src="images/star.svg" alt="">
-															<img src="images/star.svg" alt="">
-															<img src="images/star.svg" alt="">
+															<img src="../../images/star.svg" alt="">
+															<img src="../../images/star.svg" alt="">
+															<img src="../../images/star.svg" alt="">
+															<img src="../../images/star.svg" alt="">
+															<img src="../../images/star.svg" alt="">
 														</div>
 														<p class="first-text">Aubree W. Charlotte, North Carolina</p>
 														<p>Just had a successful installation!</p>
@@ -307,13 +307,13 @@ finest wood panel products from Roseburg Forest Products Panolam,Flakeboard...
 										<div class="second-block__second--wrapper">
 											<h3 class="second-block__second--subheading">Is <span>DIY</span> for me?</h3>
 											<h2 class="second-block__second--heading">Absolutely!</h2>
-											<img src="images/Group265.svg" alt="" class="second-block__second--first-img">
+											<img src="../../images/Group265.svg" alt="" class="second-block__second--first-img">
 											<p class="second-block__second--first-text">
 											Since 1985 we’ve had
 											over 100,00 successful DIY installations
 											</p>
 											<p class="second-block__second--second-text">
-												<img src="images/security-dark-gray.svg" alt="">
+												<img src="../../images/security-dark-gray.svg" alt="">
 												100% perfect fit guarantee
 											</p>
 											<a href="#" title="" class="second-block__second--button">
@@ -351,7 +351,7 @@ Virtual Google Hangouts consultation
 -->
 								</h2>
 								<button class="block-with-background__content--button" id="js-btn-mobile-show-modal">
-									<img src="images/Info2Btn.svg" alt="">
+									<img src="../../images/Info2Btn.svg" alt="">
 								</button>
 
 								<div class="block-with-background__content--mobile-popup" id="js-mobile-show-modal">
@@ -389,7 +389,7 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diamnonumy eirmod t
 										</a>
 									</div>
 									<a href="#" title="" class="images-link">
-										<img src="images/Meet1@2x.png" alt="" class="img-fluid">
+										<img src="../../images/Meet1@2x.png" alt="" class="img-fluid">
 									</a>
 								</div>
 							</div>
@@ -406,13 +406,13 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diamnonumy eirmod t
 				<div class="row">
 					<div class="col-12 col-xl-8">
 						<div class="you-design-block__image">
-							<img src="images/you-design.png" alt="" class="img-fluid">
+							<img src="../../images/you-design.png" alt="" class="img-fluid">
 						</div>
 					</div>
 					<div class="col-12 col-xl-4">
 						<div class="you-design-block__wrapper">
 							<p class="you-design-block__wrapper--perfect-fit">
-								<img src="images/security.svg" alt="">
+								<img src="../../images/security.svg" alt="">
 								100% Perfect fit guarantee
 							</p>
 							<h2 class="you-design-block__wrapper--heading">
@@ -431,7 +431,7 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eir...
 							</p>		
 							<div class="you-design-block__wrapper--text-group">
 								<div>
-									<img src="images/Group174.svg" alt="">
+									<img src="../../images/Group174.svg" alt="">
 									<p>10k 214</p>
 								</div>
 								<p>Current users in <span>design tool</span></p>
@@ -458,7 +458,7 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eir...
 					<div class="col-12 col-xl-4">
 						<div class="you-design-block__wrapper">
 							<p class="you-design-block__wrapper--perfect-fit">
-								<img src="images/security.svg" alt="">
+								<img src="../../images/security.svg" alt="">
 								100% Perfect fit guarantee
 							</p>
 							<h2 class="you-design-block__wrapper--heading">
@@ -477,7 +477,7 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eir...
 							</p>
 							<div class="you-design-block__wrapper--text-group">
 								<div>
-									<img src="images/Group174.svg" alt="">
+									<img src="../../images/Group174.svg" alt="">
 									<p>6k 873</p>
 								</div>
 								<p>Current users <span>submitting designs</span></p>
@@ -494,7 +494,7 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eir...
 					</div>
 					<div class="col-12 col-xl-8">
 						<div class="you-design-block__image">
-							<img src="images/we-design.png" alt="">
+							<img src="../../images/we-design.png" alt="">
 						</div>
 					</div>
 				</div>
@@ -557,42 +557,42 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
 							</div>
 							<div class="stars-wrapper">
 								<div class="block-stars__wrapper">
-									<img src="images/Rectangle12.png" alt="" class="block-stars__wrapper--image">
+									<img src="../../images/Rectangle12.png" alt="" class="block-stars__wrapper--image">
 									<div class="block-stars__wrapper--text">
 										<div class="stars-container">
-											<img src="images/star.svg" alt="">
-											<img src="images/star.svg" alt="">
-											<img src="images/star.svg" alt="">
-											<img src="images/star.svg" alt="">
-											<img src="images/star.svg" alt="">
+											<img src="../../images/star.svg" alt="">
+											<img src="../../images/star.svg" alt="">
+											<img src="../../images/star.svg" alt="">
+											<img src="../../images/star.svg" alt="">
+											<img src="../../images/star.svg" alt="">
 										</div>
 										<p class="first-text">Aubree W. Charlotte, North Carolina</p>
 										<p>Just had a successful installation!</p>
 									</div>
 								</div>
 								<div class="block-stars__wrapper">
-									<img src="images/Rectangle12.png" alt="" class="block-stars__wrapper--image">
+									<img src="../../images/Rectangle12.png" alt="" class="block-stars__wrapper--image">
 									<div class="block-stars__wrapper--text">
 										<div class="stars-container">
-											<img src="images/star.svg" alt="">
-											<img src="images/star.svg" alt="">
-											<img src="images/star.svg" alt="">
-											<img src="images/star.svg" alt="">
-											<img src="images/star.svg" alt="">
+											<img src="../../images/star.svg" alt="">
+											<img src="../../images/star.svg" alt="">
+											<img src="../../images/star.svg" alt="">
+											<img src="../../images/star.svg" alt="">
+											<img src="../../images/star.svg" alt="">
 										</div>
 										<p class="first-text">Aubree W. Charlotte, North Carolina</p>
 										<p>Just had a successful installation!</p>
 									</div>
 								</div>
 								<div class="block-stars__wrapper">
-									<img src="images/Rectangle12.png" alt="" class="block-stars__wrapper--image">
+									<img src="../../images/Rectangle12.png" alt="" class="block-stars__wrapper--image">
 									<div class="block-stars__wrapper--text">
 										<div class="stars-container">
-											<img src="images/star.svg" alt="">
-											<img src="images/star.svg" alt="">
-											<img src="images/star.svg" alt="">
-											<img src="images/star.svg" alt="">
-											<img src="images/star.svg" alt="">
+											<img src="../../images/star.svg" alt="">
+											<img src="../../images/star.svg" alt="">
+											<img src="../../images/star.svg" alt="">
+											<img src="../../images/star.svg" alt="">
+											<img src="../../images/star.svg" alt="">
 										</div>
 										<p class="first-text">Aubree W. Charlotte, North Carolina</p>
 										<p>Just had a successful installation!</p>
@@ -742,7 +742,7 @@ vehicular. lobortis. Nullam ut aliquet enim. Donec feugiat fringilla massa ut se
 					<figure class="col-12 col-lg-6 col-xl-4">
 						<div class="catalog-block__content">
 							<div class="catalog-block__content--image">
-								<img src="images/shopping-cart-catalog-1.png" alt="">
+								<img src="../../images/shopping-cart-catalog-1.png" alt="">
 							</div>
 							<figcaption class="desktop-show">
 								<p>Closet Solutions: DIY Online Designs</p>
@@ -760,7 +760,7 @@ vehicular. lobortis. Nullam ut aliquet enim. Donec feugiat fringilla massa ut se
 					<figure class="col-12 col-lg-6 col-xl-4 desktop-show">
 						<div class="catalog-block__content">
 							<div class="catalog-block__content--image">
-								<img src="images/shopping-cart-catalog-2.png" alt="">
+								<img src="../../images/shopping-cart-catalog-2.png" alt="">
 							</div>
 							<figcaption>
 								<p>Closet Solutions: DIY Online Designs</p>
@@ -778,7 +778,7 @@ vehicular. lobortis. Nullam ut aliquet enim. Donec feugiat fringilla massa ut se
 					<figure class="col-12 col-lg-6 col-xl-4 desktop-show">
 						<div class=" catalog-block__content">
 							<div class="catalog-block__content--image">
-								<img src="images/shopping-cart-catalog-3.png" alt="">
+								<img src="../../images/shopping-cart-catalog-3.png" alt="">
 							</div>
 							<figcaption>
 								<p>Closet Solutions: DIY Online Designs</p>
@@ -796,7 +796,7 @@ vehicular. lobortis. Nullam ut aliquet enim. Donec feugiat fringilla massa ut se
 					<figure class="col-12 col-lg-6 col-xl-4 desktop-show">
 						<div class="catalog-block__content">
 							<div class="catalog-block__content--image">
-								<img src="images/shopping-cart-catalog-4.png" alt="">
+								<img src="../../images/shopping-cart-catalog-4.png" alt="">
 							</div>
 							<figcaption>
 								<p>Closet Solutions: DIY Online Designs</p>
@@ -814,7 +814,7 @@ vehicular. lobortis. Nullam ut aliquet enim. Donec feugiat fringilla massa ut se
 					<figure class="col-12 col-lg-6 col-xl-4 desktop-show">
 						<div class="catalog-block__content">
 							<div class="catalog-block__content--image">
-								<img src="images/shopping-cart-catalog-5.png" alt="">
+								<img src="../../images/shopping-cart-catalog-5.png" alt="">
 							</div>
 							<figcaption>
 								<p>Closet Solutions: DIY Online Designs</p>
@@ -832,7 +832,7 @@ vehicular. lobortis. Nullam ut aliquet enim. Donec feugiat fringilla massa ut se
 					<figure class="col-12 col-lg-6 col-xl-4 desktop-show">
 						<div class="catalog-block__content">
 							<div class="catalog-block__content--center">
-								<img src="images/app.svg" alt="">	
+								<img src="../../images/app.svg" alt="">	
 								<figcaption>
 									<p>more categories waiting for you</p>
 									<a href="#" title="" class="link-button">
@@ -920,7 +920,7 @@ vehicular. lobortis. Nullam ut aliquet enim. Donec feugiat fringilla massa ut se
 
 <div class="scrollToTopBlock">
 <div class="people-working">
-<img src="images/people-working-call-center_@2x.png" alt="" class="people-working__image">
+<img src="../../images/people-working-call-center_@2x.png" alt="" class="people-working__image">
 <div class="people-working__wrapper">
 <div class="people-working__content">
 <p class="people-working__text">Hi! I'm the Virtual assistant, and I'm here to help you.</p>
@@ -928,14 +928,14 @@ vehicular. lobortis. Nullam ut aliquet enim. Donec feugiat fringilla massa ut se
 </div>
 </div>
 <a href="#" title="" class="scrollToTop js-to-top">
-<img src="images/arrows.svg" alt="">
+<img src="../../images/arrows.svg" alt="">
 </a>
 </div>
 
 <div class="mobile-show">
 <div class="mobile-footer-buttons">
 <a href="#" title="" class="mobile-footer-buttons__first">you design</a>
-<a href="#" title="" class="mobile-footer-buttons__second"><img src="images/icon-save.svg" alt="" class="img-fluid"></a>
+<a href="#" title="" class="mobile-footer-buttons__second"><img src="../../images/icon-save.svg" alt="" class="img-fluid"></a>
 <a href="#" title="" class="mobile-footer-buttons__third">we design</a>
 </div>
 </div>

@@ -142,7 +142,7 @@ $(document).ready(function () {
 				<fieldset class="colcontainer">
 					<div class="threecols">
 						<label>Name</label>
-						<input type="text" name="name" value="<?php echo prepFormInputStr($name); ?>" maxlength="160" size="30" />
+						<input type="text" name="name" value="<?php echo stripslashes($name); ?>" maxlength="160" size="30" />
 					</div>
 					<div class="threecols">
 						<label>Email Address</label>
@@ -150,7 +150,7 @@ $(document).ready(function () {
 					</div>
 					<div class="threecols">
 						<label>City State</label>
-						<input type="text" name="city_state" value="<?php echo prepFormInputStr($city_state); ?>" maxlength="160" size="30" />
+						<input type="text" name="city_state" value="<?php echo stripslashes($city_state); ?>" maxlength="160" size="30" />
 					</div>
 				
    					<div class="threecols">

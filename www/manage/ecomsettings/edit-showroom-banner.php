@@ -138,7 +138,7 @@ function goto_isfancybox(url){
 			
    				<div class="twocols">
                     <label>Image Alt Tag Text</label>
-                    <input id="img_alt_text" type="text" name="img_alt_text" value="<?php echo prepFormInputStr($_SESSION['temp_banner_fields']['img_alt_text']);; ?>" />
+                    <input id="img_alt_text" type="text" name="img_alt_text" value="<?php echo stripslashes($_SESSION['temp_banner_fields']['img_alt_text']);; ?>" />
                 </div>
 
             

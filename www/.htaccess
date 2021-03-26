@@ -52,9 +52,11 @@ RewriteRule ^product-([0-9]+)/([^/\.]+).html?$ template_default.php?slug=product
 #
 #
 #
-#
-#
 RewriteRule ^([^/\.]+).html?$ template_default.php?slug=$1 [L]
+#
+RewriteRule ^([^/\.]+)/([0-9]+).html?$ template_default.php?slug=$1&id=$2 [L]
+RewriteRule ^([^/\.]+)/([^/\.]+)/([0-9]+).html?$ template_default.php?slug=$2&id=$3 [L]
+
 #
 RewriteRule ^([^/\.]+)/([^/\.]+).html?$ template_default.php?slug=$2 [L]
 RewriteRule ^([^/\.]+)/([^/\.]+)/([^/\.]+).html?$ template_default.php?slug=$3 [L]

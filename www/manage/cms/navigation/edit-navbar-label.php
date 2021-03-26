@@ -152,7 +152,7 @@ $(document).ready(function(){
 
 			<div class="colcontainer">
 				<label>Label</label>
-				<input type="text" name="label" value="<?php echo prepFormInputStr($label); ?>"  >
+				<input type="text" name="label" value="<?php echo stripslashes($label); ?>"  >
 			</div>
 			
             

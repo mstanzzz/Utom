@@ -237,7 +237,7 @@ function get_query_str(){
 							<label>Blog Post Title</label>
 						</div>
 						<div class="twocols">
-							<input type="text" name="title" value="<?php echo prepFormInputStr($_SESSION["temp_blog_fields"]['title']); ?>" maxlength="255" />
+							<input type="text" name="title" value="<?php echo stripslashes($_SESSION["temp_blog_fields"]['title']); ?>" maxlength="255" />
 						</div>
 					</div>
                 	<div class="colcontainer formcols">

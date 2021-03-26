@@ -254,7 +254,7 @@ function regularSubmit() {
 
 
 <label>design_fax_number</label>
-<input type="text" name="design_fax_number"  style="width:520px" value="<?php echo prepFormInputStr($_SESSION['temp_page_fields']['design_fax_number']); ?>">
+<input type="text" name="design_fax_number"  style="width:520px" value="<?php echo stripslashes($_SESSION['temp_page_fields']['design_fax_number']); ?>">
                     
 <label>content</label>
 <textarea id="content" class="wysiwyg" name="content">

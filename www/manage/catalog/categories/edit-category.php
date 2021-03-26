@@ -399,7 +399,7 @@ if(!$strip){
 				</div>   				
                 <div class="colcontainer">
 					<label>Image Alt Tag text</label>
-					<input style="width:520px;" type="text" id="img_alt_text" name="img_alt_text" value="<?php echo prepFormInputStr($_SESSION['temp_cat_fields']['img_alt_text']); ?>"/>
+					<input style="width:520px;" type="text" id="img_alt_text" name="img_alt_text" value="<?php echo stripslashes($_SESSION['temp_cat_fields']['img_alt_text']); ?>"/>
 				</div>            
 
 			</fieldset>
@@ -409,12 +409,12 @@ if(!$strip){
 
 				<div class="colcontainer">
 				<label>Category Name</label>
-				<input style="width:600px;" name="name" type="text" value="<?php echo prepFormInputStr($_SESSION['temp_cat_fields']['name']); ?>" />
+				<input style="width:600px;" name="name" type="text" value="<?php echo stripslashes($_SESSION['temp_cat_fields']['name']); ?>" />
 				</div>                
 
 				<div class="colcontainer formcols">
 					<label>Short name for website navigation</label>
-					<input style="width:230px;" type="text" name="short_name" value="<?php echo prepFormInputStr($_SESSION['temp_cat_fields']['short_name']); ?>" />					
+					<input style="width:230px;" type="text" name="short_name" value="<?php echo stripslashes($_SESSION['temp_cat_fields']['short_name']); ?>" />					
                 </div>
 				<div class="colcontainer formcols">
 					<label>Tooltip</label>
@@ -422,7 +422,7 @@ if(!$strip){
 				</div>
 				<div class="colcontainer">
 				<label>Key Words</label>
-				<input style="width:600px;" name="key_words" type="text" value="<?php echo prepFormInputStr($_SESSION['temp_cat_fields']['key_words']); ?>" />
+				<input style="width:600px;" name="key_words" type="text" value="<?php echo stripslashes($_SESSION['temp_cat_fields']['key_words']); ?>" />
 				</div>                
 				<div class="colcontainer">
 					<label>Description</label>

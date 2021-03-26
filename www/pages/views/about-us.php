@@ -44,17 +44,6 @@
 	echo "p_9_text: ".$p_9_text;
 */
 
-?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta http-equiv="X-UA-Compatible" content="ie=edge" />
-<title>ClosetsToGo</title>
-<meta name="description" content="about-us"><link href="../../app.css" rel="stylesheet"></head>
-<body>
-<?php	
 require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php"); 	
 ?>	
 <section class="home-mobile-buttons-block covid-block">

@@ -1,29 +1,11 @@
 <?php
-
-
-
-if(!isset($_SERVER['DOCUMENT_ROOT'])){
-	if(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){    
-		$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
-	}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro/' )){
-		$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT'].'/designitpro';
-	}else{
-		$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT']; 	
-	}
-}
-
-
 require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
 
 $progress = new SetupProgress;
 $module = new Module;
 
-//profile_account_id = '".$_SESSION['profile_account_id']."'
-
 $page_title = "Specs Categories";
 $page_group = "specs";
-
-	
 
 $db = $dbCustom->getDbConnect(SITE_N_DATABASE);
 
@@ -62,7 +44,6 @@ if(isset($_POST["edit_spec_cat"])){
 	$category_name, $spec_cat_id);
 
 	$result = $dbCustom->getResult($db,$sql);
-	
 
 	$msg = "Your change is live.";
 
@@ -79,23 +60,11 @@ if(isset($_POST["del_spec_category"])){
 	$msg = "Your change is live.";
 }
 
-
-
 require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php'); 
-
-
 ?>
 
 
 <script>
-
-$(document).ready(function() {
-	$('.fancybox').fancybox({
-		autoSize : false,
-		height : 800,
-		width : 900	
-	});
-});
 
 </script>
 </head>
@@ -112,25 +81,10 @@ $(document).ready(function() {
     </div>	
     <div class="manage_main">
 		<?php 
-   		require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/class.admin_bread_crumb.php");	
-		$bread_crumb = new AdminBreadCrumb;
-		$bread_crumb->reSet();
-		$bread_crumb->add("CMS", $ste_root."manage/cms/cms-landing.php");
-		$bread_crumb->add("Pages", $ste_root."manage/cms/pages/page.php");
-		$bread_crumb->add("Specs", $ste_root."manage/cms/pages/specs.php");
-		$bread_crumb->add("Specs Categories", '');
-        echo $bread_crumb->output();
-		
-        require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-content-top.php');
         
 		//specs section tabbed sub-navigation
         require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/specs-section-tabs.php");
 		?>
-
-
-
-
-
 
 
 
@@ -181,12 +135,8 @@ $(document).ready(function() {
 		</form>
     </div>
     <p class="clear"></p>
+</div>
 
-<?php 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-footer.php');
-?>
-
-    </div>
 
 	<div id="content-delete" class="confirm-content">
 		<h3>Are you sure you want to delete this Category?</h3>

@@ -198,7 +198,7 @@ $result = $dbCustom->getResult($db,$sql);if($result->num_rows > 0){
                 <div class="center">      
                     <div class="colcontainer">
                         <label>Document Name</label>
-                        <input type="text" name="name" value="<?php echo prepFormInputStr($name); ?>"/>
+                        <input type="text" name="name" value="<?php echo stripslashes($name); ?>"/>
                     </div> 
                     <div class="colcontainer">
                         <label>Vendor Manufacturer</label>

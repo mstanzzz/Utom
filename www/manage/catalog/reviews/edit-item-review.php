@@ -180,7 +180,7 @@ if(!$strip){
 							<label>Headline</label>
 						</div>
 						<div class="twocols">
-							<input type="text" name="headline" value="<?php echo prepFormInputStr($headline); ?>" />
+							<input type="text" name="headline" value="<?php echo stripslashes($headline); ?>" />
 						</div>
 					</div>
                     <div class="colcontainer formcols">
@@ -233,7 +233,7 @@ if(!$strip){
          					<label>Name</label>
 						</div>
 						<div class="twocols">
-          					<input type="text" name="name" value="<?php echo prepFormInputStr($name); ?>"  />
+          					<input type="text" name="name" value="<?php echo stripslashes($name); ?>"  />
 						</div>
 					</div>
 					<div class="colcontainer formcols">
@@ -241,7 +241,7 @@ if(!$strip){
 							<label>City</label>
 						</div>
 						<div class="twocols">
-							<input type="text" name="city" value="<?php echo prepFormInputStr($city); ?>"  />
+							<input type="text" name="city" value="<?php echo stripslashes($city); ?>"  />
 						</div>
 					</div>
                     

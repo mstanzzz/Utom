@@ -86,7 +86,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php');
 			<fieldset class="colcontainer">
 				<div class="twocols">
 					<label>Label</label>
-            		<input type="text" name="label" value="<?php echo prepFormInputStr($label); ?>">
+            		<input type="text" name="label" value="<?php echo stripslashes($label); ?>">
 				</div>
                 <div class="twocols">
 					<label>Selectable Page</label>
@@ -107,7 +107,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php');
             <div class="colcontainer">
                 If there is a custom url, selectable page will be ignored.<br />
                 <label>Custom URL</label>
-                <input type="text" name="custom_url" value="<?php echo prepFormInputStr($custom_url); ?>" style="width:300px;">
+                <input type="text" name="custom_url" value="<?php echo stripslashes($custom_url); ?>" style="width:300px;">
 			</div>
             <br />
 			<div class="colcontainer">

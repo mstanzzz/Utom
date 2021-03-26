@@ -1,11 +1,36 @@
-<!--
-
--->
 <?php	
+
+if(!isset($hero_file_name)) $hero_file_name = '';
+
+if($hero_file_name == ''){
+	
+	$hero = '../../images/organizer-landing-pahe-header.png';
+	
+}else{
+
+	$hero = '';
+
+	$hero .= "../../saascustuploads/";
+	$hero .= $_SESSION['profile_account_id'];
+	$hero .= "/cms/";
+	$hero .= $hero_file_name;
+	//$hero = preg_replace('/(\/+)/','/',$im);
+
+}
+
+//echo "hero ".$hero;
+//exit;
+
+//$hero = '../../images/organizer-landing-pahe-header.png';
+
+
 require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php"); 	
 ?>	
 
+
+
 <section class="home-mobile-buttons-block covid-block">
+
 	<div class="accordion accordion-organizer-landing-page" id="accordion-organizer-landing">
 		<div class="card">
 			<div class="card-header" id="headingOne">
@@ -91,23 +116,41 @@ require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php");
 </section>
 
 <section class="first-fixed-block covid-block organizer-landing-page clearfix">
-	<figure class="col-12 first-fixed-block__img-group" style="background-image: url('../../images/organizer-landing-pahe-header.png');">
+
+<?php 
+//../../images/organizer-landing-pahe-header.png
+//echo $hero;
+?>
+<figure class="col-12 first-fixed-block__img-group" 
+style="background-image: url('<?php echo $hero; ?>');">
+
 		<figcaption class="first-fixed-block__img-group--text-block">
+
 			<div class="wrapper text-center">
-				<h1 class="first-fixed-block__img-group--heading text-center">Gallery</h1>
-				<h3 class="first-fixed-block__img-group--subheading text-center">Get ideas. Be inspired.</h3>
-				<!-- <p class="first-fixed-block__img-group--text dark-color">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> -->
+
+<h1 class="first-fixed-block__img-group--heading text-center">Gallery</h1>
+<h3 class="first-fixed-block__img-group--subheading text-center">Get ideas. Be inspired.</h3>
+
+			<!-- <p class="first-fixed-block__img-group--text dark-color">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> -->
+				
 				<a href="#" title="" class="link-button">
 					Explore now
+					
 					<svg xmlns="http://www.w3.org/2000/svg" width="20.8" height="14.623" viewBox="0 0 20.8 14.623">
 						<path id="left-arrow_3_" data-name="left-arrow(3)" d="M14.014,4.9a.737.737,0,1,0-1.048,1.038l5.314,5.314H.744A.738.738,0,0,0,0,11.982a.747.747,0,0,0,.744.744H18.281l-5.314,5.3a.752.752,0,0,0,0,1.048.734.734,0,0,0,1.048,0l6.573-6.573a.739.739,0,0,0,0-1.038Z" transform="translate(0.001 -4.676)"></path>
 					</svg>
+					
 				</a>
+				
 			</div>
 		</figcaption>
 	</figure>
+
+
+
 </section>
 
+	
 <main class="main hero-block organizer-landing-page clearfix">
 	<section class="organizer-filters-block desktop-show">
 		<div class="wrapper">
@@ -310,7 +353,8 @@ require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php");
 				</div>
 			</section>
 
-			<section class="catalog-block organizer-landing-page">
+
+		<section class="catalog-block organizer-landing-page">
 				<div class="wrapper">
 					<div class="container-fluid">
 						<div class="row">
@@ -322,7 +366,7 @@ require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php");
 							<figure class="col-12 col-lg-6 col-xl-4">
 								<a href="#" title="" class="catalog-block__content">
 									<div class="catalog-block__content--image">
-										<img src="../../images/shopping-cart-catalog-1.png" alt="">
+<img src="../../images/shopping-cart-catalog-1.png" alt="">
 									</div>
 									<figcaption>
 										<p>Closet Solutions: DIY Online Designs</p>

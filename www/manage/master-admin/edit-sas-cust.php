@@ -246,7 +246,7 @@ $result = $dbCustom->getResult($db,$sql);		$object = $result->fetch_object();
 							<label>Company</label>
 						</div>
 						<div class="twocols">
-							<input type="text" name="company"  maxlength="160" value="<?php echo prepFormInputStr($object->company);  ?>" />
+							<input type="text" name="company"  maxlength="160" value="<?php echo stripslashes($object->company);  ?>" />
 						</div>
 					</div>
 					<div class="colcontainer formcols">
@@ -282,7 +282,7 @@ $result = $dbCustom->getResult($db,$sql);		$object = $result->fetch_object();
 								}
 							
 							?>
-							<input type="text" name="admin_name"  maxlength="160"  value="<?php echo prepFormInputStr($admin_name);  ?>"/>
+							<input type="text" name="admin_name"  maxlength="160"  value="<?php echo stripslashes($admin_name);  ?>"/>
 						</div>
 					</div>
 					<div class="colcontainer formcols">
@@ -445,11 +445,11 @@ $result = $dbCustom->getResult($db,$sql);		$object = $result->fetch_object();
 					<div class="colcontainer">
 						<div class="twocols">
 							<label>First Name</label>
-							<input type="text" name="billing_name_first"  value="<?php echo prepFormInputStr($object->billing_name_first);  ?>" maxlength="160"  />
+							<input type="text" name="billing_name_first"  value="<?php echo stripslashes($object->billing_name_first);  ?>" maxlength="160"  />
 						</div>
 						<div class="twocols">
 							<label>Last Name</label>
-							<input type="text" name="billing_name_last" value="<?php echo prepFormInputStr($object->billing_name_last);  ?>" maxlength="160"  />
+							<input type="text" name="billing_name_last" value="<?php echo stripslashes($object->billing_name_last);  ?>" maxlength="160"  />
 						</div>
 					</div>
 					<div class="colcontainer formcols">
@@ -524,11 +524,11 @@ $result = $dbCustom->getResult($db,$sql);		$object = $result->fetch_object();
 					<div class="colcontainer">
 						<div class="twocols">
 							<label>first name</label>
-							<input type="text" name="name_first"  maxlength="160"  value="<?php echo prepFormInputStr($object->name_first);  ?>" />
+							<input type="text" name="name_first"  maxlength="160"  value="<?php echo stripslashes($object->name_first);  ?>" />
 						</div>
 						<div class="twocols">
 							<label>last name</label>
-							<input type="text" name="name_last"  maxlength="160"  value="<?php echo prepFormInputStr($object->name_last);  ?>" />
+							<input type="text" name="name_last"  maxlength="160"  value="<?php echo stripslashes($object->name_last);  ?>" />
 						</div>
 					</div>
 					<div class="colcontainer">
@@ -538,13 +538,13 @@ $result = $dbCustom->getResult($db,$sql);		$object = $result->fetch_object();
 						</div>
 						<div class="twocols">
 							<label>address</label>
-							<input type="text" name="address"  maxlength="160"  value="<?php echo prepFormInputStr($object->address);  ?>" />
+							<input type="text" name="address"  maxlength="160"  value="<?php echo stripslashes($object->address);  ?>" />
 						</div>
 					</div>
 					<div class="colcontainer">
 						<div class="twocols">
 							<label>city</label>
-							<input type="text" name="city"  maxlength="160"  value="<?php echo prepFormInputStr($object->city);  ?>" />
+							<input type="text" name="city"  maxlength="160"  value="<?php echo stripslashes($object->city);  ?>" />
 						</div>
 						<div class="twocols">
 							<label>state</label>

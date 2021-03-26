@@ -58,6 +58,18 @@ class Pages{
 					(img_id, hide, title, profile_account_id)
 				VALUES('".$new_img_id."', '0', 'Title Here', '".$new_profile_account_id."')";		
 		$l_res = $dbCustom->getResult($db,$sql);
+
+
+
+
+
+		$sql = "INSERT INTO features 
+			(content, last_update, profile_account_id) 
+			VALUES ('features content goes here', '".$ts."', '".$new_profile_account_id."')"; 
+		$result = $dbCustom->getResult($db,$sql);
+
+
+
 		
 		/*
 		$sql = "INSERT INTO design 
@@ -473,10 +485,22 @@ class Pages{
 		$result = $dbCustom->getResult($db,$sql);
 		
 
+		/* OLD SITE
 		$sql = "INSERT INTO showroom 
 			(last_update, profile_account_id) 
 			VALUES ('".$ts."', '".$new_profile_account_id."')"; 
 		$result = $dbCustom->getResult($db,$sql);
+		*/
+
+		
+		//showroom-detail-view-categories
+		$sql = "INSERT INTO showroom 
+			(last_update, profile_account_id) 
+			VALUES ('".$ts."', '".$new_profile_account_id."')"; 
+		$result = $dbCustom->getResult($db,$sql);
+
+
+
 
 
 		
@@ -770,6 +794,23 @@ class Pages{
 			";	
 	$result = $dbCustom->getResult($db,$sql);			
 
+
+
+
+			$sql = "
+			INSERT INTO page_seo
+			(
+			page_name
+			,seo_name
+			,profile_account_id
+			)VALUES(
+			'features'
+			,'features'
+			,'".$new_profile_account_id."'			
+			)	
+			";	
+	$result = $dbCustom->getResult($db,$sql);			
+
 			
 			$sql = "
 			INSERT INTO page_seo
@@ -843,7 +884,7 @@ class Pages{
 	$result = $dbCustom->getResult($db,$sql);			
 			
 
-
+	//showroom-detail-view-categories
 			$sql = "
 			INSERT INTO page_seo
 			(
@@ -1560,6 +1601,13 @@ class Pages{
 		$result = $dbCustom->getResult($db,$sql);
 
 
+		$sql = "DELETE FROM features 
+				WHERE profile_account_id = '".$profile_account_id."'";
+		$result = $dbCustom->getResult($db,$sql);
+
+
+
+
 		$sql = "DELETE FROM design_email_content 
 				WHERE profile_account_id = '".$profile_account_id."'";
 		$result = $dbCustom->getResult($db,$sql);
@@ -2041,11 +2089,11 @@ class Pages{
 			$sql .= "AND active = '1'";
 		}
 
-		if(!$module->hasDesignServicesModule($profile_account_id)){
+		//if(!$module->hasDesignServicesModule($profile_account_id)){
 			$sql = "AND page_name != 'we-design-fax'
 					AND page_name != 'email-design'
 					AND page_name != 'we-design'";	
-		}
+		//}
 
 		$result = $dbCustom->getResult($db,$sql);
         
@@ -2102,7 +2150,6 @@ class Pages{
 		AND page_name != 'news-more'
 		AND page_name != 'quick-installation'
 		AND page_name != 'shop'
-		AND page_name != 'showroom-details'
 		AND page_name != 'signup-form'
 		AND page_name != 'social-network'
 		AND page_name != 'social-network-about'
@@ -2149,7 +2196,14 @@ class Pages{
 
 
 
+			//showroom-detail-view-categories
 
+			if($row->page_name == 'showroom'){
+				
+				$sql = "SELECT max(showroom_id) AS id FROM showroom 
+				WHERE profile_account_id = '".$profile_account_id."'";
+				
+			}
 
 
 			if($row->page_name == 'support'){
@@ -2168,6 +2222,29 @@ class Pages{
 				
 				$page_list_array[$i]['page_id'] = $page_id;
 				$page_list_array[$i]['page_manage_path'] = "support.php?support_id=".$page_id;							
+
+			}
+
+
+			//features
+			if($row->page_name == 'features'){
+				
+				
+		        $sql = "SELECT max(features_id) AS id FROM features 
+				WHERE profile_account_id = '".$profile_account_id."'";
+				
+				$p_res = $dbCustom->getResult($db,$sql);
+				if($p_res->num_rows > 0){
+					
+					$p_obj = $p_res->fetch_object();
+					
+					$page_id = $p_obj->id;	
+				}else{
+					$page_id = 0;
+				}
+				
+				$page_list_array[$i]['page_id'] = $page_id;
+				$page_list_array[$i]['page_manage_path'] = "features.php?features_id=".$page_id;							
 
 			}
 

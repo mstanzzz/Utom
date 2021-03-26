@@ -91,7 +91,7 @@ $result = $dbCustom->getResult($db,$sql);		if($result->num_rows > 0){
 				<fieldset class="colcontainer">
 					<div class="threecols">
 						<label>Name</label>
-						<input type="text" name="name" value="<?php echo prepFormInputStr($name); ?>" maxlength="160" size="30" />
+						<input type="text" name="name" value="<?php echo stripslashes($name); ?>" maxlength="160" size="30" />
 					</div>
 					<div class="threecols">
 						<label>Email Address</label>
@@ -99,7 +99,7 @@ $result = $dbCustom->getResult($db,$sql);		if($result->num_rows > 0){
 					</div>
 					<div class="threecols">
 						<label>City State</label>
-						<input type="text" name="city_state" value="<?php echo prepFormInputStr($city_state); ?>" maxlength="160" size="30" />
+						<input type="text" name="city_state" value="<?php echo stripslashes($city_state); ?>" maxlength="160" size="30" />
 					</div>
 				</fieldset>
 				<fieldset class="colcontainer"> 
