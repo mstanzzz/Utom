@@ -8,7 +8,7 @@
 		<title>ClosetsToGo</title>
 	<meta name="description" content="product detail view"><link href="app.css" rel="stylesheet"></head>
 
-	<body class="clearfix product-detail">
+	<body class="clearfix product-detail product-detail__page">
 
 		<header class="header-covid  clearfix">
 			<div class="first-header">
@@ -808,11 +808,11 @@
 												multiple
 												title="Color"
 										>
-											<option  class="my-custom-option">Black</option>
-											<option  class="my-custom-option">Gray</option>
-											<option  class="my-custom-option">Green</option>
-											<option  class="my-custom-option">Blue</option>
-											<option  class="my-custom-option">Red</option>
+											<option class="my-custom-option">Black</option>
+											<option class="my-custom-option">Gray</option>
+											<option class="my-custom-option">Green</option>
+											<option class="my-custom-option">Blue</option>
+											<option class="my-custom-option">Red</option>
 										</select>
 									</div>
 									<div class="bootstrap-select__ctg">
@@ -821,11 +821,11 @@
 												multiple
 												title="Shape"
 										>
-											<option  class="my-custom-option">Elipse</option>
-											<option  class="my-custom-option">Gray</option>
-											<option  class="my-custom-option">Green</option>
-											<option  class="my-custom-option">Blue</option>
-											<option  class="my-custom-option">Red</option>
+											<option class="my-custom-option">Elipse</option>
+											<option class="my-custom-option">Gray</option>
+											<option class="my-custom-option">Green</option>
+											<option class="my-custom-option">Blue</option>
+											<option class="my-custom-option">Red</option>
 										</select>
 									</div>
 									<div class="bootstrap-select__ctg">
@@ -834,11 +834,11 @@
 												multiple
 												title="Size"
 										>
-											<option  class="my-custom-option">XXL</option>
-											<option  class="my-custom-option">XL</option>
-											<option  class="my-custom-option">L</option>
-											<option  class="my-custom-option">M</option>
-											<option  class="my-custom-option">S</option>
+											<option class="my-custom-option">XXL</option>
+											<option class="my-custom-option">XL</option>
+											<option class="my-custom-option">L</option>
+											<option class="my-custom-option">M</option>
+											<option class="my-custom-option">S</option>
 										</select>
 									</div>
 									<div class="bootstrap-select__ctg">
@@ -847,11 +847,11 @@
 												multiple
 												title="Fabric"
 										>
-											<option  class="my-custom-option">Cotton</option>
-											<option  class="my-custom-option">XL</option>
-											<option  class="my-custom-option">Red</option>
-											<option  class="my-custom-option">Gray123</option>
-											<option  class="my-custom-option">S</option>
+											<option class="my-custom-option">Cotton</option>
+											<option class="my-custom-option">XL</option>
+											<option class="my-custom-option">Red</option>
+											<option class="my-custom-option">Gray123</option>
+											<option class="my-custom-option">S</option>
 										</select>
 									</div>
 
@@ -861,11 +861,11 @@
 												multiple
 												title="Specification"
 										>
-											<option  class="my-custom-option">80*60*40cm</option>
-											<option  class="my-custom-option">60*40*30cm</option>
-											<option  class="my-custom-option">50*40*30cm</option>
-											<option  class="my-custom-option">40*40*25cm</option>
-											<option  class="my-custom-option">33*15*85cm</option>
+											<option class="my-custom-option">80*60*40cm</option>
+											<option class="my-custom-option">60*40*30cm</option>
+											<option class="my-custom-option">50*40*30cm</option>
+											<option class="my-custom-option">40*40*25cm</option>
+											<option class="my-custom-option">33*15*85cm</option>
 										</select>
 									</div>
 
@@ -1287,7 +1287,7 @@
 										</div>
 									</div>
 
-									<div class="dropdown dropdown__filter" style="min-width: 130px">
+									<div class="dropdown dropdown__filter" style="min-width: 135px">
 										<label class="dropdown-label dropdown-label__filter"
 											   data-default-text="Specification">Specification</label>
 
@@ -1385,21 +1385,9 @@
 									<div class="row">
 										<div class="col-12">
 											<div class="product-detail__carousel image-gallery js-add-to-card-image-holder">
-												<div class="embed-responsive embed-responsive-4by3">
-													<iframe class="yvideo" width="100%" height="100%"
-															src="https://www.youtube.com/embed/Wb0JINqX71w?autoplay=0&amp;enablejsapi=1"
-															frameborder="0"
-															allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-															allowfullscreen=""></iframe>
-												</div>
-												<a href="images/showroom-1.png" title="Lorem ipsum">
-													<img src="images/showroom-1.png" alt="" class="img-fluid">
-												</a>
-												<a href="images/showroom-1.png" title="Lorem ipsum">
-													<img src="images/showroom-1.png" alt="" class="img-fluid">
-												</a>
-												<a href="images/showroom-1.png" title="Lorem ipsum">
-													<img src="images/showroom-1.png" alt="" class="img-fluid">
+												<a href="https://www.youtube.com/embed/Wb0JINqX71w"
+												   data-poster="images/yt-placeholder.png">
+													<img src="images/yt-placeholder.png" alt="" class="img-fluid"/>
 												</a>
 												<a href="images/showroom-1.png" title="Lorem ipsum">
 													<img src="images/showroom-1.png" alt="" class="img-fluid">
@@ -1435,19 +1423,7 @@
 										<div class="col-12">
 											<div class="product-detail__carousel-nav">
 												<div>
-													<img src="images/img-video.png" alt=""
-														 class="img-fluid prod-detail__nav-img">
-												</div>
-												<div>
-													<img src="images/showroom-1.png" alt=""
-														 class="img-fluid prod-detail__nav-img">
-												</div>
-												<div>
-													<img src="images/showroom-1.png" alt=""
-														 class="img-fluid prod-detail__nav-img">
-												</div>
-												<div>
-													<img src="images/showroom-1.png" alt=""
+													<img src="images/yt-placeholder.png" alt=""
 														 class="img-fluid prod-detail__nav-img">
 												</div>
 												<div>
@@ -1564,9 +1540,9 @@
 										</div>
 									</div>
 								</div>
-								<div class="row">
+								<div class="row product-collapse-container">
 									<div class="col-12">
-										<div class="product-nav-wrap">
+										<div class="product-nav-wrap" data-nav="showroom-detail-product-nav">
 											<div class="product-nav-wrap__content">
 												<button class="product-nav-wrap__prev" style="display: none;">
 													<svg xmlns="http://www.w3.org/2000/svg" height="24"
@@ -1610,7 +1586,7 @@
 												</button>
 											</div>
 										</div>
-										<div class="tab-content product-tab-content" id="pills-tabContent">
+										<div class="tab-content product-tab-content" id="pills-tabContent" data-target="pills-tabContent">
 											<div class="tab-pane fade show active" id="pills-description"
 												 role="tabpanel" aria-labelledby="pills-description-tab">
 												<div class="tab-content__text-wrap js-text-wrap">
@@ -1907,7 +1883,8 @@
 																				<img src="images/specification-description-1.png"
 																					 alt="" class="img-fluid">
 																				<div class="tab-content__specifications--description-text">
-																					<p class="heading">Drawer Openings</p>
+																					<p class="heading">Drawer
+																						Openings</p>
 																					<p>
 																						<span>30" w/ full ext. slides</span>
 																						<span>39" on hutches</span>
@@ -1929,7 +1906,8 @@
 																				<img src="images/specification-description-3.png"
 																					 alt="" class="img-fluid">
 																				<div class="tab-content__specifications--description-text">
-																					<p class="heading">Drawer Face Heights</p>
+																					<p class="heading">Drawer Face
+																						Heights</p>
 																					<p>
 																						<span>5" - 7.5" - 6.25"</span>
 																						<span>10" - 12.5"</span>
@@ -1944,15 +1922,18 @@
 																	</div>
 																	<div class="tab-content__specifications--description-wrap"
 																		 id="materials">
-																		<p class="first-footer__heading mb-3">Materials</p>
+																		<p class="first-footer__heading mb-3">
+																			Materials</p>
 																	</div>
 																	<div class="tab-content__specifications--description-wrap"
 																		 id="useful-tips">
-																		<p class="first-footer__heading mb-3">usefull tips</p>
+																		<p class="first-footer__heading mb-3">usefull
+																			tips</p>
 																	</div>
 																	<div class="tab-content__specifications--description-wrap"
 																		 id="useful-links">
-																		<p class="first-footer__heading mb-3">useful links</p>
+																		<p class="first-footer__heading mb-3">useful
+																			links</p>
 																	</div>
 																</div>
 															</div>
@@ -2082,6 +2063,18 @@
 											<div class="tab-pane fade" id="pills-Installations" role="tabpanel"
 												 aria-labelledby="pills-Installations-tab">
 												<div class="product-dyi-installer mt-2">
+													<div class="row">
+														<div class="col-12">
+															<div class="embed-responsive embed-responsive-16by9 mb-4">
+																<iframe class="embed-responsive-item" width="100%"
+																		height="auto"
+																		src="https://www.youtube.com/embed/Wb0JINqX71w"
+																		title="YouTube video player" frameborder="0"
+																		allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+																		allowfullscreen></iframe>
+															</div>
+														</div>
+													</div>
 													<div class="row">
 														<div class="col-12">
 															<div class="row">
