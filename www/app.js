@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 5);
+/******/ 	return __webpack_require__(__webpack_require__.s = 6);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -9558,7 +9558,7 @@
 
   return jQuery;
 });
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(6)(module)))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(3)(module)))
 
 /***/ }),
 /* 1 */
@@ -9568,7 +9568,7 @@
 /* WEBPACK VAR INJECTION */(function($, jQuery) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return carouselById; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return mobilePredNextButtons; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return desctopPredNextButtons; });
-/* harmony import */ var bootstrap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(3);
+/* harmony import */ var bootstrap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(4);
 /* harmony import */ var bootstrap__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(bootstrap__WEBPACK_IMPORTED_MODULE_0__);
 
 function carouselById(carousel, carouselNav, vertical) {
@@ -9816,7 +9816,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 (function (factory) {
   if (true) {
     // AMD. Register as an anonymous module.
-    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(0), __webpack_require__(7)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
+    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(0), __webpack_require__(8)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
 				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
 				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
@@ -10477,6 +10477,35 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 
 /***/ }),
 /* 3 */
+/***/ (function(module, exports) {
+
+module.exports = function (module) {
+  if (!module.webpackPolyfill) {
+    module.deprecate = function () {};
+
+    module.paths = []; // module.parent = undefined by default
+
+    if (!module.children) module.children = [];
+    Object.defineProperty(module, "loaded", {
+      enumerable: true,
+      get: function get() {
+        return module.l;
+      }
+    });
+    Object.defineProperty(module, "id", {
+      enumerable: true,
+      get: function get() {
+        return module.i;
+      }
+    });
+    module.webpackPolyfill = 1;
+  }
+
+  return module;
+};
+
+/***/ }),
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -10487,7 +10516,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
 (function (global, factory) {
-  ( false ? undefined : _typeof(exports)) === 'object' && typeof module !== 'undefined' ? factory(exports, __webpack_require__(0), __webpack_require__(4)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [exports, __webpack_require__(0), __webpack_require__(4)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
+  ( false ? undefined : _typeof(exports)) === 'object' && typeof module !== 'undefined' ? factory(exports, __webpack_require__(0), __webpack_require__(5)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [exports, __webpack_require__(0), __webpack_require__(5)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
 				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
 				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : (undefined);
@@ -14911,7 +14940,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 });
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -17531,91 +17560,94 @@ Popper.Utils = (typeof window !== 'undefined' ? window : global).PopperUtils;
 Popper.placements = placements;
 Popper.Defaults = Defaults;
 /* harmony default export */ __webpack_exports__["default"] = (Popper);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(8)))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(9)))
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(0);
-/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var jquery_ui__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(2);
-/* harmony import */ var jquery_ui__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(jquery_ui__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(3);
-/* harmony import */ var bootstrap__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(bootstrap__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var slick_carousel__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(9);
-/* harmony import */ var slick_carousel__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(slick_carousel__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _styles_styles_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(10);
-/* harmony import */ var _styles_styles_scss__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_styles_styles_scss__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var bootstrap_datepicker__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(11);
-/* harmony import */ var bootstrap_datepicker__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(bootstrap_datepicker__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var bootstrap_select__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(12);
-/* harmony import */ var bootstrap_select__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(bootstrap_select__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var lightgallery__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(13);
-/* harmony import */ var lightgallery__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(lightgallery__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var lg_video__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(14);
-/* harmony import */ var lg_video__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(lg_video__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var _scripts_lightgallery__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(15);
-/* harmony import */ var _scripts_general__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(16);
-/* harmony import */ var _scripts_collapse__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(17);
-/* harmony import */ var _scripts_collapse__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(_scripts_collapse__WEBPACK_IMPORTED_MODULE_11__);
-/* harmony import */ var _scripts_slick__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(18);
-/* harmony import */ var _scripts_slick__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(_scripts_slick__WEBPACK_IMPORTED_MODULE_12__);
-/* harmony import */ var _scripts_drag_drop_image__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(19);
-/* harmony import */ var _scripts_drag_drop_image__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(_scripts_drag_drop_image__WEBPACK_IMPORTED_MODULE_13__);
-/* harmony import */ var _scripts_dropdown_open_checkout__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(20);
-/* harmony import */ var _scripts_dropdown_open_checkout__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(_scripts_dropdown_open_checkout__WEBPACK_IMPORTED_MODULE_14__);
-/* harmony import */ var _scripts_checkout_item_remove_border__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(21);
-/* harmony import */ var _scripts_checkout_item_remove_border__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(_scripts_checkout_item_remove_border__WEBPACK_IMPORTED_MODULE_15__);
-/* harmony import */ var _scripts_select_all_check_boxes__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(22);
-/* harmony import */ var _scripts_select_all_check_boxes__WEBPACK_IMPORTED_MODULE_16___default = /*#__PURE__*/__webpack_require__.n(_scripts_select_all_check_boxes__WEBPACK_IMPORTED_MODULE_16__);
-/* harmony import */ var _scripts_sticky_card_checkout__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(23);
-/* harmony import */ var _scripts_sticky_card_checkout__WEBPACK_IMPORTED_MODULE_17___default = /*#__PURE__*/__webpack_require__.n(_scripts_sticky_card_checkout__WEBPACK_IMPORTED_MODULE_17__);
-/* harmony import */ var _scripts_modal__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(24);
-/* harmony import */ var _scripts_modal__WEBPACK_IMPORTED_MODULE_18___default = /*#__PURE__*/__webpack_require__.n(_scripts_modal__WEBPACK_IMPORTED_MODULE_18__);
-/* harmony import */ var _scripts_file_upload__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(25);
-/* harmony import */ var _scripts_file_upload__WEBPACK_IMPORTED_MODULE_19___default = /*#__PURE__*/__webpack_require__.n(_scripts_file_upload__WEBPACK_IMPORTED_MODULE_19__);
-/* harmony import */ var _scripts_login_slide__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(26);
-/* harmony import */ var _scripts_login_slide__WEBPACK_IMPORTED_MODULE_20___default = /*#__PURE__*/__webpack_require__.n(_scripts_login_slide__WEBPACK_IMPORTED_MODULE_20__);
-/* harmony import */ var _scripts_mobile_sticky_header__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(27);
-/* harmony import */ var _scripts_mobile_sticky_header__WEBPACK_IMPORTED_MODULE_21___default = /*#__PURE__*/__webpack_require__.n(_scripts_mobile_sticky_header__WEBPACK_IMPORTED_MODULE_21__);
-/* harmony import */ var _scripts_select_custom__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(28);
-/* harmony import */ var _scripts_select_custom__WEBPACK_IMPORTED_MODULE_22___default = /*#__PURE__*/__webpack_require__.n(_scripts_select_custom__WEBPACK_IMPORTED_MODULE_22__);
-/* harmony import */ var _scripts_input_auto_focus__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(29);
-/* harmony import */ var _scripts_input_auto_focus__WEBPACK_IMPORTED_MODULE_23___default = /*#__PURE__*/__webpack_require__.n(_scripts_input_auto_focus__WEBPACK_IMPORTED_MODULE_23__);
-/* harmony import */ var _scripts_iframe_load_wpage__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(30);
-/* harmony import */ var _scripts_iframe_load_wpage__WEBPACK_IMPORTED_MODULE_24___default = /*#__PURE__*/__webpack_require__.n(_scripts_iframe_load_wpage__WEBPACK_IMPORTED_MODULE_24__);
-/* harmony import */ var _scripts_datapicker__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(31);
-/* harmony import */ var _scripts_datapicker__WEBPACK_IMPORTED_MODULE_25___default = /*#__PURE__*/__webpack_require__.n(_scripts_datapicker__WEBPACK_IMPORTED_MODULE_25__);
-/* harmony import */ var _scripts_modal_snipped__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(33);
-/* harmony import */ var _scripts_modal_snipped__WEBPACK_IMPORTED_MODULE_26___default = /*#__PURE__*/__webpack_require__.n(_scripts_modal_snipped__WEBPACK_IMPORTED_MODULE_26__);
-/* harmony import */ var _scripts_product_details__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(34);
-/* harmony import */ var _scripts_account__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(35);
-/* harmony import */ var _scripts_about_us__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(36);
-/* harmony import */ var _scripts_shopping_card_detached_elements__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(37);
-/* harmony import */ var _scripts_shopping_card_detached_elements__WEBPACK_IMPORTED_MODULE_30___default = /*#__PURE__*/__webpack_require__.n(_scripts_shopping_card_detached_elements__WEBPACK_IMPORTED_MODULE_30__);
-/* harmony import */ var _scripts_input_counter_with_buttons__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(38);
-/* harmony import */ var _scripts_input_counter_with_buttons__WEBPACK_IMPORTED_MODULE_31___default = /*#__PURE__*/__webpack_require__.n(_scripts_input_counter_with_buttons__WEBPACK_IMPORTED_MODULE_31__);
-/* harmony import */ var _scripts_modal_address__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(39);
-/* harmony import */ var _scripts_modal_address__WEBPACK_IMPORTED_MODULE_32___default = /*#__PURE__*/__webpack_require__.n(_scripts_modal_address__WEBPACK_IMPORTED_MODULE_32__);
-/* harmony import */ var _scripts_collapse_custom__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(40);
-/* harmony import */ var _scripts_collapse_custom__WEBPACK_IMPORTED_MODULE_33___default = /*#__PURE__*/__webpack_require__.n(_scripts_collapse_custom__WEBPACK_IMPORTED_MODULE_33__);
-/* harmony import */ var _scripts_diy__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(41);
-/* harmony import */ var _scripts_showroom_detail_view__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(42);
-/* harmony import */ var _scripts_we_design__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(43);
-/* harmony import */ var _scripts_free_in_home_consult__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(44);
-/* harmony import */ var _scripts_drag_to_scroll__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(45);
-/* harmony import */ var _scripts_drag_to_scroll__WEBPACK_IMPORTED_MODULE_38___default = /*#__PURE__*/__webpack_require__.n(_scripts_drag_to_scroll__WEBPACK_IMPORTED_MODULE_38__);
-/* harmony import */ var _scripts_compare_brands__WEBPACK_IMPORTED_MODULE_39__ = __webpack_require__(46);
-/* harmony import */ var _scripts_compare_brands__WEBPACK_IMPORTED_MODULE_39___default = /*#__PURE__*/__webpack_require__.n(_scripts_compare_brands__WEBPACK_IMPORTED_MODULE_39__);
-/* harmony import */ var _scripts_popup__WEBPACK_IMPORTED_MODULE_40__ = __webpack_require__(47);
-/* harmony import */ var _scripts_popup__WEBPACK_IMPORTED_MODULE_40___default = /*#__PURE__*/__webpack_require__.n(_scripts_popup__WEBPACK_IMPORTED_MODULE_40__);
-/* harmony import */ var _scripts_accessories__WEBPACK_IMPORTED_MODULE_41__ = __webpack_require__(48);
-/* harmony import */ var _scripts_tooltips__WEBPACK_IMPORTED_MODULE_42__ = __webpack_require__(49);
-/* harmony import */ var _scripts_features__WEBPACK_IMPORTED_MODULE_43__ = __webpack_require__(50);
-/* harmony import */ var _scripts_features__WEBPACK_IMPORTED_MODULE_43___default = /*#__PURE__*/__webpack_require__.n(_scripts_features__WEBPACK_IMPORTED_MODULE_43__);
+/* harmony import */ var regenerator_runtime_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(7);
+/* harmony import */ var regenerator_runtime_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(regenerator_runtime_runtime__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(0);
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var jquery_ui__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(2);
+/* harmony import */ var jquery_ui__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(jquery_ui__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var bootstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(4);
+/* harmony import */ var bootstrap__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(bootstrap__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var slick_carousel__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(10);
+/* harmony import */ var slick_carousel__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(slick_carousel__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _styles_styles_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(11);
+/* harmony import */ var _styles_styles_scss__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_styles_styles_scss__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var bootstrap_datepicker__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(12);
+/* harmony import */ var bootstrap_datepicker__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(bootstrap_datepicker__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var bootstrap_select__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(13);
+/* harmony import */ var bootstrap_select__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(bootstrap_select__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var lightgallery__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(14);
+/* harmony import */ var lightgallery__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(lightgallery__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var lg_video__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(15);
+/* harmony import */ var lg_video__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(lg_video__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var _scripts_lightgallery__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(16);
+/* harmony import */ var _scripts_general__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(17);
+/* harmony import */ var _scripts_collapse__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(18);
+/* harmony import */ var _scripts_collapse__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(_scripts_collapse__WEBPACK_IMPORTED_MODULE_12__);
+/* harmony import */ var _scripts_slick__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(19);
+/* harmony import */ var _scripts_slick__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(_scripts_slick__WEBPACK_IMPORTED_MODULE_13__);
+/* harmony import */ var _scripts_drag_drop_image__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(20);
+/* harmony import */ var _scripts_drag_drop_image__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(_scripts_drag_drop_image__WEBPACK_IMPORTED_MODULE_14__);
+/* harmony import */ var _scripts_dropdown_open_checkout__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(21);
+/* harmony import */ var _scripts_dropdown_open_checkout__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(_scripts_dropdown_open_checkout__WEBPACK_IMPORTED_MODULE_15__);
+/* harmony import */ var _scripts_checkout_item_remove_border__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(22);
+/* harmony import */ var _scripts_checkout_item_remove_border__WEBPACK_IMPORTED_MODULE_16___default = /*#__PURE__*/__webpack_require__.n(_scripts_checkout_item_remove_border__WEBPACK_IMPORTED_MODULE_16__);
+/* harmony import */ var _scripts_select_all_check_boxes__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(23);
+/* harmony import */ var _scripts_select_all_check_boxes__WEBPACK_IMPORTED_MODULE_17___default = /*#__PURE__*/__webpack_require__.n(_scripts_select_all_check_boxes__WEBPACK_IMPORTED_MODULE_17__);
+/* harmony import */ var _scripts_sticky_card_checkout__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(24);
+/* harmony import */ var _scripts_sticky_card_checkout__WEBPACK_IMPORTED_MODULE_18___default = /*#__PURE__*/__webpack_require__.n(_scripts_sticky_card_checkout__WEBPACK_IMPORTED_MODULE_18__);
+/* harmony import */ var _scripts_modal__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(25);
+/* harmony import */ var _scripts_modal__WEBPACK_IMPORTED_MODULE_19___default = /*#__PURE__*/__webpack_require__.n(_scripts_modal__WEBPACK_IMPORTED_MODULE_19__);
+/* harmony import */ var _scripts_file_upload__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(26);
+/* harmony import */ var _scripts_file_upload__WEBPACK_IMPORTED_MODULE_20___default = /*#__PURE__*/__webpack_require__.n(_scripts_file_upload__WEBPACK_IMPORTED_MODULE_20__);
+/* harmony import */ var _scripts_login_slide__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(27);
+/* harmony import */ var _scripts_login_slide__WEBPACK_IMPORTED_MODULE_21___default = /*#__PURE__*/__webpack_require__.n(_scripts_login_slide__WEBPACK_IMPORTED_MODULE_21__);
+/* harmony import */ var _scripts_mobile_sticky_header__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(28);
+/* harmony import */ var _scripts_mobile_sticky_header__WEBPACK_IMPORTED_MODULE_22___default = /*#__PURE__*/__webpack_require__.n(_scripts_mobile_sticky_header__WEBPACK_IMPORTED_MODULE_22__);
+/* harmony import */ var _scripts_select_custom__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(29);
+/* harmony import */ var _scripts_select_custom__WEBPACK_IMPORTED_MODULE_23___default = /*#__PURE__*/__webpack_require__.n(_scripts_select_custom__WEBPACK_IMPORTED_MODULE_23__);
+/* harmony import */ var _scripts_input_auto_focus__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(30);
+/* harmony import */ var _scripts_input_auto_focus__WEBPACK_IMPORTED_MODULE_24___default = /*#__PURE__*/__webpack_require__.n(_scripts_input_auto_focus__WEBPACK_IMPORTED_MODULE_24__);
+/* harmony import */ var _scripts_iframe_load_wpage__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(31);
+/* harmony import */ var _scripts_iframe_load_wpage__WEBPACK_IMPORTED_MODULE_25___default = /*#__PURE__*/__webpack_require__.n(_scripts_iframe_load_wpage__WEBPACK_IMPORTED_MODULE_25__);
+/* harmony import */ var _scripts_datapicker__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(32);
+/* harmony import */ var _scripts_datapicker__WEBPACK_IMPORTED_MODULE_26___default = /*#__PURE__*/__webpack_require__.n(_scripts_datapicker__WEBPACK_IMPORTED_MODULE_26__);
+/* harmony import */ var _scripts_modal_snipped__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(34);
+/* harmony import */ var _scripts_modal_snipped__WEBPACK_IMPORTED_MODULE_27___default = /*#__PURE__*/__webpack_require__.n(_scripts_modal_snipped__WEBPACK_IMPORTED_MODULE_27__);
+/* harmony import */ var _scripts_product_details__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(35);
+/* harmony import */ var _scripts_account__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(36);
+/* harmony import */ var _scripts_about_us__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(37);
+/* harmony import */ var _scripts_shopping_card_detached_elements__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(38);
+/* harmony import */ var _scripts_shopping_card_detached_elements__WEBPACK_IMPORTED_MODULE_31___default = /*#__PURE__*/__webpack_require__.n(_scripts_shopping_card_detached_elements__WEBPACK_IMPORTED_MODULE_31__);
+/* harmony import */ var _scripts_input_counter_with_buttons__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(39);
+/* harmony import */ var _scripts_input_counter_with_buttons__WEBPACK_IMPORTED_MODULE_32___default = /*#__PURE__*/__webpack_require__.n(_scripts_input_counter_with_buttons__WEBPACK_IMPORTED_MODULE_32__);
+/* harmony import */ var _scripts_modal_address__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(40);
+/* harmony import */ var _scripts_modal_address__WEBPACK_IMPORTED_MODULE_33___default = /*#__PURE__*/__webpack_require__.n(_scripts_modal_address__WEBPACK_IMPORTED_MODULE_33__);
+/* harmony import */ var _scripts_collapse_custom__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(41);
+/* harmony import */ var _scripts_collapse_custom__WEBPACK_IMPORTED_MODULE_34___default = /*#__PURE__*/__webpack_require__.n(_scripts_collapse_custom__WEBPACK_IMPORTED_MODULE_34__);
+/* harmony import */ var _scripts_diy__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(42);
+/* harmony import */ var _scripts_showroom_detail_view__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(43);
+/* harmony import */ var _scripts_we_design__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(44);
+/* harmony import */ var _scripts_free_in_home_consult__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(45);
+/* harmony import */ var _scripts_drag_to_scroll__WEBPACK_IMPORTED_MODULE_39__ = __webpack_require__(46);
+/* harmony import */ var _scripts_drag_to_scroll__WEBPACK_IMPORTED_MODULE_39___default = /*#__PURE__*/__webpack_require__.n(_scripts_drag_to_scroll__WEBPACK_IMPORTED_MODULE_39__);
+/* harmony import */ var _scripts_compare_brands__WEBPACK_IMPORTED_MODULE_40__ = __webpack_require__(47);
+/* harmony import */ var _scripts_compare_brands__WEBPACK_IMPORTED_MODULE_40___default = /*#__PURE__*/__webpack_require__.n(_scripts_compare_brands__WEBPACK_IMPORTED_MODULE_40__);
+/* harmony import */ var _scripts_popup__WEBPACK_IMPORTED_MODULE_41__ = __webpack_require__(48);
+/* harmony import */ var _scripts_popup__WEBPACK_IMPORTED_MODULE_41___default = /*#__PURE__*/__webpack_require__.n(_scripts_popup__WEBPACK_IMPORTED_MODULE_41__);
+/* harmony import */ var _scripts_accessories__WEBPACK_IMPORTED_MODULE_42__ = __webpack_require__(49);
+/* harmony import */ var _scripts_tooltips__WEBPACK_IMPORTED_MODULE_43__ = __webpack_require__(50);
+/* harmony import */ var _scripts_features__WEBPACK_IMPORTED_MODULE_44__ = __webpack_require__(51);
+/* harmony import */ var _scripts_features__WEBPACK_IMPORTED_MODULE_44___default = /*#__PURE__*/__webpack_require__.n(_scripts_features__WEBPACK_IMPORTED_MODULE_44__);
+
 
 
 
@@ -17665,36 +17697,737 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /***/ }),
-/* 6 */
-/***/ (function(module, exports) {
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
 
-module.exports = function (module) {
-  if (!module.webpackPolyfill) {
-    module.deprecate = function () {};
+/* WEBPACK VAR INJECTION */(function(module) {function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-    module.paths = []; // module.parent = undefined by default
+/**
+ * Copyright (c) 2014-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+var runtime = function (exports) {
+  "use strict";
 
-    if (!module.children) module.children = [];
-    Object.defineProperty(module, "loaded", {
+  var Op = Object.prototype;
+  var hasOwn = Op.hasOwnProperty;
+  var undefined; // More compressible than void 0.
+
+  var $Symbol = typeof Symbol === "function" ? Symbol : {};
+  var iteratorSymbol = $Symbol.iterator || "@@iterator";
+  var asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator";
+  var toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag";
+
+  function define(obj, key, value) {
+    Object.defineProperty(obj, key, {
+      value: value,
       enumerable: true,
-      get: function get() {
-        return module.l;
-      }
+      configurable: true,
+      writable: true
     });
-    Object.defineProperty(module, "id", {
-      enumerable: true,
-      get: function get() {
-        return module.i;
-      }
-    });
-    module.webpackPolyfill = 1;
+    return obj[key];
   }
 
-  return module;
-};
+  try {
+    // IE 8 has a broken Object.defineProperty that only works on DOM objects.
+    define({}, "");
+  } catch (err) {
+    define = function define(obj, key, value) {
+      return obj[key] = value;
+    };
+  }
+
+  function wrap(innerFn, outerFn, self, tryLocsList) {
+    // If outerFn provided and outerFn.prototype is a Generator, then outerFn.prototype instanceof Generator.
+    var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator;
+    var generator = Object.create(protoGenerator.prototype);
+    var context = new Context(tryLocsList || []); // The ._invoke method unifies the implementations of the .next,
+    // .throw, and .return methods.
+
+    generator._invoke = makeInvokeMethod(innerFn, self, context);
+    return generator;
+  }
+
+  exports.wrap = wrap; // Try/catch helper to minimize deoptimizations. Returns a completion
+  // record like context.tryEntries[i].completion. This interface could
+  // have been (and was previously) designed to take a closure to be
+  // invoked without arguments, but in all the cases we care about we
+  // already have an existing method we want to call, so there's no need
+  // to create a new function object. We can even get away with assuming
+  // the method takes exactly one argument, since that happens to be true
+  // in every case, so we don't have to touch the arguments object. The
+  // only additional allocation required is the completion record, which
+  // has a stable shape and so hopefully should be cheap to allocate.
+
+  function tryCatch(fn, obj, arg) {
+    try {
+      return {
+        type: "normal",
+        arg: fn.call(obj, arg)
+      };
+    } catch (err) {
+      return {
+        type: "throw",
+        arg: err
+      };
+    }
+  }
+
+  var GenStateSuspendedStart = "suspendedStart";
+  var GenStateSuspendedYield = "suspendedYield";
+  var GenStateExecuting = "executing";
+  var GenStateCompleted = "completed"; // Returning this object from the innerFn has the same effect as
+  // breaking out of the dispatch switch statement.
+
+  var ContinueSentinel = {}; // Dummy constructor functions that we use as the .constructor and
+  // .constructor.prototype properties for functions that return Generator
+  // objects. For full spec compliance, you may wish to configure your
+  // minifier not to mangle the names of these two functions.
+
+  function Generator() {}
+
+  function GeneratorFunction() {}
+
+  function GeneratorFunctionPrototype() {} // This is a polyfill for %IteratorPrototype% for environments that
+  // don't natively support it.
+
+
+  var IteratorPrototype = {};
+
+  IteratorPrototype[iteratorSymbol] = function () {
+    return this;
+  };
+
+  var getProto = Object.getPrototypeOf;
+  var NativeIteratorPrototype = getProto && getProto(getProto(values([])));
+
+  if (NativeIteratorPrototype && NativeIteratorPrototype !== Op && hasOwn.call(NativeIteratorPrototype, iteratorSymbol)) {
+    // This environment has a native %IteratorPrototype%; use it instead
+    // of the polyfill.
+    IteratorPrototype = NativeIteratorPrototype;
+  }
+
+  var Gp = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(IteratorPrototype);
+  GeneratorFunction.prototype = Gp.constructor = GeneratorFunctionPrototype;
+  GeneratorFunctionPrototype.constructor = GeneratorFunction;
+  GeneratorFunction.displayName = define(GeneratorFunctionPrototype, toStringTagSymbol, "GeneratorFunction"); // Helper for defining the .next, .throw, and .return methods of the
+  // Iterator interface in terms of a single ._invoke method.
+
+  function defineIteratorMethods(prototype) {
+    ["next", "throw", "return"].forEach(function (method) {
+      define(prototype, method, function (arg) {
+        return this._invoke(method, arg);
+      });
+    });
+  }
+
+  exports.isGeneratorFunction = function (genFun) {
+    var ctor = typeof genFun === "function" && genFun.constructor;
+    return ctor ? ctor === GeneratorFunction || // For the native GeneratorFunction constructor, the best we can
+    // do is to check its .name property.
+    (ctor.displayName || ctor.name) === "GeneratorFunction" : false;
+  };
+
+  exports.mark = function (genFun) {
+    if (Object.setPrototypeOf) {
+      Object.setPrototypeOf(genFun, GeneratorFunctionPrototype);
+    } else {
+      genFun.__proto__ = GeneratorFunctionPrototype;
+      define(genFun, toStringTagSymbol, "GeneratorFunction");
+    }
+
+    genFun.prototype = Object.create(Gp);
+    return genFun;
+  }; // Within the body of any async function, `await x` is transformed to
+  // `yield regeneratorRuntime.awrap(x)`, so that the runtime can test
+  // `hasOwn.call(value, "__await")` to determine if the yielded value is
+  // meant to be awaited.
+
+
+  exports.awrap = function (arg) {
+    return {
+      __await: arg
+    };
+  };
+
+  function AsyncIterator(generator, PromiseImpl) {
+    function invoke(method, arg, resolve, reject) {
+      var record = tryCatch(generator[method], generator, arg);
+
+      if (record.type === "throw") {
+        reject(record.arg);
+      } else {
+        var result = record.arg;
+        var value = result.value;
+
+        if (value && _typeof(value) === "object" && hasOwn.call(value, "__await")) {
+          return PromiseImpl.resolve(value.__await).then(function (value) {
+            invoke("next", value, resolve, reject);
+          }, function (err) {
+            invoke("throw", err, resolve, reject);
+          });
+        }
+
+        return PromiseImpl.resolve(value).then(function (unwrapped) {
+          // When a yielded Promise is resolved, its final value becomes
+          // the .value of the Promise<{value,done}> result for the
+          // current iteration.
+          result.value = unwrapped;
+          resolve(result);
+        }, function (error) {
+          // If a rejected Promise was yielded, throw the rejection back
+          // into the async generator function so it can be handled there.
+          return invoke("throw", error, resolve, reject);
+        });
+      }
+    }
+
+    var previousPromise;
+
+    function enqueue(method, arg) {
+      function callInvokeWithMethodAndArg() {
+        return new PromiseImpl(function (resolve, reject) {
+          invoke(method, arg, resolve, reject);
+        });
+      }
+
+      return previousPromise = // If enqueue has been called before, then we want to wait until
+      // all previous Promises have been resolved before calling invoke,
+      // so that results are always delivered in the correct order. If
+      // enqueue has not been called before, then it is important to
+      // call invoke immediately, without waiting on a callback to fire,
+      // so that the async generator function has the opportunity to do
+      // any necessary setup in a predictable way. This predictability
+      // is why the Promise constructor synchronously invokes its
+      // executor callback, and why async functions synchronously
+      // execute code before the first await. Since we implement simple
+      // async functions in terms of async generators, it is especially
+      // important to get this right, even though it requires care.
+      previousPromise ? previousPromise.then(callInvokeWithMethodAndArg, // Avoid propagating failures to Promises returned by later
+      // invocations of the iterator.
+      callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg();
+    } // Define the unified helper method that is used to implement .next,
+    // .throw, and .return (see defineIteratorMethods).
+
+
+    this._invoke = enqueue;
+  }
+
+  defineIteratorMethods(AsyncIterator.prototype);
+
+  AsyncIterator.prototype[asyncIteratorSymbol] = function () {
+    return this;
+  };
+
+  exports.AsyncIterator = AsyncIterator; // Note that simple async functions are implemented on top of
+  // AsyncIterator objects; they just return a Promise for the value of
+  // the final result produced by the iterator.
+
+  exports.async = function (innerFn, outerFn, self, tryLocsList, PromiseImpl) {
+    if (PromiseImpl === void 0) PromiseImpl = Promise;
+    var iter = new AsyncIterator(wrap(innerFn, outerFn, self, tryLocsList), PromiseImpl);
+    return exports.isGeneratorFunction(outerFn) ? iter // If outerFn is a generator, return the full iterator.
+    : iter.next().then(function (result) {
+      return result.done ? result.value : iter.next();
+    });
+  };
+
+  function makeInvokeMethod(innerFn, self, context) {
+    var state = GenStateSuspendedStart;
+    return function invoke(method, arg) {
+      if (state === GenStateExecuting) {
+        throw new Error("Generator is already running");
+      }
+
+      if (state === GenStateCompleted) {
+        if (method === "throw") {
+          throw arg;
+        } // Be forgiving, per 25.3.3.3.3 of the spec:
+        // https://people.mozilla.org/~jorendorff/es6-draft.html#sec-generatorresume
+
+
+        return doneResult();
+      }
+
+      context.method = method;
+      context.arg = arg;
+
+      while (true) {
+        var delegate = context.delegate;
+
+        if (delegate) {
+          var delegateResult = maybeInvokeDelegate(delegate, context);
+
+          if (delegateResult) {
+            if (delegateResult === ContinueSentinel) continue;
+            return delegateResult;
+          }
+        }
+
+        if (context.method === "next") {
+          // Setting context._sent for legacy support of Babel's
+          // function.sent implementation.
+          context.sent = context._sent = context.arg;
+        } else if (context.method === "throw") {
+          if (state === GenStateSuspendedStart) {
+            state = GenStateCompleted;
+            throw context.arg;
+          }
+
+          context.dispatchException(context.arg);
+        } else if (context.method === "return") {
+          context.abrupt("return", context.arg);
+        }
+
+        state = GenStateExecuting;
+        var record = tryCatch(innerFn, self, context);
+
+        if (record.type === "normal") {
+          // If an exception is thrown from innerFn, we leave state ===
+          // GenStateExecuting and loop back for another invocation.
+          state = context.done ? GenStateCompleted : GenStateSuspendedYield;
+
+          if (record.arg === ContinueSentinel) {
+            continue;
+          }
+
+          return {
+            value: record.arg,
+            done: context.done
+          };
+        } else if (record.type === "throw") {
+          state = GenStateCompleted; // Dispatch the exception by looping back around to the
+          // context.dispatchException(context.arg) call above.
+
+          context.method = "throw";
+          context.arg = record.arg;
+        }
+      }
+    };
+  } // Call delegate.iterator[context.method](context.arg) and handle the
+  // result, either by returning a { value, done } result from the
+  // delegate iterator, or by modifying context.method and context.arg,
+  // setting context.delegate to null, and returning the ContinueSentinel.
+
+
+  function maybeInvokeDelegate(delegate, context) {
+    var method = delegate.iterator[context.method];
+
+    if (method === undefined) {
+      // A .throw or .return when the delegate iterator has no .throw
+      // method always terminates the yield* loop.
+      context.delegate = null;
+
+      if (context.method === "throw") {
+        // Note: ["return"] must be used for ES3 parsing compatibility.
+        if (delegate.iterator["return"]) {
+          // If the delegate iterator has a return method, give it a
+          // chance to clean up.
+          context.method = "return";
+          context.arg = undefined;
+          maybeInvokeDelegate(delegate, context);
+
+          if (context.method === "throw") {
+            // If maybeInvokeDelegate(context) changed context.method from
+            // "return" to "throw", let that override the TypeError below.
+            return ContinueSentinel;
+          }
+        }
+
+        context.method = "throw";
+        context.arg = new TypeError("The iterator does not provide a 'throw' method");
+      }
+
+      return ContinueSentinel;
+    }
+
+    var record = tryCatch(method, delegate.iterator, context.arg);
+
+    if (record.type === "throw") {
+      context.method = "throw";
+      context.arg = record.arg;
+      context.delegate = null;
+      return ContinueSentinel;
+    }
+
+    var info = record.arg;
+
+    if (!info) {
+      context.method = "throw";
+      context.arg = new TypeError("iterator result is not an object");
+      context.delegate = null;
+      return ContinueSentinel;
+    }
+
+    if (info.done) {
+      // Assign the result of the finished delegate to the temporary
+      // variable specified by delegate.resultName (see delegateYield).
+      context[delegate.resultName] = info.value; // Resume execution at the desired location (see delegateYield).
+
+      context.next = delegate.nextLoc; // If context.method was "throw" but the delegate handled the
+      // exception, let the outer generator proceed normally. If
+      // context.method was "next", forget context.arg since it has been
+      // "consumed" by the delegate iterator. If context.method was
+      // "return", allow the original .return call to continue in the
+      // outer generator.
+
+      if (context.method !== "return") {
+        context.method = "next";
+        context.arg = undefined;
+      }
+    } else {
+      // Re-yield the result returned by the delegate method.
+      return info;
+    } // The delegate iterator is finished, so forget it and continue with
+    // the outer generator.
+
+
+    context.delegate = null;
+    return ContinueSentinel;
+  } // Define Generator.prototype.{next,throw,return} in terms of the
+  // unified ._invoke helper method.
+
+
+  defineIteratorMethods(Gp);
+  define(Gp, toStringTagSymbol, "Generator"); // A Generator should always return itself as the iterator object when the
+  // @@iterator function is called on it. Some browsers' implementations of the
+  // iterator prototype chain incorrectly implement this, causing the Generator
+  // object to not be returned from this call. This ensures that doesn't happen.
+  // See https://github.com/facebook/regenerator/issues/274 for more details.
+
+  Gp[iteratorSymbol] = function () {
+    return this;
+  };
+
+  Gp.toString = function () {
+    return "[object Generator]";
+  };
+
+  function pushTryEntry(locs) {
+    var entry = {
+      tryLoc: locs[0]
+    };
+
+    if (1 in locs) {
+      entry.catchLoc = locs[1];
+    }
+
+    if (2 in locs) {
+      entry.finallyLoc = locs[2];
+      entry.afterLoc = locs[3];
+    }
+
+    this.tryEntries.push(entry);
+  }
+
+  function resetTryEntry(entry) {
+    var record = entry.completion || {};
+    record.type = "normal";
+    delete record.arg;
+    entry.completion = record;
+  }
+
+  function Context(tryLocsList) {
+    // The root entry object (effectively a try statement without a catch
+    // or a finally block) gives us a place to store values thrown from
+    // locations where there is no enclosing try statement.
+    this.tryEntries = [{
+      tryLoc: "root"
+    }];
+    tryLocsList.forEach(pushTryEntry, this);
+    this.reset(true);
+  }
+
+  exports.keys = function (object) {
+    var keys = [];
+
+    for (var key in object) {
+      keys.push(key);
+    }
+
+    keys.reverse(); // Rather than returning an object with a next method, we keep
+    // things simple and return the next function itself.
+
+    return function next() {
+      while (keys.length) {
+        var key = keys.pop();
+
+        if (key in object) {
+          next.value = key;
+          next.done = false;
+          return next;
+        }
+      } // To avoid creating an additional object, we just hang the .value
+      // and .done properties off the next function object itself. This
+      // also ensures that the minifier will not anonymize the function.
+
+
+      next.done = true;
+      return next;
+    };
+  };
+
+  function values(iterable) {
+    if (iterable) {
+      var iteratorMethod = iterable[iteratorSymbol];
+
+      if (iteratorMethod) {
+        return iteratorMethod.call(iterable);
+      }
+
+      if (typeof iterable.next === "function") {
+        return iterable;
+      }
+
+      if (!isNaN(iterable.length)) {
+        var i = -1,
+            next = function next() {
+          while (++i < iterable.length) {
+            if (hasOwn.call(iterable, i)) {
+              next.value = iterable[i];
+              next.done = false;
+              return next;
+            }
+          }
+
+          next.value = undefined;
+          next.done = true;
+          return next;
+        };
+
+        return next.next = next;
+      }
+    } // Return an iterator with no values.
+
+
+    return {
+      next: doneResult
+    };
+  }
+
+  exports.values = values;
+
+  function doneResult() {
+    return {
+      value: undefined,
+      done: true
+    };
+  }
+
+  Context.prototype = {
+    constructor: Context,
+    reset: function reset(skipTempReset) {
+      this.prev = 0;
+      this.next = 0; // Resetting context._sent for legacy support of Babel's
+      // function.sent implementation.
+
+      this.sent = this._sent = undefined;
+      this.done = false;
+      this.delegate = null;
+      this.method = "next";
+      this.arg = undefined;
+      this.tryEntries.forEach(resetTryEntry);
+
+      if (!skipTempReset) {
+        for (var name in this) {
+          // Not sure about the optimal order of these conditions:
+          if (name.charAt(0) === "t" && hasOwn.call(this, name) && !isNaN(+name.slice(1))) {
+            this[name] = undefined;
+          }
+        }
+      }
+    },
+    stop: function stop() {
+      this.done = true;
+      var rootEntry = this.tryEntries[0];
+      var rootRecord = rootEntry.completion;
+
+      if (rootRecord.type === "throw") {
+        throw rootRecord.arg;
+      }
+
+      return this.rval;
+    },
+    dispatchException: function dispatchException(exception) {
+      if (this.done) {
+        throw exception;
+      }
+
+      var context = this;
+
+      function handle(loc, caught) {
+        record.type = "throw";
+        record.arg = exception;
+        context.next = loc;
+
+        if (caught) {
+          // If the dispatched exception was caught by a catch block,
+          // then let that catch block handle the exception normally.
+          context.method = "next";
+          context.arg = undefined;
+        }
+
+        return !!caught;
+      }
+
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+        var record = entry.completion;
+
+        if (entry.tryLoc === "root") {
+          // Exception thrown outside of any try block that could handle
+          // it, so set the completion value of the entire function to
+          // throw the exception.
+          return handle("end");
+        }
+
+        if (entry.tryLoc <= this.prev) {
+          var hasCatch = hasOwn.call(entry, "catchLoc");
+          var hasFinally = hasOwn.call(entry, "finallyLoc");
+
+          if (hasCatch && hasFinally) {
+            if (this.prev < entry.catchLoc) {
+              return handle(entry.catchLoc, true);
+            } else if (this.prev < entry.finallyLoc) {
+              return handle(entry.finallyLoc);
+            }
+          } else if (hasCatch) {
+            if (this.prev < entry.catchLoc) {
+              return handle(entry.catchLoc, true);
+            }
+          } else if (hasFinally) {
+            if (this.prev < entry.finallyLoc) {
+              return handle(entry.finallyLoc);
+            }
+          } else {
+            throw new Error("try statement without catch or finally");
+          }
+        }
+      }
+    },
+    abrupt: function abrupt(type, arg) {
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+
+        if (entry.tryLoc <= this.prev && hasOwn.call(entry, "finallyLoc") && this.prev < entry.finallyLoc) {
+          var finallyEntry = entry;
+          break;
+        }
+      }
+
+      if (finallyEntry && (type === "break" || type === "continue") && finallyEntry.tryLoc <= arg && arg <= finallyEntry.finallyLoc) {
+        // Ignore the finally entry if control is not jumping to a
+        // location outside the try/catch block.
+        finallyEntry = null;
+      }
+
+      var record = finallyEntry ? finallyEntry.completion : {};
+      record.type = type;
+      record.arg = arg;
+
+      if (finallyEntry) {
+        this.method = "next";
+        this.next = finallyEntry.finallyLoc;
+        return ContinueSentinel;
+      }
+
+      return this.complete(record);
+    },
+    complete: function complete(record, afterLoc) {
+      if (record.type === "throw") {
+        throw record.arg;
+      }
+
+      if (record.type === "break" || record.type === "continue") {
+        this.next = record.arg;
+      } else if (record.type === "return") {
+        this.rval = this.arg = record.arg;
+        this.method = "return";
+        this.next = "end";
+      } else if (record.type === "normal" && afterLoc) {
+        this.next = afterLoc;
+      }
+
+      return ContinueSentinel;
+    },
+    finish: function finish(finallyLoc) {
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+
+        if (entry.finallyLoc === finallyLoc) {
+          this.complete(entry.completion, entry.afterLoc);
+          resetTryEntry(entry);
+          return ContinueSentinel;
+        }
+      }
+    },
+    "catch": function _catch(tryLoc) {
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+
+        if (entry.tryLoc === tryLoc) {
+          var record = entry.completion;
+
+          if (record.type === "throw") {
+            var thrown = record.arg;
+            resetTryEntry(entry);
+          }
+
+          return thrown;
+        }
+      } // The context.catch method must only be called with a location
+      // argument that corresponds to a known catch block.
+
+
+      throw new Error("illegal catch attempt");
+    },
+    delegateYield: function delegateYield(iterable, resultName, nextLoc) {
+      this.delegate = {
+        iterator: values(iterable),
+        resultName: resultName,
+        nextLoc: nextLoc
+      };
+
+      if (this.method === "next") {
+        // Deliberately forget the last sent value so that we don't
+        // accidentally pass it on to the delegate.
+        this.arg = undefined;
+      }
+
+      return ContinueSentinel;
+    }
+  }; // Regardless of whether this script is executing as a CommonJS module
+  // or not, return the runtime object so that we can declare the variable
+  // regeneratorRuntime in the outer scope, which allows this module to be
+  // injected easily by `bin/regenerator --include-runtime script.js`.
+
+  return exports;
+}( // If this script is executing as a CommonJS module, use module.exports
+// as the regeneratorRuntime namespace. Otherwise create a new empty
+// object. Either way, the resulting object will be used to initialize
+// the regeneratorRuntime variable at the top of this file.
+( false ? undefined : _typeof(module)) === "object" ? module.exports : {});
+
+try {
+  regeneratorRuntime = runtime;
+} catch (accidentalStrictMode) {
+  // This module should not be running in strict mode, so the above
+  // assignment should always work unless something is misconfigured. Just
+  // in case runtime.js accidentally runs in strict mode, we can escape
+  // strict mode using a global Function call. This could conceivably fail
+  // if a Content Security Policy forbids using Function, but in that case
+  // the proper solution is to fix the accidental strict mode problem. If
+  // you've misconfigured your bundler to force strict mode and applied a
+  // CSP to forbid Function, and you're not willing to fix either of those
+  // problems, please detail your unique predicament in a GitHub issue.
+  Function("r", "regeneratorRuntime = r")(runtime);
+}
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(3)(module)))
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function (factory) {
@@ -17711,7 +18444,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 });
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports) {
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -17736,7 +18469,7 @@ try {
 module.exports = g;
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -20423,13 +21156,13 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 });
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // extracted by mini-css-extract-plugin
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -22328,7 +23061,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 });
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -25360,7 +26093,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;function _typeof
 });
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -26702,7 +27435,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;function _typeof
 });
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -27040,7 +27773,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;function _typeof
 });
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -27063,7 +27796,7 @@ jQuery(document).ready(function ($) {
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(0)))
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -27598,12 +28331,12 @@ jQuery(document).ready(function ($) {
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(0)))
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(jQuery) {jQuery(document).ready(function ($) {
   var collapseTarget = $('#accordion [data-target]');
-  $('.collapse').collapse();
+  $('.collapse').not('.spec').collapse();
   $('.feature-detail__item-drop').on('shown.bs.tooltip', function () {
     // do something…
     setTimeout(function () {
@@ -27629,31 +28362,28 @@ jQuery(document).ready(function ($) {
   // })
   //specifications-details.html back to tom of the collapsing section
   //wait until collapse is shown, then trigger the scroll to the header of the collapse section
-
-  if ($(window).width() < 992) {
-    $(collapseTarget).on('click', function () {
-      var _this = this;
-
-      // let content = $(this).data('target')
-      //
-      // $(content).on('shown.bs.collapse', function () {
-      // 	$(content).addClass('shown')
-      // })
-      // $(content).on('hidden.bs.collapse', function () {
-      // 	$(content).removeClass('shown')
-      // })
-      setTimeout(function () {
-        $('html, body').animate({
-          scrollTop: $(_this).offset().top - 120
-        }, 400);
-      }, 500);
-    });
-  }
+  // if ($(window).width() < 992) {
+  // 	$(collapseTarget).on('click', function () {
+  // let content = $(this).data('target')
+  //
+  // $(content).on('shown.bs.collapse', function () {
+  // 	$(content).addClass('shown')
+  // })
+  // $(content).on('hidden.bs.collapse', function () {
+  // 	$(content).removeClass('shown')
+  // })
+  // 		setTimeout(() => {
+  // 			$('html, body').animate({
+  // 				scrollTop: (($(this).offset().top) - 120)
+  // 			}, 400);
+  // 		}, 500)
+  // 	})
+  // }
 });
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(0)))
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(jQuery) {jQuery(document).ready(function ($) {
@@ -27668,7 +28398,7 @@ jQuery(document).ready(function ($) {
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(0)))
 
 /***/ }),
-/* 19 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function($) {var // where files are dropped + file selector is opened
@@ -27860,7 +28590,7 @@ if ($(dropRegion).length >= 1) {
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(0)))
 
 /***/ }),
-/* 20 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(jQuery) {jQuery(document).ready(function ($) {
@@ -27947,7 +28677,7 @@ if ($(dropRegion).length >= 1) {
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(0)))
 
 /***/ }),
-/* 21 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(jQuery) {jQuery(document).ready(function ($) {
@@ -27962,7 +28692,7 @@ if ($(dropRegion).length >= 1) {
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(0)))
 
 /***/ }),
-/* 22 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(jQuery) {jQuery(document).ready(function ($) {
@@ -27982,7 +28712,7 @@ if ($(dropRegion).length >= 1) {
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(0)))
 
 /***/ }),
-/* 23 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(jQuery) {jQuery(document).ready(function ($) {
@@ -28018,7 +28748,7 @@ if ($(dropRegion).length >= 1) {
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(0)))
 
 /***/ }),
-/* 24 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(jQuery) {jQuery(document).ready(function ($) {
@@ -28155,7 +28885,7 @@ if ($(dropRegion).length >= 1) {
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(0)))
 
 /***/ }),
-/* 25 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(jQuery) {jQuery(document).ready(function ($) {
@@ -28168,7 +28898,7 @@ if ($(dropRegion).length >= 1) {
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(0)))
 
 /***/ }),
-/* 26 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(jQuery) {jQuery(document).ready(function ($) {
@@ -28183,7 +28913,7 @@ if ($(dropRegion).length >= 1) {
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(0)))
 
 /***/ }),
-/* 27 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function($) {var didScroll;
@@ -28224,7 +28954,7 @@ function hasScrolled() {
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(0)))
 
 /***/ }),
-/* 28 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(jQuery) {function _createForOfIteratorHelper(o, allowArrayLike) { var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
@@ -28453,7 +29183,7 @@ jQuery(document).ready(function ($) {
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(0)))
 
 /***/ }),
-/* 29 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(jQuery) {jQuery(document).ready(function ($) {
@@ -28479,7 +29209,7 @@ jQuery(document).ready(function ($) {
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(0)))
 
 /***/ }),
-/* 30 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(jQuery) {jQuery(document).ready(function ($) {
@@ -28493,10 +29223,10 @@ jQuery(document).ready(function ($) {
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(0)))
 
 /***/ }),
-/* 31 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(jQuery) {var _require = __webpack_require__(32),
+/* WEBPACK VAR INJECTION */(function(jQuery) {var _require = __webpack_require__(33),
     on = _require.on;
 
 var _require2 = __webpack_require__(0),
@@ -28553,7 +29283,7 @@ jQuery(document).ready(function ($) {
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(0)))
 
 /***/ }),
-/* 32 */
+/* 33 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -28766,7 +29496,7 @@ process.umask = function () {
 };
 
 /***/ }),
-/* 33 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function($) {$(document).on("show.bs.modal", '.modal', function (event) {
@@ -28795,7 +29525,7 @@ $(document).on('inserted.bs.popover', function (event) {
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(0)))
 
 /***/ }),
-/* 34 */
+/* 35 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -28899,7 +29629,7 @@ jQuery(document).ready(function ($) {
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(0)))
 
 /***/ }),
-/* 35 */
+/* 36 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -29326,13 +30056,17 @@ jQuery(document).ready(function ($) {
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(0)))
 
 /***/ }),
-/* 36 */
+/* 37 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(jQuery) {/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(0);
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _functions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(1);
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 
 
 jQuery(document).ready(function ($) {
@@ -29449,11 +30183,97 @@ jQuery(document).ready(function ($) {
     $(btn).siblings('img').removeClass('bordered-img');
     $(elem).removeClass('active');
   });
+  var container = document.getElementById('infinite-block');
+  var loading = document.querySelector('.loading'); // getPost();
+  // getPost();
+  // getPost();
+
+  window.addEventListener('scroll', function () {
+    var _document$documentEle = document.documentElement,
+        scrollTop = _document$documentEle.scrollTop,
+        scrollHeight = _document$documentEle.scrollHeight,
+        clientHeight = _document$documentEle.clientHeight; //  console.log( { scrollTop, scrollHeight, clientHeight });
+
+    if (clientHeight + scrollTop >= scrollHeight - 5) {
+      // show the loading animation
+      showLoading();
+    }
+  });
+
+  function showLoading() {
+    loading.classList.add('show'); // load more data
+    // setTimeout(getPost, 100)
+
+    setTimeout(getPost);
+  }
+
+  function getPost() {
+    return _getPost.apply(this, arguments);
+  } // getPost().then(post => {
+  // 	console.log(post);
+  // })
+
+
+  function _getPost() {
+    _getPost = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+      var postResponse, postData, userResponse, userData, data;
+      return regeneratorRuntime.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              _context.next = 2;
+              return fetch("https://jsonplaceholder.typicode.com/posts/".concat(getRandomNr()));
+
+            case 2:
+              postResponse = _context.sent;
+              _context.next = 5;
+              return postResponse.json();
+
+            case 5:
+              postData = _context.sent;
+              _context.next = 8;
+              return fetch('https://randomuser.me/api');
+
+            case 8:
+              userResponse = _context.sent;
+              _context.next = 11;
+              return userResponse.json();
+
+            case 11:
+              userData = _context.sent;
+              data = {
+                post: postData,
+                user: userData.results[0]
+              };
+              addDataToDOM(data);
+
+            case 14:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee);
+    }));
+    return _getPost.apply(this, arguments);
+  }
+
+  function getRandomNr() {
+    return Math.floor(Math.random() * 100) + 1;
+  }
+
+  function addDataToDOM(data) {
+    var postElement = document.createElement('ul');
+    postElement.classList.add('blog-post');
+    postElement.setAttribute('data-sub-html', 'Product description 1');
+    postElement.innerHTML = "\n\t\t<ul id=\"html5-products\" class=\"accessories-products\">\n\t\t<li data-sub-html=\"Product description 1\">\n\t\t   <div>\n\t\t\t  <div class=\"product-image\">\n\t\t\t\t <img src=\"images/accessories-product-1.png\"\n\t\t\t\t\talt=\"\"\n\t\t\t\t\tclass=\"\">\n\t\t\t  </div>\n\t\t\t  <p class=\"product-title\">Lorem ipsum dolor sit amet, consetetur sadipscing</p>\n\t\t\t  <p class=\"product-description__text\">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est </p>\n\t\t\t  <div class=\"share-product-accessories\">\n\t\t\t\t <a href=\"#\">\n\t\t\t\t\t<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"23.547\" height=\"25.688\" viewBox=\"0 0 23.547 25.688\">\n\t\t\t\t\t   <defs>\n\t\t\t\t\t\t  <style>.share-no-background{fill:#384765;}</style>\n\t\t\t\t\t   </defs>\n\t\t\t\t\t   <g transform=\"translate(0)\">\n\t\t\t\t\t\t  <path class=\"share-no-background\" d=\"M321.625,19.479A3.478,3.478,0,1,1,318.147,16a3.479,3.479,0,0,1,3.478,3.478Zm0,0\" transform=\"translate(-298.881 -15.197)\"/>\n\t\t\t\t\t\t  <path class=\"share-no-background\" d=\"M302.949,8.563a4.281,4.281,0,1,1,4.281-4.281A4.286,4.286,0,0,1,302.949,8.563Zm0-6.957a2.676,2.676,0,1,0,2.676,2.676,2.679,2.679,0,0,0-2.676-2.676Zm0,0\" transform=\"translate(-283.683 0)\"/>\n\t\t\t\t\t\t  <path class=\"share-no-background\" d=\"M321.625,360.811a3.478,3.478,0,1,1-3.478-3.479A3.478,3.478,0,0,1,321.625,360.811Zm0,0\" transform=\"translate(-298.881 -339.404)\"/>\n\t\t\t\t\t\t  <path class=\"share-no-background\" d=\"M302.949,349.895a4.281,4.281,0,1,1,4.281-4.281A4.286,4.286,0,0,1,302.949,349.895Zm0-6.957a2.676,2.676,0,1,0,2.676,2.676A2.679,2.679,0,0,0,302.949,342.938Zm0,0\" transform=\"translate(-283.683 -324.207)\"/>\n\t\t\t\t\t\t  <path class=\"share-no-background\" d=\"M22.957,190.146a3.479,3.479,0,1,1-3.479-3.479A3.479,3.479,0,0,1,22.957,190.146Zm0,0\" transform=\"translate(-15.197 -177.303)\"/>\n\t\t\t\t\t\t  <path class=\"share-no-background\" d=\"M4.281,179.23a4.281,4.281,0,1,1,4.281-4.281,4.286,4.286,0,0,1-4.281,4.281Zm0-6.957a2.676,2.676,0,1,0,2.676,2.676,2.679,2.679,0,0,0-2.676-2.676Zm0,0\" transform=\"translate(0 -162.105)\"/>\n\t\t\t\t\t\t  <path class=\"share-no-background\" d=\"M115.42,98.019a1.07,1.07,0,0,1-.531-2l9.931-5.662a1.07,1.07,0,1,1,1.06,1.86l-9.932,5.662a1.063,1.063,0,0,1-.529.14Zm0,0\" transform=\"translate(-108.611 -85.688)\"/>\n\t\t\t\t\t\t  <path class=\"share-no-background\" d=\"M125.372,274.022a1.064,1.064,0,0,1-.529-.14l-9.932-5.662a1.07,1.07,0,0,1,1.06-1.86l9.932,5.662a1.07,1.07,0,0,1-.531,2Zm0,0\" transform=\"translate(-108.633 -252.862)\"/>\n\t\t\t\t\t   </g>\n\t\t\t\t\t</svg>\n\t\t\t\t </a>\n\t\t\t\t <span class=\"trash-icon\">\n\t\t\t\t\t<a href=\"#\">\n\t\t\t\t\t   <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"22.783\" height=\"20.49\" viewBox=\"0 0 22.783 20.49\">\n\t\t\t\t\t\t  <defs>\n\t\t\t\t\t\t\t <style>.a{fill:#18c4c7;}</style>\n\t\t\t\t\t\t  </defs>\n\t\t\t\t\t\t  <path class=\"a\" d=\"M22.783,4.523v6.764a.89.89,0,0,1-.89.89H21.4a.89.89,0,0,1-.644-.276L16.886,7.839l-6.9,8.8a.89.89,0,0,1-.7.341h0a.89.89,0,0,1-.7-.342L6.235,13.629,4.976,15.265A.89.89,0,0,1,3.566,14.18l1.959-2.546a.89.89,0,0,1,.7-.347h0a.89.89,0,0,1,.7.342l2.36,3.02,6.828-8.716a.89.89,0,0,1,1.345-.065L21,9.577V4.523a1.782,1.782,0,0,0-1.78-1.78H3.56a1.782,1.782,0,0,0-1.78,1.78V16.982a1.782,1.782,0,0,0,1.78,1.78H9.389a.89.89,0,0,1,0,1.78H3.56A3.564,3.564,0,0,1,0,16.982V4.523A3.564,3.564,0,0,1,3.56.963H19.223A3.564,3.564,0,0,1,22.783,4.523ZM3.56,6.837a2.67,2.67,0,1,1,2.67,2.67A2.673,2.673,0,0,1,3.56,6.837Zm1.78,0a.89.89,0,1,0,.89-.89A.891.891,0,0,0,5.34,6.837Z\" transform=\"translate(0 -0.963)\"/>\n\t\t\t\t\t\t  <path class=\"a\" d=\"M10.789-5.37H7.443v3.346H5.688V-5.37H2.324V-7.135H5.688V-10.5H7.443v3.363h3.346Z\" transform=\"translate(11.402 22.514)\"/>\n\t\t\t\t\t   </svg>\n\t\t\t\t\t</a>\n\t\t\t\t </span>\n\t\t\t  </div>\n\t\t\t  <div class=\"see-detail-product-accessories\">\n\t\t\t\t <p><a href=\"/ClosetsToGo-website/product-detail-view.html\">See details</a></p>\n\t\t\t  </div>\n\t\t\t  <div class=\"stars-review-price-btn\">\n\t\t\t\t <div class=\" stars-product-accessories\">\n\t\t\t\t\t<div class=\"stars-container\">\n\t\t\t\t\t   <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"17.513\" height=\"16.706\" viewBox=\"0 0 17.513 16.706\">\n\t\t\t\t\t\t  <path id=\"Path_522\" data-name=\"Path 522\" d=\"M17.488,18.14a.513.513,0,0,0-.414-.349L11.645,17l-2.428-4.92a.513.513,0,0,0-.92,0L5.869,17,.439,17.79a.513.513,0,0,0-.284.875l3.928,3.829L3.156,27.9a.513.513,0,0,0,.744.541L8.757,25.89l4.856,2.553a.513.513,0,0,0,.745-.541l-.928-5.407,3.929-3.829A.513.513,0,0,0,17.488,18.14Z\" transform=\"translate(0 -11.796)\" fill=\"#ededed\"/>\n\t\t\t\t\t   </svg>\n\t\t\t\t\t   <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"17.513\" height=\"16.706\" viewBox=\"0 0 17.513 16.706\">\n\t\t\t\t\t\t  <path id=\"Path_522\" data-name=\"Path 522\" d=\"M17.488,18.14a.513.513,0,0,0-.414-.349L11.645,17l-2.428-4.92a.513.513,0,0,0-.92,0L5.869,17,.439,17.79a.513.513,0,0,0-.284.875l3.928,3.829L3.156,27.9a.513.513,0,0,0,.744.541L8.757,25.89l4.856,2.553a.513.513,0,0,0,.745-.541l-.928-5.407,3.929-3.829A.513.513,0,0,0,17.488,18.14Z\" transform=\"translate(0 -11.796)\" fill=\"#ededed\"/>\n\t\t\t\t\t   </svg>\n\t\t\t\t\t   <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"17.513\" height=\"16.706\" viewBox=\"0 0 17.513 16.706\">\n\t\t\t\t\t\t  <path id=\"Path_522\" data-name=\"Path 522\" d=\"M17.488,18.14a.513.513,0,0,0-.414-.349L11.645,17l-2.428-4.92a.513.513,0,0,0-.92,0L5.869,17,.439,17.79a.513.513,0,0,0-.284.875l3.928,3.829L3.156,27.9a.513.513,0,0,0,.744.541L8.757,25.89l4.856,2.553a.513.513,0,0,0,.745-.541l-.928-5.407,3.929-3.829A.513.513,0,0,0,17.488,18.14Z\" transform=\"translate(0 -11.796)\" fill=\"#ededed\"/>\n\t\t\t\t\t   </svg>\n\t\t\t\t\t   <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"17.513\" height=\"16.706\" viewBox=\"0 0 17.513 16.706\">\n\t\t\t\t\t\t  <path id=\"Path_522\" data-name=\"Path 522\" d=\"M17.488,18.14a.513.513,0,0,0-.414-.349L11.645,17l-2.428-4.92a.513.513,0,0,0-.92,0L5.869,17,.439,17.79a.513.513,0,0,0-.284.875l3.928,3.829L3.156,27.9a.513.513,0,0,0,.744.541L8.757,25.89l4.856,2.553a.513.513,0,0,0,.745-.541l-.928-5.407,3.929-3.829A.513.513,0,0,0,17.488,18.14Z\" transform=\"translate(0 -11.796)\" fill=\"#ededed\"/>\n\t\t\t\t\t   </svg>\n\t\t\t\t\t   <img src=\"images/stars.svg\" alt=\"\">\n\t\t\t\t\t</div>\n\t\t\t\t </div>\n\t\t\t\t <div class=\"reviews-counter-product-accessories\">\n\t\t\t\t\t<p>115 reviews</p>\n\t\t\t\t </div>\n\t\t\t\t <div class=\"price\">\n\t\t\t\t\t<p>Price: $10</p>\n\t\t\t\t </div>\n\t\t\t\t <div class=\"btn-add-to-cart\">\n\t\t\t\t\t<span class=\"card-el__hide-on-md\">\n\t\t\t\t\tquick add to cart\n\t\t\t\t\t</span>\n\t\t\t\t </div>\n\t\t\t  </div>\n\t\t   </div>\n\t\t</li>\n\t\t<li data-sub-html=\"Product description 1\">\n\t\t   <div>\n\t\t\t  <div class=\"product-image\">\n\t\t\t\t <img src=\"images/accessories-product-2.png\"\n\t\t\t\t\talt=\"\"\n\t\t\t\t\tclass=\"\">\n\t\t\t  </div>\n\t\t\t  <p class=\"product-title\">Lorem ipsum dolor sit amet, consetetur sadipscing</p>\n\t\t\t  <p class=\"product-description__text\">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est </p>\n\t\t\t  <div class=\"share-product-accessories\">\n\t\t\t\t <a href=\"#\">\n\t\t\t\t\t<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"23.547\" height=\"25.688\" viewBox=\"0 0 23.547 25.688\">\n\t\t\t\t\t   <defs>\n\t\t\t\t\t\t  <style>.share-no-background{fill:#384765;}</style>\n\t\t\t\t\t   </defs>\n\t\t\t\t\t   <g transform=\"translate(0)\">\n\t\t\t\t\t\t  <path class=\"share-no-background\" d=\"M321.625,19.479A3.478,3.478,0,1,1,318.147,16a3.479,3.479,0,0,1,3.478,3.478Zm0,0\" transform=\"translate(-298.881 -15.197)\"/>\n\t\t\t\t\t\t  <path class=\"share-no-background\" d=\"M302.949,8.563a4.281,4.281,0,1,1,4.281-4.281A4.286,4.286,0,0,1,302.949,8.563Zm0-6.957a2.676,2.676,0,1,0,2.676,2.676,2.679,2.679,0,0,0-2.676-2.676Zm0,0\" transform=\"translate(-283.683 0)\"/>\n\t\t\t\t\t\t  <path class=\"share-no-background\" d=\"M321.625,360.811a3.478,3.478,0,1,1-3.478-3.479A3.478,3.478,0,0,1,321.625,360.811Zm0,0\" transform=\"translate(-298.881 -339.404)\"/>\n\t\t\t\t\t\t  <path class=\"share-no-background\" d=\"M302.949,349.895a4.281,4.281,0,1,1,4.281-4.281A4.286,4.286,0,0,1,302.949,349.895Zm0-6.957a2.676,2.676,0,1,0,2.676,2.676A2.679,2.679,0,0,0,302.949,342.938Zm0,0\" transform=\"translate(-283.683 -324.207)\"/>\n\t\t\t\t\t\t  <path class=\"share-no-background\" d=\"M22.957,190.146a3.479,3.479,0,1,1-3.479-3.479A3.479,3.479,0,0,1,22.957,190.146Zm0,0\" transform=\"translate(-15.197 -177.303)\"/>\n\t\t\t\t\t\t  <path class=\"share-no-background\" d=\"M4.281,179.23a4.281,4.281,0,1,1,4.281-4.281,4.286,4.286,0,0,1-4.281,4.281Zm0-6.957a2.676,2.676,0,1,0,2.676,2.676,2.679,2.679,0,0,0-2.676-2.676Zm0,0\" transform=\"translate(0 -162.105)\"/>\n\t\t\t\t\t\t  <path class=\"share-no-background\" d=\"M115.42,98.019a1.07,1.07,0,0,1-.531-2l9.931-5.662a1.07,1.07,0,1,1,1.06,1.86l-9.932,5.662a1.063,1.063,0,0,1-.529.14Zm0,0\" transform=\"translate(-108.611 -85.688)\"/>\n\t\t\t\t\t\t  <path class=\"share-no-background\" d=\"M125.372,274.022a1.064,1.064,0,0,1-.529-.14l-9.932-5.662a1.07,1.07,0,0,1,1.06-1.86l9.932,5.662a1.07,1.07,0,0,1-.531,2Zm0,0\" transform=\"translate(-108.633 -252.862)\"/>\n\t\t\t\t\t   </g>\n\t\t\t\t\t</svg>\n\t\t\t\t </a>\n\t\t\t\t <span class=\"trash-icon\">\n\t\t\t\t\t<a href=\"#\">\n\t\t\t\t\t   <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"22.783\" height=\"20.49\" viewBox=\"0 0 22.783 20.49\">\n\t\t\t\t\t\t  <defs>\n\t\t\t\t\t\t\t <style>.a{fill:#18c4c7;}</style>\n\t\t\t\t\t\t  </defs>\n\t\t\t\t\t\t  <path class=\"a\" d=\"M22.783,4.523v6.764a.89.89,0,0,1-.89.89H21.4a.89.89,0,0,1-.644-.276L16.886,7.839l-6.9,8.8a.89.89,0,0,1-.7.341h0a.89.89,0,0,1-.7-.342L6.235,13.629,4.976,15.265A.89.89,0,0,1,3.566,14.18l1.959-2.546a.89.89,0,0,1,.7-.347h0a.89.89,0,0,1,.7.342l2.36,3.02,6.828-8.716a.89.89,0,0,1,1.345-.065L21,9.577V4.523a1.782,1.782,0,0,0-1.78-1.78H3.56a1.782,1.782,0,0,0-1.78,1.78V16.982a1.782,1.782,0,0,0,1.78,1.78H9.389a.89.89,0,0,1,0,1.78H3.56A3.564,3.564,0,0,1,0,16.982V4.523A3.564,3.564,0,0,1,3.56.963H19.223A3.564,3.564,0,0,1,22.783,4.523ZM3.56,6.837a2.67,2.67,0,1,1,2.67,2.67A2.673,2.673,0,0,1,3.56,6.837Zm1.78,0a.89.89,0,1,0,.89-.89A.891.891,0,0,0,5.34,6.837Z\" transform=\"translate(0 -0.963)\"/>\n\t\t\t\t\t\t  <path class=\"a\" d=\"M10.789-5.37H7.443v3.346H5.688V-5.37H2.324V-7.135H5.688V-10.5H7.443v3.363h3.346Z\" transform=\"translate(11.402 22.514)\"/>\n\t\t\t\t\t   </svg>\n\t\t\t\t\t</a>\n\t\t\t\t </span>\n\t\t\t  </div>\n\t\t\t  <div class=\"see-detail-product-accessories\">\n\t\t\t\t <p><a href=\"/ClosetsToGo-website/product-detail-view.html\">See details</a></p>\n\t\t\t  </div>\n\t\t\t  <div class=\"stars-review-price-btn\">\n\t\t\t\t <div class=\" stars-product-accessories\">\n\t\t\t\t\t<div class=\"stars-container\">\n\t\t\t\t\t   <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"17.513\" height=\"16.706\" viewBox=\"0 0 17.513 16.706\">\n\t\t\t\t\t\t  <path id=\"Path_522\" data-name=\"Path 522\" d=\"M17.488,18.14a.513.513,0,0,0-.414-.349L11.645,17l-2.428-4.92a.513.513,0,0,0-.92,0L5.869,17,.439,17.79a.513.513,0,0,0-.284.875l3.928,3.829L3.156,27.9a.513.513,0,0,0,.744.541L8.757,25.89l4.856,2.553a.513.513,0,0,0,.745-.541l-.928-5.407,3.929-3.829A.513.513,0,0,0,17.488,18.14Z\" transform=\"translate(0 -11.796)\" fill=\"#ededed\"/>\n\t\t\t\t\t   </svg>\n\t\t\t\t\t   <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"17.513\" height=\"16.706\" viewBox=\"0 0 17.513 16.706\">\n\t\t\t\t\t\t  <path id=\"Path_522\" data-name=\"Path 522\" d=\"M17.488,18.14a.513.513,0,0,0-.414-.349L11.645,17l-2.428-4.92a.513.513,0,0,0-.92,0L5.869,17,.439,17.79a.513.513,0,0,0-.284.875l3.928,3.829L3.156,27.9a.513.513,0,0,0,.744.541L8.757,25.89l4.856,2.553a.513.513,0,0,0,.745-.541l-.928-5.407,3.929-3.829A.513.513,0,0,0,17.488,18.14Z\" transform=\"translate(0 -11.796)\" fill=\"#ededed\"/>\n\t\t\t\t\t   </svg>\n\t\t\t\t\t   <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"17.513\" height=\"16.706\" viewBox=\"0 0 17.513 16.706\">\n\t\t\t\t\t\t  <path id=\"Path_522\" data-name=\"Path 522\" d=\"M17.488,18.14a.513.513,0,0,0-.414-.349L11.645,17l-2.428-4.92a.513.513,0,0,0-.92,0L5.869,17,.439,17.79a.513.513,0,0,0-.284.875l3.928,3.829L3.156,27.9a.513.513,0,0,0,.744.541L8.757,25.89l4.856,2.553a.513.513,0,0,0,.745-.541l-.928-5.407,3.929-3.829A.513.513,0,0,0,17.488,18.14Z\" transform=\"translate(0 -11.796)\" fill=\"#ededed\"/>\n\t\t\t\t\t   </svg>\n\t\t\t\t\t   <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"17.513\" height=\"16.706\" viewBox=\"0 0 17.513 16.706\">\n\t\t\t\t\t\t  <path id=\"Path_522\" data-name=\"Path 522\" d=\"M17.488,18.14a.513.513,0,0,0-.414-.349L11.645,17l-2.428-4.92a.513.513,0,0,0-.92,0L5.869,17,.439,17.79a.513.513,0,0,0-.284.875l3.928,3.829L3.156,27.9a.513.513,0,0,0,.744.541L8.757,25.89l4.856,2.553a.513.513,0,0,0,.745-.541l-.928-5.407,3.929-3.829A.513.513,0,0,0,17.488,18.14Z\" transform=\"translate(0 -11.796)\" fill=\"#ededed\"/>\n\t\t\t\t\t   </svg>\n\t\t\t\t\t   <img src=\"images/stars.svg\" alt=\"\">\n\t\t\t\t\t</div>\n\t\t\t\t </div>\n\t\t\t\t <div class=\"reviews-counter-product-accessories\">\n\t\t\t\t\t<p>115 reviews</p>\n\t\t\t\t </div>\n\t\t\t\t <div class=\"price\">\n\t\t\t\t\t<p>Price: $10</p>\n\t\t\t\t </div>\n\t\t\t\t <div class=\"btn-add-to-cart\">\n\t\t\t\t\t<span class=\"card-el__hide-on-md\">\n\t\t\t\t\tquick add to cart\n\t\t\t\t\t</span>\n\t\t\t\t </div>\n\t\t\t  </div>\n\t\t   </div>\n\t\t</li>\n\t\t<li data-sub-html=\"Product description 1\">\n\t\t   <div>\n\t\t\t  <div class=\"product-image\">\n\t\t\t\t <img src=\"images/accessories-product-3.png\"\n\t\t\t\t\talt=\"\"\n\t\t\t\t\tclass=\"\">\n\t\t\t  </div>\n\t\t\t  <p class=\"product-title\">Lorem ipsum dolor sit amet, consetetur sadipscing</p>\n\t\t\t  <p class=\"product-description__text\">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est </p>\n\t\t\t  <div class=\"share-product-accessories\">\n\t\t\t\t <a href=\"#\">\n\t\t\t\t\t<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"23.547\" height=\"25.688\" viewBox=\"0 0 23.547 25.688\">\n\t\t\t\t\t   <defs>\n\t\t\t\t\t\t  <style>.share-no-background{fill:#384765;}</style>\n\t\t\t\t\t   </defs>\n\t\t\t\t\t   <g transform=\"translate(0)\">\n\t\t\t\t\t\t  <path class=\"share-no-background\" d=\"M321.625,19.479A3.478,3.478,0,1,1,318.147,16a3.479,3.479,0,0,1,3.478,3.478Zm0,0\" transform=\"translate(-298.881 -15.197)\"/>\n\t\t\t\t\t\t  <path class=\"share-no-background\" d=\"M302.949,8.563a4.281,4.281,0,1,1,4.281-4.281A4.286,4.286,0,0,1,302.949,8.563Zm0-6.957a2.676,2.676,0,1,0,2.676,2.676,2.679,2.679,0,0,0-2.676-2.676Zm0,0\" transform=\"translate(-283.683 0)\"/>\n\t\t\t\t\t\t  <path class=\"share-no-background\" d=\"M321.625,360.811a3.478,3.478,0,1,1-3.478-3.479A3.478,3.478,0,0,1,321.625,360.811Zm0,0\" transform=\"translate(-298.881 -339.404)\"/>\n\t\t\t\t\t\t  <path class=\"share-no-background\" d=\"M302.949,349.895a4.281,4.281,0,1,1,4.281-4.281A4.286,4.286,0,0,1,302.949,349.895Zm0-6.957a2.676,2.676,0,1,0,2.676,2.676A2.679,2.679,0,0,0,302.949,342.938Zm0,0\" transform=\"translate(-283.683 -324.207)\"/>\n\t\t\t\t\t\t  <path class=\"share-no-background\" d=\"M22.957,190.146a3.479,3.479,0,1,1-3.479-3.479A3.479,3.479,0,0,1,22.957,190.146Zm0,0\" transform=\"translate(-15.197 -177.303)\"/>\n\t\t\t\t\t\t  <path class=\"share-no-background\" d=\"M4.281,179.23a4.281,4.281,0,1,1,4.281-4.281,4.286,4.286,0,0,1-4.281,4.281Zm0-6.957a2.676,2.676,0,1,0,2.676,2.676,2.679,2.679,0,0,0-2.676-2.676Zm0,0\" transform=\"translate(0 -162.105)\"/>\n\t\t\t\t\t\t  <path class=\"share-no-background\" d=\"M115.42,98.019a1.07,1.07,0,0,1-.531-2l9.931-5.662a1.07,1.07,0,1,1,1.06,1.86l-9.932,5.662a1.063,1.063,0,0,1-.529.14Zm0,0\" transform=\"translate(-108.611 -85.688)\"/>\n\t\t\t\t\t\t  <path class=\"share-no-background\" d=\"M125.372,274.022a1.064,1.064,0,0,1-.529-.14l-9.932-5.662a1.07,1.07,0,0,1,1.06-1.86l9.932,5.662a1.07,1.07,0,0,1-.531,2Zm0,0\" transform=\"translate(-108.633 -252.862)\"/>\n\t\t\t\t\t   </g>\n\t\t\t\t\t</svg>\n\t\t\t\t </a>\n\t\t\t\t <span class=\"trash-icon\">\n\t\t\t\t\t<a href=\"#\">\n\t\t\t\t\t   <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"22.783\" height=\"20.49\" viewBox=\"0 0 22.783 20.49\">\n\t\t\t\t\t\t  <defs>\n\t\t\t\t\t\t\t <style>.a{fill:#18c4c7;}</style>\n\t\t\t\t\t\t  </defs>\n\t\t\t\t\t\t  <path class=\"a\" d=\"M22.783,4.523v6.764a.89.89,0,0,1-.89.89H21.4a.89.89,0,0,1-.644-.276L16.886,7.839l-6.9,8.8a.89.89,0,0,1-.7.341h0a.89.89,0,0,1-.7-.342L6.235,13.629,4.976,15.265A.89.89,0,0,1,3.566,14.18l1.959-2.546a.89.89,0,0,1,.7-.347h0a.89.89,0,0,1,.7.342l2.36,3.02,6.828-8.716a.89.89,0,0,1,1.345-.065L21,9.577V4.523a1.782,1.782,0,0,0-1.78-1.78H3.56a1.782,1.782,0,0,0-1.78,1.78V16.982a1.782,1.782,0,0,0,1.78,1.78H9.389a.89.89,0,0,1,0,1.78H3.56A3.564,3.564,0,0,1,0,16.982V4.523A3.564,3.564,0,0,1,3.56.963H19.223A3.564,3.564,0,0,1,22.783,4.523ZM3.56,6.837a2.67,2.67,0,1,1,2.67,2.67A2.673,2.673,0,0,1,3.56,6.837Zm1.78,0a.89.89,0,1,0,.89-.89A.891.891,0,0,0,5.34,6.837Z\" transform=\"translate(0 -0.963)\"/>\n\t\t\t\t\t\t  <path class=\"a\" d=\"M10.789-5.37H7.443v3.346H5.688V-5.37H2.324V-7.135H5.688V-10.5H7.443v3.363h3.346Z\" transform=\"translate(11.402 22.514)\"/>\n\t\t\t\t\t   </svg>\n\t\t\t\t\t</a>\n\t\t\t\t </span>\n\t\t\t  </div>\n\t\t\t  <div class=\"see-detail-product-accessories\">\n\t\t\t\t <p><a href=\"/ClosetsToGo-website/product-detail-view.html\">See details</a></p>\n\t\t\t  </div>\n\t\t\t  <div class=\"stars-review-price-btn\">\n\t\t\t\t <div class=\" stars-product-accessories\">\n\t\t\t\t\t<div class=\"stars-container\">\n\t\t\t\t\t   <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"17.513\" height=\"16.706\" viewBox=\"0 0 17.513 16.706\">\n\t\t\t\t\t\t  <path id=\"Path_522\" data-name=\"Path 522\" d=\"M17.488,18.14a.513.513,0,0,0-.414-.349L11.645,17l-2.428-4.92a.513.513,0,0,0-.92,0L5.869,17,.439,17.79a.513.513,0,0,0-.284.875l3.928,3.829L3.156,27.9a.513.513,0,0,0,.744.541L8.757,25.89l4.856,2.553a.513.513,0,0,0,.745-.541l-.928-5.407,3.929-3.829A.513.513,0,0,0,17.488,18.14Z\" transform=\"translate(0 -11.796)\" fill=\"#ededed\"/>\n\t\t\t\t\t   </svg>\n\t\t\t\t\t   <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"17.513\" height=\"16.706\" viewBox=\"0 0 17.513 16.706\">\n\t\t\t\t\t\t  <path id=\"Path_522\" data-name=\"Path 522\" d=\"M17.488,18.14a.513.513,0,0,0-.414-.349L11.645,17l-2.428-4.92a.513.513,0,0,0-.92,0L5.869,17,.439,17.79a.513.513,0,0,0-.284.875l3.928,3.829L3.156,27.9a.513.513,0,0,0,.744.541L8.757,25.89l4.856,2.553a.513.513,0,0,0,.745-.541l-.928-5.407,3.929-3.829A.513.513,0,0,0,17.488,18.14Z\" transform=\"translate(0 -11.796)\" fill=\"#ededed\"/>\n\t\t\t\t\t   </svg>\n\t\t\t\t\t   <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"17.513\" height=\"16.706\" viewBox=\"0 0 17.513 16.706\">\n\t\t\t\t\t\t  <path id=\"Path_522\" data-name=\"Path 522\" d=\"M17.488,18.14a.513.513,0,0,0-.414-.349L11.645,17l-2.428-4.92a.513.513,0,0,0-.92,0L5.869,17,.439,17.79a.513.513,0,0,0-.284.875l3.928,3.829L3.156,27.9a.513.513,0,0,0,.744.541L8.757,25.89l4.856,2.553a.513.513,0,0,0,.745-.541l-.928-5.407,3.929-3.829A.513.513,0,0,0,17.488,18.14Z\" transform=\"translate(0 -11.796)\" fill=\"#ededed\"/>\n\t\t\t\t\t   </svg>\n\t\t\t\t\t   <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"17.513\" height=\"16.706\" viewBox=\"0 0 17.513 16.706\">\n\t\t\t\t\t\t  <path id=\"Path_522\" data-name=\"Path 522\" d=\"M17.488,18.14a.513.513,0,0,0-.414-.349L11.645,17l-2.428-4.92a.513.513,0,0,0-.92,0L5.869,17,.439,17.79a.513.513,0,0,0-.284.875l3.928,3.829L3.156,27.9a.513.513,0,0,0,.744.541L8.757,25.89l4.856,2.553a.513.513,0,0,0,.745-.541l-.928-5.407,3.929-3.829A.513.513,0,0,0,17.488,18.14Z\" transform=\"translate(0 -11.796)\" fill=\"#ededed\"/>\n\t\t\t\t\t   </svg>\n\t\t\t\t\t   <img src=\"images/stars.svg\" alt=\"\">\n\t\t\t\t\t</div>\n\t\t\t\t </div>\n\t\t\t\t <div class=\"reviews-counter-product-accessories\">\n\t\t\t\t\t<p>115 reviews</p>\n\t\t\t\t </div>\n\t\t\t\t <div class=\"price\">\n\t\t\t\t\t<p>Price: $10</p>\n\t\t\t\t </div>\n\t\t\t\t <div class=\"btn-add-to-cart\">\n\t\t\t\t\t<span class=\"card-el__hide-on-md\">\n\t\t\t\t\tquick add to cart\n\t\t\t\t\t</span>\n\t\t\t\t </div>\n\t\t\t  </div>\n\t\t   </div>\n\t\t</li>\n\t\t<li data-sub-html=\"Product description 1\">\n\t\t   <div>\n\t\t\t  <div class=\"product-image\">\n\t\t\t\t <img src=\"images/accessories-product-4.png\"\n\t\t\t\t\talt=\"\"\n\t\t\t\t\tclass=\"\">\n\t\t\t  </div>\n\t\t\t  <p class=\"product-title\">Lorem ipsum dolor sit amet, consetetur sadipscing</p>\n\t\t\t  <p class=\"product-description__text\">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est </p>\n\t\t\t  <div class=\"share-product-accessories\">\n\t\t\t\t <a href=\"#\">\n\t\t\t\t\t<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"23.547\" height=\"25.688\" viewBox=\"0 0 23.547 25.688\">\n\t\t\t\t\t   <defs>\n\t\t\t\t\t\t  <style>.share-no-background{fill:#384765;}</style>\n\t\t\t\t\t   </defs>\n\t\t\t\t\t   <g transform=\"translate(0)\">\n\t\t\t\t\t\t  <path class=\"share-no-background\" d=\"M321.625,19.479A3.478,3.478,0,1,1,318.147,16a3.479,3.479,0,0,1,3.478,3.478Zm0,0\" transform=\"translate(-298.881 -15.197)\"/>\n\t\t\t\t\t\t  <path class=\"share-no-background\" d=\"M302.949,8.563a4.281,4.281,0,1,1,4.281-4.281A4.286,4.286,0,0,1,302.949,8.563Zm0-6.957a2.676,2.676,0,1,0,2.676,2.676,2.679,2.679,0,0,0-2.676-2.676Zm0,0\" transform=\"translate(-283.683 0)\"/>\n\t\t\t\t\t\t  <path class=\"share-no-background\" d=\"M321.625,360.811a3.478,3.478,0,1,1-3.478-3.479A3.478,3.478,0,0,1,321.625,360.811Zm0,0\" transform=\"translate(-298.881 -339.404)\"/>\n\t\t\t\t\t\t  <path class=\"share-no-background\" d=\"M302.949,349.895a4.281,4.281,0,1,1,4.281-4.281A4.286,4.286,0,0,1,302.949,349.895Zm0-6.957a2.676,2.676,0,1,0,2.676,2.676A2.679,2.679,0,0,0,302.949,342.938Zm0,0\" transform=\"translate(-283.683 -324.207)\"/>\n\t\t\t\t\t\t  <path class=\"share-no-background\" d=\"M22.957,190.146a3.479,3.479,0,1,1-3.479-3.479A3.479,3.479,0,0,1,22.957,190.146Zm0,0\" transform=\"translate(-15.197 -177.303)\"/>\n\t\t\t\t\t\t  <path class=\"share-no-background\" d=\"M4.281,179.23a4.281,4.281,0,1,1,4.281-4.281,4.286,4.286,0,0,1-4.281,4.281Zm0-6.957a2.676,2.676,0,1,0,2.676,2.676,2.679,2.679,0,0,0-2.676-2.676Zm0,0\" transform=\"translate(0 -162.105)\"/>\n\t\t\t\t\t\t  <path class=\"share-no-background\" d=\"M115.42,98.019a1.07,1.07,0,0,1-.531-2l9.931-5.662a1.07,1.07,0,1,1,1.06,1.86l-9.932,5.662a1.063,1.063,0,0,1-.529.14Zm0,0\" transform=\"translate(-108.611 -85.688)\"/>\n\t\t\t\t\t\t  <path class=\"share-no-background\" d=\"M125.372,274.022a1.064,1.064,0,0,1-.529-.14l-9.932-5.662a1.07,1.07,0,0,1,1.06-1.86l9.932,5.662a1.07,1.07,0,0,1-.531,2Zm0,0\" transform=\"translate(-108.633 -252.862)\"/>\n\t\t\t\t\t   </g>\n\t\t\t\t\t</svg>\n\t\t\t\t </a>\n\t\t\t\t <span class=\"trash-icon\">\n\t\t\t\t\t<a href=\"#\">\n\t\t\t\t\t   <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"22.783\" height=\"20.49\" viewBox=\"0 0 22.783 20.49\">\n\t\t\t\t\t\t  <defs>\n\t\t\t\t\t\t\t <style>.a{fill:#18c4c7;}</style>\n\t\t\t\t\t\t  </defs>\n\t\t\t\t\t\t  <path class=\"a\" d=\"M22.783,4.523v6.764a.89.89,0,0,1-.89.89H21.4a.89.89,0,0,1-.644-.276L16.886,7.839l-6.9,8.8a.89.89,0,0,1-.7.341h0a.89.89,0,0,1-.7-.342L6.235,13.629,4.976,15.265A.89.89,0,0,1,3.566,14.18l1.959-2.546a.89.89,0,0,1,.7-.347h0a.89.89,0,0,1,.7.342l2.36,3.02,6.828-8.716a.89.89,0,0,1,1.345-.065L21,9.577V4.523a1.782,1.782,0,0,0-1.78-1.78H3.56a1.782,1.782,0,0,0-1.78,1.78V16.982a1.782,1.782,0,0,0,1.78,1.78H9.389a.89.89,0,0,1,0,1.78H3.56A3.564,3.564,0,0,1,0,16.982V4.523A3.564,3.564,0,0,1,3.56.963H19.223A3.564,3.564,0,0,1,22.783,4.523ZM3.56,6.837a2.67,2.67,0,1,1,2.67,2.67A2.673,2.673,0,0,1,3.56,6.837Zm1.78,0a.89.89,0,1,0,.89-.89A.891.891,0,0,0,5.34,6.837Z\" transform=\"translate(0 -0.963)\"/>\n\t\t\t\t\t\t  <path class=\"a\" d=\"M10.789-5.37H7.443v3.346H5.688V-5.37H2.324V-7.135H5.688V-10.5H7.443v3.363h3.346Z\" transform=\"translate(11.402 22.514)\"/>\n\t\t\t\t\t   </svg>\n\t\t\t\t\t</a>\n\t\t\t\t </span>\n\t\t\t  </div>\n\t\t\t  <div class=\"see-detail-product-accessories\">\n\t\t\t\t <p><a href=\"/ClosetsToGo-website/product-detail-view.html\">See details</a></p>\n\t\t\t  </div>\n\t\t\t  <div class=\"stars-review-price-btn\">\n\t\t\t\t <div class=\" stars-product-accessories\">\n\t\t\t\t\t<div class=\"stars-container\">\n\t\t\t\t\t   <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"17.513\" height=\"16.706\" viewBox=\"0 0 17.513 16.706\">\n\t\t\t\t\t\t  <path id=\"Path_522\" data-name=\"Path 522\" d=\"M17.488,18.14a.513.513,0,0,0-.414-.349L11.645,17l-2.428-4.92a.513.513,0,0,0-.92,0L5.869,17,.439,17.79a.513.513,0,0,0-.284.875l3.928,3.829L3.156,27.9a.513.513,0,0,0,.744.541L8.757,25.89l4.856,2.553a.513.513,0,0,0,.745-.541l-.928-5.407,3.929-3.829A.513.513,0,0,0,17.488,18.14Z\" transform=\"translate(0 -11.796)\" fill=\"#ededed\"/>\n\t\t\t\t\t   </svg>\n\t\t\t\t\t   <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"17.513\" height=\"16.706\" viewBox=\"0 0 17.513 16.706\">\n\t\t\t\t\t\t  <path id=\"Path_522\" data-name=\"Path 522\" d=\"M17.488,18.14a.513.513,0,0,0-.414-.349L11.645,17l-2.428-4.92a.513.513,0,0,0-.92,0L5.869,17,.439,17.79a.513.513,0,0,0-.284.875l3.928,3.829L3.156,27.9a.513.513,0,0,0,.744.541L8.757,25.89l4.856,2.553a.513.513,0,0,0,.745-.541l-.928-5.407,3.929-3.829A.513.513,0,0,0,17.488,18.14Z\" transform=\"translate(0 -11.796)\" fill=\"#ededed\"/>\n\t\t\t\t\t   </svg>\n\t\t\t\t\t   <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"17.513\" height=\"16.706\" viewBox=\"0 0 17.513 16.706\">\n\t\t\t\t\t\t  <path id=\"Path_522\" data-name=\"Path 522\" d=\"M17.488,18.14a.513.513,0,0,0-.414-.349L11.645,17l-2.428-4.92a.513.513,0,0,0-.92,0L5.869,17,.439,17.79a.513.513,0,0,0-.284.875l3.928,3.829L3.156,27.9a.513.513,0,0,0,.744.541L8.757,25.89l4.856,2.553a.513.513,0,0,0,.745-.541l-.928-5.407,3.929-3.829A.513.513,0,0,0,17.488,18.14Z\" transform=\"translate(0 -11.796)\" fill=\"#ededed\"/>\n\t\t\t\t\t   </svg>\n\t\t\t\t\t   <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"17.513\" height=\"16.706\" viewBox=\"0 0 17.513 16.706\">\n\t\t\t\t\t\t  <path id=\"Path_522\" data-name=\"Path 522\" d=\"M17.488,18.14a.513.513,0,0,0-.414-.349L11.645,17l-2.428-4.92a.513.513,0,0,0-.92,0L5.869,17,.439,17.79a.513.513,0,0,0-.284.875l3.928,3.829L3.156,27.9a.513.513,0,0,0,.744.541L8.757,25.89l4.856,2.553a.513.513,0,0,0,.745-.541l-.928-5.407,3.929-3.829A.513.513,0,0,0,17.488,18.14Z\" transform=\"translate(0 -11.796)\" fill=\"#ededed\"/>\n\t\t\t\t\t   </svg>\n\t\t\t\t\t   <img src=\"images/stars.svg\" alt=\"\">\n\t\t\t\t\t</div>\n\t\t\t\t </div>\n\t\t\t\t <div class=\"reviews-counter-product-accessories\">\n\t\t\t\t\t<p>115 reviews</p>\n\t\t\t\t </div>\n\t\t\t\t <div class=\"price\">\n\t\t\t\t\t<p>Price: $10</p>\n\t\t\t\t </div>\n\t\t\t\t <div class=\"btn-add-to-cart\">\n\t\t\t\t\t<span class=\"card-el__hide-on-md\">\n\t\t\t\t\tquick add to cart\n\t\t\t\t\t</span>\n\t\t\t\t </div>\n\t\t\t  </div>\n\t\t   </div>\n\t\t</li>\n\t\t<li data-sub-html=\"Product description 1\">\n\t\t   <div>\n\t\t\t  <div class=\"product-image\">\n\t\t\t\t <img src=\"images/accessories-product-5.png\"\n\t\t\t\t\talt=\"\"\n\t\t\t\t\tclass=\"\">\n\t\t\t  </div>\n\t\t\t  <p class=\"product-title\">Lorem ipsum dolor sit amet, consetetur sadipscing</p>\n\t\t\t  <p class=\"product-description__text\">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est </p>\n\t\t\t  <div class=\"share-product-accessories\">\n\t\t\t\t <a href=\"#\">\n\t\t\t\t\t<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"23.547\" height=\"25.688\" viewBox=\"0 0 23.547 25.688\">\n\t\t\t\t\t   <defs>\n\t\t\t\t\t\t  <style>.share-no-background{fill:#384765;}</style>\n\t\t\t\t\t   </defs>\n\t\t\t\t\t   <g transform=\"translate(0)\">\n\t\t\t\t\t\t  <path class=\"share-no-background\" d=\"M321.625,19.479A3.478,3.478,0,1,1,318.147,16a3.479,3.479,0,0,1,3.478,3.478Zm0,0\" transform=\"translate(-298.881 -15.197)\"/>\n\t\t\t\t\t\t  <path class=\"share-no-background\" d=\"M302.949,8.563a4.281,4.281,0,1,1,4.281-4.281A4.286,4.286,0,0,1,302.949,8.563Zm0-6.957a2.676,2.676,0,1,0,2.676,2.676,2.679,2.679,0,0,0-2.676-2.676Zm0,0\" transform=\"translate(-283.683 0)\"/>\n\t\t\t\t\t\t  <path class=\"share-no-background\" d=\"M321.625,360.811a3.478,3.478,0,1,1-3.478-3.479A3.478,3.478,0,0,1,321.625,360.811Zm0,0\" transform=\"translate(-298.881 -339.404)\"/>\n\t\t\t\t\t\t  <path class=\"share-no-background\" d=\"M302.949,349.895a4.281,4.281,0,1,1,4.281-4.281A4.286,4.286,0,0,1,302.949,349.895Zm0-6.957a2.676,2.676,0,1,0,2.676,2.676A2.679,2.679,0,0,0,302.949,342.938Zm0,0\" transform=\"translate(-283.683 -324.207)\"/>\n\t\t\t\t\t\t  <path class=\"share-no-background\" d=\"M22.957,190.146a3.479,3.479,0,1,1-3.479-3.479A3.479,3.479,0,0,1,22.957,190.146Zm0,0\" transform=\"translate(-15.197 -177.303)\"/>\n\t\t\t\t\t\t  <path class=\"share-no-background\" d=\"M4.281,179.23a4.281,4.281,0,1,1,4.281-4.281,4.286,4.286,0,0,1-4.281,4.281Zm0-6.957a2.676,2.676,0,1,0,2.676,2.676,2.679,2.679,0,0,0-2.676-2.676Zm0,0\" transform=\"translate(0 -162.105)\"/>\n\t\t\t\t\t\t  <path class=\"share-no-background\" d=\"M115.42,98.019a1.07,1.07,0,0,1-.531-2l9.931-5.662a1.07,1.07,0,1,1,1.06,1.86l-9.932,5.662a1.063,1.063,0,0,1-.529.14Zm0,0\" transform=\"translate(-108.611 -85.688)\"/>\n\t\t\t\t\t\t  <path class=\"share-no-background\" d=\"M125.372,274.022a1.064,1.064,0,0,1-.529-.14l-9.932-5.662a1.07,1.07,0,0,1,1.06-1.86l9.932,5.662a1.07,1.07,0,0,1-.531,2Zm0,0\" transform=\"translate(-108.633 -252.862)\"/>\n\t\t\t\t\t   </g>\n\t\t\t\t\t</svg>\n\t\t\t\t </a>\n\t\t\t\t <span class=\"trash-icon\">\n\t\t\t\t\t<a href=\"#\">\n\t\t\t\t\t   <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"22.783\" height=\"20.49\" viewBox=\"0 0 22.783 20.49\">\n\t\t\t\t\t\t  <defs>\n\t\t\t\t\t\t\t <style>.a{fill:#18c4c7;}</style>\n\t\t\t\t\t\t  </defs>\n\t\t\t\t\t\t  <path class=\"a\" d=\"M22.783,4.523v6.764a.89.89,0,0,1-.89.89H21.4a.89.89,0,0,1-.644-.276L16.886,7.839l-6.9,8.8a.89.89,0,0,1-.7.341h0a.89.89,0,0,1-.7-.342L6.235,13.629,4.976,15.265A.89.89,0,0,1,3.566,14.18l1.959-2.546a.89.89,0,0,1,.7-.347h0a.89.89,0,0,1,.7.342l2.36,3.02,6.828-8.716a.89.89,0,0,1,1.345-.065L21,9.577V4.523a1.782,1.782,0,0,0-1.78-1.78H3.56a1.782,1.782,0,0,0-1.78,1.78V16.982a1.782,1.782,0,0,0,1.78,1.78H9.389a.89.89,0,0,1,0,1.78H3.56A3.564,3.564,0,0,1,0,16.982V4.523A3.564,3.564,0,0,1,3.56.963H19.223A3.564,3.564,0,0,1,22.783,4.523ZM3.56,6.837a2.67,2.67,0,1,1,2.67,2.67A2.673,2.673,0,0,1,3.56,6.837Zm1.78,0a.89.89,0,1,0,.89-.89A.891.891,0,0,0,5.34,6.837Z\" transform=\"translate(0 -0.963)\"/>\n\t\t\t\t\t\t  <path class=\"a\" d=\"M10.789-5.37H7.443v3.346H5.688V-5.37H2.324V-7.135H5.688V-10.5H7.443v3.363h3.346Z\" transform=\"translate(11.402 22.514)\"/>\n\t\t\t\t\t   </svg>\n\t\t\t\t\t</a>\n\t\t\t\t </span>\n\t\t\t  </div>\n\t\t\t  <div class=\"see-detail-product-accessories\">\n\t\t\t\t <p><a href=\"/ClosetsToGo-website/product-detail-view.html\">See details</a></p>\n\t\t\t  </div>\n\t\t\t  <div class=\"stars-review-price-btn\">\n\t\t\t\t <div class=\" stars-product-accessories\">\n\t\t\t\t\t<div class=\"stars-container\">\n\t\t\t\t\t   <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"17.513\" height=\"16.706\" viewBox=\"0 0 17.513 16.706\">\n\t\t\t\t\t\t  <path id=\"Path_522\" data-name=\"Path 522\" d=\"M17.488,18.14a.513.513,0,0,0-.414-.349L11.645,17l-2.428-4.92a.513.513,0,0,0-.92,0L5.869,17,.439,17.79a.513.513,0,0,0-.284.875l3.928,3.829L3.156,27.9a.513.513,0,0,0,.744.541L8.757,25.89l4.856,2.553a.513.513,0,0,0,.745-.541l-.928-5.407,3.929-3.829A.513.513,0,0,0,17.488,18.14Z\" transform=\"translate(0 -11.796)\" fill=\"#ededed\"/>\n\t\t\t\t\t   </svg>\n\t\t\t\t\t   <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"17.513\" height=\"16.706\" viewBox=\"0 0 17.513 16.706\">\n\t\t\t\t\t\t  <path id=\"Path_522\" data-name=\"Path 522\" d=\"M17.488,18.14a.513.513,0,0,0-.414-.349L11.645,17l-2.428-4.92a.513.513,0,0,0-.92,0L5.869,17,.439,17.79a.513.513,0,0,0-.284.875l3.928,3.829L3.156,27.9a.513.513,0,0,0,.744.541L8.757,25.89l4.856,2.553a.513.513,0,0,0,.745-.541l-.928-5.407,3.929-3.829A.513.513,0,0,0,17.488,18.14Z\" transform=\"translate(0 -11.796)\" fill=\"#ededed\"/>\n\t\t\t\t\t   </svg>\n\t\t\t\t\t   <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"17.513\" height=\"16.706\" viewBox=\"0 0 17.513 16.706\">\n\t\t\t\t\t\t  <path id=\"Path_522\" data-name=\"Path 522\" d=\"M17.488,18.14a.513.513,0,0,0-.414-.349L11.645,17l-2.428-4.92a.513.513,0,0,0-.92,0L5.869,17,.439,17.79a.513.513,0,0,0-.284.875l3.928,3.829L3.156,27.9a.513.513,0,0,0,.744.541L8.757,25.89l4.856,2.553a.513.513,0,0,0,.745-.541l-.928-5.407,3.929-3.829A.513.513,0,0,0,17.488,18.14Z\" transform=\"translate(0 -11.796)\" fill=\"#ededed\"/>\n\t\t\t\t\t   </svg>\n\t\t\t\t\t   <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"17.513\" height=\"16.706\" viewBox=\"0 0 17.513 16.706\">\n\t\t\t\t\t\t  <path id=\"Path_522\" data-name=\"Path 522\" d=\"M17.488,18.14a.513.513,0,0,0-.414-.349L11.645,17l-2.428-4.92a.513.513,0,0,0-.92,0L5.869,17,.439,17.79a.513.513,0,0,0-.284.875l3.928,3.829L3.156,27.9a.513.513,0,0,0,.744.541L8.757,25.89l4.856,2.553a.513.513,0,0,0,.745-.541l-.928-5.407,3.929-3.829A.513.513,0,0,0,17.488,18.14Z\" transform=\"translate(0 -11.796)\" fill=\"#ededed\"/>\n\t\t\t\t\t   </svg>\n\t\t\t\t\t   <img src=\"images/stars.svg\" alt=\"\">\n\t\t\t\t\t</div>\n\t\t\t\t </div>\n\t\t\t\t <div class=\"reviews-counter-product-accessories\">\n\t\t\t\t\t<p>115 reviews</p>\n\t\t\t\t </div>\n\t\t\t\t <div class=\"price\">\n\t\t\t\t\t<p>Price: $10</p>\n\t\t\t\t </div>\n\t\t\t\t <div class=\"btn-add-to-cart\">\n\t\t\t\t\t<span class=\"card-el__hide-on-md\">\n\t\t\t\t\tquick add to cart\n\t\t\t\t\t</span>\n\t\t\t\t </div>\n\t\t\t  </div>\n\t\t   </div>\n\t\t</li>\n\t </ul>\n\t <ul id=\"html5-videos\" class=\"accessories-products landscape-accessories-products\">\n\t\t<li data-sub-html=\"Product description 1\" data-html=\"#video1\">\n\t\t   <div>\n\t\t\t  <div>\n\t\t\t\t <img class=\"landscape-images\" src=\"images/accessories-product-6.png\" alt=\"\">\n\t\t\t  </div>\n\t\t\t  <p class=\"product-title\">Lorem ipsum dolor sit amet...</p>\n\t\t\t  <p class=\"product-description__text\">Lorem ipsum dolor sit amet, consetetur sadipscing elit,invid ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd</p>\n\t\t   </div>\n\t\t   <div class=\"stars-review-counter-accessories\">\n\t\t\t  <div class=\"stars-container\">\n\t\t\t\t <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"17.513\" height=\"16.706\" viewBox=\"0 0 17.513 16.706\">\n\t\t\t\t\t<path id=\"Path_522\" data-name=\"Path 522\" d=\"M17.488,18.14a.513.513,0,0,0-.414-.349L11.645,17l-2.428-4.92a.513.513,0,0,0-.92,0L5.869,17,.439,17.79a.513.513,0,0,0-.284.875l3.928,3.829L3.156,27.9a.513.513,0,0,0,.744.541L8.757,25.89l4.856,2.553a.513.513,0,0,0,.745-.541l-.928-5.407,3.929-3.829A.513.513,0,0,0,17.488,18.14Z\" transform=\"translate(0 -11.796)\" fill=\"#ededed\"/>\n\t\t\t\t </svg>\n\t\t\t\t <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"17.513\" height=\"16.706\" viewBox=\"0 0 17.513 16.706\">\n\t\t\t\t\t<path id=\"Path_522\" data-name=\"Path 522\" d=\"M17.488,18.14a.513.513,0,0,0-.414-.349L11.645,17l-2.428-4.92a.513.513,0,0,0-.92,0L5.869,17,.439,17.79a.513.513,0,0,0-.284.875l3.928,3.829L3.156,27.9a.513.513,0,0,0,.744.541L8.757,25.89l4.856,2.553a.513.513,0,0,0,.745-.541l-.928-5.407,3.929-3.829A.513.513,0,0,0,17.488,18.14Z\" transform=\"translate(0 -11.796)\" fill=\"#ededed\"/>\n\t\t\t\t </svg>\n\t\t\t\t <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"17.513\" height=\"16.706\" viewBox=\"0 0 17.513 16.706\">\n\t\t\t\t\t<path id=\"Path_522\" data-name=\"Path 522\" d=\"M17.488,18.14a.513.513,0,0,0-.414-.349L11.645,17l-2.428-4.92a.513.513,0,0,0-.92,0L5.869,17,.439,17.79a.513.513,0,0,0-.284.875l3.928,3.829L3.156,27.9a.513.513,0,0,0,.744.541L8.757,25.89l4.856,2.553a.513.513,0,0,0,.745-.541l-.928-5.407,3.929-3.829A.513.513,0,0,0,17.488,18.14Z\" transform=\"translate(0 -11.796)\" fill=\"#ededed\"/>\n\t\t\t\t </svg>\n\t\t\t\t <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"17.513\" height=\"16.706\" viewBox=\"0 0 17.513 16.706\">\n\t\t\t\t\t<path id=\"Path_522\" data-name=\"Path 522\" d=\"M17.488,18.14a.513.513,0,0,0-.414-.349L11.645,17l-2.428-4.92a.513.513,0,0,0-.92,0L5.869,17,.439,17.79a.513.513,0,0,0-.284.875l3.928,3.829L3.156,27.9a.513.513,0,0,0,.744.541L8.757,25.89l4.856,2.553a.513.513,0,0,0,.745-.541l-.928-5.407,3.929-3.829A.513.513,0,0,0,17.488,18.14Z\" transform=\"translate(0 -11.796)\" fill=\"#ededed\"/>\n\t\t\t\t </svg>\n\t\t\t\t <img src=\"images/stars.svg\" alt=\"\">\n\t\t\t  </div>\n\t\t\t  <div class=\"reviews-counter-product-accessories\">\n\t\t\t\t <p>115 reviews</p>\n\t\t\t  </div>\n\t\t\t  <div class=\"price\">\n\t\t\t\t <p>Price: $10</p>\n\t\t\t  </div>\n\t\t   </div>\n\t\t   <div class=\"see-detail-product-accessories\">\n\t\t\t  <a href=\"#\">\n\t\t\t\t <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"23.547\" height=\"25.688\" viewBox=\"0 0 23.547 25.688\">\n\t\t\t\t\t<defs>\n\t\t\t\t\t   <style>.share-no-background{fill:#384765;}</style>\n\t\t\t\t\t</defs>\n\t\t\t\t\t<g transform=\"translate(0)\">\n\t\t\t\t\t   <path class=\"share-no-background\" d=\"M321.625,19.479A3.478,3.478,0,1,1,318.147,16a3.479,3.479,0,0,1,3.478,3.478Zm0,0\" transform=\"translate(-298.881 -15.197)\"/>\n\t\t\t\t\t   <path class=\"share-no-background\" d=\"M302.949,8.563a4.281,4.281,0,1,1,4.281-4.281A4.286,4.286,0,0,1,302.949,8.563Zm0-6.957a2.676,2.676,0,1,0,2.676,2.676,2.679,2.679,0,0,0-2.676-2.676Zm0,0\" transform=\"translate(-283.683 0)\"/>\n\t\t\t\t\t   <path class=\"share-no-background\" d=\"M321.625,360.811a3.478,3.478,0,1,1-3.478-3.479A3.478,3.478,0,0,1,321.625,360.811Zm0,0\" transform=\"translate(-298.881 -339.404)\"/>\n\t\t\t\t\t   <path class=\"share-no-background\" d=\"M302.949,349.895a4.281,4.281,0,1,1,4.281-4.281A4.286,4.286,0,0,1,302.949,349.895Zm0-6.957a2.676,2.676,0,1,0,2.676,2.676A2.679,2.679,0,0,0,302.949,342.938Zm0,0\" transform=\"translate(-283.683 -324.207)\"/>\n\t\t\t\t\t   <path class=\"share-no-background\" d=\"M22.957,190.146a3.479,3.479,0,1,1-3.479-3.479A3.479,3.479,0,0,1,22.957,190.146Zm0,0\" transform=\"translate(-15.197 -177.303)\"/>\n\t\t\t\t\t   <path class=\"share-no-background\" d=\"M4.281,179.23a4.281,4.281,0,1,1,4.281-4.281,4.286,4.286,0,0,1-4.281,4.281Zm0-6.957a2.676,2.676,0,1,0,2.676,2.676,2.679,2.679,0,0,0-2.676-2.676Zm0,0\" transform=\"translate(0 -162.105)\"/>\n\t\t\t\t\t   <path class=\"share-no-background\" d=\"M115.42,98.019a1.07,1.07,0,0,1-.531-2l9.931-5.662a1.07,1.07,0,1,1,1.06,1.86l-9.932,5.662a1.063,1.063,0,0,1-.529.14Zm0,0\" transform=\"translate(-108.611 -85.688)\"/>\n\t\t\t\t\t   <path class=\"share-no-background\" d=\"M125.372,274.022a1.064,1.064,0,0,1-.529-.14l-9.932-5.662a1.07,1.07,0,0,1,1.06-1.86l9.932,5.662a1.07,1.07,0,0,1-.531,2Zm0,0\" transform=\"translate(-108.633 -252.862)\"/>\n\t\t\t\t\t</g>\n\t\t\t\t </svg>\n\t\t\t  </a>\n\t\t\t  <span class=\"trash-icon\">\n\t\t\t\t <a href=\"#\">\n\t\t\t\t\t<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"22.783\" height=\"20.49\" viewBox=\"0 0 22.783 20.49\">\n\t\t\t\t\t   <defs>\n\t\t\t\t\t\t  <style>.a{fill:#18c4c7;}</style>\n\t\t\t\t\t   </defs>\n\t\t\t\t\t   <path class=\"a\" d=\"M22.783,4.523v6.764a.89.89,0,0,1-.89.89H21.4a.89.89,0,0,1-.644-.276L16.886,7.839l-6.9,8.8a.89.89,0,0,1-.7.341h0a.89.89,0,0,1-.7-.342L6.235,13.629,4.976,15.265A.89.89,0,0,1,3.566,14.18l1.959-2.546a.89.89,0,0,1,.7-.347h0a.89.89,0,0,1,.7.342l2.36,3.02,6.828-8.716a.89.89,0,0,1,1.345-.065L21,9.577V4.523a1.782,1.782,0,0,0-1.78-1.78H3.56a1.782,1.782,0,0,0-1.78,1.78V16.982a1.782,1.782,0,0,0,1.78,1.78H9.389a.89.89,0,0,1,0,1.78H3.56A3.564,3.564,0,0,1,0,16.982V4.523A3.564,3.564,0,0,1,3.56.963H19.223A3.564,3.564,0,0,1,22.783,4.523ZM3.56,6.837a2.67,2.67,0,1,1,2.67,2.67A2.673,2.673,0,0,1,3.56,6.837Zm1.78,0a.89.89,0,1,0,.89-.89A.891.891,0,0,0,5.34,6.837Z\" transform=\"translate(0 -0.963)\"/>\n\t\t\t\t\t   <path class=\"a\" d=\"M10.789-5.37H7.443v3.346H5.688V-5.37H2.324V-7.135H5.688V-10.5H7.443v3.363h3.346Z\" transform=\"translate(11.402 22.514)\"/>\n\t\t\t\t\t</svg>\n\t\t\t\t </a>\n\t\t\t  </span>\n\t\t\t  <p><a href=\"/ClosetsToGo-website/product-detail-view.html\">See details</a></p>\n\t\t\t  <span class=\"card-el__hide-on-md\">\n\t\t\t  quick add to cart\n\t\t\t  </span>\n\t\t   </div>\n\t\t</li>\n\t\t<li data-sub-html=\"Product description 1\" data-html=\"#video1\">\n\t\t   <div>\n\t\t\t  <div>\n\t\t\t\t <img class=\"landscape-images\" src=\"images/accessories-product-7.png\" alt=\"\">\n\t\t\t  </div>\n\t\t\t  <p class=\"product-title\">Lorem ipsum dolor sit amet...</p>\n\t\t\t  <p class=\"product-description__text\">Lorem ipsum dolor sit amet, consetetur sadipscing elit,invid ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd</p>\n\t\t   </div>\n\t\t   <div class=\"stars-review-counter-accessories\">\n\t\t\t  <div class=\"stars-container\">\n\t\t\t\t <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"17.513\" height=\"16.706\" viewBox=\"0 0 17.513 16.706\">\n\t\t\t\t\t<path id=\"Path_522\" data-name=\"Path 522\" d=\"M17.488,18.14a.513.513,0,0,0-.414-.349L11.645,17l-2.428-4.92a.513.513,0,0,0-.92,0L5.869,17,.439,17.79a.513.513,0,0,0-.284.875l3.928,3.829L3.156,27.9a.513.513,0,0,0,.744.541L8.757,25.89l4.856,2.553a.513.513,0,0,0,.745-.541l-.928-5.407,3.929-3.829A.513.513,0,0,0,17.488,18.14Z\" transform=\"translate(0 -11.796)\" fill=\"#ededed\"/>\n\t\t\t\t </svg>\n\t\t\t\t <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"17.513\" height=\"16.706\" viewBox=\"0 0 17.513 16.706\">\n\t\t\t\t\t<path id=\"Path_522\" data-name=\"Path 522\" d=\"M17.488,18.14a.513.513,0,0,0-.414-.349L11.645,17l-2.428-4.92a.513.513,0,0,0-.92,0L5.869,17,.439,17.79a.513.513,0,0,0-.284.875l3.928,3.829L3.156,27.9a.513.513,0,0,0,.744.541L8.757,25.89l4.856,2.553a.513.513,0,0,0,.745-.541l-.928-5.407,3.929-3.829A.513.513,0,0,0,17.488,18.14Z\" transform=\"translate(0 -11.796)\" fill=\"#ededed\"/>\n\t\t\t\t </svg>\n\t\t\t\t <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"17.513\" height=\"16.706\" viewBox=\"0 0 17.513 16.706\">\n\t\t\t\t\t<path id=\"Path_522\" data-name=\"Path 522\" d=\"M17.488,18.14a.513.513,0,0,0-.414-.349L11.645,17l-2.428-4.92a.513.513,0,0,0-.92,0L5.869,17,.439,17.79a.513.513,0,0,0-.284.875l3.928,3.829L3.156,27.9a.513.513,0,0,0,.744.541L8.757,25.89l4.856,2.553a.513.513,0,0,0,.745-.541l-.928-5.407,3.929-3.829A.513.513,0,0,0,17.488,18.14Z\" transform=\"translate(0 -11.796)\" fill=\"#ededed\"/>\n\t\t\t\t </svg>\n\t\t\t\t <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"17.513\" height=\"16.706\" viewBox=\"0 0 17.513 16.706\">\n\t\t\t\t\t<path id=\"Path_522\" data-name=\"Path 522\" d=\"M17.488,18.14a.513.513,0,0,0-.414-.349L11.645,17l-2.428-4.92a.513.513,0,0,0-.92,0L5.869,17,.439,17.79a.513.513,0,0,0-.284.875l3.928,3.829L3.156,27.9a.513.513,0,0,0,.744.541L8.757,25.89l4.856,2.553a.513.513,0,0,0,.745-.541l-.928-5.407,3.929-3.829A.513.513,0,0,0,17.488,18.14Z\" transform=\"translate(0 -11.796)\" fill=\"#ededed\"/>\n\t\t\t\t </svg>\n\t\t\t\t <img src=\"images/stars.svg\" alt=\"\">\n\t\t\t  </div>\n\t\t\t  <div class=\"reviews-counter-product-accessories\">\n\t\t\t\t <p>115 reviews</p>\n\t\t\t  </div>\n\t\t\t  <div class=\"price\">\n\t\t\t\t <p>Price: $10</p>\n\t\t\t  </div>\n\t\t   </div>\n\t\t   <div class=\"see-detail-product-accessories\">\n\t\t\t  <a href=\"#\">\n\t\t\t\t <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"23.547\" height=\"25.688\" viewBox=\"0 0 23.547 25.688\">\n\t\t\t\t\t<defs>\n\t\t\t\t\t   <style>.share-no-background{fill:#384765;}</style>\n\t\t\t\t\t</defs>\n\t\t\t\t\t<g transform=\"translate(0)\">\n\t\t\t\t\t   <path class=\"share-no-background\" d=\"M321.625,19.479A3.478,3.478,0,1,1,318.147,16a3.479,3.479,0,0,1,3.478,3.478Zm0,0\" transform=\"translate(-298.881 -15.197)\"/>\n\t\t\t\t\t   <path class=\"share-no-background\" d=\"M302.949,8.563a4.281,4.281,0,1,1,4.281-4.281A4.286,4.286,0,0,1,302.949,8.563Zm0-6.957a2.676,2.676,0,1,0,2.676,2.676,2.679,2.679,0,0,0-2.676-2.676Zm0,0\" transform=\"translate(-283.683 0)\"/>\n\t\t\t\t\t   <path class=\"share-no-background\" d=\"M321.625,360.811a3.478,3.478,0,1,1-3.478-3.479A3.478,3.478,0,0,1,321.625,360.811Zm0,0\" transform=\"translate(-298.881 -339.404)\"/>\n\t\t\t\t\t   <path class=\"share-no-background\" d=\"M302.949,349.895a4.281,4.281,0,1,1,4.281-4.281A4.286,4.286,0,0,1,302.949,349.895Zm0-6.957a2.676,2.676,0,1,0,2.676,2.676A2.679,2.679,0,0,0,302.949,342.938Zm0,0\" transform=\"translate(-283.683 -324.207)\"/>\n\t\t\t\t\t   <path class=\"share-no-background\" d=\"M22.957,190.146a3.479,3.479,0,1,1-3.479-3.479A3.479,3.479,0,0,1,22.957,190.146Zm0,0\" transform=\"translate(-15.197 -177.303)\"/>\n\t\t\t\t\t   <path class=\"share-no-background\" d=\"M4.281,179.23a4.281,4.281,0,1,1,4.281-4.281,4.286,4.286,0,0,1-4.281,4.281Zm0-6.957a2.676,2.676,0,1,0,2.676,2.676,2.679,2.679,0,0,0-2.676-2.676Zm0,0\" transform=\"translate(0 -162.105)\"/>\n\t\t\t\t\t   <path class=\"share-no-background\" d=\"M115.42,98.019a1.07,1.07,0,0,1-.531-2l9.931-5.662a1.07,1.07,0,1,1,1.06,1.86l-9.932,5.662a1.063,1.063,0,0,1-.529.14Zm0,0\" transform=\"translate(-108.611 -85.688)\"/>\n\t\t\t\t\t   <path class=\"share-no-background\" d=\"M125.372,274.022a1.064,1.064,0,0,1-.529-.14l-9.932-5.662a1.07,1.07,0,0,1,1.06-1.86l9.932,5.662a1.07,1.07,0,0,1-.531,2Zm0,0\" transform=\"translate(-108.633 -252.862)\"/>\n\t\t\t\t\t</g>\n\t\t\t\t </svg>\n\t\t\t  </a>\n\t\t\t  <span class=\"trash-icon\">\n\t\t\t\t <a href=\"#\">\n\t\t\t\t\t<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"22.783\" height=\"20.49\" viewBox=\"0 0 22.783 20.49\">\n\t\t\t\t\t   <defs>\n\t\t\t\t\t\t  <style>.a{fill:#18c4c7;}</style>\n\t\t\t\t\t   </defs>\n\t\t\t\t\t   <path class=\"a\" d=\"M22.783,4.523v6.764a.89.89,0,0,1-.89.89H21.4a.89.89,0,0,1-.644-.276L16.886,7.839l-6.9,8.8a.89.89,0,0,1-.7.341h0a.89.89,0,0,1-.7-.342L6.235,13.629,4.976,15.265A.89.89,0,0,1,3.566,14.18l1.959-2.546a.89.89,0,0,1,.7-.347h0a.89.89,0,0,1,.7.342l2.36,3.02,6.828-8.716a.89.89,0,0,1,1.345-.065L21,9.577V4.523a1.782,1.782,0,0,0-1.78-1.78H3.56a1.782,1.782,0,0,0-1.78,1.78V16.982a1.782,1.782,0,0,0,1.78,1.78H9.389a.89.89,0,0,1,0,1.78H3.56A3.564,3.564,0,0,1,0,16.982V4.523A3.564,3.564,0,0,1,3.56.963H19.223A3.564,3.564,0,0,1,22.783,4.523ZM3.56,6.837a2.67,2.67,0,1,1,2.67,2.67A2.673,2.673,0,0,1,3.56,6.837Zm1.78,0a.89.89,0,1,0,.89-.89A.891.891,0,0,0,5.34,6.837Z\" transform=\"translate(0 -0.963)\"/>\n\t\t\t\t\t   <path class=\"a\" d=\"M10.789-5.37H7.443v3.346H5.688V-5.37H2.324V-7.135H5.688V-10.5H7.443v3.363h3.346Z\" transform=\"translate(11.402 22.514)\"/>\n\t\t\t\t\t</svg>\n\t\t\t\t </a>\n\t\t\t  </span>\n\t\t\t  <p><a href=\"/ClosetsToGo-website/product-detail-view.html\">See details</a></p>\n\t\t\t  <span class=\"card-el__hide-on-md\">\n\t\t\t  quick add to cart\n\t\t\t  </span>\n\t\t   </div>\n\t\t</li>\n\t </ul>\n\t <ul id=\"html5-videos\" class=\"accessories-products\">\n\t\t<li data-sub-html=\"Product description 1\">\n\t\t   <div>\n\t\t\t  <div class=\"product-image\">\n\t\t\t\t <img src=\"images/accessories-product-1.png\"\n\t\t\t\t\talt=\"\"\n\t\t\t\t\tclass=\"\">\n\t\t\t  </div>\n\t\t\t  <p class=\"product-title\">Lorem ipsum dolor sit amet, consetetur sadipscing</p>\n\t\t\t  <p class=\"product-description__text\">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est </p>\n\t\t\t  <div class=\"share-product-accessories\">\n\t\t\t\t <a href=\"#\">\n\t\t\t\t\t<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"23.547\" height=\"25.688\" viewBox=\"0 0 23.547 25.688\">\n\t\t\t\t\t   <defs>\n\t\t\t\t\t\t  <style>.share-no-background{fill:#384765;}</style>\n\t\t\t\t\t   </defs>\n\t\t\t\t\t   <g transform=\"translate(0)\">\n\t\t\t\t\t\t  <path class=\"share-no-background\" d=\"M321.625,19.479A3.478,3.478,0,1,1,318.147,16a3.479,3.479,0,0,1,3.478,3.478Zm0,0\" transform=\"translate(-298.881 -15.197)\"/>\n\t\t\t\t\t\t  <path class=\"share-no-background\" d=\"M302.949,8.563a4.281,4.281,0,1,1,4.281-4.281A4.286,4.286,0,0,1,302.949,8.563Zm0-6.957a2.676,2.676,0,1,0,2.676,2.676,2.679,2.679,0,0,0-2.676-2.676Zm0,0\" transform=\"translate(-283.683 0)\"/>\n\t\t\t\t\t\t  <path class=\"share-no-background\" d=\"M321.625,360.811a3.478,3.478,0,1,1-3.478-3.479A3.478,3.478,0,0,1,321.625,360.811Zm0,0\" transform=\"translate(-298.881 -339.404)\"/>\n\t\t\t\t\t\t  <path class=\"share-no-background\" d=\"M302.949,349.895a4.281,4.281,0,1,1,4.281-4.281A4.286,4.286,0,0,1,302.949,349.895Zm0-6.957a2.676,2.676,0,1,0,2.676,2.676A2.679,2.679,0,0,0,302.949,342.938Zm0,0\" transform=\"translate(-283.683 -324.207)\"/>\n\t\t\t\t\t\t  <path class=\"share-no-background\" d=\"M22.957,190.146a3.479,3.479,0,1,1-3.479-3.479A3.479,3.479,0,0,1,22.957,190.146Zm0,0\" transform=\"translate(-15.197 -177.303)\"/>\n\t\t\t\t\t\t  <path class=\"share-no-background\" d=\"M4.281,179.23a4.281,4.281,0,1,1,4.281-4.281,4.286,4.286,0,0,1-4.281,4.281Zm0-6.957a2.676,2.676,0,1,0,2.676,2.676,2.679,2.679,0,0,0-2.676-2.676Zm0,0\" transform=\"translate(0 -162.105)\"/>\n\t\t\t\t\t\t  <path class=\"share-no-background\" d=\"M115.42,98.019a1.07,1.07,0,0,1-.531-2l9.931-5.662a1.07,1.07,0,1,1,1.06,1.86l-9.932,5.662a1.063,1.063,0,0,1-.529.14Zm0,0\" transform=\"translate(-108.611 -85.688)\"/>\n\t\t\t\t\t\t  <path class=\"share-no-background\" d=\"M125.372,274.022a1.064,1.064,0,0,1-.529-.14l-9.932-5.662a1.07,1.07,0,0,1,1.06-1.86l9.932,5.662a1.07,1.07,0,0,1-.531,2Zm0,0\" transform=\"translate(-108.633 -252.862)\"/>\n\t\t\t\t\t   </g>\n\t\t\t\t\t</svg>\n\t\t\t\t </a>\n\t\t\t\t <span class=\"trash-icon\">\n\t\t\t\t\t<a href=\"#\">\n\t\t\t\t\t   <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"22.783\" height=\"20.49\" viewBox=\"0 0 22.783 20.49\">\n\t\t\t\t\t\t  <defs>\n\t\t\t\t\t\t\t <style>.a{fill:#18c4c7;}</style>\n\t\t\t\t\t\t  </defs>\n\t\t\t\t\t\t  <path class=\"a\" d=\"M22.783,4.523v6.764a.89.89,0,0,1-.89.89H21.4a.89.89,0,0,1-.644-.276L16.886,7.839l-6.9,8.8a.89.89,0,0,1-.7.341h0a.89.89,0,0,1-.7-.342L6.235,13.629,4.976,15.265A.89.89,0,0,1,3.566,14.18l1.959-2.546a.89.89,0,0,1,.7-.347h0a.89.89,0,0,1,.7.342l2.36,3.02,6.828-8.716a.89.89,0,0,1,1.345-.065L21,9.577V4.523a1.782,1.782,0,0,0-1.78-1.78H3.56a1.782,1.782,0,0,0-1.78,1.78V16.982a1.782,1.782,0,0,0,1.78,1.78H9.389a.89.89,0,0,1,0,1.78H3.56A3.564,3.564,0,0,1,0,16.982V4.523A3.564,3.564,0,0,1,3.56.963H19.223A3.564,3.564,0,0,1,22.783,4.523ZM3.56,6.837a2.67,2.67,0,1,1,2.67,2.67A2.673,2.673,0,0,1,3.56,6.837Zm1.78,0a.89.89,0,1,0,.89-.89A.891.891,0,0,0,5.34,6.837Z\" transform=\"translate(0 -0.963)\"/>\n\t\t\t\t\t\t  <path class=\"a\" d=\"M10.789-5.37H7.443v3.346H5.688V-5.37H2.324V-7.135H5.688V-10.5H7.443v3.363h3.346Z\" transform=\"translate(11.402 22.514)\"/>\n\t\t\t\t\t   </svg>\n\t\t\t\t\t</a>\n\t\t\t\t </span>\n\t\t\t  </div>\n\t\t\t  <div class=\"see-detail-product-accessories\">\n\t\t\t\t <p><a href=\"/ClosetsToGo-website/product-detail-view.html\">See details</a></p>\n\t\t\t  </div>\n\t\t\t  <div class=\"stars-review-price-btn\">\n\t\t\t\t <div class=\" stars-product-accessories\">\n\t\t\t\t\t<div class=\"stars-container\">\n\t\t\t\t\t   <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"17.513\" height=\"16.706\" viewBox=\"0 0 17.513 16.706\">\n\t\t\t\t\t\t  <path id=\"Path_522\" data-name=\"Path 522\" d=\"M17.488,18.14a.513.513,0,0,0-.414-.349L11.645,17l-2.428-4.92a.513.513,0,0,0-.92,0L5.869,17,.439,17.79a.513.513,0,0,0-.284.875l3.928,3.829L3.156,27.9a.513.513,0,0,0,.744.541L8.757,25.89l4.856,2.553a.513.513,0,0,0,.745-.541l-.928-5.407,3.929-3.829A.513.513,0,0,0,17.488,18.14Z\" transform=\"translate(0 -11.796)\" fill=\"#ededed\"/>\n\t\t\t\t\t   </svg>\n\t\t\t\t\t   <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"17.513\" height=\"16.706\" viewBox=\"0 0 17.513 16.706\">\n\t\t\t\t\t\t  <path id=\"Path_522\" data-name=\"Path 522\" d=\"M17.488,18.14a.513.513,0,0,0-.414-.349L11.645,17l-2.428-4.92a.513.513,0,0,0-.92,0L5.869,17,.439,17.79a.513.513,0,0,0-.284.875l3.928,3.829L3.156,27.9a.513.513,0,0,0,.744.541L8.757,25.89l4.856,2.553a.513.513,0,0,0,.745-.541l-.928-5.407,3.929-3.829A.513.513,0,0,0,17.488,18.14Z\" transform=\"translate(0 -11.796)\" fill=\"#ededed\"/>\n\t\t\t\t\t   </svg>\n\t\t\t\t\t   <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"17.513\" height=\"16.706\" viewBox=\"0 0 17.513 16.706\">\n\t\t\t\t\t\t  <path id=\"Path_522\" data-name=\"Path 522\" d=\"M17.488,18.14a.513.513,0,0,0-.414-.349L11.645,17l-2.428-4.92a.513.513,0,0,0-.92,0L5.869,17,.439,17.79a.513.513,0,0,0-.284.875l3.928,3.829L3.156,27.9a.513.513,0,0,0,.744.541L8.757,25.89l4.856,2.553a.513.513,0,0,0,.745-.541l-.928-5.407,3.929-3.829A.513.513,0,0,0,17.488,18.14Z\" transform=\"translate(0 -11.796)\" fill=\"#ededed\"/>\n\t\t\t\t\t   </svg>\n\t\t\t\t\t   <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"17.513\" height=\"16.706\" viewBox=\"0 0 17.513 16.706\">\n\t\t\t\t\t\t  <path id=\"Path_522\" data-name=\"Path 522\" d=\"M17.488,18.14a.513.513,0,0,0-.414-.349L11.645,17l-2.428-4.92a.513.513,0,0,0-.92,0L5.869,17,.439,17.79a.513.513,0,0,0-.284.875l3.928,3.829L3.156,27.9a.513.513,0,0,0,.744.541L8.757,25.89l4.856,2.553a.513.513,0,0,0,.745-.541l-.928-5.407,3.929-3.829A.513.513,0,0,0,17.488,18.14Z\" transform=\"translate(0 -11.796)\" fill=\"#ededed\"/>\n\t\t\t\t\t   </svg>\n\t\t\t\t\t   <img src=\"images/stars.svg\" alt=\"\">\n\t\t\t\t\t</div>\n\t\t\t\t </div>\n\t\t\t\t <div class=\"reviews-counter-product-accessories\">\n\t\t\t\t\t<p>115 reviews</p>\n\t\t\t\t </div>\n\t\t\t\t <div class=\"price\">\n\t\t\t\t\t<p>Price: $10</p>\n\t\t\t\t </div>\n\t\t\t\t <div class=\"btn-add-to-cart\">\n\t\t\t\t\t<span class=\"card-el__hide-on-md\">\n\t\t\t\t\tquick add to cart\n\t\t\t\t\t</span>\n\t\t\t\t </div>\n\t\t\t  </div>\n\t\t   </div>\n\t\t</li>\n\t\t<li data-sub-html=\"Product description 1\">\n\t\t   <div>\n\t\t\t  <div class=\"product-image\">\n\t\t\t\t <img src=\"images/accessories-product-2.png\"\n\t\t\t\t\talt=\"\"\n\t\t\t\t\tclass=\"\">\n\t\t\t  </div>\n\t\t\t  <p class=\"product-title\">Lorem ipsum dolor sit amet, consetetur sadipscing</p>\n\t\t\t  <p class=\"product-description__text\">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est </p>\n\t\t\t  <div class=\"share-product-accessories\">\n\t\t\t\t <a href=\"#\">\n\t\t\t\t\t<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"23.547\" height=\"25.688\" viewBox=\"0 0 23.547 25.688\">\n\t\t\t\t\t   <defs>\n\t\t\t\t\t\t  <style>.share-no-background{fill:#384765;}</style>\n\t\t\t\t\t   </defs>\n\t\t\t\t\t   <g transform=\"translate(0)\">\n\t\t\t\t\t\t  <path class=\"share-no-background\" d=\"M321.625,19.479A3.478,3.478,0,1,1,318.147,16a3.479,3.479,0,0,1,3.478,3.478Zm0,0\" transform=\"translate(-298.881 -15.197)\"/>\n\t\t\t\t\t\t  <path class=\"share-no-background\" d=\"M302.949,8.563a4.281,4.281,0,1,1,4.281-4.281A4.286,4.286,0,0,1,302.949,8.563Zm0-6.957a2.676,2.676,0,1,0,2.676,2.676,2.679,2.679,0,0,0-2.676-2.676Zm0,0\" transform=\"translate(-283.683 0)\"/>\n\t\t\t\t\t\t  <path class=\"share-no-background\" d=\"M321.625,360.811a3.478,3.478,0,1,1-3.478-3.479A3.478,3.478,0,0,1,321.625,360.811Zm0,0\" transform=\"translate(-298.881 -339.404)\"/>\n\t\t\t\t\t\t  <path class=\"share-no-background\" d=\"M302.949,349.895a4.281,4.281,0,1,1,4.281-4.281A4.286,4.286,0,0,1,302.949,349.895Zm0-6.957a2.676,2.676,0,1,0,2.676,2.676A2.679,2.679,0,0,0,302.949,342.938Zm0,0\" transform=\"translate(-283.683 -324.207)\"/>\n\t\t\t\t\t\t  <path class=\"share-no-background\" d=\"M22.957,190.146a3.479,3.479,0,1,1-3.479-3.479A3.479,3.479,0,0,1,22.957,190.146Zm0,0\" transform=\"translate(-15.197 -177.303)\"/>\n\t\t\t\t\t\t  <path class=\"share-no-background\" d=\"M4.281,179.23a4.281,4.281,0,1,1,4.281-4.281,4.286,4.286,0,0,1-4.281,4.281Zm0-6.957a2.676,2.676,0,1,0,2.676,2.676,2.679,2.679,0,0,0-2.676-2.676Zm0,0\" transform=\"translate(0 -162.105)\"/>\n\t\t\t\t\t\t  <path class=\"share-no-background\" d=\"M115.42,98.019a1.07,1.07,0,0,1-.531-2l9.931-5.662a1.07,1.07,0,1,1,1.06,1.86l-9.932,5.662a1.063,1.063,0,0,1-.529.14Zm0,0\" transform=\"translate(-108.611 -85.688)\"/>\n\t\t\t\t\t\t  <path class=\"share-no-background\" d=\"M125.372,274.022a1.064,1.064,0,0,1-.529-.14l-9.932-5.662a1.07,1.07,0,0,1,1.06-1.86l9.932,5.662a1.07,1.07,0,0,1-.531,2Zm0,0\" transform=\"translate(-108.633 -252.862)\"/>\n\t\t\t\t\t   </g>\n\t\t\t\t\t</svg>\n\t\t\t\t </a>\n\t\t\t\t <span class=\"trash-icon\">\n\t\t\t\t\t<a href=\"#\">\n\t\t\t\t\t   <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"22.783\" height=\"20.49\" viewBox=\"0 0 22.783 20.49\">\n\t\t\t\t\t\t  <defs>\n\t\t\t\t\t\t\t <style>.a{fill:#18c4c7;}</style>\n\t\t\t\t\t\t  </defs>\n\t\t\t\t\t\t  <path class=\"a\" d=\"M22.783,4.523v6.764a.89.89,0,0,1-.89.89H21.4a.89.89,0,0,1-.644-.276L16.886,7.839l-6.9,8.8a.89.89,0,0,1-.7.341h0a.89.89,0,0,1-.7-.342L6.235,13.629,4.976,15.265A.89.89,0,0,1,3.566,14.18l1.959-2.546a.89.89,0,0,1,.7-.347h0a.89.89,0,0,1,.7.342l2.36,3.02,6.828-8.716a.89.89,0,0,1,1.345-.065L21,9.577V4.523a1.782,1.782,0,0,0-1.78-1.78H3.56a1.782,1.782,0,0,0-1.78,1.78V16.982a1.782,1.782,0,0,0,1.78,1.78H9.389a.89.89,0,0,1,0,1.78H3.56A3.564,3.564,0,0,1,0,16.982V4.523A3.564,3.564,0,0,1,3.56.963H19.223A3.564,3.564,0,0,1,22.783,4.523ZM3.56,6.837a2.67,2.67,0,1,1,2.67,2.67A2.673,2.673,0,0,1,3.56,6.837Zm1.78,0a.89.89,0,1,0,.89-.89A.891.891,0,0,0,5.34,6.837Z\" transform=\"translate(0 -0.963)\"/>\n\t\t\t\t\t\t  <path class=\"a\" d=\"M10.789-5.37H7.443v3.346H5.688V-5.37H2.324V-7.135H5.688V-10.5H7.443v3.363h3.346Z\" transform=\"translate(11.402 22.514)\"/>\n\t\t\t\t\t   </svg>\n\t\t\t\t\t</a>\n\t\t\t\t </span>\n\t\t\t  </div>\n\t\t\t  <div class=\"see-detail-product-accessories\">\n\t\t\t\t <p><a href=\"/ClosetsToGo-website/product-detail-view.html\">See details</a></p>\n\t\t\t  </div>\n\t\t\t  <div class=\"stars-review-price-btn\">\n\t\t\t\t <div class=\" stars-product-accessories\">\n\t\t\t\t\t<div class=\"stars-container\">\n\t\t\t\t\t   <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"17.513\" height=\"16.706\" viewBox=\"0 0 17.513 16.706\">\n\t\t\t\t\t\t  <path id=\"Path_522\" data-name=\"Path 522\" d=\"M17.488,18.14a.513.513,0,0,0-.414-.349L11.645,17l-2.428-4.92a.513.513,0,0,0-.92,0L5.869,17,.439,17.79a.513.513,0,0,0-.284.875l3.928,3.829L3.156,27.9a.513.513,0,0,0,.744.541L8.757,25.89l4.856,2.553a.513.513,0,0,0,.745-.541l-.928-5.407,3.929-3.829A.513.513,0,0,0,17.488,18.14Z\" transform=\"translate(0 -11.796)\" fill=\"#ededed\"/>\n\t\t\t\t\t   </svg>\n\t\t\t\t\t   <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"17.513\" height=\"16.706\" viewBox=\"0 0 17.513 16.706\">\n\t\t\t\t\t\t  <path id=\"Path_522\" data-name=\"Path 522\" d=\"M17.488,18.14a.513.513,0,0,0-.414-.349L11.645,17l-2.428-4.92a.513.513,0,0,0-.92,0L5.869,17,.439,17.79a.513.513,0,0,0-.284.875l3.928,3.829L3.156,27.9a.513.513,0,0,0,.744.541L8.757,25.89l4.856,2.553a.513.513,0,0,0,.745-.541l-.928-5.407,3.929-3.829A.513.513,0,0,0,17.488,18.14Z\" transform=\"translate(0 -11.796)\" fill=\"#ededed\"/>\n\t\t\t\t\t   </svg>\n\t\t\t\t\t   <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"17.513\" height=\"16.706\" viewBox=\"0 0 17.513 16.706\">\n\t\t\t\t\t\t  <path id=\"Path_522\" data-name=\"Path 522\" d=\"M17.488,18.14a.513.513,0,0,0-.414-.349L11.645,17l-2.428-4.92a.513.513,0,0,0-.92,0L5.869,17,.439,17.79a.513.513,0,0,0-.284.875l3.928,3.829L3.156,27.9a.513.513,0,0,0,.744.541L8.757,25.89l4.856,2.553a.513.513,0,0,0,.745-.541l-.928-5.407,3.929-3.829A.513.513,0,0,0,17.488,18.14Z\" transform=\"translate(0 -11.796)\" fill=\"#ededed\"/>\n\t\t\t\t\t   </svg>\n\t\t\t\t\t   <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"17.513\" height=\"16.706\" viewBox=\"0 0 17.513 16.706\">\n\t\t\t\t\t\t  <path id=\"Path_522\" data-name=\"Path 522\" d=\"M17.488,18.14a.513.513,0,0,0-.414-.349L11.645,17l-2.428-4.92a.513.513,0,0,0-.92,0L5.869,17,.439,17.79a.513.513,0,0,0-.284.875l3.928,3.829L3.156,27.9a.513.513,0,0,0,.744.541L8.757,25.89l4.856,2.553a.513.513,0,0,0,.745-.541l-.928-5.407,3.929-3.829A.513.513,0,0,0,17.488,18.14Z\" transform=\"translate(0 -11.796)\" fill=\"#ededed\"/>\n\t\t\t\t\t   </svg>\n\t\t\t\t\t   <img src=\"images/stars.svg\" alt=\"\">\n\t\t\t\t\t</div>\n\t\t\t\t </div>\n\t\t\t\t <div class=\"reviews-counter-product-accessories\">\n\t\t\t\t\t<p>115 reviews</p>\n\t\t\t\t </div>\n\t\t\t\t <div class=\"price\">\n\t\t\t\t\t<p>Price: $10</p>\n\t\t\t\t </div>\n\t\t\t\t <div class=\"btn-add-to-cart\">\n\t\t\t\t\t<span class=\"card-el__hide-on-md\">\n\t\t\t\t\tquick add to cart\n\t\t\t\t\t</span>\n\t\t\t\t </div>\n\t\t\t  </div>\n\t\t   </div>\n\t\t</li>\n\t\t<li data-sub-html=\"Product description 1\">\n\t\t   <div>\n\t\t\t  <div class=\"product-image\">\n\t\t\t\t <img src=\"images/accessories-product-3.png\"\n\t\t\t\t\talt=\"\"\n\t\t\t\t\tclass=\"\">\n\t\t\t  </div>\n\t\t\t  <p class=\"product-title\">Lorem ipsum dolor sit amet, consetetur sadipscing</p>\n\t\t\t  <p class=\"product-description__text\">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est </p>\n\t\t\t  <div class=\"share-product-accessories\">\n\t\t\t\t <a href=\"#\">\n\t\t\t\t\t<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"23.547\" height=\"25.688\" viewBox=\"0 0 23.547 25.688\">\n\t\t\t\t\t   <defs>\n\t\t\t\t\t\t  <style>.share-no-background{fill:#384765;}</style>\n\t\t\t\t\t   </defs>\n\t\t\t\t\t   <g transform=\"translate(0)\">\n\t\t\t\t\t\t  <path class=\"share-no-background\" d=\"M321.625,19.479A3.478,3.478,0,1,1,318.147,16a3.479,3.479,0,0,1,3.478,3.478Zm0,0\" transform=\"translate(-298.881 -15.197)\"/>\n\t\t\t\t\t\t  <path class=\"share-no-background\" d=\"M302.949,8.563a4.281,4.281,0,1,1,4.281-4.281A4.286,4.286,0,0,1,302.949,8.563Zm0-6.957a2.676,2.676,0,1,0,2.676,2.676,2.679,2.679,0,0,0-2.676-2.676Zm0,0\" transform=\"translate(-283.683 0)\"/>\n\t\t\t\t\t\t  <path class=\"share-no-background\" d=\"M321.625,360.811a3.478,3.478,0,1,1-3.478-3.479A3.478,3.478,0,0,1,321.625,360.811Zm0,0\" transform=\"translate(-298.881 -339.404)\"/>\n\t\t\t\t\t\t  <path class=\"share-no-background\" d=\"M302.949,349.895a4.281,4.281,0,1,1,4.281-4.281A4.286,4.286,0,0,1,302.949,349.895Zm0-6.957a2.676,2.676,0,1,0,2.676,2.676A2.679,2.679,0,0,0,302.949,342.938Zm0,0\" transform=\"translate(-283.683 -324.207)\"/>\n\t\t\t\t\t\t  <path class=\"share-no-background\" d=\"M22.957,190.146a3.479,3.479,0,1,1-3.479-3.479A3.479,3.479,0,0,1,22.957,190.146Zm0,0\" transform=\"translate(-15.197 -177.303)\"/>\n\t\t\t\t\t\t  <path class=\"share-no-background\" d=\"M4.281,179.23a4.281,4.281,0,1,1,4.281-4.281,4.286,4.286,0,0,1-4.281,4.281Zm0-6.957a2.676,2.676,0,1,0,2.676,2.676,2.679,2.679,0,0,0-2.676-2.676Zm0,0\" transform=\"translate(0 -162.105)\"/>\n\t\t\t\t\t\t  <path class=\"share-no-background\" d=\"M115.42,98.019a1.07,1.07,0,0,1-.531-2l9.931-5.662a1.07,1.07,0,1,1,1.06,1.86l-9.932,5.662a1.063,1.063,0,0,1-.529.14Zm0,0\" transform=\"translate(-108.611 -85.688)\"/>\n\t\t\t\t\t\t  <path class=\"share-no-background\" d=\"M125.372,274.022a1.064,1.064,0,0,1-.529-.14l-9.932-5.662a1.07,1.07,0,0,1,1.06-1.86l9.932,5.662a1.07,1.07,0,0,1-.531,2Zm0,0\" transform=\"translate(-108.633 -252.862)\"/>\n\t\t\t\t\t   </g>\n\t\t\t\t\t</svg>\n\t\t\t\t </a>\n\t\t\t\t <span class=\"trash-icon\">\n\t\t\t\t\t<a href=\"#\">\n\t\t\t\t\t   <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"22.783\" height=\"20.49\" viewBox=\"0 0 22.783 20.49\">\n\t\t\t\t\t\t  <defs>\n\t\t\t\t\t\t\t <style>.a{fill:#18c4c7;}</style>\n\t\t\t\t\t\t  </defs>\n\t\t\t\t\t\t  <path class=\"a\" d=\"M22.783,4.523v6.764a.89.89,0,0,1-.89.89H21.4a.89.89,0,0,1-.644-.276L16.886,7.839l-6.9,8.8a.89.89,0,0,1-.7.341h0a.89.89,0,0,1-.7-.342L6.235,13.629,4.976,15.265A.89.89,0,0,1,3.566,14.18l1.959-2.546a.89.89,0,0,1,.7-.347h0a.89.89,0,0,1,.7.342l2.36,3.02,6.828-8.716a.89.89,0,0,1,1.345-.065L21,9.577V4.523a1.782,1.782,0,0,0-1.78-1.78H3.56a1.782,1.782,0,0,0-1.78,1.78V16.982a1.782,1.782,0,0,0,1.78,1.78H9.389a.89.89,0,0,1,0,1.78H3.56A3.564,3.564,0,0,1,0,16.982V4.523A3.564,3.564,0,0,1,3.56.963H19.223A3.564,3.564,0,0,1,22.783,4.523ZM3.56,6.837a2.67,2.67,0,1,1,2.67,2.67A2.673,2.673,0,0,1,3.56,6.837Zm1.78,0a.89.89,0,1,0,.89-.89A.891.891,0,0,0,5.34,6.837Z\" transform=\"translate(0 -0.963)\"/>\n\t\t\t\t\t\t  <path class=\"a\" d=\"M10.789-5.37H7.443v3.346H5.688V-5.37H2.324V-7.135H5.688V-10.5H7.443v3.363h3.346Z\" transform=\"translate(11.402 22.514)\"/>\n\t\t\t\t\t   </svg>\n\t\t\t\t\t</a>\n\t\t\t\t </span>\n\t\t\t  </div>\n\t\t\t  <div class=\"see-detail-product-accessories\">\n\t\t\t\t <p><a href=\"/ClosetsToGo-website/product-detail-view.html\">See details</a></p>\n\t\t\t  </div>\n\t\t\t  <div class=\"stars-review-price-btn\">\n\t\t\t\t <div class=\" stars-product-accessories\">\n\t\t\t\t\t<div class=\"stars-container\">\n\t\t\t\t\t   <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"17.513\" height=\"16.706\" viewBox=\"0 0 17.513 16.706\">\n\t\t\t\t\t\t  <path id=\"Path_522\" data-name=\"Path 522\" d=\"M17.488,18.14a.513.513,0,0,0-.414-.349L11.645,17l-2.428-4.92a.513.513,0,0,0-.92,0L5.869,17,.439,17.79a.513.513,0,0,0-.284.875l3.928,3.829L3.156,27.9a.513.513,0,0,0,.744.541L8.757,25.89l4.856,2.553a.513.513,0,0,0,.745-.541l-.928-5.407,3.929-3.829A.513.513,0,0,0,17.488,18.14Z\" transform=\"translate(0 -11.796)\" fill=\"#ededed\"/>\n\t\t\t\t\t   </svg>\n\t\t\t\t\t   <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"17.513\" height=\"16.706\" viewBox=\"0 0 17.513 16.706\">\n\t\t\t\t\t\t  <path id=\"Path_522\" data-name=\"Path 522\" d=\"M17.488,18.14a.513.513,0,0,0-.414-.349L11.645,17l-2.428-4.92a.513.513,0,0,0-.92,0L5.869,17,.439,17.79a.513.513,0,0,0-.284.875l3.928,3.829L3.156,27.9a.513.513,0,0,0,.744.541L8.757,25.89l4.856,2.553a.513.513,0,0,0,.745-.541l-.928-5.407,3.929-3.829A.513.513,0,0,0,17.488,18.14Z\" transform=\"translate(0 -11.796)\" fill=\"#ededed\"/>\n\t\t\t\t\t   </svg>\n\t\t\t\t\t   <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"17.513\" height=\"16.706\" viewBox=\"0 0 17.513 16.706\">\n\t\t\t\t\t\t  <path id=\"Path_522\" data-name=\"Path 522\" d=\"M17.488,18.14a.513.513,0,0,0-.414-.349L11.645,17l-2.428-4.92a.513.513,0,0,0-.92,0L5.869,17,.439,17.79a.513.513,0,0,0-.284.875l3.928,3.829L3.156,27.9a.513.513,0,0,0,.744.541L8.757,25.89l4.856,2.553a.513.513,0,0,0,.745-.541l-.928-5.407,3.929-3.829A.513.513,0,0,0,17.488,18.14Z\" transform=\"translate(0 -11.796)\" fill=\"#ededed\"/>\n\t\t\t\t\t   </svg>\n\t\t\t\t\t   <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"17.513\" height=\"16.706\" viewBox=\"0 0 17.513 16.706\">\n\t\t\t\t\t\t  <path id=\"Path_522\" data-name=\"Path 522\" d=\"M17.488,18.14a.513.513,0,0,0-.414-.349L11.645,17l-2.428-4.92a.513.513,0,0,0-.92,0L5.869,17,.439,17.79a.513.513,0,0,0-.284.875l3.928,3.829L3.156,27.9a.513.513,0,0,0,.744.541L8.757,25.89l4.856,2.553a.513.513,0,0,0,.745-.541l-.928-5.407,3.929-3.829A.513.513,0,0,0,17.488,18.14Z\" transform=\"translate(0 -11.796)\" fill=\"#ededed\"/>\n\t\t\t\t\t   </svg>\n\t\t\t\t\t   <img src=\"images/stars.svg\" alt=\"\">\n\t\t\t\t\t</div>\n\t\t\t\t </div>\n\t\t\t\t <div class=\"reviews-counter-product-accessories\">\n\t\t\t\t\t<p>115 reviews</p>\n\t\t\t\t </div>\n\t\t\t\t <div class=\"price\">\n\t\t\t\t\t<p>Price: $10</p>\n\t\t\t\t </div>\n\t\t\t\t <div class=\"btn-add-to-cart\">\n\t\t\t\t\t<span class=\"card-el__hide-on-md\">\n\t\t\t\t\tquick add to cart\n\t\t\t\t\t</span>\n\t\t\t\t </div>\n\t\t\t  </div>\n\t\t   </div>\n\t\t</li>\n\t\t<li data-sub-html=\"Product description 1\">\n\t\t   <div>\n\t\t\t  <div class=\"product-image\">\n\t\t\t\t <img src=\"images/accessories-product-4.png\"\n\t\t\t\t\talt=\"\"\n\t\t\t\t\tclass=\"\">\n\t\t\t  </div>\n\t\t\t  <p class=\"product-title\">Lorem ipsum dolor sit amet, consetetur sadipscing</p>\n\t\t\t  <p class=\"product-description__text\">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est </p>\n\t\t\t  <div class=\"share-product-accessories\">\n\t\t\t\t <a href=\"#\">\n\t\t\t\t\t<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"23.547\" height=\"25.688\" viewBox=\"0 0 23.547 25.688\">\n\t\t\t\t\t   <defs>\n\t\t\t\t\t\t  <style>.share-no-background{fill:#384765;}</style>\n\t\t\t\t\t   </defs>\n\t\t\t\t\t   <g transform=\"translate(0)\">\n\t\t\t\t\t\t  <path class=\"share-no-background\" d=\"M321.625,19.479A3.478,3.478,0,1,1,318.147,16a3.479,3.479,0,0,1,3.478,3.478Zm0,0\" transform=\"translate(-298.881 -15.197)\"/>\n\t\t\t\t\t\t  <path class=\"share-no-background\" d=\"M302.949,8.563a4.281,4.281,0,1,1,4.281-4.281A4.286,4.286,0,0,1,302.949,8.563Zm0-6.957a2.676,2.676,0,1,0,2.676,2.676,2.679,2.679,0,0,0-2.676-2.676Zm0,0\" transform=\"translate(-283.683 0)\"/>\n\t\t\t\t\t\t  <path class=\"share-no-background\" d=\"M321.625,360.811a3.478,3.478,0,1,1-3.478-3.479A3.478,3.478,0,0,1,321.625,360.811Zm0,0\" transform=\"translate(-298.881 -339.404)\"/>\n\t\t\t\t\t\t  <path class=\"share-no-background\" d=\"M302.949,349.895a4.281,4.281,0,1,1,4.281-4.281A4.286,4.286,0,0,1,302.949,349.895Zm0-6.957a2.676,2.676,0,1,0,2.676,2.676A2.679,2.679,0,0,0,302.949,342.938Zm0,0\" transform=\"translate(-283.683 -324.207)\"/>\n\t\t\t\t\t\t  <path class=\"share-no-background\" d=\"M22.957,190.146a3.479,3.479,0,1,1-3.479-3.479A3.479,3.479,0,0,1,22.957,190.146Zm0,0\" transform=\"translate(-15.197 -177.303)\"/>\n\t\t\t\t\t\t  <path class=\"share-no-background\" d=\"M4.281,179.23a4.281,4.281,0,1,1,4.281-4.281,4.286,4.286,0,0,1-4.281,4.281Zm0-6.957a2.676,2.676,0,1,0,2.676,2.676,2.679,2.679,0,0,0-2.676-2.676Zm0,0\" transform=\"translate(0 -162.105)\"/>\n\t\t\t\t\t\t  <path class=\"share-no-background\" d=\"M115.42,98.019a1.07,1.07,0,0,1-.531-2l9.931-5.662a1.07,1.07,0,1,1,1.06,1.86l-9.932,5.662a1.063,1.063,0,0,1-.529.14Zm0,0\" transform=\"translate(-108.611 -85.688)\"/>\n\t\t\t\t\t\t  <path class=\"share-no-background\" d=\"M125.372,274.022a1.064,1.064,0,0,1-.529-.14l-9.932-5.662a1.07,1.07,0,0,1,1.06-1.86l9.932,5.662a1.07,1.07,0,0,1-.531,2Zm0,0\" transform=\"translate(-108.633 -252.862)\"/>\n\t\t\t\t\t   </g>\n\t\t\t\t\t</svg>\n\t\t\t\t </a>\n\t\t\t\t <span class=\"trash-icon\">\n\t\t\t\t\t<a href=\"#\">\n\t\t\t\t\t   <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"22.783\" height=\"20.49\" viewBox=\"0 0 22.783 20.49\">\n\t\t\t\t\t\t  <defs>\n\t\t\t\t\t\t\t <style>.a{fill:#18c4c7;}</style>\n\t\t\t\t\t\t  </defs>\n\t\t\t\t\t\t  <path class=\"a\" d=\"M22.783,4.523v6.764a.89.89,0,0,1-.89.89H21.4a.89.89,0,0,1-.644-.276L16.886,7.839l-6.9,8.8a.89.89,0,0,1-.7.341h0a.89.89,0,0,1-.7-.342L6.235,13.629,4.976,15.265A.89.89,0,0,1,3.566,14.18l1.959-2.546a.89.89,0,0,1,.7-.347h0a.89.89,0,0,1,.7.342l2.36,3.02,6.828-8.716a.89.89,0,0,1,1.345-.065L21,9.577V4.523a1.782,1.782,0,0,0-1.78-1.78H3.56a1.782,1.782,0,0,0-1.78,1.78V16.982a1.782,1.782,0,0,0,1.78,1.78H9.389a.89.89,0,0,1,0,1.78H3.56A3.564,3.564,0,0,1,0,16.982V4.523A3.564,3.564,0,0,1,3.56.963H19.223A3.564,3.564,0,0,1,22.783,4.523ZM3.56,6.837a2.67,2.67,0,1,1,2.67,2.67A2.673,2.673,0,0,1,3.56,6.837Zm1.78,0a.89.89,0,1,0,.89-.89A.891.891,0,0,0,5.34,6.837Z\" transform=\"translate(0 -0.963)\"/>\n\t\t\t\t\t\t  <path class=\"a\" d=\"M10.789-5.37H7.443v3.346H5.688V-5.37H2.324V-7.135H5.688V-10.5H7.443v3.363h3.346Z\" transform=\"translate(11.402 22.514)\"/>\n\t\t\t\t\t   </svg>\n\t\t\t\t\t</a>\n\t\t\t\t </span>\n\t\t\t  </div>\n\t\t\t  <div class=\"see-detail-product-accessories\">\n\t\t\t\t <p><a href=\"/ClosetsToGo-website/product-detail-view.html\">See details</a></p>\n\t\t\t  </div>\n\t\t\t  <div class=\"stars-review-price-btn\">\n\t\t\t\t <div class=\" stars-product-accessories\">\n\t\t\t\t\t<div class=\"stars-container\">\n\t\t\t\t\t   <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"17.513\" height=\"16.706\" viewBox=\"0 0 17.513 16.706\">\n\t\t\t\t\t\t  <path id=\"Path_522\" data-name=\"Path 522\" d=\"M17.488,18.14a.513.513,0,0,0-.414-.349L11.645,17l-2.428-4.92a.513.513,0,0,0-.92,0L5.869,17,.439,17.79a.513.513,0,0,0-.284.875l3.928,3.829L3.156,27.9a.513.513,0,0,0,.744.541L8.757,25.89l4.856,2.553a.513.513,0,0,0,.745-.541l-.928-5.407,3.929-3.829A.513.513,0,0,0,17.488,18.14Z\" transform=\"translate(0 -11.796)\" fill=\"#ededed\"/>\n\t\t\t\t\t   </svg>\n\t\t\t\t\t   <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"17.513\" height=\"16.706\" viewBox=\"0 0 17.513 16.706\">\n\t\t\t\t\t\t  <path id=\"Path_522\" data-name=\"Path 522\" d=\"M17.488,18.14a.513.513,0,0,0-.414-.349L11.645,17l-2.428-4.92a.513.513,0,0,0-.92,0L5.869,17,.439,17.79a.513.513,0,0,0-.284.875l3.928,3.829L3.156,27.9a.513.513,0,0,0,.744.541L8.757,25.89l4.856,2.553a.513.513,0,0,0,.745-.541l-.928-5.407,3.929-3.829A.513.513,0,0,0,17.488,18.14Z\" transform=\"translate(0 -11.796)\" fill=\"#ededed\"/>\n\t\t\t\t\t   </svg>\n\t\t\t\t\t   <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"17.513\" height=\"16.706\" viewBox=\"0 0 17.513 16.706\">\n\t\t\t\t\t\t  <path id=\"Path_522\" data-name=\"Path 522\" d=\"M17.488,18.14a.513.513,0,0,0-.414-.349L11.645,17l-2.428-4.92a.513.513,0,0,0-.92,0L5.869,17,.439,17.79a.513.513,0,0,0-.284.875l3.928,3.829L3.156,27.9a.513.513,0,0,0,.744.541L8.757,25.89l4.856,2.553a.513.513,0,0,0,.745-.541l-.928-5.407,3.929-3.829A.513.513,0,0,0,17.488,18.14Z\" transform=\"translate(0 -11.796)\" fill=\"#ededed\"/>\n\t\t\t\t\t   </svg>\n\t\t\t\t\t   <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"17.513\" height=\"16.706\" viewBox=\"0 0 17.513 16.706\">\n\t\t\t\t\t\t  <path id=\"Path_522\" data-name=\"Path 522\" d=\"M17.488,18.14a.513.513,0,0,0-.414-.349L11.645,17l-2.428-4.92a.513.513,0,0,0-.92,0L5.869,17,.439,17.79a.513.513,0,0,0-.284.875l3.928,3.829L3.156,27.9a.513.513,0,0,0,.744.541L8.757,25.89l4.856,2.553a.513.513,0,0,0,.745-.541l-.928-5.407,3.929-3.829A.513.513,0,0,0,17.488,18.14Z\" transform=\"translate(0 -11.796)\" fill=\"#ededed\"/>\n\t\t\t\t\t   </svg>\n\t\t\t\t\t   <img src=\"images/stars.svg\" alt=\"\">\n\t\t\t\t\t</div>\n\t\t\t\t </div>\n\t\t\t\t <div class=\"reviews-counter-product-accessories\">\n\t\t\t\t\t<p>115 reviews</p>\n\t\t\t\t </div>\n\t\t\t\t <div class=\"price\">\n\t\t\t\t\t<p>Price: $10</p>\n\t\t\t\t </div>\n\t\t\t\t <div class=\"btn-add-to-cart\">\n\t\t\t\t\t<span class=\"card-el__hide-on-md\">\n\t\t\t\t\tquick add to cart\n\t\t\t\t\t</span>\n\t\t\t\t </div>\n\t\t\t  </div>\n\t\t   </div>\n\t\t</li>\n\t\t<li data-sub-html=\"Product description 1\">\n\t\t   <div>\n\t\t\t  <div class=\"product-image\">\n\t\t\t\t <img src=\"images/accessories-product-5.png\"\n\t\t\t\t\talt=\"\"\n\t\t\t\t\tclass=\"\">\n\t\t\t  </div>\n\t\t\t  <p class=\"product-title\">Lorem ipsum dolor sit amet, consetetur sadipscing</p>\n\t\t\t  <p class=\"product-description__text\">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est </p>\n\t\t\t  <div class=\"share-product-accessories\">\n\t\t\t\t <a href=\"#\">\n\t\t\t\t\t<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"23.547\" height=\"25.688\" viewBox=\"0 0 23.547 25.688\">\n\t\t\t\t\t   <defs>\n\t\t\t\t\t\t  <style>.share-no-background{fill:#384765;}</style>\n\t\t\t\t\t   </defs>\n\t\t\t\t\t   <g transform=\"translate(0)\">\n\t\t\t\t\t\t  <path class=\"share-no-background\" d=\"M321.625,19.479A3.478,3.478,0,1,1,318.147,16a3.479,3.479,0,0,1,3.478,3.478Zm0,0\" transform=\"translate(-298.881 -15.197)\"/>\n\t\t\t\t\t\t  <path class=\"share-no-background\" d=\"M302.949,8.563a4.281,4.281,0,1,1,4.281-4.281A4.286,4.286,0,0,1,302.949,8.563Zm0-6.957a2.676,2.676,0,1,0,2.676,2.676,2.679,2.679,0,0,0-2.676-2.676Zm0,0\" transform=\"translate(-283.683 0)\"/>\n\t\t\t\t\t\t  <path class=\"share-no-background\" d=\"M321.625,360.811a3.478,3.478,0,1,1-3.478-3.479A3.478,3.478,0,0,1,321.625,360.811Zm0,0\" transform=\"translate(-298.881 -339.404)\"/>\n\t\t\t\t\t\t  <path class=\"share-no-background\" d=\"M302.949,349.895a4.281,4.281,0,1,1,4.281-4.281A4.286,4.286,0,0,1,302.949,349.895Zm0-6.957a2.676,2.676,0,1,0,2.676,2.676A2.679,2.679,0,0,0,302.949,342.938Zm0,0\" transform=\"translate(-283.683 -324.207)\"/>\n\t\t\t\t\t\t  <path class=\"share-no-background\" d=\"M22.957,190.146a3.479,3.479,0,1,1-3.479-3.479A3.479,3.479,0,0,1,22.957,190.146Zm0,0\" transform=\"translate(-15.197 -177.303)\"/>\n\t\t\t\t\t\t  <path class=\"share-no-background\" d=\"M4.281,179.23a4.281,4.281,0,1,1,4.281-4.281,4.286,4.286,0,0,1-4.281,4.281Zm0-6.957a2.676,2.676,0,1,0,2.676,2.676,2.679,2.679,0,0,0-2.676-2.676Zm0,0\" transform=\"translate(0 -162.105)\"/>\n\t\t\t\t\t\t  <path class=\"share-no-background\" d=\"M115.42,98.019a1.07,1.07,0,0,1-.531-2l9.931-5.662a1.07,1.07,0,1,1,1.06,1.86l-9.932,5.662a1.063,1.063,0,0,1-.529.14Zm0,0\" transform=\"translate(-108.611 -85.688)\"/>\n\t\t\t\t\t\t  <path class=\"share-no-background\" d=\"M125.372,274.022a1.064,1.064,0,0,1-.529-.14l-9.932-5.662a1.07,1.07,0,0,1,1.06-1.86l9.932,5.662a1.07,1.07,0,0,1-.531,2Zm0,0\" transform=\"translate(-108.633 -252.862)\"/>\n\t\t\t\t\t   </g>\n\t\t\t\t\t</svg>\n\t\t\t\t </a>\n\t\t\t\t <span class=\"trash-icon\">\n\t\t\t\t\t<a href=\"#\">\n\t\t\t\t\t   <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"22.783\" height=\"20.49\" viewBox=\"0 0 22.783 20.49\">\n\t\t\t\t\t\t  <defs>\n\t\t\t\t\t\t\t <style>.a{fill:#18c4c7;}</style>\n\t\t\t\t\t\t  </defs>\n\t\t\t\t\t\t  <path class=\"a\" d=\"M22.783,4.523v6.764a.89.89,0,0,1-.89.89H21.4a.89.89,0,0,1-.644-.276L16.886,7.839l-6.9,8.8a.89.89,0,0,1-.7.341h0a.89.89,0,0,1-.7-.342L6.235,13.629,4.976,15.265A.89.89,0,0,1,3.566,14.18l1.959-2.546a.89.89,0,0,1,.7-.347h0a.89.89,0,0,1,.7.342l2.36,3.02,6.828-8.716a.89.89,0,0,1,1.345-.065L21,9.577V4.523a1.782,1.782,0,0,0-1.78-1.78H3.56a1.782,1.782,0,0,0-1.78,1.78V16.982a1.782,1.782,0,0,0,1.78,1.78H9.389a.89.89,0,0,1,0,1.78H3.56A3.564,3.564,0,0,1,0,16.982V4.523A3.564,3.564,0,0,1,3.56.963H19.223A3.564,3.564,0,0,1,22.783,4.523ZM3.56,6.837a2.67,2.67,0,1,1,2.67,2.67A2.673,2.673,0,0,1,3.56,6.837Zm1.78,0a.89.89,0,1,0,.89-.89A.891.891,0,0,0,5.34,6.837Z\" transform=\"translate(0 -0.963)\"/>\n\t\t\t\t\t\t  <path class=\"a\" d=\"M10.789-5.37H7.443v3.346H5.688V-5.37H2.324V-7.135H5.688V-10.5H7.443v3.363h3.346Z\" transform=\"translate(11.402 22.514)\"/>\n\t\t\t\t\t   </svg>\n\t\t\t\t\t</a>\n\t\t\t\t </span>\n\t\t\t  </div>\n\t\t\t  <div class=\"see-detail-product-accessories\">\n\t\t\t\t <p><a href=\"/ClosetsToGo-website/product-detail-view.html\">See details</a></p>\n\t\t\t  </div>\n\t\t\t  <div class=\"stars-review-price-btn\">\n\t\t\t\t <div class=\" stars-product-accessories\">\n\t\t\t\t\t<div class=\"stars-container\">\n\t\t\t\t\t   <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"17.513\" height=\"16.706\" viewBox=\"0 0 17.513 16.706\">\n\t\t\t\t\t\t  <path id=\"Path_522\" data-name=\"Path 522\" d=\"M17.488,18.14a.513.513,0,0,0-.414-.349L11.645,17l-2.428-4.92a.513.513,0,0,0-.92,0L5.869,17,.439,17.79a.513.513,0,0,0-.284.875l3.928,3.829L3.156,27.9a.513.513,0,0,0,.744.541L8.757,25.89l4.856,2.553a.513.513,0,0,0,.745-.541l-.928-5.407,3.929-3.829A.513.513,0,0,0,17.488,18.14Z\" transform=\"translate(0 -11.796)\" fill=\"#ededed\"/>\n\t\t\t\t\t   </svg>\n\t\t\t\t\t   <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"17.513\" height=\"16.706\" viewBox=\"0 0 17.513 16.706\">\n\t\t\t\t\t\t  <path id=\"Path_522\" data-name=\"Path 522\" d=\"M17.488,18.14a.513.513,0,0,0-.414-.349L11.645,17l-2.428-4.92a.513.513,0,0,0-.92,0L5.869,17,.439,17.79a.513.513,0,0,0-.284.875l3.928,3.829L3.156,27.9a.513.513,0,0,0,.744.541L8.757,25.89l4.856,2.553a.513.513,0,0,0,.745-.541l-.928-5.407,3.929-3.829A.513.513,0,0,0,17.488,18.14Z\" transform=\"translate(0 -11.796)\" fill=\"#ededed\"/>\n\t\t\t\t\t   </svg>\n\t\t\t\t\t   <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"17.513\" height=\"16.706\" viewBox=\"0 0 17.513 16.706\">\n\t\t\t\t\t\t  <path id=\"Path_522\" data-name=\"Path 522\" d=\"M17.488,18.14a.513.513,0,0,0-.414-.349L11.645,17l-2.428-4.92a.513.513,0,0,0-.92,0L5.869,17,.439,17.79a.513.513,0,0,0-.284.875l3.928,3.829L3.156,27.9a.513.513,0,0,0,.744.541L8.757,25.89l4.856,2.553a.513.513,0,0,0,.745-.541l-.928-5.407,3.929-3.829A.513.513,0,0,0,17.488,18.14Z\" transform=\"translate(0 -11.796)\" fill=\"#ededed\"/>\n\t\t\t\t\t   </svg>\n\t\t\t\t\t   <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"17.513\" height=\"16.706\" viewBox=\"0 0 17.513 16.706\">\n\t\t\t\t\t\t  <path id=\"Path_522\" data-name=\"Path 522\" d=\"M17.488,18.14a.513.513,0,0,0-.414-.349L11.645,17l-2.428-4.92a.513.513,0,0,0-.92,0L5.869,17,.439,17.79a.513.513,0,0,0-.284.875l3.928,3.829L3.156,27.9a.513.513,0,0,0,.744.541L8.757,25.89l4.856,2.553a.513.513,0,0,0,.745-.541l-.928-5.407,3.929-3.829A.513.513,0,0,0,17.488,18.14Z\" transform=\"translate(0 -11.796)\" fill=\"#ededed\"/>\n\t\t\t\t\t   </svg>\n\t\t\t\t\t   <img src=\"images/stars.svg\" alt=\"\">\n\t\t\t\t\t</div>\n\t\t\t\t </div>\n\t\t\t\t <div class=\"reviews-counter-product-accessories\">\n\t\t\t\t\t<p>115 reviews</p>\n\t\t\t\t </div>\n\t\t\t\t <div class=\"price\">\n\t\t\t\t\t<p>Price: $10</p>\n\t\t\t\t </div>\n\t\t\t\t <div class=\"btn-add-to-cart\">\n\t\t\t\t\t<span class=\"card-el__hide-on-md\">\n\t\t\t\t\tquick add to cart\n\t\t\t\t\t</span>\n\t\t\t\t </div>\n\t\t\t  </div>\n\t\t   </div>\n\t\t</li>\n\t </ul>\n\t";
+    container.appendChild(postElement);
+    loading.classList.remove('show');
+  }
 });
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(0)))
 
 /***/ }),
-/* 37 */
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(jQuery) {jQuery(document).ready(function ($) {
@@ -29467,7 +30287,7 @@ jQuery(document).ready(function ($) {
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(0)))
 
 /***/ }),
-/* 38 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(jQuery) {jQuery(document).ready(function ($) {
@@ -29491,7 +30311,7 @@ jQuery(document).ready(function ($) {
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(0)))
 
 /***/ }),
-/* 39 */
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(jQuery) {jQuery(document).ready(function ($) {// var btnAddAddress = $('#modal__add-address');
@@ -29519,7 +30339,7 @@ jQuery(document).ready(function ($) {
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(0)))
 
 /***/ }),
-/* 40 */
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(jQuery) {jQuery(document).ready(function ($) {
@@ -29550,7 +30370,7 @@ jQuery(document).ready(function ($) {
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(0)))
 
 /***/ }),
-/* 41 */
+/* 42 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -29659,7 +30479,7 @@ jQuery(document).ready(function ($) {
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(0)))
 
 /***/ }),
-/* 42 */
+/* 43 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -29764,6 +30584,7 @@ jQuery(document).ready(function ($) {
     }
 
     $(this).parents('.js-specifications-subheading').siblings('.col-12').toggle(100);
+    $(this).parents('.js-specifications-subheading_v2').siblings('.col-12').toggle(200);
   });
   $('.js-open-specifications-tab-btn').on('click', function () {
     $(this).siblings().removeClass('active');
@@ -29866,43 +30687,215 @@ jQuery(document).ready(function ($) {
       var target = e.target;
       scrollToTarget(target);
     }
+  });
+  $('.slick-slider').on('click', function () {
+    $(".image-bg-detail-view").fadeOut();
+  });
+  $('.product-nav__link').on('click', function () {
+    $(".image-bg-detail-view").removeClass("d-b__a");
+  });
+  $('.product-nav__link.tab-details').on('click', function () {
+    $(".image-bg-detail-view").addClass("d-b__a");
   }); // selected features product item image
 
-  $('.phantom-actions__dropdowns.accordion.nd .feature-detail__item-drop').on('click', function () {
+  $('.phantom-actions__dropdowns.accordion.nd .no-popup .feature-detail__item-drop').on('click', function () {
     $(".selected-item-box").removeClass("selected-item-box");
     $(this).toggleClass("selected-item-box");
-  });
-  $('.phantom-actions__dropdowns.accordion.nd .drop_detail__items').on('click', function () {
-    $(".phantom-actions__dropdowns.accordion.nd .drop_detail__items").removeClass("hide_eye");
-    $(this).addClass("hide_eye");
-  });
-  $('.phantom-actions__dropdowns.accordion.nd .hover-btn__v2').on('click', function () {
-    $("drop_detail__items").removeClass("hide_eye");
-    $(".fadeOut").removeClass("fadeOut");
-  }); // show the eye in parent item
-
-  $('.phantom-actions__dropdowns.accordion.nd .margin-none .feature-product__item-image').on('click', function () {
-    $(".feature-product__item-image").addClass("opacity__style");
-    $(this).removeClass("opacity__style");
-  });
-  $('.collapseFeature-opacity_class').on('click', function () {
-    $(".dropdown-one .active").addClass("selected-item-box");
-    $(".dropdown-one").removeClass("hide_eye");
-    $(".dropdown-one").removeClass("opacity__style"); // $(".dropdown-two .active").addClass("selected-item-box");
-    // $(".dropdown-two").removeClass("hide_eye");
-    // $(".dropdown-three .active").addClass("selected-item-box");
-    // $(".dropdown-three").removeClass("hide_eye");
   });
   $('.hover-btn__v2').on('mouseover', function () {
     $(this).parent().addClass('is-hover');
   }).on('mouseout', function () {
     $(this).parent().removeClass('is-hover');
+  }); // show the eye in parent item
+
+  $('.phantom-actions__dropdowns.accordion.nd .no-popup .feature-product__item-image').on('click', function () {
+    $(".no-popup .feature-product__item-image").addClass("opacity__style");
+    $(this).removeClass("opacity__style");
+  });
+  $('.no-popup .feature-detail__item-drop ').on('click', function () {
+    $(".no-popup .feature-detail__item-drop").removeClass("selected-item-box__new");
+    $(this).toggleClass("selected-item-box__new");
+  });
+  $('.phantom-actions__dropdowns.accordion.nd .drop_detail__items').on('click', function () {
+    $(".phantom-actions__dropdowns.accordion.nd .drop_detail__items").removeClass("hide_eye");
+  });
+  $('.sec-feature-one .feature-detail__item-drop').on('click', function () {
+    $(".sec-feature-one .selected-item-box").removeClass("selected-item-box");
+    $(this).toggleClass("selected-item-box");
+  });
+  $('.sec-feature-two .feature-detail__item-drop').on('click', function () {
+    $(".sec-feature-two .selected-item-box").removeClass("selected-item-box");
+    $(this).toggleClass("selected-item-box");
+  });
+  $('.sec-feature-three .feature-detail__item-drop').on('click', function () {
+    $(".sec-feature-three .selected-item-box").removeClass("selected-item-box");
+    $(this).toggleClass("selected-item-box");
+  });
+  $('.sec-feature-four .feature-detail__item-drop').on('click', function () {
+    $(".sec-feature-four .selected-item-box").removeClass("selected-item-box");
+    $(this).toggleClass("selected-item-box");
+  });
+  $('.sec-feature-one .feature-product__item-image').on('click', function () {
+    $(".sec-feature-one .feature-product__item-image").addClass("opacity__style");
+    $(this).removeClass("opacity__style");
+  });
+  $('.sec-feature-two .feature-product__item-image').on('click', function () {
+    $(".sec-feature-two .feature-product__item-image").addClass("opacity__style");
+    $(this).removeClass("opacity__style");
+  });
+  $('.sec-feature-three .feature-product__item-image').on('click', function () {
+    $(".sec-feature-three .feature-product__item-image").addClass("opacity__style");
+    $(this).removeClass("opacity__style");
+  });
+  $('.sec-feature-four .feature-product__item-image').on('click', function () {
+    $(".sec-feature-four .feature-product__item-image").addClass("opacity__style");
+    $(this).removeClass("opacity__style");
+  });
+  $('.margin-none .sec-one .a__simple').on('click', function () {
+    $(".sec-one .selected-item-box__new").removeClass("selected-item-box__new");
+  });
+  $('.margin-none .sec-two .a__simple').on('click', function () {
+    $(".sec-two .selected-item-box__new").removeClass("selected-item-box__new");
+  });
+  $('.margin-none .sec-three .a__simple').on('click', function () {
+    $(".sec-three .selected-item-box__new").removeClass("selected-item-box__new");
+  });
+  $('.margin-none .sec-four .a__simple').on('click', function () {
+    $(".sec-four .selected-item-box__new").removeClass("selected-item-box__new");
+  });
+  $('#collapseFeature-11').on('click', function () {
+    $(".dropdown-one .active").addClass("selected-item-box");
+    $(".dropdown-one").removeClass("hide_eye");
+    $(".dropdown-one").removeClass("opacity__style");
+  });
+  $('#collapseFeature-12').on('click', function () {
+    $(".sec-one .active").addClass("selected-item-box");
+    $(".sec-one").removeClass("hide_eye");
+    $(".sec-one").removeClass("opacity__style");
+  });
+  $('#collapseFeature-13').on('click', function () {
+    $(".sec-two .active").addClass("selected-item-box");
+    $(".sec-two").removeClass("hide_eye");
+    $(".sec-two").removeClass("opacity__style");
+  });
+  $('#collapseFeature-14').on('click', function () {
+    $(".sec-three .active").addClass("selected-item-box");
+    $(".sec-three").removeClass("hide_eye");
+    $(".sec-three").removeClass("opacity__style");
+  });
+  $('#collapseFeature-15').on('click', function () {
+    $(".sec-four .active").addClass("selected-item-box");
+    $(".sec-four").removeClass("hide_eye");
+    $(".sec-four").removeClass("opacity__style");
+  }); //for dropdown item in popup idea folder
+
+  $('.sec-one').on('mouseover', function () {
+    $('.sec-one .hover-btn__v2.v3_a').addClass('show-btn');
+  }).on('mouseout', function () {
+    $('.sec-one .hover-btn__v2.v3_a').removeClass('show-btn');
+  });
+  $('.sec-two').on('mouseover', function () {
+    $('.sec-two .hover-btn__v2.v3_a').addClass('show-btn');
+  }).on('mouseout', function () {
+    $('.sec-two .hover-btn__v2.v3_a').removeClass('show-btn');
+  });
+  $('.sec-three').on('mouseover', function () {
+    $('.sec-three .hover-btn__v2.v3_a').addClass('show-btn');
+  }).on('mouseout', function () {
+    $('.sec-three .hover-btn__v2.v3_a').removeClass('show-btn');
+  });
+  $('.sec-four').on('mouseover', function () {
+    $('.sec-four .hover-btn__v2.v3_a').addClass('show-btn');
+  }).on('mouseout', function () {
+    $('.sec-four .hover-btn__v2.v3_a').removeClass('show-btn');
+  });
+  $('.hover-btn__v2.v3_a').on('click', function () {
+    $(this).addClass("is-hover_v2");
+  });
+  $('.sec-one').on('click', function () {
+    $(".sec-one .hover-btn__v2.v3_a").addClass("show-btn");
+  });
+  $('.sec-two').on('click', function () {
+    $(".sec-two .hover-btn__v2.v3_a").addClass("show-btn");
+  });
+  $('.sec-three').on('click', function () {
+    $(".sec-three .hover-btn__v2.v3_a").addClass("show-btn");
+  });
+  $('.sec-four').on('click', function () {
+    $(".sec-four .hover-btn__v2.v3_a").addClass("show-btn");
+  });
+  $('.hover-btn__v2.v3_a').on('click', function () {
+    $(this).toggleClass("icon-rotate");
+  });
+  $('.modal-save-to-specs-sheet .right-side .sec-feature-one .a__simple').on('click', function () {
+    $(".sec-one .icon-rotate").toggleClass("icon-rotate");
+    $(".sec-one .is-hover_v2").toggleClass("is-hover_v2");
+    $("#collapseFeature-12 .selected-item-box-popup").removeClass("selected-item-box-popup");
+  });
+  $('.modal-save-to-specs-sheet .right-side .sec-feature-two .a__simple').on('click', function () {
+    $(".sec-two .icon-rotate").toggleClass("icon-rotate");
+    $(".sec-two .is-hover_v2").toggleClass("is-hover_v2");
+    $("#collapseFeature-13 .selected-item-box-popup").removeClass("selected-item-box-popup");
+  });
+  $('.modal-save-to-specs-sheet .right-side .sec-feature-three .a__simple').on('click', function () {
+    $(".sec-three .icon-rotate").toggleClass("icon-rotate");
+    $(".sec-three .is-hover_v2").toggleClass("is-hover_v2");
+    $("#collapseFeature-14 .selected-item-box-popup").removeClass("selected-item-box-popup");
+  });
+  $('.modal-save-to-specs-sheet .right-side .sec-feature-four .a__simple').on('click', function () {
+    $(".sec-four .icon-rotate").toggleClass("icon-rotate");
+    $(".sec-four .is-hover_v2").toggleClass("is-hover_v2");
+    $("#collapseFeature-15 .selected-item-box-popup").removeClass("selected-item-box-popup");
+  });
+  $('#collapseFeature-12 .feature-product__item-image').on('click', function () {
+    $(".sec-one .feature-detail__item-drop").addClass("selected-item-box");
+    $(".sec-one").removeClass("opacity__style");
+    $("#collapseFeature-12 .selected-item-box-popup").removeClass("selected-item-box-popup");
+    $(this).addClass("selected-item-box-popup");
+    $("#collapseFeature-12 .popup-save-sheet").removeClass("opacity__style");
+  });
+  $('#collapseFeature-13 .feature-product__item-image').on('click', function () {
+    $(".sec-two .feature-detail__item-drop").addClass("selected-item-box");
+    $(".sec-two").removeClass("opacity__style");
+    $("#collapseFeature-13 .selected-item-box-popup").removeClass("selected-item-box-popup");
+    $(this).addClass("selected-item-box-popup");
+    $("#collapseFeature-13 .popup-save-sheet").removeClass("opacity__style");
+  });
+  $('#collapseFeature-14 .feature-product__item-image').on('click', function () {
+    $(".sec-three .feature-detail__item-drop").addClass("selected-item-box");
+    $(".sec-three").removeClass("opacity__style");
+    $("#collapseFeature-14 .selected-item-box-popup").removeClass("selected-item-box-popup");
+    $(this).addClass("selected-item-box-popup");
+    $("#collapseFeature-14 .popup-save-sheet").removeClass("opacity__style");
+  });
+  $('#collapseFeature-15 .feature-product__item-image').on('click', function () {
+    $(".sec-four .feature-detail__item-drop").addClass("selected-item-box");
+    $(".sec-four").removeClass("opacity__style");
+    $("#collapseFeature-15 .selected-item-box-popup").removeClass("selected-item-box-popup");
+    $(this).addClass("selected-item-box-popup");
+    $("#collapseFeature-15 .popup-save-sheet").removeClass("opacity__style");
+  }); //show popup "i" info box
+
+  $('.popup-info-box').on('mouseover', function () {
+    $(this).parent().addClass('is-hover');
+  }).on('mouseout', function () {
+    $(this).parent().removeClass('is-hover');
+  }); //show-hide popup "i" info box for mobile
+
+  $('.popup-info-box').on('click', function () {
+    $(".popup-info-content").toggleClass("mobile-hide");
+  }); // show-hide popup dropdown filter
+
+  $('.modal-save-to-specs-sheet .dropdown__filter').on('mouseover', function () {
+    $(this).addClass('open');
+  }).on('mouseout', function () {
+    $(this).removeClass('open');
   });
 });
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(0)))
 
 /***/ }),
-/* 43 */
+/* 44 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -29938,7 +30931,7 @@ jQuery(document).ready(function ($) {
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(0)))
 
 /***/ }),
-/* 44 */
+/* 45 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -30059,7 +31052,7 @@ jQuery(document).ready(function ($) {
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(0)))
 
 /***/ }),
-/* 45 */
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(jQuery) {jQuery(document).ready(function ($) {
@@ -30110,7 +31103,7 @@ jQuery(document).ready(function ($) {
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(0)))
 
 /***/ }),
-/* 46 */
+/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(jQuery) {jQuery(document).ready(function ($) {
@@ -30301,7 +31294,7 @@ jQuery(document).ready(function ($) {
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(0)))
 
 /***/ }),
-/* 47 */
+/* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(jQuery) {jQuery(document).ready(function ($) {
@@ -30332,7 +31325,7 @@ jQuery(document).ready(function ($) {
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(0)))
 
 /***/ }),
-/* 48 */
+/* 49 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -30385,7 +31378,7 @@ $(".item-type-three li").click(function () {
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(0)))
 
 /***/ }),
-/* 49 */
+/* 50 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -30404,7 +31397,7 @@ jQuery(document).ready(function ($) {
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(0)))
 
 /***/ }),
-/* 50 */
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(jQuery) {jQuery(document).ready(function ($) {
@@ -30427,7 +31420,9 @@ jQuery(document).ready(function ($) {
   var selectedSortByFilters = [];
   var sortByFilterCheckbox = $('.checkbox__ch-card__checkbox');
   var sortByFilterLabel = $('.select-custom_mobile .select-custom__option__text');
-  var iconFavAnimation = $('.add-to-fav__icon');
+  var iconFavAnimation = $('.add-to-fav__icon_over-galery');
+  var iconFavAnimationOverGalery = $('.add-to-fav__icon_save');
+  var iconFavAnimationK = $('.add-to-fav__icon');
   var letBackBtn = $('.home-mobile-buttons-block__mimic .back-link');
   var featureImage;
   $(feature).on('click', function () {
@@ -30443,7 +31438,7 @@ jQuery(document).ready(function ($) {
 
     $(this).addClass('active');
   });
-  $(iconFavAnimation).on('click', function () {
+  $(iconFavAnimationK).on('click', function () {
     var _this = this;
 
     $(this).addClass('.animate');
@@ -30458,6 +31453,20 @@ jQuery(document).ready(function ($) {
         opacity: 1
       }, 300);
     }, 500);
+  });
+  $(iconFavAnimation).on('click', function () {
+    $(this).addClass('.animate');
+    $(this).toggle({
+      effect: "scale"
+    });
+    $('.img-check__icon').fadeIn();
+  });
+  $(iconFavAnimationOverGalery).on('click', function () {
+    $(this).addClass('.animate');
+    $(this).toggle({
+      effect: "scale"
+    });
+    $('.img-check__icon_v2').fadeIn();
   });
 
   if (window.innerWidth > 991) {
@@ -30522,7 +31531,7 @@ jQuery(document).ready(function ($) {
         $(featureItemDetail).removeClass('d-block');
         $(chooseTypes).removeClass('d-block');
       } else {
-        window.location.href = "specifications.html";
+        window.location.href = "features-category.html";
       }
     });
     $(activateFeatureItem).on('click', function () {
