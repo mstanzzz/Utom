@@ -6,7 +6,7 @@
 		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
 		<title>ClosetsToGo</title>
 	<meta name="description" content="Account idea folder empty"><link href="../../app.css" rel="stylesheet"></head>
-	<body>
+	<body class="idea-folder-popup">
 		
 		<header class="header-covid  clearfix">
 			<div class="first-header">
@@ -43,11 +43,11 @@
 												<p class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Company</p>
 												<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 													<div class="dropdown-menu--content">
-														<a class="dropdown-item" title="" href="#">About us</a>
-														<a class="dropdown-item" title="" href="#">Services</a>
-														<a class="dropdown-item" title="" href="#">Support</a>
+														<a class="dropdown-item" title="" href="about-us.html">About us</a>
+														<a class="dropdown-item" title="" href="services.html">Services</a>
+														<a class="dropdown-item" title="" href="support.html">Support</a>
 														<a class="dropdown-item" title="" href="#">For the Pro's</a>
-														<a class="dropdown-item" title="" href="#">Videos</a>
+														<a class="dropdown-item" title="" href="video-library.html">Videos</a>
 														<a class="dropdown-item" title="" href="#">Careers</a>
 														<a class="dropdown-item" title="" href="#">Blog</a>
 														<a class="dropdown-item" title="" href="#">Policies</a>
@@ -65,12 +65,12 @@
 													<div class="dropdown-menu--content">
 														<a class="dropdown-item account-menu-visible js-account-login" title="" href="#">Login</a>
 														<a class="dropdown-item account-menu-visible" title="" href="#">Register</a>
-														<a class="dropdown-item account-menu-hidden" title="" href="#">Dashboard</a>
-														<a class="dropdown-item account-menu-hidden" title="" href="#">Account settings</a>
+														<a class="dropdown-item account-menu-hidden" title="" href="account.html">Dashboard</a>
+														<a class="dropdown-item account-menu-hidden" title="" href="account-settings.html">Account settings</a>
 														<a class="dropdown-item account-menu-hidden" title="" href="#">Start a new design</a>
-														<a class="dropdown-item account-menu-hidden" title="" href="#">My orders</a>
-														<a class="dropdown-item account-menu-hidden" title="" href="#">Payment settings</a>
-														<a class="dropdown-item account-menu-hidden" title="" href="#">Idea folder</a>
+														<a class="dropdown-item account-menu-hidden" title="" href="account-orders.html">My orders</a>
+														<a class="dropdown-item account-menu-hidden" title="" href="account-payments.html">Payment settings</a>
+														<a class="dropdown-item account-menu-hidden" title="" href="account-idea-folder.html">Idea folder</a>
 														<a class="dropdown-item account-menu-hidden" title="" href="#">My designs</a>
 														<a class="dropdown-item account-menu-hidden js-account-logout" title="" href="#">Sign out</a>
 													</div>
@@ -81,10 +81,17 @@
 									<div class="first-header__phone-card--card">
 										<!-- <a href="#" title="" class="first-header__child"></a> -->
 										<div class="first-header__child wrap-save">
-											<a href="#" title=""><img src="../../images/icon-save.svg" alt=""/></a>
-											<div class="tooltip tooltip__save-images">
-												<p class="text">Save favourite images under user account for future reference</p>
-											</div>
+											<a href="#" title=""><img src="../../images/icon-save_v2.svg" alt=""/></a>
+											<div class="tooltip tooltip__save-images __nd">
+												<div class="icon">
+												   <img src="../../images/idea-folder-icon.png">
+												</div>
+												<span>Save to idea folder</span>
+												<p>
+												   Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's  also the ...
+												</p>
+												<a class="dontShowAgain">Don't show again</a>
+											 </div>
 										</div>
 										<a href="" title="" data-toggle="checkout"	class="first-header__child toggleMenu first-header__open__dropdown-checkout" id="toggleMenu">
 											<img src="../../images/checkout.svg" alt="" class="shopping-bag"/>
@@ -104,11 +111,41 @@
 																			<img class="img img-fluid" src="../../images/icon-close.svg" alt="">
 																		</div>
 																	</li>
-																	<li class="list-item__options__list-option">
-																		<div class="list-item__options__list-option__wrap list-item__options__list-option__close">
-																			<img class="img img-fluid" src="../../images/icon-save.svg" alt="">
+																	<div class="animating-imgs__wrap showroom-detail-view-product-page idea-folder __square style-all-pages" data-toggle="modal" data-target="#saveToIdeaFolder">
+																		<div class="icons icon-share__circle icon-share__circle__fff add-to-fav animate-pulse add-to-fav__icon_over-galery">
+																		   <svg id="Save" xmlns="http://www.w3.org/2000/svg" width="24"
+																			 height="28" viewBox="0 -2 25.6 23.023">
+																			 <path id="Path_205" data-name="Path 205"
+																			   d="M25.6,4.963v7.6a1,1,0,0,1-1,1h-.55a1,1,0,0,1-.724-.31L18.974,8.69l-7.748,9.89a1,1,0,0,1-.787.383h0a1,1,0,0,1-.787-.384L7.006,15.195,5.592,17.034a1,1,0,0,1-1.585-1.22l2.2-2.861A1,1,0,0,1,7,12.563H7a1,1,0,0,1,.788.384L10.44,16.34l7.672-9.794a1,1,0,0,1,1.511-.073L23.6,10.642V4.963a2,2,0,0,0-2-2H4a2,2,0,0,0-2,2v14a2,2,0,0,0,2,2h6.55a1,1,0,0,1,0,2H4a4,4,0,0,1-4-4v-14a4,4,0,0,1,4-4H21.6A4,4,0,0,1,25.6,4.963ZM4,7.563a3,3,0,1,1,3,3A3,3,0,0,1,4,7.563Zm2,0a1,1,0,1,0,1-1A1,1,0,0,0,6,7.563Z"
+																			   transform="translate(0 -0.963)"
+																			   fill="#18c4c7"></path>
+																			 <path id="Path_207" data-name="Path 207"
+																			   d="M11.836-4.736H8.076v3.76H6.1v-3.76H2.324V-6.719H6.1V-10.5H8.076v3.779h3.76Z"
+																			   fill="#18c4c7"></path>
+																		   </svg>
 																		</div>
-																	</li>
+																		<div class="icons icon-share__circle icon-share__circle__18C4C77 add-to-fav img-check__icon"
+																		   style="display: none">
+																		   <svg id="img-check" class="img-check" data-name="Group 781"
+																			 xmlns="http://www.w3.org/2000/svg" width="25"
+																			 height="30"
+																			 viewBox="-2 -6 36.189 38.043">
+																			 <path id="Path_419" class="icon__scale-down"
+																			   data-name="Path 419"
+																			   d="M26.825,5.154v7.964a1.048,1.048,0,0,1-1.048,1.048H25.2a1.048,1.048,0,0,1-.759-.325L19.882,9.06,11.764,19.423a1.048,1.048,0,0,1-.825.4h0a1.048,1.048,0,0,1-.825-.4L7.342,15.876,5.859,17.8A1.048,1.048,0,0,1,4.2,16.525l2.306-3a1.048,1.048,0,0,1,.826-.409h0a1.048,1.048,0,0,1,.826.4l2.779,3.556,8.04-10.263a1.048,1.048,0,0,1,1.583-.077l4.167,4.369V5.154a2.1,2.1,0,0,0-2.1-2.1H4.191a2.1,2.1,0,0,0-2.1,2.1v14.67a2.1,2.1,0,0,0,2.1,2.1h6.863a1.048,1.048,0,0,1,0,2.1H4.191A4.2,4.2,0,0,1,0,19.825V5.154A4.2,4.2,0,0,1,4.191.963H22.634A4.2,4.2,0,0,1,26.825,5.154ZM4.191,7.879a3.144,3.144,0,1,1,3.144,3.144A3.147,3.147,0,0,1,4.191,7.879Zm2.1,0A1.048,1.048,0,1,0,7.335,6.831,1.049,1.049,0,0,0,6.287,7.879Z"
+																			   fill="#18c4c7"/>
+																			 <rect id="Rectangle_148" class="icon__scale-down"
+																			   data-name="Rectangle 148" width="16" height="14"
+																			   rx="2"
+																			   fill="#18c4c7"/>
+																			 <!--															<g id="check" transform="translate(19.319 22.617)" class="icon__scale-up">-->
+																			 <path id="Path_460" class="icon__scale-up"
+																			   data-name="Path 460"
+																			   d="M7.905,56.579l-4.3,4.3a.815.815,0,0,1-1.153,0L.238,58.657A.815.815,0,0,1,1.391,57.5l1.642,1.642,3.72-3.72a.815.815,0,0,1,1.153,1.153Z"/>
+																			 <!--															</g>-->
+																		   </svg>
+																		</div>																		
+																	</div>
 																</ul>
 															</div>
 															<a href="#" title="" class="media-link">
@@ -139,11 +176,41 @@
 																			<img class="img img-fluid" src="../../images/icon-close.svg" alt="">
 																		</div>
 																	</li>
-																	<li class="list-item__options__list-option">
-																		<div class="list-item__options__list-option__wrap list-item__options__list-option__close">
-																			<img class="img img-fluid" src="../../images/icon-save.svg" alt="">
+																	<div class="animating-imgs__wrap showroom-detail-view-product-page idea-folder __square style-all-pages" data-toggle="modal" data-target="#saveToIdeaFolder">
+																		<div class="icons icon-share__circle icon-share__circle__fff add-to-fav animate-pulse add-to-fav__icon_over-galery">
+																		   <svg id="Save" xmlns="http://www.w3.org/2000/svg" width="24"
+																			 height="28" viewBox="0 -2 25.6 23.023">
+																			 <path id="Path_205" data-name="Path 205"
+																			   d="M25.6,4.963v7.6a1,1,0,0,1-1,1h-.55a1,1,0,0,1-.724-.31L18.974,8.69l-7.748,9.89a1,1,0,0,1-.787.383h0a1,1,0,0,1-.787-.384L7.006,15.195,5.592,17.034a1,1,0,0,1-1.585-1.22l2.2-2.861A1,1,0,0,1,7,12.563H7a1,1,0,0,1,.788.384L10.44,16.34l7.672-9.794a1,1,0,0,1,1.511-.073L23.6,10.642V4.963a2,2,0,0,0-2-2H4a2,2,0,0,0-2,2v14a2,2,0,0,0,2,2h6.55a1,1,0,0,1,0,2H4a4,4,0,0,1-4-4v-14a4,4,0,0,1,4-4H21.6A4,4,0,0,1,25.6,4.963ZM4,7.563a3,3,0,1,1,3,3A3,3,0,0,1,4,7.563Zm2,0a1,1,0,1,0,1-1A1,1,0,0,0,6,7.563Z"
+																			   transform="translate(0 -0.963)"
+																			   fill="#18c4c7"></path>
+																			 <path id="Path_207" data-name="Path 207"
+																			   d="M11.836-4.736H8.076v3.76H6.1v-3.76H2.324V-6.719H6.1V-10.5H8.076v3.779h3.76Z"
+																			   fill="#18c4c7"></path>
+																		   </svg>
 																		</div>
-																	</li>
+																		<div class="icons icon-share__circle icon-share__circle__18C4C77 add-to-fav img-check__icon"
+																		   style="display: none">
+																		   <svg id="img-check" class="img-check" data-name="Group 781"
+																			 xmlns="http://www.w3.org/2000/svg" width="25"
+																			 height="30"
+																			 viewBox="-2 -6 36.189 38.043">
+																			 <path id="Path_419" class="icon__scale-down"
+																			   data-name="Path 419"
+																			   d="M26.825,5.154v7.964a1.048,1.048,0,0,1-1.048,1.048H25.2a1.048,1.048,0,0,1-.759-.325L19.882,9.06,11.764,19.423a1.048,1.048,0,0,1-.825.4h0a1.048,1.048,0,0,1-.825-.4L7.342,15.876,5.859,17.8A1.048,1.048,0,0,1,4.2,16.525l2.306-3a1.048,1.048,0,0,1,.826-.409h0a1.048,1.048,0,0,1,.826.4l2.779,3.556,8.04-10.263a1.048,1.048,0,0,1,1.583-.077l4.167,4.369V5.154a2.1,2.1,0,0,0-2.1-2.1H4.191a2.1,2.1,0,0,0-2.1,2.1v14.67a2.1,2.1,0,0,0,2.1,2.1h6.863a1.048,1.048,0,0,1,0,2.1H4.191A4.2,4.2,0,0,1,0,19.825V5.154A4.2,4.2,0,0,1,4.191.963H22.634A4.2,4.2,0,0,1,26.825,5.154ZM4.191,7.879a3.144,3.144,0,1,1,3.144,3.144A3.147,3.147,0,0,1,4.191,7.879Zm2.1,0A1.048,1.048,0,1,0,7.335,6.831,1.049,1.049,0,0,0,6.287,7.879Z"
+																			   fill="#18c4c7"/>
+																			 <rect id="Rectangle_148" class="icon__scale-down"
+																			   data-name="Rectangle 148" width="16" height="14"
+																			   rx="2"
+																			   fill="#18c4c7"/>
+																			 <!--															<g id="check" transform="translate(19.319 22.617)" class="icon__scale-up">-->
+																			 <path id="Path_460" class="icon__scale-up"
+																			   data-name="Path 460"
+																			   d="M7.905,56.579l-4.3,4.3a.815.815,0,0,1-1.153,0L.238,58.657A.815.815,0,0,1,1.391,57.5l1.642,1.642,3.72-3.72a.815.815,0,0,1,1.153,1.153Z"/>
+																			 <!--															</g>-->
+																		   </svg>
+																		</div>																		
+																	</div>
 																</ul>
 															</div>
 															<a href="#" title="" class="media-link">
@@ -174,11 +241,41 @@
 																			<img class="img img-fluid" src="../../images/icon-close.svg" alt="">
 																		</div>
 																	</li>
-																	<li class="list-item__options__list-option">
-																		<div class="list-item__options__list-option__wrap list-item__options__list-option__close">
-																			<img class="img img-fluid" src="../../images/icon-save.svg" alt="">
+																	<div class="animating-imgs__wrap showroom-detail-view-product-page idea-folder __square style-all-pages" data-toggle="modal" data-target="#saveToIdeaFolder">
+																		<div class="icons icon-share__circle icon-share__circle__fff add-to-fav animate-pulse add-to-fav__icon_over-galery">
+																		   <svg id="Save" xmlns="http://www.w3.org/2000/svg" width="24"
+																			 height="28" viewBox="0 -2 25.6 23.023">
+																			 <path id="Path_205" data-name="Path 205"
+																			   d="M25.6,4.963v7.6a1,1,0,0,1-1,1h-.55a1,1,0,0,1-.724-.31L18.974,8.69l-7.748,9.89a1,1,0,0,1-.787.383h0a1,1,0,0,1-.787-.384L7.006,15.195,5.592,17.034a1,1,0,0,1-1.585-1.22l2.2-2.861A1,1,0,0,1,7,12.563H7a1,1,0,0,1,.788.384L10.44,16.34l7.672-9.794a1,1,0,0,1,1.511-.073L23.6,10.642V4.963a2,2,0,0,0-2-2H4a2,2,0,0,0-2,2v14a2,2,0,0,0,2,2h6.55a1,1,0,0,1,0,2H4a4,4,0,0,1-4-4v-14a4,4,0,0,1,4-4H21.6A4,4,0,0,1,25.6,4.963ZM4,7.563a3,3,0,1,1,3,3A3,3,0,0,1,4,7.563Zm2,0a1,1,0,1,0,1-1A1,1,0,0,0,6,7.563Z"
+																			   transform="translate(0 -0.963)"
+																			   fill="#18c4c7"></path>
+																			 <path id="Path_207" data-name="Path 207"
+																			   d="M11.836-4.736H8.076v3.76H6.1v-3.76H2.324V-6.719H6.1V-10.5H8.076v3.779h3.76Z"
+																			   fill="#18c4c7"></path>
+																		   </svg>
 																		</div>
-																	</li>
+																		<div class="icons icon-share__circle icon-share__circle__18C4C77 add-to-fav img-check__icon"
+																		   style="display: none">
+																		   <svg id="img-check" class="img-check" data-name="Group 781"
+																			 xmlns="http://www.w3.org/2000/svg" width="25"
+																			 height="30"
+																			 viewBox="-2 -6 36.189 38.043">
+																			 <path id="Path_419" class="icon__scale-down"
+																			   data-name="Path 419"
+																			   d="M26.825,5.154v7.964a1.048,1.048,0,0,1-1.048,1.048H25.2a1.048,1.048,0,0,1-.759-.325L19.882,9.06,11.764,19.423a1.048,1.048,0,0,1-.825.4h0a1.048,1.048,0,0,1-.825-.4L7.342,15.876,5.859,17.8A1.048,1.048,0,0,1,4.2,16.525l2.306-3a1.048,1.048,0,0,1,.826-.409h0a1.048,1.048,0,0,1,.826.4l2.779,3.556,8.04-10.263a1.048,1.048,0,0,1,1.583-.077l4.167,4.369V5.154a2.1,2.1,0,0,0-2.1-2.1H4.191a2.1,2.1,0,0,0-2.1,2.1v14.67a2.1,2.1,0,0,0,2.1,2.1h6.863a1.048,1.048,0,0,1,0,2.1H4.191A4.2,4.2,0,0,1,0,19.825V5.154A4.2,4.2,0,0,1,4.191.963H22.634A4.2,4.2,0,0,1,26.825,5.154ZM4.191,7.879a3.144,3.144,0,1,1,3.144,3.144A3.147,3.147,0,0,1,4.191,7.879Zm2.1,0A1.048,1.048,0,1,0,7.335,6.831,1.049,1.049,0,0,0,6.287,7.879Z"
+																			   fill="#18c4c7"/>
+																			 <rect id="Rectangle_148" class="icon__scale-down"
+																			   data-name="Rectangle 148" width="16" height="14"
+																			   rx="2"
+																			   fill="#18c4c7"/>
+																			 <!--															<g id="check" transform="translate(19.319 22.617)" class="icon__scale-up">-->
+																			 <path id="Path_460" class="icon__scale-up"
+																			   data-name="Path 460"
+																			   d="M7.905,56.579l-4.3,4.3a.815.815,0,0,1-1.153,0L.238,58.657A.815.815,0,0,1,1.391,57.5l1.642,1.642,3.72-3.72a.815.815,0,0,1,1.153,1.153Z"/>
+																			 <!--															</g>-->
+																		   </svg>
+																		</div>																		
+																	</div>
 																</ul>
 															</div>
 															<a href="#" title="" class="media-link">
@@ -258,7 +355,7 @@
 								</button>
 
 								<div class="second-header__logo-nav--logo">
-									<a href="">
+									<a href="index.html">
 										<img src="../../images/svgg.svg" alt="" />
 									</a>
 								</div>
@@ -270,13 +367,13 @@
 													<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g transform="translate(0 -0.001)"><g transform="translate(0 0.001)"><path d="M13.326,12l10.4-10.4A.938.938,0,0,0,22.4.275L12,10.675,1.6.275A.938.938,0,0,0,.274,1.6L10.674,12,.274,22.4A.938.938,0,0,0,1.6,23.726L12,13.327l10.4,10.4A.938.938,0,0,0,23.725,22.4Z" transform="translate(0 -0.001)"></path></g></g></svg>
 												</button>
 
-												<a href="#" title="">Home</a>
+												<a href="index.html" title="">Home</a>
 											</div>
 										</li>
-										<li><a href="#" title="" class="active">Rooms</a></li>
-										<li><a href="#" title="">Features</a></li>
-										<li><a href="#" title="">Accessories</a></li>
-										<li><a href="#" title="">Why Closets To Go</a></li>
+										<li><a href="showroom-detail-view-categories.html" title="">Rooms</a></li>
+										<li><a href="features-category.html" title="">Features</a></li>
+										<li><a href="accessory-category.html" title="">Accessories</a></li>
+										<li><a href="comparison.html" title="">Why Closets To Go</a></li>
 										<li>
 											<div class="second-header__logo-nav--grop-down">
 												<span>
@@ -286,24 +383,24 @@
 												</span>
 												<div class="dropdown-wrap">
 													<div class="dropdown-content">
-														<a href="#" title="">Fax a design</a>
-														<a href="#" title="">Free in home consults</a>
-														<a href="#" title="">We Design</a>
+														<a href="fax-a-design-plan.html" title="">Fax a design</a>
+														<a href="free-in-home-consults.html" title="">Free in home consults</a>
+														<a href="we-design.html" title="">We Design</a>
 														<a href="#" title="">You Design</a>
 													</div>
 												</div>
 											</div>
 										</li>
-										<li><a href="#" title="">Installation</a></li>
-										<li><a href="#" title="">Specs</a></li>
-										<li><a href="#" title="">Videos</a></li>
+										<li><a href="diy-instructions.html" title="">Installation</a></li>
+										<li><a href="specifications.html" title="">Specs</a></li>
+										<li><a href="video-library.html" title="">Videos</a></li>
 									</ul>
 								</nav>
 							</div>
 							<div class="col-4 col-lg-3 second-header__search">
 								<div class="desktop-show">
 									<a href="#" title="" class="you-design">You design</a>
-									<a href="#" title="" class="we-design">We design</a>
+									<a href="we-design.html" title="" class="we-design">We design</a>
 								</div>
 
 								<button id="show-search-form" class="header__btn-search__wrap">
@@ -343,11 +440,41 @@
 																			<img class="img img-fluid" src="../../images/icon-close.svg" alt="">
 																		</div>
 																	</li>
-																	<li class="list-item__options__list-option">
-																		<div class="list-item__options__list-option__wrap list-item__options__list-option__close">
-																			<img class="img img-fluid" src="../../images/icon-save.svg" alt="">
+																	<div class="animating-imgs__wrap showroom-detail-view-product-page idea-folder __square style-all-pages" data-toggle="modal" data-target="#saveToIdeaFolder">
+																		<div class="icons icon-share__circle icon-share__circle__fff add-to-fav animate-pulse add-to-fav__icon_over-galery">
+																		   <svg id="Save" xmlns="http://www.w3.org/2000/svg" width="24"
+																			 height="28" viewBox="0 -2 25.6 23.023">
+																			 <path id="Path_205" data-name="Path 205"
+																			   d="M25.6,4.963v7.6a1,1,0,0,1-1,1h-.55a1,1,0,0,1-.724-.31L18.974,8.69l-7.748,9.89a1,1,0,0,1-.787.383h0a1,1,0,0,1-.787-.384L7.006,15.195,5.592,17.034a1,1,0,0,1-1.585-1.22l2.2-2.861A1,1,0,0,1,7,12.563H7a1,1,0,0,1,.788.384L10.44,16.34l7.672-9.794a1,1,0,0,1,1.511-.073L23.6,10.642V4.963a2,2,0,0,0-2-2H4a2,2,0,0,0-2,2v14a2,2,0,0,0,2,2h6.55a1,1,0,0,1,0,2H4a4,4,0,0,1-4-4v-14a4,4,0,0,1,4-4H21.6A4,4,0,0,1,25.6,4.963ZM4,7.563a3,3,0,1,1,3,3A3,3,0,0,1,4,7.563Zm2,0a1,1,0,1,0,1-1A1,1,0,0,0,6,7.563Z"
+																			   transform="translate(0 -0.963)"
+																			   fill="#18c4c7"></path>
+																			 <path id="Path_207" data-name="Path 207"
+																			   d="M11.836-4.736H8.076v3.76H6.1v-3.76H2.324V-6.719H6.1V-10.5H8.076v3.779h3.76Z"
+																			   fill="#18c4c7"></path>
+																		   </svg>
 																		</div>
-																	</li>
+																		<div class="icons icon-share__circle icon-share__circle__18C4C77 add-to-fav img-check__icon"
+																		   style="display: none">
+																		   <svg id="img-check" class="img-check" data-name="Group 781"
+																			 xmlns="http://www.w3.org/2000/svg" width="25"
+																			 height="30"
+																			 viewBox="-2 -6 36.189 38.043">
+																			 <path id="Path_419" class="icon__scale-down"
+																			   data-name="Path 419"
+																			   d="M26.825,5.154v7.964a1.048,1.048,0,0,1-1.048,1.048H25.2a1.048,1.048,0,0,1-.759-.325L19.882,9.06,11.764,19.423a1.048,1.048,0,0,1-.825.4h0a1.048,1.048,0,0,1-.825-.4L7.342,15.876,5.859,17.8A1.048,1.048,0,0,1,4.2,16.525l2.306-3a1.048,1.048,0,0,1,.826-.409h0a1.048,1.048,0,0,1,.826.4l2.779,3.556,8.04-10.263a1.048,1.048,0,0,1,1.583-.077l4.167,4.369V5.154a2.1,2.1,0,0,0-2.1-2.1H4.191a2.1,2.1,0,0,0-2.1,2.1v14.67a2.1,2.1,0,0,0,2.1,2.1h6.863a1.048,1.048,0,0,1,0,2.1H4.191A4.2,4.2,0,0,1,0,19.825V5.154A4.2,4.2,0,0,1,4.191.963H22.634A4.2,4.2,0,0,1,26.825,5.154ZM4.191,7.879a3.144,3.144,0,1,1,3.144,3.144A3.147,3.147,0,0,1,4.191,7.879Zm2.1,0A1.048,1.048,0,1,0,7.335,6.831,1.049,1.049,0,0,0,6.287,7.879Z"
+																			   fill="#18c4c7"/>
+																			 <rect id="Rectangle_148" class="icon__scale-down"
+																			   data-name="Rectangle 148" width="16" height="14"
+																			   rx="2"
+																			   fill="#18c4c7"/>
+																			 <!--															<g id="check" transform="translate(19.319 22.617)" class="icon__scale-up">-->
+																			 <path id="Path_460" class="icon__scale-up"
+																			   data-name="Path 460"
+																			   d="M7.905,56.579l-4.3,4.3a.815.815,0,0,1-1.153,0L.238,58.657A.815.815,0,0,1,1.391,57.5l1.642,1.642,3.72-3.72a.815.815,0,0,1,1.153,1.153Z"/>
+																			 <!--															</g>-->
+																		   </svg>
+																		</div>																		
+																	</div>
 																</ul>
 															</div>
 															<a href="#" title="" class="media-link">
@@ -378,11 +505,41 @@
 																			<img class="img img-fluid" src="../../images/icon-close.svg" alt="">
 																		</div>
 																	</li>
-																	<li class="list-item__options__list-option">
-																		<div class="list-item__options__list-option__wrap list-item__options__list-option__close">
-																			<img class="img img-fluid" src="../../images/icon-save.svg" alt="">
+																	<div class="animating-imgs__wrap showroom-detail-view-product-page idea-folder __square style-all-pages" data-toggle="modal" data-target="#saveToIdeaFolder">
+																		<div class="icons icon-share__circle icon-share__circle__fff add-to-fav animate-pulse add-to-fav__icon_over-galery">
+																		   <svg id="Save" xmlns="http://www.w3.org/2000/svg" width="24"
+																			 height="28" viewBox="0 -2 25.6 23.023">
+																			 <path id="Path_205" data-name="Path 205"
+																			   d="M25.6,4.963v7.6a1,1,0,0,1-1,1h-.55a1,1,0,0,1-.724-.31L18.974,8.69l-7.748,9.89a1,1,0,0,1-.787.383h0a1,1,0,0,1-.787-.384L7.006,15.195,5.592,17.034a1,1,0,0,1-1.585-1.22l2.2-2.861A1,1,0,0,1,7,12.563H7a1,1,0,0,1,.788.384L10.44,16.34l7.672-9.794a1,1,0,0,1,1.511-.073L23.6,10.642V4.963a2,2,0,0,0-2-2H4a2,2,0,0,0-2,2v14a2,2,0,0,0,2,2h6.55a1,1,0,0,1,0,2H4a4,4,0,0,1-4-4v-14a4,4,0,0,1,4-4H21.6A4,4,0,0,1,25.6,4.963ZM4,7.563a3,3,0,1,1,3,3A3,3,0,0,1,4,7.563Zm2,0a1,1,0,1,0,1-1A1,1,0,0,0,6,7.563Z"
+																			   transform="translate(0 -0.963)"
+																			   fill="#18c4c7"></path>
+																			 <path id="Path_207" data-name="Path 207"
+																			   d="M11.836-4.736H8.076v3.76H6.1v-3.76H2.324V-6.719H6.1V-10.5H8.076v3.779h3.76Z"
+																			   fill="#18c4c7"></path>
+																		   </svg>
 																		</div>
-																	</li>
+																		<div class="icons icon-share__circle icon-share__circle__18C4C77 add-to-fav img-check__icon"
+																		   style="display: none">
+																		   <svg id="img-check" class="img-check" data-name="Group 781"
+																			 xmlns="http://www.w3.org/2000/svg" width="25"
+																			 height="30"
+																			 viewBox="-2 -6 36.189 38.043">
+																			 <path id="Path_419" class="icon__scale-down"
+																			   data-name="Path 419"
+																			   d="M26.825,5.154v7.964a1.048,1.048,0,0,1-1.048,1.048H25.2a1.048,1.048,0,0,1-.759-.325L19.882,9.06,11.764,19.423a1.048,1.048,0,0,1-.825.4h0a1.048,1.048,0,0,1-.825-.4L7.342,15.876,5.859,17.8A1.048,1.048,0,0,1,4.2,16.525l2.306-3a1.048,1.048,0,0,1,.826-.409h0a1.048,1.048,0,0,1,.826.4l2.779,3.556,8.04-10.263a1.048,1.048,0,0,1,1.583-.077l4.167,4.369V5.154a2.1,2.1,0,0,0-2.1-2.1H4.191a2.1,2.1,0,0,0-2.1,2.1v14.67a2.1,2.1,0,0,0,2.1,2.1h6.863a1.048,1.048,0,0,1,0,2.1H4.191A4.2,4.2,0,0,1,0,19.825V5.154A4.2,4.2,0,0,1,4.191.963H22.634A4.2,4.2,0,0,1,26.825,5.154ZM4.191,7.879a3.144,3.144,0,1,1,3.144,3.144A3.147,3.147,0,0,1,4.191,7.879Zm2.1,0A1.048,1.048,0,1,0,7.335,6.831,1.049,1.049,0,0,0,6.287,7.879Z"
+																			   fill="#18c4c7"/>
+																			 <rect id="Rectangle_148" class="icon__scale-down"
+																			   data-name="Rectangle 148" width="16" height="14"
+																			   rx="2"
+																			   fill="#18c4c7"/>
+																			 <!--															<g id="check" transform="translate(19.319 22.617)" class="icon__scale-up">-->
+																			 <path id="Path_460" class="icon__scale-up"
+																			   data-name="Path 460"
+																			   d="M7.905,56.579l-4.3,4.3a.815.815,0,0,1-1.153,0L.238,58.657A.815.815,0,0,1,1.391,57.5l1.642,1.642,3.72-3.72a.815.815,0,0,1,1.153,1.153Z"/>
+																			 <!--															</g>-->
+																		   </svg>
+																		</div>																		
+																	</div>
 																</ul>
 															</div>
 															<a href="#" title="" class="media-link">
@@ -414,11 +571,41 @@
 																			<img class="img img-fluid" src="../../images/icon-close.svg" alt="">
 																		</div>
 																	</li>
-																	<li class="list-item__options__list-option">
-																		<div class="list-item__options__list-option__wrap list-item__options__list-option__close">
-																			<img class="img img-fluid" src="../../images/icon-save.svg" alt="">
+																	<div class="animating-imgs__wrap showroom-detail-view-product-page idea-folder __square style-all-pages" data-toggle="modal" data-target="#saveToIdeaFolder">
+																		<div class="icons icon-share__circle icon-share__circle__fff add-to-fav animate-pulse add-to-fav__icon_over-galery">
+																		   <svg id="Save" xmlns="http://www.w3.org/2000/svg" width="24"
+																			 height="28" viewBox="0 -2 25.6 23.023">
+																			 <path id="Path_205" data-name="Path 205"
+																			   d="M25.6,4.963v7.6a1,1,0,0,1-1,1h-.55a1,1,0,0,1-.724-.31L18.974,8.69l-7.748,9.89a1,1,0,0,1-.787.383h0a1,1,0,0,1-.787-.384L7.006,15.195,5.592,17.034a1,1,0,0,1-1.585-1.22l2.2-2.861A1,1,0,0,1,7,12.563H7a1,1,0,0,1,.788.384L10.44,16.34l7.672-9.794a1,1,0,0,1,1.511-.073L23.6,10.642V4.963a2,2,0,0,0-2-2H4a2,2,0,0,0-2,2v14a2,2,0,0,0,2,2h6.55a1,1,0,0,1,0,2H4a4,4,0,0,1-4-4v-14a4,4,0,0,1,4-4H21.6A4,4,0,0,1,25.6,4.963ZM4,7.563a3,3,0,1,1,3,3A3,3,0,0,1,4,7.563Zm2,0a1,1,0,1,0,1-1A1,1,0,0,0,6,7.563Z"
+																			   transform="translate(0 -0.963)"
+																			   fill="#18c4c7"></path>
+																			 <path id="Path_207" data-name="Path 207"
+																			   d="M11.836-4.736H8.076v3.76H6.1v-3.76H2.324V-6.719H6.1V-10.5H8.076v3.779h3.76Z"
+																			   fill="#18c4c7"></path>
+																		   </svg>
 																		</div>
-																	</li>
+																		<div class="icons icon-share__circle icon-share__circle__18C4C77 add-to-fav img-check__icon"
+																		   style="display: none">
+																		   <svg id="img-check" class="img-check" data-name="Group 781"
+																			 xmlns="http://www.w3.org/2000/svg" width="25"
+																			 height="30"
+																			 viewBox="-2 -6 36.189 38.043">
+																			 <path id="Path_419" class="icon__scale-down"
+																			   data-name="Path 419"
+																			   d="M26.825,5.154v7.964a1.048,1.048,0,0,1-1.048,1.048H25.2a1.048,1.048,0,0,1-.759-.325L19.882,9.06,11.764,19.423a1.048,1.048,0,0,1-.825.4h0a1.048,1.048,0,0,1-.825-.4L7.342,15.876,5.859,17.8A1.048,1.048,0,0,1,4.2,16.525l2.306-3a1.048,1.048,0,0,1,.826-.409h0a1.048,1.048,0,0,1,.826.4l2.779,3.556,8.04-10.263a1.048,1.048,0,0,1,1.583-.077l4.167,4.369V5.154a2.1,2.1,0,0,0-2.1-2.1H4.191a2.1,2.1,0,0,0-2.1,2.1v14.67a2.1,2.1,0,0,0,2.1,2.1h6.863a1.048,1.048,0,0,1,0,2.1H4.191A4.2,4.2,0,0,1,0,19.825V5.154A4.2,4.2,0,0,1,4.191.963H22.634A4.2,4.2,0,0,1,26.825,5.154ZM4.191,7.879a3.144,3.144,0,1,1,3.144,3.144A3.147,3.147,0,0,1,4.191,7.879Zm2.1,0A1.048,1.048,0,1,0,7.335,6.831,1.049,1.049,0,0,0,6.287,7.879Z"
+																			   fill="#18c4c7"/>
+																			 <rect id="Rectangle_148" class="icon__scale-down"
+																			   data-name="Rectangle 148" width="16" height="14"
+																			   rx="2"
+																			   fill="#18c4c7"/>
+																			 <!--															<g id="check" transform="translate(19.319 22.617)" class="icon__scale-up">-->
+																			 <path id="Path_460" class="icon__scale-up"
+																			   data-name="Path 460"
+																			   d="M7.905,56.579l-4.3,4.3a.815.815,0,0,1-1.153,0L.238,58.657A.815.815,0,0,1,1.391,57.5l1.642,1.642,3.72-3.72a.815.815,0,0,1,1.153,1.153Z"/>
+																			 <!--															</g>-->
+																		   </svg>
+																		</div>																		
+																	</div>
 																</ul>
 															</div>
 															<a href="#" title="" class="media-link">
@@ -627,6 +814,23 @@
 		</section>
 		
 		<main class="main clearfix">
+			<section class="breadcrumb-block pb-3 desktop-show">
+				<div class="wrapper">
+					<div class="container-fluid">
+						<div class="row">
+							<div class="col-12">
+								<div class="breadcrumb-block__wrapper" aria-label="breadcrumb">
+									<ul class="breadcrumb">
+										<li class="breadcrumb-item"><a href="index.html">Home</a></li>
+										<li class="breadcrumb-item" aria-current="page"><a href="account.html">account</a></li>
+										<li class="breadcrumb-item active" aria-current="page">idea folder</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
 			<section class="account-block">
 				<div class="wrapper">
 					<div class="container-fluid">
@@ -1027,6 +1231,1655 @@
 
 		</footer>
 
+		<!-- popup "Perfect-fit-guarantee" -->
+		<div class="cd-popup perfect-fit-guarantee" role="alert">
+			<div class="cd-popup-container">
+				<img src="../../images/pp1.jpg" alt="">
+				<div class="content-popup">
+					<a href="">
+					<img src="../../images/svgg.svg" alt="">
+					</a>
+					<p>100% Perfect fit guarantee</p>
+					<a href="#" title="" class="link-button">
+						discover more
+						<svg xmlns="http://www.w3.org/2000/svg" width="20.8" height="14.623" viewBox="0 0 20.8 14.623">
+						<path id="left-arrow_3_" data-name="left-arrow(3)" d="M14.014,4.9a.737.737,0,1,0-1.048,1.038l5.314,5.314H.744A.738.738,0,0,0,0,11.982a.747.747,0,0,0,.744.744H18.281l-5.314,5.3a.752.752,0,0,0,0,1.048.734.734,0,0,0,1.048,0l6.573-6.573a.739.739,0,0,0,0-1.038Z" transform="translate(0.001 -4.676)"></path>
+						</svg>
+					</a>
+				</div>
+				<a href="#0" class="cd-popup-close img-replace">
+					<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
+						<g id="Group_360" data-name="Group 360">
+						<path id="Path_208" data-name="Path 208" d="M15,0A15,15,0,1,0,30,15,15.017,15.017,0,0,0,15,0Zm6.067,19.3a.625.625,0,0,1,0,.884l-.884.884a.625.625,0,0,1-.884,0l-4.3-4.3-4.3,4.3a.625.625,0,0,1-.884,0l-.884-.884a.625.625,0,0,1,0-.884l4.3-4.3-4.3-4.3a.625.625,0,0,1,0-.884l.884-.884a.625.625,0,0,1,.884,0l4.3,4.3,4.3-4.3a.625.625,0,0,1,.884,0l.884.884a.625.625,0,0,1,0,.884l-4.3,4.3Z" fill="#384765"/>
+						</g>
+					</svg>
+				</a>
+				<a class="cd-popup-close img-replace"></a>
+			</div>
+		</div>
+
+		<!-- popup "Free-shipping" -->
+		<div class="cd-popup free-shipping" role="alert">
+			<div class="cd-popup-container">
+				<img src="../../images/pp2.jpg" alt="">
+				<div class="content-popup">
+					<a href="">
+					<img src="../../images/svgg.svg" alt="">
+					</a>
+					<p>Free<br /> shipping</p>
+					<a href="#" title="" class="link-button">
+						discover more
+						<svg xmlns="http://www.w3.org/2000/svg" width="20.8" height="14.623" viewBox="0 0 20.8 14.623">
+						<path id="left-arrow_3_" data-name="left-arrow(3)" d="M14.014,4.9a.737.737,0,1,0-1.048,1.038l5.314,5.314H.744A.738.738,0,0,0,0,11.982a.747.747,0,0,0,.744.744H18.281l-5.314,5.3a.752.752,0,0,0,0,1.048.734.734,0,0,0,1.048,0l6.573-6.573a.739.739,0,0,0,0-1.038Z" transform="translate(0.001 -4.676)"></path>
+						</svg>
+					</a>
+				</div>
+				<a href="#0" class="cd-popup-close img-replace">
+					<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
+						<g id="Group_360" data-name="Group 360">
+						<path id="Path_208" data-name="Path 208" d="M15,0A15,15,0,1,0,30,15,15.017,15.017,0,0,0,15,0Zm6.067,19.3a.625.625,0,0,1,0,.884l-.884.884a.625.625,0,0,1-.884,0l-4.3-4.3-4.3,4.3a.625.625,0,0,1-.884,0l-.884-.884a.625.625,0,0,1,0-.884l4.3-4.3-4.3-4.3a.625.625,0,0,1,0-.884l.884-.884a.625.625,0,0,1,.884,0l4.3,4.3,4.3-4.3a.625.625,0,0,1,.884,0l.884.884a.625.625,0,0,1,0,.884l-4.3,4.3Z" fill="#384765"/>
+						</g>
+					</svg>
+				</a>
+				<a class="cd-popup-close img-replace"></a>
+			</div>
+		</div>
+
+		<!-- Modal Save To Idea Folder -->
+		<div class="modal fade modal-save-to-specs-sheet" id="saveToIdeaFolder" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLongTitle">Save to Idea Folder</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+							<g transform="translate(0 -0.001)">
+								<g transform="translate(0 0.001)">
+									<path fill="#000" d="M13.326,12l10.4-10.4A.938.938,0,0,0,22.4.275L12,10.675,1.6.275A.938.938,0,0,0,.274,1.6L10.674,12,.274,22.4A.938.938,0,0,0,1.6,23.726L12,13.327l10.4,10.4A.938.938,0,0,0,23.725,22.4Z" transform="translate(0 -0.001)"></path>
+								</g>
+							</g>
+						</svg>
+						</button>
+						<button type="button" class="close-mobile" data-dismiss="modal" aria-label="Close">
+						<img src="../../images/keyboard_arrow_left-24px-white.svg" alt="">
+						</button>
+					</div>
+					<p class="modal-sub-title">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut diam nonumy eirmod tempor invidunt.</p>
+					<div class="modal-body">
+						<div class="row">
+						<div class="col-lg-5">
+							<img class="item-selected" src="../../images/popup-save-seet-thumnail.png" alt="">
+							<p class="modal-desctiption">Lorem ipsum dolor sit amet, consetetur nonumy eirmod tempor invidunt sit amet.</p>
+							<table class="table">
+								<tbody>
+									<tr>
+									<td>Color</td>
+									<td>Morbi</td>
+									</tr>
+									<tr>
+									<td>Size</td>
+									<td>Facilisis, sodales sapien et non.</td>
+									</tr>
+									<tr>
+									<td>Materials</td>
+									<td>Pellenteaque habitant morbi</td>
+									</tr>
+									<tr>
+									<td>Color</td>
+									<td>Tristique senectus et netus et netus</td>
+									</tr>
+									<tr>
+									<td>Size</td>
+									<td>Facilisis, sodales sapien et non.</td>
+									</tr>
+									<tr>
+									<td>Materials</td>
+									<td>Pellenteaque habitant morbi</td>
+									</tr>
+									<tr>
+									<td>Color</td>
+									<td>Tristique senectus et netus et netus</td>
+									</tr>
+									<tr>
+									<td>Size</td>
+									<td>Facilisis, sodales sapien et non</td>
+									</tr>
+									<tr>
+									<td>Materials</td>
+									<td>Pellenteaque habitant morbi</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="col-lg-7 right-side">
+							<div class="row">
+								<div class="col-12 js-specifications-subheading_v2 padding-no__a-v2">
+									<p class="tab-content__specifications--subheading">
+									Color
+									<img class="tab-content__specifications--subheading-icon-plus" src="../../images/minus-button-1.svg" alt="" style="display: none;">
+									<img class="tab-content__specifications--subheading-icon-minus" src="../../images/minus-button.svg" alt="" >
+									</p>
+								</div>
+								<div class="col-12 popup-padding-no">
+									<div class="phantom-actions__dropdowns__a popup-padding-row">
+									<!--MENU WITH ADDITIONAL FEATURES,
+										EVERY ROW HAS A COLLAPSE DIV SIBLING,
+										WHEN YOU CLICK A ITEM FROM DIV, A COLLAPSE MENU IS SHOWING
+										YOU CAN HAVE A MULTIPLE COLLAPSE MENUS FOR EVERY ITEM
+										OR ONE COLLAPSE DIV AND REPLACE ITEMS INSIDE DEPENDS ON
+										WHICH ITEM USER CLICKS
+										-->
+									<div class="phantom-actions__dropdowns accordion active nd"
+										id="collapseFeature-parent-2">
+										<div class="row margin-none sec-feature-one">
+											<div class="col-2 feature-product__item-image a__simple">
+												<div class="feature-detail__item-drop"
+												data-feature="feature-item"
+												data-container="#collapseFeature-parent-2"				
+												data-toggle="tooltip" data-container="body" data-placement="top" title="Simple name"																																				 
+												>
+												<img src="../../images/lock_product-thumb.png" class="img-fluid selected-item-border" alt="">
+												<span class="eye_top-right__selected">
+													<svg xmlns="http://www.w3.org/2000/svg" width="22.47" height="16.375" viewBox="0 0 27.47 16.375">
+														<path id="dewfew" d="M13.735,98.725c-5.248,0-10.008,2.871-13.52,7.535a1.087,1.087,0,0,0,0,1.3c3.512,4.67,8.272,7.541,13.52,7.541s10.008-2.871,13.52-7.535a1.087,1.087,0,0,0,0-1.3C23.743,101.6,18.983,98.725,13.735,98.725Zm.376,13.953a5.778,5.778,0,1,1,5.389-5.389A5.781,5.781,0,0,1,14.111,112.678Zm-.174-2.664a3.111,3.111,0,1,1,2.905-2.905A3.106,3.106,0,0,1,13.937,110.014Z" transform="translate(0 -98.725)" fill="#384765"/>
+													</svg>
+												</span>
+												</div>
+											</div>
+											<div class="col-2 feature-product__item-image drop_detail__items popup-save-sheet sec-one">
+												<div class="feature-detail__item-drop"
+												title="Simple name"
+												data-container="#collapseFeature-parent-2"
+												data-toggle="tooltip" data-container="body" data-placement="top" title="Simple name"
+												>
+												<img src="../../images/lock_product-thumb.png" class="img-fluid selected-item-border" alt="">
+												<span class="eye_top-right__selected">
+													<svg xmlns="http://www.w3.org/2000/svg" width="22.47" height="16.375" viewBox="0 0 27.47 16.375">
+														<path id="dewfew" d="M13.735,98.725c-5.248,0-10.008,2.871-13.52,7.535a1.087,1.087,0,0,0,0,1.3c3.512,4.67,8.272,7.541,13.52,7.541s10.008-2.871,13.52-7.535a1.087,1.087,0,0,0,0-1.3C23.743,101.6,18.983,98.725,13.735,98.725Zm.376,13.953a5.778,5.778,0,1,1,5.389-5.389A5.781,5.781,0,0,1,14.111,112.678Zm-.174-2.664a3.111,3.111,0,1,1,2.905-2.905A3.106,3.106,0,0,1,13.937,110.014Z" transform="translate(0 -98.725)" fill="#384765"/>
+													</svg>
+												</span>
+												<button class="feature-detail__item-drop__show-more hover-btn__v2 v3_a"
+													data-toggle="collapse"
+													data-target="#collapseFeature-12"
+													aria-expanded="true"
+													aria-controls="collapseFeature-12"
+													>
+													<svg xmlns="http://www.w3.org/2000/svg" width="3.726" height="6.536" viewBox="0 0 3.726 6.536">
+														<defs>
+															<style>.a{fill:#fff;}</style>
+														</defs>
+														<g transform="translate(0 6.536) rotate(-90)">
+															<path class="a" d="M3.268,3.726a.456.456,0,0,1-.324-.134L.134.781A.458.458,0,0,1,.781.134L3.268,2.621,5.755.134A.458.458,0,0,1,6.4.781L3.592,3.592A.456.456,0,0,1,3.268,3.726Z"/>
+														</g>
+													</svg>
+												</button>
+												</div>
+											</div>
+											<div class="col-2 feature-product__item-image a__simple">
+												<div class="feature-detail__item-drop"
+												data-feature="feature-item"
+												data-container="#collapseFeature-parent-2"
+												data-toggle="tooltip" data-container="body" data-placement="top" title="Simple name"
+												>
+												<img src="../../images/lock_product-thumb.png" class="img-fluid selected-item-border" alt="">
+												<span class="eye_top-right__selected">
+													<svg xmlns="http://www.w3.org/2000/svg" width="22.47" height="16.375" viewBox="0 0 27.47 16.375">
+														<path id="dewfew" d="M13.735,98.725c-5.248,0-10.008,2.871-13.52,7.535a1.087,1.087,0,0,0,0,1.3c3.512,4.67,8.272,7.541,13.52,7.541s10.008-2.871,13.52-7.535a1.087,1.087,0,0,0,0-1.3C23.743,101.6,18.983,98.725,13.735,98.725Zm.376,13.953a5.778,5.778,0,1,1,5.389-5.389A5.781,5.781,0,0,1,14.111,112.678Zm-.174-2.664a3.111,3.111,0,1,1,2.905-2.905A3.106,3.106,0,0,1,13.937,110.014Z" transform="translate(0 -98.725)" fill="#384765"/>
+													</svg>
+												</span>
+												</div>
+											</div>
+											<div class="col-2 feature-product__item-image a__simple">
+												<div class="feature-detail__item-drop"
+												data-feature="feature-item"
+												data-container="#collapseFeature-parent-2"
+												data-toggle="tooltip" data-container="body" data-placement="top" title="Simple name"
+												>
+												<img src="../../images/lock_product-thumb.png" class="img-fluid selected-item-border" alt="">
+												<span class="eye_top-right__selected">
+													<svg xmlns="http://www.w3.org/2000/svg" width="22.47" height="16.375" viewBox="0 0 27.47 16.375">
+														<path id="dewfew" d="M13.735,98.725c-5.248,0-10.008,2.871-13.52,7.535a1.087,1.087,0,0,0,0,1.3c3.512,4.67,8.272,7.541,13.52,7.541s10.008-2.871,13.52-7.535a1.087,1.087,0,0,0,0-1.3C23.743,101.6,18.983,98.725,13.735,98.725Zm.376,13.953a5.778,5.778,0,1,1,5.389-5.389A5.781,5.781,0,0,1,14.111,112.678Zm-.174-2.664a3.111,3.111,0,1,1,2.905-2.905A3.106,3.106,0,0,1,13.937,110.014Z" transform="translate(0 -98.725)" fill="#384765"/>
+													</svg>
+												</span>
+												</div>
+											</div>
+											<div class="col-2 feature-product__item-image a__simple">
+												<div class="feature-detail__item-drop"
+												data-feature="feature-item"
+												data-container="#collapseFeature-parent-2"
+												data-toggle="tooltip" data-container="body" data-placement="top" title="Simple name"
+												>
+												<img src="../../images/lock_product-thumb.png" class="img-fluid selected-item-border" alt="">
+												<span class="eye_top-right__selected">
+													<svg xmlns="http://www.w3.org/2000/svg" width="22.47" height="16.375" viewBox="0 0 27.47 16.375">
+														<path id="dewfew" d="M13.735,98.725c-5.248,0-10.008,2.871-13.52,7.535a1.087,1.087,0,0,0,0,1.3c3.512,4.67,8.272,7.541,13.52,7.541s10.008-2.871,13.52-7.535a1.087,1.087,0,0,0,0-1.3C23.743,101.6,18.983,98.725,13.735,98.725Zm.376,13.953a5.778,5.778,0,1,1,5.389-5.389A5.781,5.781,0,0,1,14.111,112.678Zm-.174-2.664a3.111,3.111,0,1,1,2.905-2.905A3.106,3.106,0,0,1,13.937,110.014Z" transform="translate(0 -98.725)" fill="#384765"/>
+													</svg>
+												</span>
+												</div>
+											</div>
+											<div
+												id="collapseFeature-11" class="collapse show border-nd_hove_nd collapseFeature-opacity_class"
+												aria-labelledby="headingOne"
+												data-parent="#collapseFeature-parent-2"
+												>
+												<div class="row dropdown-items">
+												<div class="col-2 feature-product__item-image">
+													<div class="feature-detail__item-drop selected-item-box" data-toggle="tooltip" data-container="body" data-placement="top" title="Simple name" data-feature="feature-item" data-container="#collapseFeature-parent-2">
+														<img src="../../images/lock_product-thumb.png" class="img-fluid selected-item-border" alt="">
+														<span class="eye_top-right__selected">
+															<svg xmlns="http://www.w3.org/2000/svg" width="22.47" height="16.375" viewBox="0 0 27.47 16.375">
+															<path id="dewfew" d="M13.735,98.725c-5.248,0-10.008,2.871-13.52,7.535a1.087,1.087,0,0,0,0,1.3c3.512,4.67,8.272,7.541,13.52,7.541s10.008-2.871,13.52-7.535a1.087,1.087,0,0,0,0-1.3C23.743,101.6,18.983,98.725,13.735,98.725Zm.376,13.953a5.778,5.778,0,1,1,5.389-5.389A5.781,5.781,0,0,1,14.111,112.678Zm-.174-2.664a3.111,3.111,0,1,1,2.905-2.905A3.106,3.106,0,0,1,13.937,110.014Z" transform="translate(0 -98.725)" fill="#384765"/>
+															</svg>
+														</span>
+													</div>
+												</div>
+												<div class="col-2 feature-product__item-image">
+													<div class="feature-detail__item-drop selected-item-box" data-toggle="tooltip" data-container="body" data-placement="top" title="Simple name" data-feature="feature-item" data-container="#collapseFeature-parent-2">
+														<img src="../../images/lock_product-thumb.png" class="img-fluid selected-item-border" alt="">
+														<span class="eye_top-right__selected">
+															<svg xmlns="http://www.w3.org/2000/svg" width="22.47" height="16.375" viewBox="0 0 27.47 16.375">
+															<path id="dewfew" d="M13.735,98.725c-5.248,0-10.008,2.871-13.52,7.535a1.087,1.087,0,0,0,0,1.3c3.512,4.67,8.272,7.541,13.52,7.541s10.008-2.871,13.52-7.535a1.087,1.087,0,0,0,0-1.3C23.743,101.6,18.983,98.725,13.735,98.725Zm.376,13.953a5.778,5.778,0,1,1,5.389-5.389A5.781,5.781,0,0,1,14.111,112.678Zm-.174-2.664a3.111,3.111,0,1,1,2.905-2.905A3.106,3.106,0,0,1,13.937,110.014Z" transform="translate(0 -98.725)" fill="#384765"/>
+															</svg>
+														</span>
+													</div>
+												</div>
+												<div class="col-2 feature-product__item-image">
+													<div class="feature-detail__item-drop selected-item-box" data-toggle="tooltip" data-container="body" data-placement="top" title="Simple name" data-feature="feature-item" data-container="#collapseFeature-parent-2">
+														<img src="../../images/lock_product-thumb.png" class="img-fluid selected-item-border" alt="">
+														<span class="eye_top-right__selected">
+															<svg xmlns="http://www.w3.org/2000/svg" width="22.47" height="16.375" viewBox="0 0 27.47 16.375">
+															<path id="dewfew" d="M13.735,98.725c-5.248,0-10.008,2.871-13.52,7.535a1.087,1.087,0,0,0,0,1.3c3.512,4.67,8.272,7.541,13.52,7.541s10.008-2.871,13.52-7.535a1.087,1.087,0,0,0,0-1.3C23.743,101.6,18.983,98.725,13.735,98.725Zm.376,13.953a5.778,5.778,0,1,1,5.389-5.389A5.781,5.781,0,0,1,14.111,112.678Zm-.174-2.664a3.111,3.111,0,1,1,2.905-2.905A3.106,3.106,0,0,1,13.937,110.014Z" transform="translate(0 -98.725)" fill="#384765"/>
+															</svg>
+														</span>
+													</div>
+												</div>
+												<div class="col-2 feature-product__item-image">
+													<div class="feature-detail__item-drop selected-item-box" data-toggle="tooltip" data-container="body" data-placement="top" title="Simple name" data-feature="feature-item" data-container="#collapseFeature-parent-2">
+														<img src="../../images/lock_product-thumb.png" class="img-fluid selected-item-border" alt="">
+														<span class="eye_top-right__selected">
+															<svg xmlns="http://www.w3.org/2000/svg" width="22.47" height="16.375" viewBox="0 0 27.47 16.375">
+															<path id="dewfew" d="M13.735,98.725c-5.248,0-10.008,2.871-13.52,7.535a1.087,1.087,0,0,0,0,1.3c3.512,4.67,8.272,7.541,13.52,7.541s10.008-2.871,13.52-7.535a1.087,1.087,0,0,0,0-1.3C23.743,101.6,18.983,98.725,13.735,98.725Zm.376,13.953a5.778,5.778,0,1,1,5.389-5.389A5.781,5.781,0,0,1,14.111,112.678Zm-.174-2.664a3.111,3.111,0,1,1,2.905-2.905A3.106,3.106,0,0,1,13.937,110.014Z" transform="translate(0 -98.725)" fill="#384765"/>
+															</svg>
+														</span>
+													</div>
+												</div>
+												<div class="col-2 feature-product__item-image">
+													<div class="feature-detail__item-drop selected-item-box" data-toggle="tooltip" data-container="body" data-placement="top" title="Simple name" data-feature="feature-item" data-container="#collapseFeature-parent-2">
+														<img src="../../images/lock_product-thumb.png" class="img-fluid selected-item-border" alt="">
+														<span class="eye_top-right__selected">
+															<svg xmlns="http://www.w3.org/2000/svg" width="22.47" height="16.375" viewBox="0 0 27.47 16.375">
+															<path id="dewfew" d="M13.735,98.725c-5.248,0-10.008,2.871-13.52,7.535a1.087,1.087,0,0,0,0,1.3c3.512,4.67,8.272,7.541,13.52,7.541s10.008-2.871,13.52-7.535a1.087,1.087,0,0,0,0-1.3C23.743,101.6,18.983,98.725,13.735,98.725Zm.376,13.953a5.778,5.778,0,1,1,5.389-5.389A5.781,5.781,0,0,1,14.111,112.678Zm-.174-2.664a3.111,3.111,0,1,1,2.905-2.905A3.106,3.106,0,0,1,13.937,110.014Z" transform="translate(0 -98.725)" fill="#384765"/>
+															</svg>
+														</span>
+													</div>
+												</div>
+												<div class="col-2 feature-product__item-image">
+													<div class="feature-detail__item-drop selected-item-box" data-toggle="tooltip" data-container="body" data-placement="top" title="Simple name" data-feature="feature-item" data-container="#collapseFeature-parent-2">
+														<img src="../../images/lock_product-thumb.png" class="img-fluid selected-item-border" alt="">
+														<span class="eye_top-right__selected">
+															<svg xmlns="http://www.w3.org/2000/svg" width="22.47" height="16.375" viewBox="0 0 27.47 16.375">
+															<path id="dewfew" d="M13.735,98.725c-5.248,0-10.008,2.871-13.52,7.535a1.087,1.087,0,0,0,0,1.3c3.512,4.67,8.272,7.541,13.52,7.541s10.008-2.871,13.52-7.535a1.087,1.087,0,0,0,0-1.3C23.743,101.6,18.983,98.725,13.735,98.725Zm.376,13.953a5.778,5.778,0,1,1,5.389-5.389A5.781,5.781,0,0,1,14.111,112.678Zm-.174-2.664a3.111,3.111,0,1,1,2.905-2.905A3.106,3.106,0,0,1,13.937,110.014Z" transform="translate(0 -98.725)" fill="#384765"/>
+															</svg>
+														</span>
+													</div>
+												</div>
+												<div class="col-2 feature-product__item-image">
+													<div class="feature-detail__item-drop selected-item-box" data-toggle="tooltip" data-container="body" data-placement="top" title="Simple name" data-feature="feature-item" data-container="#collapseFeature-parent-2">
+														<img src="../../images/lock_product-thumb.png" class="img-fluid selected-item-border" alt="">
+														<span class="eye_top-right__selected">
+															<svg xmlns="http://www.w3.org/2000/svg" width="22.47" height="16.375" viewBox="0 0 27.47 16.375">
+															<path id="dewfew" d="M13.735,98.725c-5.248,0-10.008,2.871-13.52,7.535a1.087,1.087,0,0,0,0,1.3c3.512,4.67,8.272,7.541,13.52,7.541s10.008-2.871,13.52-7.535a1.087,1.087,0,0,0,0-1.3C23.743,101.6,18.983,98.725,13.735,98.725Zm.376,13.953a5.778,5.778,0,1,1,5.389-5.389A5.781,5.781,0,0,1,14.111,112.678Zm-.174-2.664a3.111,3.111,0,1,1,2.905-2.905A3.106,3.106,0,0,1,13.937,110.014Z" transform="translate(0 -98.725)" fill="#384765"/>
+															</svg>
+														</span>
+													</div>
+												</div>
+												<div class="col-2 feature-product__item-image">
+													<div class="feature-detail__item-drop selected-item-box" data-toggle="tooltip" data-container="body" data-placement="top" title="Simple name" data-feature="feature-item" data-container="#collapseFeature-parent-2">
+														<img src="../../images/lock_product-thumb.png" class="img-fluid selected-item-border" alt="">
+														<span class="eye_top-right__selected">
+															<svg xmlns="http://www.w3.org/2000/svg" width="22.47" height="16.375" viewBox="0 0 27.47 16.375">
+															<path id="dewfew" d="M13.735,98.725c-5.248,0-10.008,2.871-13.52,7.535a1.087,1.087,0,0,0,0,1.3c3.512,4.67,8.272,7.541,13.52,7.541s10.008-2.871,13.52-7.535a1.087,1.087,0,0,0,0-1.3C23.743,101.6,18.983,98.725,13.735,98.725Zm.376,13.953a5.778,5.778,0,1,1,5.389-5.389A5.781,5.781,0,0,1,14.111,112.678Zm-.174-2.664a3.111,3.111,0,1,1,2.905-2.905A3.106,3.106,0,0,1,13.937,110.014Z" transform="translate(0 -98.725)" fill="#384765"/>
+															</svg>
+														</span>
+													</div>
+												</div>
+												<div class="col-2 feature-product__item-image">
+													<div class="feature-detail__item-drop selected-item-box" data-toggle="tooltip" data-container="body" data-placement="top" title="Simple name" data-feature="feature-item" data-container="#collapseFeature-parent-2">
+														<img src="../../images/lock_product-thumb.png" class="img-fluid selected-item-border" alt="">
+														<span class="eye_top-right__selected">
+															<svg xmlns="http://www.w3.org/2000/svg" width="22.47" height="16.375" viewBox="0 0 27.47 16.375">
+															<path id="dewfew" d="M13.735,98.725c-5.248,0-10.008,2.871-13.52,7.535a1.087,1.087,0,0,0,0,1.3c3.512,4.67,8.272,7.541,13.52,7.541s10.008-2.871,13.52-7.535a1.087,1.087,0,0,0,0-1.3C23.743,101.6,18.983,98.725,13.735,98.725Zm.376,13.953a5.778,5.778,0,1,1,5.389-5.389A5.781,5.781,0,0,1,14.111,112.678Zm-.174-2.664a3.111,3.111,0,1,1,2.905-2.905A3.106,3.106,0,0,1,13.937,110.014Z" transform="translate(0 -98.725)" fill="#384765"/>
+															</svg>
+														</span>
+													</div>
+												</div>
+												<div class="col-2 feature-product__item-image">
+													<div class="feature-detail__item-drop selected-item-box" data-toggle="tooltip" data-container="body" data-placement="top" title="Simple name" data-feature="feature-item" data-container="#collapseFeature-parent-2">
+														<img src="../../images/lock_product-thumb.png" class="img-fluid selected-item-border" alt="">
+														<span class="eye_top-right__selected">
+															<svg xmlns="http://www.w3.org/2000/svg" width="22.47" height="16.375" viewBox="0 0 27.47 16.375">
+															<path id="dewfew" d="M13.735,98.725c-5.248,0-10.008,2.871-13.52,7.535a1.087,1.087,0,0,0,0,1.3c3.512,4.67,8.272,7.541,13.52,7.541s10.008-2.871,13.52-7.535a1.087,1.087,0,0,0,0-1.3C23.743,101.6,18.983,98.725,13.735,98.725Zm.376,13.953a5.778,5.778,0,1,1,5.389-5.389A5.781,5.781,0,0,1,14.111,112.678Zm-.174-2.664a3.111,3.111,0,1,1,2.905-2.905A3.106,3.106,0,0,1,13.937,110.014Z" transform="translate(0 -98.725)" fill="#384765"/>
+															</svg>
+														</span>
+													</div>
+												</div>
+												</div>
+											</div>
+											<div
+												id="collapseFeature-12" class="border-nd_hove_nd collapseFeature-opacity_class collapse show border-nd_hove_nd"
+												aria-labelledby="headingOne"
+												data-parent="#collapseFeature-parent-2"
+												>
+												<div class="row dropdown-items">
+												<div class="col-2 feature-product__item-image">
+													<div class="feature-detail__item-drop" data-feature="feature-item" data-container="#collapseFeature-parent-2">
+														<img src="../../images/lock_product-thumb.png" class="img-fluid selected-item-border" alt="">
+														<span class="eye_top-right__selected">
+															<svg xmlns="http://www.w3.org/2000/svg" width="22.47" height="16.375" viewBox="0 0 27.47 16.375">
+															<path id="dewfew" d="M13.735,98.725c-5.248,0-10.008,2.871-13.52,7.535a1.087,1.087,0,0,0,0,1.3c3.512,4.67,8.272,7.541,13.52,7.541s10.008-2.871,13.52-7.535a1.087,1.087,0,0,0,0-1.3C23.743,101.6,18.983,98.725,13.735,98.725Zm.376,13.953a5.778,5.778,0,1,1,5.389-5.389A5.781,5.781,0,0,1,14.111,112.678Zm-.174-2.664a3.111,3.111,0,1,1,2.905-2.905A3.106,3.106,0,0,1,13.937,110.014Z" transform="translate(0 -98.725)" fill="#384765"/>
+															</svg>
+														</span>
+													</div>
+												</div>
+												<div class="col-2 feature-product__item-image">
+													<div class="feature-detail__item-drop" data-feature="feature-item" data-container="#collapseFeature-parent-2">
+														<img src="../../images/lock_product-thumb.png" class="img-fluid selected-item-border" alt="">
+														<span class="eye_top-right__selected">
+															<svg xmlns="http://www.w3.org/2000/svg" width="22.47" height="16.375" viewBox="0 0 27.47 16.375">
+															<path id="dewfew" d="M13.735,98.725c-5.248,0-10.008,2.871-13.52,7.535a1.087,1.087,0,0,0,0,1.3c3.512,4.67,8.272,7.541,13.52,7.541s10.008-2.871,13.52-7.535a1.087,1.087,0,0,0,0-1.3C23.743,101.6,18.983,98.725,13.735,98.725Zm.376,13.953a5.778,5.778,0,1,1,5.389-5.389A5.781,5.781,0,0,1,14.111,112.678Zm-.174-2.664a3.111,3.111,0,1,1,2.905-2.905A3.106,3.106,0,0,1,13.937,110.014Z" transform="translate(0 -98.725)" fill="#384765"/>
+															</svg>
+														</span>
+													</div>
+												</div>
+												<div class="col-2 feature-product__item-image">
+													<div class="feature-detail__item-drop" data-feature="feature-item" data-container="#collapseFeature-parent-2">
+														<img src="../../images/lock_product-thumb.png" class="img-fluid selected-item-border" alt="">
+														<span class="eye_top-right__selected">
+															<svg xmlns="http://www.w3.org/2000/svg" width="22.47" height="16.375" viewBox="0 0 27.47 16.375">
+															<path id="dewfew" d="M13.735,98.725c-5.248,0-10.008,2.871-13.52,7.535a1.087,1.087,0,0,0,0,1.3c3.512,4.67,8.272,7.541,13.52,7.541s10.008-2.871,13.52-7.535a1.087,1.087,0,0,0,0-1.3C23.743,101.6,18.983,98.725,13.735,98.725Zm.376,13.953a5.778,5.778,0,1,1,5.389-5.389A5.781,5.781,0,0,1,14.111,112.678Zm-.174-2.664a3.111,3.111,0,1,1,2.905-2.905A3.106,3.106,0,0,1,13.937,110.014Z" transform="translate(0 -98.725)" fill="#384765"/>
+															</svg>
+														</span>
+													</div>
+												</div>
+												<div class="col-2 feature-product__item-image">
+													<div class="feature-detail__item-drop" data-feature="feature-item" data-container="#collapseFeature-parent-2">
+														<img src="../../images/lock_product-thumb.png" class="img-fluid selected-item-border" alt="">
+														<span class="eye_top-right__selected">
+															<svg xmlns="http://www.w3.org/2000/svg" width="22.47" height="16.375" viewBox="0 0 27.47 16.375">
+															<path id="dewfew" d="M13.735,98.725c-5.248,0-10.008,2.871-13.52,7.535a1.087,1.087,0,0,0,0,1.3c3.512,4.67,8.272,7.541,13.52,7.541s10.008-2.871,13.52-7.535a1.087,1.087,0,0,0,0-1.3C23.743,101.6,18.983,98.725,13.735,98.725Zm.376,13.953a5.778,5.778,0,1,1,5.389-5.389A5.781,5.781,0,0,1,14.111,112.678Zm-.174-2.664a3.111,3.111,0,1,1,2.905-2.905A3.106,3.106,0,0,1,13.937,110.014Z" transform="translate(0 -98.725)" fill="#384765"/>
+															</svg>
+														</span>
+													</div>
+												</div>
+												<div class="col-2 feature-product__item-image">
+													<div class="feature-detail__item-drop" data-feature="feature-item" data-container="#collapseFeature-parent-2">
+														<img src="../../images/lock_product-thumb.png" class="img-fluid selected-item-border" alt="">
+														<span class="eye_top-right__selected">
+															<svg xmlns="http://www.w3.org/2000/svg" width="22.47" height="16.375" viewBox="0 0 27.47 16.375">
+															<path id="dewfew" d="M13.735,98.725c-5.248,0-10.008,2.871-13.52,7.535a1.087,1.087,0,0,0,0,1.3c3.512,4.67,8.272,7.541,13.52,7.541s10.008-2.871,13.52-7.535a1.087,1.087,0,0,0,0-1.3C23.743,101.6,18.983,98.725,13.735,98.725Zm.376,13.953a5.778,5.778,0,1,1,5.389-5.389A5.781,5.781,0,0,1,14.111,112.678Zm-.174-2.664a3.111,3.111,0,1,1,2.905-2.905A3.106,3.106,0,0,1,13.937,110.014Z" transform="translate(0 -98.725)" fill="#384765"/>
+															</svg>
+														</span>
+													</div>
+												</div>
+												<div class="col-2 feature-product__item-image">
+													<div class="feature-detail__item-drop" data-feature="feature-item" data-container="#collapseFeature-parent-2">
+														<img src="../../images/lock_product-thumb.png" class="img-fluid selected-item-border" alt="">
+														<span class="eye_top-right__selected">
+															<svg xmlns="http://www.w3.org/2000/svg" width="22.47" height="16.375" viewBox="0 0 27.47 16.375">
+															<path id="dewfew" d="M13.735,98.725c-5.248,0-10.008,2.871-13.52,7.535a1.087,1.087,0,0,0,0,1.3c3.512,4.67,8.272,7.541,13.52,7.541s10.008-2.871,13.52-7.535a1.087,1.087,0,0,0,0-1.3C23.743,101.6,18.983,98.725,13.735,98.725Zm.376,13.953a5.778,5.778,0,1,1,5.389-5.389A5.781,5.781,0,0,1,14.111,112.678Zm-.174-2.664a3.111,3.111,0,1,1,2.905-2.905A3.106,3.106,0,0,1,13.937,110.014Z" transform="translate(0 -98.725)" fill="#384765"/>
+															</svg>
+														</span>
+													</div>
+												</div>
+												<div class="col-2 feature-product__item-image">
+													<div class="feature-detail__item-drop" data-feature="feature-item" data-container="#collapseFeature-parent-2">
+														<img src="../../images/lock_product-thumb.png" class="img-fluid selected-item-border" alt="">
+														<span class="eye_top-right__selected">
+															<svg xmlns="http://www.w3.org/2000/svg" width="22.47" height="16.375" viewBox="0 0 27.47 16.375">
+															<path id="dewfew" d="M13.735,98.725c-5.248,0-10.008,2.871-13.52,7.535a1.087,1.087,0,0,0,0,1.3c3.512,4.67,8.272,7.541,13.52,7.541s10.008-2.871,13.52-7.535a1.087,1.087,0,0,0,0-1.3C23.743,101.6,18.983,98.725,13.735,98.725Zm.376,13.953a5.778,5.778,0,1,1,5.389-5.389A5.781,5.781,0,0,1,14.111,112.678Zm-.174-2.664a3.111,3.111,0,1,1,2.905-2.905A3.106,3.106,0,0,1,13.937,110.014Z" transform="translate(0 -98.725)" fill="#384765"/>
+															</svg>
+														</span>
+													</div>
+												</div>
+												<div class="col-2 feature-product__item-image">
+													<div class="feature-detail__item-drop" data-feature="feature-item" data-container="#collapseFeature-parent-2">
+														<img src="../../images/lock_product-thumb.png" class="img-fluid selected-item-border" alt="">
+														<span class="eye_top-right__selected">
+															<svg xmlns="http://www.w3.org/2000/svg" width="22.47" height="16.375" viewBox="0 0 27.47 16.375">
+															<path id="dewfew" d="M13.735,98.725c-5.248,0-10.008,2.871-13.52,7.535a1.087,1.087,0,0,0,0,1.3c3.512,4.67,8.272,7.541,13.52,7.541s10.008-2.871,13.52-7.535a1.087,1.087,0,0,0,0-1.3C23.743,101.6,18.983,98.725,13.735,98.725Zm.376,13.953a5.778,5.778,0,1,1,5.389-5.389A5.781,5.781,0,0,1,14.111,112.678Zm-.174-2.664a3.111,3.111,0,1,1,2.905-2.905A3.106,3.106,0,0,1,13.937,110.014Z" transform="translate(0 -98.725)" fill="#384765"/>
+															</svg>
+														</span>
+													</div>
+												</div>
+												<div class="col-2 feature-product__item-image">
+													<div class="feature-detail__item-drop" data-feature="feature-item" data-container="#collapseFeature-parent-2">
+														<img src="../../images/lock_product-thumb.png" class="img-fluid selected-item-border" alt="">
+														<span class="eye_top-right__selected">
+															<svg xmlns="http://www.w3.org/2000/svg" width="22.47" height="16.375" viewBox="0 0 27.47 16.375">
+															<path id="dewfew" d="M13.735,98.725c-5.248,0-10.008,2.871-13.52,7.535a1.087,1.087,0,0,0,0,1.3c3.512,4.67,8.272,7.541,13.52,7.541s10.008-2.871,13.52-7.535a1.087,1.087,0,0,0,0-1.3C23.743,101.6,18.983,98.725,13.735,98.725Zm.376,13.953a5.778,5.778,0,1,1,5.389-5.389A5.781,5.781,0,0,1,14.111,112.678Zm-.174-2.664a3.111,3.111,0,1,1,2.905-2.905A3.106,3.106,0,0,1,13.937,110.014Z" transform="translate(0 -98.725)" fill="#384765"/>
+															</svg>
+														</span>
+													</div>
+												</div>
+												<div class="col-2 feature-product__item-image">
+													<div class="feature-detail__item-drop" data-feature="feature-item" data-container="#collapseFeature-parent-2">
+														<img src="../../images/lock_product-thumb.png" class="img-fluid selected-item-border" alt="">
+														<span class="eye_top-right__selected">
+															<svg xmlns="http://www.w3.org/2000/svg" width="22.47" height="16.375" viewBox="0 0 27.47 16.375">
+															<path id="dewfew" d="M13.735,98.725c-5.248,0-10.008,2.871-13.52,7.535a1.087,1.087,0,0,0,0,1.3c3.512,4.67,8.272,7.541,13.52,7.541s10.008-2.871,13.52-7.535a1.087,1.087,0,0,0,0-1.3C23.743,101.6,18.983,98.725,13.735,98.725Zm.376,13.953a5.778,5.778,0,1,1,5.389-5.389A5.781,5.781,0,0,1,14.111,112.678Zm-.174-2.664a3.111,3.111,0,1,1,2.905-2.905A3.106,3.106,0,0,1,13.937,110.014Z" transform="translate(0 -98.725)" fill="#384765"/>
+															</svg>
+														</span>
+													</div>
+												</div>
+												</div>
+											</div>
+											<div class="col-2 feature-product__item-image a__simple">
+												<div class="feature-detail__item-drop"
+												data-feature="feature-item"
+												data-container="#collapseFeature-parent-2"
+												data-toggle="tooltip" data-container="body" data-placement="top" title="Simple name"
+												>
+												<img src="../../images/lock_product-thumb.png" class="img-fluid selected-item-border" alt="">
+												<span class="eye_top-right__selected">
+													<svg xmlns="http://www.w3.org/2000/svg" width="22.47" height="16.375" viewBox="0 0 27.47 16.375">
+														<path id="dewfew" d="M13.735,98.725c-5.248,0-10.008,2.871-13.52,7.535a1.087,1.087,0,0,0,0,1.3c3.512,4.67,8.272,7.541,13.52,7.541s10.008-2.871,13.52-7.535a1.087,1.087,0,0,0,0-1.3C23.743,101.6,18.983,98.725,13.735,98.725Zm.376,13.953a5.778,5.778,0,1,1,5.389-5.389A5.781,5.781,0,0,1,14.111,112.678Zm-.174-2.664a3.111,3.111,0,1,1,2.905-2.905A3.106,3.106,0,0,1,13.937,110.014Z" transform="translate(0 -98.725)" fill="#384765"/>
+													</svg>
+												</span>
+												</div>
+											</div>
+											<div class="col-2 feature-product__item-image a__simple">
+												<div class="feature-detail__item-drop"
+												data-feature="feature-item"
+												data-container="#collapseFeature-parent-2"
+												data-toggle="tooltip" data-container="body" data-placement="top" title="Simple name"
+												>
+												<img src="../../images/lock_product-thumb.png" class="img-fluid selected-item-border" alt="">
+												<span class="eye_top-right__selected">
+													<svg xmlns="http://www.w3.org/2000/svg" width="22.47" height="16.375" viewBox="0 0 27.47 16.375">
+														<path id="dewfew" d="M13.735,98.725c-5.248,0-10.008,2.871-13.52,7.535a1.087,1.087,0,0,0,0,1.3c3.512,4.67,8.272,7.541,13.52,7.541s10.008-2.871,13.52-7.535a1.087,1.087,0,0,0,0-1.3C23.743,101.6,18.983,98.725,13.735,98.725Zm.376,13.953a5.778,5.778,0,1,1,5.389-5.389A5.781,5.781,0,0,1,14.111,112.678Zm-.174-2.664a3.111,3.111,0,1,1,2.905-2.905A3.106,3.106,0,0,1,13.937,110.014Z" transform="translate(0 -98.725)" fill="#384765"/>
+													</svg>
+												</span>
+												</div>
+											</div>
+											<div class="col-2 feature-product__item-image a__simple">
+												<div class="feature-detail__item-drop"
+												data-feature="feature-item"
+												data-container="#collapseFeature-parent-2"
+												data-toggle="tooltip" data-container="body" data-placement="top" title="Simple name"
+												>
+												<img src="../../images/lock_product-thumb.png" class="img-fluid selected-item-border" alt="">
+												<span class="eye_top-right__selected">
+													<svg xmlns="http://www.w3.org/2000/svg" width="22.47" height="16.375" viewBox="0 0 27.47 16.375">
+														<path id="dewfew" d="M13.735,98.725c-5.248,0-10.008,2.871-13.52,7.535a1.087,1.087,0,0,0,0,1.3c3.512,4.67,8.272,7.541,13.52,7.541s10.008-2.871,13.52-7.535a1.087,1.087,0,0,0,0-1.3C23.743,101.6,18.983,98.725,13.735,98.725Zm.376,13.953a5.778,5.778,0,1,1,5.389-5.389A5.781,5.781,0,0,1,14.111,112.678Zm-.174-2.664a3.111,3.111,0,1,1,2.905-2.905A3.106,3.106,0,0,1,13.937,110.014Z" transform="translate(0 -98.725)" fill="#384765"/>
+													</svg>
+												</span>
+												</div>
+											</div>
+											<div class="col-2 feature-product__item-image a__simple">
+												<div class="feature-detail__item-drop"
+												data-feature="feature-item"
+												data-container="#collapseFeature-parent-2"
+												data-toggle="tooltip" data-container="body" data-placement="top" title="Simple name"
+												>
+												<img src="../../images/lock_product-thumb.png" class="img-fluid selected-item-border" alt="">
+												<span class="eye_top-right__selected">
+													<svg xmlns="http://www.w3.org/2000/svg" width="22.47" height="16.375" viewBox="0 0 27.47 16.375">
+														<path id="dewfew" d="M13.735,98.725c-5.248,0-10.008,2.871-13.52,7.535a1.087,1.087,0,0,0,0,1.3c3.512,4.67,8.272,7.541,13.52,7.541s10.008-2.871,13.52-7.535a1.087,1.087,0,0,0,0-1.3C23.743,101.6,18.983,98.725,13.735,98.725Zm.376,13.953a5.778,5.778,0,1,1,5.389-5.389A5.781,5.781,0,0,1,14.111,112.678Zm-.174-2.664a3.111,3.111,0,1,1,2.905-2.905A3.106,3.106,0,0,1,13.937,110.014Z" transform="translate(0 -98.725)" fill="#384765"/>
+													</svg>
+												</span>
+												</div>
+											</div>
+											<div class="col-2 feature-product__item-image a__simple">
+												<div class="feature-detail__item-drop"
+												data-feature="feature-item"
+												data-container="#collapseFeature-parent-2"
+												data-toggle="tooltip" data-container="body" data-placement="top" title="Simple name"
+												>
+												<img src="../../images/lock_product-thumb.png" class="img-fluid selected-item-border" alt="">
+												<span class="eye_top-right__selected">
+													<svg xmlns="http://www.w3.org/2000/svg" width="22.47" height="16.375" viewBox="0 0 27.47 16.375">
+														<path id="dewfew" d="M13.735,98.725c-5.248,0-10.008,2.871-13.52,7.535a1.087,1.087,0,0,0,0,1.3c3.512,4.67,8.272,7.541,13.52,7.541s10.008-2.871,13.52-7.535a1.087,1.087,0,0,0,0-1.3C23.743,101.6,18.983,98.725,13.735,98.725Zm.376,13.953a5.778,5.778,0,1,1,5.389-5.389A5.781,5.781,0,0,1,14.111,112.678Zm-.174-2.664a3.111,3.111,0,1,1,2.905-2.905A3.106,3.106,0,0,1,13.937,110.014Z" transform="translate(0 -98.725)" fill="#384765"/>
+													</svg>
+												</span>
+												</div>
+											</div>
+										</div>
+										<!--COLLAPSABLE ITEMS ARE PLACED RIGHT BEFORE ROW, -->
+										<!--WHERE THERE TRIGGER BUTTONS ARE-->
+									</div>
+									<!-- /MENU WITH ADDITIONAL FEATURES-->
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-12 js-specifications-subheading_v2 padding-no__a-v2">
+									<p class="tab-content__specifications--subheading">
+									Sizes 
+									<img class="tab-content__specifications--subheading-icon-plus" src="../../images/minus-button-1.svg" alt="" style="display: none;">
+									<img class="tab-content__specifications--subheading-icon-minus" src="../../images/minus-button.svg" alt="" >
+									</p>
+								</div>
+								<div class="col-12 popup-padding-no">
+									<div class="phantom-actions__dropdowns__a popup-padding-row d-i-b">
+									<div class="checkbox">
+										<input type="checkbox" class="check custom-checkbox js-add-product-filter" id="checkbox-21" value="value21">
+										<label for="checkbox-21">
+										<span class="checkbox-label__text">
+										80*60*40cm
+										</span>
+										</label>
+									</div>
+									<div class="checkbox">
+										<input type="checkbox" class="check custom-checkbox js-add-product-filter" id="checkbox-22" value="value22">
+										<label for="checkbox-22">
+										<span class="checkbox-label__text">
+										60*40*30cm
+										</span>
+										</label>
+									</div>
+									<div class="checkbox">
+										<input type="checkbox" class="check custom-checkbox js-add-product-filter" id="checkbox-23" value="value23">
+										<label for="checkbox-23">
+										<span class="checkbox-label__text">
+										50*40*30cm
+										</span>
+										</label>
+									</div>
+									</div>
+									<div class="d-i-b margin__a">
+									<div class="checkbox">
+										<input type="checkbox" class="check custom-checkbox js-add-product-filter" id="checkbox-24" value="value24">
+										<label for="checkbox-24">
+										<span class="checkbox-label__text">
+										40*40*25cm
+										</span>
+										</label>
+									</div>
+									<div class="checkbox">
+										<input type="checkbox" class="check custom-checkbox js-add-product-filter" id="checkbox-25" value="value25">
+										<label for="checkbox-25">
+										<span class="checkbox-label__text">
+										33*15*85cm
+										</span>
+										</label>
+									</div>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-12 js-specifications-subheading_v2 padding-no__a-v2">
+									<p class="tab-content__specifications--subheading">
+									Matirials
+									<img class="tab-content__specifications--subheading-icon-plus" src="../../images/minus-button-1.svg" alt="" style="display: none;">
+									<img class="tab-content__specifications--subheading-icon-minus" src="../../images/minus-button.svg" alt="" >
+									</p>
+								</div>
+								<div class="col-12 popup-padding-no">
+									<div class="phantom-actions__dropdowns__a popup-padding-row">
+									<!--MENU WITH ADDITIONAL FEATURES,
+										EVERY ROW HAS A COLLAPSE DIV SIBLING,
+										WHEN YOU CLICK A ITEM FROM DIV, A COLLAPSE MENU IS SHOWING
+										YOU CAN HAVE A MULTIPLE COLLAPSE MENUS FOR EVERY ITEM
+										OR ONE COLLAPSE DIV AND REPLACE ITEMS INSIDE DEPENDS ON
+										WHICH ITEM USER CLICKS
+										-->
+									<div class="phantom-actions__dropdowns accordion active nd"
+										id="collapseFeature-parent-22">
+										<div class="row margin-none sec-feature-two">
+											<div class="col-2 feature-product__item-image a__simple">
+												<div class="feature-detail__item-drop"
+												data-feature="feature-item"
+												data-container="#collapseFeature-parent-22"				
+												data-toggle="tooltip" data-placement="top" title="Simple name"																																				 
+												>
+												<img src="../../images/lock_product-thumb.png" class="img-fluid selected-item-border" alt="">
+												<span class="eye_top-right__selected">
+													<svg xmlns="http://www.w3.org/2000/svg" width="22.47" height="16.375" viewBox="0 0 27.47 16.375">
+														<path id="dewfew" d="M13.735,98.725c-5.248,0-10.008,2.871-13.52,7.535a1.087,1.087,0,0,0,0,1.3c3.512,4.67,8.272,7.541,13.52,7.541s10.008-2.871,13.52-7.535a1.087,1.087,0,0,0,0-1.3C23.743,101.6,18.983,98.725,13.735,98.725Zm.376,13.953a5.778,5.778,0,1,1,5.389-5.389A5.781,5.781,0,0,1,14.111,112.678Zm-.174-2.664a3.111,3.111,0,1,1,2.905-2.905A3.106,3.106,0,0,1,13.937,110.014Z" transform="translate(0 -98.725)" fill="#384765"/>
+													</svg>
+												</span>
+												</div>
+											</div>
+											<div class="col-2 feature-product__item-image drop_detail__items popup-save-sheet sec-two">
+												<div class="feature-detail__item-drop"
+												title="Simple name"
+												data-container="#collapseFeature-parent-22"
+												data-toggle="tooltip" data-container="body" data-placement="top" title="Simple name"
+												>
+												<img src="../../images/lock_product-thumb.png" class="img-fluid selected-item-border" alt="">
+												<span class="eye_top-right__selected">
+													<svg xmlns="http://www.w3.org/2000/svg" width="22.47" height="16.375" viewBox="0 0 27.47 16.375">
+														<path id="dewfew" d="M13.735,98.725c-5.248,0-10.008,2.871-13.52,7.535a1.087,1.087,0,0,0,0,1.3c3.512,4.67,8.272,7.541,13.52,7.541s10.008-2.871,13.52-7.535a1.087,1.087,0,0,0,0-1.3C23.743,101.6,18.983,98.725,13.735,98.725Zm.376,13.953a5.778,5.778,0,1,1,5.389-5.389A5.781,5.781,0,0,1,14.111,112.678Zm-.174-2.664a3.111,3.111,0,1,1,2.905-2.905A3.106,3.106,0,0,1,13.937,110.014Z" transform="translate(0 -98.725)" fill="#384765"/>
+													</svg>
+												</span>
+												<button class="feature-detail__item-drop__show-more hover-btn__v2 v3_a"
+													data-toggle="collapse"
+													data-target="#collapseFeature-13"
+													aria-expanded="true"
+													aria-controls="collapseFeature-13"
+													>
+													<svg xmlns="http://www.w3.org/2000/svg" width="3.726" height="6.536" viewBox="0 0 3.726 6.536">
+														<defs>
+															<style>.a{fill:#fff;}</style>
+														</defs>
+														<g transform="translate(0 6.536) rotate(-90)">
+															<path class="a" d="M3.268,3.726a.456.456,0,0,1-.324-.134L.134.781A.458.458,0,0,1,.781.134L3.268,2.621,5.755.134A.458.458,0,0,1,6.4.781L3.592,3.592A.456.456,0,0,1,3.268,3.726Z"/>
+														</g>
+													</svg>
+												</button>
+												</div>
+											</div>
+											<div class="col-2 feature-product__item-image a__simple">
+												<div class="feature-detail__item-drop"
+												data-feature="feature-item"
+												data-container="#collapseFeature-parent-22"
+												data-toggle="tooltip" data-container="body" data-placement="top" title="Simple name"
+												>
+												<img src="../../images/lock_product-thumb.png" class="img-fluid selected-item-border" alt="">
+												<span class="eye_top-right__selected">
+													<svg xmlns="http://www.w3.org/2000/svg" width="22.47" height="16.375" viewBox="0 0 27.47 16.375">
+														<path id="dewfew" d="M13.735,98.725c-5.248,0-10.008,2.871-13.52,7.535a1.087,1.087,0,0,0,0,1.3c3.512,4.67,8.272,7.541,13.52,7.541s10.008-2.871,13.52-7.535a1.087,1.087,0,0,0,0-1.3C23.743,101.6,18.983,98.725,13.735,98.725Zm.376,13.953a5.778,5.778,0,1,1,5.389-5.389A5.781,5.781,0,0,1,14.111,112.678Zm-.174-2.664a3.111,3.111,0,1,1,2.905-2.905A3.106,3.106,0,0,1,13.937,110.014Z" transform="translate(0 -98.725)" fill="#384765"/>
+													</svg>
+												</span>
+												</div>
+											</div>
+											<div class="col-2 feature-product__item-image a__simple">
+												<div class="feature-detail__item-drop"
+												data-feature="feature-item"
+												data-container="#collapseFeature-parent-22"
+												data-toggle="tooltip" data-container="body" data-placement="top" title="Simple name"
+												>
+												<img src="../../images/lock_product-thumb.png" class="img-fluid selected-item-border" alt="">
+												<span class="eye_top-right__selected">
+													<svg xmlns="http://www.w3.org/2000/svg" width="22.47" height="16.375" viewBox="0 0 27.47 16.375">
+														<path id="dewfew" d="M13.735,98.725c-5.248,0-10.008,2.871-13.52,7.535a1.087,1.087,0,0,0,0,1.3c3.512,4.67,8.272,7.541,13.52,7.541s10.008-2.871,13.52-7.535a1.087,1.087,0,0,0,0-1.3C23.743,101.6,18.983,98.725,13.735,98.725Zm.376,13.953a5.778,5.778,0,1,1,5.389-5.389A5.781,5.781,0,0,1,14.111,112.678Zm-.174-2.664a3.111,3.111,0,1,1,2.905-2.905A3.106,3.106,0,0,1,13.937,110.014Z" transform="translate(0 -98.725)" fill="#384765"/>
+													</svg>
+												</span>
+												</div>
+											</div>
+											<div class="col-2 feature-product__item-image a__simple">
+												<div class="feature-detail__item-drop"
+												data-feature="feature-item"
+												data-container="#collapseFeature-parent-22"
+												data-toggle="tooltip" data-container="body" data-placement="top" title="Simple name"
+												>
+												<img src="../../images/lock_product-thumb.png" class="img-fluid selected-item-border" alt="">
+												<span class="eye_top-right__selected">
+													<svg xmlns="http://www.w3.org/2000/svg" width="22.47" height="16.375" viewBox="0 0 27.47 16.375">
+														<path id="dewfew" d="M13.735,98.725c-5.248,0-10.008,2.871-13.52,7.535a1.087,1.087,0,0,0,0,1.3c3.512,4.67,8.272,7.541,13.52,7.541s10.008-2.871,13.52-7.535a1.087,1.087,0,0,0,0-1.3C23.743,101.6,18.983,98.725,13.735,98.725Zm.376,13.953a5.778,5.778,0,1,1,5.389-5.389A5.781,5.781,0,0,1,14.111,112.678Zm-.174-2.664a3.111,3.111,0,1,1,2.905-2.905A3.106,3.106,0,0,1,13.937,110.014Z" transform="translate(0 -98.725)" fill="#384765"/>
+													</svg>
+												</span>
+												</div>
+											</div>
+											<div
+												id="collapseFeature-13" class="border-nd_hove_nd collapseFeature-opacity_class collapse show border-nd_hove_nd"
+												aria-labelledby="headingOne"
+												data-parent="#collapseFeature-parent-2"
+												>
+												<div class="row dropdown-items">
+												<div class="col-2 feature-product__item-image">
+													<div class="feature-detail__item-drop" data-feature="feature-item" data-container="#collapseFeature-parent-2">
+														<img src="../../images/lock_product-thumb.png" class="img-fluid selected-item-border" alt="">
+														<span class="eye_top-right__selected">
+															<svg xmlns="http://www.w3.org/2000/svg" width="22.47" height="16.375" viewBox="0 0 27.47 16.375">
+															<path id="dewfew" d="M13.735,98.725c-5.248,0-10.008,2.871-13.52,7.535a1.087,1.087,0,0,0,0,1.3c3.512,4.67,8.272,7.541,13.52,7.541s10.008-2.871,13.52-7.535a1.087,1.087,0,0,0,0-1.3C23.743,101.6,18.983,98.725,13.735,98.725Zm.376,13.953a5.778,5.778,0,1,1,5.389-5.389A5.781,5.781,0,0,1,14.111,112.678Zm-.174-2.664a3.111,3.111,0,1,1,2.905-2.905A3.106,3.106,0,0,1,13.937,110.014Z" transform="translate(0 -98.725)" fill="#384765"/>
+															</svg>
+														</span>
+													</div>
+												</div>
+												<div class="col-2 feature-product__item-image">
+													<div class="feature-detail__item-drop" data-feature="feature-item" data-container="#collapseFeature-parent-2">
+														<img src="../../images/lock_product-thumb.png" class="img-fluid selected-item-border" alt="">
+														<span class="eye_top-right__selected">
+															<svg xmlns="http://www.w3.org/2000/svg" width="22.47" height="16.375" viewBox="0 0 27.47 16.375">
+															<path id="dewfew" d="M13.735,98.725c-5.248,0-10.008,2.871-13.52,7.535a1.087,1.087,0,0,0,0,1.3c3.512,4.67,8.272,7.541,13.52,7.541s10.008-2.871,13.52-7.535a1.087,1.087,0,0,0,0-1.3C23.743,101.6,18.983,98.725,13.735,98.725Zm.376,13.953a5.778,5.778,0,1,1,5.389-5.389A5.781,5.781,0,0,1,14.111,112.678Zm-.174-2.664a3.111,3.111,0,1,1,2.905-2.905A3.106,3.106,0,0,1,13.937,110.014Z" transform="translate(0 -98.725)" fill="#384765"/>
+															</svg>
+														</span>
+													</div>
+												</div>
+												<div class="col-2 feature-product__item-image">
+													<div class="feature-detail__item-drop" data-feature="feature-item" data-container="#collapseFeature-parent-2">
+														<img src="../../images/lock_product-thumb.png" class="img-fluid selected-item-border" alt="">
+														<span class="eye_top-right__selected">
+															<svg xmlns="http://www.w3.org/2000/svg" width="22.47" height="16.375" viewBox="0 0 27.47 16.375">
+															<path id="dewfew" d="M13.735,98.725c-5.248,0-10.008,2.871-13.52,7.535a1.087,1.087,0,0,0,0,1.3c3.512,4.67,8.272,7.541,13.52,7.541s10.008-2.871,13.52-7.535a1.087,1.087,0,0,0,0-1.3C23.743,101.6,18.983,98.725,13.735,98.725Zm.376,13.953a5.778,5.778,0,1,1,5.389-5.389A5.781,5.781,0,0,1,14.111,112.678Zm-.174-2.664a3.111,3.111,0,1,1,2.905-2.905A3.106,3.106,0,0,1,13.937,110.014Z" transform="translate(0 -98.725)" fill="#384765"/>
+															</svg>
+														</span>
+													</div>
+												</div>
+												<div class="col-2 feature-product__item-image">
+													<div class="feature-detail__item-drop" data-feature="feature-item" data-container="#collapseFeature-parent-2">
+														<img src="../../images/lock_product-thumb.png" class="img-fluid selected-item-border" alt="">
+														<span class="eye_top-right__selected">
+															<svg xmlns="http://www.w3.org/2000/svg" width="22.47" height="16.375" viewBox="0 0 27.47 16.375">
+															<path id="dewfew" d="M13.735,98.725c-5.248,0-10.008,2.871-13.52,7.535a1.087,1.087,0,0,0,0,1.3c3.512,4.67,8.272,7.541,13.52,7.541s10.008-2.871,13.52-7.535a1.087,1.087,0,0,0,0-1.3C23.743,101.6,18.983,98.725,13.735,98.725Zm.376,13.953a5.778,5.778,0,1,1,5.389-5.389A5.781,5.781,0,0,1,14.111,112.678Zm-.174-2.664a3.111,3.111,0,1,1,2.905-2.905A3.106,3.106,0,0,1,13.937,110.014Z" transform="translate(0 -98.725)" fill="#384765"/>
+															</svg>
+														</span>
+													</div>
+												</div>
+												<div class="col-2 feature-product__item-image">
+													<div class="feature-detail__item-drop" data-feature="feature-item" data-container="#collapseFeature-parent-2">
+														<img src="../../images/lock_product-thumb.png" class="img-fluid selected-item-border" alt="">
+														<span class="eye_top-right__selected">
+															<svg xmlns="http://www.w3.org/2000/svg" width="22.47" height="16.375" viewBox="0 0 27.47 16.375">
+															<path id="dewfew" d="M13.735,98.725c-5.248,0-10.008,2.871-13.52,7.535a1.087,1.087,0,0,0,0,1.3c3.512,4.67,8.272,7.541,13.52,7.541s10.008-2.871,13.52-7.535a1.087,1.087,0,0,0,0-1.3C23.743,101.6,18.983,98.725,13.735,98.725Zm.376,13.953a5.778,5.778,0,1,1,5.389-5.389A5.781,5.781,0,0,1,14.111,112.678Zm-.174-2.664a3.111,3.111,0,1,1,2.905-2.905A3.106,3.106,0,0,1,13.937,110.014Z" transform="translate(0 -98.725)" fill="#384765"/>
+															</svg>
+														</span>
+													</div>
+												</div>
+												<div class="col-2 feature-product__item-image">
+													<div class="feature-detail__item-drop" data-feature="feature-item" data-container="#collapseFeature-parent-2">
+														<img src="../../images/lock_product-thumb.png" class="img-fluid selected-item-border" alt="">
+														<span class="eye_top-right__selected">
+															<svg xmlns="http://www.w3.org/2000/svg" width="22.47" height="16.375" viewBox="0 0 27.47 16.375">
+															<path id="dewfew" d="M13.735,98.725c-5.248,0-10.008,2.871-13.52,7.535a1.087,1.087,0,0,0,0,1.3c3.512,4.67,8.272,7.541,13.52,7.541s10.008-2.871,13.52-7.535a1.087,1.087,0,0,0,0-1.3C23.743,101.6,18.983,98.725,13.735,98.725Zm.376,13.953a5.778,5.778,0,1,1,5.389-5.389A5.781,5.781,0,0,1,14.111,112.678Zm-.174-2.664a3.111,3.111,0,1,1,2.905-2.905A3.106,3.106,0,0,1,13.937,110.014Z" transform="translate(0 -98.725)" fill="#384765"/>
+															</svg>
+														</span>
+													</div>
+												</div>
+												<div class="col-2 feature-product__item-image">
+													<div class="feature-detail__item-drop" data-feature="feature-item" data-container="#collapseFeature-parent-2">
+														<img src="../../images/lock_product-thumb.png" class="img-fluid selected-item-border" alt="">
+														<span class="eye_top-right__selected">
+															<svg xmlns="http://www.w3.org/2000/svg" width="22.47" height="16.375" viewBox="0 0 27.47 16.375">
+															<path id="dewfew" d="M13.735,98.725c-5.248,0-10.008,2.871-13.52,7.535a1.087,1.087,0,0,0,0,1.3c3.512,4.67,8.272,7.541,13.52,7.541s10.008-2.871,13.52-7.535a1.087,1.087,0,0,0,0-1.3C23.743,101.6,18.983,98.725,13.735,98.725Zm.376,13.953a5.778,5.778,0,1,1,5.389-5.389A5.781,5.781,0,0,1,14.111,112.678Zm-.174-2.664a3.111,3.111,0,1,1,2.905-2.905A3.106,3.106,0,0,1,13.937,110.014Z" transform="translate(0 -98.725)" fill="#384765"/>
+															</svg>
+														</span>
+													</div>
+												</div>
+												<div class="col-2 feature-product__item-image">
+													<div class="feature-detail__item-drop" data-feature="feature-item" data-container="#collapseFeature-parent-2">
+														<img src="../../images/lock_product-thumb.png" class="img-fluid selected-item-border" alt="">
+														<span class="eye_top-right__selected">
+															<svg xmlns="http://www.w3.org/2000/svg" width="22.47" height="16.375" viewBox="0 0 27.47 16.375">
+															<path id="dewfew" d="M13.735,98.725c-5.248,0-10.008,2.871-13.52,7.535a1.087,1.087,0,0,0,0,1.3c3.512,4.67,8.272,7.541,13.52,7.541s10.008-2.871,13.52-7.535a1.087,1.087,0,0,0,0-1.3C23.743,101.6,18.983,98.725,13.735,98.725Zm.376,13.953a5.778,5.778,0,1,1,5.389-5.389A5.781,5.781,0,0,1,14.111,112.678Zm-.174-2.664a3.111,3.111,0,1,1,2.905-2.905A3.106,3.106,0,0,1,13.937,110.014Z" transform="translate(0 -98.725)" fill="#384765"/>
+															</svg>
+														</span>
+													</div>
+												</div>
+												<div class="col-2 feature-product__item-image">
+													<div class="feature-detail__item-drop" data-feature="feature-item" data-container="#collapseFeature-parent-2">
+														<img src="../../images/lock_product-thumb.png" class="img-fluid selected-item-border" alt="">
+														<span class="eye_top-right__selected">
+															<svg xmlns="http://www.w3.org/2000/svg" width="22.47" height="16.375" viewBox="0 0 27.47 16.375">
+															<path id="dewfew" d="M13.735,98.725c-5.248,0-10.008,2.871-13.52,7.535a1.087,1.087,0,0,0,0,1.3c3.512,4.67,8.272,7.541,13.52,7.541s10.008-2.871,13.52-7.535a1.087,1.087,0,0,0,0-1.3C23.743,101.6,18.983,98.725,13.735,98.725Zm.376,13.953a5.778,5.778,0,1,1,5.389-5.389A5.781,5.781,0,0,1,14.111,112.678Zm-.174-2.664a3.111,3.111,0,1,1,2.905-2.905A3.106,3.106,0,0,1,13.937,110.014Z" transform="translate(0 -98.725)" fill="#384765"/>
+															</svg>
+														</span>
+													</div>
+												</div>
+												<div class="col-2 feature-product__item-image">
+													<div class="feature-detail__item-drop" data-feature="feature-item" data-container="#collapseFeature-parent-2">
+														<img src="../../images/lock_product-thumb.png" class="img-fluid selected-item-border" alt="">
+														<span class="eye_top-right__selected">
+															<svg xmlns="http://www.w3.org/2000/svg" width="22.47" height="16.375" viewBox="0 0 27.47 16.375">
+															<path id="dewfew" d="M13.735,98.725c-5.248,0-10.008,2.871-13.52,7.535a1.087,1.087,0,0,0,0,1.3c3.512,4.67,8.272,7.541,13.52,7.541s10.008-2.871,13.52-7.535a1.087,1.087,0,0,0,0-1.3C23.743,101.6,18.983,98.725,13.735,98.725Zm.376,13.953a5.778,5.778,0,1,1,5.389-5.389A5.781,5.781,0,0,1,14.111,112.678Zm-.174-2.664a3.111,3.111,0,1,1,2.905-2.905A3.106,3.106,0,0,1,13.937,110.014Z" transform="translate(0 -98.725)" fill="#384765"/>
+															</svg>
+														</span>
+													</div>
+												</div>
+												</div>
+											</div>
+											<div class="col-2 feature-product__item-image a__simple">
+												<div class="feature-detail__item-drop"
+												data-feature="feature-item"
+												data-container="#collapseFeature-parent-22"
+												data-toggle="tooltip" data-container="body" data-placement="top" title="Simple name"
+												>
+												<img src="../../images/lock_product-thumb.png" class="img-fluid selected-item-border" alt="">
+												<span class="eye_top-right__selected">
+													<svg xmlns="http://www.w3.org/2000/svg" width="22.47" height="16.375" viewBox="0 0 27.47 16.375">
+														<path id="dewfew" d="M13.735,98.725c-5.248,0-10.008,2.871-13.52,7.535a1.087,1.087,0,0,0,0,1.3c3.512,4.67,8.272,7.541,13.52,7.541s10.008-2.871,13.52-7.535a1.087,1.087,0,0,0,0-1.3C23.743,101.6,18.983,98.725,13.735,98.725Zm.376,13.953a5.778,5.778,0,1,1,5.389-5.389A5.781,5.781,0,0,1,14.111,112.678Zm-.174-2.664a3.111,3.111,0,1,1,2.905-2.905A3.106,3.106,0,0,1,13.937,110.014Z" transform="translate(0 -98.725)" fill="#384765"/>
+													</svg>
+												</span>
+												</div>
+											</div>
+											<div class="col-2 feature-product__item-image a__simple">
+												<div class="feature-detail__item-drop"
+												data-feature="feature-item"
+												data-container="#collapseFeature-parent-22"
+												data-toggle="tooltip" data-container="body" data-placement="top" title="Simple name"
+												>
+												<img src="../../images/lock_product-thumb.png" class="img-fluid selected-item-border" alt="">
+												<span class="eye_top-right__selected">
+													<svg xmlns="http://www.w3.org/2000/svg" width="22.47" height="16.375" viewBox="0 0 27.47 16.375">
+														<path id="dewfew" d="M13.735,98.725c-5.248,0-10.008,2.871-13.52,7.535a1.087,1.087,0,0,0,0,1.3c3.512,4.67,8.272,7.541,13.52,7.541s10.008-2.871,13.52-7.535a1.087,1.087,0,0,0,0-1.3C23.743,101.6,18.983,98.725,13.735,98.725Zm.376,13.953a5.778,5.778,0,1,1,5.389-5.389A5.781,5.781,0,0,1,14.111,112.678Zm-.174-2.664a3.111,3.111,0,1,1,2.905-2.905A3.106,3.106,0,0,1,13.937,110.014Z" transform="translate(0 -98.725)" fill="#384765"/>
+													</svg>
+												</span>
+												</div>
+											</div>
+											<div class="col-2 feature-product__item-image a__simple">
+												<div class="feature-detail__item-drop"
+												data-feature="feature-item"
+												data-container="#collapseFeature-parent-22"
+												data-toggle="tooltip" data-container="body" data-placement="top" title="Simple name"
+												>
+												<img src="../../images/lock_product-thumb.png" class="img-fluid selected-item-border" alt="">
+												<span class="eye_top-right__selected">
+													<svg xmlns="http://www.w3.org/2000/svg" width="22.47" height="16.375" viewBox="0 0 27.47 16.375">
+														<path id="dewfew" d="M13.735,98.725c-5.248,0-10.008,2.871-13.52,7.535a1.087,1.087,0,0,0,0,1.3c3.512,4.67,8.272,7.541,13.52,7.541s10.008-2.871,13.52-7.535a1.087,1.087,0,0,0,0-1.3C23.743,101.6,18.983,98.725,13.735,98.725Zm.376,13.953a5.778,5.778,0,1,1,5.389-5.389A5.781,5.781,0,0,1,14.111,112.678Zm-.174-2.664a3.111,3.111,0,1,1,2.905-2.905A3.106,3.106,0,0,1,13.937,110.014Z" transform="translate(0 -98.725)" fill="#384765"/>
+													</svg>
+												</span>
+												</div>
+											</div>
+											<div class="col-2 feature-product__item-image a__simple">
+												<div class="feature-detail__item-drop"
+												data-feature="feature-item"
+												data-container="#collapseFeature-parent-22"
+												data-toggle="tooltip" data-container="body" data-placement="top" title="Simple name"
+												>
+												<img src="../../images/lock_product-thumb.png" class="img-fluid selected-item-border" alt="">
+												<span class="eye_top-right__selected">
+													<svg xmlns="http://www.w3.org/2000/svg" width="22.47" height="16.375" viewBox="0 0 27.47 16.375">
+														<path id="dewfew" d="M13.735,98.725c-5.248,0-10.008,2.871-13.52,7.535a1.087,1.087,0,0,0,0,1.3c3.512,4.67,8.272,7.541,13.52,7.541s10.008-2.871,13.52-7.535a1.087,1.087,0,0,0,0-1.3C23.743,101.6,18.983,98.725,13.735,98.725Zm.376,13.953a5.778,5.778,0,1,1,5.389-5.389A5.781,5.781,0,0,1,14.111,112.678Zm-.174-2.664a3.111,3.111,0,1,1,2.905-2.905A3.106,3.106,0,0,1,13.937,110.014Z" transform="translate(0 -98.725)" fill="#384765"/>
+													</svg>
+												</span>
+												</div>
+											</div>
+											<div class="col-2 feature-product__item-image a__simple">
+												<div class="feature-detail__item-drop"
+												data-feature="feature-item"
+												data-container="#collapseFeature-parent-22"
+												data-toggle="tooltip" data-container="body" data-placement="top" title="Simple name"
+												>
+												<img src="../../images/lock_product-thumb.png" class="img-fluid selected-item-border" alt="">
+												<span class="eye_top-right__selected">
+													<svg xmlns="http://www.w3.org/2000/svg" width="22.47" height="16.375" viewBox="0 0 27.47 16.375">
+														<path id="dewfew" d="M13.735,98.725c-5.248,0-10.008,2.871-13.52,7.535a1.087,1.087,0,0,0,0,1.3c3.512,4.67,8.272,7.541,13.52,7.541s10.008-2.871,13.52-7.535a1.087,1.087,0,0,0,0-1.3C23.743,101.6,18.983,98.725,13.735,98.725Zm.376,13.953a5.778,5.778,0,1,1,5.389-5.389A5.781,5.781,0,0,1,14.111,112.678Zm-.174-2.664a3.111,3.111,0,1,1,2.905-2.905A3.106,3.106,0,0,1,13.937,110.014Z" transform="translate(0 -98.725)" fill="#384765"/>
+													</svg>
+												</span>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- /MENU WITH ADDITIONAL FEATURES-->
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-12 js-specifications-subheading_v2 padding-no__a-v2">
+									<p class="tab-content__specifications--subheading">
+									Color
+									<img class="tab-content__specifications--subheading-icon-plus" src="../../images/minus-button-1.svg" alt="" style="display: none;">
+									<img class="tab-content__specifications--subheading-icon-minus" src="../../images/minus-button.svg" alt="" >
+									</p>
+								</div>
+								<div class="col-12 popup-padding-no">
+									<div class="phantom-actions__dropdowns__a popup-padding-row">
+									<!--MENU WITH ADDITIONAL FEATURES,
+										EVERY ROW HAS A COLLAPSE DIV SIBLING,
+										WHEN YOU CLICK A ITEM FROM DIV, A COLLAPSE MENU IS SHOWING
+										YOU CAN HAVE A MULTIPLE COLLAPSE MENUS FOR EVERY ITEM
+										OR ONE COLLAPSE DIV AND REPLACE ITEMS INSIDE DEPENDS ON
+										WHICH ITEM USER CLICKS
+										--> 
+									<div class="phantom-actions__dropdowns accordion active nd"
+										id="collapseFeature-parent-23">
+										<div class="row margin-none sec-feature-three">
+											<div class="col-2 feature-product__item-image a__simple">
+												<div class="feature-detail__item-drop"
+												data-feature="feature-item"
+												data-container="#collapseFeature-parent-23"				
+												data-toggle="tooltip" data-container="body" data-placement="top" title="Simple name"																																				 
+												>
+												<img src="../../images/lock_product-thumb.png" class="img-fluid selected-item-border" alt="">
+												<span class="eye_top-right__selected">
+													<svg xmlns="http://www.w3.org/2000/svg" width="22.47" height="16.375" viewBox="0 0 27.47 16.375">
+														<path id="dewfew" d="M13.735,98.725c-5.248,0-10.008,2.871-13.52,7.535a1.087,1.087,0,0,0,0,1.3c3.512,4.67,8.272,7.541,13.52,7.541s10.008-2.871,13.52-7.535a1.087,1.087,0,0,0,0-1.3C23.743,101.6,18.983,98.725,13.735,98.725Zm.376,13.953a5.778,5.778,0,1,1,5.389-5.389A5.781,5.781,0,0,1,14.111,112.678Zm-.174-2.664a3.111,3.111,0,1,1,2.905-2.905A3.106,3.106,0,0,1,13.937,110.014Z" transform="translate(0 -98.725)" fill="#384765"/>
+													</svg>
+												</span>
+												</div>
+											</div>
+											<div class="col-2 feature-product__item-image drop_detail__items popup-save-sheet sec-three">
+												<div class="feature-detail__item-drop"
+												title="Simple name"
+												data-container="#collapseFeature-parent-23"
+												data-toggle="tooltip" data-container="body" data-placement="top" title="Simple name"
+												>
+												<img src="../../images/lock_product-thumb.png" class="img-fluid selected-item-border" alt="">
+												<span class="eye_top-right__selected">
+													<svg xmlns="http://www.w3.org/2000/svg" width="22.47" height="16.375" viewBox="0 0 27.47 16.375">
+														<path id="dewfew" d="M13.735,98.725c-5.248,0-10.008,2.871-13.52,7.535a1.087,1.087,0,0,0,0,1.3c3.512,4.67,8.272,7.541,13.52,7.541s10.008-2.871,13.52-7.535a1.087,1.087,0,0,0,0-1.3C23.743,101.6,18.983,98.725,13.735,98.725Zm.376,13.953a5.778,5.778,0,1,1,5.389-5.389A5.781,5.781,0,0,1,14.111,112.678Zm-.174-2.664a3.111,3.111,0,1,1,2.905-2.905A3.106,3.106,0,0,1,13.937,110.014Z" transform="translate(0 -98.725)" fill="#384765"/>
+													</svg>
+												</span>
+												<button class="feature-detail__item-drop__show-more hover-btn__v2 v3_a"
+													data-toggle="collapse"
+													data-target="#collapseFeature-14"
+													aria-expanded="true"
+													aria-controls="collapseFeature-14"
+													>
+													<svg xmlns="http://www.w3.org/2000/svg" width="3.726" height="6.536" viewBox="0 0 3.726 6.536">
+														<defs>
+															<style>.a{fill:#fff;}</style>
+														</defs>
+														<g transform="translate(0 6.536) rotate(-90)">
+															<path class="a" d="M3.268,3.726a.456.456,0,0,1-.324-.134L.134.781A.458.458,0,0,1,.781.134L3.268,2.621,5.755.134A.458.458,0,0,1,6.4.781L3.592,3.592A.456.456,0,0,1,3.268,3.726Z"/>
+														</g>
+													</svg>
+												</button>
+												</div>
+											</div>
+											<div class="col-2 feature-product__item-image a__simple">
+												<div class="feature-detail__item-drop"
+												data-feature="feature-item"
+												data-container="#collapseFeature-parent-23"
+												data-toggle="tooltip" data-container="body" data-placement="top" title="Simple name"
+												>
+												<img src="../../images/lock_product-thumb.png" class="img-fluid selected-item-border" alt="">
+												<span class="eye_top-right__selected">
+													<svg xmlns="http://www.w3.org/2000/svg" width="22.47" height="16.375" viewBox="0 0 27.47 16.375">
+														<path id="dewfew" d="M13.735,98.725c-5.248,0-10.008,2.871-13.52,7.535a1.087,1.087,0,0,0,0,1.3c3.512,4.67,8.272,7.541,13.52,7.541s10.008-2.871,13.52-7.535a1.087,1.087,0,0,0,0-1.3C23.743,101.6,18.983,98.725,13.735,98.725Zm.376,13.953a5.778,5.778,0,1,1,5.389-5.389A5.781,5.781,0,0,1,14.111,112.678Zm-.174-2.664a3.111,3.111,0,1,1,2.905-2.905A3.106,3.106,0,0,1,13.937,110.014Z" transform="translate(0 -98.725)" fill="#384765"/>
+													</svg>
+												</span>
+												</div>
+											</div>
+											<div class="col-2 feature-product__item-image a__simple">
+												<div class="feature-detail__item-drop"
+												data-feature="feature-item"
+												data-container="#collapseFeature-parent-23"
+												data-toggle="tooltip" data-container="body" data-placement="top" title="Simple name"
+												>
+												<img src="../../images/lock_product-thumb.png" class="img-fluid selected-item-border" alt="">
+												<span class="eye_top-right__selected">
+													<svg xmlns="http://www.w3.org/2000/svg" width="22.47" height="16.375" viewBox="0 0 27.47 16.375">
+														<path id="dewfew" d="M13.735,98.725c-5.248,0-10.008,2.871-13.52,7.535a1.087,1.087,0,0,0,0,1.3c3.512,4.67,8.272,7.541,13.52,7.541s10.008-2.871,13.52-7.535a1.087,1.087,0,0,0,0-1.3C23.743,101.6,18.983,98.725,13.735,98.725Zm.376,13.953a5.778,5.778,0,1,1,5.389-5.389A5.781,5.781,0,0,1,14.111,112.678Zm-.174-2.664a3.111,3.111,0,1,1,2.905-2.905A3.106,3.106,0,0,1,13.937,110.014Z" transform="translate(0 -98.725)" fill="#384765"/>
+													</svg>
+												</span>
+												</div>
+											</div>
+											<div class="col-2 feature-product__item-image a__simple">
+												<div class="feature-detail__item-drop"
+												data-feature="feature-item"
+												data-container="#collapseFeature-parent-23"
+												data-toggle="tooltip" data-container="body" data-placement="top" title="Simple name"
+												>
+												<img src="../../images/lock_product-thumb.png" class="img-fluid selected-item-border" alt="">
+												<span class="eye_top-right__selected">
+													<svg xmlns="http://www.w3.org/2000/svg" width="22.47" height="16.375" viewBox="0 0 27.47 16.375">
+														<path id="dewfew" d="M13.735,98.725c-5.248,0-10.008,2.871-13.52,7.535a1.087,1.087,0,0,0,0,1.3c3.512,4.67,8.272,7.541,13.52,7.541s10.008-2.871,13.52-7.535a1.087,1.087,0,0,0,0-1.3C23.743,101.6,18.983,98.725,13.735,98.725Zm.376,13.953a5.778,5.778,0,1,1,5.389-5.389A5.781,5.781,0,0,1,14.111,112.678Zm-.174-2.664a3.111,3.111,0,1,1,2.905-2.905A3.106,3.106,0,0,1,13.937,110.014Z" transform="translate(0 -98.725)" fill="#384765"/>
+													</svg>
+												</span>
+												</div>
+											</div>
+											<div
+												id="collapseFeature-14" class="border-nd_hove_nd collapseFeature-opacity_class collapse show border-nd_hove_nd"
+												aria-labelledby="headingOne"
+												data-parent="#collapseFeature-parent-2"
+												>
+												<div class="row dropdown-items">
+												<div class="col-2 feature-product__item-image">
+													<div class="feature-detail__item-drop" data-feature="feature-item" data-container="#collapseFeature-parent-2">
+														<img src="../../images/lock_product-thumb.png" class="img-fluid selected-item-border" alt="">
+														<span class="eye_top-right__selected">
+															<svg xmlns="http://www.w3.org/2000/svg" width="22.47" height="16.375" viewBox="0 0 27.47 16.375">
+															<path id="dewfew" d="M13.735,98.725c-5.248,0-10.008,2.871-13.52,7.535a1.087,1.087,0,0,0,0,1.3c3.512,4.67,8.272,7.541,13.52,7.541s10.008-2.871,13.52-7.535a1.087,1.087,0,0,0,0-1.3C23.743,101.6,18.983,98.725,13.735,98.725Zm.376,13.953a5.778,5.778,0,1,1,5.389-5.389A5.781,5.781,0,0,1,14.111,112.678Zm-.174-2.664a3.111,3.111,0,1,1,2.905-2.905A3.106,3.106,0,0,1,13.937,110.014Z" transform="translate(0 -98.725)" fill="#384765"/>
+															</svg>
+														</span>
+													</div>
+												</div>
+												<div class="col-2 feature-product__item-image">
+													<div class="feature-detail__item-drop" data-feature="feature-item" data-container="#collapseFeature-parent-2">
+														<img src="../../images/lock_product-thumb.png" class="img-fluid selected-item-border" alt="">
+														<span class="eye_top-right__selected">
+															<svg xmlns="http://www.w3.org/2000/svg" width="22.47" height="16.375" viewBox="0 0 27.47 16.375">
+															<path id="dewfew" d="M13.735,98.725c-5.248,0-10.008,2.871-13.52,7.535a1.087,1.087,0,0,0,0,1.3c3.512,4.67,8.272,7.541,13.52,7.541s10.008-2.871,13.52-7.535a1.087,1.087,0,0,0,0-1.3C23.743,101.6,18.983,98.725,13.735,98.725Zm.376,13.953a5.778,5.778,0,1,1,5.389-5.389A5.781,5.781,0,0,1,14.111,112.678Zm-.174-2.664a3.111,3.111,0,1,1,2.905-2.905A3.106,3.106,0,0,1,13.937,110.014Z" transform="translate(0 -98.725)" fill="#384765"/>
+															</svg>
+														</span>
+													</div>
+												</div>
+												<div class="col-2 feature-product__item-image">
+													<div class="feature-detail__item-drop" data-feature="feature-item" data-container="#collapseFeature-parent-2">
+														<img src="../../images/lock_product-thumb.png" class="img-fluid selected-item-border" alt="">
+														<span class="eye_top-right__selected">
+															<svg xmlns="http://www.w3.org/2000/svg" width="22.47" height="16.375" viewBox="0 0 27.47 16.375">
+															<path id="dewfew" d="M13.735,98.725c-5.248,0-10.008,2.871-13.52,7.535a1.087,1.087,0,0,0,0,1.3c3.512,4.67,8.272,7.541,13.52,7.541s10.008-2.871,13.52-7.535a1.087,1.087,0,0,0,0-1.3C23.743,101.6,18.983,98.725,13.735,98.725Zm.376,13.953a5.778,5.778,0,1,1,5.389-5.389A5.781,5.781,0,0,1,14.111,112.678Zm-.174-2.664a3.111,3.111,0,1,1,2.905-2.905A3.106,3.106,0,0,1,13.937,110.014Z" transform="translate(0 -98.725)" fill="#384765"/>
+															</svg>
+														</span>
+													</div>
+												</div>
+												<div class="col-2 feature-product__item-image">
+													<div class="feature-detail__item-drop" data-feature="feature-item" data-container="#collapseFeature-parent-2">
+														<img src="../../images/lock_product-thumb.png" class="img-fluid selected-item-border" alt="">
+														<span class="eye_top-right__selected">
+															<svg xmlns="http://www.w3.org/2000/svg" width="22.47" height="16.375" viewBox="0 0 27.47 16.375">
+															<path id="dewfew" d="M13.735,98.725c-5.248,0-10.008,2.871-13.52,7.535a1.087,1.087,0,0,0,0,1.3c3.512,4.67,8.272,7.541,13.52,7.541s10.008-2.871,13.52-7.535a1.087,1.087,0,0,0,0-1.3C23.743,101.6,18.983,98.725,13.735,98.725Zm.376,13.953a5.778,5.778,0,1,1,5.389-5.389A5.781,5.781,0,0,1,14.111,112.678Zm-.174-2.664a3.111,3.111,0,1,1,2.905-2.905A3.106,3.106,0,0,1,13.937,110.014Z" transform="translate(0 -98.725)" fill="#384765"/>
+															</svg>
+														</span>
+													</div>
+												</div>
+												<div class="col-2 feature-product__item-image">
+													<div class="feature-detail__item-drop" data-feature="feature-item" data-container="#collapseFeature-parent-2">
+														<img src="../../images/lock_product-thumb.png" class="img-fluid selected-item-border" alt="">
+														<span class="eye_top-right__selected">
+															<svg xmlns="http://www.w3.org/2000/svg" width="22.47" height="16.375" viewBox="0 0 27.47 16.375">
+															<path id="dewfew" d="M13.735,98.725c-5.248,0-10.008,2.871-13.52,7.535a1.087,1.087,0,0,0,0,1.3c3.512,4.67,8.272,7.541,13.52,7.541s10.008-2.871,13.52-7.535a1.087,1.087,0,0,0,0-1.3C23.743,101.6,18.983,98.725,13.735,98.725Zm.376,13.953a5.778,5.778,0,1,1,5.389-5.389A5.781,5.781,0,0,1,14.111,112.678Zm-.174-2.664a3.111,3.111,0,1,1,2.905-2.905A3.106,3.106,0,0,1,13.937,110.014Z" transform="translate(0 -98.725)" fill="#384765"/>
+															</svg>
+														</span>
+													</div>
+												</div>
+												<div class="col-2 feature-product__item-image">
+													<div class="feature-detail__item-drop" data-feature="feature-item" data-container="#collapseFeature-parent-2">
+														<img src="../../images/lock_product-thumb.png" class="img-fluid selected-item-border" alt="">
+														<span class="eye_top-right__selected">
+															<svg xmlns="http://www.w3.org/2000/svg" width="22.47" height="16.375" viewBox="0 0 27.47 16.375">
+															<path id="dewfew" d="M13.735,98.725c-5.248,0-10.008,2.871-13.52,7.535a1.087,1.087,0,0,0,0,1.3c3.512,4.67,8.272,7.541,13.52,7.541s10.008-2.871,13.52-7.535a1.087,1.087,0,0,0,0-1.3C23.743,101.6,18.983,98.725,13.735,98.725Zm.376,13.953a5.778,5.778,0,1,1,5.389-5.389A5.781,5.781,0,0,1,14.111,112.678Zm-.174-2.664a3.111,3.111,0,1,1,2.905-2.905A3.106,3.106,0,0,1,13.937,110.014Z" transform="translate(0 -98.725)" fill="#384765"/>
+															</svg>
+														</span>
+													</div>
+												</div>
+												<div class="col-2 feature-product__item-image">
+													<div class="feature-detail__item-drop" data-feature="feature-item" data-container="#collapseFeature-parent-2">
+														<img src="../../images/lock_product-thumb.png" class="img-fluid selected-item-border" alt="">
+														<span class="eye_top-right__selected">
+															<svg xmlns="http://www.w3.org/2000/svg" width="22.47" height="16.375" viewBox="0 0 27.47 16.375">
+															<path id="dewfew" d="M13.735,98.725c-5.248,0-10.008,2.871-13.52,7.535a1.087,1.087,0,0,0,0,1.3c3.512,4.67,8.272,7.541,13.52,7.541s10.008-2.871,13.52-7.535a1.087,1.087,0,0,0,0-1.3C23.743,101.6,18.983,98.725,13.735,98.725Zm.376,13.953a5.778,5.778,0,1,1,5.389-5.389A5.781,5.781,0,0,1,14.111,112.678Zm-.174-2.664a3.111,3.111,0,1,1,2.905-2.905A3.106,3.106,0,0,1,13.937,110.014Z" transform="translate(0 -98.725)" fill="#384765"/>
+															</svg>
+														</span>
+													</div>
+												</div>
+												<div class="col-2 feature-product__item-image">
+													<div class="feature-detail__item-drop" data-feature="feature-item" data-container="#collapseFeature-parent-2">
+														<img src="../../images/lock_product-thumb.png" class="img-fluid selected-item-border" alt="">
+														<span class="eye_top-right__selected">
+															<svg xmlns="http://www.w3.org/2000/svg" width="22.47" height="16.375" viewBox="0 0 27.47 16.375">
+															<path id="dewfew" d="M13.735,98.725c-5.248,0-10.008,2.871-13.52,7.535a1.087,1.087,0,0,0,0,1.3c3.512,4.67,8.272,7.541,13.52,7.541s10.008-2.871,13.52-7.535a1.087,1.087,0,0,0,0-1.3C23.743,101.6,18.983,98.725,13.735,98.725Zm.376,13.953a5.778,5.778,0,1,1,5.389-5.389A5.781,5.781,0,0,1,14.111,112.678Zm-.174-2.664a3.111,3.111,0,1,1,2.905-2.905A3.106,3.106,0,0,1,13.937,110.014Z" transform="translate(0 -98.725)" fill="#384765"/>
+															</svg>
+														</span>
+													</div>
+												</div>
+												<div class="col-2 feature-product__item-image">
+													<div class="feature-detail__item-drop" data-feature="feature-item" data-container="#collapseFeature-parent-2">
+														<img src="../../images/lock_product-thumb.png" class="img-fluid selected-item-border" alt="">
+														<span class="eye_top-right__selected">
+															<svg xmlns="http://www.w3.org/2000/svg" width="22.47" height="16.375" viewBox="0 0 27.47 16.375">
+															<path id="dewfew" d="M13.735,98.725c-5.248,0-10.008,2.871-13.52,7.535a1.087,1.087,0,0,0,0,1.3c3.512,4.67,8.272,7.541,13.52,7.541s10.008-2.871,13.52-7.535a1.087,1.087,0,0,0,0-1.3C23.743,101.6,18.983,98.725,13.735,98.725Zm.376,13.953a5.778,5.778,0,1,1,5.389-5.389A5.781,5.781,0,0,1,14.111,112.678Zm-.174-2.664a3.111,3.111,0,1,1,2.905-2.905A3.106,3.106,0,0,1,13.937,110.014Z" transform="translate(0 -98.725)" fill="#384765"/>
+															</svg>
+														</span>
+													</div>
+												</div>
+												<div class="col-2 feature-product__item-image">
+													<div class="feature-detail__item-drop" data-feature="feature-item" data-container="#collapseFeature-parent-2">
+														<img src="../../images/lock_product-thumb.png" class="img-fluid selected-item-border" alt="">
+														<span class="eye_top-right__selected">
+															<svg xmlns="http://www.w3.org/2000/svg" width="22.47" height="16.375" viewBox="0 0 27.47 16.375">
+															<path id="dewfew" d="M13.735,98.725c-5.248,0-10.008,2.871-13.52,7.535a1.087,1.087,0,0,0,0,1.3c3.512,4.67,8.272,7.541,13.52,7.541s10.008-2.871,13.52-7.535a1.087,1.087,0,0,0,0-1.3C23.743,101.6,18.983,98.725,13.735,98.725Zm.376,13.953a5.778,5.778,0,1,1,5.389-5.389A5.781,5.781,0,0,1,14.111,112.678Zm-.174-2.664a3.111,3.111,0,1,1,2.905-2.905A3.106,3.106,0,0,1,13.937,110.014Z" transform="translate(0 -98.725)" fill="#384765"/>
+															</svg>
+														</span>
+													</div>
+												</div>
+												</div>
+											</div>
+											<div class="col-2 feature-product__item-image a__simple">
+												<div class="feature-detail__item-drop"
+												data-feature="feature-item"
+												data-container="#collapseFeature-parent-23"
+												data-toggle="tooltip" data-container="body" data-placement="top" title="Simple name"
+												>
+												<img src="../../images/lock_product-thumb.png" class="img-fluid selected-item-border" alt="">
+												<span class="eye_top-right__selected">
+													<svg xmlns="http://www.w3.org/2000/svg" width="22.47" height="16.375" viewBox="0 0 27.47 16.375">
+														<path id="dewfew" d="M13.735,98.725c-5.248,0-10.008,2.871-13.52,7.535a1.087,1.087,0,0,0,0,1.3c3.512,4.67,8.272,7.541,13.52,7.541s10.008-2.871,13.52-7.535a1.087,1.087,0,0,0,0-1.3C23.743,101.6,18.983,98.725,13.735,98.725Zm.376,13.953a5.778,5.778,0,1,1,5.389-5.389A5.781,5.781,0,0,1,14.111,112.678Zm-.174-2.664a3.111,3.111,0,1,1,2.905-2.905A3.106,3.106,0,0,1,13.937,110.014Z" transform="translate(0 -98.725)" fill="#384765"/>
+													</svg>
+												</span>
+												</div>
+											</div>
+											<div class="col-2 feature-product__item-image a__simple">
+												<div class="feature-detail__item-drop"
+												data-feature="feature-item"
+												data-container="#collapseFeature-parent-23"
+												data-toggle="tooltip" data-container="body" data-placement="top" title="Simple name"
+												>
+												<img src="../../images/lock_product-thumb.png" class="img-fluid selected-item-border" alt="">
+												<span class="eye_top-right__selected">
+													<svg xmlns="http://www.w3.org/2000/svg" width="22.47" height="16.375" viewBox="0 0 27.47 16.375">
+														<path id="dewfew" d="M13.735,98.725c-5.248,0-10.008,2.871-13.52,7.535a1.087,1.087,0,0,0,0,1.3c3.512,4.67,8.272,7.541,13.52,7.541s10.008-2.871,13.52-7.535a1.087,1.087,0,0,0,0-1.3C23.743,101.6,18.983,98.725,13.735,98.725Zm.376,13.953a5.778,5.778,0,1,1,5.389-5.389A5.781,5.781,0,0,1,14.111,112.678Zm-.174-2.664a3.111,3.111,0,1,1,2.905-2.905A3.106,3.106,0,0,1,13.937,110.014Z" transform="translate(0 -98.725)" fill="#384765"/>
+													</svg>
+												</span>
+												</div>
+											</div>
+											<div class="col-2 feature-product__item-image a__simple">
+												<div class="feature-detail__item-drop"
+												data-feature="feature-item"
+												data-container="#collapseFeature-parent-23"
+												data-toggle="tooltip" data-container="body" data-placement="top" title="Simple name"
+												>
+												<img src="../../images/lock_product-thumb.png" class="img-fluid selected-item-border" alt="">
+												<span class="eye_top-right__selected">
+													<svg xmlns="http://www.w3.org/2000/svg" width="22.47" height="16.375" viewBox="0 0 27.47 16.375">
+														<path id="dewfew" d="M13.735,98.725c-5.248,0-10.008,2.871-13.52,7.535a1.087,1.087,0,0,0,0,1.3c3.512,4.67,8.272,7.541,13.52,7.541s10.008-2.871,13.52-7.535a1.087,1.087,0,0,0,0-1.3C23.743,101.6,18.983,98.725,13.735,98.725Zm.376,13.953a5.778,5.778,0,1,1,5.389-5.389A5.781,5.781,0,0,1,14.111,112.678Zm-.174-2.664a3.111,3.111,0,1,1,2.905-2.905A3.106,3.106,0,0,1,13.937,110.014Z" transform="translate(0 -98.725)" fill="#384765"/>
+													</svg>
+												</span>
+												</div>
+											</div>
+											<div class="col-2 feature-product__item-image a__simple">
+												<div class="feature-detail__item-drop"
+												data-feature="feature-item"
+												data-container="#collapseFeature-parent-23"
+												data-toggle="tooltip" data-container="body" data-placement="top" title="Simple name"
+												>
+												<img src="../../images/lock_product-thumb.png" class="img-fluid selected-item-border" alt="">
+												<span class="eye_top-right__selected">
+													<svg xmlns="http://www.w3.org/2000/svg" width="22.47" height="16.375" viewBox="0 0 27.47 16.375">
+														<path id="dewfew" d="M13.735,98.725c-5.248,0-10.008,2.871-13.52,7.535a1.087,1.087,0,0,0,0,1.3c3.512,4.67,8.272,7.541,13.52,7.541s10.008-2.871,13.52-7.535a1.087,1.087,0,0,0,0-1.3C23.743,101.6,18.983,98.725,13.735,98.725Zm.376,13.953a5.778,5.778,0,1,1,5.389-5.389A5.781,5.781,0,0,1,14.111,112.678Zm-.174-2.664a3.111,3.111,0,1,1,2.905-2.905A3.106,3.106,0,0,1,13.937,110.014Z" transform="translate(0 -98.725)" fill="#384765"/>
+													</svg>
+												</span>
+												</div>
+											</div>
+											<div class="col-2 feature-product__item-image a__simple">
+												<div class="feature-detail__item-drop"
+												data-feature="feature-item"
+												data-container="#collapseFeature-parent-23"
+												data-toggle="tooltip" data-container="body" data-placement="top" title="Simple name"
+												>
+												<img src="../../images/lock_product-thumb.png" class="img-fluid selected-item-border" alt="">
+												<span class="eye_top-right__selected">
+													<svg xmlns="http://www.w3.org/2000/svg" width="22.47" height="16.375" viewBox="0 0 27.47 16.375">
+														<path id="dewfew" d="M13.735,98.725c-5.248,0-10.008,2.871-13.52,7.535a1.087,1.087,0,0,0,0,1.3c3.512,4.67,8.272,7.541,13.52,7.541s10.008-2.871,13.52-7.535a1.087,1.087,0,0,0,0-1.3C23.743,101.6,18.983,98.725,13.735,98.725Zm.376,13.953a5.778,5.778,0,1,1,5.389-5.389A5.781,5.781,0,0,1,14.111,112.678Zm-.174-2.664a3.111,3.111,0,1,1,2.905-2.905A3.106,3.106,0,0,1,13.937,110.014Z" transform="translate(0 -98.725)" fill="#384765"/>
+													</svg>
+												</span>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- /MENU WITH ADDITIONAL FEATURES-->
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-12 js-specifications-subheading_v2 padding-no__a-v2">
+									<p class="tab-content__specifications--subheading">
+									Sizes 
+									<img class="tab-content__specifications--subheading-icon-plus" src="../../images/minus-button-1.svg" alt="" style="display: none;">
+									<img class="tab-content__specifications--subheading-icon-minus" src="../../images/minus-button.svg" alt="" >
+									</p>
+								</div>
+								<div class="col-12 popup-padding-no">
+									<div class="phantom-actions__dropdowns__a popup-padding-row d-i-b">
+									<div class="checkbox">
+										<input type="checkbox" class="check custom-checkbox js-add-product-filter" id="checkbox-41" value="value41">
+										<label for="checkbox-41">
+										<span class="checkbox-label__text">
+										80*60*40cm
+										</span>
+										</label>
+									</div>
+									<div class="checkbox">
+										<input type="checkbox" class="check custom-checkbox js-add-product-filter" id="checkbox-42" value="value42">
+										<label for="checkbox-42">
+										<span class="checkbox-label__text">
+										60*40*30cm
+										</span>
+										</label>
+									</div>
+									<div class="checkbox">
+										<input type="checkbox" class="check custom-checkbox js-add-product-filter" id="checkbox-43" value="value43">
+										<label for="checkbox-43">
+										<span class="checkbox-label__text">
+										50*40*30cm
+										</span>
+										</label>
+									</div>
+									</div>
+									<div class="d-i-b margin__a">
+									<div class="checkbox">
+										<input type="checkbox" class="check custom-checkbox js-add-product-filter" id="checkbox-44" value="value44">
+										<label for="checkbox-44">
+										<span class="checkbox-label__text">
+										40*40*25cm
+										</span>
+										</label>
+									</div>
+									<div class="checkbox">
+										<input type="checkbox" class="check custom-checkbox js-add-product-filter" id="checkbox-45" value="value45">
+										<label for="checkbox-45">
+										<span class="checkbox-label__text">
+										33*15*85cm
+										</span>
+										</label>
+									</div>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-12 js-specifications-subheading_v2 padding-no__a-v2">
+									<p class="tab-content__specifications--subheading">
+									Color
+									<img class="tab-content__specifications--subheading-icon-plus" src="../../images/minus-button-1.svg" alt="" style="display: none;">
+									<img class="tab-content__specifications--subheading-icon-minus" src="../../images/minus-button.svg" alt="" >
+									</p>
+								</div>
+								<div class="col-12 popup-padding-no">
+									<div class="phantom-actions__dropdowns__a popup-padding-row">
+									<!--MENU WITH ADDITIONAL FEATURES,
+										EVERY ROW HAS A COLLAPSE DIV SIBLING,
+										WHEN YOU CLICK A ITEM FROM DIV, A COLLAPSE MENU IS SHOWING
+										YOU CAN HAVE A MULTIPLE COLLAPSE MENUS FOR EVERY ITEM
+										OR ONE COLLAPSE DIV AND REPLACE ITEMS INSIDE DEPENDS ON
+										WHICH ITEM USER CLICKS
+										-->
+									<div class="phantom-actions__dropdowns accordion active nd"
+										id="collapseFeature-parent-24">
+										<div class="row margin-none sec-feature-four">
+											<div class="col-2 feature-product__item-image a__simple">
+												<div class="feature-detail__item-drop"
+												data-feature="feature-item"
+												data-container="#collapseFeature-parent-24"				
+												data-toggle="tooltip" data-container="body" data-placement="top" title="Simple name"																																				 
+												>
+												<img src="../../images/lock_product-thumb.png" class="img-fluid selected-item-border" alt="">
+												<span class="eye_top-right__selected">
+													<svg xmlns="http://www.w3.org/2000/svg" width="22.47" height="16.375" viewBox="0 0 27.47 16.375">
+														<path id="dewfew" d="M13.735,98.725c-5.248,0-10.008,2.871-13.52,7.535a1.087,1.087,0,0,0,0,1.3c3.512,4.67,8.272,7.541,13.52,7.541s10.008-2.871,13.52-7.535a1.087,1.087,0,0,0,0-1.3C23.743,101.6,18.983,98.725,13.735,98.725Zm.376,13.953a5.778,5.778,0,1,1,5.389-5.389A5.781,5.781,0,0,1,14.111,112.678Zm-.174-2.664a3.111,3.111,0,1,1,2.905-2.905A3.106,3.106,0,0,1,13.937,110.014Z" transform="translate(0 -98.725)" fill="#384765"/>
+													</svg>
+												</span>
+												</div>
+											</div>
+											<div class="col-2 feature-product__item-image drop_detail__items popup-save-sheet sec-four">
+												<div class="feature-detail__item-drop"
+												title="Simple name"
+												data-container="#collapseFeature-parent-24"
+												data-toggle="tooltip" data-container="body" data-placement="top" title="Simple name"
+												>
+												<img src="../../images/lock_product-thumb.png" class="img-fluid selected-item-border" alt="">
+												<span class="eye_top-right__selected">
+													<svg xmlns="http://www.w3.org/2000/svg" width="22.47" height="16.375" viewBox="0 0 27.47 16.375">
+														<path id="dewfew" d="M13.735,98.725c-5.248,0-10.008,2.871-13.52,7.535a1.087,1.087,0,0,0,0,1.3c3.512,4.67,8.272,7.541,13.52,7.541s10.008-2.871,13.52-7.535a1.087,1.087,0,0,0,0-1.3C23.743,101.6,18.983,98.725,13.735,98.725Zm.376,13.953a5.778,5.778,0,1,1,5.389-5.389A5.781,5.781,0,0,1,14.111,112.678Zm-.174-2.664a3.111,3.111,0,1,1,2.905-2.905A3.106,3.106,0,0,1,13.937,110.014Z" transform="translate(0 -98.725)" fill="#384765"/>
+													</svg>
+												</span>
+												<button class="feature-detail__item-drop__show-more hover-btn__v2 v3_a"
+													data-toggle="collapse"
+													data-target="#collapseFeature-15"
+													aria-expanded="true"
+													aria-controls="collapseFeature-15"
+													>
+													<svg xmlns="http://www.w3.org/2000/svg" width="3.726" height="6.536" viewBox="0 0 3.726 6.536">
+														<defs>
+															<style>.a{fill:#fff;}</style>
+														</defs>
+														<g transform="translate(0 6.536) rotate(-90)">
+															<path class="a" d="M3.268,3.726a.456.456,0,0,1-.324-.134L.134.781A.458.458,0,0,1,.781.134L3.268,2.621,5.755.134A.458.458,0,0,1,6.4.781L3.592,3.592A.456.456,0,0,1,3.268,3.726Z"/>
+														</g>
+													</svg>
+												</button>
+												</div>
+											</div>
+											<div class="col-2 feature-product__item-image a__simple">
+												<div class="feature-detail__item-drop"
+												data-feature="feature-item"
+												data-container="#collapseFeature-parent-24"
+												data-toggle="tooltip" data-container="body" data-placement="top" title="Simple name"
+												>
+												<img src="../../images/lock_product-thumb.png" class="img-fluid selected-item-border" alt="">
+												<span class="eye_top-right__selected">
+													<svg xmlns="http://www.w3.org/2000/svg" width="22.47" height="16.375" viewBox="0 0 27.47 16.375">
+														<path id="dewfew" d="M13.735,98.725c-5.248,0-10.008,2.871-13.52,7.535a1.087,1.087,0,0,0,0,1.3c3.512,4.67,8.272,7.541,13.52,7.541s10.008-2.871,13.52-7.535a1.087,1.087,0,0,0,0-1.3C23.743,101.6,18.983,98.725,13.735,98.725Zm.376,13.953a5.778,5.778,0,1,1,5.389-5.389A5.781,5.781,0,0,1,14.111,112.678Zm-.174-2.664a3.111,3.111,0,1,1,2.905-2.905A3.106,3.106,0,0,1,13.937,110.014Z" transform="translate(0 -98.725)" fill="#384765"/>
+													</svg>
+												</span>
+												</div>
+											</div>
+											<div class="col-2 feature-product__item-image a__simple">
+												<div class="feature-detail__item-drop"
+												data-feature="feature-item"
+												data-container="#collapseFeature-parent-24"
+												data-toggle="tooltip" data-container="body" data-placement="top" title="Simple name"
+												>
+												<img src="../../images/lock_product-thumb.png" class="img-fluid selected-item-border" alt="">
+												<span class="eye_top-right__selected">
+													<svg xmlns="http://www.w3.org/2000/svg" width="22.47" height="16.375" viewBox="0 0 27.47 16.375">
+														<path id="dewfew" d="M13.735,98.725c-5.248,0-10.008,2.871-13.52,7.535a1.087,1.087,0,0,0,0,1.3c3.512,4.67,8.272,7.541,13.52,7.541s10.008-2.871,13.52-7.535a1.087,1.087,0,0,0,0-1.3C23.743,101.6,18.983,98.725,13.735,98.725Zm.376,13.953a5.778,5.778,0,1,1,5.389-5.389A5.781,5.781,0,0,1,14.111,112.678Zm-.174-2.664a3.111,3.111,0,1,1,2.905-2.905A3.106,3.106,0,0,1,13.937,110.014Z" transform="translate(0 -98.725)" fill="#384765"/>
+													</svg>
+												</span>
+												</div>
+											</div>
+											<div class="col-2 feature-product__item-image a__simple">
+												<div class="feature-detail__item-drop"
+												data-feature="feature-item"
+												data-container="#collapseFeature-parent-24"
+												data-toggle="tooltip" data-container="body" data-placement="top" title="Simple name"
+												>
+												<img src="../../images/lock_product-thumb.png" class="img-fluid selected-item-border" alt="">
+												<span class="eye_top-right__selected">
+													<svg xmlns="http://www.w3.org/2000/svg" width="22.47" height="16.375" viewBox="0 0 27.47 16.375">
+														<path id="dewfew" d="M13.735,98.725c-5.248,0-10.008,2.871-13.52,7.535a1.087,1.087,0,0,0,0,1.3c3.512,4.67,8.272,7.541,13.52,7.541s10.008-2.871,13.52-7.535a1.087,1.087,0,0,0,0-1.3C23.743,101.6,18.983,98.725,13.735,98.725Zm.376,13.953a5.778,5.778,0,1,1,5.389-5.389A5.781,5.781,0,0,1,14.111,112.678Zm-.174-2.664a3.111,3.111,0,1,1,2.905-2.905A3.106,3.106,0,0,1,13.937,110.014Z" transform="translate(0 -98.725)" fill="#384765"/>
+													</svg>
+												</span>
+												</div>
+											</div>
+											<div
+												id="collapseFeature-15" class="border-nd_hove_nd collapseFeature-opacity_class collapse show border-nd_hove_nd"
+												aria-labelledby="headingOne"
+												data-parent="#collapseFeature-parent-2"
+												>
+												<div class="row dropdown-items">
+												<div class="col-2 feature-product__item-image">
+													<div class="feature-detail__item-drop" data-feature="feature-item" data-container="#collapseFeature-parent-2">
+														<img src="../../images/lock_product-thumb.png" class="img-fluid selected-item-border" alt="">
+														<span class="eye_top-right__selected">
+															<svg xmlns="http://www.w3.org/2000/svg" width="22.47" height="16.375" viewBox="0 0 27.47 16.375">
+															<path id="dewfew" d="M13.735,98.725c-5.248,0-10.008,2.871-13.52,7.535a1.087,1.087,0,0,0,0,1.3c3.512,4.67,8.272,7.541,13.52,7.541s10.008-2.871,13.52-7.535a1.087,1.087,0,0,0,0-1.3C23.743,101.6,18.983,98.725,13.735,98.725Zm.376,13.953a5.778,5.778,0,1,1,5.389-5.389A5.781,5.781,0,0,1,14.111,112.678Zm-.174-2.664a3.111,3.111,0,1,1,2.905-2.905A3.106,3.106,0,0,1,13.937,110.014Z" transform="translate(0 -98.725)" fill="#384765"/>
+															</svg>
+														</span>
+													</div>
+												</div>
+												<div class="col-2 feature-product__item-image">
+													<div class="feature-detail__item-drop" data-feature="feature-item" data-container="#collapseFeature-parent-2">
+														<img src="../../images/lock_product-thumb.png" class="img-fluid selected-item-border" alt="">
+														<span class="eye_top-right__selected">
+															<svg xmlns="http://www.w3.org/2000/svg" width="22.47" height="16.375" viewBox="0 0 27.47 16.375">
+															<path id="dewfew" d="M13.735,98.725c-5.248,0-10.008,2.871-13.52,7.535a1.087,1.087,0,0,0,0,1.3c3.512,4.67,8.272,7.541,13.52,7.541s10.008-2.871,13.52-7.535a1.087,1.087,0,0,0,0-1.3C23.743,101.6,18.983,98.725,13.735,98.725Zm.376,13.953a5.778,5.778,0,1,1,5.389-5.389A5.781,5.781,0,0,1,14.111,112.678Zm-.174-2.664a3.111,3.111,0,1,1,2.905-2.905A3.106,3.106,0,0,1,13.937,110.014Z" transform="translate(0 -98.725)" fill="#384765"/>
+															</svg>
+														</span>
+													</div>
+												</div>
+												<div class="col-2 feature-product__item-image">
+													<div class="feature-detail__item-drop" data-feature="feature-item" data-container="#collapseFeature-parent-2">
+														<img src="../../images/lock_product-thumb.png" class="img-fluid selected-item-border" alt="">
+														<span class="eye_top-right__selected">
+															<svg xmlns="http://www.w3.org/2000/svg" width="22.47" height="16.375" viewBox="0 0 27.47 16.375">
+															<path id="dewfew" d="M13.735,98.725c-5.248,0-10.008,2.871-13.52,7.535a1.087,1.087,0,0,0,0,1.3c3.512,4.67,8.272,7.541,13.52,7.541s10.008-2.871,13.52-7.535a1.087,1.087,0,0,0,0-1.3C23.743,101.6,18.983,98.725,13.735,98.725Zm.376,13.953a5.778,5.778,0,1,1,5.389-5.389A5.781,5.781,0,0,1,14.111,112.678Zm-.174-2.664a3.111,3.111,0,1,1,2.905-2.905A3.106,3.106,0,0,1,13.937,110.014Z" transform="translate(0 -98.725)" fill="#384765"/>
+															</svg>
+														</span>
+													</div>
+												</div>
+												<div class="col-2 feature-product__item-image">
+													<div class="feature-detail__item-drop" data-feature="feature-item" data-container="#collapseFeature-parent-2">
+														<img src="../../images/lock_product-thumb.png" class="img-fluid selected-item-border" alt="">
+														<span class="eye_top-right__selected">
+															<svg xmlns="http://www.w3.org/2000/svg" width="22.47" height="16.375" viewBox="0 0 27.47 16.375">
+															<path id="dewfew" d="M13.735,98.725c-5.248,0-10.008,2.871-13.52,7.535a1.087,1.087,0,0,0,0,1.3c3.512,4.67,8.272,7.541,13.52,7.541s10.008-2.871,13.52-7.535a1.087,1.087,0,0,0,0-1.3C23.743,101.6,18.983,98.725,13.735,98.725Zm.376,13.953a5.778,5.778,0,1,1,5.389-5.389A5.781,5.781,0,0,1,14.111,112.678Zm-.174-2.664a3.111,3.111,0,1,1,2.905-2.905A3.106,3.106,0,0,1,13.937,110.014Z" transform="translate(0 -98.725)" fill="#384765"/>
+															</svg>
+														</span>
+													</div>
+												</div>
+												<div class="col-2 feature-product__item-image">
+													<div class="feature-detail__item-drop" data-feature="feature-item" data-container="#collapseFeature-parent-2">
+														<img src="../../images/lock_product-thumb.png" class="img-fluid selected-item-border" alt="">
+														<span class="eye_top-right__selected">
+															<svg xmlns="http://www.w3.org/2000/svg" width="22.47" height="16.375" viewBox="0 0 27.47 16.375">
+															<path id="dewfew" d="M13.735,98.725c-5.248,0-10.008,2.871-13.52,7.535a1.087,1.087,0,0,0,0,1.3c3.512,4.67,8.272,7.541,13.52,7.541s10.008-2.871,13.52-7.535a1.087,1.087,0,0,0,0-1.3C23.743,101.6,18.983,98.725,13.735,98.725Zm.376,13.953a5.778,5.778,0,1,1,5.389-5.389A5.781,5.781,0,0,1,14.111,112.678Zm-.174-2.664a3.111,3.111,0,1,1,2.905-2.905A3.106,3.106,0,0,1,13.937,110.014Z" transform="translate(0 -98.725)" fill="#384765"/>
+															</svg>
+														</span>
+													</div>
+												</div>
+												<div class="col-2 feature-product__item-image">
+													<div class="feature-detail__item-drop" data-feature="feature-item" data-container="#collapseFeature-parent-2">
+														<img src="../../images/lock_product-thumb.png" class="img-fluid selected-item-border" alt="">
+														<span class="eye_top-right__selected">
+															<svg xmlns="http://www.w3.org/2000/svg" width="22.47" height="16.375" viewBox="0 0 27.47 16.375">
+															<path id="dewfew" d="M13.735,98.725c-5.248,0-10.008,2.871-13.52,7.535a1.087,1.087,0,0,0,0,1.3c3.512,4.67,8.272,7.541,13.52,7.541s10.008-2.871,13.52-7.535a1.087,1.087,0,0,0,0-1.3C23.743,101.6,18.983,98.725,13.735,98.725Zm.376,13.953a5.778,5.778,0,1,1,5.389-5.389A5.781,5.781,0,0,1,14.111,112.678Zm-.174-2.664a3.111,3.111,0,1,1,2.905-2.905A3.106,3.106,0,0,1,13.937,110.014Z" transform="translate(0 -98.725)" fill="#384765"/>
+															</svg>
+														</span>
+													</div>
+												</div>
+												<div class="col-2 feature-product__item-image">
+													<div class="feature-detail__item-drop" data-feature="feature-item" data-container="#collapseFeature-parent-2">
+														<img src="../../images/lock_product-thumb.png" class="img-fluid selected-item-border" alt="">
+														<span class="eye_top-right__selected">
+															<svg xmlns="http://www.w3.org/2000/svg" width="22.47" height="16.375" viewBox="0 0 27.47 16.375">
+															<path id="dewfew" d="M13.735,98.725c-5.248,0-10.008,2.871-13.52,7.535a1.087,1.087,0,0,0,0,1.3c3.512,4.67,8.272,7.541,13.52,7.541s10.008-2.871,13.52-7.535a1.087,1.087,0,0,0,0-1.3C23.743,101.6,18.983,98.725,13.735,98.725Zm.376,13.953a5.778,5.778,0,1,1,5.389-5.389A5.781,5.781,0,0,1,14.111,112.678Zm-.174-2.664a3.111,3.111,0,1,1,2.905-2.905A3.106,3.106,0,0,1,13.937,110.014Z" transform="translate(0 -98.725)" fill="#384765"/>
+															</svg>
+														</span>
+													</div>
+												</div>
+												<div class="col-2 feature-product__item-image">
+													<div class="feature-detail__item-drop" data-feature="feature-item" data-container="#collapseFeature-parent-2">
+														<img src="../../images/lock_product-thumb.png" class="img-fluid selected-item-border" alt="">
+														<span class="eye_top-right__selected">
+															<svg xmlns="http://www.w3.org/2000/svg" width="22.47" height="16.375" viewBox="0 0 27.47 16.375">
+															<path id="dewfew" d="M13.735,98.725c-5.248,0-10.008,2.871-13.52,7.535a1.087,1.087,0,0,0,0,1.3c3.512,4.67,8.272,7.541,13.52,7.541s10.008-2.871,13.52-7.535a1.087,1.087,0,0,0,0-1.3C23.743,101.6,18.983,98.725,13.735,98.725Zm.376,13.953a5.778,5.778,0,1,1,5.389-5.389A5.781,5.781,0,0,1,14.111,112.678Zm-.174-2.664a3.111,3.111,0,1,1,2.905-2.905A3.106,3.106,0,0,1,13.937,110.014Z" transform="translate(0 -98.725)" fill="#384765"/>
+															</svg>
+														</span>
+													</div>
+												</div>
+												<div class="col-2 feature-product__item-image">
+													<div class="feature-detail__item-drop" data-feature="feature-item" data-container="#collapseFeature-parent-2">
+														<img src="../../images/lock_product-thumb.png" class="img-fluid selected-item-border" alt="">
+														<span class="eye_top-right__selected">
+															<svg xmlns="http://www.w3.org/2000/svg" width="22.47" height="16.375" viewBox="0 0 27.47 16.375">
+															<path id="dewfew" d="M13.735,98.725c-5.248,0-10.008,2.871-13.52,7.535a1.087,1.087,0,0,0,0,1.3c3.512,4.67,8.272,7.541,13.52,7.541s10.008-2.871,13.52-7.535a1.087,1.087,0,0,0,0-1.3C23.743,101.6,18.983,98.725,13.735,98.725Zm.376,13.953a5.778,5.778,0,1,1,5.389-5.389A5.781,5.781,0,0,1,14.111,112.678Zm-.174-2.664a3.111,3.111,0,1,1,2.905-2.905A3.106,3.106,0,0,1,13.937,110.014Z" transform="translate(0 -98.725)" fill="#384765"/>
+															</svg>
+														</span>
+													</div>
+												</div>
+												<div class="col-2 feature-product__item-image">
+													<div class="feature-detail__item-drop" data-feature="feature-item" data-container="#collapseFeature-parent-2">
+														<img src="../../images/lock_product-thumb.png" class="img-fluid selected-item-border" alt="">
+														<span class="eye_top-right__selected">
+															<svg xmlns="http://www.w3.org/2000/svg" width="22.47" height="16.375" viewBox="0 0 27.47 16.375">
+															<path id="dewfew" d="M13.735,98.725c-5.248,0-10.008,2.871-13.52,7.535a1.087,1.087,0,0,0,0,1.3c3.512,4.67,8.272,7.541,13.52,7.541s10.008-2.871,13.52-7.535a1.087,1.087,0,0,0,0-1.3C23.743,101.6,18.983,98.725,13.735,98.725Zm.376,13.953a5.778,5.778,0,1,1,5.389-5.389A5.781,5.781,0,0,1,14.111,112.678Zm-.174-2.664a3.111,3.111,0,1,1,2.905-2.905A3.106,3.106,0,0,1,13.937,110.014Z" transform="translate(0 -98.725)" fill="#384765"/>
+															</svg>
+														</span>
+													</div>
+												</div>
+												</div>
+											</div>
+											<div class="col-2 feature-product__item-image a__simple">
+												<div class="feature-detail__item-drop"
+												data-feature="feature-item"
+												data-container="#collapseFeature-parent-24"
+												data-toggle="tooltip" data-container="body" data-placement="top" title="Simple name"
+												>
+												<img src="../../images/lock_product-thumb.png" class="img-fluid selected-item-border" alt="">
+												<span class="eye_top-right__selected">
+													<svg xmlns="http://www.w3.org/2000/svg" width="22.47" height="16.375" viewBox="0 0 27.47 16.375">
+														<path id="dewfew" d="M13.735,98.725c-5.248,0-10.008,2.871-13.52,7.535a1.087,1.087,0,0,0,0,1.3c3.512,4.67,8.272,7.541,13.52,7.541s10.008-2.871,13.52-7.535a1.087,1.087,0,0,0,0-1.3C23.743,101.6,18.983,98.725,13.735,98.725Zm.376,13.953a5.778,5.778,0,1,1,5.389-5.389A5.781,5.781,0,0,1,14.111,112.678Zm-.174-2.664a3.111,3.111,0,1,1,2.905-2.905A3.106,3.106,0,0,1,13.937,110.014Z" transform="translate(0 -98.725)" fill="#384765"/>
+													</svg>
+												</span>
+												</div>
+											</div>
+											<div class="col-2 feature-product__item-image a__simple">
+												<div class="feature-detail__item-drop"
+												data-feature="feature-item"
+												data-container="#collapseFeature-parent-24"
+												data-toggle="tooltip" data-container="body" data-placement="top" title="Simple name"
+												>
+												<img src="../../images/lock_product-thumb.png" class="img-fluid selected-item-border" alt="">
+												<span class="eye_top-right__selected">
+													<svg xmlns="http://www.w3.org/2000/svg" width="22.47" height="16.375" viewBox="0 0 27.47 16.375">
+														<path id="dewfew" d="M13.735,98.725c-5.248,0-10.008,2.871-13.52,7.535a1.087,1.087,0,0,0,0,1.3c3.512,4.67,8.272,7.541,13.52,7.541s10.008-2.871,13.52-7.535a1.087,1.087,0,0,0,0-1.3C23.743,101.6,18.983,98.725,13.735,98.725Zm.376,13.953a5.778,5.778,0,1,1,5.389-5.389A5.781,5.781,0,0,1,14.111,112.678Zm-.174-2.664a3.111,3.111,0,1,1,2.905-2.905A3.106,3.106,0,0,1,13.937,110.014Z" transform="translate(0 -98.725)" fill="#384765"/>
+													</svg>
+												</span>
+												</div>
+											</div>
+											<div class="col-2 feature-product__item-image a__simple">
+												<div class="feature-detail__item-drop"
+												data-feature="feature-item"
+												data-container="#collapseFeature-parent-24"
+												data-toggle="tooltip" data-container="body" data-placement="top" title="Simple name"
+												>
+												<img src="../../images/lock_product-thumb.png" class="img-fluid selected-item-border" alt="">
+												<span class="eye_top-right__selected">
+													<svg xmlns="http://www.w3.org/2000/svg" width="22.47" height="16.375" viewBox="0 0 27.47 16.375">
+														<path id="dewfew" d="M13.735,98.725c-5.248,0-10.008,2.871-13.52,7.535a1.087,1.087,0,0,0,0,1.3c3.512,4.67,8.272,7.541,13.52,7.541s10.008-2.871,13.52-7.535a1.087,1.087,0,0,0,0-1.3C23.743,101.6,18.983,98.725,13.735,98.725Zm.376,13.953a5.778,5.778,0,1,1,5.389-5.389A5.781,5.781,0,0,1,14.111,112.678Zm-.174-2.664a3.111,3.111,0,1,1,2.905-2.905A3.106,3.106,0,0,1,13.937,110.014Z" transform="translate(0 -98.725)" fill="#384765"/>
+													</svg>
+												</span>
+												</div>
+											</div>
+											<div class="col-2 feature-product__item-image a__simple">
+												<div class="feature-detail__item-drop"
+												data-feature="feature-item"
+												data-container="#collapseFeature-parent-24"
+												data-toggle="tooltip" data-container="body" data-placement="top" title="Simple name"
+												>
+												<img src="../../images/lock_product-thumb.png" class="img-fluid selected-item-border" alt="">
+												<span class="eye_top-right__selected">
+													<svg xmlns="http://www.w3.org/2000/svg" width="22.47" height="16.375" viewBox="0 0 27.47 16.375">
+														<path id="dewfew" d="M13.735,98.725c-5.248,0-10.008,2.871-13.52,7.535a1.087,1.087,0,0,0,0,1.3c3.512,4.67,8.272,7.541,13.52,7.541s10.008-2.871,13.52-7.535a1.087,1.087,0,0,0,0-1.3C23.743,101.6,18.983,98.725,13.735,98.725Zm.376,13.953a5.778,5.778,0,1,1,5.389-5.389A5.781,5.781,0,0,1,14.111,112.678Zm-.174-2.664a3.111,3.111,0,1,1,2.905-2.905A3.106,3.106,0,0,1,13.937,110.014Z" transform="translate(0 -98.725)" fill="#384765"/>
+													</svg>
+												</span>
+												</div>
+											</div>
+											<div class="col-2 feature-product__item-image a__simple">
+												<div class="feature-detail__item-drop"
+												data-feature="feature-item"
+												data-container="#collapseFeature-parent-24"
+												data-toggle="tooltip" data-container="body" data-placement="top" title="Simple name"
+												>
+												<img src="../../images/lock_product-thumb.png" class="img-fluid selected-item-border" alt="">
+												<span class="eye_top-right__selected">
+													<svg xmlns="http://www.w3.org/2000/svg" width="22.47" height="16.375" viewBox="0 0 27.47 16.375">
+														<path id="dewfew" d="M13.735,98.725c-5.248,0-10.008,2.871-13.52,7.535a1.087,1.087,0,0,0,0,1.3c3.512,4.67,8.272,7.541,13.52,7.541s10.008-2.871,13.52-7.535a1.087,1.087,0,0,0,0-1.3C23.743,101.6,18.983,98.725,13.735,98.725Zm.376,13.953a5.778,5.778,0,1,1,5.389-5.389A5.781,5.781,0,0,1,14.111,112.678Zm-.174-2.664a3.111,3.111,0,1,1,2.905-2.905A3.106,3.106,0,0,1,13.937,110.014Z" transform="translate(0 -98.725)" fill="#384765"/>
+													</svg>
+												</span>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- /MENU WITH ADDITIONAL FEATURES-->
+									</div>
+								</div>
+							</div>
+						</div>
+						</div>
+					</div>
+					<hr>
+					<div class="modal-footer">
+						<div class="house dropdown dropdown__filter" style="min-width: 135px">
+						<label class="dropdown-label dropdown-label__filter" data-default-text="Choose house">Choose house</label><span class="arr"></span>
+						<div class="dropdown-list">
+							<div class="checkbox">
+								<input type="radio" class="custom-checkbox" id="checkbox-21" name="value" value="My house title 1">
+								<label for="checkbox-21">
+								<span class="checkbox-label__text">
+								My house title 1
+								</span>
+								</label>
+							</div>
+							<div class="checkbox">
+								<input type="radio" class="custom-checkbox" id="checkbox-22" name="value" value="My house title 2">
+								<label for="checkbox-22">
+								<span class="checkbox-label__text">
+								My house title 2
+								</span>
+								</label>
+							</div>
+							<div class="checkbox">
+								<input type="radio" class="custom-checkbox" id="checkbox-23" name="value" value="My house title 3">
+								<label for="checkbox-23">
+								<span class="checkbox-label__text">
+								My house title 3
+								</span>
+								</label>
+							</div>
+							<div class="checkbox">
+								<input type="radio" class="custom-checkbox" id="checkbox-24" name="value" value="My house title 4">
+								<label for="checkbox-24">
+								<span class="checkbox-label__text">
+								My house title 4
+								</span>
+								</label>
+							</div>
+						</div>
+						</div>
+						<div class="room dropdown dropdown__filter val" style="min-width: 135px">
+						<label class="dropdown-label dropdown-label__filter" data-default-text="Choose room">Choose room</label><span class="arr"></span>
+						<div class="dropdown-list">
+							<div class="checkbox">
+								<input type="radio" class="custom-checkbox" id="checkbox-21" name="value" value="Living Room">
+								<label for="checkbox-21">
+								<span class="checkbox-label__text">
+								Living Room
+								</span>
+								</label>
+							</div>
+							<div class="checkbox">
+								<input type="radio" class="custom-checkbox" id="checkbox-22" name="value" value="Bedroom">
+								<label for="checkbox-22">
+								<span class="checkbox-label__text">
+								Bedroom
+								</span>
+								</label>
+							</div>
+							<div class="checkbox">
+								<input type="radio" class="custom-checkbox" id="checkbox-23" name="value" value="Kitchen">
+								<label for="checkbox-23">
+								<span class="checkbox-label__text">
+								Kitchen
+								</span>
+								</label>
+							</div>
+							<div class="checkbox">
+								<input type="radio" class="custom-checkbox" id="checkbox-24" name="value" value="Dining room">
+								<label for="checkbox-24">
+								<span class="checkbox-label__text">
+								Dining room
+								</span>
+								</label>
+							</div>
+							<div class="checkbox">
+								<input type="radio" class="custom-checkbox" id="checkbox-24" name="value" value="Family room">
+								<label for="checkbox-24">
+								<span class="checkbox-label__text">
+								Family room
+								</span>
+								</label>
+							</div>
+							<div class="checkbox">
+								<input type="radio" class="custom-checkbox" id="checkbox-24" name="value" value="Guest room">
+								<label for="checkbox-24">
+								<span class="checkbox-label__text">
+								Guest room
+								</span>
+								</label>
+							</div>
+							<div class="checkbox">
+								<input type="radio" class="custom-checkbox" id="checkbox-24" name="value" value="Bathroom room">
+								<label for="checkbox-24">
+								<span class="checkbox-label__text">
+								Bathroom room
+								</span>
+								</label>
+							</div>
+							<div class="checkbox">
+								<input type="radio" class="custom-checkbox" id="checkbox-24" name="value" value="Home Office">
+								<label for="checkbox-24">
+								<span class="checkbox-label__text">
+								Home Office
+								</span>
+								</label>
+							</div>
+							<div class="checkbox">
+								<input type="radio" class="custom-checkbox" id="checkbox-24" name="value" value="Family room">
+								<label for="checkbox-24">
+								<span class="checkbox-label__text">
+								Family room
+								</span>
+								</label>
+							</div>
+							<div class="checkbox">
+								<input type="radio" class="custom-checkbox" id="checkbox-24" name="value" value="Guest room">
+								<label for="checkbox-24">
+								<span class="checkbox-label__text">
+								Guest room
+								</span>
+								</label>
+							</div>
+							<div class="checkbox">
+								<input type="radio" class="custom-checkbox" id="checkbox-24" name="value" value="Bathroom room">
+								<label for="checkbox-24">
+								<span class="checkbox-label__text">
+								Bathroom room
+								</span>
+								</label>
+							</div>
+							<div class="checkbox">
+								<input type="radio" class="custom-checkbox" id="checkbox-24" name="value" value="Home Office">
+								<label for="checkbox-24">
+								<span class="checkbox-label__text">
+								Home Office
+								</span>
+								</label>
+							</div>
+						</div>
+						</div>
+						<form action="">
+						<input type="text" id="fname" style="visibility: hidden;" placeholder="Give a spec sheet name" name="fname">
+						</form>
+						<button type="button" class="confirm">CONFIRM</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
 		<!-- Modal New house -->
 		<div class="modal houses-modal fade" id="newHouse" tabindex="-1" role="dialog" aria-labelledby="#newHouseTitle" aria-hidden="true">
 			<div class="modal-dialog modal-dialog-centered" role="document">
@@ -1046,7 +2899,7 @@
 											<img src="../../images/photo.svg" alt="" class="account-block__form--house-image-defaltImg js-my-house-defalt-img">
 											
 											<a href="" data-lightbox="roadtrip" data-title="Lorem ipsum">
-												<img src="xxxHTMLLINKxxx0.45183294730898280.7507461113417506xxx" alt="" class="js-my-house-img-view img-fluid" style="display: none;">
+												<img src="xxxHTMLLINKxxx0.171331136844868230.8467133492124939xxx" alt="" class="js-my-house-img-view img-fluid" style="display: none;">
 											</a>
 										</div>
 									</div>
@@ -1508,5 +3361,6 @@
 				</div>
 			</div>
 		</div>
+		
 	<script src="../../app.js"></script></body>
 </html>
