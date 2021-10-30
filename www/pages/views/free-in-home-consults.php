@@ -1,11 +1,20 @@
-
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+<title>ClosetsToGo</title>
+<meta name="description" content="free in home consults">
+<link href="<?php echo SITEROOT; ?>app.css" rel="stylesheet">
+</head>
+<body class="datapicker-block">
 <?php	
-require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php"); 	
+require_once($real_root."/includes/header.php"); 	
 ?>	
 
 <section class="first-fixed-block covid-block clearfix consult-block pb-0">
-<figure class="col-12 first-fixed-block__img-group" style="background-image: url('../../images/free-in-home-consults-header.png');">
+<figure class="col-12 first-fixed-block__img-group" style="background-image: url('<?php echo SITEROOT; ?>images/free-in-home-consults-header.png');">
 <figcaption class="first-fixed-block__img-group--text-block">
 <div class="wrapper">
 <h1 class="first-fixed-block__img-group--heading">
@@ -98,7 +107,7 @@ no sea takimata sanctus est Lorem ipsum dolor sit amet
 							<div class="row">
 								<div class="col-12 col-lg-4">
 									<div class="consult-wrap__image-block right-border h-lg-100">
-										<img src="../../images/house.svg" alt="" class="consult-wrap__image-block--img img-fluid">
+										<img src="<?php echo SITEROOT; ?>images/house.svg" alt="" class="consult-wrap__image-block--img img-fluid">
 										<p class="consult-wrap__image-block--heading">
 In home consultation
 										</p>
@@ -135,7 +144,7 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
 							<div class="row">
 								<div class="col-12 col-lg-4">
 									<div class="consult-wrap__image-block right-border h-lg-100">
-										<img src="../../images/virtual-reality.svg" alt="" class="consult-wrap__image-block--img img-fluid">
+										<img src="<?php echo SITEROOT; ?>images/virtual-reality.svg" alt="" class="consult-wrap__image-block--img img-fluid">
 										<p class="consult-wrap__image-block--heading">
 <?php
 echo $p_2_head;
@@ -312,7 +321,7 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
 								data-date-focusOnShow="false"
     							data-date-ignoreReadonly="true"
 								readonly="readonly"/>
-								<span class="datapicker-block__image"><img src="../../images/CAlendar.svg" alt=""></span>
+								<span class="datapicker-block__image"><img src="<?php echo SITEROOT; ?>images/CAlendar.svg" alt=""></span>
 							</div>
 
 							<h4 class="home-consult-form__heading bordered-heading">Storage Areas <span>Which type of storage area are you interested in?</span></h4>
@@ -405,7 +414,7 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
 								<td class="image-name example.jpg">example.jpg</td>
 								<td class="image-size">30 kb</td>
 								<td class="success-or-error">
-									<img src="../../images/checked.svg" alt="">
+									<img src="<?php echo SITEROOT; ?>images/checked.svg" alt="">
 								</td>
 							</tr>
 							<tr>
@@ -416,7 +425,7 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
 								<td class="image-name example1.jpg">example1.jpg</td>
 								<td class="image-size">124 kb</td>
 								<td class="success-or-error">
-									<img src="../../images/cancel.svg" alt="">
+									<img src="<?php echo SITEROOT; ?>images/cancel.svg" alt="">
 								</td>
 							</tr>
 							</tbody>
@@ -483,7 +492,7 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
 							<div class="col-12 col-lg-4 catalog-block__content">
 								<figure>
 									<div class="catalog-block__content--image">
-										<img src="../../images/about-us-choices.png" alt="">
+										<img src="<?php echo SITEROOT; ?>images/about-us-choices.png" alt="">
 									</div>
 									<figcaption>
 										<h2>Choices</h2>
@@ -495,7 +504,7 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
 							<div class="col-12 col-lg-4 catalog-block__content">
 								<figure>
 									<div class="catalog-block__content--image">
-										<img src="../../images/about-us-lifetime.png" alt="">
+										<img src="<?php echo SITEROOT; ?>images/about-us-lifetime.png" alt="">
 									</div>
 									<figcaption>
 										<h2>Lifetime Warranty</h2>
@@ -510,7 +519,7 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
 							<div class="col-12 col-lg-4 catalog-block__content">
 								<figure>
 									<div class="catalog-block__content--image">
-										<img src="../../images/about-us-showrom.png" alt="">
+										<img src="<?php echo SITEROOT; ?>images/about-us-showrom.png" alt="">
 									</div>
 									<figcaption>
 										<h2>Showrom-Design Center</h2>
@@ -533,7 +542,7 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
 
 		<div class="scrollToTopBlock">
 			<div class="people-working">
-				<img src="../../images/people-working-call-center_@2x.png" alt="" class="people-working__image">
+				<img src="<?php echo SITEROOT; ?>images/people-working-call-center_@2x.png" alt="" class="people-working__image">
 	
 				<div class="people-working__wrapper">
 					<div class="people-working__content">
@@ -543,14 +552,14 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
 			</div>
 	
 			<a href="#" title="" class="scrollToTop js-to-top">
-				<img src="../../images/arrows.svg" alt="">
+				<img src="<?php echo SITEROOT; ?>images/arrows.svg" alt="">
 			</a>
 		</div>
 
 		<div class="mobile-show">
 			<div class="mobile-footer-buttons">
 				<a href="#" title="" class="mobile-footer-buttons__first">you design</a>
-				<a href="#" title="" class="mobile-footer-buttons__second"><img src="../../images/icon-save.svg" alt="" class="img-fluid"></a>
+				<a href="#" title="" class="mobile-footer-buttons__second"><img src="<?php echo SITEROOT; ?>images/icon-save.svg" alt="" class="img-fluid"></a>
 				<a href="#" title="" class="mobile-footer-buttons__third">we design</a>
 			</div>
 		</div>
@@ -560,21 +569,23 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
 
 
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'].'/includes/footer.php');
+require_once($real_root.'/includes/footer.php');
 ?>
 
 
-
 		<!-- Modal mobile first part of form -->
-		<div class="modal free-in-home-consults-modal fade" id="mobile-first-home-consult-form" tabindex="-1" role="dialog" aria-labelledby="mobile-first-home-consult-form-title" aria-hidden="true" data-replace="true">
+		<div class="modal free-in-home-consults-modal" id="mobile-first-home-consult-form" tabindex="-1" role="dialog"
+			 aria-labelledby="mobile-first-home-consult-form-title" aria-hidden="true" data-replace="true">
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
 					<div class="modal-header fixed-modal-header">
-						<h5 class="modal-title free-in-home-consults-modal__heading" id="mobile-first-home-consult-form-title">
+						<h5 class="modal-title free-in-home-consults-modal__heading"
+							id="mobile-first-home-consult-form-title">
 							<span class="current-form">1/3</span>
 							<span class="js-heading"></span>
 						</h5>
-						<button type="button" class="close free-in-home-consults-modal-close" data-dismiss="modal" aria-label="Close">
+						<button type="button" class="close free-in-home-consults-modal-close" data-dismiss="modal"
+								aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
 					</div>
@@ -591,14 +602,17 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/includes/footer.php');
 							<span class="current-form-block__elements">3</span>
 						</div>
 						<button type="button" class="fixed-modal-footer__botton"
-							data-dismiss="modal"
-							data-toggle="modal" 
-							data-target="#mobile-second-home-consult-form"
-							id="js-mobile-second-home-consult-form-btn">
+								data-dismiss="modal"
+								data-toggle="modal"
+								data-target="#mobile-second-home-consult-form"
+								id="js-mobile-second-home-consult-form-btn">
 							Next
 							<span>
-								<svg xmlns="http://www.w3.org/2000/svg" width="20.8" height="14.623" viewBox="0 0 20.8 14.623">
-									<path id="left-arrow_3_" data-name="left-arrow(3)" d="M14.014,4.9a.737.737,0,1,0-1.048,1.038l5.314,5.314H.744A.738.738,0,0,0,0,11.982a.747.747,0,0,0,.744.744H18.281l-5.314,5.3a.752.752,0,0,0,0,1.048.734.734,0,0,0,1.048,0l6.573-6.573a.739.739,0,0,0,0-1.038Z" transform="translate(0.001 -4.676)"></path>
+								<svg xmlns="http://www.w3.org/2000/svg" width="20.8" height="14.623"
+									 viewBox="0 0 20.8 14.623">
+									<path id="left-arrow_3_" data-name="left-arrow(3)"
+										  d="M14.014,4.9a.737.737,0,1,0-1.048,1.038l5.314,5.314H.744A.738.738,0,0,0,0,11.982a.747.747,0,0,0,.744.744H18.281l-5.314,5.3a.752.752,0,0,0,0,1.048.734.734,0,0,0,1.048,0l6.573-6.573a.739.739,0,0,0,0-1.038Z"
+										  transform="translate(0.001 -4.676)"></path>
 								</svg>
 							</span>
 						</button>
@@ -607,18 +621,19 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/includes/footer.php');
 			</div>
 		</div>
 
-
-
 		<!-- Modal mobile second part of form -->
-		<div class="modal free-in-home-consults-modal fade" id="mobile-second-home-consult-form" tabindex="-1" role="dialog" aria-labelledby="mobile-second-home-consult-form-title" aria-hidden="true" data-replace="true">
+		<div class="modal free-in-home-consults-modal" id="mobile-second-home-consult-form" tabindex="-1" role="dialog"
+			 aria-labelledby="mobile-second-home-consult-form-title" aria-hidden="true" data-replace="true">
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
 					<div class="modal-header fixed-modal-header">
-						<h5 class="modal-title free-in-home-consults-modal__heading" id="mobile-second-home-consult-form-title">
+						<h5 class="modal-title free-in-home-consults-modal__heading"
+							id="mobile-second-home-consult-form-title">
 							<span class="current-form">2/3</span>
 							<span class="js-heading"></span>
 						</h5>
-						<button type="button" class="close free-in-home-consults-modal-close" data-dismiss="modal" aria-label="Close">
+						<button type="button" class="close free-in-home-consults-modal-close" data-dismiss="modal"
+								aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
 					</div>
@@ -631,24 +646,27 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/includes/footer.php');
 					<div class="modal-footer fixed-modal-footer">
 						<div class="current-form-block">
 							<button type="button" class="current-form-block__elements"
-								data-dismiss="modal"
-								data-toggle="modal" 
-								data-target="#mobile-first-home-consult-form"
-								id="js-mobile-modal-first-home-consult-form-btn">
+									data-dismiss="modal"
+									data-toggle="modal"
+									data-target="#mobile-first-home-consult-form"
+									id="js-mobile-modal-first-home-consult-form-btn">
 								1
 							</button>
 							<span class="current-form-block__elements active">2</span>
 							<span class="current-form-block__elements">3</span>
 						</div>
 						<button type="button" class="fixed-modal-footer__botton"
-							data-dismiss="modal"
-							data-toggle="modal" 
-							data-target="#mobile-third-home-consult-form"
-							id="js-mobile-third-home-consult-form-btn">
+								data-dismiss="modal"
+								data-toggle="modal"
+								data-target="#mobile-third-home-consult-form"
+								id="js-mobile-third-home-consult-form-btn">
 							Next
 							<span>
-								<svg xmlns="http://www.w3.org/2000/svg" width="20.8" height="14.623" viewBox="0 0 20.8 14.623">
-									<path id="left-arrow_3_" data-name="left-arrow(3)" d="M14.014,4.9a.737.737,0,1,0-1.048,1.038l5.314,5.314H.744A.738.738,0,0,0,0,11.982a.747.747,0,0,0,.744.744H18.281l-5.314,5.3a.752.752,0,0,0,0,1.048.734.734,0,0,0,1.048,0l6.573-6.573a.739.739,0,0,0,0-1.038Z" transform="translate(0.001 -4.676)"></path>
+								<svg xmlns="http://www.w3.org/2000/svg" width="20.8" height="14.623"
+									 viewBox="0 0 20.8 14.623">
+									<path id="left-arrow_3_" data-name="left-arrow(3)"
+										  d="M14.014,4.9a.737.737,0,1,0-1.048,1.038l5.314,5.314H.744A.738.738,0,0,0,0,11.982a.747.747,0,0,0,.744.744H18.281l-5.314,5.3a.752.752,0,0,0,0,1.048.734.734,0,0,0,1.048,0l6.573-6.573a.739.739,0,0,0,0-1.038Z"
+										  transform="translate(0.001 -4.676)"></path>
 								</svg>
 							</span>
 						</button>
@@ -657,18 +675,19 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/includes/footer.php');
 			</div>
 		</div>
 
-
-
 		<!-- Modal mobile third part of form -->
-		<div class="modal free-in-home-consults-modal fade" id="mobile-third-home-consult-form" tabindex="-1" role="dialog" aria-labelledby="mobile-third-home-consult-form-title" aria-hidden="true" data-replace="true">
+		<div class="modal free-in-home-consults-modal" id="mobile-third-home-consult-form" tabindex="-1" role="dialog"
+			 aria-labelledby="mobile-third-home-consult-form-title" aria-hidden="true" data-replace="true">
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
 					<div class="modal-header fixed-modal-header">
-						<h5 class="modal-title free-in-home-consults-modal__heading" id="mobile-third-home-consult-form-title">
+						<h5 class="modal-title free-in-home-consults-modal__heading"
+							id="mobile-third-home-consult-form-title">
 							<span class="current-form">3/3</span>
 							<span class="js-heading"></span>
 						</h5>
-						<button type="button" class="close free-in-home-consults-modal-close" data-dismiss="modal" aria-label="Close">
+						<button type="button" class="close free-in-home-consults-modal-close" data-dismiss="modal"
+								aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
 					</div>
@@ -681,24 +700,24 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/includes/footer.php');
 					<div class="modal-footer fixed-modal-footer">
 						<div class="current-form-block">
 							<button type="button" class="current-form-block__elements"
-								data-dismiss="modal"
-								data-toggle="modal" 
-								data-target="#mobile-first-home-consult-form"
-								id="js-mobile-modal-first-home-consult-form-btn">
+									data-dismiss="modal"
+									data-toggle="modal"
+									data-target="#mobile-first-home-consult-form"
+									id="js-mobile-modal-first-home-consult-form-btn">
 								1
 							</button>
 							<button type="button" class="current-form-block__elements"
-								data-dismiss="modal"
-								data-toggle="modal" 
-								data-target="#mobile-second-home-consult-form"
-								id="js-mobile-modal-second-home-consult-form-btn">
+									data-dismiss="modal"
+									data-toggle="modal"
+									data-target="#mobile-second-home-consult-form"
+									id="js-mobile-modal-second-home-consult-form-btn">
 								2
 							</button>
 							<span class="current-form-block__elements active">3</span>
 						</div>
 						<button type="button" class="fixed-modal-footer__botton--submit"
-							data-dismiss="modal"
-							id="js-mobile-home-consult-form-submit-btn">
+								data-dismiss="modal"
+								id="js-mobile-home-consult-form-submit-btn">
 							Submit your reqest
 						</button>
 					</div>
@@ -707,7 +726,8 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/includes/footer.php');
 		</div>
 
 		<!-- Modal delete -->
-		<div class="modal confirm-modal fade" id="deleteImgModal" tabindex="-1" role="dialog" aria-labelledby="#deleteImgModalTitle" aria-hidden="true">
+		<div class="modal confirm-modal fade" id="deleteImgModal" tabindex="-1" role="dialog"
+			 aria-labelledby="#deleteImgModalTitle" aria-hidden="true">
 			<div class="modal-dialog modal-sm modal-dialog-centered" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
@@ -719,22 +739,26 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/includes/footer.php');
 					<div class="modal-body">
 						<div class="account-block__form">
 							<!-- <form> -->
-								<div class="row mb-3">
-									<div class="col-12">
-										<p class="js-delete-text">You are about to delete <span style="color: #17C3C6">XXXX</span>.<br /> Are you sure that you want to continue?</p>
-									</div>
+							<div class="mb-3">
+
+								<p class="js-delete-text">You are about to delete <span
+										style="color: #17C3C6">XXXX</span>.<br/> Are you sure that you want to continue?
+								</p>
+								<div class="d-flex align-content-center justify-content-between">
+									<button type="submit" data-dismiss="modal" class="btn btn-primary mr-2">cancel
+									</button>
+									<button type="submit" data-dismiss="modal"
+											class="btn btn-secondary js-delete-uploaded-img-btn ml-2">continue
+									</button>
 								</div>
-								<div class="row">
-									<div class="col-6">
-										<button type="submit" data-dismiss="modal" class="btn btn-primary mw-100">cancel</button>
-									</div>
-									<div class="col-6">
-										<button type="submit" data-dismiss="modal" class="btn btn-secondary js-delete-uploaded-img-btn mw-100">continue</button>
-									</div>
-								</div>
+							</div>
 							<!-- </form> -->
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+
+<script src="<?php echo SITEROOT; ?>app.js"></script>
+</body>
+</html>

@@ -6,7 +6,6 @@ if(!is_numeric($idea_folder_id)) $idea_folder_id=0;
 //echo $idea_folder_id;
 //exit;
 
-
 $db = $dbCustom->getDbConnect(CART_DATABASE);
 
 $sql = "SELECT idea_folder.name

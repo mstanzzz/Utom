@@ -1,10 +1,10 @@
 <?php
-require_once("../../includes/config.php");
-require_once("../../includes/db_connect.php"); 
-//require_once("../../includes/accessory_cart_functions.php");
-require_once("../../includes/class.shopping_cart.php");
-//require_once("../../includes/class.shopping_cart_item.php");
-//require_once("../../includes/class.shipping.php");
+require_once("<?php echo SITEROOT; ?>includes/config.php");
+require_once("<?php echo SITEROOT; ?>includes/db_connect.php"); 
+//require_once("<?php echo SITEROOT; ?>includes/accessory_cart_functions.php");
+require_once("<?php echo SITEROOT; ?>includes/class.shopping_cart.php");
+//require_once("<?php echo SITEROOT; ?>includes/class.shopping_cart_item.php");
+//require_once("<?php echo SITEROOT; ?>includes/class.shipping.php");
 
 
 $item_id = $_GET["item_id"];
@@ -13,7 +13,7 @@ $item_id = $_GET["item_id"];
 
 $cart = new ShoppingCart;		
 
-$cart->removeItem($item_id);
+$cart->removeItem($dbCustom,$item_id);
 
 /*
 $shipping = new Shipping;
@@ -23,7 +23,7 @@ if($shipping->getShipType() == 'carrier'){
 }
 */
 
-//$cart->saveCart();
+//$cart->saveCart($dbCustom);
 
 //echo "111";
 

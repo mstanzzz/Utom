@@ -1,10 +1,10 @@
 <?php	
 //setcookie('ctg_store_view','list',time() + (86400 * 360), '/');								
-require_once("../../includes/config.php");
-require_once("../../includes/db_connect.php"); 
-require_once("../../includes/accessory_cart_functions.php");
+require_once("<?php echo SITEROOT; ?>includes/config.php");
+require_once("<?php echo SITEROOT; ?>includes/db_connect.php"); 
+require_once("<?php echo SITEROOT; ?>includes/accessory_cart_functions.php");
 
-require_once("../../includes/class.search.php");
+require_once("<?php echo SITEROOT; ?>includes/class.search.php");
 
 if(!isset($search)) $search = new Search;
 
@@ -55,7 +55,7 @@ $(document).ready(function() {
 				//item id
 				var i_id = $(this).find(".e_sub").attr('id');
 
-				t_url = "<?php echo SITEROOT; ?>//app/";
+				t_url = "<?php echo SITEROOT; ?>/app/";
 				t_url += "#direct="+i_id;
 				window.location = t_url;
 			}		

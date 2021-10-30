@@ -1,10 +1,10 @@
 <?php			
 setcookie('ctg_store_view','list',time() + (86400 * 360), '/');			
-require_once("../../includes/config.php");
-require_once("../../includes/db_connect.php"); 
-require_once("../../includes/accessory_cart_functions.php");
-require_once("../../includes/class.shopping_cart.php");
-require_once("../../includes/class.module.php");
+require_once("<?php echo SITEROOT; ?>includes/config.php");
+require_once("<?php echo SITEROOT; ?>includes/db_connect.php"); 
+require_once("<?php echo SITEROOT; ?>includes/accessory_cart_functions.php");
+require_once("<?php echo SITEROOT; ?>includes/class.shopping_cart.php");
+require_once("<?php echo SITEROOT; ?>includes/class.module.php");
 $module = new Module;
 
 $cart = new ShoppingCart;
@@ -83,7 +83,7 @@ $(document).ready(function() {
 				
 				var d_id = $(this).find(".d_sub").attr('id');
 				
-				t_url = "<?php echo SITEROOT; ?>/"+d_id+"/item/";
+				t_url = "<?php echo SITEROOT; ?>"+d_id+"/item/";
 				t_url += n_id+"/"+i_id+"/"+c_id;
 				window.location = t_url;
 			}		
@@ -289,9 +289,9 @@ if(!$num_res){
 	if($has_accessories){			
 		
 		$block .= "<div style='position:relative; top:-22px;'>";	
-		$block .= "<img onclick='add_items()' src='".SITEROOT."/images/button_add_cart_sm.jpg' style='outline:none;' />";
+		$block .= "<img onclick='add_items()' src='".SITEROOT."//images/button_add_cart_sm.jpg' style='outline:none;' />";
 		$block .= "</div>";	
-		$block.="<form name='add_with_qty_form' action='".SITEROOT."/storage-shop/closet-item-w-qty.html' method='post'>";
+		$block.="<form name='add_with_qty_form' action='".SITEROOT."//storage-shop/closet-item-w-qty.html' method='post'>";
 		$block.="<input type='hidden' name='cat_id' value='".$cat_id."'>";
 		$block.="<input type='hidden' name='str_items'>";	
 
@@ -324,18 +324,18 @@ if(!$num_res){
 				$block .= "<div style='float:left; position:relative;'>";
 				
 				
-					$block .= "<a href='".SITEROOT."/".$_SESSION["details_name"]."/item/";
+					$block .= "<a href='".SITEROOT."//".$_SESSION["details_name"]."/item/";
 					$block .= getUrlText($row->name)."/".$row->item_id."/".$cat_id."' style='text-decoration:none;'>";
-					$block .= "<img src='".SITEROOT."/ul_cart/".$domain."/cart/list/".$row->file_name."' alt='closet organizers'/>";
+					$block .= "<img src='".SITEROOT."//ul_cart/".SITEROOT."/cart/list/".$row->file_name."' alt='closet organizers'/>";
 					$block .= "</a>";
 				$block .= "</div>";
 				$block .= "<div style='float:left; padding-left:40px;'>";
 					$block .= "<div style='font-weight:bold; padding-top:6px; width:180px;'>".$row->name."</div>";					
 					$block .= "<div style='padding-top:6px;'>Product ID:  ".$row->item_id."</div>";
-					//$block .= "<div style='padding-top:6px;'><img src='".SITEROOT."/images/5-star.png' alt='closet organizers'/></div>";
+					//$block .= "<div style='padding-top:6px;'><img src='".SITEROOT."//images/5-star.png' alt='closet organizers'/></div>";
 				$block .= "</div>";
 				$block .= "<div style='float:left; padding-left:182px; font-weight:bold; padding-top:6px;'>";
-					$block .= "$".number_format($cart->getItemPrice($row->item_id),2);			
+					$block .= "$".number_format($cart->getItemPrice($dbCustom,$row->item_id),2);			
 				$block .= "<span style='font-weight:normal;'>/ per ea</span>";
 				$block .= "</div>";
 				$block .= "<div class='clear'></div>";
@@ -346,8 +346,8 @@ if(!$num_res){
 				//if(isClosetSystem($row->item_id)){
 					
 				if($row->is_closet){	
-					//$block .= "<a href='".SITEROOT."/closet-design-online.html'>Start Design</a>";
-					$block .= "<a href='".SITEROOT."/app/'>Start Design</a>";
+					//$block .= "<a href='".SITEROOT."//closet-design-online.html'>Start Design</a>";
+					$block .= "<a href='".SITEROOT."//app/'>Start Design</a>";
 				
 				}elseif(strpos($added_items, $row->item_id) > 0){
 					$block .= "added";				
@@ -371,7 +371,7 @@ if(!$num_res){
 
 	if($has_accessories){			
 		$block .= "<div style='position:relative; top:10px; left:0'>";	
-		$block .= "<img onclick='add_items()' src='".SITEROOT."/images/button_add_cart_sm.jpg' style='outline:none;' />";
+		$block .= "<img onclick='add_items()' src='".SITEROOT."//images/button_add_cart_sm.jpg' style='outline:none;' />";
 		$block .= "</div>";	
 		$block .= "</form>";	
 	}

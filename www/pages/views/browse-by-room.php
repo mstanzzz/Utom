@@ -1,6 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<title>ClosetsToGo</title>
+<meta name="description" content="browse by room">
+<link href="<?php echo SITEROOT; ?>app.css" rel="stylesheet">
+</head>
+<body class="browse-by-room">
 
 <?php	
-require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php"); 	
+require_once($real_root."/includes/header.php"); 	
 ?>	
 
 <main class="main clearfix">
@@ -11,7 +22,7 @@ require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php");
 					<div class="col-12">
 						<div class="breadcrumb-block__wrapper" aria-label="breadcrumb">
 							<ul class="breadcrumb">
-							<li class="breadcrumb-item"><a href="../../" title="">Home</a></li>
+							<li class="breadcrumb-item"><a href="<?php echo SITEROOT; ?>" title="">Home</a></li>
 							<li class="breadcrumb-item active" aria-current="page" title="">Browse by room</li>
 							</ul>
 						</div>
@@ -57,12 +68,12 @@ require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php");
 				<div class="row">
 					<div class="col-12 col-lg-4">
 						<figure class="browse-by-room__figure">
-							<img src="../../images/showroom-category-1.png" alt="" class="browse-by-room__figure--image img-fluid">
+							<img src="<?php echo SITEROOT; ?>images/showroom-1.png" alt="" class="browse-by-room__figure--image img-fluid">
 							<figcaption class="browse-by-room__figcaption">
 								<div class="browse-by-room__wrapper">
 									<h2 class="browse-by-room__wrapper--heading">Custom Closet Organizers for Wardrobes</h2>
 									<div class="browse-by-room__wrapper--text-block">
-										<img src="../../images/Group174.svg" alt="">
+										<img src="<?php echo SITEROOT; ?>images/Group174.svg" alt="">
 										<p>10k 214</p>
 									</div>
 									<p class="browse-by-room__wrapper--text">Current users in Custom Closet Organizers for Wardrobes</p>
@@ -79,12 +90,12 @@ require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php");
 					</div>
 					<div class="col-12 col-lg-4">
 						<figure class="browse-by-room__figure">
-							<img src="../../images/showroom-category-2.png" alt="" class="browse-by-room__figure--image img-fluid">
+							<img src="<?php echo SITEROOT; ?>images/showroom-2.png" alt="" class="browse-by-room__figure--image img-fluid">
 							<figcaption class="browse-by-room__figcaption">
 								<div class="browse-by-room__wrapper">
 									<h2 class="browse-by-room__wrapper--heading">Deluxe wine racks</h2>
 									<div class="browse-by-room__wrapper--text-block">
-										<img src="../../images/Group174.svg" alt="">
+										<img src="<?php echo SITEROOT; ?>images/Group174.svg" alt="">
 										<p>10k 214</p>
 									</div>
 									<p class="browse-by-room__wrapper--text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. In perferendis aperiam error quis velit minus quae, a eveniet corporis expedita sed explicabo deserunt voluptate. Voluptate culpa numquam molestias dolor et!</p>
@@ -101,12 +112,12 @@ require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php");
 					</div>
 					<div class="col-12 col-lg-4">
 						<figure class="browse-by-room__figure">
-							<img src="../../images/showroom-category-3.png" alt="" class="browse-by-room__figure--image img-fluid">
+							<img src="<?php echo SITEROOT; ?>images/showroom-3.png" alt="" class="browse-by-room__figure--image img-fluid">
 							<figcaption class="browse-by-room__figcaption">
 								<div class="browse-by-room__wrapper">
 									<h2 class="browse-by-room__wrapper--heading">Pantry storage</h2>
 									<div class="browse-by-room__wrapper--text-block">
-										<img src="../../images/Group174.svg" alt="">
+										<img src="<?php echo SITEROOT; ?>images/Group174.svg" alt="">
 										<p>10k 214</p>
 									</div>
 									<p class="browse-by-room__wrapper--text">Current users in Custom Closet Organizers for Wardrobes</p>
@@ -123,12 +134,12 @@ require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php");
 				</div>
 				<div class="col-12 col-lg-4">
 					<figure class="browse-by-room__figure">
-						<img src="../../images/showroom-category-4.png" alt="" class="browse-by-room__figure--image img-fluid">
+						<img src="<?php echo SITEROOT; ?>images/showroom-4.png" alt="" class="browse-by-room__figure--image img-fluid">
 							<figcaption class="browse-by-room__figcaption">
 								<div class="browse-by-room__wrapper">
 									<h2 class="browse-by-room__wrapper--heading">Garage storage systems</h2>
 									<div class="browse-by-room__wrapper--text-block">
-										<img src="../../images/Group174.svg" alt="">
+										<img src="<?php echo SITEROOT; ?>images/Group174.svg" alt="">
 										<p>10k 214</p>
 									</div>
 									<p class="browse-by-room__wrapper--text">Current users in Custom Closet Organizers for Wardrobes</p>
@@ -145,13 +156,13 @@ require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php");
 					</div>
 					<div class="col-12 col-lg-4">
 								<figure class="browse-by-room__figure">
-									<img src="../../images/showroom-category-5.png" alt="" class="browse-by-room__figure--image img-fluid">
+									<img src="<?php echo SITEROOT; ?>images/showroom-5.png" alt="" class="browse-by-room__figure--image img-fluid">
 
 									<figcaption class="browse-by-room__figcaption">
 										<div class="browse-by-room__wrapper">
 											<h2 class="browse-by-room__wrapper--heading">Laundry and craft storage</h2>
 											<div class="browse-by-room__wrapper--text-block">
-												<img src="../../images/Group174.svg" alt="">
+												<img src="<?php echo SITEROOT; ?>images/Group174.svg" alt="">
 												<p>10k 214</p>
 											</div>
 											<p class="browse-by-room__wrapper--text">Current users in Custom Closet Organizers for Wardrobes</p>
@@ -170,13 +181,13 @@ require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php");
 					</div>
 					<div class="col-12 col-lg-4">
 								<figure class="browse-by-room__figure">
-									<img src="../../images/showroom-category-6.png" alt="" class="browse-by-room__figure--image img-fluid">
+									<img src="<?php echo SITEROOT; ?>images/showroom-6.png" alt="" class="browse-by-room__figure--image img-fluid">
 
 									<figcaption class="browse-by-room__figcaption">
 										<div class="browse-by-room__wrapper">
 											<h2 class="browse-by-room__wrapper--heading">Office organizations</h2>
 											<div class="browse-by-room__wrapper--text-block">
-												<img src="../../images/Group174.svg" alt="">
+												<img src="<?php echo SITEROOT; ?>images/Group174.svg" alt="">
 												<p>10k 214</p>
 											</div>
 											<p class="browse-by-room__wrapper--text">Current users in Custom Closet Organizers for Wardrobes</p>
@@ -195,13 +206,13 @@ require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php");
 					</div>
 					<div class="col-12 col-lg-4">
 								<figure class="browse-by-room__figure">
-									<img src="../../images/showroom-category-7.png" alt="" class="browse-by-room__figure--image img-fluid">
+									<img src="<?php echo SITEROOT; ?>images/showroom-7.png" alt="" class="browse-by-room__figure--image img-fluid">
 
 									<figcaption class="browse-by-room__figcaption">
 										<div class="browse-by-room__wrapper">
 											<h2 class="browse-by-room__wrapper--heading">Wall beds</h2>
 											<div class="browse-by-room__wrapper--text-block">
-												<img src="../../images/Group174.svg" alt="">
+												<img src="<?php echo SITEROOT; ?>images/Group174.svg" alt="">
 												<p>10k 214</p>
 											</div>
 											<p class="browse-by-room__wrapper--text">Current users in Custom Closet Organizers for Wardrobes</p>
@@ -232,7 +243,7 @@ require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php");
 								<div class="two-elements-block__wrapper">
 									<div class="row">
 										<div class="col-12 col-lg-6">
-											<img src="../../images/company-1.png" alt="" class="img-fluid">
+											<img src="<?php echo SITEROOT; ?>images/company-1.png" alt="" class="img-fluid">
 				
 											<div class="two-elements-block__wrapper--position-left-text">
 												<p>Closet Solutions:</p>
@@ -246,7 +257,7 @@ require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php");
 											</div>
 										</div>
 										<div class="col-12 col-lg-6">
-											<img src="../../images/company-2.png" alt="" class="img-fluid">
+											<img src="<?php echo SITEROOT; ?>images/company-2.png" alt="" class="img-fluid">
 												
 											<div class="two-elements-block__wrapper--position-left-text white-color">
 												<p>Custom Closets:</p>
@@ -277,11 +288,11 @@ require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php");
 											</div>
 
 											<p class="flex-p">
-												<img src="../../images/passage-of-time.svg" alt="">
+												<img src="<?php echo SITEROOT; ?>images/passage-of-time.svg" alt="">
 												Just 4-6 hours to install a 10 x 10 closet.
 											</p>
 											<p class="flex-p underlined-text">
-												<img src="../../images/security-yellow.svg" alt="">
+												<img src="<?php echo SITEROOT; ?>images/security-yellow.svg" alt="">
 												100% Perfect Fit Guarantee
 											</p>
 										</div>
@@ -294,42 +305,42 @@ require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php");
 									<h2 class="heading">Read Our Reviews</h2>
 									<div class="stars-wrapper">
 										<div class="block-stars__wrapper">
-											<img src="../../images/Rectangle12.png" alt="" class="block-stars__wrapper--image">
+											<img src="<?php echo SITEROOT; ?>images/Rectangle12.png" alt="" class="block-stars__wrapper--image">
 											<div class="block-stars__wrapper--text">
 												<div class="stars-container">
-													<img src="../../images/star.svg" alt="">
-													<img src="../../images/star.svg" alt="">
-													<img src="../../images/star.svg" alt="">
-													<img src="../../images/star.svg" alt="">
-													<img src="../../images/star.svg" alt="">
+													<img src="<?php echo SITEROOT; ?>images/star.svg" alt="">
+													<img src="<?php echo SITEROOT; ?>images/star.svg" alt="">
+													<img src="<?php echo SITEROOT; ?>images/star.svg" alt="">
+													<img src="<?php echo SITEROOT; ?>images/star.svg" alt="">
+													<img src="<?php echo SITEROOT; ?>images/star.svg" alt="">
 												</div>
 												<p class="first-text">Aubree W. Charlotte, North Carolina</p>
 												<p>Just had a successful installation!</p>
 											</div>
 										</div>
 										<div class="block-stars__wrapper">
-											<img src="../../images/Rectangle12.png" alt="" class="block-stars__wrapper--image">
+											<img src="<?php echo SITEROOT; ?>images/Rectangle12.png" alt="" class="block-stars__wrapper--image">
 											<div class="block-stars__wrapper--text">
 												<div class="stars-container">
-													<img src="../../images/star.svg" alt="">
-													<img src="../../images/star.svg" alt="">
-													<img src="../../images/star.svg" alt="">
-													<img src="../../images/star.svg" alt="">
-													<img src="../../images/star.svg" alt="">
+													<img src="<?php echo SITEROOT; ?>images/star.svg" alt="">
+													<img src="<?php echo SITEROOT; ?>images/star.svg" alt="">
+													<img src="<?php echo SITEROOT; ?>images/star.svg" alt="">
+													<img src="<?php echo SITEROOT; ?>images/star.svg" alt="">
+													<img src="<?php echo SITEROOT; ?>images/star.svg" alt="">
 												</div>
 												<p class="first-text">Aubree W. Charlotte, North Carolina</p>
 												<p>Just had a successful installation!</p>
 											</div>
 										</div>
 										<div class="block-stars__wrapper">
-											<img src="../../images/Rectangle12.png" alt="" class="block-stars__wrapper--image">
+											<img src="<?php echo SITEROOT; ?>images/Rectangle12.png" alt="" class="block-stars__wrapper--image">
 											<div class="block-stars__wrapper--text">
 												<div class="stars-container">
-													<img src="../../images/star.svg" alt="">
-													<img src="../../images/star.svg" alt="">
-													<img src="../../images/star.svg" alt="">
-													<img src="../../images/star.svg" alt="">
-													<img src="../../images/star.svg" alt="">
+													<img src="<?php echo SITEROOT; ?>images/star.svg" alt="">
+													<img src="<?php echo SITEROOT; ?>images/star.svg" alt="">
+													<img src="<?php echo SITEROOT; ?>images/star.svg" alt="">
+													<img src="<?php echo SITEROOT; ?>images/star.svg" alt="">
+													<img src="<?php echo SITEROOT; ?>images/star.svg" alt="">
 												</div>
 												<p class="first-text">Aubree W. Charlotte, North Carolina</p>
 												<p>Just had a successful installation!</p>
@@ -352,7 +363,7 @@ require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php");
 
 <div class="scrollToTopBlock">
 <div class="people-working">
-<img src="../../images/people-working-call-center_@2x.png" alt="" class="people-working__image">
+<img src="<?php echo SITEROOT; ?>images/people-working-call-center_@2x.png" alt="" class="people-working__image">
 <div class="people-working__wrapper">
 <div class="people-working__content">
 <p class="people-working__text">Hi! I'm the Virtual assistant, and I'm here to help you.</p>
@@ -360,18 +371,22 @@ require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php");
 </div>
 </div>
 <a href="#" title="" class="scrollToTop js-to-top">
-<img src="../../images/arrows.svg" alt="">
+<img src="<?php echo SITEROOT; ?>images/arrows.svg" alt="">
 </a>
 </div>
 
 <div class="mobile-show">
 <div class="mobile-footer-buttons">
 <a href="#" title="" class="mobile-footer-buttons__first">you design</a>
-<a href="#" title="" class="mobile-footer-buttons__second"><img src="../../images/icon-save.svg" alt="" class="img-fluid"></a>
+<a href="#" title="" class="mobile-footer-buttons__second"><img src="<?php echo SITEROOT; ?>images/icon-save.svg" alt="" class="img-fluid"></a>
 <a href="#" title="" class="mobile-footer-buttons__third">we design</a>
 </div>
 </div>
 
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'].'/includes/footer.php');
+require_once($real_root.'/includes/footer.php');
 ?>
+
+<script src="<?php echo SITEROOT; ?>app.js"></script>
+</body>
+</html>

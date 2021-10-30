@@ -1,7 +1,7 @@
 <?php
-require_once('../../includes/config.php');
-require_once('../../includes/db_connect.php'); 
-require_once('../../includes/class.shipping.php');
+require_once('<?php echo SITEROOT; ?>includes/config.php');
+require_once('<?php echo SITEROOT; ?>includes/db_connect.php'); 
+require_once('<?php echo SITEROOT; ?>includes/class.shipping.php');
 
 
 $shipping = new Shipping;
@@ -21,7 +21,7 @@ $grand_total_without_shipping = (isset($_GET['grand_total_without_shipping']))? 
 
 if($action == 'get_single_rate_with_drop_ship'){
 
-	require_once('../../includes/class.shopping_cart.php');
+	require_once('<?php echo SITEROOT; ?>includes/class.shopping_cart.php');
 	$cart = new ShoppingCart;
 	
 	$drop_ship_array = $cart->getDropShipItems();

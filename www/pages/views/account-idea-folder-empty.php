@@ -1,8 +1,20 @@
 
 		
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<title>ClosetsToGo</title>
+<meta name="description" content="Account idea folder details">
+<link href="<?php echo SITEROOT; ?>app.css" rel="stylesheet">
+</head>
+<body>
+
 
 <?php	
-require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php"); 	
+require_once($real_root."/includes/header.php"); 	
 ?>	
 
 <section class="home-mobile-buttons-block account-nav covid-block">
@@ -59,7 +71,7 @@ require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php");
 
 											<span class="account-block__navigation--user-image">
 												<span class="flip-front">
-													<img src="../../images/team-3.png" alt="" class="img-fluid">
+													<img src="<?php echo SITEROOT; ?>images/team-3.png" alt="" class="img-fluid">
 												</span>
 												<span class="flip-back">Edit/add<br>photo</span>
 											</span>
@@ -278,7 +290,7 @@ require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php");
 
 <div class="scrollToTopBlock">
 <div class="people-working">
-<img src="../../images/people-working-call-center_@2x.png" alt="" class="people-working__image">
+<img src="<?php echo SITEROOT; ?>images/people-working-call-center_@2x.png" alt="" class="people-working__image">
 <div class="people-working__wrapper">
 <div class="people-working__content">
 <p class="people-working__text">Hi! I'm the Virtual assistant, and I'm here to help you.</p>
@@ -286,13 +298,13 @@ require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php");
 </div>
 </div>
 <a href="#" class="scrollToTop js-to-top">
-<img src="../../images/arrows.svg" alt="">
+<img src="<?php echo SITEROOT; ?>images/arrows.svg" alt="">
 </a>
 </div>
 
 
 <?php	
-require_once($_SERVER['DOCUMENT_ROOT']."/includes/footer.php"); 	
+require_once($real_root."/includes/footer.php"); 	
 ?>	
 
 
@@ -313,7 +325,7 @@ require_once($_SERVER['DOCUMENT_ROOT']."/includes/footer.php");
 					<div class="row">
 						<div class="col-12 col-lg-4 mb-2">
 							<div class="account-block__form--house-image">
-								<img src="../../images/photo.svg" alt="" class="account-block__form--house-image-defaltImg js-my-house-defalt-img">											
+								<img src="<?php echo SITEROOT; ?>images/photo.svg" alt="" class="account-block__form--house-image-defaltImg js-my-house-defalt-img">											
 								<a href="" data-lightbox="roadtrip" data-title="Lorem ipsum">
 								<img src="xxxHTMLLINKxxx0.462719437212496750.2618912517300058xxx" alt="" class="js-my-house-img-view img-fluid" style="display: none;">
 								</a>
@@ -483,7 +495,7 @@ require_once($_SERVER['DOCUMENT_ROOT']."/includes/footer.php");
 
 
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'].'/includes/footer.php');
+require_once($real_root.'/includes/footer.php');
 ?>
 	
 
@@ -557,7 +569,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/includes/footer.php');
 										</div>
 									</div>
 									<button class="manage-house-houses__button js-edit-house" data-house-id="1" data-dismiss="modal" data-toggle="modal" data-target="#newHouse">
-										<img src="../../images/my-house-1.png" alt="" class="img-fluid">
+										<img src="<?php echo SITEROOT; ?>images/my-house-1.png" alt="" class="img-fluid">
 										<p class="manage-house-houses__heading">Title house name 1</p>
 									</button>
 								</div>
@@ -571,7 +583,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/includes/footer.php');
 										</div>
 									</div>
 									<button class="manage-house-houses__button js-edit-house" data-house-id="2" data-dismiss="modal" data-toggle="modal" data-target="#newHouse">
-										<img src="../../images/my-house-2.png" alt="" class="img-fluid">
+										<img src="<?php echo SITEROOT; ?>images/my-house-2.png" alt="" class="img-fluid">
 										<p class="manage-house-houses__heading">Title house name 2</p>
 									</button>
 								</div>
@@ -585,7 +597,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/includes/footer.php');
 										</div>
 									</div>
 									<button class="manage-house-houses__button js-edit-house" data-house-id="3" data-dismiss="modal" data-toggle="modal" data-target="#newHouse">
-										<img src="../../images/my-house-3.png" alt="" class="img-fluid">
+										<img src="<?php echo SITEROOT; ?>images/my-house-3.png" alt="" class="img-fluid">
 										<p class="manage-house-houses__heading">Title house name 3</p>
 									</button>
 								</div>
@@ -599,7 +611,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/includes/footer.php');
 										</div>
 									</div>
 									<button class="manage-house-houses__button js-edit-house" data-house-id="4" data-dismiss="modal" data-toggle="modal" data-target="#newHouse">
-										<img src="../../images/my-house-1.png" alt="" class="img-fluid">
+										<img src="<?php echo SITEROOT; ?>images/my-house-1.png" alt="" class="img-fluid">
 										<p class="manage-house-houses__heading">Title house name 1</p>
 									</button>
 								</div>
@@ -613,7 +625,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/includes/footer.php');
 										</div>
 									</div>
 									<button class="manage-house-houses__button js-edit-house" data-house-id="5" data-dismiss="modal" data-toggle="modal" data-target="#newHouse">
-										<img src="../../images/my-house-2.png" alt="" class="img-fluid">
+										<img src="<?php echo SITEROOT; ?>images/my-house-2.png" alt="" class="img-fluid">
 										<p class="manage-house-houses__heading">Title house name 2</p>
 									</button>
 								</div>
@@ -627,7 +639,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/includes/footer.php');
 										</div>
 									</div>
 									<button class="manage-house-houses__button js-edit-house" data-house-id="6" data-dismiss="modal" data-toggle="modal" data-target="#newHouse">
-										<img src="../../images/my-house-3.png" alt="" class="img-fluid">
+										<img src="<?php echo SITEROOT; ?>images/my-house-3.png" alt="" class="img-fluid">
 										<p class="manage-house-houses__heading">Title house name 3</p>
 									</button>
 								</div>
@@ -641,7 +653,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/includes/footer.php');
 										</div>
 									</div>
 									<button class="manage-house-houses__button js-edit-house" data-house-id="7" data-dismiss="modal" data-toggle="modal" data-target="#newHouse">
-										<img src="../../images/my-house-1.png" alt="" class="img-fluid">
+										<img src="<?php echo SITEROOT; ?>images/my-house-1.png" alt="" class="img-fluid">
 										<p class="manage-house-houses__heading">Title house name 1</p>
 									</button>
 								</div>
@@ -655,7 +667,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/includes/footer.php');
 										</div>
 									</div>
 									<button class="manage-house-houses__button js-edit-house" data-house-id="8" data-dismiss="modal" data-toggle="modal" data-target="#newHouse">
-										<img src="../../images/my-house-2.png" alt="" class="img-fluid">
+										<img src="<?php echo SITEROOT; ?>images/my-house-2.png" alt="" class="img-fluid">
 										<p class="manage-house-houses__heading">Title house name 2</p>
 									</button>
 								</div>
@@ -669,7 +681,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/includes/footer.php');
 										</div>
 									</div>
 									<button class="manage-house-houses__button js-edit-house" data-house-id="9" data-dismiss="modal" data-toggle="modal" data-target="#newHouse">
-										<img src="../../images/my-house-3.png" alt="" class="img-fluid">
+										<img src="<?php echo SITEROOT; ?>images/my-house-3.png" alt="" class="img-fluid">
 										<p class="manage-house-houses__heading">Title house name 3</p>
 									</button>
 								</div>
@@ -683,7 +695,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/includes/footer.php');
 										</div>
 									</div>
 									<button class="manage-house-houses__button js-edit-house" data-house-id="10" data-dismiss="modal" data-toggle="modal" data-target="#newHouse">
-										<img src="../../images/my-house-1.png" alt="" class="img-fluid">
+										<img src="<?php echo SITEROOT; ?>images/my-house-1.png" alt="" class="img-fluid">
 										<p class="manage-house-houses__heading">Title house name 1</p>
 									</button>
 								</div>
@@ -697,7 +709,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/includes/footer.php');
 										</div>
 									</div>
 									<button class="manage-house-houses__button js-edit-house" data-house-id="11" data-dismiss="modal" data-toggle="modal" data-target="#newHouse">
-										<img src="../../images/my-house-2.png" alt="" class="img-fluid">
+										<img src="<?php echo SITEROOT; ?>images/my-house-2.png" alt="" class="img-fluid">
 										<p class="manage-house-houses__heading">Title house name 2</p>
 									</button>
 								</div>
@@ -711,7 +723,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/includes/footer.php');
 										</div>
 									</div>
 									<button class="manage-house-houses__button js-edit-house" data-house-id="12" data-dismiss="modal" data-toggle="modal" data-target="#newHouse">
-										<img src="../../images/my-house-3.png" alt="" class="img-fluid">
+										<img src="<?php echo SITEROOT; ?>images/my-house-3.png" alt="" class="img-fluid">
 										<p class="manage-house-houses__heading">Title house name 3</p>
 									</button>
 								</div>
@@ -790,4 +802,12 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/includes/footer.php');
 		
 		
 		
-		
+
+<script src="<?php echo SITEROOT; ?>app.js"></script>
+
+</body>
+</html>
+	
+	
+	
+			

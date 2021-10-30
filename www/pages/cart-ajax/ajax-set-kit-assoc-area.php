@@ -1,11 +1,11 @@
 <?php
-require_once("../../includes/config.php");
-require_once("../../includes/db_connect.php"); 
-require_once("../../includes/accessory_cart_functions.php");
-require_once('../../includes/class.shopping_cart.php');
-require_once('../../includes/class.shipping.php');
-require_once('../../includes/class.module.php');
-require_once('../../includes/class.nav.php');
+require_once("<?php echo SITEROOT; ?>includes/config.php");
+require_once("<?php echo SITEROOT; ?>includes/db_connect.php"); 
+require_once("<?php echo SITEROOT; ?>includes/accessory_cart_functions.php");
+require_once('<?php echo SITEROOT; ?>includes/class.shopping_cart.php');
+require_once('<?php echo SITEROOT; ?>includes/class.shipping.php');
+require_once('<?php echo SITEROOT; ?>includes/class.module.php');
+require_once('<?php echo SITEROOT; ?>includes/class.nav.php');
 
 $shipping = new Shipping;
 $module = new Module;
@@ -30,7 +30,7 @@ $show_videos = (isset($_GET['show_videos'])) ? $_GET['show_videos'] : 0;
 //echo $item_id;
 
 if($show_associated_kits){
-	$assoc_items_array = $cart->getKitAssocItems($item_id);
+	$assoc_items_array = $cart->getKitAssocItems($dbCustom,$item_id);
 	if(count($assoc_items_array) > 0){
 		$show_kit_assoc_items = 1;
 		$show_videos = 0;
@@ -105,7 +105,7 @@ if($show_kit_assoc_items > 0){
 							
 				
 		$block .="<span class='product-image'>".$details_link;				
-		$block .= "<img src='".SITEROOT."/saascustuploads/".$_SESSION['profile_account_id']."/cart/".$imgdir."/".$value["file_name"]."' 
+		$block .= "<img src='".SITEROOT."//saascustuploads/".$_SESSION['profile_account_id']."/cart/".$imgdir."/".$value["file_name"]."' 
 					 alt='".stripslashes($value['img_alt_text'])."'/></a></span>";
 								
 

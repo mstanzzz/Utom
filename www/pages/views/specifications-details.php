@@ -1,228 +1,262 @@
 <?php	
 if(!isset($hero_file_name)) $hero_file_name = '';
 if($hero_file_name == ''){
-	$hero = '../../images/organizer-landing-pahe-header.png';
+	$hero = SITEROOT.'/images/organizer-landing-pahe-header.png';
 }else{
 	$hero = '';
-	$hero .= "../../saascustuploads/";
+	$hero .= "<?php echo SITEROOT; ?>saascustuploads/";
 	$hero .= $_SESSION['profile_account_id'];
 	$hero .= "/cms/";
 	$hero .= $hero_file_name;
-	//$hero = preg_replace('/(\/+)/','/',$im);
 }
-//echo "hero ".$hero;
-//exit;
-//$hero = '../../images/organizer-landing-pahe-header.png';
+
+$hero = SITEROOT.'/images/organizer-landing-pahe-header.png';
 
 if(!isset($id))$id = 777;
 if(!isset($name))$name = 'none';
 if(!isset($description))$description = 'none';
-
-require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php"); 	
-
-
+require_once($real_root."/includes/header.php"); 	
 ?>	
 
-<section class="home-mobile-buttons-block covid-block">
-	<div class="wrwrappapp.r">
-		<div class="container-fluid">
-			<div class="row">
-				<div class="col-12">
-					<div class="home-mobile-buttons-block__wrwrappapp.r">
-						<a href="specifications.html" title="" class="back-link">
-						<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
-						<path d="M0 0h24v24H0V0z" fill="none"/>
-						<path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z"/>
-						</svg>
-						</a>
-						<h2>
-						<span>
-						<svg xmlns="http://www.w3.org/2000/svg" width="48.679" height="43" 
-							viewBox="0 0 48.679 43">
-							<g id="drawers" transform="translate(0 -29.867)">
-							<g id="Group_416" data-name="Group 416" transform="translate(0 29.867)">
-							<g id="Group_415" data-name="Group 415" transform="translate(0 0)">
-							<path id="Path_222" data-name="Path 222"
-							d="M44.623,29.867H4.057A4.061,4.061,0,0,0,0,33.924V65.565A4.063,4.063,0,0,0,3.245,69.54v.893a2.437,2.437,0,0,0,2.434,2.434h4.868a2.437,2.437,0,0,0,2.434-2.434v-.811H35.7v.811a2.437,2.437,0,0,0,2.434,2.434H43a2.437,2.437,0,0,0,2.434-2.434V69.54a4.063,4.063,0,0,0,3.245-3.975V33.924A4.061,4.061,0,0,0,44.623,29.867ZM11.359,70.433a.812.812,0,0,1-.811.811H5.679a.812.812,0,0,1-.811-.811v-.811h6.491v.811Zm32.453,0a.812.812,0,0,1-.811.811H38.132a.812.812,0,0,1-.811-.811v-.811h6.491Zm3.245-4.868A2.437,2.437,0,0,1,44.623,68H4.057a2.437,2.437,0,0,1-2.434-2.434V33.924A2.437,2.437,0,0,1,4.057,31.49H44.623a2.437,2.437,0,0,1,2.434,2.434V65.565Z"
-							transform="translate(0 -29.867)"></path>
-							<path id="Path_223" data-name="Path 223"
-							d="M75.511,64H34.945a.811.811,0,0,0-.811.811V96.453a.811.811,0,0,0,.811.811H75.511a.811.811,0,0,0,.811-.811V64.811A.811.811,0,0,0,75.511,64ZM74.7,95.642H35.757V86.717H74.7Zm0-10.547H35.757V76.17H74.7Zm0-10.547H35.757V65.623H74.7Z"
-							transform="translate(-30.889 -60.755)"></path>
-							<path id="Path_224" data-name="Path 224"
-							d="M232.834,103a2.434,2.434,0,1,0-2.434-2.434A2.434,2.434,0,0,0,232.834,103Zm0-3.245a.811.811,0,1,1-.811.811A.811.811,0,0,1,232.834,99.756Z"
-							transform="translate(-208.494 -91.642)"></path>
-							<path id="Path_225" data-name="Path 225"
-							d="M232.834,213.935A2.434,2.434,0,1,0,230.4,211.5,2.434,2.434,0,0,0,232.834,213.935Zm0-3.245a.811.811,0,1,1-.811.811A.811.811,0,0,1,232.834,210.69Z"
-							transform="translate(-208.494 -192.029)"></path>
-							<path id="Path_226" data-name="Path 226"
-							d="M232.834,324.868a2.434,2.434,0,1,0-2.434-2.434A2.434,2.434,0,0,0,232.834,324.868Zm0-3.245a.811.811,0,1,1-.811.811A.811.811,0,0,1,232.834,321.623Z"
-							transform="translate(-208.494 -292.415)"></path>
-							</g>
-							</g>
-							</g>
-						</svg>
-						</span>
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+		<title>ClosetsToGo</title>
+	<meta name="description" content="specifications details">
+	<link href="<?php echo SITEROOT; ?>app.css" rel="stylesheet">
+	</head>
+	<body class="product-detail specification-page">
 
-<?php
-echo $name.' Specification'; 
-?>
-<!--
-Wardrobe Tubes Specification
--->
-						</h2>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
 
-			
-<main class="main hero-block clearfix">
-	<section class="specification-detial-header desktop-show">
-		<div class="wrwrappapp.r">
-			<div class="container-fluid">
-				<div class="row">
-					<div class="col-12 col-lg-9">
-						<div class="specification-detial-header__wrap">
-							<span class="specification-detial-header__img">
-								<svg xmlns="http://www.w3.org/2000/svg" width="48.679" height="43"
-								viewBox="0 0 48.679 43">
-								<g id="drawers" transform="translate(0 -29.867)">
-								<g id="Group_416" data-name="Group 416" transform="translate(0 29.867)">
-								<g id="Group_415" data-name="Group 415" transform="translate(0 0)">
-								<path id="Path_222" data-name="Path 222"
-								d="M44.623,29.867H4.057A4.061,4.061,0,0,0,0,33.924V65.565A4.063,4.063,0,0,0,3.245,69.54v.893a2.437,2.437,0,0,0,2.434,2.434h4.868a2.437,2.437,0,0,0,2.434-2.434v-.811H35.7v.811a2.437,2.437,0,0,0,2.434,2.434H43a2.437,2.437,0,0,0,2.434-2.434V69.54a4.063,4.063,0,0,0,3.245-3.975V33.924A4.061,4.061,0,0,0,44.623,29.867ZM11.359,70.433a.812.812,0,0,1-.811.811H5.679a.812.812,0,0,1-.811-.811v-.811h6.491v.811Zm32.453,0a.812.812,0,0,1-.811.811H38.132a.812.812,0,0,1-.811-.811v-.811h6.491Zm3.245-4.868A2.437,2.437,0,0,1,44.623,68H4.057a2.437,2.437,0,0,1-2.434-2.434V33.924A2.437,2.437,0,0,1,4.057,31.49H44.623a2.437,2.437,0,0,1,2.434,2.434V65.565Z"
-								transform="translate(0 -29.867)"></path>
-								<path id="Path_223" data-name="Path 223"
-								d="M75.511,64H34.945a.811.811,0,0,0-.811.811V96.453a.811.811,0,0,0,.811.811H75.511a.811.811,0,0,0,.811-.811V64.811A.811.811,0,0,0,75.511,64ZM74.7,95.642H35.757V86.717H74.7Zm0-10.547H35.757V76.17H74.7Zm0-10.547H35.757V65.623H74.7Z"
-								transform="translate(-30.889 -60.755)"></path>
-								<path id="Path_224" data-name="Path 224"
-								d="M232.834,103a2.434,2.434,0,1,0-2.434-2.434A2.434,2.434,0,0,0,232.834,103Zm0-3.245a.811.811,0,1,1-.811.811A.811.811,0,0,1,232.834,99.756Z"
-								transform="translate(-208.494 -91.642)"></path>
-								<path id="Path_225" data-name="Path 225"
-								d="M232.834,213.935A2.434,2.434,0,1,0,230.4,211.5,2.434,2.434,0,0,0,232.834,213.935Zm0-3.245a.811.811,0,1,1-.811.811A.811.811,0,0,1,232.834,210.69Z"
-								transform="translate(-208.494 -192.029)"></path>
-								<path id="Path_226" data-name="Path 226"
-								d="M232.834,324.868a2.434,2.434,0,1,0-2.434-2.434A2.434,2.434,0,0,0,232.834,324.868Zm0-3.245a.811.811,0,1,1-.811.811A.811.811,0,0,1,232.834,321.623Z"
-								transform="translate(-208.494 -292.415)"></path>
-								</g>
-								</g>
-								</g>
-								</svg>
-							</span>
-							<div class="specification-detial-header__content">
-							<h2 class="specification-detial-header__heading">
-							<?php
-							echo stripslashes($name);
-							?>
-							<!--
-							Wardrobe Tubes
-							-->
-							</h2>
-							<p class="specification-detial-header__text">
-							<?php
-							echo stripslashes($description);
-							?>
-							<!--
-							Lorem ipsum dolor sit amet,
-							consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
-							labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et
-							accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea
-							-->											
-							</p>
+
+		<section class="home-mobile-buttons-block covid-block">
+			<div class="wrapper">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-12">
+							<div class="home-mobile-buttons-block__wrapper">
+								<a href="specifications.html" title="" class="back-link">
+									<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+										<path d="M0 0h24v24H0V0z" fill="none"/>
+										<path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z"/>
+									</svg>
+								</a>
+								<h2>
+									<span>
+										<svg xmlns="http://www.w3.org/2000/svg" width="48.679" height="43"
+											 viewBox="0 0 48.679 43">
+											<g id="drawers" transform="translate(0 -29.867)">
+												<g id="Group_416" data-name="Group 416" transform="translate(0 29.867)">
+													<g id="Group_415" data-name="Group 415" transform="translate(0 0)">
+														<path id="Path_222" data-name="Path 222"
+															  d="M44.623,29.867H4.057A4.061,4.061,0,0,0,0,33.924V65.565A4.063,4.063,0,0,0,3.245,69.54v.893a2.437,2.437,0,0,0,2.434,2.434h4.868a2.437,2.437,0,0,0,2.434-2.434v-.811H35.7v.811a2.437,2.437,0,0,0,2.434,2.434H43a2.437,2.437,0,0,0,2.434-2.434V69.54a4.063,4.063,0,0,0,3.245-3.975V33.924A4.061,4.061,0,0,0,44.623,29.867ZM11.359,70.433a.812.812,0,0,1-.811.811H5.679a.812.812,0,0,1-.811-.811v-.811h6.491v.811Zm32.453,0a.812.812,0,0,1-.811.811H38.132a.812.812,0,0,1-.811-.811v-.811h6.491Zm3.245-4.868A2.437,2.437,0,0,1,44.623,68H4.057a2.437,2.437,0,0,1-2.434-2.434V33.924A2.437,2.437,0,0,1,4.057,31.49H44.623a2.437,2.437,0,0,1,2.434,2.434V65.565Z"
+															  transform="translate(0 -29.867)"></path>
+														<path id="Path_223" data-name="Path 223"
+															  d="M75.511,64H34.945a.811.811,0,0,0-.811.811V96.453a.811.811,0,0,0,.811.811H75.511a.811.811,0,0,0,.811-.811V64.811A.811.811,0,0,0,75.511,64ZM74.7,95.642H35.757V86.717H74.7Zm0-10.547H35.757V76.17H74.7Zm0-10.547H35.757V65.623H74.7Z"
+															  transform="translate(-30.889 -60.755)"></path>
+														<path id="Path_224" data-name="Path 224"
+															  d="M232.834,103a2.434,2.434,0,1,0-2.434-2.434A2.434,2.434,0,0,0,232.834,103Zm0-3.245a.811.811,0,1,1-.811.811A.811.811,0,0,1,232.834,99.756Z"
+															  transform="translate(-208.494 -91.642)"></path>
+														<path id="Path_225" data-name="Path 225"
+															  d="M232.834,213.935A2.434,2.434,0,1,0,230.4,211.5,2.434,2.434,0,0,0,232.834,213.935Zm0-3.245a.811.811,0,1,1-.811.811A.811.811,0,0,1,232.834,210.69Z"
+															  transform="translate(-208.494 -192.029)"></path>
+														<path id="Path_226" data-name="Path 226"
+															  d="M232.834,324.868a2.434,2.434,0,1,0-2.434-2.434A2.434,2.434,0,0,0,232.834,324.868Zm0-3.245a.811.811,0,1,1-.811.811A.811.811,0,0,1,232.834,321.623Z"
+															  transform="translate(-208.494 -292.415)"></path>
+													</g>
+												</g>
+											</g>
+										</svg>
+									</span>
+									Wardrobe Tubes Specification
+								</h2>
 							</div>
 						</div>
 					</div>
-					<div class="col-12 col-lg-3">
-						<div class="specification-detial-header__link-wrap">
-							<a href="specifications.html" title="" class="specification-detial-header__link">back
-								to categories
-							</a>
-						</div>
-					</div>
 				</div>
 			</div>
-		</div>
-	</section>
+		</section>
 
+		<main class="main hero-block clearfix accessories">
 
-	<section class="two-elements-block clearfix">
-		<div class="wrwrappapp.r">
-			<div class="container-fluid">
-				<div class="row">
-					<div class="col-12 mobile-show">
-						<h2 class="specification-detial-mobile-heading">
-						<?php
-						echo $name." Specifications";
-						?>							
-						<!--
-						Wardrobe Tubes Specifications
-						-->
-						</h2>					
-					</div>
-					<div class="col-12 col-lg-6">
-						<div class="caro-wrap">
-							<div class="row">
-								<div class="col-12">
-									<div class="product-detail__carousel image-gallery js-add-to-card-image-holder">
-										<div class="embed-responsive embed-responsive-4by3">
-											<iframe class="yvideo" width="100%" height="100%"
-															src="https://www.youtube.com/embed/Wb0JINqX71w?autoplay=0&amp;enablejsapi=1"
-															frameborder="0"
-															allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-															allowfullscreen=""></iframe>
+			<section class="specification-detial-header desktop-show">
+				<div class="wrapper">
+				   <div class="container-fluid">
+					  <div class="row">
+						 <div class="col-12 col-lg-9">
+							<div class="specification-detial-header__wrap">
+							   <span class="specification-detial-header__img">
+								  <svg xmlns="http://www.w3.org/2000/svg" width="48.679" height="43"
+									 viewBox="0 0 48.679 43">
+									 <g id="drawers" transform="translate(0 -29.867)">
+										<g id="Group_416" data-name="Group 416" transform="translate(0 29.867)">
+										   <g id="Group_415" data-name="Group 415" transform="translate(0 0)">
+											  <path id="Path_222" data-name="Path 222"
+												 d="M44.623,29.867H4.057A4.061,4.061,0,0,0,0,33.924V65.565A4.063,4.063,0,0,0,3.245,69.54v.893a2.437,2.437,0,0,0,2.434,2.434h4.868a2.437,2.437,0,0,0,2.434-2.434v-.811H35.7v.811a2.437,2.437,0,0,0,2.434,2.434H43a2.437,2.437,0,0,0,2.434-2.434V69.54a4.063,4.063,0,0,0,3.245-3.975V33.924A4.061,4.061,0,0,0,44.623,29.867ZM11.359,70.433a.812.812,0,0,1-.811.811H5.679a.812.812,0,0,1-.811-.811v-.811h6.491v.811Zm32.453,0a.812.812,0,0,1-.811.811H38.132a.812.812,0,0,1-.811-.811v-.811h6.491Zm3.245-4.868A2.437,2.437,0,0,1,44.623,68H4.057a2.437,2.437,0,0,1-2.434-2.434V33.924A2.437,2.437,0,0,1,4.057,31.49H44.623a2.437,2.437,0,0,1,2.434,2.434V65.565Z"
+												 transform="translate(0 -29.867)"></path>
+											  <path id="Path_223" data-name="Path 223"
+												 d="M75.511,64H34.945a.811.811,0,0,0-.811.811V96.453a.811.811,0,0,0,.811.811H75.511a.811.811,0,0,0,.811-.811V64.811A.811.811,0,0,0,75.511,64ZM74.7,95.642H35.757V86.717H74.7Zm0-10.547H35.757V76.17H74.7Zm0-10.547H35.757V65.623H74.7Z"
+												 transform="translate(-30.889 -60.755)"></path>
+											  <path id="Path_224" data-name="Path 224"
+												 d="M232.834,103a2.434,2.434,0,1,0-2.434-2.434A2.434,2.434,0,0,0,232.834,103Zm0-3.245a.811.811,0,1,1-.811.811A.811.811,0,0,1,232.834,99.756Z"
+												 transform="translate(-208.494 -91.642)"></path>
+											  <path id="Path_225" data-name="Path 225"
+												 d="M232.834,213.935A2.434,2.434,0,1,0,230.4,211.5,2.434,2.434,0,0,0,232.834,213.935Zm0-3.245a.811.811,0,1,1-.811.811A.811.811,0,0,1,232.834,210.69Z"
+												 transform="translate(-208.494 -192.029)"></path>
+											  <path id="Path_226" data-name="Path 226"
+												 d="M232.834,324.868a2.434,2.434,0,1,0-2.434-2.434A2.434,2.434,0,0,0,232.834,324.868Zm0-3.245a.811.811,0,1,1-.811.811A.811.811,0,0,1,232.834,321.623Z"
+												 transform="translate(-208.494 -292.415)"></path>
+										   </g>
+										</g>
+									 </g>
+								  </svg>
+							   </span>
+							   <div class="specification-detial-header__content">
+								  <h2 class="specification-detial-header__heading">Wardrobe Tubes</h2>
+								  <p class="specification-detial-header__text">Lorem ipsum dolor sit amet,
+									 consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+									 labore
+								  </p>
+							   </div>
+							</div>
+						 </div>
+						 <div class="col-12 col-lg-3">
+							<div class="specification-detial-header__link-wrap">
+							   <a href="<?php echo SITEROOT; ?>specifications.html" title="" class="specification-detial-header__link">
+							   back to categories
+							   </a>
+							</div>
+						 </div>
+					  </div>
+				   </div>
+				</div>
+			 </section>
+
+			<section class="two-elements-block clearfix">
+				<div class="wrapper">
+					<div class="container-fluid">
+						<div class="row">
+							<div class="col-12 mobile-show">
+								<h2 class="specification-detial-mobile-heading">Wardrobe Tubes Specifications</h2>
+							</div>
+							<div class="col-12 col-lg-6">
+								<div class="caro-wrap position-sticky__a">
+									<div class="row">
+										<div class="col-12">
+											<div class="product-detail__carousel image-gallery js-add-to-card-image-holder">
+												<a href="https://www.youtube.com/embed/Wb0JINqX71w" data-poster="<?php echo SITEROOT; ?>images/yt-placeholder.png" >
+													<img src="<?php echo SITEROOT; ?>images/yt-placeholder.png"  alt="" class="img-fluid"/>
+												</a>
+												<a href="<?php echo SITEROOT; ?>images/showroom-1.png" title="Lorem ipsum">
+													<img src="<?php echo SITEROOT; ?>images/showroom-1.png" alt="" class="img-fluid">
+												</a>
+												<a href="<?php echo SITEROOT; ?>images/showroom-1.png" title="Lorem ipsum">
+													<img src="<?php echo SITEROOT; ?>images/showroom-1.png" alt="" class="img-fluid">
+												</a>
+												<a href="<?php echo SITEROOT; ?>images/showroom-1.png" title="Lorem ipsum">
+													<img src="<?php echo SITEROOT; ?>images/showroom-1.png" alt="" class="img-fluid">
+												</a>
+												<a href="<?php echo SITEROOT; ?>images/showroom-1.png" title="Lorem ipsum">
+													<img src="<?php echo SITEROOT; ?>images/showroom-1.png" alt="" class="img-fluid">
+												</a>
+												<a href="<?php echo SITEROOT; ?>images/showroom-1.png" title="Lorem ipsum">
+													<img src="<?php echo SITEROOT; ?>images/showroom-1.png" alt="" class="img-fluid">
+												</a>
+												<a href="<?php echo SITEROOT; ?>images/showroom-1.png" title="Lorem ipsum">
+													<img src="<?php echo SITEROOT; ?>images/showroom-1.png" alt="" class="img-fluid">
+												</a>
+												<a href="<?php echo SITEROOT; ?>images/showroom-1.png" title="Lorem ipsum">
+													<img src="<?php echo SITEROOT; ?>images/showroom-1.png" alt="" class="img-fluid">
+												</a>
+												<a href="<?php echo SITEROOT; ?>images/showroom-1.png" title="Lorem ipsum">
+													<img src="<?php echo SITEROOT; ?>images/showroom-1.png" alt="" class="img-fluid">
+												</a>
+												<a href="<?php echo SITEROOT; ?>images/showroom-1.png" title="Lorem ipsum">
+													<img src="<?php echo SITEROOT; ?>images/showroom-1.png" alt="" class="img-fluid">
+												</a>
+												<a href="<?php echo SITEROOT; ?>images/showroom-1.png" title="Lorem ipsum">
+													<img src="<?php echo SITEROOT; ?>images/showroom-1.png" alt="" class="img-fluid">
+												</a>
+												<a href="<?php echo SITEROOT; ?>images/showroom-1.png" title="Lorem ipsum">
+													<img src="<?php echo SITEROOT; ?>images/showroom-1.png" alt="" class="img-fluid">
+												</a>
+												<a href="<?php echo SITEROOT; ?>images/showroom-1.png" title="Lorem ipsum">
+													<img src="<?php echo SITEROOT; ?>images/showroom-1.png" alt="" class="img-fluid">
+												</a>
+											</div>
 										</div>
-										
-<?php
-for($i = 0; $i < 12; $i++){
-echo "<a href='../../images/showroom-1.png' title='Lorem ipsum'>";
-echo "<img src='../../images/showroom-1.png' class='img-fluid'>";
-echo "</a>";
-}
-?>
-										
-										
+									</div>
+									<div class="row">
+										<div class="col-12">
+											<div class="product-detail__carousel-nav">
+												<div>
+													<img src="<?php echo SITEROOT; ?>images/yt-placeholder.png" alt=""
+														 class="img-fluid prod-detail__nav-img">
+												</div>
+												<div>
+													<img src="<?php echo SITEROOT; ?>images/showroom-1.png" alt=""
+														 class="img-fluid prod-detail__nav-img">
+												</div>
+												<div>
+													<img src="<?php echo SITEROOT; ?>images/showroom-1.png" alt=""
+														 class="img-fluid prod-detail__nav-img">
+												</div>
+												<div>
+													<img src="<?php echo SITEROOT; ?>images/showroom-1.png" alt=""
+														 class="img-fluid prod-detail__nav-img">
+												</div>
+												<div>
+													<img src="<?php echo SITEROOT; ?>images/showroom-1.png" alt=""
+														 class="img-fluid prod-detail__nav-img">
+												</div>
+												<div>
+													<img src="<?php echo SITEROOT; ?>images/showroom-1.png" alt=""
+														 class="img-fluid prod-detail__nav-img">
+												</div>
+												<div>
+													<img src="<?php echo SITEROOT; ?>images/showroom-1.png" alt=""
+														 class="img-fluid prod-detail__nav-img">
+												</div>
+												<div>
+													<img src="<?php echo SITEROOT; ?>images/showroom-1.png" alt=""
+														 class="img-fluid prod-detail__nav-img">
+												</div>
+												<div>
+													<img src="<?php echo SITEROOT; ?>images/showroom-1.png" alt=""
+														 class="img-fluid prod-detail__nav-img">
+												</div>
+												<div>
+													<img src="<?php echo SITEROOT; ?>images/showroom-1.png" alt=""
+														 class="img-fluid prod-detail__nav-img">
+												</div>
+												<div>
+													<img src="<?php echo SITEROOT; ?>images/showroom-1.png" alt=""
+														 class="img-fluid prod-detail__nav-img">
+												</div>
+												<div>
+													<img src="<?php echo SITEROOT; ?>images/showroom-1.png" alt=""
+														 class="img-fluid prod-detail__nav-img">
+												</div>
+												<div>
+													<img src="<?php echo SITEROOT; ?>images/showroom-1.png" alt=""
+														 class="img-fluid prod-detail__nav-img">
+												</div>
+											</div>
+										</div>
 									</div>
 								</div>
 							</div>
-							<div class="row">
-								<div class="col-12">
-									<div class="product-detail__carousel-nav">
-<?php
-for($i = 0; $i < 12; $i++){
-echo "<a href='../../images/showroom-1.png' title='Lorem ipsum'>";
-echo "<img src='../../images/img-video.png' class='img-fluid prod-detail__nav-img'>";
-echo "</a>";
-}
-?>
-<!--
-<div>
-<img src="../../images/showroom-1.png" alt=""
-class="img-fluid prod-detail__nav-img">
-</div>
--->										
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					
-					<div class="col-12 col-lg-6">
-						<div class="specification-detial-wrap">
-							<h2 class="specification-detial-wrap__general-heading">
-<span>
-<?php
-echo $name." Specifications";
-?>
-<!--
-Wardrobe Tubes Specifications
--->
-</span>
+							<div class="col-12 col-lg-6">
+								<div class="specification-detial-wrap">
+									<h2 class="specification-detial-wrap__general-heading">
+										<span>Wardrobe Tubes Specifications</span>
 
-							<div class="product-purchase__buttons">
-								<button class="product-purchase__buttons--share">
-									<svg xmlns="http://www.w3.org/2000/svg" width="23.547" height="25.688"
+										<div class="product-purchase__buttons">
+											<button class="product-purchase__buttons--share">
+												<svg xmlns="http://www.w3.org/2000/svg" width="23.547" height="25.688"
 													 viewBox="0 0 23.547 25.688">
 													<defs>
 														<style>.share-no-background {
@@ -255,41 +289,41 @@ Wardrobe Tubes Specifications
 															  d="M125.372,274.022a1.064,1.064,0,0,1-.529-.14l-9.932-5.662a1.07,1.07,0,0,1,1.06-1.86l9.932,5.662a1.07,1.07,0,0,1-.531,2Zm0,0"
 															  transform="translate(-108.633 -252.862)"></path>
 													</g>
-									</svg>
-								</button>
-								<button class="product-purchase__buttons--idea-folder">
-										<svg id="Save" xmlns="http://www.w3.org/2000/svg" width="25.6"
+												</svg>
+											</button>
+											<button class="product-purchase__buttons--idea-folder">
+												<svg id="Save" xmlns="http://www.w3.org/2000/svg" width="25.6"
 													 height="23.023" viewBox="0 0 25.6 23.023">
-											<path id="Path_205" data-name="Path 205"
-												d="M25.6,4.963v7.6a1,1,0,0,1-1,1h-.55a1,1,0,0,1-.724-.31L18.974,8.69l-7.748,9.89a1,1,0,0,1-.787.383h0a1,1,0,0,1-.787-.384L7.006,15.195,5.592,17.034a1,1,0,0,1-1.585-1.22l2.2-2.861A1,1,0,0,1,7,12.563H7a1,1,0,0,1,.788.384L10.44,16.34l7.672-9.794a1,1,0,0,1,1.511-.073L23.6,10.642V4.963a2,2,0,0,0-2-2H4a2,2,0,0,0-2,2v14a2,2,0,0,0,2,2h6.55a1,1,0,0,1,0,2H4a4,4,0,0,1-4-4v-14a4,4,0,0,1,4-4H21.6A4,4,0,0,1,25.6,4.963ZM4,7.563a3,3,0,1,1,3,3A3,3,0,0,1,4,7.563Zm2,0a1,1,0,1,0,1-1A1,1,0,0,0,6,7.563Z"
-												transform="translate(0 -0.963)" fill="#00fbff"></path>
-											<path id="Path_207" data-name="Path 207"
-												d="M11.836-4.736H8.076v3.76H6.1v-3.76H2.324V-6.719H6.1V-10.5H8.076v3.779h3.76Z"
-												transform="translate(13.1 24)" fill="#00fbff"></path>
-										</svg>
-									</button>
-									<button class="product-purchase__buttons--pdf">
-										PDF
-									</button>
-								</div>
-							</h2>
+													<path id="Path_205" data-name="Path 205"
+														  d="M25.6,4.963v7.6a1,1,0,0,1-1,1h-.55a1,1,0,0,1-.724-.31L18.974,8.69l-7.748,9.89a1,1,0,0,1-.787.383h0a1,1,0,0,1-.787-.384L7.006,15.195,5.592,17.034a1,1,0,0,1-1.585-1.22l2.2-2.861A1,1,0,0,1,7,12.563H7a1,1,0,0,1,.788.384L10.44,16.34l7.672-9.794a1,1,0,0,1,1.511-.073L23.6,10.642V4.963a2,2,0,0,0-2-2H4a2,2,0,0,0-2,2v14a2,2,0,0,0,2,2h6.55a1,1,0,0,1,0,2H4a4,4,0,0,1-4-4v-14a4,4,0,0,1,4-4H21.6A4,4,0,0,1,25.6,4.963ZM4,7.563a3,3,0,1,1,3,3A3,3,0,0,1,4,7.563Zm2,0a1,1,0,1,0,1-1A1,1,0,0,0,6,7.563Z"
+														  transform="translate(0 -0.963)" fill="#00fbff"></path>
+													<path id="Path_207" data-name="Path 207"
+														  d="M11.836-4.736H8.076v3.76H6.1v-3.76H2.324V-6.719H6.1V-10.5H8.076v3.779h3.76Z"
+														  transform="translate(13.1 24)" fill="#00fbff"></path>
+												</svg>
+											</button>
+											<button class="product-purchase__buttons--pdf">
+												PDF
+											</button>
+										</div>
+									</h2>
 
 									<div id="accordion">
-										<div class="card-collapse">
-											<div class="card-collapse__header collapsed" id="heading-one"
+										<div class="card-collapse margin_bottom-twenty__a">
+											<div class="card-collapse__header new-padding_a" id="heading-one"
 												 data-toggle="collapse" data-target="#collapse-one"
 												 aria-expanded="false" aria-controls="collapse-one">
 												<h5 class="card-collapse__title">
 													<span>Description</span>
 													<img class="collapse-icon collapse-icon__plus"
-														 src="../../images/minus-button-1.svg" alt="">
+														 src="<?php echo SITEROOT; ?>images/minus-button-1.svg" alt="">
 													<img class="collapse-icon collapse-icon__minus"
-														 src="../../images/minus-button.svg" alt="">
+														 src="<?php echo SITEROOT; ?>images/minus-button.svg" alt="">
 												</h5>
 											</div>
 
-											<div id="collapse-one" class="collapse" aria-labelledby="heading-one"
-												 data-parent="#accordion">
+											<div id="collapse-one" class="collapse spec show" aria-labelledby="heading-one"
+												 >
 												<div class="card-collapse__body">
 													<div class="specification-detial-wrap__text-wrap">
 														<p class="specification-detial-wrap__text-wrap--heading">Lorem
@@ -307,22 +341,22 @@ Wardrobe Tubes Specifications
 												</div>
 											</div>
 										</div>
-
-										<div class="card-collapse">
-											<div class="card-collapse__header collapsed" id="heading-two"
+ 
+										<div class="card-collapse margin_bottom-twenty__a">
+											<div class="card-collapse__header new-padding_a collapsed" id="heading-two"
 												 data-toggle="collapse" data-target="#collapse-two"
 												 aria-expanded="false" aria-controls="collapse-two">
 												<h5 class="card-collapse__title">
 													<span>Specification Details</span>
 													<img class="collapse-icon collapse-icon__plus"
-														 src="../../images/minus-button-1.svg" alt="">
+														 src="<?php echo SITEROOT; ?>images/minus-button-1.svg" alt="">
 													<img class="collapse-icon collapse-icon__minus"
-														 src="../../images/minus-button.svg" alt="">
+														 src="<?php echo SITEROOT; ?>images/minus-button.svg" alt="">
 												</h5>
 											</div>
 
-											<div id="collapse-two" class="collapse" aria-labelledby="heading-two"
-												 data-parent="#accordion">
+											<div id="collapse-two" class="collapse spec" aria-labelledby="heading-two"
+												 >
 												<div class="card-collapse__body">
 													<div class="specification-detial-wrap__specification-details">
 														<div class="row">
@@ -512,7 +546,7 @@ Wardrobe Tubes Specifications
 
 																	<div class="wrap-content d-flex flex-wrap">
 																		<div class="specification-detial-wrap__specification-details--description-content">
-																			<img src="../../images/specification-description-1.png"
+																			<img src="<?php echo SITEROOT; ?>images/specification-description-1.png"
 																				 alt="" class="img-fluid">
 																			<div class="specification-detial-wrap__specification-details--description-text">
 																				<p class="heading">Drawer Openings</p>
@@ -523,7 +557,7 @@ Wardrobe Tubes Specifications
 																			</div>
 																		</div>
 																		<div class="specification-detial-wrap__specification-details--description-content">
-																			<img src="../../images/specification-description-2.png"
+																			<img src="<?php echo SITEROOT; ?>images/specification-description-2.png"
 																				 alt="" class="img-fluid">
 																			<div class="specification-detial-wrap__specification-details--description-text">
 																				<p class="heading">Drawer Widths</p>
@@ -534,7 +568,7 @@ Wardrobe Tubes Specifications
 																			</div>
 																		</div>
 																		<div class="specification-detial-wrap__specification-details--description-content">
-																			<img src="../../images/specification-description-3.png"
+																			<img src="<?php echo SITEROOT; ?>images/specification-description-3.png"
 																				 alt="" class="img-fluid">
 																			<div class="specification-detial-wrap__specification-details--description-text">
 																				<p class="heading">Drawer Face Heights</p>
@@ -568,154 +602,281 @@ Wardrobe Tubes Specifications
 																</div>
 															</div>
 														</div>
-														
-<div class="row">
-<?php
-for($i = 0; $i < 6; $i++){
-?>
-
-<div class="col-12 col-lg-6">
-<a href="#" title="" class="specification-detial-wrap__download-link">
-<span class="specification-detial-wrap__download-link--img">
-<svg xmlns="http://www.w3.org/2000/svg" width="26" height="33.724"
-viewBox="0 0 26 33.724"><defs><style>.files {
-fill: #DB440D;
-}
-</style>
-</defs>
-<g transform="translate(0 0)"><path class="files"
-d="M293.269,256h-4.215A1.054,1.054,0,0,0,288,257.054v8.431a1.054,1.054,0,0,0,1.054,1.054h4.215a2.108,2.108,0,0,0,2.108-2.108v-6.323A2.108,2.108,0,0,0,293.269,256Zm0,8.431h-3.162v-6.323h3.162Z"
-transform="translate(-274.592 -239.138)"></path><path
-class="files"
-d="M422.323,258.108V256h-5.269A1.054,1.054,0,0,0,416,257.054v9.485h2.108v-4.215h4.215v-2.108h-4.215v-2.108Z"
-transform="translate(-396.323 -239.138)"></path><path
-class="files"
-d="M1.514,30.562V3.161c0-.582.339-1.054.757-1.054H13.622V6.323c0,1.164.678,2.108,1.514,2.108h3.027v3.162h1.514V7.377a1.3,1.3,0,0,0-.219-.748L14.916.305A.667.667,0,0,0,14.379,0H2.27C1.016,0,0,1.415,0,3.161v27.4c0,1.746,1.016,3.162,2.27,3.162h5.3V31.616H2.27C1.852,31.616,1.514,31.144,1.514,30.562Z"
-transform="translate(0 0)"></path><path
-class="files"
-d="M165.269,256h-4.215A1.054,1.054,0,0,0,160,257.054v9.485h2.108v-3.162h3.162a2.108,2.108,0,0,0,2.108-2.108v-3.162A2.108,2.108,0,0,0,165.269,256Zm0,5.269h-3.162v-3.162h3.162Z"
-transform="translate(-152.551 -239.138)"></path></g></svg>
-</span>
-Download instructions 4
-</a>
-</div>
-
-<?php
-}
-?>
-</div>
+														<div class="row">
+															<div class="col-12 col-lg-6">
+																<a href="#" title=""
+																   class="specification-detial-wrap__download-link">
+																	<span class="specification-detial-wrap__download-link--img">
+																		<svg xmlns="http://www.w3.org/2000/svg"
+																			 width="26" height="33.724"
+																			 viewBox="0 0 26 33.724"><defs><style>.files {
+                                                                            fill: #DB440D;
+                                                                        }</style></defs><g transform="translate(0 0)"><path
+																				class="files"
+																				d="M293.269,256h-4.215A1.054,1.054,0,0,0,288,257.054v8.431a1.054,1.054,0,0,0,1.054,1.054h4.215a2.108,2.108,0,0,0,2.108-2.108v-6.323A2.108,2.108,0,0,0,293.269,256Zm0,8.431h-3.162v-6.323h3.162Z"
+																				transform="translate(-274.592 -239.138)"></path><path
+																				class="files"
+																				d="M422.323,258.108V256h-5.269A1.054,1.054,0,0,0,416,257.054v9.485h2.108v-4.215h4.215v-2.108h-4.215v-2.108Z"
+																				transform="translate(-396.323 -239.138)"></path><path
+																				class="files"
+																				d="M1.514,30.562V3.161c0-.582.339-1.054.757-1.054H13.622V6.323c0,1.164.678,2.108,1.514,2.108h3.027v3.162h1.514V7.377a1.3,1.3,0,0,0-.219-.748L14.916.305A.667.667,0,0,0,14.379,0H2.27C1.016,0,0,1.415,0,3.161v27.4c0,1.746,1.016,3.162,2.27,3.162h5.3V31.616H2.27C1.852,31.616,1.514,31.144,1.514,30.562Z"
+																				transform="translate(0 0)"></path><path
+																				class="files"
+																				d="M165.269,256h-4.215A1.054,1.054,0,0,0,160,257.054v9.485h2.108v-3.162h3.162a2.108,2.108,0,0,0,2.108-2.108v-3.162A2.108,2.108,0,0,0,165.269,256Zm0,5.269h-3.162v-3.162h3.162Z"
+																				transform="translate(-152.551 -239.138)"></path></g></svg>
+																	</span>
+																	Download instructions
+																</a>
+															</div>
+															<div class="col-12 col-lg-6">
+																<a href="#" title=""
+																   class="specification-detial-wrap__download-link">
+																	<span class="specification-detial-wrap__download-link--img">
+																		<svg xmlns="http://www.w3.org/2000/svg"
+																			 width="26" height="33.724"
+																			 viewBox="0 0 26 33.724"><defs><style>.files {
+                                                                            fill: #DB440D;
+                                                                        }</style></defs><g transform="translate(0 0)"><path
+																				class="files"
+																				d="M293.269,256h-4.215A1.054,1.054,0,0,0,288,257.054v8.431a1.054,1.054,0,0,0,1.054,1.054h4.215a2.108,2.108,0,0,0,2.108-2.108v-6.323A2.108,2.108,0,0,0,293.269,256Zm0,8.431h-3.162v-6.323h3.162Z"
+																				transform="translate(-274.592 -239.138)"></path><path
+																				class="files"
+																				d="M422.323,258.108V256h-5.269A1.054,1.054,0,0,0,416,257.054v9.485h2.108v-4.215h4.215v-2.108h-4.215v-2.108Z"
+																				transform="translate(-396.323 -239.138)"></path><path
+																				class="files"
+																				d="M1.514,30.562V3.161c0-.582.339-1.054.757-1.054H13.622V6.323c0,1.164.678,2.108,1.514,2.108h3.027v3.162h1.514V7.377a1.3,1.3,0,0,0-.219-.748L14.916.305A.667.667,0,0,0,14.379,0H2.27C1.016,0,0,1.415,0,3.161v27.4c0,1.746,1.016,3.162,2.27,3.162h5.3V31.616H2.27C1.852,31.616,1.514,31.144,1.514,30.562Z"
+																				transform="translate(0 0)"></path><path
+																				class="files"
+																				d="M165.269,256h-4.215A1.054,1.054,0,0,0,160,257.054v9.485h2.108v-3.162h3.162a2.108,2.108,0,0,0,2.108-2.108v-3.162A2.108,2.108,0,0,0,165.269,256Zm0,5.269h-3.162v-3.162h3.162Z"
+																				transform="translate(-152.551 -239.138)"></path></g></svg>
+																	</span>
+																	Download instructions 2
+																</a>
+															</div>
+															<div class="col-12 col-lg-6">
+																<a href="#" title=""
+																   class="specification-detial-wrap__download-link">
+																	<span class="specification-detial-wrap__download-link--img">
+																		<svg xmlns="http://www.w3.org/2000/svg"
+																			 width="26" height="33.724"
+																			 viewBox="0 0 26 33.724"><defs><style>.files {
+                                                                            fill: #DB440D;
+                                                                        }</style></defs><g transform="translate(0 0)"><path
+																				class="files"
+																				d="M293.269,256h-4.215A1.054,1.054,0,0,0,288,257.054v8.431a1.054,1.054,0,0,0,1.054,1.054h4.215a2.108,2.108,0,0,0,2.108-2.108v-6.323A2.108,2.108,0,0,0,293.269,256Zm0,8.431h-3.162v-6.323h3.162Z"
+																				transform="translate(-274.592 -239.138)"></path><path
+																				class="files"
+																				d="M422.323,258.108V256h-5.269A1.054,1.054,0,0,0,416,257.054v9.485h2.108v-4.215h4.215v-2.108h-4.215v-2.108Z"
+																				transform="translate(-396.323 -239.138)"></path><path
+																				class="files"
+																				d="M1.514,30.562V3.161c0-.582.339-1.054.757-1.054H13.622V6.323c0,1.164.678,2.108,1.514,2.108h3.027v3.162h1.514V7.377a1.3,1.3,0,0,0-.219-.748L14.916.305A.667.667,0,0,0,14.379,0H2.27C1.016,0,0,1.415,0,3.161v27.4c0,1.746,1.016,3.162,2.27,3.162h5.3V31.616H2.27C1.852,31.616,1.514,31.144,1.514,30.562Z"
+																				transform="translate(0 0)"></path><path
+																				class="files"
+																				d="M165.269,256h-4.215A1.054,1.054,0,0,0,160,257.054v9.485h2.108v-3.162h3.162a2.108,2.108,0,0,0,2.108-2.108v-3.162A2.108,2.108,0,0,0,165.269,256Zm0,5.269h-3.162v-3.162h3.162Z"
+																				transform="translate(-152.551 -239.138)"></path></g></svg>
+																	</span>
+																	Download instructions 3
+																</a>
+															</div>
+															<div class="col-12 col-lg-6">
+																<a href="#" title=""
+																   class="specification-detial-wrap__download-link">
+																	<span class="specification-detial-wrap__download-link--img">
+																		<svg xmlns="http://www.w3.org/2000/svg"
+																			 width="26" height="33.724"
+																			 viewBox="0 0 26 33.724"><defs><style>.files {
+                                                                            fill: #DB440D;
+                                                                        }</style></defs><g transform="translate(0 0)"><path
+																				class="files"
+																				d="M293.269,256h-4.215A1.054,1.054,0,0,0,288,257.054v8.431a1.054,1.054,0,0,0,1.054,1.054h4.215a2.108,2.108,0,0,0,2.108-2.108v-6.323A2.108,2.108,0,0,0,293.269,256Zm0,8.431h-3.162v-6.323h3.162Z"
+																				transform="translate(-274.592 -239.138)"></path><path
+																				class="files"
+																				d="M422.323,258.108V256h-5.269A1.054,1.054,0,0,0,416,257.054v9.485h2.108v-4.215h4.215v-2.108h-4.215v-2.108Z"
+																				transform="translate(-396.323 -239.138)"></path><path
+																				class="files"
+																				d="M1.514,30.562V3.161c0-.582.339-1.054.757-1.054H13.622V6.323c0,1.164.678,2.108,1.514,2.108h3.027v3.162h1.514V7.377a1.3,1.3,0,0,0-.219-.748L14.916.305A.667.667,0,0,0,14.379,0H2.27C1.016,0,0,1.415,0,3.161v27.4c0,1.746,1.016,3.162,2.27,3.162h5.3V31.616H2.27C1.852,31.616,1.514,31.144,1.514,30.562Z"
+																				transform="translate(0 0)"></path><path
+																				class="files"
+																				d="M165.269,256h-4.215A1.054,1.054,0,0,0,160,257.054v9.485h2.108v-3.162h3.162a2.108,2.108,0,0,0,2.108-2.108v-3.162A2.108,2.108,0,0,0,165.269,256Zm0,5.269h-3.162v-3.162h3.162Z"
+																				transform="translate(-152.551 -239.138)"></path></g></svg>
+																	</span>
+																	Download instructions 4
+																</a>
+															</div>
+														</div>
+													</div>
+												</div>
 											</div>
 										</div>
-									</div>
-								</div>
 
-								<div class="card-collapse">
-									<div class="card-collapse__header collapsed" id="heading-three"
+										<div class="card-collapse margin_bottom-twenty__a">
+											<div class="card-collapse__header new-padding_a collapsed" id="heading-three"
 												 data-toggle="collapse" data-target="#collapse-three"
 												 aria-expanded="false" aria-controls="collapse-three">
-										<h5 class="card-collapse__title">
+												<h5 class="card-collapse__title">
 													<span>Videos</span>
 													<img class="collapse-icon collapse-icon__plus"
-														 src="../../images/minus-button-1.svg" alt="">
+														 src="<?php echo SITEROOT; ?>images/minus-button-1.svg" alt="">
 													<img class="collapse-icon collapse-icon__minus"
-														 src="../../images/minus-button.svg" alt="">
-										</h5>
-									</div>
-
-									<div id="collapse-three" class="collapse" aria-labelledby="heading-three"
-												 data-parent="#accordion">
-										<div class="card-collapse__body">
-											<div class="specification-detial-wrap__video-wrap">
-
-<?php
-for($i = 0; $i < 12; $i++){
-?>
-<div class="specification-detial-wrap__video-wrap--video">
-	<div class="embed-responsive embed-responsive-4by3">
-		<iframe class="yvideo" width="100%" height="100%"
-		src="https://www.youtube.com/embed/Wb0JINqX71w?autoplay=0&amp;enablejsapi=1"
-		frameborder="0"
-		allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-		allowfullscreen=""></iframe>
-	</div>
-	<p class="specification-detial-wrap__video-wrap--video__title">
-		Product description
-	</p>
-</div>
-<?php
-}
-?>
-												
-												
+														 src="<?php echo SITEROOT; ?>images/minus-button.svg" alt="">
+												</h5>
 											</div>
-										</div>
-									</div>
-								</div>
-							</div>
 
-							<div class="specification-detial-wrap__design-tool">
-								<div class="row">
-									<div class="col-12 col-lg-6">
-										<div class="first-fixed-block__text-group--items">
-											<img src="../../images/package.svg" alt="">
-											<div class="first-fixed-block__text-group--text">
-												<p>2K 457</p>
-												<p>Successful DIY Installations</p>
-											</div>
-										</div>
-									</div>
-									<div class="col-12 col-lg-6">
-										<div class="block-stars__wrwrappapp.r">
-											<img src="../../images/Rectangle12.png" alt="" class="block-stars__wrwrappapp.r--image">
-											<div class="block-stars__wrwrappapp.r--text">
-												<div class="stars-container">
-													<img src="../../images/star.svg" alt="">
-													<img src="../../images/star.svg" alt="">
-													<img src="../../images/star.svg" alt="">
-													<img src="../../images/star.svg" alt="">
-													<img src="../../images/star.svg" alt="">
+											<div id="collapse-three" class="collapse spec" aria-labelledby="heading-three"
+												 >
+												<div class="card-collapse__body">
+													<div class="specification-detial-wrap__video-wrap">
+														<div class="specification-detial-wrap__video-wrap--video">
+															<div class="embed-responsive embed-responsive-4by3">
+																<iframe class="yvideo" width="100%" height="100%"
+																		src="https://www.youtube.com/embed/Wb0JINqX71w?autoplay=0&amp;enablejsapi=1"
+																		frameborder="0"
+																		allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+																		allowfullscreen=""></iframe>
+															</div>
+															<p class="specification-detial-wrap__video-wrap--video__title">
+																Product description
+															</p>
+														</div>
+														<div class="specification-detial-wrap__video-wrap--video">
+															<div class="embed-responsive embed-responsive-4by3">
+																<iframe class="yvideo" width="100%" height="100%"
+																		src="https://www.youtube.com/embed/Wb0JINqX71w?autoplay=0&amp;enablejsapi=1"
+																		frameborder="0"
+																		allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+																		allowfullscreen=""></iframe>
+															</div>
+															<p class="specification-detial-wrap__video-wrap--video__title">
+																Product description
+															</p>
+														</div>
+														<div class="specification-detial-wrap__video-wrap--video">
+															<div class="embed-responsive embed-responsive-4by3">
+																<iframe class="yvideo" width="100%" height="100%"
+																		src="https://www.youtube.com/embed/Wb0JINqX71w?autoplay=0&amp;enablejsapi=1"
+																		frameborder="0"
+																		allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+																		allowfullscreen=""></iframe>
+															</div>
+															<p class="specification-detial-wrap__video-wrap--video__title">
+																Product description
+															</p>
+														</div>
+														<div class="specification-detial-wrap__video-wrap--video">
+															<div class="embed-responsive embed-responsive-4by3">
+																<iframe class="yvideo" width="100%" height="100%"
+																		src="https://www.youtube.com/embed/Wb0JINqX71w?autoplay=0&amp;enablejsapi=1"
+																		frameborder="0"
+																		allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+																		allowfullscreen=""></iframe>
+															</div>
+															<p class="specification-detial-wrap__video-wrap--video__title">
+																Product description
+															</p>
+														</div>
+														<div class="specification-detial-wrap__video-wrap--video">
+															<div class="embed-responsive embed-responsive-4by3">
+																<iframe class="yvideo" width="100%" height="100%"
+																		src="https://www.youtube.com/embed/Wb0JINqX71w?autoplay=0&amp;enablejsapi=1"
+																		frameborder="0"
+																		allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+																		allowfullscreen=""></iframe>
+															</div>
+															<p class="specification-detial-wrap__video-wrap--video__title">
+																Product description
+															</p>
+														</div>
+														<div class="specification-detial-wrap__video-wrap--video">
+															<div class="embed-responsive embed-responsive-4by3">
+																<iframe class="yvideo" width="100%" height="100%"
+																		src="https://www.youtube.com/embed/Wb0JINqX71w?autoplay=0&amp;enablejsapi=1"
+																		frameborder="0"
+																		allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+																		allowfullscreen=""></iframe>
+															</div>
+															<p class="specification-detial-wrap__video-wrap--video__title">
+																Product description
+															</p>
+														</div>
+													</div>
 												</div>
-												<p class="first-text">Aubree W. Charlotte, North Carolina</p>
-												<p>Just had a successful installation!</p>
+											</div>
+										</div>
+									</div>
+
+									<div class="specification-detial-wrap__design-tool">
+										<div class="row">
+											<div class="col-12 col-lg-6">
+												<div class="first-fixed-block__text-group--items">
+													<img src="<?php echo SITEROOT; ?>images/package.svg" alt="">
+													<div class="first-fixed-block__text-group--text">
+														<p>2K 457</p>
+														<p>Successful DIY Installations</p>
+													</div>
+												</div>
+											</div>
+											<div class="col-12 col-lg-6">
+												<div class="block-stars__wrapper">
+													<img src="<?php echo SITEROOT; ?>images/Rectangle12.png" alt=""
+														 class="block-stars__wrapper--image">
+													<div class="block-stars__wrapper--text">
+														<div class="stars-container">
+															<img src="<?php echo SITEROOT; ?>images/star.svg" alt="">
+															<img src="<?php echo SITEROOT; ?>images/star.svg" alt="">
+															<img src="<?php echo SITEROOT; ?>images/star.svg" alt="">
+															<img src="<?php echo SITEROOT; ?>images/star.svg" alt="">
+															<img src="<?php echo SITEROOT; ?>images/star.svg" alt="">
+														</div>
+														<p class="first-text">Aubree W. Charlotte, North Carolina</p>
+														<p>Just had a successful installation!</p>
+													</div>
+												</div>
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
-							
 						</div>
 					</div>
 				</div>
-			</div>
-		</div>
-	</section>
-</main>
-
-<div class="scrollToTopBlock">
-	<div class="people-working">
-		<img src="../../images/people-working-call-center_@2x.png" alt="" class="people-working__image">
-		<div class="people-working__wrwrappapp.r">
-			<div class="people-working__content">
-				<p class="people-working__text">Hi! I'm the Virtual assistant, and I'm here to help you.</p>
-			</div>
-		</div>
-	</div>
-
-	<a href="#" class="scrollToTop js-to-top">
-		<img src="../../images/arrows.svg" alt="">
-	</a>
-</div>
-
-<div class="mobile-show">
-	<div class="mobile-footer-buttons">
-		<a href="#" class="mobile-footer-buttons__first">you design</a>
-		<a href="#" class="mobile-footer-buttons__second"><img src="../../images/icon-save.svg" alt="" class="img-fluid"></a>
-		<a href="#" class="mobile-footer-buttons__third">we design</a>
-	</div>
-</div>
-
+			</section>
+		</main>
+		
 
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'].'/includes/footer.php');
+require_once($real_root.'/includes/footer.php');
 ?>
-<script src="wrappapp.js"></script>
+		
+
+		<div class="scrollToTopBlock">
+			<div class="people-working">
+				<img src="<?php echo SITEROOT; ?>images/people-working-call-center_@2x.png" alt="" class="people-working__image">
+
+				<div class="people-working__wrapper">
+					<div class="people-working__content">
+						<p class="people-working__text">Hi! I'm the Virtual assistant, and I'm here to help you.</p>
+					</div>
+				</div>
+			</div>
+
+			<a href="#" class="scrollToTop js-to-top">
+				<img src="<?php echo SITEROOT; ?>images/arrows.svg" alt="">
+			</a>
+		</div>
+
+		<div class="mobile-show">
+			<div class="mobile-footer-buttons">
+				<a href="#" class="mobile-footer-buttons__first">you design</a>
+				<a href="#" class="mobile-footer-buttons__second"><img src="<?php echo SITEROOT; ?>images/icon-save.svg" alt=""
+																	   class="img-fluid"></a>
+				<a href="#" class="mobile-footer-buttons__third">we design</a>
+			</div>
+		</div>
+	
+		
+		
+		
+		
+	<script src="<?php echo SITEROOT; ?>app.js"></script>
+	</body>
+</html>

@@ -1,5 +1,4 @@
 <?php 
-
 $cat_id = (isset($_GET['cat_id']))? $_GET['cat_id'] : 0;
 $profile_cat_id = (isset($_GET['prodCatId']))? $_GET['prodCatId'] : 0;
 
@@ -18,7 +17,6 @@ $title = '';
 $parent_cat_name = '';
 
 $_SESSION['global_url_word'] = "global-word/";
-
 ?>
 <script
   src="https://code.jquery.com/jquery-3.5.1.min.js"
@@ -34,7 +32,7 @@ echo "<br />";
 
 $block = '';
 if($cat_id == 0){
-	$top_cat_array = $nav->getTopCats();
+	$top_cat_array = $nav->getTopCats($dbCustom,);
 	//print_r($top_cat_array);
 	echo "Top Catagories";
 	echo "<br />";
@@ -42,7 +40,7 @@ if($cat_id == 0){
 					
 		$url_str = $nav->getCatUrl($val['name'], $val['profile_cat_id'], 'showroom');
 
-$img = $ste_root."saascustuploads/".$_SESSION['profile_account_id']."/cart/medium/".$val['file_name'];
+$img = SITEROOT."saascustuploads/".$_SESSION['profile_account_id']."/cart/medium/".$val['file_name'];
 
 $block .= "<div style='margin:6px; 
 					float:left; 
@@ -50,7 +48,7 @@ $block .= "<div style='margin:6px;
 					border-style:solid; 
 					border-color:blue;'>";
 		$block .= "<a href='".$url_str."'>";	
-$img = $ste_root."saascustuploads/".$_SESSION['profile_account_id']."/cart/medium/".$val['file_name'];
+$img = SITEROOT."saascustuploads/".$_SESSION['profile_account_id']."/cart/medium/".$val['file_name'];
 
 		$block .="<img width='200' src='".$img."' />";
 		$block .="<br />";
@@ -86,7 +84,7 @@ $img = $ste_root."saascustuploads/".$_SESSION['profile_account_id']."/cart/mediu
 		if($res->num_rows > 0){
 			$obj = $res->fetch_object();
 
-$img = $ste_root."saascustuploads/".$_SESSION['profile_account_id']."/cart/large/exwide/".$obj->file_name;
+$img = SITEROOT."saascustuploads/".$_SESSION['profile_account_id']."/cart/large/exwide/".$obj->file_name;
 
 			echo "<hr />";
 			echo "<hr />";
@@ -118,7 +116,7 @@ if($cat_id > 0){
 
 			$url_str = $nav->getCatUrl($val['name'], $val['profile_cat_id'], 'showroom');
 
-			$img = $ste_root."saascustuploads/".$_SESSION['profile_account_id']."/cart/medium/".$val['file_name'];
+			$img = SITEROOT."saascustuploads/".$_SESSION['profile_account_id']."/cart/medium/".$val['file_name'];
 
 			$block .= "<div style='margin:6px; 
 								float:left; 
@@ -126,7 +124,7 @@ if($cat_id > 0){
 								border-style:solid; 
 								border-color:blue;'>";
 					$block .= "<a href='".$url_str."'>";	
-			$img = $ste_root."saascustuploads/".$_SESSION['profile_account_id']."/cart/medium/".$val['file_name'];
+			$img = SITEROOT."saascustuploads/".$_SESSION['profile_account_id']."/cart/medium/".$val['file_name'];
 			$block .="<img width='200' src='".$img."' />";
 					$block .="<br />";
 			$nm = stripSlashes($val['name']);
@@ -163,7 +161,7 @@ if($cat_id > 0){
 
 
 		$url_str = $nav->getItemUrl($val['seo_url'], $val['name'], $val['profile_item_id'], '', 'showroom');
-$img = $ste_root."saascustuploads/".$_SESSION['profile_account_id']."/cart/medium/".$val['file_name'];
+$img = SITEROOT."saascustuploads/".$_SESSION['profile_account_id']."/cart/medium/".$val['file_name'];
 
 		$block .= "<div style='margin:6px; 
 					float:left; 
@@ -171,7 +169,7 @@ $img = $ste_root."saascustuploads/".$_SESSION['profile_account_id']."/cart/mediu
 					border-style:solid; 
 					border-color:blue;'>";
 		$block .= "<a href='".$url_str."'>";	
-$img = $ste_root."saascustuploads/".$_SESSION['profile_account_id']."/cart/medium/".$val['file_name'];
+$img = SITEROOT."saascustuploads/".$_SESSION['profile_account_id']."/cart/medium/".$val['file_name'];
 
 		$block .="<img width='200' src='".$img."' />";
 		$block .="<br />";

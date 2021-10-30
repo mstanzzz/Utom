@@ -80,19 +80,19 @@ echo "5 ".$parts[5];
 
 $lev = count($parts);
 if($lev <= 3){
-	$ste_root = '../';
+	SITEROOT = '../';
 }elseif($lev == 4){
-	$ste_root = '../../';
+	SITEROOT = '<?php echo SITEROOT; ?>';
 }elseif($lev == 5){
-	$ste_root = '../../../';	
+	SITEROOT = '<?php echo SITEROOT; ?>../';	
 }elseif($lev == 6){
-	$ste_root = '../../../../';	
+	SITEROOT = '<?php echo SITEROOT; ?><?php echo SITEROOT; ?>';	
 }else{
-	$ste_root = './';
+	SITEROOT = './';
 }
-$ste_root = preg_replace('/(\/+)/','/',$ste_root);
+SITEROOT = preg_replace('/(\/+)/','/',SITEROOT);
 echo "<br />";
-echo $ste_root;
+echo SITEROOT;
 echo "<br />";
 */
 
@@ -112,7 +112,7 @@ function add_item(item_id){
 
 	$.ajaxSetup({ cache: false}); 
 	$.ajax({
-		url: '../../pages/cart-ajax/ajax-add-item.php?item_id='+item_id+'&qty='+qty,
+		url: '<?php echo SITEROOT; ?>pages/cart-ajax/ajax-add-item.php?item_id='+item_id+'&qty='+qty,
 		success: function(data) {	
 		  
 		alert(data);
@@ -129,7 +129,7 @@ function add_item(item_id){
 <body>
 <br />
 <?php
-$item_array = $item->getItem(0,$profile_item_id);
+$item_array = $item->getItem($dbCustom,0,$profile_item_id);
 $cart_item_count = $cart->getItemCount();
 
 echo "<a href='#' id='add_".$item_array['item_id']."' onClick=\"add_item('".$item_array['item_id']."')\">Add To Cart</a>";
@@ -148,10 +148,10 @@ echo "<a href='#' id='add_".$item_array['item_id']."' onClick=\"add_item('".$ite
 
 <?php
 
-echo $ste_root;
+echo SITEROOT;
 echo "<br />";
 
-$img = $ste_root."saascustuploads/".$_SESSION['profile_account_id']."/cart/large/exwide/".$item_array['file_name'];
+$img = SITEROOT."saascustuploads/".$_SESSION['profile_account_id']."/cart/large/exwide/".$item_array['file_name'];
 
 echo "<img height='400' src='".$img."' />";
 echo "<hr />";

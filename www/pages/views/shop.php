@@ -1,14 +1,15 @@
 <?php
-if(isset($_GET['cat_id'])){
+//if(isset($_GET['cat_id'])){
 	$cat_id = $_GET['cat_id'];
-	$profile_cat_id = $store_data->getProfileCatFromCat($cat_id);	
-}else{
+	
+	//$profile_cat_id = $store_data->getProfileCatFromCat($cat_id);	
+
+//}else{
 	$profile_cat_id =  (isset($_GET['prodCatId'])) ? addslashes($_GET['prodCatId']) : 0;
-	$cat_id = $store_data->getCatFromProfileCat($profile_cat_id);
-}
+	
+	//$cat_id = $store_data->getCatFromProfileCat($profile_cat_id);
 
-
-
+//}
 $num_sub_cats = 0;
 
 $lgn = new CustomerLogin;
@@ -21,7 +22,6 @@ $sort =  (isset($_GET['sort'])) ? $_GET['sort'] : '';
 $page_rows =  (isset($_GET['pageRows'])) ? $_GET['pageRows'] : 6;
 $pagenum = (isset($_GET['pagenum'])) ? $_GET['pagenum'] : 1;
 $view_type = (isset($_COOKIE['view_type'])) ? $_COOKIE['view_type'] : 'list';
-
 $db = $dbCustom->getDbConnect(CART_DATABASE);
 
 $parent_cat_name = '';
@@ -82,7 +82,7 @@ if($cat_id > 0){
 		$block .= "<div style='margin:6px; float:left; padding:6px; border-style:solid; border-color:blue;'>";
 		$block .="<a href='".$url_str."'>";	
 		
-$img = $ste_root."saascustuploads/".$_SESSION['profile_account_id']."/cart/large/".$sub_cat['file_name'];
+$img = SITEROOT."saascustuploads/".$_SESSION['profile_account_id']."/cart/large/".$sub_cat['file_name'];
 
 		$block .="<img width='200' src='".$img."'"; 
 		$block .=" /></a>";
@@ -115,7 +115,7 @@ foreach($items_array as $item){
 $block .= "<div style='margin:6px; float:left; padding:6px; border-style:solid; border-color:gray;'>";
 	$block .="<a href='".$itemDetailUrl."'>";	
 
-$img = $ste_root."saascustuploads/".$_SESSION['profile_account_id']."/cart/large/".$item['file_name'];
+$img = SITEROOT."saascustuploads/".$_SESSION['profile_account_id']."/cart/large/".$item['file_name'];
 $block .="<img width='200' src='".$img."'"; 
 		$block .=" />";
 		$block .="<br />";		

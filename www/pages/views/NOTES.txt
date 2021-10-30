@@ -1,0 +1,81 @@
+
+// clone a fresh lamp container
+https://github.com/sprintcube/docker-compose-lamp
+git clone https://github.com/sprintcube/docker-compose-lamp.git
+
+> cd docker-compose-lamp/
+> docker-compose up -d
+// visit localhost
+
+
+// run this from within your project directoty
+> docker-compose up -d
+
+
+
+// all front end html files go in /www/pages/views/
+// all other assets can be anywhere
+
+Note: .htaccess controls url destinations to the appropriate php file (template):
+
+
+
+
+
+Here is the link to the page that is accessed through the header main navigation "Room"   
+http://clients2.atomsolutions.net/ClosetsToGo-website/showroom-detail-view-categories.html  
+On this page are the main categories for the types of ROOMS as shown by some of the examples 
+displayed.  The determining factor for which image is shown is based on overall image views 
+within it's perspective category.  
+
+Once a user selects the image/category they are interested in, the nesx page they are directed to will be this page  http://clients2.atomsolutions.net/ClosetsToGo-website/organizer-landing-page.html  (the order of images displayed are based on overall views).  allowing the user to further refine their search by applying filters.  
+
+I'm not really sure where the browse by room link you provided came from as it appears to be an older version which was replaced by the Room Gallery page on the link provided above.
+
+I believe you can ping Ivan for any clarification on what is old vs new designs??
+
+Let me know if you have any questions?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

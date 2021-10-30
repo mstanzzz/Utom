@@ -1,5 +1,4 @@
 <?php
-
 /*
 echo "num items:  ".$cart->getItemCount();
 echo "<br />";
@@ -23,7 +22,7 @@ if($cart->hasItems()){
 	$i = 1;
 
 	foreach($cart_contents_array as $cart_array) {
-		$item_array = $item->getItem($cart_array['item_id']);
+		$item_array = $item->getItem($dbCustom,$cart_array['item_id']);
 		$item_discount = 0;
 		$total_item_discount += $item_discount;
 		if($item_array['is_taxable']){
@@ -37,7 +36,7 @@ if($cart->hasItems()){
 
 $details_url = $nav->getItemUrl($item_array['seo_url'], $item_array['name'], $item_array['profile_item_id'], $brand_name, 'shop', $item_array['hide_id_from_url']);		
 echo "<br />";
-echo "<img src='../../saascustuploads/".$_SESSION['profile_account_id']."/cart/full/".$item_array['file_name']."' >"; 
+echo "<img src='<?php echo SITEROOT; ?>saascustuploads/".$_SESSION['profile_account_id']."/cart/full/".$item_array['file_name']."' >"; 
 
 
 		$line_total = ($cart_array['price'] - $total_item_discount) * $cart_array['qty'];							

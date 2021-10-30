@@ -1,8 +1,8 @@
 <?php
-require_once('../../includes/config.php');
-require_once('../../includes/db_connect.php'); 
-require_once('../../includes/accessory_cart_functions.php');
-require_once('../../includes/class.shopping_cart_item.php');
+require_once('<?php echo SITEROOT; ?>includes/config.php');
+require_once('<?php echo SITEROOT; ?>includes/db_connect.php'); 
+require_once('<?php echo SITEROOT; ?>includes/accessory_cart_functions.php');
+require_once('<?php echo SITEROOT; ?>includes/class.shopping_cart_item.php');
 
 $item = new ShoppingCartItem;
 
@@ -25,7 +25,7 @@ if($item_id > 0){
 			AND item_gallery.item_id = '".$item_id."'";
 $result = $dbCustom->getResult($db,$sql);					
 	if($result->num_rows > 0){
-		$gallery_img_array[] = $item->getFileNameFromItemId($item_id);		
+		$gallery_img_array[] = $item->getFileNameFromItemId($dbCustom,$item_id);		
 		while($row = $result->fetch_object()){
 			$gallery_img_array[] = $row->file_name;
 		}
@@ -33,9 +33,9 @@ $result = $dbCustom->getResult($db,$sql);
 		foreach($gallery_img_array as $gallery_file_name){	
 			
 			
-			$block .= "<li><a href='".SITEROOT."/saascustuploads/".$_SESSION['profile_account_id']."/cart/large/".$gallery_file_name."' 
+			$block .= "<li><a href='".SITEROOT."//saascustuploads/".$_SESSION['profile_account_id']."/cart/large/".$gallery_file_name."' 
 						class='thumbnail-link image-switch-thumb'>
-						<img src='".SITEROOT."/saascustuploads/".$_SESSION['profile_account_id']."/cart/".$imgdir."/".$gallery_file_name."' 
+						<img src='".SITEROOT."//saascustuploads/".$_SESSION['profile_account_id']."/cart/".$imgdir."/".$gallery_file_name."' 
 						alt='".stripslashes($gallery_file_name)."' /></a></li>";
 
 

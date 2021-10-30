@@ -1,21 +1,11 @@
 <?php
-require_once("../../includes/config.php");
-require_once("../../includes/db_connect.php"); 
-require_once("../../includes/accessory_cart_functions.php");
+require_once("<?php echo SITEROOT; ?>includes/config.php");
+require_once("<?php echo SITEROOT; ?>includes/accessory_cart_functions.php");
 
 // find items that have the selected option. 
 // of those items, get all attributes they use.
 // return only these attribute boxes while limiting the options to only the ones relavent
 // NOTE: all attributes need to be returned but un-used ones need to be hidden so reselecting main attr options can include all select boxes. 
-
-$top_item_id = (isset($_GET['top_item_id'])) ? $_GET['top_item_id'] : 0;
-$attr_opts = (isset($_GET['attr_opts'])) ? $_GET['attr_opts'] : 0;
-$trigger_attr = (isset($_GET['trigger_attr'])) ? $_GET['trigger_attr'] : 0;
-$trigger_option = (isset($_GET['trigger_option'])) ? $_GET['trigger_option'] : 0;
-$main_attr_id = (isset($_GET['main_attr_id'])) ? $_GET['main_attr_id'] : 0;
-
-$deviceType = (isset($_GET['deviceType'])) ? $_GET['deviceType'] : 3;
-
 
 function get_attr_name($attr_id){
 	$dbCustom = new DbCustom();
@@ -30,6 +20,14 @@ function get_attr_name($attr_id){
 	}
 	return '';
 }
+
+
+$top_item_id = (isset($_GET['top_item_id'])) ? $_GET['top_item_id'] : 0;
+$attr_opts = (isset($_GET['attr_opts'])) ? $_GET['attr_opts'] : 0;
+$trigger_attr = (isset($_GET['trigger_attr'])) ? $_GET['trigger_attr'] : 0;
+$trigger_option = (isset($_GET['trigger_option'])) ? $_GET['trigger_option'] : 0;
+$main_attr_id = (isset($_GET['main_attr_id'])) ? $_GET['main_attr_id'] : 0;
+$deviceType = (isset($_GET['deviceType'])) ? $_GET['deviceType'] : 3;
 
 
 $ct_out = explode("---",$attr_opts);
@@ -54,7 +52,6 @@ $left_opt = 0;
 $left_attr = 0;
 
 $test = '';
-//$test = $main_attr_id;
 
 
 $i = 0;
@@ -71,49 +68,16 @@ foreach($ct_out as $ct_out_v){
 	$i++;
 }
 
-//$test = $selector_count;
-//$test = count($all_attr_array);
-
 $left_pos = $selector_count - 2;
-
-//$test = $left_pos;
 
 if(isset($all_attr_array[$left_pos])){
 	$left_opt = $all_attr_array[$left_pos]['opt_id'];
 	$left_attr = $all_attr_array[$left_pos]['attr_id'];
-	//$test = $all_attr_array[$left_pos]['attr_name']."    ".$all_attr_array[$left_pos]['attr_id'];	
 
 }
 
 
 $last_offset = count($all_attr_array) - 1;
-
-// is trigger on the last sttr selector
-/*
-if(isset($all_attr_array[$last_offset])){
-	if($all_attr_array[$last_offset]['attr_id'] == $trigger_attr){
-		$reset = 1;
-	}
-}
-*/
-
-//echo $all_attr_array[$last_offset]['attr_id'];
-//echo "<br />";
-
-
-
-// is the trigger attr position less than selected attributes
-/*
-$i = 1;
-foreach($all_attr_array as $all_attr_v){
-	if($all_attr_v['opt_id'] == $trigger_option){	
-		if($i < $selector_count){
-			$reset = 1;
-		}		
-	}	
-	$i++;
-}
-*/
 
 
 if($trigger_attr == $main_attr_id){
@@ -142,13 +106,7 @@ while($row = $res->fetch_object()){
 	$all_item_array[$j] = $row->item_id;
 }
 
-//$test = count($all_item_array);
-
-//$test = $reset;
-
-
 if($reset){
-	
 	
 	if($trigger_attr != $main_attr_id){
 		$selector_count = 2;
@@ -320,25 +278,9 @@ foreach($all_attr_array as $all_attr_v){
 		}
 	}
 	
-	//$test .= "  attr: ".$all_attr_v['attr_id']."  count: ".$attr_opt_count_array[$i]['opt_count'];
-	
 	$i++;
 	
 }
-
-/*
-foreach($return_opt_array as $return_opt_v){
-	if(array_key_exists($return_opt_v['attr_id'], $attr_opt_count_array)){
-		$attr_opt_count_array[$return_opt_v['attr_id']]['opt_count']++; 
-	}else{
-		$attr_opt_count_array[$return_opt_v['attr_id']]['opt_count'] = 1;
-	}
-}
-*/
-
-
-
-
 
 
 
@@ -380,28 +322,6 @@ foreach($all_attr_array as $all_attr_v){
 
 	
 	
-	// **** If only one option, don't have it in a select box ****
-	/*
-	$r = 0;
-	foreach($return_opt_array as $return_opt_v){
-		if($return_opt_v['attr_id'] == $all_attr_v['attr_id']){
-			$r++;
-			$last_opt_name = $return_opt_v['opt_name'];
-		}
-	}
-	if($r == 1){
-		
-		$block .= "<div class='selector_label'>".$all_attr_v['attr_name']."</div>";
-
-		$block .= $last_opt_name;
-			
-	}else{
-		$block .= "<div class='selector_label'>Select ".$all_attr_v['attr_name']."</div>";
-		
-	}
-	*/
-	//**************
-
 	
 	//if($r > 1){
 		$block .= "<div class='selector_label'>Select ".$all_attr_v['attr_name']."</div>";
@@ -429,8 +349,6 @@ foreach($all_attr_array as $all_attr_v){
 
 	
 $block .= "</form>";
-
-//$block .= "<div style='clear:both;'></div>";
 
 $block .= "<div style='clear:both;'></div>";
 $block .= "<div style='float:left; margin-top:2.5%; color:red; font-size:14px;'>*To change your selection, please click the reset button.<br />";

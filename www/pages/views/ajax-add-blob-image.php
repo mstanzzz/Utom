@@ -1,7 +1,7 @@
 <?php
 
 
-require_once("../../includes/config.php"); 
+require_once("<?php echo SITEROOT; ?>includes/config.php"); 
 
 $blob_image = (isset($_GET['blob_image'])) ? $_GET['blob_image'] : 0;
 

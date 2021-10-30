@@ -1,12 +1,12 @@
 <?php	
 setcookie('ctg_store_view','list',time() + (86400 * 360), '/');								
-require_once("../../includes/config.php");
-require_once("../../includes/db_connect.php"); 
-require_once("../../includes/accessory_cart_functions.php");
-require_once("../../includes/class.shopping_cart.php");
-require_once("../../includes/class.shopping_cart_item.php");
-require_once("../../includes/class.search.php");
-require_once("../../includes/class.module.php");
+require_once("<?php echo SITEROOT; ?>includes/config.php");
+require_once("<?php echo SITEROOT; ?>includes/db_connect.php"); 
+require_once("<?php echo SITEROOT; ?>includes/accessory_cart_functions.php");
+require_once("<?php echo SITEROOT; ?>includes/class.shopping_cart.php");
+require_once("<?php echo SITEROOT; ?>includes/class.shopping_cart_item.php");
+require_once("<?php echo SITEROOT; ?>includes/class.search.php");
+require_once("<?php echo SITEROOT; ?>includes/class.module.php");
 $module = new Module;
 
 $cart = new ShoppingCart;
@@ -67,7 +67,7 @@ $(document).ready(function() {
 				var n_id = $(this).find(".n_sub").attr('id');
 				// cat id
 				var c_id = $(this).find(".c_sub").attr('id');
-				t_url = "<?php echo SITEROOT; ?>/closet-accessory-details/closets-accessory-item/";
+				t_url = "<?php echo SITEROOT; ?>closet-accessory-details/closets-accessory-item/";
 				t_url += n_id+"/"+i_id+"/"+c_id;
 				window.location = t_url;
 			}		
@@ -182,9 +182,9 @@ if(count($clean_items_array) > 0){
 	
 	if($has_accessories){
 		$block .= "<div style='position:relative; top:-14px;'>";	
-		$block .= "<img onclick='add_items()' src='".SITEROOT."/images/button_add_cart_sm.jpg' style='outline:none;' />";
+		$block .= "<img onclick='add_items()' src='".SITEROOT."//images/button_add_cart_sm.jpg' style='outline:none;' />";
 		$block .= "</div>";	
-		$block.="<form name='add_with_qty_form' action='".SITEROOT."/storage-shop/closet-item-w-qty.html' method='post'>";
+		$block.="<form name='add_with_qty_form' action='".SITEROOT."//storage-shop/closet-item-w-qty.html' method='post'>";
 		$block.="<input type='hidden' name='str_items'>";	
 	}else{
 		$block.="<div style='height:22px;'>&nbsp;</div>";
@@ -202,7 +202,7 @@ if(count($clean_items_array) > 0){
 		
 	//for($i=0; $i<count($clean_items_array); $i++){	
 		
-		$item_array = $item->getItem($item_id);
+		$item_array = $item->getItem($dbCustom,$item_id);
 		$i++;
 		
 		
@@ -220,20 +220,20 @@ if(count($clean_items_array) > 0){
 				//$block .= "</div>";
 			
 				$block .= "<div style='float:left; position:relative;'>";
-					$block .= "<a href='".SITEROOT."/closet-accessory-details/closets-accessory-item/";
+					$block .= "<a href='".SITEROOT."//closet-accessory-details/closets-accessory-item/";
 					$block .= getUrlText($item_array['name'])."/".$item_id."/0' style='text-decoration:none;'>";
-					$block .= "<img src='".SITEROOT."/ul_cart/".$domain."/cart/list/".$item_array['file_name']."' alt='closet organizers'/>";
+					$block .= "<img src='".SITEROOT."//ul_cart/".SITEROOT."/cart/list/".$item_array['file_name']."' alt='closet organizers'/>";
 					$block .= "</a>";
 				$block .= "</div>";
 
 				$block .= "<div style='float:left; padding-left:40px;'>";
 					$block .= "<div style='font-weight:bold; padding-top:6px; width:180px;'>".$item_array['name']."</div>";					
 					$block .= "<div style='padding-top:6px;'>Product ID:  ".$item_id."</div>";
-					//$block .= "<div style='padding-top:6px;'><img src='".SITEROOT."/images/5-star.png' alt='closet organizers'/></div>";
+					//$block .= "<div style='padding-top:6px;'><img src='".SITEROOT."//images/5-star.png' alt='closet organizers'/></div>";
 				$block .= "</div>";
 
 				$block .= "<div style='float:left; padding-left:182px; font-weight:bold; padding-top:6px;'>";
-					$block .= "$".number_format($cart->getItemPrice($item_id),2);			
+					$block .= "$".number_format($cart->getItemPrice($dbCustom,$item_id),2);			
 				$block .= "<span style='font-weight:normal;'>/ per ea</span>";
 				$block .= "</div>";
 				$block .= "<div class='clear'></div>";
@@ -241,8 +241,8 @@ if(count($clean_items_array) > 0){
 				$block .= "<div style='float:right; position:relative; top:-80px;'>";	
 				
 				if(isClosetSystem($item_id)){
-					//$block .= "<a href='".SITEROOT."/closet-design-online.html'>Start Design</a>";
-					$block .= "<a href='".SITEROOT."/app/'>Start Design</a>";
+					//$block .= "<a href='".SITEROOT."//closet-design-online.html'>Start Design</a>";
+					$block .= "<a href='".SITEROOT."//app/'>Start Design</a>";
 				}elseif(strpos($added_items, $item_id) > 0){
 					$block .= "added";				
 				}else{
@@ -264,7 +264,7 @@ if(count($clean_items_array) > 0){
 
 	if($has_accessories){
 		$block .= "<div style='position:relative; top:10px; left:0'>";	
-		$block .= "<img onclick='add_items()' src='".SITEROOT."/images/button_add_cart_sm.jpg' style='outline:none;' />";
+		$block .= "<img onclick='add_items()' src='".SITEROOT."//images/button_add_cart_sm.jpg' style='outline:none;' />";
 		$block .= "</div>";	
 	}
 	

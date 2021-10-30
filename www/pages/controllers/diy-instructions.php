@@ -72,49 +72,311 @@ if($result->num_rows > 0){
 	$p_9_text = '';	
 }
 
-					
-$sql = "SELECT file_name
-		FROM image
-		WHERE img_id = '".$img_1_id."'";				
-$result = $dbCustom->getResult($db,$sql);
-if($result->num_rows > 0){
-	$object = $result->fetch_object();
-	$img_1_file_name = $img_obj->file_name;
-}else{
-	$img_1_file_name = '';
-}	
+*/
+$type_inst_array = array();
+$sub_types_array= array();
 
-$sql = "SELECT file_name
-		FROM image
-		WHERE img_id = '".$img_2_id."'";				
-$result = $dbCustom->getResult($db,$sql);
-if($result->num_rows > 0){
-	$object = $result->fetch_object();
-	$img_2_file_name = $img_obj->file_name;
-}else{
-	$img_2_file_name = '';
-}	
+$i = 0;
+while($i < 6){
+	$sub_types_array[$i] = 'Wardrobe '.$i;
+	$i++;
+}
+$type_inst_array[0]['type'] = 'Wardrobes';
+$type_inst_array[0]['sub_types'] = $sub_types_array;
 
+
+$sub_types_array= array();
+$i = 0;
+while($i < 6){
+	$sub_types_array[$i] = 'Garage '.$i;
+	$i++;
+}
+$type_inst_array[1]['type'] = 'Garage';
+$type_inst_array[1]['sub_types'] = $sub_types_array;
+
+
+$sub_types_array= array();
+$i = 0;
+while($i < 6){
+	$sub_types_array[$i] = 'Wine Rack '.$i;
+	$i++;
+}
+$type_inst_array[2]['type'] = 'Wine Racks';
+$type_inst_array[2]['sub_types'] = $sub_types_array;
+
+
+
+$sub_types_array= array();
+$i = 0;
+while($i < 6){
+	$sub_types_array[$i] = 'Home Office '.$i;
+	$i++;
+}
+$type_inst_array[3]['type'] = 'Home Office';
+$type_inst_array[3]['sub_types'] = $sub_types_array;
+
+
+$sub_types_array= array();
+$i = 0;
+while($i < 6){
+	$sub_types_array[$i] = 'Wallbed '.$i;
+	$i++;
+}
+$type_inst_array[4]['type'] = 'Wallbeds';
+$type_inst_array[4]['sub_types'] = $sub_types_array;
+
+
+
+
+$sub_types_array= array();
+$i = 0;
+while($i < 6){
+	$sub_types_array[$i] = 'AABBCC '.$i;
+	$i++;
+}
+$type_inst_array[5]['type'] = 'AABBCCs';
+$type_inst_array[5]['sub_types'] = $sub_types_array;
+
+
+
+
+$sub_types_array= array();
+$i = 0;
+while($i < 6){
+	$sub_types_array[$i] = 'CCDDEEFF '.$i;
+	$i++;
+}
+$type_inst_array[6]['type'] = 'CCDDEEFFs';
+$type_inst_array[6]['sub_types'] = $sub_types_array;
+
+
+/*
+foreach($type_inst_array as $val){
+
+	echo "<br />";
+	echo $val['type'];
+	echo "<br />";
+	print_r($val['sub_types']);
+	echo "<br />";
+	echo "<br />";
+}
+echo "<br />";
+echo "<br />";
+
+
+exit;
 
 */
-$sql = "SELECT file_name
-		FROM image
-		WHERE img_id = '".$img_3_id."'";				
-$result = $dbCustom->getResult($db,$sql);
-if($result->num_rows > 0){
-	$object = $result->fetch_object();
-	$img_3_file_name = $img_obj->file_name;
-}else{
-	$img_3_file_name = '';
-}	 
-
-
-
-
-
-
 ?>
 
+
+
+
+<!--
+<div class="my-custom-select-select-wrapper">
+<div class="my-customs-select-select">
+<div class="my-customs-select-select__trigger">
+	<span>Wardrobes</span>
+	<div class="arrow-second"></div>
+</div>
+<div class="my-customs-select-select-options">
+
+	<span class="my-customs-select-select-option js-default-value" 
+			data-value="Wardrobes">
+			Wardrobes
+	</span>
+
+	<span class="my-customs-select-select-option" 
+			data-value="Wardrobes 1">
+			Wardrobes 1
+	</span>
+	<span class="my-customs-select-select-option" 
+			data-value="Wardrobes 2">
+			Wardrobes 2
+	</span>
+	<span class="my-customs-select-select-option" 
+			data-value="Wardrobes 3">
+			Wardrobes 3
+	</span>
+	<span class="my-customs-select-select-option" 
+			data-value="Wardrobes 4">
+			Wardrobes 4
+	</span>
+	<span class="my-customs-select-select-option" 
+			data-value="Wardrobes 5">
+			Wardrobes 5
+	</span>
+</div>
+</div>
+</div>
+
+
+
+<div class="my-custom-select-select-wrapper">
+<div class="my-customs-select-select">
+<div class="my-customs-select-select__trigger">
+<span>Garage</span>
+<div class="arrow-second"></div>
+</div>
+<div class="my-customs-select-select-options">
+	<span class="my-customs-select-select-option js-default-value" 
+		data-value="Garage">
+		Garage
+	</span>
+	<span class="my-customs-select-select-option" 
+		data-value="Garage 1">
+		Garage 1
+	</span>
+	<span class="my-customs-select-select-option" 
+		data-value="Garage 2">
+		Garage 2
+	</span>
+	<span class="my-customs-select-select-option" 
+		data-value="Garage 3">
+		Garage 3
+	</span>
+	<span class="my-customs-select-select-option" 
+		data-value="Garage 4">
+		Garage 4
+	</span>
+	<span class="my-customs-select-select-option" 
+		data-value="Garage 5">
+		Garage 5
+	</span>
+</div>
+</div>
+</div>
+
+
+<div class="my-custom-select-select-wrapper">
+<div class="my-customs-select-select">
+<div class="my-customs-select-select__trigger">
+	<span>Wine Racks</span>
+	<div class="arrow-second"></div>
+</div>
+<div class="my-customs-select-select-options">
+	<span class="my-customs-select-select-option js-default-value" 
+	data-value="Wine Racks">
+		Wine Racks
+	</span>
+	<span class="my-customs-select-select-option" 
+		data-value="Wine Racks 1">
+		Wine Racks 1
+	</span>
+	<span class="my-customs-select-select-option" 
+		data-value="Wine Racks 2">
+		Wine Racks 2
+	</span>
+	<span class="my-customs-select-select-option" 
+		data-value="Wine Racks 3">
+		Wine Racks 3
+	</span>
+	<span class="my-customs-select-select-option" 
+		data-value="Wine Racks 4">
+		Wine Racks 4
+	</span>
+	<span class="my-customs-select-select-option" 
+		data-value="Wine Racks 5">
+		Wine Racks 5
+	</span>
+</div>
+</div>
+</div>
+
+
+<div class="my-custom-select-select-wrapper">
+<div class="my-customs-select-select">
+<div class="my-customs-select-select__trigger">
+<span>Home Office</span>
+<div class="arrow-second"></div>
+</div>
+<div class="my-customs-select-select-options">
+<span class="my-customs-select-select-option js-default-value" data-value="Home Office">Home Office</span>
+<span class="my-customs-select-select-option" data-value="Home Office 1">Home Office 1</span>
+<span class="my-customs-select-select-option" data-value="Home Office 2">Home Office 2</span>
+<span class="my-customs-select-select-option" data-value="Home Office 3">Home Office 3</span>
+<span class="my-customs-select-select-option" data-value="Home Office 4">Home Office 4</span>
+<span class="my-customs-select-select-option" data-value="Home Office 5">Home Office 5</span>
+</div>
+</div>
+</div>
+
+
+<div class="my-custom-select-select-wrapper">
+<div class="my-customs-select-select">
+<div class="my-customs-select-select__trigger">
+<span>Wallbeds</span>
+<div class="arrow-second"></div>
+</div>
+<div class="my-customs-select-select-options">
+<span class="my-customs-select-select-option js-default-value" data-value="Wallbeds">Wallbeds</span>
+<span class="my-customs-select-select-option" data-value="Wallbeds 1">Wallbeds 1</span>
+<span class="my-customs-select-select-option" data-value="Wallbeds 2">Wallbeds 2</span>
+<span class="my-customs-select-select-option" data-value="Wallbeds 3">Wallbeds 3</span>
+<span class="my-customs-select-select-option" data-value="Wallbeds 4">Wallbeds 4</span>
+<span class="my-customs-select-select-option" data-value="Wallbeds 5">Wallbeds 5</span>
+</div>
+</div>
+</div>
+
+
+???---------
+
+								
+<div class="my-custom-select-select-wrapper">
+<div class="my-customs-select-select">
+<div class="my-customs-select-select__trigger">
+<span>Wardrobes</span>
+<div class="arrow-second"></div>
+</div>
+<div class="my-customs-select-select-options">
+<span class="my-customs-select-select-option js-default-value" data-value="Wardrobes">Wardrobes</span>
+<span class="my-customs-select-select-option" data-value="Wardrobes 1">Wardrobes 1</span>
+<span class="my-customs-select-select-option" data-value="Wardrobes 2">Wardrobes 2</span>
+<span class="my-customs-select-select-option" data-value="Wardrobes 3">Wardrobes 3</span>
+<span class="my-customs-select-select-option" data-value="Wardrobes 4">Wardrobes 4</span>
+<span class="my-customs-select-select-option" data-value="Wardrobes 5">Wardrobes 5</span>
+</div>
+</div>
+</div>
+
+
+<div class="my-custom-select-select-wrapper">
+<div class="my-customs-select-select">
+<div class="my-customs-select-select__trigger">
+<span>Garage</span>
+<div class="arrow-second"></div>
+</div>
+<div class="my-customs-select-select-options">
+	<span class="my-customs-select-select-option js-default-value" 
+		data-value="Garage">
+		Garage
+	</span>
+	<span class="my-customs-select-select-option" 
+		data-value="Garage 1">
+		Garage 1
+	</span>
+	<span class="my-customs-select-select-option" 
+		data-value="Garage 2">
+		Garage 2
+	</span>
+	<span class="my-customs-select-select-option" 
+		data-value="Garage 3">
+		Garage 3
+	</span>
+	<span class="my-customs-select-select-option" 
+		data-value="Garage 4">
+		Garage 4
+	</span>
+	<span class="my-customs-select-select-option" 
+		data-value="Garage 5">
+		Garage 5
+	</span>
+</div>
+</div>
+</div>
+
+--!>
 
 
 
