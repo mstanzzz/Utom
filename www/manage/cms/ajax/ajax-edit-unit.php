@@ -8,8 +8,8 @@ if(!isset($_SERVER['DOCUMENT_ROOT'])){
 		$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT']; 	
 	}
 }
-require_once($_SERVER['DOCUMENT_ROOT']."/includes/config.php"); 
-require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/util_functions.php");
+require_once($real_root."/includes/config.php"); 
+require_once($real_root."/manage/admin-includes/util_functions.php");
 
 $_SESSION['ret_modal'] = 'edit';
 
@@ -240,7 +240,7 @@ while($row = $result->fetch_object()) {
 </div>                
     
 
-<form action="<?php echo $ste_root; ?>/manage/tool-admin/unit.php" method="post" onsubmit="return validate(this);">
+<form action="<?php echo SITEROOT; ?>manage/tool-admin/unit.php" method="post" onsubmit="return validate(this);">
     <input type="hidden" name="update_unit" value="1" />
     <input type="hidden" name="unit_id" value="<?php echo $_SESSION['unit_id']; ?>" />
 	<div class="modal-tool-admin clearfix">

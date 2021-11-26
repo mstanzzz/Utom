@@ -1,6 +1,16 @@
 <?php
-/* ms */
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
+if(strpos($_SERVER['REQUEST_URI'], 'solvitware/' )){ 
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/solvitware';
+}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/designitpro'; 
+}elseif(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
+}else{
+	$real_root = $_SERVER['DOCUMENT_ROOT']; 	
+}
+require_once($real_root.'/includes/class.dbcustom.php');
+$dbCustom = new DbCustom();
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
 
 $progress = new SetupProgress;
 $module = new Module;
@@ -162,8 +172,8 @@ if(isset($_POST['update_free_in_home_consults'])){
 		$msg = "Updated";
 	}
 
-
-	unset($_SESSION['temp_page_fields']);
+	require_once($real_root.'/manage/cms/insert_page_seo.php');
+	
 }
 
 
@@ -273,9 +283,22 @@ if(!isset($_SESSION['temp_page_fields']['img_2_id'])) $_SESSION['temp_page_field
 if(!isset($_SESSION['temp_page_fields']['img_3_id'])) $_SESSION['temp_page_fields']['img_3_id'] = $img_3_id;
 
 
+require_once($real_root.'/manage/cms/get_seo_variables.php');
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php'); 
+
+require_once($real_root.'/manage/admin-includes/doc_header.php'); 
 ?>
+<script src="https://cdn.tiny.cloud/1/iyk23xxriyqcd2gt44r230a2yjinya99cx1kd3tk9huatz50/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+<script>
+tinymce.init({
+	selector: 'textarea',
+	plugins: 'advlist link image lists code',
+	forced_root_block : false
+
+});
+
+</script>
+
 <script>
 
 function validate(theform){
@@ -288,15 +311,6 @@ $(document).ready(function() {
 		ajax_set_page_session();
 	});
 });
-	
-
-tinymce.init({
-	selector: 'textarea',
-	plugins: 'advlist link image lists code',
-	forced_root_block : false
-
-});
-
 
 function ajax_set_page_session(){
 	
@@ -328,7 +342,7 @@ function get_query_str(){
 }
 
 function previewSubmit() {
-  document.form.action = '<?php echo $ste_root; ?>/pages/preview/preview.php';
+  document.form.action = '<?php echo SITEROOT; ?>pages/preview/preview.php';
   document.form.target = '_blank'; 
   document.form.submit();
 }	
@@ -343,16 +357,16 @@ function regularSubmit() {
 </head>
 <body>
 <?php 
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-header.php');
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-top-nav.php');
+	require_once($real_root.'/manage/admin-includes/manage-header.php');
+	require_once($real_root.'/manage/admin-includes/manage-top-nav.php');
 ?>
 <div class="manage_page_container">
 	<div class="manage_side_nav">
-		<?php require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-side-nav.php'); ?>
+		<?php require_once($real_root.'/manage/admin-includes/manage-side-nav.php'); ?>
 	</div>
 	<div class="manage_main">
 	<?php 	
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-content-top.php');
+	require_once($real_root.'/manage/admin-includes/manage-content-top-category.php');
 	?>
 	
 	<form name="form" action="<?php echo $current_page; ?>" method="post" enctype="multipart/form-data">
@@ -362,7 +376,7 @@ function regularSubmit() {
      		<div class="page_actions edit_page">
             	<a onClick="regularSubmit();" href="#" class="btn btn-success btn-large"><i class="icon-ok icon-white"></i> Save Changes </a>
 				<hr />
-				<a href="<?php echo $ste_root;?>/manage/cms/pages/page.php" class="btn"><i class="icon-arrow-left"></i> Cancel &amp; Go Back</a>
+				<a href="<?php echo SITEROOT;?>/manage/cms/pages/page.php" class="btn"><i class="icon-arrow-left"></i> Cancel &amp; Go Back</a>
 			</div>
 				
 			<div class="colcontainer">                
@@ -429,7 +443,16 @@ function regularSubmit() {
 	<label>p_9_text</label>
 	<textarea id="p_9_text" class="wysiwyg" name="p_9_text"><?php echo stripslashes($_SESSION['temp_page_fields']['p_9_text']); ?></textarea>
 
-
+	
+<?php 
+$page_heading = 'page_heading';
+$seo_name = $_SESSION['temp_page_fields']['seo_name'];
+$title = $_SESSION['temp_page_fields']['title'];
+$keywords = $_SESSION['temp_page_fields']['keywords'];	
+$description = $_SESSION['temp_page_fields']['description'];
+require_once("edit_page_seo.php"); 
+require_once($real_root."/manage/cms/edit_page_breadcrumb.php"); 
+?>	
 
 			</div>
 
@@ -467,7 +490,7 @@ function regularSubmit() {
 </div>
 <!-- New Edit Dialogue 
 <div id="content-edit" class="confirm-content">
-	<form name="edit_faq_cat" action="faq-category.php" method="post" target="_top">
+	<form name="edit_faq_cat" action="faq.php" method="post" target="_top">
 		<input id="faq_cat_id" type="hidden" class="itemId" name="faq_cat_id" value='' />
 		<fieldset class="colcontainer">
 			<label>Edit Banner</label>

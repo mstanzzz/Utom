@@ -1,7 +1,10 @@
 <?php
-require_once("../../includes/config.php"); 
-require_once("../../includes/class.admin_login.php");
-require_once("../../admin-includes/class.admin_bread_crumb.php");	
+require_once('<?php echo SITEROOT; ?>includes/class.dbcustom.php');
+$dbCustom = new DbCustom();
+
+require_once("<?php echo SITEROOT; ?>includes/config.php"); 
+require_once("<?php echo SITEROOT; ?>includes/class.admin_login.php");
+require_once("<?php echo SITEROOT; ?>admin-includes/class.admin_bread_crumb.php");	
 
 require_once("../admin-includes/tool-tip.php"); 
 require_once("../admin-includes/class.backup.php"); 
@@ -9,7 +12,7 @@ require_once("../admin-includes/class.pages.php");
 
 require_once("../admin-includes/class.setup_progress.php"); 
 $progress = new SetupProgress;
-require_once("../../admin-includes/class.module.php");	
+require_once("<?php echo SITEROOT; ?>admin-includes/class.module.php");	
 $module = new Module;
 
 $pages = new Pages;
@@ -88,13 +91,13 @@ if(isset($_POST['edit_login'])){
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Users</title>
 
-<link rel="stylesheet" href="<?php echo $ste_root; ?>/js/fancybox/jquery.fancybox-1.3.1.css" type="text/css" media="screen" />
-<link type="text/css" rel="stylesheet" href="<?php echo $ste_root; ?>/css/manageStyle.css" />
-<link type="text/css" rel="stylesheet" href="<?php echo $ste_root; ?>/css/mce.css" />
+<link rel="stylesheet" href="<?php echo SITEROOT; ?>js/fancybox/jquery.fancybox-1.3.1.css" type="text/css" media="screen" />
+<link type="text/css" rel="stylesheet" href="<?php echo SITEROOT; ?>css/manageStyle.css" />
+<link type="text/css" rel="stylesheet" href="<?php echo SITEROOT; ?>css/mce.css" />
 
-<script type="text/javascript" src="<?php echo $ste_root; ?>/js/jquery-1.4.4.js"></script>
-<script type="text/javascript" src="<?php echo $ste_root; ?>/js/fancybox/jquery.fancybox-1.3.1.pack.js"></script>
-<script type="text/javascript" src="<?php echo $ste_root; ?>/js/tiny_mce/tiny_mce.js"></script>
+<script type="text/javascript" src="<?php echo SITEROOT; ?>js/jquery-1.4.4.js"></script>
+<script type="text/javascript" src="<?php echo SITEROOT; ?>js/fancybox/jquery.fancybox-1.3.1.pack.js"></script>
+<script type="text/javascript" src="<?php echo SITEROOT; ?>js/tiny_mce/tiny_mce.js"></script>
 
 <script>
 $(document).ready(function() {

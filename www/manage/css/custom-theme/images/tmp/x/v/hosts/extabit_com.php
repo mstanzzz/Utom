@@ -9,7 +9,7 @@ class dl_extabit_com extends Download {
 		 else return array(false, "accinvalid");
     }
 
-	public function Login($user, $pass){
+	public function login($dbCustom,$user, $pass){
 		$post['email'] = $user;
 		$post['pass'] = $pass;
 		$post['auth_submit_login'] = "Enter";

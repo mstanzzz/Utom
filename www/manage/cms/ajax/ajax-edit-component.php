@@ -8,7 +8,7 @@ if(!isset($_SERVER['DOCUMENT_ROOT'])){
 		$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT']; 	
 	}
 }
-require_once($_SERVER['DOCUMENT_ROOT']."/includes/config.php");
+require_once($real_root."/includes/config.php");
 
 $_SESSION['ret_modal'] = 'edit';
 
@@ -220,7 +220,7 @@ while($row = $result->fetch_object()) {
     </form>
 </div>                
         	
-<form action="<?php echo $ste_root; ?>/manage/tool-admin/component.php" method="post" onsubmit="return validate(this);">
+<form action="<?php echo SITEROOT; ?>manage/tool-admin/component.php" method="post" onsubmit="return validate(this);">
 <input type="hidden" name="update_component" value="1" />
 <input type="hidden" name="component_id" value="<?php echo $_SESSION['component_id']; ?>" />
 <div class="modal-tool-admin clearfix">

@@ -1,19 +1,17 @@
 <?php
-
-
-
-if(!isset($_SERVER['DOCUMENT_ROOT'])){
-	if(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){    
-		$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
-	}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro/' )){
-		$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT'].'/designitpro';
-	}else{
-		$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT']; 	
-	}
+if(strpos($_SERVER['REQUEST_URI'], 'solvitware/' )){ 
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/solvitware';
+}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/designitpro'; 
+}elseif(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
+}else{
+	$real_root = $_SERVER['DOCUMENT_ROOT']; 	
 }
+require_once($real_root.'/includes/class.dbcustom.php');
+$dbCustom = new DbCustom();
 
-
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
 
 $progress = new SetupProgress;
 $module = new Module;
@@ -84,15 +82,15 @@ if(isset($_POST["edit_contact_email_page"])){
 	$result = $dbCustom->getResult($db,$sql);
 	
 
-	require_once($_SERVER['DOCUMENT_ROOT']."/manage/cms/insert_page_seo.php");
+	require_once($real_root."/manage/cms/insert_page_seo.php");
 
-	require_once($_SERVER['DOCUMENT_ROOT']."/manage/cms/insert_page_breadcrumb.php");
+	require_once($real_root."/manage/cms/insert_page_breadcrumb.php");
 
 }
 
 
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php'); 
+require_once($real_root.'/manage/admin-includes/doc_header.php'); 
 
 ?>
 
@@ -114,7 +112,7 @@ function select_img(img_id){
 
 
 function previewSubmit() {
-  document.form.action = '<?php echo $ste_root; ?>/pages/preview/preview.php';
+  document.form.action = '<?php echo SITEROOT; ?>pages/preview/preview.php';
   document.form.target = '_blank'; 
   document.form.submit();
 }	
@@ -130,8 +128,8 @@ function regularSubmit() {
 
 	<body>
 <?php
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-header.php');
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-top-nav.php');
+	require_once($real_root.'/manage/admin-includes/manage-header.php');
+	require_once($real_root.'/manage/admin-includes/manage-top-nav.php');
 
 ?>
 
@@ -142,7 +140,7 @@ function regularSubmit() {
 
     <div class="manage_side_nav">
         <?php 
-        require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-side-nav.php');
+        require_once($real_root.'/manage/admin-includes/manage-side-nav.php');
         ?>
     </div>	
 
@@ -162,7 +160,7 @@ function regularSubmit() {
 		$content2 = '';
 	}
 	
-	require_once($_SERVER['DOCUMENT_ROOT']."/manage/cms/get_seo_variables.php");
+	require_once($real_root."/manage/cms/get_seo_variables.php");
 
         
         echo "<div class='manage_main_page_title'>".$page_title." </div>";
@@ -237,14 +235,14 @@ function regularSubmit() {
 
 
 	        <?php require_once("edit_page_seo.php"); ?>
-    	    <?php require_once($_SERVER['DOCUMENT_ROOT']."/manage/cms/edit_page_breadcrumb.php"); ?>
+    	    <?php require_once($real_root."/manage/cms/edit_page_breadcrumb.php"); ?>
 
 
 	
 </div>
 <p class="clear"></p>
 <?php 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-footer.php');
+require_once($real_root.'/manage/admin-includes/manage-footer.php');
 ?>
     </div>
 

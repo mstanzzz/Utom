@@ -9,7 +9,7 @@ class dl_filesflash_com extends Download {
 		else return array(false, "accinvalid");
 	}
 	
-	public function Login($user, $pass){
+	public function login($dbCustom,$user, $pass){
 		$data = $this->lib->curl("http://filesflash.com/login.php", "googtrans=/en/en", "email={$user}&password={$pass}&submit=Submit");
 		$cookie = "googtrans=/en/en;".$this->lib->GetCookies($data);
 		return $cookie;

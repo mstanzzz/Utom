@@ -9,7 +9,7 @@ class dl_uploadhero_co extends Download {
 		else return array(false, "accfree");
 	}
     
-    public function Login($user, $pass){
+    public function login($dbCustom,$user, $pass){
 		$data = $this->lib->curl("http://uploadhero.co/lib/connexion.php","lang=en","pseudo_login={$user}&password_login={$pass}");
 		if(!stristr($data, '<div id="cookietransitload"')) return false;
 		$uh = $this->lib->cut_str($data, 'style="display:none;">','</div>');

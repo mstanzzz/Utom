@@ -1,5 +1,18 @@
 <?php
-require_once($_SERVER['DOCUMENT_ROOT']."/includes/config.php"); 
+if(strpos($_SERVER['REQUEST_URI'], 'solvitware/' )){ 
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/solvitware';
+}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/designitpro'; 
+}elseif(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
+}else{
+	$real_root = $_SERVER['DOCUMENT_ROOT']; 	
+}
+require_once($real_root.'/includes/class.dbcustom.php');
+$dbCustom = new DbCustom();
+
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
+
 $this_script = $this_page.'.php';
 
 
@@ -31,7 +44,7 @@ function prod_sheet_get_img($img_id){
 //echo "<br />";
 //echo $ret;
 //echo "<br />";
-//echo "<img src='".$ste_root."/saascustuploads/1/cart/thumb/".$ret."' />";
+//echo "<img src='".SITEROOT."/saascustuploads/1/cart/thumb/".$ret."' />";
 	
 	return $ret;
 } 
@@ -366,7 +379,7 @@ function set_is_item_active(item_id){
 	
 	alert(is_checked+"  "+numerate);
 
-	var url_str = "<?php echo $ste_root; ?>/manage/ajax/ajax-set-is-checked-box.php";
+	var url_str = "<?php echo SITEROOT; ?>manage/ajax/ajax-set-is-checked-box.php";
 	url_str += "?item_id="+item_id+"&numerate="+numerate+"&from=item-list&type=IS_ACT";;
 	
 	axios.get(url_str).then(function(response){
@@ -385,7 +398,7 @@ function set_item_brand(item_id){
 
 	var brand_id =  document.getElementById('item_brand_select_'+item_id).value; 
 
-	var url_str = "<?php echo $ste_root; ?>/manage/ajax/ajax-set-item-brand.php";
+	var url_str = "<?php echo SITEROOT; ?>manage/ajax/ajax-set-item-brand.php";
 	url_str += "?item_id="+item_id+"&brand_id="+brand_id+"&from=item-list";
 	axios.get(url_str).then(function(response){
 		console.log(response.data);			
@@ -412,7 +425,7 @@ function set_item_call_for_pricing(item_id){
 	
 	alert(is_checked+"  "+numerate);
 
-	var url_str = "<?php echo $ste_root; ?>/manage/ajax/ajax-set-is-checked-box.php";
+	var url_str = "<?php echo SITEROOT; ?>manage/ajax/ajax-set-is-checked-box.php";
 	url_str += "?item_id="+item_id+"&numerate="+numerate+"&from=item-list&type=call_FP";
 	
 	axios.get(url_str).then(function(response){
@@ -441,7 +454,7 @@ function set_item_show_in_cart(item_id){
 	
 	alert(is_checked+"  "+numerate);
 
-	var url_str = "<?php echo $ste_root; ?>/manage/ajax/ajax-set-is-checked-box.php";
+	var url_str = "<?php echo SITEROOT; ?>manage/ajax/ajax-set-is-checked-box.php";
 	url_str += "?item_id="+item_id+"&numerate="+numerate+"&from=item-list&type=SHICRT";
 	
 	axios.get(url_str).then(function(response){
@@ -470,7 +483,7 @@ function set_item_show_in_showroom(item_id){
 	
 	alert(is_checked+"  "+numerate);
 
-	var url_str = "<?php echo $ste_root; ?>/manage/ajax/ajax-set-is-checked-box.php";
+	var url_str = "<?php echo SITEROOT; ?>manage/ajax/ajax-set-is-checked-box.php";
 	url_str += "?item_id="+item_id+"&numerate="+numerate+"&from=item-list&type=SHISRM";
 	
 	axios.get(url_str).then(function(response){
@@ -498,7 +511,7 @@ function set_item_is_show_in_tool_checked(item_id){
 	
 	alert(is_checked+"  "+numerate);
 
-	var url_str = "<?php echo $ste_root; ?>/manage/ajax/ajax-set-is-checked-box.php";
+	var url_str = "<?php echo SITEROOT; ?>manage/ajax/ajax-set-is-checked-box.php";
 	url_str += "?item_id="+item_id+"&numerate="+numerate+"&from=item-list&type=SHITOOL";
 	
 	axios.get(url_str).then(function(response){
@@ -527,7 +540,7 @@ function set_item_is_show_start_design_btn_checked(item_id){
 	
 	alert(is_checked+"  "+numerate);
 
-	var url_str = "<?php echo $ste_root; ?>/manage/ajax/ajax-set-is-checked-box.php";
+	var url_str = "<?php echo SITEROOT; ?>manage/ajax/ajax-set-is-checked-box.php";
 	url_str += "?item_id="+item_id+"&numerate="+numerate+"&from=item-list&type=SSTDESBTN";
 	
 	axios.get(url_str).then(function(response){
@@ -556,7 +569,7 @@ function set_item_is_show_design_request_btn_checked(item_id){
 	
 	alert(is_checked+"  "+numerate);
 
-	var url_str = "<?php echo $ste_root; ?>/manage/ajax/ajax-set-is-checked-box.php";
+	var url_str = "<?php echo SITEROOT; ?>manage/ajax/ajax-set-is-checked-box.php";
 	url_str += "?item_id="+item_id+"&numerate="+numerate+"&from=item-list&type=SSTDEREQSBTN";
 	
 	axios.get(url_str).then(function(response){
@@ -584,7 +597,7 @@ function set_item_is_free_shipping_checked(item_id){
 	
 	alert(is_checked+"  "+numerate);
 
-	var url_str = "<?php echo $ste_root; ?>/manage/ajax/ajax-set-is-checked-box.php";
+	var url_str = "<?php echo SITEROOT; ?>manage/ajax/ajax-set-is-checked-box.php";
 	url_str += "?item_id="+item_id+"&numerate="+numerate+"&from=item-list&type=FREESHIP";
 	
 	axios.get(url_str).then(function(response){
@@ -614,7 +627,7 @@ function set_item_in_house_price_tool_checked(item_id){
 	
 	alert(is_checked+"  "+numerate);
 
-	var url_str = "<?php echo $ste_root; ?>/manage/ajax/ajax-set-is-checked-box.php";
+	var url_str = "<?php echo SITEROOT; ?>manage/ajax/ajax-set-is-checked-box.php";
 	url_str += "?item_id="+item_id+"&numerate="+numerate+"&from=item-list&type=INHPRCTOOL";
 	
 	axios.get(url_str).then(function(response){
@@ -634,7 +647,7 @@ function set_item_price_flat(item_id){
 
 	var price_flat =  document.getElementById('item_price_flat_'+item_id).value; 
 	
-	var url_str = "<?php echo $ste_root; ?>/manage/ajax/ajax-set-item-price-flat.php";
+	var url_str = "<?php echo SITEROOT; ?>manage/ajax/ajax-set-item-price-flat.php";
 	url_str += "?item_id="+item_id+"&price_flat="+price_flat+"&from=item-list";
 	//alert(url_str);
 	axios.get(url_str).then(function(response){
@@ -653,7 +666,7 @@ function set_item_price_wholesale(item_id){
 	
 	var price_wholesale =  document.getElementById('item_price_wholesale_'+item_id).value; 
 	
-	var url_str = "<?php echo $ste_root; ?>/manage/ajax/ajax-set-item-price-wholesale.php";
+	var url_str = "<?php echo SITEROOT; ?>manage/ajax/ajax-set-item-price-wholesale.php";
 	url_str += "?item_id="+item_id+"&price_wholesale="+price_wholesale+"&from=item-list";
 	//alert(url_str);
 	axios.get(url_str).then(function(response){
@@ -671,7 +684,7 @@ function set_item_percent_markup(item_id){
 	
 	var percent_markup =  document.getElementById('item_percent_markup_'+item_id).value; 
 	
-	var url_str = "<?php echo $ste_root; ?>/manage/ajax/ajax-set-item-percent-markup.php";
+	var url_str = "<?php echo SITEROOT; ?>manage/ajax/ajax-set-item-percent-markup.php";
 	url_str += "?item_id="+item_id+"&percent_markup="+percent_markup+"&from=item-list";
 	//alert(url_str);
 	axios.get(url_str).then(function(response){
@@ -689,7 +702,7 @@ function set_item_shipping_flat_charge(item_id){
 	
 	var shipping_flat_charge =  document.getElementById('item_shipping_flat_charge_'+item_id).value; 
 	
-	var url_str = "<?php echo $ste_root; ?>/manage/ajax/ajax-set-item-shipping-flat-charge.php";
+	var url_str = "<?php echo SITEROOT; ?>manage/ajax/ajax-set-item-shipping-flat-charge.php";
 	url_str += "?item_id="+item_id+"&shipping_flat_charge="+shipping_flat_charge+"&from=item-list";
 	//alert(url_str);
 	axios.get(url_str).then(function(response){
@@ -710,7 +723,7 @@ function set_item_flooring(item_id){
 		
 	var flooring =  document.getElementById('item_flooring_'+item_id).value; 
 	
-	var url_str = "<?php echo $ste_root; ?>/manage/ajax/ajax-set-item-flooring.php";
+	var url_str = "<?php echo SITEROOT; ?>manage/ajax/ajax-set-item-flooring.php";
 	url_str += "?item_id="+item_id+"&flooring="+flooring+"&from=item-list";
 	//alert(url_str);
 	axios.get(url_str).then(function(response){
@@ -736,7 +749,7 @@ alert(added_value);
 
 
 	
-	var url_str = "<?php echo $ste_root; ?>/manage/ajax/ajax-set-item-added-value.php";
+	var url_str = "<?php echo SITEROOT; ?>manage/ajax/ajax-set-item-added-value.php";
 	url_str += "?item_id="+item_id+"&added_value="+added_value+"&from=item-list";
 
 	axios.get(url_str).then(function(response){
@@ -827,7 +840,7 @@ echo $pagerContainer;
 	
         $fnimg = prod_sheet_get_img($val['img_id']);
 
-		$img = "<img src='".$ste_root."/saascustuploads/".$_SESSION['profile_account_id']."/cart/thumb/".$fnimg."'>";
+		$img = "<img src='".SITEROOT."/saascustuploads/".$_SESSION['profile_account_id']."/cart/thumb/".$fnimg."'>";
 		
 		//$brand = prod_sheet_get_brand($val['brand_id']);
         

@@ -1,5 +1,5 @@
 <?php
-require_once($_SERVER['DOCUMENT_ROOT']."/includes/class.field_calculate.php");
+require_once($real_root."/includes/class.field_calculate.php");
 
 class Formula {  
 

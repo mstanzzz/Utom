@@ -14,7 +14,7 @@ class dl_sockshare_com extends Download {  // code same with putlocker.com :D
 		else return array(false, "accinvalid");
     }
 	
-	public function Login($user, $pass){		// use cookie auth= 
+	public function login($dbCustom,$user, $pass){		// use cookie auth= 
 		$this->error("notsupportacc");
 		return false;
 	}

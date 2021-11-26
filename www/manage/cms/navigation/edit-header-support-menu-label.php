@@ -1,19 +1,17 @@
 <?php
-
-
-
-if(!isset($_SERVER['DOCUMENT_ROOT'])){
-	if(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){    
-		$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
-	}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro/' )){
-		$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT'].'/designitpro';
-	}else{
-		$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT']; 	
-	}
+if(strpos($_SERVER['REQUEST_URI'], 'solvitware/' )){ 
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/solvitware';
+}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/designitpro'; 
+}elseif(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
+}else{
+	$real_root = $_SERVER['DOCUMENT_ROOT']; 	
 }
+require_once($real_root.'/includes/class.dbcustom.php');
+$dbCustom = new DbCustom();
 
-
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
 
 $progress = new SetupProgress;
 $module = new Module;
@@ -32,7 +30,7 @@ $strip = (isset($_GET['strip'])) ? $_GET['strip'] : 0;
 $qs_strip = ($strip) ? "strip=1" : ''; 
 
 $header_support_menu_label_id = (isset($_GET['header_support_menu_label_id']))? $_GET['header_support_menu_label_id'] : 0;
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php'); 
+require_once($real_root.'/manage/admin-includes/doc_header.php'); 
 
 ?>
 

@@ -1,5 +1,15 @@
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
+if(strpos($_SERVER['REQUEST_URI'], 'solvitware/' )){ 
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/solvitware';
+}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/designitpro'; 
+}elseif(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
+}else{
+	$real_root = $_SERVER['DOCUMENT_ROOT']; 	
+}
+
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
 
 $progress = new SetupProgress;
 $module = new Module;
@@ -46,7 +56,7 @@ if(isset($_POST["del_from_gallery"])){
 
 
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php'); 
+require_once($real_root.'/manage/admin-includes/doc_header.php'); 
 
 
 ?>
@@ -77,8 +87,8 @@ $(document).ready(function() {
 </script>
 	<body>
 <?php
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-header.php');
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-top-nav.php');
+	require_once($real_root.'/manage/admin-includes/manage-header.php');
+	require_once($real_root.'/manage/admin-includes/manage-top-nav.php');
 ?>
 
 <div class="manage_page_container">
@@ -86,7 +96,7 @@ $(document).ready(function() {
 
     <div class="manage_side_nav">
         <?php 
-        require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-side-nav.php');
+        require_once($real_root.'/manage/admin-includes/manage-side-nav.php');
         ?>
     </div>	
 
@@ -145,7 +155,7 @@ $result = $dbCustom->getResult($db,$sql);		$object = $result->fetch_object();
 		
     	$block = ''; 
         $block .= "<div class='img_box'>";
-        $block .= "<img src='".$ste_root."/saascustuploads/".$_SESSION['profile_account_id']."/cart/small/".$img_row->file_name."'   />";
+        $block .= "<img src='".SITEROOT."/saascustuploads/".$_SESSION['profile_account_id']."/cart/small/".$img_row->file_name."'   />";
     	
 		if(in_array(2,$user_functions_array)){	
 			$block .= "<br /><a class='inline' href='#delete'>

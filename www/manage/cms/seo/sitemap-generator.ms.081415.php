@@ -15,11 +15,11 @@ if(!isset($_SERVER['DOCUMENT_ROOT'])){
 
 unset($_SESSION['global_url_word']);
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
 
-require_once($_SERVER['DOCUMENT_ROOT']."/includes/class.store_data.php");
+require_once($real_root."/includes/class.store_data.php");
 
-require_once($_SERVER['DOCUMENT_ROOT']."/includes/class.nav.php");
+require_once($real_root."/includes/class.nav.php");
 
 $nav = new Nav;
 
@@ -113,7 +113,7 @@ function loadBrandsWithPaging($brand_id, $name){
 		$brand_name = getBrandName($brand_id);
 		$temp = $nav->getItemUrl($item['seo_url'], $item['name'], $item['profile_item_id'], $brand_name, 'shop', $item['hide_id_from_url']);
 		
-		$t[] = str_replace($ste_root, '', $temp);
+		$t[] = str_replace(SITEROOT, '', $temp);
 		//$t[] = '/'.$_SESSION['global_url_word'].'/'.$item['seo_url'].'/product.html?itemId='.$item['item_id'];	
 		
 	}
@@ -202,7 +202,7 @@ function loadCatsWithPaging($the_cat_id, $show_in = 'cart'){
 	
 		if($show_in_showroom){
 			
-			$t[] = '/showroom-category-'.$profile_cat_id.'/'.$nav->getUrlText($name).'.html';			
+			$t[] = '/showroom-'.$profile_cat_id.'/'.$nav->getUrlText($name).'.html';			
 			//$t = array_merge($t,loadBreadCrumbUrls($seo_list, 'showroom'));				
 			$t = array_merge($t,loadItemsPerCat($the_cat_id, 'showroom'));	
 		}
@@ -300,7 +300,7 @@ function loadItemsPerCat($cat_id, $show_in = 'cart', $price_bottom = 0, $price_t
 			//$t[] = "/".$_SESSION["global_url_word"].$val['seo_url']."/product.html?productId=".$val['profile_item_id'];	
 			$brand_name = getBrandName($val['brand_id']);
 			$temp = $nav->getItemUrl($val['seo_url'], $val['name'], $val['profile_item_id'], $brand_name, 'shop', $val['hide_id_from_url']);
-			$t[] = str_replace($ste_root, '', $temp);
+			$t[] = str_replace(SITEROOT, '', $temp);
 		
 		}
 		$long_array = $store_data->getItemDataFromCat($cat_id, $price_bottom, $price_top, 'showroom');
@@ -308,7 +308,7 @@ function loadItemsPerCat($cat_id, $show_in = 'cart', $price_bottom = 0, $price_t
 			
 			//$t[] = "/".$_SESSION["global_url_word"].$val['seo_url']."/showroom-product.html?productId=".$val['profile_item_id'];		
 			$temp = $nav->getItemUrl($val['seo_url'], $val['name'], $val['profile_item_id'], '', 'showroom', $val['hide_id_from_url']);
-			$t[] = str_replace($ste_root, '', $temp);
+			$t[] = str_replace(SITEROOT, '', $temp);
 		
 		}
 		
@@ -320,7 +320,7 @@ function loadItemsPerCat($cat_id, $show_in = 'cart', $price_bottom = 0, $price_t
 			
 			//$t[] = "/".$_SESSION["global_url_word"].$val['seo_url']."/showroom-product.html?productId=".$val['profile_item_id'];
 			$temp = $nav->getItemUrl($val['seo_url'], $val['name'], $val['profile_item_id'], '', 'showroom', $val['hide_id_from_url']);
-			$t[] = str_replace($ste_root, '', $temp);			
+			$t[] = str_replace(SITEROOT, '', $temp);			
 					
 		}
 	}
@@ -341,7 +341,7 @@ function getNumPages($total_count,$page_rows){
 if(isset($_GET['action'])){
 
 
-	require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/class.xml.sitemap.generator-modified.php");
+	require_once($real_root."/manage/admin-includes/class.xml.sitemap.generator-modified.php");
 
 	$url_array = array();
 
@@ -387,7 +387,7 @@ if(isset($_GET['action'])){
 		$url_array[] = "/".$_SESSION['global_url_word'].$navbar_label_v['url'];
 		if($navbar_label_v["submenu_content_type"] == 1){			
 		
-			$top_cats =  $nav->getTopCats();
+			$top_cats =  $nav->getTopCats($dbCustom,);
 			
 			foreach($top_cats as $val){				
 				
@@ -395,7 +395,7 @@ if(isset($_GET['action'])){
 				if(strpos($val['destination'], "showroom") !== false){		
 					
 					$temp = $nav->getCatUrl($val['name'], $val['profile_cat_id'], 'showroom');
-					$url_array[] = str_replace($ste_root, '', $temp);
+					$url_array[] = str_replace(SITEROOT, '', $temp);
 					//$url_array[] = '/'.$_SESSION['global_url_word'].$val['seo_url']."/showroom.html?prodCatId=".$val['profile_cat_id'];
 					$url_array = array_merge($url_array,loadCatsWithPaging($val['cat_id'], 'showroom'));
 					//$url_array = array_merge($url_array,loadBreadCrumbUrls($val['seo_list'], 'showroom'));
@@ -403,7 +403,7 @@ if(isset($_GET['action'])){
 				}else{
 					
 					$temp = $nav->getCatUrl($val['name'], $val['profile_cat_id'], 'shop');
-					$url_array[] = str_replace($ste_root, '', $temp);					
+					$url_array[] = str_replace(SITEROOT, '', $temp);					
 					//$url_array[] = '/'.$_SESSION['global_url_word'].$val['seo_url']."/category.html?prodCatId=".$val['profile_cat_id'];					
 					$url_array = array_merge($url_array,loadCatsWithPaging($val['cat_id'], 'cart'));
 					//$url_array = array_merge($url_array,loadBreadCrumbUrls($val['seo_list'], 'cart'));
@@ -456,7 +456,7 @@ if(isset($_GET['action'])){
 				}
 			}
 		}else{
-			$hp_cats = $nav->getHomePageCats();
+			$hp_cats = $nav->getHomePageCats($dbCustom,);
 			foreach($hp_cats as $val){				
 				$db = $dbCustom->getDbConnect(CART_DATABASE);
 				$sql = "SELECT seo_list
@@ -469,14 +469,14 @@ if(isset($_GET['action'])){
 					if(strpos($val['destination'], "showroom") !== false){
 	
 						$temp = $nav->getCatUrl($val['name'], $val['profile_cat_id'], 'showroom');
-						$url_array[] = str_replace($ste_root, '', $temp);
+						$url_array[] = str_replace(SITEROOT, '', $temp);
 						//$url_array[] = '/'.$_SESSION['global_url_word'].$val['seo_url']."/showroom.html?prodCatId=".$val['profile_cat_id'];
 						$url_array = array_merge($url_array,loadCatsWithPaging($val['cat_id'], 'showroom'));
 						//$url_array = array_merge($url_array,loadBreadCrumbUrls($seo_list, 'showroom'));
 					}else{
 						
 						$temp = $nav->getCatUrl($val['name'], $val['profile_cat_id'], 'shop');
-						$url_array[] = str_replace($ste_root, '', $temp);
+						$url_array[] = str_replace(SITEROOT, '', $temp);
 						//$url_array[] = '/'.$val['seo_url']."/category.html?prodCatId=".$val['profile_cat_id'];
 						$url_array = array_merge($url_array,loadCatsWithPaging($val['cat_id'], 'cart'));
 						//$url_array = array_merge($url_array,loadBreadCrumbUrls($seo_list, 'cart'));
@@ -489,7 +489,7 @@ if(isset($_GET['action'])){
 
 
 	// ************ From header *************
-	$header_links = $nav->getHeaderSupportLabels();
+	$header_links = $nav->getHeaderSupportLabels($dbCustom);
 	foreach($header_links as $v){
 		$url_array[] = '/'.$v['url'];
 	}
@@ -519,7 +519,7 @@ if(isset($_GET['action'])){
 				if($val['destination'] == 'showroom'){
 					
 					$temp = $nav->getCatUrl($val['name'], $val['profile_cat_id'], 'showroom');
-					$url_array[] = str_replace($ste_root, '', $temp);
+					$url_array[] = str_replace(SITEROOT, '', $temp);
 					//$url_array[] = '/'.$_SESSION['global_url_word'].$val['seo_url']."/showroom.html?prodCatId=".$val['profile_cat_id'];
 					$url_array = array_merge($url_array,loadCatsWithPaging($val['cat_id'], 'showroom'));
 					//$url_array = array_merge($url_array,loadBreadCrumbUrls($seo_list, 'showroom'));
@@ -527,7 +527,7 @@ if(isset($_GET['action'])){
 				}else{
 					
 					$temp = $nav->getCatUrl($val['name'], $val['profile_cat_id'], 'shop');
-					$url_array[] = str_replace($ste_root, '', $temp);
+					$url_array[] = str_replace(SITEROOT, '', $temp);
 					//$url_array[] = '/'.$val['seo_url']."/category.html?prodCatId=".$val['profile_cat_id'];
 					$url_array = array_merge($url_array,loadCatsWithPaging($val['cat_id'], 'cart'));
 					//$url_array = array_merge($url_array,loadBreadCrumbUrls($seo_list, 'cart'));
@@ -545,7 +545,7 @@ if(isset($_GET['action'])){
 			
 		}elseif($footer_nav_label_v['submenu_content_type'] == 3){
 
-    		$footer_nav_submenu_labels = $nav->getFooterNavSubmenuLabels($footer_nav_label_v['id'], $i);
+    		$footer_nav_submenu_labels = $nav->getFooterNavSubmenuLabels($dbCustom,$footer_nav_label_v['id'], $i);
 			foreach($footer_nav_submenu_labels as $val){
 				if((substr_count($val['url'], 'account') < 1)){			
 					$url_array[] = '/'.$_SESSION['global_url_word'].$val['url'];
@@ -571,14 +571,14 @@ if(isset($_GET['action'])){
 				if($val['destination'] == 'showroom'){
 					
 					$temp = $nav->getCatUrl($val['name'], $val['profile_cat_id'], 'showroom');
-					$url_array[] = str_replace($ste_root, '', $temp);
+					$url_array[] = str_replace(SITEROOT, '', $temp);
 					//$url_array[] = '/'.$_SESSION['global_url_word'].$val['seo_url']."/showroom.html?prodCatId=".$val['profile_cat_id'];
 					$url_array = array_merge($url_array,loadCatsWithPaging($val['cat_id'], 'showroom'));
 					//$url_array = array_merge($url_array,loadBreadCrumbUrls($seo_list, 'showroom'));					
 				}else{
 
 					$temp = $nav->getCatUrl($val['name'], $val['profile_cat_id'], 'shop');
-					$url_array[] = str_replace($ste_root, '', $temp);
+					$url_array[] = str_replace(SITEROOT, '', $temp);
 					//$url_array[] = '/'.$val['seo_url']."/category.html?prodCatId=".$val['profile_cat_id'];
 					$url_array = array_merge($url_array,loadCatsWithPaging($val['cat_id'], 'cart'));
 					//$url_array = array_merge($url_array,loadBreadCrumbUrls($seo_list, 'cart'));
@@ -602,7 +602,7 @@ if(isset($_GET['action'])){
 				
 			$submenu_content_type = $object->submenu_content_type;
 			if($submenu_content_type == 1){
-				$t = $nav->getTopCats();
+				$t = $nav->getTopCats($dbCustom,);
 
 				foreach($t as $val){
 
@@ -620,13 +620,13 @@ if(isset($_GET['action'])){
 
 					if(strpos($val['destination'], 'showroom') !== false){		
 						$temp = $nav->getCatUrl($val['name'], $val['profile_cat_id'], 'showroom');
-						$url_array[] = str_replace($ste_root, '', $temp);
+						$url_array[] = str_replace(SITEROOT, '', $temp);
 						//$url_array[] = '/'.$_SESSION['global_url_word'].$val['seo_url']."/showroom.html?prodCatId=".$val["profile_cat_id"];
 						$url_array = array_merge($url_array,loadCatsWithPaging($val['cat_id'], 'showroom'));
 						//$url_array = array_merge($url_array,loadBreadCrumbUrls($seo_list, 'showroom'));
 					}else{
 						$temp = $nav->getCatUrl($val['name'], $val['profile_cat_id'], 'shop');
-						$url_array[] = str_replace($ste_root, '', $temp);
+						$url_array[] = str_replace(SITEROOT, '', $temp);
 						//$url_array[] = '/'.$val['seo_url']."/category.html?prodCatId=".$val['profile_cat_id'];
 						$url_array = array_merge($url_array,loadCatsWithPaging($val['cat_id'], 'cart'));
 						//$url_array = array_merge($url_array,loadBreadCrumbUrls($seo_list, 'cart'));
@@ -645,7 +645,7 @@ if(isset($_GET['action'])){
 					$url_array[] = '/'.$_SESSION['global_url_word'].$val['url'];
 				}
 			}else{
-				$t = $nav->getHomePageCats();
+				$t = $nav->getHomePageCats($dbCustom,);
 				foreach($t as $val){
 
 					$db = $dbCustom->getDbConnect(CART_DATABASE);
@@ -663,13 +663,13 @@ if(isset($_GET['action'])){
 					if(strpos($val['destination'], 'showroom') !== false){
 												
 						$temp = $nav->getCatUrl($val['name'], $val['profile_cat_id'], 'showroom');
-						$url_array[] = str_replace($ste_root, '', $temp);
+						$url_array[] = str_replace(SITEROOT, '', $temp);
 						//$url_array[] = '/'.$_SESSION['global_url_word'].$val['seo_url']."/showroom.html?prodCatId=".$val["profile_cat_id"];
 						$url_array = array_merge($url_array,loadCatsWithPaging($val['cat_id'], 'showroom'));
 						//$url_array = array_merge($url_array,loadBreadCrumbUrls($seo_list, 'showroom'));
 					}else{
 						$temp = $nav->getCatUrl($val['name'], $val['profile_cat_id'], 'shop');
-						$url_array[] = str_replace($ste_root, '', $temp);
+						$url_array[] = str_replace(SITEROOT, '', $temp);
 						//$url_array[] = '/'.$val['seo_url']."/category.html?prodCatId=".$val["profile_cat_id"];
 						$url_array = array_merge($url_array,loadCatsWithPaging($val['cat_id'], 'cart'));
 						//$url_array = array_merge($url_array,loadBreadCrumbUrls($seo_list, 'cart'));
@@ -744,14 +744,14 @@ if(isset($_GET['action'])){
 				if($row->show_in_cart && $row->show_in_showroom){
 					
 					$temp = $nav->getCatUrl($row->name, $row->profile_cat_id, 'showroom');
-					$t[] = str_replace($ste_root, '', $temp);
+					$t[] = str_replace(SITEROOT, '', $temp);
 					//$t[] = '/'.$row->seo_url.'/category.html?prodCatId='.$row->profile_cat_id;
 					//$t = array_merge($t,loadBreadCrumbUrls($row->seo_list, 'cart'));
 					$t = array_merge($t,loadItemsPerCat($row->cat_id, 'cart'));								
 				}else{
 					
 					$temp = $nav->getCatUrl($row->name, $row->profile_cat_id, 'shop');
-					$t[] = str_replace($ste_root, '', $temp);
+					$t[] = str_replace(SITEROOT, '', $temp);
 					//$t[] = '/'.$_SESSION['global_url_word'].$row->seo_url.'/showroom.html?prodCatId='.$row->profile_cat_id;			
 					//$t = array_merge($t,loadBreadCrumbUrls($row->seo_list, 'showroom'));				
 					$t = array_merge($t,loadItemsPerCat($row->cat_id, 'cart'));	
@@ -794,13 +794,13 @@ $result = $dbCustom->getResult($db,$sql);
 			
 			$brand_name = getBrandName($row->brand_id);
 			$temp = $nav->getItemUrl($row->seo_url, $row->name, $row->profile_item_id, $brand_name, 'shop', $row->hide_id_from_url);
-			$t[] = str_replace($ste_root, '', $temp);
+			$t[] = str_replace(SITEROOT, '', $temp);
 		}else{
 			
 			//$t[] = '/'.$_SESSION['global_url_word'].$row->seo_url.'/showroom-product.html?productId=?productId='.$row->profile_item_id;		
 
 			$temp = $nav->getItemUrl($row->seo_url, $row->name, $row->profile_item_id, '', 'showroom', $row->hide_id_from_url);
-			$t[] = str_replace($ste_root, '', $temp);
+			$t[] = str_replace(SITEROOT, '', $temp);
 		
 		}
 	}
@@ -918,7 +918,7 @@ foreach($final_array as $url){
 echo "count:".count($url_array);
 echo "<br />";
 foreach($url_array as $k => $v){
-	echo $k."   <a href='".$ste_root.$v."' target='_blank'>".$v."</a>";
+	echo $k."   <a href='".SITEROOT.$v."' target='_blank'>".$v."</a>";
 	echo "<br />";	
 }
 
@@ -968,7 +968,7 @@ foreach($url_array as $k => $v){
 
 		$entries[] = new xml_sitemap_entry($url, '0.5', 'daily');
 		
-		//echo $j."   <a href='".$ste_root.$url."' target='_blank'>".$url."</a>";
+		//echo $j."   <a href='".SITEROOT.$url."' target='_blank'>".$url."</a>";
 		//echo "<br />";
 		
 		if($i % 1000 == 0){
@@ -981,10 +981,10 @@ foreach($url_array as $k => $v){
 			$conf = new xml_sitemap_generator_config;
 			$file_name = 'sitemap'.$file_num.$file_ext;
 
-			if(substr_count($domain,'.') > 1){	
-				$conf->setDomain($domain);				
+			if(substr_count(SITEROOT,'.') > 1){	
+				$conf->setDomain(SITEROOT);				
 			}else{
-				$conf->setDomain('www.'.$domain);
+				$conf->setDomain('www.'.SITEROOT);
 			}
 			$conf->setPath($path);
 			$conf->setFilename($file_name);
@@ -1001,10 +1001,10 @@ foreach($url_array as $k => $v){
 	if(isset($entries)){
 		$file_name = 'sitemap'.$file_num.$file_ext;
 		$conf = new xml_sitemap_generator_config;
-		if(substr_count($domain,'.') > 1){	
-			$conf->setDomain($domain);				
+		if(substr_count(SITEROOT,'.') > 1){	
+			$conf->setDomain(SITEROOT);				
 		}else{
-			$conf->setDomain('www.'.$domain);
+			$conf->setDomain('www.'.SITEROOT);
 		}
 		$conf->setPath($path);
 		$conf->setFilename($file_name);
@@ -1029,10 +1029,10 @@ foreach($url_array as $k => $v){
 	if(isset($entries)){
 		$conf = new xml_sitemap_generator_config;
 		$file_name = 'sitemap'.$file_ext;
-		if(substr_count($domain,'.') > 1){	
-			$conf->setDomain($domain);				
+		if(substr_count(SITEROOT,'.') > 1){	
+			$conf->setDomain(SITEROOT);				
 		}else{
-			$conf->setDomain('www.'.$domain);
+			$conf->setDomain('www.'.SITEROOT);
 		}
 		$conf->setPath($path);
 		$conf->setFilename($file_name);
@@ -1046,7 +1046,7 @@ foreach($url_array as $k => $v){
 
 }
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php'); 
+require_once($real_root.'/manage/admin-includes/doc_header.php'); 
 
 ?>
 
@@ -1099,13 +1099,13 @@ $(document).ready(function() {
 </head>
 <body>
 <?php
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-header.php');
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-top-nav.php');
+	require_once($real_root.'/manage/admin-includes/manage-header.php');
+	require_once($real_root.'/manage/admin-includes/manage-top-nav.php');
 ?>
 <div class="manage_page_container">
 	<div class="manage_side_nav">
 		<?php 
-        require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-side-nav.php');
+        require_once($real_root.'/manage/admin-includes/manage-side-nav.php');
         ?>
 	</div>
 	<div class="manage_main">
@@ -1113,17 +1113,17 @@ $(document).ready(function() {
 
 
     	<?php 
-		require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/class.admin_bread_crumb.php");	
+		require_once($real_root."/manage/admin-includes/class.admin_bread_crumb.php");	
 		$bread_crumb = new AdminBreadCrumb;
 		$bread_crumb->reSet();
-		$bread_crumb->add("CMS", $ste_root."manage/cms/cms-landing.php");
+		$bread_crumb->add("CMS", SITEROOT."/manage/cms/cms-landing.php");
 		$bread_crumb->add("SEO", '');
         echo $bread_crumb->output();
 		
-        require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-content-top.php');
+        require_once($real_root.'/manage/admin-includes/manage-content-top-category.php');
         
 		//SEO section tabbed sub-navigation
-        require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/seo-section-tabs.php");
+        require_once($real_root."/manage/admin-includes/seo-section-tabs.php");
         $db = $dbCustom->getDbConnect(SITE_N_DATABASE);
 		
 
@@ -1154,7 +1154,7 @@ $(document).ready(function() {
 		<br /><br /><br />
         
         
-            <p style="visibility:hidden" id="inprogress"> <img id="inprogress_img" src="<?php echo $ste_root; ?>/images/progress.gif"> Please Wait... </p>
+            <p style="visibility:hidden" id="inprogress"> <img id="inprogress_img" src="<?php echo SITEROOT; ?>images/progress.gif"> Please Wait... </p>
 
         
         
@@ -1187,7 +1187,7 @@ $(document).ready(function() {
         
     <p class="clear"></p>
 	<?php 
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-footer.php');
+	require_once($real_root.'/manage/admin-includes/manage-footer.php');
 	?>
 </div>
 </body>

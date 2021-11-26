@@ -9,7 +9,7 @@ if(!isset($_SERVER['DOCUMENT_ROOT'])){
 	}
 }
 
-require_once($_SERVER['DOCUMENT_ROOT']."/includes/config.php");
+require_once($real_root."/includes/config.php");
 
 $_SESSION['ret_modal'] = 'edit';
 
@@ -57,7 +57,7 @@ $db = $dbCustom->getDbConnect(COMPONENTS_DATABASE);
     <div class="edit-form-wrapper name edit-core-wrapper">
         <label class="text-italic">Core Name</label>
         <input type="text" class="edit-input" style="width:240px;" id="edit_core_name" name="core_name" value="<?php echo $core_name; ?>">
-        <img class="icon" src="<?php echo $ste_root; ?>/manage/assets/svg/edit.svg" alt="">
+        <img class="icon" src="<?php echo SITEROOT; ?>manage/assets/svg/edit.svg" alt="">
     </div>
     <div class="edit-form-wrapper no-border">
         <div class="wrapper radio-btns">

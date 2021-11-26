@@ -1,0 +1,8 @@
+[13-Jun-2021 19:31:02 UTC] PHP Notice:  Undefined variable: current_page in /home/ctgtest/public_html/manage/cms/custom-pages/add-page.php on line 90
+[13-Jun-2021 19:31:02 UTC] PHP Notice:  Undefined variable: seo_name in /home/ctgtest/public_html/manage/cms/pages/edit_page_seo.php on line 16
+[13-Jun-2021 19:31:02 UTC] PHP Notice:  Undefined variable: current_page in /home/ctgtest/public_html/manage/cms/custom-pages/add-page.php on line 90
+[13-Jun-2021 19:31:02 UTC] PHP Notice:  Undefined variable: seo_name in /home/ctgtest/public_html/manage/cms/pages/edit_page_seo.php on line 16
+[21-Jul-2021 18:17:55 UTC] PHP Notice:  Undefined variable: current_page in /home/ctgtest/public_html/manage/cms/custom-pages/add-page.php on line 90
+[21-Jul-2021 18:17:55 UTC] PHP Notice:  Undefined variable: seo_name in /home/ctgtest/public_html/manage/cms/pages/edit_page_seo.php on line 16
+[21-Jul-2021 18:17:55 UTC] PHP Notice:  Undefined variable: current_page in /home/ctgtest/public_html/manage/cms/custom-pages/add-page.php on line 90
+[21-Jul-2021 18:17:55 UTC] PHP Notice:  Undefined variable: seo_name in /home/ctgtest/public_html/manage/cms/pages/edit_page_seo.php on line 16

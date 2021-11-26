@@ -6,3 +6,62 @@
 [02-Dec-2012 16:23:22] PHP Parse error:  syntax error, unexpected $end in /home/onlinecl/public_html/manage/catalog/products/add-item.php on line 180
 [02-Dec-2012 16:37:49] PHP Parse error:  syntax error, unexpected $end in /home/onlinecl/public_html/manage/catalog/products/add-item.php on line 849
 [02-Dec-2012 16:59:02] PHP Parse error:  syntax error, unexpected $end in /home/onlinecl/public_html/manage/catalog/products/add-item.php on line 106
+[02-Apr-2021 19:23:35 UTC] PHP Notice:  Undefined property: stdClass::$name in /home/ctgtest/public_html/manage/catalog/products/item.php on line 23
+[02-Apr-2021 19:23:35 UTC] PHP Notice:  Undefined property: stdClass::$name in /home/ctgtest/public_html/manage/catalog/products/item.php on line 23
+[02-Apr-2021 19:23:35 UTC] PHP Notice:  Undefined property: stdClass::$name in /home/ctgtest/public_html/manage/catalog/products/item.php on line 23
+[02-Apr-2021 19:23:35 UTC] PHP Notice:  Undefined property: stdClass::$name in /home/ctgtest/public_html/manage/catalog/products/item.php on line 23
+[02-Apr-2021 19:23:35 UTC] PHP Notice:  Undefined property: stdClass::$name in /home/ctgtest/public_html/manage/catalog/products/item.php on line 23
+[02-Apr-2021 19:23:35 UTC] PHP Notice:  Undefined property: stdClass::$name in /home/ctgtest/public_html/manage/catalog/products/item.php on line 23
+[02-Apr-2021 19:30:36 UTC] PHP Notice:  Undefined property: stdClass::$name in /home/ctgtest/public_html/manage/catalog/products/item.php on line 23
+[02-Apr-2021 19:30:36 UTC] PHP Notice:  Undefined property: stdClass::$name in /home/ctgtest/public_html/manage/catalog/products/item.php on line 23
+[02-Apr-2021 19:30:36 UTC] PHP Notice:  Undefined property: stdClass::$name in /home/ctgtest/public_html/manage/catalog/products/item.php on line 23
+[02-Apr-2021 19:30:36 UTC] PHP Notice:  Undefined property: stdClass::$name in /home/ctgtest/public_html/manage/catalog/products/item.php on line 23
+[02-Apr-2021 19:30:36 UTC] PHP Notice:  Undefined property: stdClass::$name in /home/ctgtest/public_html/manage/catalog/products/item.php on line 23
+[02-Apr-2021 19:30:36 UTC] PHP Notice:  Undefined property: stdClass::$name in /home/ctgtest/public_html/manage/catalog/products/item.php on line 23
+[02-Apr-2021 19:30:36 UTC] PHP Notice:  Undefined property: stdClass::$name in /home/ctgtest/public_html/manage/catalog/products/item.php on line 23
+[02-Apr-2021 19:30:36 UTC] PHP Notice:  Undefined property: stdClass::$name in /home/ctgtest/public_html/manage/catalog/products/item.php on line 23
+[02-Apr-2021 19:30:36 UTC] PHP Notice:  Undefined property: stdClass::$name in /home/ctgtest/public_html/manage/catalog/products/item.php on line 23
+[02-Apr-2021 19:30:36 UTC] PHP Notice:  Undefined property: stdClass::$name in /home/ctgtest/public_html/manage/catalog/products/item.php on line 23
+[02-Apr-2021 19:30:36 UTC] PHP Notice:  Undefined property: stdClass::$name in /home/ctgtest/public_html/manage/catalog/products/item.php on line 23
+[02-Apr-2021 19:30:36 UTC] PHP Notice:  Undefined property: stdClass::$name in /home/ctgtest/public_html/manage/catalog/products/item.php on line 23
+[02-Apr-2021 22:26:47 UTC] PHP Notice:  Undefined variable: ste_root in /home/ctgtest/public_html/manage/admin-includes/login_timeout.php on line 18
+[02-Apr-2021 22:26:47 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/ctgtest/public_html/manage/admin-includes/login_timeout.php:18) in /home/ctgtest/public_html/manage/admin-includes/login_timeout.php on line 19
+[02-Apr-2021 22:26:47 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/ctgtest/public_html/manage/admin-includes/login_timeout.php:18) in /home/ctgtest/public_html/manage/admin-includes/manage-includes.php on line 27
+[24-Aug-2021 16:34:41 UTC] PHP Notice:  Undefined variable: dbCustom in /home/ctgtest/public_html/manage/admin-includes/manage-includes.php on line 13
+[24-Aug-2021 16:34:41 UTC] PHP Fatal error:  Call to a member function getDbConnect() on null in /home/ctgtest/public_html/manage/admin-includes/class.admin_access.php on line 52
+[24-Aug-2021 16:38:37 UTC] PHP Warning:  Missing argument 2 for getItemCats(), called in /home/ctgtest/public_html/manage/catalog/products/add-item.php on line 83 and defined in /home/ctgtest/public_html/manage/admin-includes/manage_functions.php on line 535
+[24-Aug-2021 16:38:37 UTC] PHP Fatal error:  Call to a member function getDbConnect() on integer in /home/ctgtest/public_html/manage/admin-includes/manage_functions.php on line 539
+[24-Aug-2021 16:40:39 UTC] PHP Warning:  require_once(/home/ctgtest/public_html/manage/catalog/products/item-tree-snippet.php): failed to open stream: No such file or directory in /home/ctgtest/public_html/manage/catalog/products/add-item.php on line 1400
+[24-Aug-2021 16:40:39 UTC] PHP Fatal error:  require_once(): Failed opening required '/home/ctgtest/public_html/manage/catalog/products/item-tree-snippet.php' (include_path='.:/opt/cpanel/ea-php56/root/usr/share/pear') in /home/ctgtest/public_html/manage/catalog/products/add-item.php on line 1400
+[24-Aug-2021 16:45:57 UTC] PHP Warning:  require_once(/home/ctgtest/public_html/manage/catalog/products/item-tree-snippet.php): failed to open stream: No such file or directory in /home/ctgtest/public_html/manage/catalog/products/add-item.php on line 1341
+[24-Aug-2021 16:45:57 UTC] PHP Fatal error:  require_once(): Failed opening required '/home/ctgtest/public_html/manage/catalog/products/item-tree-snippet.php' (include_path='.:/opt/cpanel/ea-php56/root/usr/share/pear') in /home/ctgtest/public_html/manage/catalog/products/add-item.php on line 1341
+[24-Aug-2021 17:57:27 UTC] PHP Notice:  Undefined variable: dbCustom in /home/ctgtest/public_html/manage/admin-includes/manage-includes.php on line 13
+[24-Aug-2021 17:57:27 UTC] PHP Fatal error:  Call to a member function getDbConnect() on null in /home/ctgtest/public_html/manage/admin-includes/class.admin_access.php on line 52
+[24-Aug-2021 17:58:59 UTC] PHP Notice:  Undefined variable: dbCustom in /home/ctgtest/public_html/manage/admin-includes/manage-includes.php on line 13
+[24-Aug-2021 17:58:59 UTC] PHP Fatal error:  Call to a member function getDbConnect() on null in /home/ctgtest/public_html/manage/admin-includes/class.admin_access.php on line 52
+[24-Aug-2021 17:59:03 UTC] PHP Notice:  Undefined variable: dbCustom in /home/ctgtest/public_html/manage/admin-includes/manage-includes.php on line 13
+[24-Aug-2021 17:59:03 UTC] PHP Fatal error:  Call to a member function getDbConnect() on null in /home/ctgtest/public_html/manage/admin-includes/class.admin_access.php on line 52
+[24-Aug-2021 17:59:32 UTC] PHP Warning:  Missing argument 2 for getItemCats(), called in /home/ctgtest/public_html/manage/catalog/products/edit-item.php on line 64 and defined in /home/ctgtest/public_html/manage/admin-includes/manage_functions.php on line 535
+[24-Aug-2021 17:59:32 UTC] PHP Fatal error:  Call to a member function getDbConnect() on integer in /home/ctgtest/public_html/manage/admin-includes/manage_functions.php on line 539
+[24-Aug-2021 18:03:04 UTC] PHP Warning:  Missing argument 2 for getNumChildItems(), called in /home/ctgtest/public_html/manage/catalog/products/edit-item.php on line 882 and defined in /home/ctgtest/public_html/manage/admin-includes/manage_functions.php on line 216
+[24-Aug-2021 18:03:04 UTC] PHP Fatal error:  Call to a member function getDbConnect() on integer in /home/ctgtest/public_html/manage/admin-includes/manage_functions.php on line 218
+[24-Aug-2021 18:05:36 UTC] PHP Warning:  require_once(/home/ctgtest/public_html/manage/catalog/products/item-tree-snippet.php): failed to open stream: No such file or directory in /home/ctgtest/public_html/manage/catalog/products/edit-item.php on line 1717
+[24-Aug-2021 18:05:36 UTC] PHP Fatal error:  require_once(): Failed opening required '/home/ctgtest/public_html/manage/catalog/products/item-tree-snippet.php' (include_path='.:/opt/cpanel/ea-php56/root/usr/share/pear') in /home/ctgtest/public_html/manage/catalog/products/edit-item.php on line 1717
+[24-Aug-2021 18:07:39 UTC] PHP Warning:  require_once(/home/ctgtest/public_html/manage/catalog/products/item-tree-snippet.php): failed to open stream: No such file or directory in /home/ctgtest/public_html/manage/catalog/products/edit-item.php on line 1674
+[24-Aug-2021 18:07:39 UTC] PHP Fatal error:  require_once(): Failed opening required '/home/ctgtest/public_html/manage/catalog/products/item-tree-snippet.php' (include_path='.:/opt/cpanel/ea-php56/root/usr/share/pear') in /home/ctgtest/public_html/manage/catalog/products/edit-item.php on line 1674
+[24-Aug-2021 18:09:12 UTC] PHP Warning:  Missing argument 2 for getOriginalItemName(), called in /home/ctgtest/public_html/manage/catalog/include-edit-item.php on line 18 and defined in /home/ctgtest/public_html/manage/admin-includes/manage_functions.php on line 200
+[24-Aug-2021 18:09:12 UTC] PHP Fatal error:  Call to a member function getDbConnect() on string in /home/ctgtest/public_html/manage/admin-includes/manage_functions.php on line 202
+[24-Aug-2021 18:12:08 UTC] PHP Fatal error:  Call to undefined function getItemSeoUrl() in /home/ctgtest/public_html/manage/catalog/include-edit-item.php on line 408
+[24-Aug-2021 18:13:18 UTC] PHP Fatal error:  Call to undefined function getItemSeoUrl() in /home/ctgtest/public_html/manage/catalog/include-edit-item.php on line 408
+[24-Aug-2021 18:14:06 UTC] PHP Fatal error:  Call to undefined function getItemSeoUrl() in /home/ctgtest/public_html/manage/catalog/include-edit-item.php on line 408
+[24-Aug-2021 18:14:37 UTC] PHP Fatal error:  Call to undefined function getItemSeoUrl() in /home/ctgtest/public_html/manage/catalog/include-edit-item.php on line 408
+[24-Aug-2021 18:15:35 UTC] PHP Notice:  Undefined variable: seo_url in /home/ctgtest/public_html/manage/catalog/include-edit-item.php on line 408
+[24-Aug-2021 18:15:35 UTC] PHP Notice:  Undefined variable: seo_url in /home/ctgtest/public_html/manage/catalog/include-edit-item.php on line 412
+[24-Aug-2021 18:15:35 UTC] PHP Notice:  Undefined variable: seo_list in /home/ctgtest/public_html/manage/catalog/include-edit-item.php on line 412
+[24-Aug-2021 18:30:32 UTC] PHP Notice:  Undefined variable: dbCustom in /home/ctgtest/public_html/manage/admin-includes/manage-includes.php on line 13
+[24-Aug-2021 18:30:32 UTC] PHP Fatal error:  Call to a member function getDbConnect() on null in /home/ctgtest/public_html/manage/admin-includes/class.admin_access.php on line 52
+[30-Aug-2021 20:31:37 UTC] PHP Fatal error:  Call to undefined function getItemSeoUrl() in /home/ctgtest/public_html/manage/catalog/include-add-item.php on line 391
+[30-Aug-2021 20:37:39 UTC] PHP Notice:  Undefined variable: seo_url in /home/ctgtest/public_html/manage/catalog/include-add-item.php on line 394
+[30-Aug-2021 20:37:39 UTC] PHP Notice:  Undefined variable: seo_url in /home/ctgtest/public_html/manage/catalog/include-add-item.php on line 397
+[30-Aug-2021 20:37:39 UTC] PHP Notice:  Undefined variable: seo_list in /home/ctgtest/public_html/manage/catalog/include-add-item.php on line 397
+[30-Aug-2021 20:40:27 UTC] PHP Notice:  Undefined index: temp_videos in /home/ctgtest/public_html/manage/catalog/include-add-item.php on line 355

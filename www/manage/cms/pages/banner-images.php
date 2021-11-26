@@ -13,7 +13,7 @@ if(!isset($_SERVER['DOCUMENT_ROOT'])){
 }
 
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
 
 $progress = new SetupProgress;
 $module = new Module;
@@ -46,7 +46,7 @@ if(isset($_POST["del_img"])){
 
 
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php'); 
+require_once($real_root.'/manage/admin-includes/doc_header.php'); 
 
 ?>
 
@@ -89,8 +89,8 @@ function select_img(img_id){
 
 	<body>
 <?php
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-header.php');
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-top-nav.php');
+	require_once($real_root.'/manage/admin-includes/manage-header.php');
+	require_once($real_root.'/manage/admin-includes/manage-top-nav.php');
 ?>
 
 
@@ -100,7 +100,7 @@ function select_img(img_id){
 
     <div class="manage_side_nav">
         <?php 
-        require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-side-nav.php');
+        require_once($real_root.'/manage/admin-includes/manage-side-nav.php');
 
 
 		?>
@@ -115,11 +115,11 @@ function select_img(img_id){
     <div class="manage_main">
 
 	<?php
- 		require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/class.admin_bread_crumb.php");	
+ 		require_once($real_root."/manage/admin-includes/class.admin_bread_crumb.php");	
 		$bread_crumb = new AdminBreadCrumb;
 		$bread_crumb->reSet();
-		$bread_crumb->add("CMS", $ste_root."manage/cms/cms-landing.php");
-		$bread_crumb->add("Pages", $ste_root."manage/cms/pages/page.php");
+		$bread_crumb->add("CMS", SITEROOT."/manage/cms/cms-landing.php");
+		$bread_crumb->add("Pages", SITEROOT."/manage/cms/pages/page.php");
 		$bread_crumb->add("Banner Images", '');
         echo $bread_crumb->output();
 
@@ -154,7 +154,7 @@ function select_img(img_id){
 		}else{
 			$block .= "<td>&nbsp;</td>";
 		}
-		$block .= "<td valign='top'><img src='".$ste_root."/saascustuploads/".$_SESSION['profile_account_id']."/cms/banner/".$row->file_name."' width='200'/></td>";
+		$block .= "<td valign='top'><img src='".SITEROOT."/saascustuploads/".$_SESSION['profile_account_id']."/cms/banner/".$row->file_name."' width='200'/></td>";
 		
 		$block .= "<td valign='top'>$row->file_name</td>";
 		
@@ -186,7 +186,7 @@ function select_img(img_id){
 </div>
 <p class="clear"></p>
 <?php 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-footer.php');
+require_once($real_root.'/manage/admin-includes/manage-footer.php');
 ?>
 
 </div>

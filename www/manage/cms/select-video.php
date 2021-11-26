@@ -13,7 +13,7 @@ if(!isset($_SERVER['DOCUMENT_ROOT'])){
 }
 
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
 
 $progress = new SetupProgress;
 $module = new Module;
@@ -43,7 +43,7 @@ if(isset($_POST['del_video'])){
 }
 
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php'); 
+require_once($real_root.'/manage/admin-includes/doc_header.php'); 
 
 
 ?>
@@ -61,13 +61,13 @@ function select_this_video(video_id){
 </head>
 <body>
 <?php
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-header.php');
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-top-nav.php');
+	require_once($real_root.'/manage/admin-includes/manage-header.php');
+	require_once($real_root.'/manage/admin-includes/manage-top-nav.php');
 ?>
 <div class="manage_page_container">
 	<div class="manage_side_nav">
 		<?php 
-        require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-side-nav.php');
+        require_once($real_root.'/manage/admin-includes/manage-side-nav.php');
         ?>
 	</div>
 	<div class="manage_main">
@@ -77,28 +77,28 @@ function select_this_video(video_id){
 		if(!isset($_SESSION['ret_path'])) $_SESSION['ret_path'] = (isset($_GET['ret_path'])) ? $_GET['ret_path'] : '';
 		
 
-		require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/class.admin_bread_crumb.php");	
+		require_once($real_root."/manage/admin-includes/class.admin_bread_crumb.php");	
 		$bread_crumb = new AdminBreadCrumb;
 		$bread_crumb->reSet();
 		
 		if($_SESSION['ret_page'] == "edit-keyword-landing"){
 			
-			$bread_crumb->add("Keyword Landing Pages", $ste_root."manage/cms/keyword-landing/keyword-landing-page-list.php");
-			$bread_crumb->add("Edit Keyword Landing Page", $ste_root."manage/cms/keyword-landing/edit-keyword-landing.php");
+			$bread_crumb->add("Keyword Landing Pages", SITEROOT."/manage/cms/keyword-landing/keyword-landing-page-list.php");
+			$bread_crumb->add("Edit Keyword Landing Page", SITEROOT."/manage/cms/keyword-landing/edit-keyword-landing.php");
 		}elseif($_SESSION['ret_page'] == "add-keyword-landing"){
 		
-			$bread_crumb->add("Keyword Landing Pages", $ste_root."manage/cms/keyword-landing/keyword-landing-page-list.php");
-			$bread_crumb->add("Add Keyword Landing Page", $ste_root."manage/cms/keyword-landing/add-keyword-landing.php");
+			$bread_crumb->add("Keyword Landing Pages", SITEROOT."/manage/cms/keyword-landing/keyword-landing-page-list.php");
+			$bread_crumb->add("Add Keyword Landing Page", SITEROOT."/manage/cms/keyword-landing/add-keyword-landing.php");
 		
 		}
 		
 		//echo "rr  ".$_SESSION['ret_page'];
 		
-		//echo $ste_root."manage/".$_SESSION['ret_path']."/".$_SESSION['ret_page'].".php";	
+		//echo SITEROOT."/manage/".$_SESSION['ret_path']."/".$_SESSION['ret_page'].".php";	
 		
 		$bread_crumb->add("Select Video", '');
         echo $bread_crumb->output();		
-        require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-content-top.php');
+        require_once($real_root.'/manage/admin-includes/manage-content-top-category.php');
         
 		$sortby = (isset($_GET['sortby'])) ? trim(mysql_escape_string($_GET['sortby'])) : '';
 		$a_d = (isset($_GET['a_d'])) ? $_GET['a_d'] : 'a';
@@ -110,10 +110,10 @@ function select_this_video(video_id){
 		
 		$result = $dbCustom->getResult($db,$sql);		
 		
-		$url_str = $ste_root."manage/cms/add-video.php?ret_page=select-video";	
+		$url_str = SITEROOT."/manage/cms/add-video.php?ret_page=select-video";	
 		
 		?>
-			<form name="form" action="<?php echo $ste_root."manage/".$_SESSION['ret_path']."/".$_SESSION['ret_page'].".php"; ?>" method="post" enctype="multipart/form-data">
+			<form name="form" action="<?php echo SITEROOT."/manage/".$_SESSION['ret_path']."/".$_SESSION['ret_page'].".php"; ?>" method="post" enctype="multipart/form-data">
 			<input type="hidden" name="add_video" value="1">
 
 			<div class="page_actions">
@@ -122,7 +122,7 @@ function select_this_video(video_id){
                  
                  <input class="btn btn-success btn-large" type="submit" name="submit" value="Submit Video">
                  
-                <a href="<?php echo $ste_root."manage/".$_SESSION['ret_path']."/".$_SESSION['ret_page'].".php"; ?>" target='_top'
+                <a href="<?php echo SITEROOT."/manage/".$_SESSION['ret_path']."/".$_SESSION['ret_page'].".php"; ?>" target='_top'
                 class="btn btn-large">Cancel</a>
 
             </div>
@@ -177,7 +177,7 @@ function select_this_video(video_id){
 	</div>
 	<p class="clear"></p>
 	<?php 
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-footer.php');
+	require_once($real_root.'/manage/admin-includes/manage-footer.php');
 	
 	
 	$url_str = "select-video.php";

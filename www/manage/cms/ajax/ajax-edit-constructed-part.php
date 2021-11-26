@@ -8,7 +8,7 @@ if(!isset($_SERVER['DOCUMENT_ROOT'])){
 		$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT']; 	
 	}
 }
-require_once($_SERVER['DOCUMENT_ROOT']."/includes/config.php");
+require_once($real_root."/includes/config.php");
 
 $_SESSION['ret_modal'] = 'edit';
 
@@ -151,7 +151,7 @@ $exclude_part_types_array[] = "Tilt Hamper";
 
 
 /*
-$url_str = $ste_root."manage/upload-pre-crop.php";
+$url_str = SITEROOT."/manage/upload-pre-crop.php";
 $url_str .= "?ret_path=tool-admin/constructed-part";
 $url_str .= "&ret_modal=ajax-edit-constructed-part";
 $url_str .= "&ret_id=".$_SESSION['part_id'];
@@ -180,7 +180,7 @@ $url_str .= "&ret_id=".$_SESSION['part_id'];
     <br />
     <br />                
 
-<form action="<?php echo $ste_root; ?>/manage/tool-admin/constructed-part.php" method="post" onsubmit="return validate(this);">
+<form action="<?php echo SITEROOT; ?>manage/tool-admin/constructed-part.php" method="post" onsubmit="return validate(this);">
 <input type="hidden" name="part_id" value="<?php echo $_SESSION['part_id']; ?>" />
 <input type="hidden" name="update_constructed_part" value="1" />
 <div class="clearfix">

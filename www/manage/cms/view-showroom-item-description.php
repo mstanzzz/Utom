@@ -13,7 +13,7 @@ if(!isset($_SERVER['DOCUMENT_ROOT'])){
 }
 
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
 
 $progress = new SetupProgress;
 $module = new Module;
@@ -22,7 +22,7 @@ $module = new Module;
 
 $db = $dbCustom->getDbConnect(SITE_N_DATABASE);
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php'); 
+require_once($real_root.'/manage/admin-includes/doc_header.php'); 
 
 
 ?>
@@ -45,7 +45,7 @@ $result = $dbCustom->getResult($db,$sql);$object = $result->fetch_object();
 </div>
 <p class="clear"></p>
 <?php 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-footer.php');
+require_once($real_root.'/manage/admin-includes/manage-footer.php');
 ?>
 
 </body>

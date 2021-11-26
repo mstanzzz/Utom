@@ -2,14 +2,17 @@
 if(!isset($_SERVER['DOCUMENT_ROOT'])){
 	if(strpos($_SERVER['REQUEST_URI'], 'solvitware/' )){    
 		$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT'].'/solvitware'; 
-	}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro/' )){
-		$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT'].'/designitpro';
+	}elseif(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){
+		$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT'].'/storittek';
 	}else{
 		$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT']; 	
 	}
 }
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
+require_once($real_root.'/includes/class.dbcustom.php');
+$dbCustom = new DbCustom();
+
+if(strpos($_SERVER['REQUEST_URI'], 'solvitware/' )){ 
 $msg = '';
 $progress = new SetupProgress;
 $module = new Module;
@@ -37,7 +40,7 @@ if(isset($_POST['add_admin_group'])){
 
 	$sql = "SELECT id 
 			FROM admin_section";
-	if(getProfileType() != "master"){
+	if(getProfileType($dbCustom) != "master"){
 		$sql .= " WHERE section_name != 'master'";	
 	}
 	$result = $dbCustom->getResult($db,$sql);	
@@ -116,7 +119,7 @@ if(isset($_POST["del_group"])){
 
 unset($_SESSION['admin_access']);
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php'); 
+require_once($real_root.'/manage/admin-includes/doc_header.php'); 
 
 ?>
 <script>
@@ -126,27 +129,27 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php');
 </head>
 <body>
 <?php
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-header.php');
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-top-nav.php');
+	require_once($real_root.'/manage/admin-includes/manage-header.php');
+	require_once($real_root.'/manage/admin-includes/manage-top-nav.php');
 ?>
 <div class="manage_page_container">
 	<div class="manage_side_nav">
 		<?php 
-        require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-side-nav.php');
+        require_once($real_root.'/manage/admin-includes/manage-side-nav.php');
         ?>
 	</div>
 	<div class="manage_main">
 		<?php 
 		
-		require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/class.admin_bread_crumb.php");	
+		require_once($real_root."/manage/admin-includes/class.admin_bread_crumb.php");	
 		$bread_crumb = new AdminBreadCrumb;
 		$bread_crumb->reSet();
-		$bread_crumb->add("Administration", $ste_root."manage/general-admin/admin-landing.php");
+		$bread_crumb->add("Administration", SITEROOT."/manage/general-admin/admin-landing.php");
 		$bread_crumb->add("Admin Groups", '');
         echo $bread_crumb->output();
 		
-        require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-content-top.php');
-        require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/admin-users-section-tabs.php");
+        require_once($real_root.'/manage/admin-includes/manage-content-top-category.php');
+        require_once($real_root."/manage/admin-includes/admin-users-section-tabs.php");
 		
 		
 		if($admin_access->administration_level > 1){ ?>        
@@ -193,7 +196,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php');
 	</div>
 	<p class="clear"></p>
 	<?php 
-		require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-footer.php');
+		require_once($real_root.'/manage/admin-includes/manage-footer.php');
 	?>
 </div>
 

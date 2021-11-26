@@ -11,7 +11,7 @@ if(strpos($_SERVER['REQUEST_URI'], 'solvitware/' )){
 	$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT']; 	
 }
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
+if(strpos($_SERVER['REQUEST_URI'], 'solvitware/' )){ 
 
 $progress = new SetupProgress;
 $module = new Module;
@@ -103,14 +103,14 @@ if(isset($_POST["submit"])){
 	
 	$progress->completeStep("payment" ,$_SESSION['profile_account_id']);
 		
-	header("Location: ".SITEROOT."/manage/start.php");
+	header("Location: ".SITEROOT."//manage/start.php");
 
 }
 
 
 
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php'); 
+require_once($real_root.'/manage/admin-includes/doc_header.php'); 
 
 ?>
 
@@ -118,8 +118,8 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php');
 
 	<body>
 <?php
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-header.php');
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-top-nav.php');
+	require_once($real_root.'/manage/admin-includes/manage-header.php');
+	require_once($real_root.'/manage/admin-includes/manage-top-nav.php');
 
 
 ?>
@@ -128,7 +128,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php');
 
     <div class="manage_side_nav">
         <?php 
-        require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-side-nav.php');
+        require_once($real_root.'/manage/admin-includes/manage-side-nav.php');
         ?>
     </div>	
     
@@ -159,7 +159,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php');
 	</div>
 <p class="clear"></p>
 <?php 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-footer.php');
+require_once($real_root.'/manage/admin-includes/manage-footer.php');
 ?>    
    
 </div>

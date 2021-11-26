@@ -13,7 +13,7 @@ if(!isset($_SERVER['DOCUMENT_ROOT'])){
 }
 
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
 
 $progress = new SetupProgress;
 $module = new Module;
@@ -23,7 +23,7 @@ $module = new Module;
 $page_title = "Dynamic Links";
 $page_group = "link";
 
-require_once($_SERVER['DOCUMENT_ROOT']."/includes/set-page.php");	
+require_once($real_root."/includes/set-page.php");	
 
 $db = $dbCustom->getDbConnect(SITE_N_DATABASE);
 
@@ -146,7 +146,7 @@ if(isset($_POST["del_link"])){
 
 }
 
-require_once($_SERVER['DOCUMENT_ROOT']."/includes/doc_header.php"); 
+require_once($real_root."/includes/doc_header.php"); 
 
 
 ?>
@@ -194,8 +194,8 @@ function select_img(img_id){
 </head>
 	<body>
 <?php
-	require_once($_SERVER['DOCUMENT_ROOT']."/includes/manage-header.php");
-	require_once($_SERVER['DOCUMENT_ROOT']."/includes/manage-top-nav.php");
+	require_once($real_root."/includes/manage-header.php");
+	require_once($real_root."/includes/manage-top-nav.php");
 ?>
 
 
@@ -206,7 +206,7 @@ function select_img(img_id){
 
     <div class="manage_side_nav">
         <?php 
-        require_once($_SERVER['DOCUMENT_ROOT']."/includes/manage-side-nav.php");
+        require_once($real_root."/includes/manage-side-nav.php");
         ?>
     </div>	
 
@@ -271,7 +271,7 @@ $block .= "<td valign='top'><a  href='edit-link.php?link_id=".$link_id."' style=
 
 		$block .= "<td valign='top'>$show_hide</td>";
 		$block .= "<td valign='top'>$row->url</td>";
-		$block .= "<td valign='top'><a href='".$ste_root.$row->url."' target='_blank'>$row->link_text</a></td>";
+		$block .= "<td valign='top'><a href='".SITEROOT.$row->url."' target='_blank'>$row->link_text</a></td>";
 		$block .= "<td valign='top'></td>";
 		$block .="</tr>";
 	    echo $block;
@@ -357,7 +357,7 @@ $block .= "<td valign='top'><a  href='edit-link.php?link_id=".$link_id."' style=
                     <option value="/closet-organizer/closet-organizers-privacy-statement.html">privacy statement</option>
                     <option value="/closet-organizer/closet-organizers-terms-of-use.html">terms of use</option>
                     <option value="/closet-organizer/closet-organizers-in-home-consultation.html">in home consultation</option>
-                    <option value="/custom-closets/showroom-sub-category.html">custom closets</option>
+                    <option value="/custom-closets/showroom-sub.html">custom closets</option>
                     <option value="/closet-design.html">design online</option>
                     <option value="/custom-closet-organizers/closet-system-faq.html">support - FAQ</option>
                     <option value="/custom-closet-organizers/closet-system-contact.html">support - contact us</option>
@@ -422,7 +422,7 @@ $block .= "<td valign='top'><a  href='edit-link.php?link_id=".$link_id."' style=
 </div>
 <p class="clear"></p>
 <?php 
-require_once($_SERVER['DOCUMENT_ROOT']."/includes/manage-footer.php");
+require_once($real_root."/includes/manage-footer.php");
 ?>
 
 </div>

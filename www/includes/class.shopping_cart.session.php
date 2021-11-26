@@ -25,18 +25,18 @@ class ShoppingCart {
 	  
 	   if(!isset($_SESSION['cart'])){
 			
-			$this->reloadCart();
+			$this->reloadCart($dbCustom);
 			
 	   }else{
 				   
-		   $this->saveCart();
-		   //$this->reloadCart();
+		   $this->saveCart($dbCustom);
+		   //$this->reloadCart($dbCustom);
 	   }
 	   
 	   
 	}
 	
-	function saveCart(){
+	function saveCart($dbCustom){
 		
 		$dbCustom = new DbCustom();
 		$db = $dbCustom->getDbConnect(CART_DATABASE);
@@ -94,7 +94,7 @@ class ShoppingCart {
 			
 		}else{
 
-			$this->reloadCart();
+			$this->reloadCart($dbCustom);
 			
 		}
 	
@@ -105,7 +105,7 @@ class ShoppingCart {
 	
 	
 	
-	function reloadCart(){
+	function reloadCart($dbCustom){
 		
 		$dbCustom = new DbCustom();
 		$db = $dbCustom->getDbConnect(CART_DATABASE);
@@ -140,17 +140,17 @@ class ShoppingCart {
 			//$cart_subtotal = 0;
 			$i = 0;
 			while($row = $result->fetch_object()) {
-				$t[$i]['cat_id'] = $this->getCat($row->item_id);
+				$t[$i]['cat_id'] = $this->getCat($dbCustom,$row->item_id);
 				$t[$i]['item_id'] = $row->item_id;				
 				$t[$i]['profile_item_id'] = $this->getProfileItemId($row->item_id);				
-				$t[$i]['name'] = $this->getName($row->item_id);
+				$t[$i]['name'] = $this->getName($dbCustom,$row->item_id);
 				$t[$i]['qty'] = $row->qty;
-				$t[$i]['price'] = $this->getItemPrice($row->item_id);
-				$t[$i]['image_file'] = $this->getItemPic($row->item_id);
-				$t[$i]['seo_url'] = $this->getItemSeoUrl($row->item_id);
-				$t[$i]['weight'] = $this->getItemWeight($row->item_id);
+				$t[$i]['price'] = $this->getItemPrice($dbCustom,$row->item_id);
+				$t[$i]['image_file'] = $this->getItemPic($dbCustom,$row->item_id);
+				$t[$i]['seo_url'] = $this->getItemSeoUrl($dbCustom,$row->item_id);
+				$t[$i]['weight'] = $this->getItemWeight($dbCustom,$row->item_id);
 				
-				//$cart_subtotal += $this->getItemPrice($row->item_id)*$row->qty;
+				//$cart_subtotal += $this->getItemPrice($dbCustom,$row->item_id)*$row->qty;
 				$i++;
 			}
 			$_SESSION['cart'] = $t;			
@@ -189,7 +189,7 @@ class ShoppingCart {
 		return $ret;
 	}
 
-	function itemExists($item_id)
+	function itemExists($dbCustom,$item_id)
 	{
 		
 		$dbCustom = new DbCustom();
@@ -201,12 +201,12 @@ class ShoppingCart {
 		
 	}
 
-	function addItem($item_id, $qty = 1)
+	function addItem($dbCustom,$item_id, $qty = 1)
 	{
 		
 		
 		
-		if($this->itemExists($item_id)){
+		if($this->itemExists($dbCustom,$item_id)){
 		
 			
 			if($this->itemInCart($item_id)){
@@ -223,19 +223,19 @@ class ShoppingCart {
 					
 				$_SESSION['cart'][$i]['item_id'] = $item_id;
 				$_SESSION['cart'][$i]['qty'] = $qty;
-				$_SESSION['cart'][$i]['weight'] = $this->getItemWeight($item_id);
-				$_SESSION['cart'][$i]['cat_id'] =  $this->getCat($item_id);
-				$_SESSION['cart'][$i]['name'] =  $this->getName($item_id);
-				$_SESSION['cart'][$i]['image_file'] = $this->getItemPic($item_id);
-				$_SESSION['cart'][$i]['seo_url'] =  $this->getItemSeoUrl($item_id); 				
-				$_SESSION['cart'][$i]['price'] =  $this->getItemPrice($item_id);
+				$_SESSION['cart'][$i]['weight'] = $this->getItemWeight($dbCustom,$item_id);
+				$_SESSION['cart'][$i]['cat_id'] =  $this->getCat($dbCustom,$item_id);
+				$_SESSION['cart'][$i]['name'] =  $this->getName($dbCustom,$item_id);
+				$_SESSION['cart'][$i]['image_file'] = $this->getItemPic($dbCustom,$item_id);
+				$_SESSION['cart'][$i]['seo_url'] =  $this->getItemSeoUrl($dbCustom,$item_id); 				
+				$_SESSION['cart'][$i]['price'] =  $this->getItemPrice($dbCustom,$item_id);
 				$_SESSION['cart'][$i]['profile_item_id'] = $this->getProfileItemId($item_id);
 			
 			}
 			
 			
 			
-			$this->saveCart();
+			$this->saveCart($dbCustom);
 			
 			return $item_id;
 			
@@ -288,7 +288,7 @@ class ShoppingCart {
 	} 
 
 
-	function removeItem($item_id)
+	function removeItem($dbCustom,$item_id)
 	{
 
 		$t = array();	
@@ -323,7 +323,7 @@ class ShoppingCart {
 						$t[$i]['qty'] = $val['qty'];
 						$t[$i]['cat_id'] =  $val['cat_id'];
 						$t[$i]['name'] =  $val['name'];
-						$t[$i]['image_file'] = $this->getItemPic($item_id);					
+						$t[$i]['image_file'] = $this->getItemPic($dbCustom,$item_id);					
 						$t[$i]['seo_url'] =  $val['seo_url']; 				
 						$t[$i]['price'] =  $val['price'];
 						$t[$i]['weight'] =  $val['weight'];
@@ -355,7 +355,7 @@ class ShoppingCart {
 	}
 
 
-	function emptyCart()
+	function emptyCart($dbCustom)
 	{ 
 		$_SESSION['cart'] = '';
 		$dbCustom = new DbCustom();
@@ -371,7 +371,7 @@ class ShoppingCart {
 	} 
 	
 	
-	function getName($item_id)
+	function getName($dbCustom,$item_id)
 	{	
 		$dbCustom = new DbCustom();
 		$db = $dbCustom->getDbConnect(CART_DATABASE);	
@@ -390,7 +390,7 @@ class ShoppingCart {
 	}
 	
 	
-	function getItemWeight($item_id){
+	function getItemWeight($dbCustom,$item_id){
 		
 		$dbCustom = new DbCustom();
 		$db = $dbCustom->getDbConnect(CART_DATABASE);	
@@ -410,7 +410,7 @@ class ShoppingCart {
 	}
 	
 	
-	function getItemSeoUrl($item_id)
+	function getItemSeoUrl($dbCustom,$item_id)
 	{
 		$dbCustom = new DbCustom();
 		$db = $dbCustom->getDbConnect(CART_DATABASE);	
@@ -430,7 +430,7 @@ class ShoppingCart {
 	}
 	
 	
-	function getCat($item_id)
+	function getCat($dbCustom,$item_id)
 	{		
 		$ret = 0;
 		$dbCustom = new DbCustom();
@@ -449,7 +449,7 @@ class ShoppingCart {
 		return $ret;
 	}
 
-	function getItemPic($item_id)
+	function getItemPic($dbCustom,$item_id)
 	{	
 	
 	
@@ -473,7 +473,7 @@ class ShoppingCart {
 	
 	
 	
-	function getItemPrice($item_id){
+	function getItemPrice($dbCustom,$item_id){
 		
 		$dbCustom = new DbCustom();	
 		$db = $dbCustom->getDbConnect(CART_DATABASE);

@@ -12,7 +12,7 @@ if(!isset($_SERVER['DOCUMENT_ROOT'])){
 }
 
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
 
 $cat_id = (isset($_GET['cat_id'])) ? $_GET['cat_id'] : 0;
 
@@ -57,7 +57,7 @@ while($row = $result->fetch_object()) {
 	
 	$block .= "<li title='' role='treeitem' aria-expanded='false' id='".$row->cat_id."'>";
 	$block .= "<a tabindex='-1' class='tree-parent tree-parent-collapsed' onclick='show_children(".$row->cat_id.")' >";
-	$block .= "<img  src='".$ste_root."/saascustuploads/".$_SESSION['profile_account_id']."/cart/thumb/".$file_name."'/>".$row->name;
+	$block .= "<img  src='".SITEROOT."/saascustuploads/".$_SESSION['profile_account_id']."/cart/thumb/".$file_name."'/>".$row->name;
 	
 	$checked = ($row->cat_id == $_SESSION['temp_cat']['cat_id'])  ? "checked='checked'" : '';
 

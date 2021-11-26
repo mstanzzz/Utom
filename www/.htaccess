@@ -8,58 +8,75 @@ RewriteCond %{ENV:REDIRECT_STATUS} 200
 RewriteRule .* - [L]
 #
 #
+RewriteRule ^showroom-([0-9]+)/([^/\.]+).html?$ template_default.php?slug=showroom-detail-view-category&cat_id=$1 [L]
+RewriteRule ([^.]+)/showroom-([0-9]+)/([^/\.]+).html?$ template_default.php?slug=showroom-detail-view-category&cat_id=$2 [L]
+RewriteRule ([^.]+)/([^.]+)/([^.]+)/showroom-([0-9]+)/([^/\.]+).html?$ template_default.php?slug=showroom-detail-view-category&cat_id=$4 [L]
+RewriteRule ([^.]+)/([^.]+)/([^.]+)/([^.]+)/showroom-([0-9]+)/([^/\.]+).html?$ template_default.php?slug=showroom-detail-view-category&cat_id=$5 [L]
+#
+#
+#http://localhost/storittek/showroom-product-137/valet-rod.html
+#showroom-detail-view-product.php
+#
+RewriteRule ^showroom-product-([0-9]+)/([^/\.]+).html?$ template_default.php?slug=showroom-detail-view-product&productId=$1 [L]
+RewriteRule ([^.]+)/showroom-product-([0-9]+)/([^/\.]+).html?$ template_default.php?slug=showroom-detail-view-product&productId=$2 [L]
+RewriteRule ([^.]+)/([^.]+)/showroom-product-([0-9]+)/([^/\.]+).html?$ template_default.php?slug=showroom-detail-view-product&productId=$3 [L]
+#
+#
 RewriteRule ^$ template_default.php?slug=home [L]
 #
 #
+RewriteRule ^specification-([0-9]+)/([^/\.]+).html?$ template_default.php?slug=specifications-details&svg_id=$1 [L]
+RewriteRule ([^.]+)/specification-([0-9]+)/([^/\.]+).html?$ template_default.php?slug=specifications-details&svg_id=$2 [L]
+RewriteRule ([^.]+)/([^.]+)/specification-([0-9]+)/([^/\.]+).html?$ template_default.php?slug=specifications-details&svg_id=$3 [L]
 #
 #
-#/showroom-category-69/custom-closet-organizers-for-wardrobes.html
-#RewriteRule ^showroom-category-([0-9]+)/([^/\.]+).html?$ template_default.php?slug=showroom&CatId=$1 [L]
+RewriteRule ^accessory-products-([0-9]+)/([^/\.]+).html?$ template_default.php?slug=accessories&svg_id=$1 [L]
 #
-#organizer-landing-page
-RewriteRule ^showroom-category-([0-9]+)/([^/\.]+).html?$ template_default.php?slug=organizer-landing-page&CatId=$1 [L]
-RewriteRule ([^.]+)/showroom-category-([0-9]+)/([^/\.]+).html?$ template_default.php?slug=organizer-landing-page&prodCatId=$2 [L]
-#
-#
-#...com/closet-organizers/showroom-76/reach-in-craft-closet-organizer.html
-#showroom-detail-view-category
-RewriteRule ^showroom-([0-9]+)/([^/\.]+).html?$ template_default.php?slug=showroom-detail-view-category&productId=$1 [L]
-RewriteRule ([^.]+)/showroom-([0-9]+)/([^/\.]+).html?$ template_default.php?slug=showroom-detail-view-category&productId=$2 [L]
-RewriteRule ([^.]+)/([^.]+)/([^.]+)/showroom-([0-9]+)/([^/\.]+).html?$ template_default.php?slug=showroom-detail-view-category&productId=$4 [L]
-RewriteRule ([^.]+)/([^.]+)/([^.]+)/([^.]+)/showroom-([0-9]+)/([^/\.]+).html?$ template_default.php?slug=showroom-detail-view-category&productId=$5 [L]
+RewriteRule ^accessories-([0-9]+)/([^/\.]+).html?$ template_default.php?slug=accessories&svg_id=$1 [L]
+RewriteRule ([^.]+)/accessories-([0-9]+)/([^/\.]+).html?$ template_default.php?slug=accessories&svg_id=$2 [L]
+RewriteRule ([^.]+)/([^.]+)/accessories-([0-9]+)/([^/\.]+).html?$ template_default.php?slug=accessories&svg_id=$3 [L]
 #
 #
-#
-#...com/category-33/raised-panel-fronts-door-options.html
-#solution-detail-view
-#
-#
-RewriteRule ^category-([0-9]+)/([^/\.]+).html?$ template_default.php?slug=solution-detail-view&productId=$1 [L]
-RewriteRule ([^.]+)/category-([0-9]+)/([^/\.]+).html?$ template_default.php?slug=solution-detail-view&productId=$2 [L]
-RewriteRule ([^.]+)/([^.]+)/([^.]+)/category-([0-9]+)/([^/\.]+).html?$ template_default.php?slug=solution-detail-view&productId=$4 [L]
-RewriteRule ([^.]+)/([^.]+)/([^.]+)/([^.]+)/category-([0-9]+)/([^/\.]+).html?$ template_default.php?slug=solution-detail-view&productId=$5 [L]
+#...com/product-60/docking-station-300-ipod-iphone.html
+RewriteRule ^product-([0-9]+)/([^/\.]+).html?$ template_default.php?slug=product-detail-view&productId=$1 [L]
+RewriteRule ([^.]+)/product-([0-9]+)/([^/\.]+).html?$ template_default.php?slug=product-detail-view&productId=$2 [L]
+RewriteRule ([^.]+)/([^.]+)/product-([0-9]+)/([^/\.]+).html?$ template_default.php?slug=product-detail-view&productId=$3 [L]
+RewriteRule ([^.]+)/([^.]+)/([^.]+)/product-([0-9]+)/([^/\.]+).html?$ template_default.php?slug=product-detail-view&productId=$4 [L]
+RewriteRule ([^.]+)/([^.]+)/([^.]+)/([^.]+)/product-([0-9]+)/([^/\.]+).html?$ template_default.php?slug=product-detail-view&productId=$5 [L]
 #
 #
-#
-#showroom-detail-view-product
-RewriteRule ^product-([0-9]+)/([^/\.]+).html?$ template_default.php?slug=showroom-detail-view-product&productId=$1 [L]
-RewriteRule ([^.]+)/product-([0-9]+)/([^/\.]+).html?$ template_default.php?slug=showroom-detail-view-product&productId=$2 [L]
-RewriteRule ([^.]+)/([^.]+)/([^.]+)/product-([0-9]+)/([^/\.]+).html?$ template_default.php?slug=showroom-detail-view-product&productId=$4 [L]
-RewriteRule ([^.]+)/([^.]+)/([^.]+)/([^.]+)/product-([0-9]+)/([^/\.]+).html?$ template_default.php?slug=showroom-detail-view-product&productId=$5 [L]
-#
-#localhost/product-60/docking-station-300-ipod-iphone.html
-RewriteRule ^product-([0-9]+)/([^/\.]+).html?$ template_default.php?slug=product-details&productId=$1 [L]
-#
+#features-detail
+#...com/feature-6/300-ipod-iphone.html
+RewriteRule ^feature-([0-9]+)/([^/\.]+).html?$ template_default.php?slug=features-detail&svg_id=$1 [L]
+RewriteRule ([^.]+)/feature-([0-9]+)/([^/\.]+).html?$ template_default.php?slug=features-detail&svg_id=$2 [L]
+RewriteRule ([^.]+)/([^.]+)/feature-([0-9]+)/([^/\.]+).html?$ template_default.php?slug=features-detail&svg_id=$3 [L]
+RewriteRule ([^.]+)/([^.]+)/([^.]+)/feature-([0-9]+)/([^/\.]+).html?$ template_default.php?slug=features-detail&svg_id=$4 [L]
+RewriteRule ([^.]+)/([^.]+)/([^.]+)/([^.]+)/feature-([0-9]+)/([^/\.]+).html?$ template_default.php?slug=features-detail&svg_id=$5 [L]
 #
 #
 RewriteRule ^([^/\.]+).html?$ template_default.php?slug=$1 [L]
 #
 RewriteRule ^([^/\.]+)/([0-9]+).html?$ template_default.php?slug=$1&id=$2 [L]
 RewriteRule ^([^/\.]+)/([^/\.]+)/([0-9]+).html?$ template_default.php?slug=$2&id=$3 [L]
-
+#
 #
 RewriteRule ^([^/\.]+)/([^/\.]+).html?$ template_default.php?slug=$2 [L]
 RewriteRule ^([^/\.]+)/([^/\.]+)/([^/\.]+).html?$ template_default.php?slug=$3 [L]
 #
 #
 #
+#
+#...com/category-33/raised-panel-fronts-door-options.html
+#solution-detail-view
+#
+RewriteRule ^category-([0-9]+)/([^/\.]+).html?$ template_default.php?slug=solution-detail-view&productId=$1 [L]
+RewriteRule ([^.]+)/category-([0-9]+)/([^/\.]+).html?$ template_default.php?slug=solution-detail-view&productId=$2 [L]
+RewriteRule ([^.]+)/([^.]+)/([^.]+)/category-([0-9]+)/([^/\.]+).html?$ template_default.php?slug=solution-detail-view&productId=$4 [L]
+RewriteRule ([^.]+)/([^.]+)/([^.]+)/([^.]+)/category-([0-9]+)/([^/\.]+).html?$ template_default.php?slug=solution-detail-view&productId=$5 [L]
+
+# php -- BEGIN cPanel-generated handler, do not edit
+# Set the “ea-php56” package as the default “PHP” programming language.
+<IfModule mime_module>
+  AddHandler application/x-httpd-ea-php56 .php .php5 .phtml
+</IfModule>
+# php -- END cPanel-generated handler, do not edit

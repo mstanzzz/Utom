@@ -1,19 +1,17 @@
 <?php
 
-
-
-if(!isset($_SERVER['DOCUMENT_ROOT'])){
-	if(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){    
-		$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
-	}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro/' )){
-		$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT'].'/designitpro';
-	}else{
-		$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT']; 	
-	}
+if(strpos($_SERVER['REQUEST_URI'], 'solvitware/' )){ 
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/solvitware';
+}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/designitpro'; 
+}elseif(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
+}else{
+	$real_root = $_SERVER['DOCUMENT_ROOT']; 	
 }
-
-
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
+require_once($real_root.'/includes/class.dbcustom.php');
+$dbCustom = new DbCustom();
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
 
 require_once($_SERVER['DOCUMENT_ROOT']."/includes/iframe_functions.php");
 require_once($_SERVER['DOCUMENT_ROOT']."/includes/class.encryption.php");
@@ -45,7 +43,7 @@ if(isset($_POST["add_iframe"])){
 
 	if(getUsedIframeCount($_SESSION['profile_account_id']) < getIframeCount($_SESSION['profile_account_id'])){
 	
-		$domain_name = trim(addslashes($_POST["domain_name"])); 
+		SITEROOT_name = trim(addslashes($_POST["domain_name"])); 
 
 	
 	
@@ -73,7 +71,7 @@ if(isset($_POST["add_iframe"])){
 					,created
 					)
 					 VALUES('%s','%u','%u')", 
-					$domain_name
+					SITEROOT_name
 					,$_SESSION['profile_account_id']
 					,time()
 					);
@@ -84,7 +82,7 @@ if(isset($_POST["add_iframe"])){
 		$iframe_id = $db->insert_id;
 		// create encryped id-domain
 		
-		$encoded_domain = $converter->encode($domain_name); 
+		$encoded_domain = $converter->encode(SITEROOT_name); 
  		$encoded_iframe_id = $converter->encode($iframe_id);
 		
 		$idstr = $encoded_iframe_id."-".$encoded_domain; 
@@ -140,7 +138,7 @@ use function verifyIframeSite($idstr) in accessory_cart_functions.php
 */
 
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php'); 
+require_once($real_root.'/manage/admin-includes/doc_header.php'); 
 
 
 ?>
@@ -189,8 +187,8 @@ function set_iframe_input(){
 
 	<body>
 <?php
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-header.php');
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-top-nav.php');
+	require_once($real_root.'/manage/admin-includes/manage-header.php');
+	require_once($real_root.'/manage/admin-includes/manage-top-nav.php');
 ?>
 
 
@@ -207,7 +205,7 @@ function set_iframe_input(){
 
     <div class="manage_side_nav">
         <?php 
-        require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-side-nav.php');
+        require_once($real_root.'/manage/admin-includes/manage-side-nav.php');
         ?>
     </div>	
 
@@ -235,7 +233,7 @@ function set_iframe_input(){
 	echo "<br /><br />";
 	
 	
-	echo "<a href='".$ste_root."manage/iframe-auth-files/verifysite.html' target='_blank' style='text-decoration:none'>right click and save download</a>";	
+	echo "<a href='".SITEROOT."manage/iframe-auth-files/verifysite.html' target='_blank' style='text-decoration:none'>right click and save download</a>";	
 	
 	?>
  	</div>
@@ -244,7 +242,7 @@ function set_iframe_input(){
 
     <p class="clear"></p>
 	<?php 
-    require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-footer.php');
+    require_once($real_root.'/manage/admin-includes/manage-footer.php');
     ?>       
 
     </div>

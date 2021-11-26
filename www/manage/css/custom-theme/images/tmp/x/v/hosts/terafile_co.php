@@ -12,7 +12,7 @@ class dl_terafile_co extends Download {
 		else return array(false, "accinvalid");
     }
     
-    public function Login($user, $pass){
+    public function login($dbCustom,$user, $pass){
         $data = $this->lib->curl("http://terafile.co/", "lang=english", "login={$user}&password={$pass}&op=login&redirect=");
 		return "lang=english;{$this->lib->GetCookies($data)}";
     }

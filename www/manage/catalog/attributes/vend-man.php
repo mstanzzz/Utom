@@ -1,15 +1,17 @@
 <?php
-if(!isset($_SERVER['DOCUMENT_ROOT'])){
-	if(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){    
-		$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
-	}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro/' )){
-		$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT'].'/designitpro';
-	}else{
-		$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT']; 	
-	}
+if(strpos($_SERVER['REQUEST_URI'], 'solvitware/' )){ 
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/solvitware';
+}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/designitpro'; 
+}elseif(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
+}else{
+	$real_root = $_SERVER['DOCUMENT_ROOT']; 	
 }
+require_once($real_root.'/includes/class.dbcustom.php');
+$dbCustom = new DbCustom();
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
 
 $progress = new SetupProgress;
 $module = new Module;
@@ -189,7 +191,7 @@ if(isset($_POST["del_vend_man"])){
 unset($_SESSION["temp_fields"]);
 unset($_SESSION["temp_brand_ids"]);
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php'); 
+require_once($real_root.'/manage/admin-includes/doc_header.php'); 
 
 
 ?>
@@ -212,29 +214,29 @@ $(document).ready(function(){
 <?php
 
 if(!$strip){ 
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-header.php');
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-top-nav.php');
+	require_once($real_root.'/manage/admin-includes/manage-header.php');
+	require_once($real_root.'/manage/admin-includes/manage-top-nav.php');
 
 	echo "<div class='manage_side_nav'>";
 
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-side-nav.php');
+	require_once($real_root.'/manage/admin-includes/manage-side-nav.php');
 	
 	echo "</div>";
 	echo "<div class='manage_main'>";	
     //echo "<div class='manage_main'>";
 
-			require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/class.admin_bread_crumb.php");	
+			require_once($real_root."/manage/admin-includes/class.admin_bread_crumb.php");	
 			$bread_crumb = new AdminBreadCrumb;
 			$bread_crumb->reSet();
-			$bread_crumb->add("Product Catalog", $ste_root."manage/catalog/catalog-landing.php");
-			$bread_crumb->add("Vendor", $ste_root."manage/catalog/attributes/vend-man.php");
+			$bread_crumb->add("Product Catalog", SITEROOT."/manage/catalog/catalog-landing.php");
+			$bread_crumb->add("Vendor", SITEROOT."/manage/catalog/attributes/vend-man.php");
 			echo $bread_crumb->output();
 }
-        require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-content-top.php');
+        require_once($real_root.'/manage/admin-includes/manage-content-top-category.php');
         
 if(!$strip){ 
 
-       require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/attribute-section-tabs.php");
+       require_once($real_root."/manage/admin-includes/attribute-section-tabs.php");
 
 }
 		$sortby = (isset($_GET['sortby'])) ? trim(mysql_escape_string($_GET['sortby'])) : '';
@@ -297,7 +299,7 @@ if(!$strip){
 
         ?>
         	<div class="data_table">
-            	<?php require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/tablesort.php"); ?>
+            	<?php require_once($real_root."/manage/admin-includes/tablesort.php"); ?>
 				<table cellpadding="10" cellspacing="0">
 					<thead>
 						<tr>
@@ -396,7 +398,7 @@ if(!$strip){
 		echo "</div>
 		<p class='clear'></p>";
 		 
-		require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-footer.php');
+		require_once($real_root.'/manage/admin-includes/manage-footer.php');
 	}
 	echo "</div>";
 	

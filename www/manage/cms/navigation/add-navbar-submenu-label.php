@@ -1,19 +1,17 @@
 <?php
-
-
-
-if(!isset($_SERVER['DOCUMENT_ROOT'])){
-	if(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){    
-		$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
-	}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro/' )){
-		$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT'].'/designitpro';
-	}else{
-		$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT']; 	
-	}
+if(strpos($_SERVER['REQUEST_URI'], 'solvitware/' )){ 
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/solvitware';
+}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/designitpro'; 
+}elseif(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
+}else{
+	$real_root = $_SERVER['DOCUMENT_ROOT']; 	
 }
+require_once($real_root.'/includes/class.dbcustom.php');
+$dbCustom = new DbCustom();
 
-
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
 
 $progress = new SetupProgress;
 $module = new Module;
@@ -38,11 +36,11 @@ $msg = '';
 $strip = (isset($_GET['strip'])) ? $_GET['strip'] : 0;
 $qs_strip = ($strip) ? "strip=1" : ''; 
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php'); 
+require_once($real_root.'/manage/admin-includes/doc_header.php'); 
 
 ?>
 
-<script src="<?php echo $ste_root; ?>/js/jquery.valid8.js"></script> 
+<script src="<?php echo SITEROOT; ?>js/jquery.valid8.js"></script> 
 
 
 <script>
@@ -144,7 +142,7 @@ $(document).ready(function() {
             <div class="twocols">
 	            If there is a category url, selectable page and custom url will be ignored.<br />
             	<label>Category URL</label>
-				<?php require_once($_SERVER['DOCUMENT_ROOT']."/manage/catalog/categories/category-tree-snippet.php");  ?>
+				<?php require_once($real_root."/manage/catalog/categories/category-tree-snippet.php");  ?>
 			</div>
 
 			<div style="clear:both;"></div>

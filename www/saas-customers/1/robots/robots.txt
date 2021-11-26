@@ -1,0 +1,21 @@
+# robots.txt for https://www.closetstogo.com
+
+User-agent: *
+
+# disallow pages/folders
+
+Disallow: /blueimp/
+Disallow: /cgi-bin/
+Disallow: /closet-organizer/
+Disallow: /costco/
+Disallow: /flash/
+Disallow: /includes/
+Disallow: /manage/
+Disallow: /temp_uploads/
+Disallow: /lb
+Disallow: bb
+Disallow: cc
+Disallow: /old_urls/
+Disallow: /?search_string
+
+Sitemap: https://www.closetstogo.com/sitemap.xml.gz

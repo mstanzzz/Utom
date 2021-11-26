@@ -236,7 +236,7 @@ if(isset($_POST['send_ship_email']) && isset($_POST['order_id'])){
 
 $receipt = "<div style=\"width: 600px; margin: 0 auto; background-color: #ffffff; font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; font-size: 12px; line-height: 1.4em; font-weight: lighter; font-weight: 200; color: #000000;\">";
 	
-$receipt .= "<div style=\"width: 200px; height: 100px; float: left;\"><img src=\"".SITEROOT."/saascustuploads/".$_SESSION['profile_account_id']."/logo/".get_logo()."\" alt=\"".$_SESSION['profile_company']."\"/></div>";
+$receipt .= "<div style=\"width: 200px; height: 100px; float: left;\"><img src=\"".SITEROOT."//saascustuploads/".$_SESSION['profile_account_id']."/logo/".get_logo()."\" alt=\"".$_SESSION['profile_company']."\"/></div>";
 	$receipt .= "<br style=\"clear: left;\" /><h3>Your Order Has Been Shipped</h3>";
 	
 $receipt .= "<div style=\"width: 550px; padding-left: 25px; padding-right: 25px;\">
@@ -247,12 +247,12 @@ $receipt .= "<div style=\"padding: 10px; background-color: #E4F6FD; border: 1px 
 			<h5 style=\"text-align: center;\">Questions about your Order? Need to make a change?</h5>
 			<table style=\"width: 500px; border: none;\" cellpadding=\"0\" cellspacing=\"0px\">
 				<tr>
-					<td><p><img src=\"".SITEROOT."/images/icons/phone.png\" alt=\"Phone:\" /> ".$company_phone."</p></td>
+					<td><p><img src=\"".SITEROOT."//images/icons/phone.png\" alt=\"Phone:\" /> ".$company_phone."</p></td>
 					<td><p>".$days."<br />
 							".$hours."</p></td>
 				</tr>
 				<tr>
-					<td><p><img src=\"".SITEROOT."/images/footer_email_icon.jpg\" alt=\"Email:\" /> ".$support_email."</p></td>
+					<td><p><img src=\"".SITEROOT."//images/footer_email_icon.jpg\" alt=\"Email:\" /> ".$support_email."</p></td>
 				</tr>
 			</table>
 		</div>";
@@ -356,7 +356,7 @@ $receipt .= "<div style=\"margin-top: 20px; clear: left;\">
 					//$id = ($val["item_id"] > 0) ? $val["item_id"] : $val["design_id"];
 					$type = ($val["item_id"] > 0) ? "Product" : "Custom Design";
 
-					$image = ($type == "Product") ? SITEROOT."/saascustuploads/".$_SESSION['profile_account_id']."/cart/small/".getItemPic($val['item_id']) : SITEROOT."/images/custom-item-in-cart.jpg";
+					$image = ($type == "Product") ? SITEROOT."//saascustuploads/".$_SESSION['profile_account_id']."/cart/small/".getItemPic($dbCustom,$val['item_id']) : SITEROOT."//images/custom-item-in-cart.jpg";
 					
 					
 					

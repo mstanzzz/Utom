@@ -38,7 +38,7 @@ class dl_fshare_vn extends Download {
 		else return array(false, "accinvalid");
 	}
      
-    public function Login($user, $pass){
+    public function login($dbCustom,$user, $pass){
 		$data = $this->lib->curl("https://www.fshare.vn/login.php", "", "login_useremail={$user}&login_password={$pass}&auto_login=1&url_refe=https://www.fshare.vn/");	
         $cookie = $this->lib->GetCookies($data);
 		return $cookie;

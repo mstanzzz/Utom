@@ -742,7 +742,7 @@ class stream_get extends getinfo
 		return $size_name[0];
 	}
 	
-	function getname($link, $cookie=""){
+	function getName($dbCustom,$link, $cookie=""){
 		$size_name = Tools_get::size_name($link, $cookie=="" ? $this->cookie : $cookie);
 		return $size_name[1];
 	}
@@ -791,14 +791,14 @@ class stream_get extends getinfo
 		}
 		
 		if (!$link) {
-			$domain = str_replace("www.", "", $this->cut_str($Original, "://", "/"));
-			if(strpos($domain, "1fichier.com")) $domain = "1fichier.com";
-			if(strpos($domain, "letitbit.net"))   $domain = "letitbit.net";
-			if(strpos($domain, "shareflare.net")) $domain = "shareflare.net";
-			if(isset($this->list_host[$domain])){
-				require_once ('hosts/' . $this->list_host[$domain]['file']);
-				$download = new $this->list_host[$domain]['class']($this, $this->list_host[$domain]['site']);
-				$site = $this->list_host[$domain]['site'];
+			SITEROOT = str_replace("www.", "", $this->cut_str($Original, "://", "/"));
+			if(strpos(SITEROOT, "1fichier.com")) SITEROOT = "1fichier.com";
+			if(strpos(SITEROOT, "letitbit.net"))   SITEROOT = "letitbit.net";
+			if(strpos(SITEROOT, "shareflare.net")) SITEROOT = "shareflare.net";
+			if(isset($this->list_host[SITEROOT])){
+				require_once ('hosts/' . $this->list_host[SITEROOT]['file']);
+				$download = new $this->list_host[SITEROOT]['class']($this, $this->list_host[SITEROOT]['site']);
+				$site = $this->list_host[SITEROOT]['site'];
 				$this->proxy = isset($this->acc[$site]['proxy']) ? $this->acc[$site]['proxy'] : false;
 				$link = $download->General($url);
 			}
@@ -1618,7 +1618,7 @@ class Download {
 					if(empty($cookie)) $cookie = $this->lib->get_cookie($this->site);
 					if(empty($cookie)) {
 						$cookie = false;
-						if(method_exists($this, "Login")) $cookie = $this->Login($user, $pass);
+						if(method_exists($this, "Login")) $cookie = $this->login($dbCustom,$user, $pass);
 					}
 					if(!$cookie) continue;
 					$this->save($cookie);

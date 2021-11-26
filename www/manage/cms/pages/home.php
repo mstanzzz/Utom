@@ -1,5 +1,17 @@
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
+if(strpos($_SERVER['REQUEST_URI'], 'solvitware/' )){ 
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/solvitware';
+}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/designitpro'; 
+}elseif(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
+}else{
+	$real_root = $_SERVER['DOCUMENT_ROOT']; 	
+}
+require_once($real_root.'/includes/class.dbcustom.php');
+$dbCustom = new DbCustom();
+
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
 
 $progress = new SetupProgress;
 $module = new Module;
@@ -151,6 +163,10 @@ if(isset($_POST['update_home'])){
 		$msg = "Updated";
 	}
 	
+	$seo_name	= 'home';
+	$page	= 'home';
+	require_once($real_root."/manage/cms/insert_page_seo.php");
+
 }	
 
 $db = $dbCustom->getDbConnect(SITE_N_DATABASE);
@@ -244,6 +260,8 @@ if($result->num_rows > 0){
 	$_SESSION['temp_page_fields']['img_3_id'] = $img_3_id;	
 
 
+require_once($real_root."/manage/cms/get_seo_variables.php");
+
 
 /*
 if(!isset($_SESSION['temp_page_fields']['top_1'])) $_SESSION['temp_page_fields']['top_1'] = $top_1;	
@@ -304,8 +322,9 @@ if($result->num_rows > 0){
 	$img_3_file_name = '';
 }	
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php'); 
+require_once($real_root.'/manage/admin-includes/doc_header.php'); 
 ?>
+<script src="https://cdn.tiny.cloud/1/iyk23xxriyqcd2gt44r230a2yjinya99cx1kd3tk9huatz50/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 <script>
 
 tinymce.init({
@@ -314,6 +333,8 @@ tinymce.init({
 	forced_root_block : false
 
 });
+
+
 
 $(document).ready(function() {
 	$(".set_session").click(function(){
@@ -332,8 +353,6 @@ $(document).ready(function() {
 function set_page_session(){
 
 	var q_str = "?action=1"+get_query_str();
-		
-	//alert(q_str);
 		
 	$.ajaxSetup({ cache: false}); 
 	$.ajax({
@@ -385,30 +404,25 @@ function regularSubmit() {
 </head>
 <body>
 <?php 
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-header.php');
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-top-nav.php');
+	require_once($real_root.'/manage/admin-includes/manage-header.php');
+	require_once($real_root.'/manage/admin-includes/manage-top-nav.php');
 ?>
 <div class="manage_page_container">
 	<div class="manage_side_nav">
 		<?php 
-        require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-side-nav.php');
+        require_once($real_root.'/manage/admin-includes/manage-side-nav.php');
         ?>
 	</div>
 	<div class="manage_main"> 
 		<h1>Home Page</h1>
 
-	
-		<form name="form" action="<?php echo $current_page; ?>" method="post" enctype="multipart/form-data">
+		<form name="form" action="<?php echo SITEROOT.'manage/cms/pages/home.php' ?>" method="post" enctype="multipart/form-data">
             <input type="hidden" name="update_home" value="1">     
-
             <input type="hidden" name="home_id" value="<?php echo $_SESSION['home_id']; ?>">     
-
-			
-
      		<div class="page_actions edit_page">
             	<a onClick="regularSubmit();" href="#" class="btn btn-success btn-large"><i class="icon-ok icon-white"></i> Save Changes </a>
 				<hr />
-				<a href="<?php echo $ste_root;?>/manage/cms/pages/page.php" class="btn"><i class="icon-arrow-left"></i> Cancel &amp; Go Back</a>
+				<a href="<?php echo SITEROOT;?>/manage/cms/pages/page.php" class="btn"><i class="icon-arrow-left"></i> Cancel &amp; Go Back</a>
 			</div>
 				
 			<div class="colcontainer">                
@@ -425,8 +439,6 @@ function regularSubmit() {
 				<label>p_1_head</label>
 				<input type="text" name="p_1_head"  style="width:520px" value="<?php echo stripslashes($_SESSION['temp_page_fields']['p_1_head']); ?>">
 	<label>p_1_text</label>
-	
-	
 	<textarea id="p_1_text" class="wysiwyg" name="p_1_text"><?php echo stripslashes($_SESSION['temp_page_fields']['p_1_text']); ?></textarea>
 	
 				<label>p_2_head</label>
@@ -446,24 +458,22 @@ function regularSubmit() {
 
 	<label>p_4_text</label>
 	<textarea id="p_4_text" class="wysiwyg" name="p_4_text"><?php echo stripslashes($_SESSION['temp_page_fields']['p_4_text']); ?></textarea>
-
 	
 				<label>p_5_head</label>
 				<input type="text" name="p_5_head"  style="width:520px" value="<?php echo stripslashes($_SESSION['temp_page_fields']['p_5_head']); ?>">
 	<label>p_5_text</label>
 	<textarea id="p_5_text" class="wysiwyg" name="p_5_text"><?php echo stripslashes($_SESSION['temp_page_fields']['p_5_text']); ?></textarea>
-
 	
 				<label>p_6_head</label>
 				<input type="text" name="p_6_head"  style="width:520px" value="<?php echo stripslashes($_SESSION['temp_page_fields']['p_6_head']); ?>">
-	<label>p_6_text</label>
-	<textarea id="p_6_text" class="wysiwyg" name="p_6_text"><?php echo stripslashes($_SESSION['temp_page_fields']['p_6_text']); ?></textarea>
+	
+<label>p_6_text</label>
+<textarea id="p_6_text" class="wysiwyg" name="p_6_text"><?php echo stripslashes($_SESSION['temp_page_fields']['p_6_text']); ?></textarea>
 
 				<label>p_7_head</label>
 				<input type="text" name="p_7_head"  style="width:520px" value="<?php echo stripslashes($_SESSION['temp_page_fields']['p_7_head']); ?>">
 	<label>p_7_text</label>
 	<textarea id="p_7_text" class="wysiwyg" name="p_7_text"><?php echo stripslashes($_SESSION['temp_page_fields']['p_7_text']); ?></textarea>
-
 
 				<label>p_8_head</label>
 				<input type="text" name="p_8_head"  style="width:520px" value="<?php echo stripslashes($_SESSION['temp_page_fields']['p_8_head']); ?>">
@@ -490,7 +500,7 @@ function regularSubmit() {
 					$result = $dbCustom->getResult($db,$sql);							
 							if($result->num_rows > 0){
 								$img_obj = $result->fetch_object();
-								echo "<img width='200' src='".$ste_root."/saascustuploads/".$_SESSION['profile_account_id']."/cms/".$img_obj->file_name."' />";
+								echo "<img width='200' src='".SITEROOT."/saascustuploads/".$_SESSION['profile_account_id']."/cms/".$img_obj->file_name."' />";
 							}else{
 								echo "no image";	
 							}
@@ -500,16 +510,21 @@ function regularSubmit() {
 						<br /><br />
                         <!--  fancybox fancybox.iframe -->
                         <a  class='btn btn-primary set_session' 
-                        href='<?php echo $ste_root; ?>/manage/upload-pre-crop.php?ret_page=home&ret_dir=cms/pages&img_type=2'>Upload new Image</a>		            
+                        href='<?php echo SITEROOT; ?>manage/upload-pre-crop.php?ret_page=home&ret_dir=cms/pages&img_type=2'>Upload new Image</a>		            
 
 					</div>
 				</fieldset>
+<?php				
+require_once("edit_page_seo.php"); 
+?>								
+				
 			</div>
 		</form>
+		
 	</div>
 	<p class="clear"></p>
 	<?php
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-footer.php');
+	require_once($real_root.'/manage/admin-includes/manage-footer.php');
 	?>
 </div>
 

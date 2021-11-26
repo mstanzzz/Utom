@@ -7,6 +7,6 @@
 #suPHP_ConfigPath /home/otgtotest/public_html
 #suPHP_ConfigPath /home/onlinecl/public_html
 #suPHP_ConfigPath /home/organize/public_html
-
-ErrorDocument 404 /404.html
-
+#
+#ErrorDocument 404 /404.html
+#

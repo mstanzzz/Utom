@@ -1,139 +1,98 @@
 <?php
-
-// add function to merge carts if cust ids are different at loggin
-// ... mergeCart(old_cust_id, new_cust_id) 
-// store arrays in session
-//store objects in the $_SESSION
 require_once('accessory_cart_functions.php');
 
 class ShoppingCart {
 
 	public $customer_id;
 	public $anonymous_shopper_id;
-	public $cart_array;
-	
+	public $cart_array;	
 	public $total_price;
-	
 	public $total_weight_stock_items;
 	
-	function __construct() {
-    
+	function __construct($dbCustom){
+
 	   $this->customer_id = (isset($_SESSION['ctg_cust_id']))? $_SESSION['ctg_cust_id'] : 0;
 	   $this->anonymous_shopper_id = (isset($_SESSION['anonymous_shopper_id']))? $_SESSION['anonymous_shopper_id'] : rand();	
 	   if(!isset($_SESSION['cart'])){
 		   	$_SESSION['cart'] = array();
 	   }
-	   
 		$this->cart_array = $_SESSION['cart'];
-	  
-		$this->reloadCart();
-	   
+		$this->reloadCart($dbCustom);
 	}
 	
-	function saveCart(){
-		
-		$dbCustom = new DbCustom();
+	
+	function saveCart($dbCustom){
 		$db = $dbCustom->getDbConnect(CART_DATABASE);
-
-		if(count($_SESSION['cart']) > 0){
 		
+		if(count($_SESSION['cart']) > 0){
+			//echo "this->customer_id:  ".$this->customer_id;
+			//echo "<br />";
+			//echo "this->anonymous_shopper_id:  ".$this->anonymous_shopper_id;
+			//echo "<br />";
 			if($this->customer_id > 0){
 				$sql = sprintf("DELETE FROM saved_cart WHERE customer_id = '%u'", $this->customer_id);
 				$result = $dbCustom->getResult($db,$sql);				
-				//if(is_array($this->cart_array)){
-					foreach($_SESSION['cart'] as $val)
-					{
-						$sql = "INSERT INTO saved_cart 
-								(item_id, qty, customer_id)
-								VALUES
-								('".$val['item_id']."','".$val['qty']."','".$this->customer_id."')";
-						$res = $dbCustom->getResult($db,$sql);						
-					}
-				//}
-					
+				foreach($_SESSION['cart'] as $val)
+				{
+					$sql = "INSERT INTO saved_cart 
+							(item_id, qty, customer_id)
+							VALUES
+							('".$val['item_id']."','".$val['qty']."','".$this->customer_id."')";
+					$res = $dbCustom->getResult($db,$sql);						
+				}
+				
 			}elseif($this->anonymous_shopper_id > 0){
-				
-				$sql = sprintf("DELETE FROM saved_cart WHERE anonymous_shopper_id = '%u'", $this->anonymous_shopper_id);
-				$result = $dbCustom->getResult($db,$sql);				
-				
-				//if(is_array($this->cart_array)){
-					foreach($_SESSION['cart'] as $val)
-					{
-						
-						$sql = "INSERT INTO saved_cart 
+				$sql = "DELETE FROM saved_cart WHERE anonymous_shopper_id = '".$this->anonymous_shopper_id."'";
+				$result = $dbCustom->getResult($db,$sql);
+				foreach($_SESSION['cart'] as $val)
+				{						
+					$sql = "INSERT INTO saved_cart 
 							(item_id, qty, anonymous_shopper_id)
 							VALUES
 							('".$val["item_id"]."','".$val["qty"]."','".$this->anonymous_shopper_id."')";
-						$res = $dbCustom->getResult($db,$sql);	
-							
-												
-					}
-				//}
-					
+					$res = $dbCustom->getResult($db,$sql);	
+				}
+				
 			}else{
-			
-			
-			
-
-			
-			
+				
 				
 			}
-			
 		}else{
-
-			//$this->reloadCart();
-			
 		}
-		
-		$this->reloadCart();
+		$this->reloadCart($dbCustom);
 		
 	}
 	
-	
-	
-	function reloadCart(){
+	function reloadCart($dbCustom){
 		
-		$dbCustom = new DbCustom();
 		$db = $dbCustom->getDbConnect(CART_DATABASE);
-		
 		$load = 0;
-		
 		$this->total_price = 0;
 		$this->total_weight_stock_items = 0;
-		
 		if($this->customer_id > 0){
-			
 			$sql = sprintf("SELECT item_id, qty
 							FROM saved_cart 
 							WHERE customer_id = '%u'
 							ORDER BY saved_cart_id", $this->customer_id);
 							
-										
 			$result = $dbCustom->getResult($db,$sql);			
 			if($result->num_rows > 0){
 				$load = 1;
 			}
 		}elseif($this->anonymous_shopper_id > 0){
-			
 			$sql = sprintf("SELECT item_id, qty
 							FROM saved_cart 
 							WHERE anonymous_shopper_id = '%u'
 							ORDER BY saved_cart_id", $this->anonymous_shopper_id);
 			$result = $dbCustom->getResult($db,$sql);	
-			
 			if($result->num_rows > 0){
 				$load = 1;
 			}
 		}
-			
-		
 		if($load){
 			$t = array();
 			$i = 0;
 			while($row = $result->fetch_object()) {
-				
-
 				$sql = "SELECT profile_item_id
 							,name
 							,seo_url
@@ -147,74 +106,48 @@ class ShoppingCart {
 				$res = $dbCustom->getResult($db,$sql);
 				if($res->num_rows > 0){
 					$object = $res->fetch_object();	
-					
-					$_SESSION['cart'][$i]['cat_id'] = $this->getCat($row->item_id);
+					$_SESSION['cart'][$i]['cat_id'] = $this->getCat($dbCustom,$row->item_id);
 					$_SESSION['cart'][$i]['item_id'] = $row->item_id;				
 					$_SESSION['cart'][$i]['profile_item_id'] = $object->profile_item_id;				
 					$_SESSION['cart'][$i]['name'] = $object->name;
 					$_SESSION['cart'][$i]['qty'] = $row->qty;
-					
-					$tmp_price = $this->getItemPrice($row->item_id);
+					$tmp_price = $this->getItemPrice($dbCustom,$row->item_id);
 					$this->total_price += $row->qty*$tmp_price;
-					
 					$_SESSION['cart'][$i]['price'] = $tmp_price;
-					
-					$_SESSION['cart'][$i]['image_file'] = $this->getItemPic($row->item_id);
+					$_SESSION['cart'][$i]['image_file'] = $this->getItemPic($dbCustom,$row->item_id);
 					$_SESSION['cart'][$i]['seo_url'] = $object->seo_url;
 					$_SESSION['cart'][$i]['weight'] = $object->weight;
-
 					$_SESSION['cart'][$i]['is_free_shipping'] = $object->is_free_shipping;
-					
 					if(!$object->is_free_shipping && !$object->is_drop_shipped){
 						$this->total_weight_stock_items += $object->weight*$row->qty;
 					}
-					
 					$_SESSION['cart'][$i]['brand_id'] = $object->brand_id;
 					$_SESSION['cart'][$i]['shipping_flat_charge'] = $object->shipping_flat_charge;
-					
 					$_SESSION['cart'][$i]['is_drop_shipped'] = $object->is_drop_shipped;
-					
 					$i++;
-				
 				}
-				
 			}
-			
-			
-			
 			$this->cart_array = $_SESSION['cart'];			
 		}
-
 	}
-	
 
-
-	function mergeCarts()
+	function mergeCarts($dbCustom)
 	{
 		$cart_array = array();	
 		$i = 0;
-
 		if($this->anonymous_shopper_id > 0){				
-		
-			$dbCustom = new DbCustom();
 			$db = $dbCustom->getDbConnect(CART_DATABASE);
-			
 			$sql = "SELECT item_id, qty
 					FROM saved_cart 
 					WHERE anonymous_shopper_id = '".$this->anonymous_shopper_id."'";
 			$result = $dbCustom->getResult($db,$sql);	
 			while($row = $result->fetch_object()){				
-
-				$this->addItem($row->item_id, $row->qty);
-									
+				$this->addItem($dbCustom,$row->item_id, $row->qty);
 			}
-			
 			$sql = sprintf("DELETE FROM saved_cart WHERE anonymous_shopper_id = '%u'", $this->anonymous_shopper_id);
 			$result = $dbCustom->getResult($db,$sql);				
-								
 		}
-
-		$this->reloadCart();
+		$this->reloadCart($dbCustom);
 		
 	}
 
@@ -239,36 +172,28 @@ class ShoppingCart {
 		return $ret;
 	}
 
-	function itemExists($item_id)
+	function itemExists($dbCustom,$item_id)
 	{
-		$dbCustom = new DbCustom();
 		$db = $dbCustom->getDbConnect(CART_DATABASE);
 		$sql = sprintf("SELECT item_id FROM item WHERE item_id = '%u'", $item_id);
 		$result = $dbCustom->getResult($db,$sql);		
-		
 		return ($result->num_rows > 0)? 1 : 0;
-		
 	}
 
-	function addItem($item_id, $qty = 1)
+	function addItem($dbCustom,$item_id, $qty = 1)
 	{
-		
-		//if($this->itemExists($item_id)){
-			
-			if($this->itemInCart($item_id)){
-				foreach($this->cart_array as $key => $val)
-				{
-					if($val['item_id'] == $item_id){ 
-						//$this->cart_array[$key]['qty'] += $qty;
-						$_SESSION['cart'][$key]['qty'] += $qty;
-						break;
-					}
+		if($this->itemInCart($item_id)){
+			foreach($this->cart_array as $key => $val)
+			{
+				if($val['item_id'] == $item_id){ 
+					//$this->cart_array[$key]['qty'] += $qty;
+					$_SESSION['cart'][$key]['qty'] += $qty;
+					break;
 				}
-			}else{
-				
-				$dbCustom = new DbCustom();
-				$db = $dbCustom->getDbConnect(CART_DATABASE);	
-				$sql = "SELECT profile_item_id
+			}
+		}else{				
+			$db = $dbCustom->getDbConnect(CART_DATABASE);	
+			$sql = "SELECT profile_item_id
 							,name
 							,seo_url
 							,weight
@@ -276,43 +201,36 @@ class ShoppingCart {
 							,shipping_flat_charge
 							,is_free_shipping
 							,is_drop_shipped
-						FROM item
-						WHERE item_id = '".$item_id."'";
-				$result = $dbCustom->getResult($db,$sql);
-				
-				
-				if($result->num_rows > 0){
-					$object = $result->fetch_object();
-						
-					$i = count($this->cart_array); 
-					$_SESSION['cart'][$i]['item_id'] = $item_id;
-					$_SESSION['cart'][$i]['qty'] = $qty;
-					$_SESSION['cart'][$i]['weight'] = $object->weight;
-					$_SESSION['cart'][$i]['cat_id'] =  $this->getCat($item_id);
-					$_SESSION['cart'][$i]['name'] =  $object->name;
-					$_SESSION['cart'][$i]['image_file'] = $this->getItemPic($item_id);
-					$_SESSION['cart'][$i]['seo_url'] =  $object->seo_url; 				
-					$_SESSION['cart'][$i]['price'] =  $this->getItemPrice($item_id);
-					$_SESSION['cart'][$i]['profile_item_id'] = $object->profile_item_id;
-					$_SESSION['cart'][$i]['brand_id'] = $object->brand_id;
-					$_SESSION['cart'][$i]['shipping_flat_charge'] = $object->shipping_flat_charge;
-					$_SESSION['cart'][$i]['is_free_shipping'] = $object->is_free_shipping;
-					$_SESSION['cart'][$i]['is_drop_shipped'] = $object->is_drop_shipped;
-					
-				}								
-			}
-			
-			$this->saveCart();
-			
-			return $item_id;
-			
-		//}
-
+					FROM item
+					WHERE item_id = '".$item_id."'";
+			$result = $dbCustom->getResult($db,$sql);
+			if($result->num_rows > 0){
+				$object = $result->fetch_object();
+				$i = count($this->cart_array); 
+				$_SESSION['cart'][$i]['item_id'] = $item_id;
+				$_SESSION['cart'][$i]['qty'] = $qty;
+				$_SESSION['cart'][$i]['weight'] = $object->weight;
+				$_SESSION['cart'][$i]['cat_id'] =  $this->getCat($dbCustom,$item_id);
+				$_SESSION['cart'][$i]['name'] =  $object->name;
+				$_SESSION['cart'][$i]['image_file'] = $this->getItemPic($dbCustom,$item_id);
+				$_SESSION['cart'][$i]['seo_url'] =  $object->seo_url; 				
+				$_SESSION['cart'][$i]['price'] =  $this->getItemPrice($dbCustom,$item_id);
+				$_SESSION['cart'][$i]['profile_item_id'] = $object->profile_item_id;
+				$_SESSION['cart'][$i]['brand_id'] = $object->brand_id;
+				$_SESSION['cart'][$i]['shipping_flat_charge'] = $object->shipping_flat_charge;
+				$_SESSION['cart'][$i]['is_free_shipping'] = $object->is_free_shipping;
+				$_SESSION['cart'][$i]['is_drop_shipped'] = $object->is_drop_shipped;			
+			}								
+		}
+		
+		$this->saveCart($dbCustom);			
+		
+		
+		return $item_id;
 	} 
 	
 	function updateQty($item_id, $qty)
-	{
-		
+	{		
 		if(is_numeric($qty)){
 			foreach($_SESSION['cart'] as $key => $val)
 			{
@@ -324,7 +242,6 @@ class ShoppingCart {
 		}
 	}
 	
-
 	function getItemCount()
 	{ 
 		$num_items = 0;
@@ -333,10 +250,6 @@ class ShoppingCart {
 		}
 		return $num_items;
 	}
-	
-	
-	
-
 	
 	function getItemQty($item_id)
 	{ 
@@ -390,44 +303,29 @@ class ShoppingCart {
 	} 
 
 
-	function removeItem($item_id)
+	function removeItem($dbCustom,$item_id)
 	{
-
 		$t = array();	
 		$i = 0;
-			
-		$dbCustom = new DbCustom();
 		$db = $dbCustom->getDbConnect(CART_DATABASE);
-		
 		if($this->customer_id > 0){
-
 			$sql = "DELETE FROM saved_cart 
 				WHERE customer_id = '".$this->customer_id."'
 				AND item_id = '".$item_id."'";
 			$result = $dbCustom->getResult($db,$sql);
-								
 		}else{
-				
 			$sql = "DELETE FROM saved_cart WHERE anonymous_shopper_id = '".$this->anonymous_shopper_id."'
 				AND item_id = '".$item_id."'";
 			$result = $dbCustom->getResult($db,$sql);
-							
 		}
-			
 		$_SESSION['cart'] = array();
 		$this->cart_array = $_SESSION['cart'];
-						
-		$this->reloadCart();
-		
+		$this->reloadCart($dbCustom);
 		return $item_id;
 	}
 
-	
-
-	function emptyCart()
+	function emptyCart($dbCustom)
 	{ 
-		
-		$dbCustom = new DbCustom();
 		$db = $dbCustom->getDbConnect(CART_DATABASE);		
 		if($this->customer_id > 0){
 			$sql = sprintf("DELETE FROM saved_cart WHERE customer_id = '%u'", $this->customer_id);
@@ -436,15 +334,13 @@ class ShoppingCart {
 			$sql = sprintf("DELETE FROM saved_cart WHERE anonymous_shopper_id = '%u'", $this->anonymous_shopper_id);
 			$result = $dbCustom->getResult($db,$sql);			
 		}
-		
 		$this->cart_array = array();
 		$_SESSION['cart'] = array();
 	} 
 	
 	
-	function getName($item_id)
+	function getName($dbCustom,$item_id)
 	{	
-		$dbCustom = new DbCustom();
 		$db = $dbCustom->getDbConnect(CART_DATABASE);	
 		$sql = "SELECT name
 				FROM item
@@ -460,9 +356,8 @@ class ShoppingCart {
 		return $ret;
 	}
 	
-	function getItemWeight($item_id){
+	function getItemWeight($dbCustom,$item_id){
 		
-		$dbCustom = new DbCustom();
 		$db = $dbCustom->getDbConnect(CART_DATABASE);	
 		$sql = "SELECT weight
 				FROM item
@@ -479,9 +374,8 @@ class ShoppingCart {
 		
 	}
 	
-	function getItemSeoUrl($item_id)
+	function getItemSeoUrl($dbCustom,$item_id)
 	{
-		$dbCustom = new DbCustom();
 		$db = $dbCustom->getDbConnect(CART_DATABASE);	
 		$sql = "SELECT seo_url
 				FROM item
@@ -498,37 +392,31 @@ class ShoppingCart {
 		
 	}
 	
-	function getCat($item_id)
+	function getCat($dbCustom,$item_id)
 	{		
 		$ret = 0;
-		$dbCustom = new DbCustom();
 		$db = $dbCustom->getDbConnect(CART_DATABASE);
 		$sql = "SELECT cat_id
 				FROM item_to_category
 				WHERE item_id = '".$item_id."'"; 
 				
 		$result = $dbCustom->getResult($db,$sql);				
-		
 		if($result->num_rows > 0){
 			$object = $result->fetch_object();
 			$ret = ($object->cat_id != '')? $object->cat_id : 0;
 		}
-		
 		return $ret;
 	}
 
-	function getItemPic($item_id)
+	function getItemPic($dbCustom,$item_id)
 	{	
 	
 		$ret = '';
-		$dbCustom = new DbCustom();
 		$db = $dbCustom->getDbConnect(CART_DATABASE);
-
 		$sql = "SELECT image.img_id, image.file_name 
 				FROM item, image
 				WHERE item.img_id = image.img_id
 				AND item.item_id = '".$item_id."'";
-			
 		$result = $dbCustom->getResult($db,$sql);		
 		if($result->num_rows> 0){		
 			$obj = $result->fetch_object();
@@ -537,9 +425,8 @@ class ShoppingCart {
 		return $ret;	
 	}
 	
-	function getItemPrice($item_id){
-		
-		$dbCustom = new DbCustom();	
+	function getItemPrice($dbCustom,$item_id){
+
 		$db = $dbCustom->getDbConnect(CART_DATABASE);
 		$sql = "SELECT price_flat, price_wholesale, percent_markup 
 				FROM item
@@ -561,9 +448,8 @@ class ShoppingCart {
 		return $ret;
 	}
 	
-	function getProfileItemId($item_id)
+	function getProfileItemId($dbCustom,$item_id)
 	{
-		$dbCustom = new DbCustom();
 		$db = $dbCustom->getDbConnect(CART_DATABASE);
 		$sql = "SELECT profile_item_id
 				FROM item
@@ -577,12 +463,10 @@ class ShoppingCart {
 		}
 	}
 	
-	function getKitAssocItems($item_id){
+	function getKitAssocItems($dbCustom,$item_id){
 		
 		$ret_array = array();
-		$dbCustom = new DbCustom();	
 		$db = $dbCustom->getDbConnect(CART_DATABASE);
-			
 		$sql = "SELECT item.item_id
 						,item.profile_item_id
 						,item.brand_id
@@ -605,17 +489,16 @@ class ShoppingCart {
 		$result = $dbCustom->getResult($db,$sql);
 		$i = 0;					
 		while($row = $result->fetch_object()){
-						
 			$ret_array[$i]['item_id'] = $row->item_id;
 			$ret_array[$i]['profile_item_id'] = $row->profile_item_id;
-			$ret_array[$i]['file_name'] = $this->getItemPic($row->item_id);	
+			$ret_array[$i]['file_name'] = $this->getItemPic($dbCustom,$row->item_id);	
 			$ret_array[$i]['brand_id'] = $row->brand_id; 
 			$ret_array[$i]['seo_url'] = $row->seo_url; 
 			$ret_array[$i]['name'] = $row->name;
 			$ret_array[$i]['profile_item_id'] = $row->profile_item_id;
 			$ret_array[$i]['img_alt_text'] = $row->img_alt_text;
 			$ret_array[$i]['call_for_pricing'] = $row->call_for_pricing;
-			$ret_array[$i]['price'] = $this->getItemPrice($row->item_id);
+			$ret_array[$i]['price'] = $this->getItemPrice($dbCustom,$row->item_id);
 			$ret_array[$i]['show_in_cart'] = $row->show_in_cart;
 			$ret_array[$i]['show_doc_tab'] = $row->show_doc_tab;
 			$ret_array[$i]['show_meas_form_tab'] = $row->show_meas_form_tab;
@@ -623,20 +506,15 @@ class ShoppingCart {
 			$ret_array[$i]['weight'] = $row->weight;
 			$ret_array[$i]['is_free_shipping'] = $row->is_free_shipping;
 			$ret_array[$i]['is_drop_shipped'] = $row->is_drop_shipped;
-
 			$i++;
 		}
-		
 		return $ret_array;		
 	}
 	
-	
-	function getVideos($item_id){
+	function getVideos($dbCustom,$item_id){
 		
-		$ret_array = array();
-		$dbCustom = new DbCustom();	
+		$ret_array = array();	
 		$db = $dbCustom->getDbConnect(CART_DATABASE);
-		
 		$sql = "SELECT video.youtube_id
 						,video.title
 						,video.description
@@ -647,56 +525,13 @@ class ShoppingCart {
 		$result = $dbCustom->getResult($db,$sql);
 		$i = 0;					
 		while($row = $result->fetch_object()){	
-		
 			$ret_array[$i]['youtube_id'] = $row->youtube_id;
 			$ret_array[$i]['title'] = $row->title;
 			$ret_array[$i]['description'] = $row->description;
 			$i++;
-					
 		}
-		
 		return $ret_array;
-		
 	}
-	
-	function getHeaderBlock(){
-		
-		$block = '';
-				
-		foreach($this->cart_array as $val) {
-					
-			$itemDetailsLink = $_SERVER['DOCUMENT_ROOT'].'/'.$_SESSION['global_url_word'].$val['seo_url'].'/product.html?productId='.$val['profile_item_id'];
-                                    
-			$qty_price = $val['price'] * $val['qty']; 
-			
-			$block .= "<tr id='item_".$val['item_id']."'>";
-			$block .= "<td><a href='".$itemDetailsLink."'>";
-			$block .= "<img src='".$_SERVER['DOCUMENT_ROOT']."/saascustuploads/".$_SESSION['profile_account_id']."/cart/tiny/".$val["image_file"]."' alt='' /></a>";
-			$block .= "</td>";
-			$block .= "<td><a href='".$itemDetailsLink."'>";
-										
-			$cart_item_name = stripslashes($val['name']); 
-			if(strlen($cart_item_name) > 12){
-				$block .=  substr($cart_item_name, 0 , 12);
-				$block .= "...";
-			}else{
-				$block .= $cart_item_name;	
-			}
-			$block .= '</a></td>';
-			$block .= "<td><a class='cart-header-item-qty' href='".$itemDetailsLink."'>";
-			$block .= $val['qty'];
-			$block .= "</a></td>";
-			$block .= "<td><a href='".$itemDetailsLink."'>";
-			$block .= "$".number_format($qty_price,2);
-			$block .= '</td>';
-			$block .= '</tr>';
-		}
-		
-		return $block;		
-				
-	}
-	
-
 }
 
 ?>

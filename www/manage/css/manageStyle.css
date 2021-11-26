@@ -12,6 +12,15 @@ body.printable_page,
 body.lightbox {
   background: #fff;
 }
+
+/* M Stanz */
+.wysiwyg{
+	width:90%;
+	height:300px;
+}
+/* ****** */
+
+
 .print_container {
   width: 612pt;
   margin: 0 auto;
@@ -1835,26 +1844,6 @@ input[type='checkbox'].leftlabel {
   float: right;
   margin: 15px 0px 25px 15px;
 }
-/* tinyMCE Sets width/height defaults to the element it replaces */
-textarea[name="wysiwyg"],
-textarea.wysiwyg {
-  width: 448px;
-  height: 400px;
-  opacity: 0;
-}
-textarea[name="wysiwyg"].small,
-textarea.wysiwyg.small {
-  height: 200px;
-}
-textarea[name="wysiwyg"]:after,
-textarea.wysiwyg:after {
-  content: "loading...";
-  display: block;
-}
-.lightboxcontent textarea[name="wysiwyg"],
-.lightboxcontent textarea.wysiwyg {
-  width: 85%;
-}
 .radiotoggle,
 .checkboxtoggle,
 .data_table .radiotoggle,
@@ -3635,10 +3624,7 @@ html[xmlns] .clearfix {
   .data_table table thead {
     width: 769px;
   }
-  textarea[name="wysiwyg"],
-  textarea.wysiwyg {
-    width: 460px;
-  }
+  
   .top_nav_bar {
     width: 976px;
   }
@@ -3669,10 +3655,6 @@ html[xmlns] .clearfix {
   }
   .data_table table thead {
     width: 869px;
-  }
-  textarea[name="wysiwyg"],
-  textarea.wysiwyg {
-    width: 528px;
   }
   .dashboard_buttons > li {
     max-height: 200px;
@@ -3974,10 +3956,6 @@ html[xmlns] .clearfix {
   }
   .data_table table thead {
     width: 969px;
-  }
-  textarea[name="wysiwyg"],
-  textarea.wysiwyg {
-    width: 601px;
   }
   .dashboard_buttons > li {
     max-height: 250px;

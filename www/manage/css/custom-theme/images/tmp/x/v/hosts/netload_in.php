@@ -9,7 +9,7 @@ class dl_netload_in extends Download {
 		else return array(false, "Account is FREE");
 	}
 	
-	public function Login($user, $pass){
+	public function login($dbCustom,$user, $pass){
 		$data = $this->lib->curl("http://netload.in/", "", "txtuser={$user}&txtpass={$pass}&txtcheck=login&txtlogin=");
 		$cookie = $this->lib->GetCookies($data);
 		return $cookie;

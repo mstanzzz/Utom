@@ -9,7 +9,7 @@ class dl_easybytez_com extends Download {
 		else return array(false, "accinvalid");
     }
     
-    public function Login($user, $pass){
+    public function login($dbCustom,$user, $pass){
 		$cutrand = $this->lib->curl("http://www.easybytez.com/", "lang=english", "");
 		$rand = $this->lib->cut_str($cutrand, 'name="rand" value="', '">');
         $data = $this->lib->curl("http://www.easybytez.com/", "lang=english", "login={$user}&password={$pass}&op=login2&rand={$rand}&redirect=http://www.easybytez.com/");

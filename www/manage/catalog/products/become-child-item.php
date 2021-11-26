@@ -1,5 +1,17 @@
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
+if(strpos($_SERVER['REQUEST_URI'], 'solvitware/' )){ 
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/solvitware';
+}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/designitpro'; 
+}elseif(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
+}else{
+	$real_root = $_SERVER['DOCUMENT_ROOT']; 	
+}
+require_once($real_root.'/includes/class.dbcustom.php');
+$dbCustom = new DbCustom();
+
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
 
 $progress = new SetupProgress;
 $module = new Module;
@@ -13,7 +25,19 @@ $cat_id =  (isset($_GET['cat_id'])) ? $_GET['cat_id'] : 0;
 $msg = (isset($_GET['msg'])) ? $_GET['msg'] : '';
 
 	
-
+function get_file_name($dbCustom,$img_id){
+	$dbCustom = new DbCustom();
+	$db = $dbCustom->getDbConnect(CART_DATABASE);
+	$sql = "SELECT file_name
+			FROM image
+			WHERE img_id = '".$img_id."'";
+	$re = $dbCustom->getResult($db,$sql);
+	if($re->num_rows > 0){
+		$object = $re->fetch_object();
+		return  $object->file_name;
+	}
+	return  '';
+}
 
 $db = $dbCustom->getDbConnect(CART_DATABASE);
 
@@ -78,9 +102,7 @@ if($result->num_rows > 0){
 }
 
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php'); 
-
-
+require_once($real_root.'/manage/admin-includes/doc_header.php'); 
 ?>
 <script>
 
@@ -89,8 +111,8 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php');
 
 <body>
 <?php
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-header.php');
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-top-nav.php');
+	require_once($real_root.'/manage/admin-includes/manage-header.php');
+	require_once($real_root.'/manage/admin-includes/manage-top-nav.php');
 	
 	//echo getItemSeoList(101, 'tie rack');
 	
@@ -100,28 +122,23 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php');
 <div class="manage_page_container">
     <div class="manage_side_nav">
         <?php 
-        require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-side-nav.php');
+        require_once($real_root.'/manage/admin-includes/manage-side-nav.php');
         ?>
     </div>	
     <div class="manage_main">
 		<?php 
-		
-		
-        require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-content-top.php');
 
 		$db = $dbCustom->getDbConnect(CART_DATABASE);
 
-		$sql = "SELECT item.name
-				,item.item_id
+		$sql = "SELECT name
+				,item_id
+				,img_id
 				FROM  item 
 				WHERE profile_account_id = '".$_SESSION['profile_account_id']."'			
-				AND parent_item_id = '0'
 				AND item_id != '".$_SESSION['item_id']."'
-				ORDER BY name";		
-		
+				ORDER BY item_id";		
+		//AND parent_item_id = '0'
 		$result = $dbCustom->getResult($db,$sql);		
-
-
 
 		if($ret_dir != ''){
 			$url_str= '../'.$ret_dir.'/'.$ret_page.'.php';
@@ -129,8 +146,6 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php');
 		}else{
 			$url_str= $ret_page.'.php';
 		}
-
-
 		
 		$url_str.= "?parent_cat_id=".$_SESSION['parent_cat_id'];
 		$url_str.= "&cat_id=".$_SESSION['cat_id'];						
@@ -153,6 +168,9 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php');
             	<table cellpadding="10" cellspacing="0">
 					<thead>
 						<tr>
+							<th>
+							
+							</th>
                         	<th>
                             ID                            
                             </th>
@@ -169,7 +187,14 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php');
 					$block = '';
 					
 					while($row = $result->fetch_object()){
-						$block .= "<tr><td>".$row->item_id."</td>";
+						
+						$file_name = get_file_name($dbCustom,$row->img_id);
+						$block .= "<tr>";
+						$block .= "<td>";
+						$block .= "<img src='".SITEROOT."saascustuploads/".$_SESSION['profile_account_id']."/cart/thumb/".$file_name."'/>";
+						$block .= "</td>";
+						
+						$block .= "<td>".$row->item_id."</td>";
 						$block .= "<td>".stripslashes($row->name)."</td>";
 						$block .= "<td>";
 						$block .= "<div style='float:left;'>";
@@ -201,7 +226,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php');
 
  <p class="clear"></p>
   <?php 
-    require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-footer.php');
+    require_once($real_root.'/manage/admin-includes/manage-footer.php');
 	?>
 </div>
 </body>

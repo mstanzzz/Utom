@@ -10,7 +10,7 @@ class dl_share_online_biz extends Download {
 		else return array(false, "accinvalid");
     }
     
-    public function Login($user, $pass){
+    public function login($dbCustom,$user, $pass){
 		$data = $this->lib->curl("https://www.share-online.biz/user/login", "animations=1;newsscrl=1;page_language=english", "user={$user}&pass={$pass}&l_rememberme=0&submit=Log%20in");
         $cookie = "animations=1;newsscrl=1;page_language=english;{$this->lib->GetCookies($data)}";
 		return $cookie;

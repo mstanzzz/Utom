@@ -14,7 +14,7 @@ if(!isset($_SERVER['DOCUMENT_ROOT'])){
 }
 
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
 
 $progress = new SetupProgress;
 $module = new Module;
@@ -318,7 +318,7 @@ $result = $dbCustom->getResult($db,$sql);
 }
 
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php'); 
+require_once($real_root.'/manage/admin-includes/doc_header.php'); 
 
 
 ?>
@@ -983,7 +983,7 @@ $(document).ready(function() {
 			theme : "advanced",
 			editor_selector : "selector_1",
 			plugins : "safari",
-			content_css : "../../css/mce.css"
+			content_css : "<?php echo SITEROOT; ?>css/mce.css"
 	});
 	
 	tinyMCE.init({
@@ -991,7 +991,7 @@ $(document).ready(function() {
 			theme : "advanced",
 			editor_selector : "selector_2",
 			plugins : "safari",
-			content_css : "../../css/mce.css"
+			content_css : "<?php echo SITEROOT; ?>css/mce.css"
 	});
 
 
@@ -1027,8 +1027,8 @@ function setNotCloset(){
 	<body>
 <?php } 
 
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-header.php');
-	// require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-top-nav.php');
+	require_once($real_root.'/manage/admin-includes/manage-header.php');
+	// require_once($real_root.'/manage/admin-includes/manage-top-nav.php');
 
 	//print_r($_SESSION['temp_cat_ids']);
 
@@ -1039,12 +1039,12 @@ function setNotCloset(){
 <div class="manage_page_container">
 
 <!--
-<div id="t">TTTTTTTTTTT</div>
+<div id="t">SITEROOTTTTTT</div>
 -->
 
     <div class="manage_side_nav">
         <?php 
-        require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-side-nav.php');
+        require_once($real_root.'/manage/admin-includes/manage-side-nav.php');
         ?>
     </div>	
 
@@ -1142,12 +1142,12 @@ $db = $dbCustom->getDbConnect(CART_DATABASE);
 				
 				echo "
 					<div>If this is not the image you want, upoload another one.</div>
-					<a class='inline' href='".$ste_root."/ul_cart/".$domain."/cart/".$file_name."'>
-					<img src='".$ste_root."/ul_cart/".$domain."/cart/list/".$file_name."'>			
+					<a class='inline' href='".SITEROOT."/ul_cart/".SITEROOT."/cart/".$file_name."'>
+					<img src='".SITEROOT."/ul_cart/".SITEROOT."/cart/list/".$file_name."'>			
             		</a>";
 			
                 //$url_str = "upload.php";
-                $url_str = $ste_root."manage/upload-pre-crop.php";               				
+                $url_str = SITEROOT."/manage/upload-pre-crop.php";               				
 				$url_str .= "?ret_page=edit-item";
 				$url_str .= "&ret_dir=cart";
                 $url_str .= "&item_id=".$item_id;
@@ -1167,7 +1167,7 @@ $db = $dbCustom->getDbConnect(CART_DATABASE);
 				
 				
 				
-				$url_str = $ste_root."manage/cart/select-image.php";
+				$url_str = SITEROOT."/manage/cart/select-image.php";
                 $url_str .= "?ret_page=edit-item";
 				$url_str .= "&item_id=".$item_id;
 				$url_str .= "&top_cat_id=".$parent_cat_id;
@@ -1258,7 +1258,7 @@ $db = $dbCustom->getDbConnect(CART_DATABASE);
 		
     	$block = ''; 
         $block .= "<div class='img_box'>";
-        $block .= "<img src='".$ste_root."/ul_cart/".$domain."/cart/list/".$img_row->file_name."'   />";
+        $block .= "<img src='".SITEROOT."/ul_cart/".SITEROOT."/cart/list/".$img_row->file_name."'   />";
     	
 		if(in_array(2,$user_functions_array)){	
 			$block .= "<br /><a class='inline' href='#del_gal_img'>
@@ -1325,7 +1325,7 @@ $db = $dbCustom->getDbConnect(CART_DATABASE);
     while($doc_row = mysql_fetch_object($doc_result)) {
     	$block = ''; 
         $block .= "<div>";
-        $block .= "<a href='".$ste_root."/ul_cart/".$domain."/media/".$doc_row->name."' >$doc_row->name</a>";
+        $block .= "<a href='".SITEROOT."/ul_cart/".SITEROOT."/media/".$doc_row->name."' >$doc_row->name</a>";
     	
 		$block .= "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
 		
@@ -2059,7 +2059,7 @@ $db = $dbCustom->getDbConnect(CART_DATABASE);
 
  <p class="clear"></p>
     <?php 
-    require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-footer.php');
+    require_once($real_root.'/manage/admin-includes/manage-footer.php');
     ?>
 </div>
 

@@ -1,0 +1,17 @@
+# robots.txt for http://www.onlineclosetdesigner.com
+
+User-agent: *
+
+# disallow pages/folders
+
+Disallow: /blueimp/
+Disallow: /cgi-bin/
+Disallow: /closet-organizer/
+Disallow: /costco/
+Disallow: /css/
+Disallow: /flash/
+Disallow: /js/
+Disallow: /images/
+Disallow: /includes/
+Disallow: /manage/
+Disallow: /temp_uploads/

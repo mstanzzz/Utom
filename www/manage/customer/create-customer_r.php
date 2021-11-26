@@ -11,7 +11,7 @@ if(!isset($_SERVER['DOCUMENT_ROOT'])){
 }
 
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
+if(strpos($_SERVER['REQUEST_URI'], 'solvitware/' )){ 
 
 $progress = new SetupProgress;
 $module = new Module;
@@ -23,7 +23,7 @@ $msg = (isset($_GET['msg'])) ? $_GET['msg'] : '';
 
 	
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php'); 
+require_once($real_root.'/manage/admin-includes/doc_header.php'); 
 
 ?>
 <script>
@@ -48,13 +48,13 @@ function copy_from_billing(){
 </head>
 <body>
 <?php
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-header.php');
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-top-nav.php');
+	require_once($real_root.'/manage/admin-includes/manage-header.php');
+	require_once($real_root.'/manage/admin-includes/manage-top-nav.php');
 ?>
 <div class="manage_page_container">
 	<div class="manage_side_nav">
 		<?php 
-        require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-side-nav.php');
+        require_once($real_root.'/manage/admin-includes/manage-side-nav.php');
 		
 		$url_str = "customer-list.php";
 		//$url_str .= "?pagenum=".$pagenum;
@@ -237,7 +237,7 @@ function copy_from_billing(){
 
 <p class="clear"></p>
 <?php 
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-footer.php');
+	require_once($real_root.'/manage/admin-includes/manage-footer.php');
 ?>
 </div>
 

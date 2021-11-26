@@ -13,8 +13,7 @@
 <?php	
 require_once($real_root."/includes/header.php"); 	
 ?>	
-
-		
+	
 <section class="home-mobile-buttons-block account-nav covid-block">
 	<div class="wrapper">
 		<div class="container-fluid">
@@ -40,8 +39,6 @@ require_once($real_root."/includes/header.php");
 		</div>
 	</div>
 </section>
-
-
 
 
 <main class="main clearfix">
@@ -76,8 +73,6 @@ require_once($real_root."/includes/header.php");
 			<?php	
 			require_once($real_root."/includes/account_side_nav.php"); 	
 			?>	
-			
-				
 		</div>
 	</div>							
 			

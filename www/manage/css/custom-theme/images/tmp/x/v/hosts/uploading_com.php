@@ -2,7 +2,7 @@
 
 class dl_uploading_com extends Download {
 	
-	public function Login($user, $pass){
+	public function login($dbCustom,$user, $pass){
 		$data = $this->lib->curl("http://uploading.com/general/login_form/?ajax","","email={$user}&password={$pass}&remember=on&back_url=http://uploading.com/");
 		$cookie = $this->lib->GetCookies($data);
 		return $cookie;

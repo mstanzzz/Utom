@@ -10,7 +10,7 @@ if(!isset($_SERVER['DOCUMENT_ROOT'])){
 }
 $_SESSION['ret_modal'] = '';
 
-require_once($_SERVER['DOCUMENT_ROOT']."/includes/config.php");
+require_once($real_root."/includes/config.php");
 
 	if(!isset($_SESSION['qty_calc_params'])) $_SESSION['qty_calc_params'] = array();
 

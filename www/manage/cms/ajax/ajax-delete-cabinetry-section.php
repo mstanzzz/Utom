@@ -19,7 +19,7 @@ if(!isset($_SERVER['DOCUMENT_ROOT'])){
 //cabinetry_sections_to_design_types 
 
 
-require_once($_SERVER['DOCUMENT_ROOT']."/includes/config.php");
+require_once($real_root."/includes/config.php");
 
 $section_id = isset($_GET['section_id'])? $_GET['section_id'] : 0;
 

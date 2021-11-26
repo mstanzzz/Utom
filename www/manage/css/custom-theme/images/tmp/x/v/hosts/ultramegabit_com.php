@@ -9,7 +9,7 @@ class dl_ultramegabit_com extends Download {
 		else return array(false, "accinvalid");
     }
     
-    public function Login($user, $pass){
+    public function login($dbCustom,$user, $pass){
 		$csrf = $this->lib->curl("https://ultramegabit.com/login", "", "");
 		$csrftoken = $this->lib->cut_str($csrf, 'csrf_token" value="', '"');
         $data = $this->lib->curl("https://ultramegabit.com/login", "csrf_cookie={$csrftoken}", "username={$user}&password={$pass}&csrf_token={$csrftoken}&return_url=&submit=Login");

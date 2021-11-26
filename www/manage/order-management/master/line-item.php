@@ -1,21 +1,20 @@
 <?php
-require_once("../../../includes/config.php"); 
-require_once("../../../includes/class.admin_login.php");
-require_once("../../../includes/class.admin_bread_crumb.php");	
-require_once("../../includes/tool-tip.php"); 
+if(strpos($_SERVER['REQUEST_URI'], 'solvitware/' )){ 
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/solvitware';
+}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/designitpro'; 
+}elseif(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
+}else{
+	$real_root = $_SERVER['DOCUMENT_ROOT']; 	
+}
+require_once($real_root.'/includes/class.dbcustom.php');
+$dbCustom = new DbCustom();
 
-require_once("../../includes/class.setup_progress.php"); 
-$progress = new SetupProgress;
-require_once("../../../includes/class.module.php");	
-$module = new Module;
-
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
 
 $page_title = "Order Line Item";
 $page_group = "order";
-
-require_once("../../includes/set-page.php");	
-
-
 
 $order_id = (isset($_REQUEST["order_id"]))? $_REQUEST["order_id"] : 0; 
 
@@ -31,13 +30,13 @@ $db = $dbCustom->getDbConnect(CART_DATABASE);
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Order</title>
 
-<link rel="stylesheet" href="<?php echo SITEROOT; ?>/js/fancybox/jquery.fancybox-1.3.1.css" type="text/css" media="screen" />
-<link type="text/css" rel="stylesheet" href="<?php echo SITEROOT; ?>/css/manageStyle.css" />
-<link type="text/css" rel="stylesheet" href="<?php echo SITEROOT; ?>/css/mce.css" />
+<link rel="stylesheet" href="<?php echo SITEROOT; ?>js/fancybox/jquery.fancybox-1.3.1.css" type="text/css" media="screen" />
+<link type="text/css" rel="stylesheet" href="<?php echo SITEROOT; ?>css/manageStyle.css" />
+<link type="text/css" rel="stylesheet" href="<?php echo SITEROOT; ?>css/mce.css" />
 
-<script type="text/javascript" src="<?php echo SITEROOT; ?>/js/jquery-1.4.4.js"></script>
-<script type="text/javascript" src="<?php echo SITEROOT; ?>/js/fancybox/jquery.fancybox-1.3.1.pack.js"></script>
-<script type="text/javascript" src="<?php echo SITEROOT; ?>/js/tiny_mce/tiny_mce.js"></script>
+<script type="text/javascript" src="<?php echo SITEROOT; ?>js/jquery-1.4.4.js"></script>
+<script type="text/javascript" src="<?php echo SITEROOT; ?>js/fancybox/jquery.fancybox-1.3.1.pack.js"></script>
+<script type="text/javascript" src="<?php echo SITEROOT; ?>js/tiny_mce/tiny_mce.js"></script>
 
 <script>
 $(document).ready(function() {
@@ -90,8 +89,8 @@ function show_msg(msg){
 	<body>
 <?php } 
 
-	require_once("../../includes/manage-header.php");
-	require_once("../../includes/manage-top-nav.php");
+	require_once("<?php echo SITEROOT; ?>includes/manage-header.php");
+	require_once("<?php echo SITEROOT; ?>includes/manage-top-nav.php");
 
 
 ?>
@@ -100,7 +99,7 @@ function show_msg(msg){
 
     <div class="manage_side_nav">
         <?php 
-        require_once("../../includes/manage-side-nav.php");
+        require_once("<?php echo SITEROOT; ?>includes/manage-side-nav.php");
         ?>
     </div>	
 
@@ -317,7 +316,7 @@ function show_msg(msg){
 </div> 
 <p class="clear"></p>
 <?php 
-require_once("../../includes/manage-footer.php");
+require_once("<?php echo SITEROOT; ?>includes/manage-footer.php");
 ?>    
 </div>
 

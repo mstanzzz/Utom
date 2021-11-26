@@ -9,7 +9,7 @@ if(!isset($_SERVER['DOCUMENT_ROOT'])){
 	}
 }
 
-require_once($_SERVER['DOCUMENT_ROOT']."/includes/config.php");
+require_once($real_root."/includes/config.php");
 
 $backing_id = isset($_GET['backing_id'])? $_GET['backing_id'] : 0;
 

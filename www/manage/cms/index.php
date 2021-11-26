@@ -1,6 +1,6 @@
 <?php
 $_SESSION['admin_logged_in'] = 0; 
-require_once("../../includes/config.php"); 
+require_once("<?php echo SITEROOT; ?>includes/config.php"); 
 
 $db = $dbCustom->getDbConnect(SITE_N_DATABASE);
 

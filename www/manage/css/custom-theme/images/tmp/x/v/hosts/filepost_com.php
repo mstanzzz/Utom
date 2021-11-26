@@ -14,7 +14,7 @@ class dl_filepost_com extends Download {
 		else return array(false, "accinvalid");
     }
 	
-	public function Login($user, $pass){
+	public function login($dbCustom,$user, $pass){
 		$data = $this->lib->curl("http://filepost.com/general/login_form/", "lang=1", "email={$user}&password={$pass}&remember=1");
 		$cookie = "lang=1;".$this->lib->GetCookies($data);
 		return $cookie;

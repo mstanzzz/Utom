@@ -1,19 +1,17 @@
 <?php
-
-
-
-if(!isset($_SERVER['DOCUMENT_ROOT'])){
-	if(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){    
-		$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
-	}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro/' )){
-		$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT'].'/designitpro';
-	}else{
-		$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT']; 	
-	}
+if(strpos($_SERVER['REQUEST_URI'], 'solvitware/' )){ 
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/solvitware';
+}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/designitpro'; 
+}elseif(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
+}else{
+	$real_root = $_SERVER['DOCUMENT_ROOT']; 	
 }
+require_once($real_root.'/includes/class.dbcustom.php');
+$dbCustom = new DbCustom();
 
-
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
 
 $progress = new SetupProgress;
 $module = new Module;
@@ -93,7 +91,7 @@ if(isset($_POST['edit_discount'])){
 	}
 
 
-	require_once($_SERVER['DOCUMENT_ROOT']."/manage/cms/insert_page_seo.php");
+	require_once($real_root."/manage/cms/insert_page_seo.php");
 	
 
 //	if(in_array(2,$user_functions_array)){
@@ -117,7 +115,7 @@ if(isset($_POST['edit_discount'])){
 	$result = $dbCustom->getResult($db,$sql);
 		
 
-	require_once($_SERVER['DOCUMENT_ROOT']."/manage/cms/insert_page_breadcrumb.php");
+	require_once($real_root."/manage/cms/insert_page_breadcrumb.php");
 	unset($_SESSION['temp_page_fields']);
 
 }
@@ -169,7 +167,7 @@ if($result->num_rows > 0){
 if(!isset($_SESSION['temp_page_fields']['content'])) $_SESSION['temp_page_fields']['content'] = $content;
 if(!isset($_SESSION['temp_page_fields']['img_alt_text'])) $_SESSION['temp_page_fields']['img_alt_text'] = $img_alt_text;
 
-require_once($_SERVER['DOCUMENT_ROOT']."/manage/cms/get_seo_variables.php");
+require_once($real_root."/manage/cms/get_seo_variables.php");
 
 if(!isset($_SESSION['temp_page_fields']['page_heading'])) $_SESSION['temp_page_fields']['page_heading'] = $page_heading;
 if(!isset($_SESSION['temp_page_fields']['seo_name'])) $_SESSION['temp_page_fields']['seo_name'] = $seo_name;
@@ -177,7 +175,7 @@ if(!isset($_SESSION['temp_page_fields']['title'])) $_SESSION['temp_page_fields']
 if(!isset($_SESSION['temp_page_fields']['keywords'])) $_SESSION['temp_page_fields']['keywords'] = $keywords;
 if(!isset($_SESSION['temp_page_fields']['description'])) $_SESSION['temp_page_fields']['description'] = $description;
 	
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php'); 
+require_once($real_root.'/manage/admin-includes/doc_header.php'); 
 
 ?>
 
@@ -273,7 +271,7 @@ tinyMCE.init({
 });
 
 function previewSubmit() {
-  document.form.action = '<?php echo $ste_root; ?>/pages/preview/preview.php';
+  document.form.action = '<?php echo SITEROOT; ?>pages/preview/preview.php';
   document.form.target = '_blank'; 
   document.form.submit();
 }	
@@ -289,29 +287,29 @@ function regularSubmit() {
 <body>
 
 <?php
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-header.php');
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-top-nav.php');
+	require_once($real_root.'/manage/admin-includes/manage-header.php');
+	require_once($real_root.'/manage/admin-includes/manage-top-nav.php');
 
 ?>
 
 <div class="manage_page_container">
 	<div class="manage_side_nav">
 		<?php 
-        require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-side-nav.php');
+        require_once($real_root.'/manage/admin-includes/manage-side-nav.php');
         ?>
 	</div>
 	<div class="manage_main">
 		<?php 
 		
-		require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/class.admin_bread_crumb.php");	
+		require_once($real_root."/manage/admin-includes/class.admin_bread_crumb.php");	
 		$bread_crumb = new AdminBreadCrumb;
 		$bread_crumb->reSet();
-		$bread_crumb->add("CMS", $ste_root."manage/cms/cms-landing.php");
-		$bread_crumb->add("Pages", $ste_root."manage/cms/pages/page.php");
+		$bread_crumb->add("CMS", SITEROOT."/manage/cms/cms-landing.php");
+		$bread_crumb->add("Pages", SITEROOT."/manage/cms/pages/page.php");
 		$bread_crumb->add("Discount", '');
         echo $bread_crumb->output();
 
-        require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-content-top.php');
+        require_once($real_root.'/manage/admin-includes/manage-content-top-category.php');
 		
 		$db = $dbCustom->getDbConnect(SITE_N_DATABASE);
 		?>
@@ -328,11 +326,11 @@ function regularSubmit() {
 				<a onClick="previewSubmit();" href="#" class="btn btn-primary btn-large"><i class="icon-eye-open icon-white"></i> Preview </a>
 				<a onClick="regularSubmit();" href="#" class="btn btn-success btn-large"><i class="icon-ok icon-white"></i> Save </a>
                 
-                <a href="<?php echo $ste_root; ?>/manage/cms/navigation/navbar.php?strip=1" class="btn btn-primary btn-large fancybox fancybox.iframe">
+                <a href="<?php echo SITEROOT; ?>manage/cms/navigation/navbar.php?strip=1" class="btn btn-primary btn-large fancybox fancybox.iframe">
                 <i class="icon-eye-open icon-white"></i> Edit Navigation </a>                
                 
 				<hr />
-				<a href="<?php echo $ste_root;?>/manage/cms/pages/page.php" class="btn"><i class="icon-arrow-left"></i> Cancel &amp; Go Back</a>
+				<a href="<?php echo SITEROOT;?>/manage/cms/pages/page.php" class="btn"><i class="icon-arrow-left"></i> Cancel &amp; Go Back</a>
             	<?php if($_SESSION['is_ssl']){ 
 					$checked = ($mssl)? "checked=checked" : ''; 		
 				?>	
@@ -378,7 +376,7 @@ function regularSubmit() {
 							
 						<div style="float:left; padding:10px;">
 							<?php   	
-                            echo "<img src='".$ste_root."/saascustuploads/".$_SESSION['profile_account_id']."/cms/".$img_row->file_name."' width='120px' />"; 
+                            echo "<img src='".SITEROOT."/saascustuploads/".$_SESSION['profile_account_id']."/cms/".$img_row->file_name."' width='120px' />"; 
                             $checked = ($img_id == $img_row->img_id) ? "checked=checked" : '';  
                             ?>
                         </div>
@@ -402,7 +400,7 @@ function regularSubmit() {
 
 
                             <a id="add_img" class="btn btn-large btn-primary fancybox fancybox.iframe" 
-                            href="<?php echo $ste_root;?>/manage/cms/upload.php?img_max_width=450&ret_page=discount&ret_dir=pages">
+                            href="<?php echo SITEROOT;?>/manage/cms/upload.php?img_max_width=450&ret_page=discount&ret_dir=pages">
                             <i class="icon-plus icon-white"></i> Add New Image</a> 
                     </div>
 
@@ -465,7 +463,7 @@ function regularSubmit() {
 			$keywords = $_SESSION['temp_page_fields']['keywords'];	
 			$description = $_SESSION['temp_page_fields']['description'];
 			require_once("edit_page_seo.php"); 
-    	    require_once($_SERVER['DOCUMENT_ROOT']."/manage/cms/edit_page_breadcrumb.php"); 
+    	    require_once($real_root."/manage/cms/edit_page_breadcrumb.php"); 
 			?>
 			</div>
 		</form>
@@ -476,7 +474,7 @@ function regularSubmit() {
 
 <p class="clear"></p>
 <?php 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-footer.php');
+require_once($real_root.'/manage/admin-includes/manage-footer.php');
 ?>
 
 </div>

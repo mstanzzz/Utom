@@ -116,6 +116,8 @@ foreach($cats as $val){
 		$img = "./saascustuploads/".$_SESSION['profile_account_id']."/cart/medium/".$val['file_name'];
 	}
 	
+	
+	
 	$shoroom_images .= "<figure class='showroom-block__item'>";
 	$shoroom_images .= "<img src='".$img."' alt='' class='showroom-block__item--img'>";
 	$shoroom_images .= "<figcaption class='showroom-block__item--wrapper'>";
@@ -126,7 +128,8 @@ foreach($cats as $val){
 	$shoroom_images .= "<p>10k 214</p>";
 	$shoroom_images .= "</div>";
 	$shoroom_images .= "<p>Current users in ".$val['name']."</p>";
-	$shoroom_images .= "<a href='".$url_str."'>";	
+	
+	$shoroom_images .= "<a onClick='click_cat_count(".$val['cat_id'].");'  href='".$url_str."'>";	
 	$shoroom_images .= "view category";
 	$shoroom_images .= "<svg xmlns='http://www.w3.org/2000/svg' 
 					width='20.8' 
@@ -137,6 +140,7 @@ foreach($cats as $val){
 	transform='translate(0.001 -4.676)'/>";
 	$shoroom_images .= "</svg>";
 	$shoroom_images .= "</a>";
+	
 	$shoroom_images .= "</div>";
 	$shoroom_images .= "</figcaption>";
 	$shoroom_images .= "</figure>";
@@ -154,6 +158,8 @@ $item_images = '';
 $show_in = 'cart';
 $limit = 6;
 $items = $store_data->getItems($dbCustom,$show_in, $limit);
+//print_r($items);
+//exit;
 foreach($items as $val){
 
 	$nm = stripSlashes($val['name']);	
@@ -172,14 +178,97 @@ foreach($items as $val){
 
 	$item_images .= $svgg;
 	
+	
 	$item_images .= "<figcaption class='desktop-show'>";
 	$item_images .= "<p>".$name."</p>";
-	$item_images .= "<a href='".$url_str."' title='' class='link-button'>";
+	$item_images .= "<a onClick='click_item_count(".$val['item_id'].")' href='".$url_str."' title='' class='link-button'>";
 	$item_images .= "buy now";	
 	$item_images .= "</a>";
 	$item_images .= "</figcaption>";
 	$item_images .= "</div>";
 	$item_images .= "</figure>";
 
-}	
+}
+
+/*
+$ths = rand(1,998);
+$hds = rand(10,998);
+$counter_one = $ths." K ".$hds;
+echo "<br />";
+echo "<br />";
+echo "counter_one:  ".$counter_one;
+$ths = rand(1,998);
+$hds = rand(10,998);
+$counter_two = $ths." K ".$hds;
+echo "<br />";
+echo "<br />";
+echo "counter_two:  ".$counter_two;
+$ths = rand(1,998);
+$hds = rand(10,998);
+$counter_three = $ths." K ".$hds;
+echo "<br />";
+echo "<br />";
+echo "counter_three:  ".$counter_three;
+$ths = rand(1,998);
+$hds = rand(10,998);
+$counter_four = $ths." K ".$hds;
+echo "<br />";
+echo "<br />";
+echo "counter_four:  ".$counter_four;
+*/
+
+$testimonial_array = array();
+
+
+$sql = "DELETE FROM testimonial
+		WHERE testimonial_id = '355'";
+//$result = $dbCustom->getResult($db,$sql);
+
+$sql = "SELECT name, city_state, rating, content, testimonial_id
+		FROM testimonial
+		WHERE profile_account_id = '".$_SESSION['profile_account_id']."'";
+$result = $dbCustom->getResult($db,$sql);
+$i=0;
+while($row=$result->fetch_object()){
+	$cust_str = $row->name." ".$row->city_state;
+	$testimonial_array[$i]['testimonial_id']=$row->testimonial_id;
+	$testimonial_array[$i]['stars']=$row->rating;	
+	$testimonial_array[$i]['cust_str']=$cust_str;
+	$testimonial_array[$i]['body']=$row->content;
+	//echo $row->content;
+	//echo "<hr />";
+	//echo "<br />";
+	$i++;
+}
+
+//print_r($testimonial_array);
+//exit;
+/*
+rand(int $min, int $max): int
+$decimals = 0;
+$decimal_separator = '.';
+$thousands_separator = 'K ';
+$counter_one = number_format($num,$decimals,$decimal_separator,$thousands_separator);
+number_format(
+    float $num,
+    int $decimals = 0,
+    ?string $decimal_separator = ".",
+    ?string $thousands_separator = ","
+): string
+
+2K 457
+SUCCESSFUL DIY INSTALLATIONS
+
+10K 214
+CURRENT USERS IN DESIGN TOOL
+
+6K 873
+CURRENT USERS SUBMITTING DESIGNS
+
+10K 214
+CURRENT USERS IN DESIGN TOOL
+*/
+
+
+	
 ?>

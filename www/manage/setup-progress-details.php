@@ -1,19 +1,17 @@
 <?php
-
-
-
-if(!isset($_SERVER['DOCUMENT_ROOT'])){
-	if(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){    
-		$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
-	}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro/' )){
-		$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT'].'/designitpro';
-	}else{
-		$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT']; 	
-	}
+if(strpos($_SERVER['REQUEST_URI'], 'solvitware/' )){ 
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/solvitware';
+}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/designitpro'; 
+}elseif(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
+}else{
+	$real_root = $_SERVER['DOCUMENT_ROOT']; 	
 }
+require_once($real_root.'/includes/class.dbcustom.php');
+$dbCustom = new DbCustom();
 
-
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
 
 $progress = new SetupProgress;
 $module = new Module;
@@ -28,7 +26,7 @@ $page_group = "sas";
 $db = $dbCustom->getDbConnect(USER_DATABASE);
 
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php'); 
+require_once($real_root.'/manage/admin-includes/doc_header.php'); 
 
 ?>
 <script>
@@ -39,8 +37,8 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php');
 
 	<body>
 <?php
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-header.php');
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-top-nav.php');
+	require_once($real_root.'/manage/admin-includes/manage-header.php');
+	require_once($real_root.'/manage/admin-includes/manage-top-nav.php');
 
 ?>
 
@@ -48,7 +46,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php');
 
     <div class="manage_side_nav">
         <?php 
-        require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-side-nav.php');
+        require_once($real_root.'/manage/admin-includes/manage-side-nav.php');
         ?>
     </div>	
   	<div class="top_link">
@@ -114,7 +112,7 @@ $result = $dbCustom->getResult($db,$sql);
 			
 			if($row->completed){
 				$block .= "<div style='position:relative; top:-8px;'>";
-				$block .= "<img src='".$ste_root."/images/icons/check.jpg' />";
+				$block .= "<img src='".SITEROOT."/images/icons/check.jpg' />";
 				$block .= "</div>";
 			}
 			$block .= "</div>";			
@@ -150,14 +148,14 @@ $result = $dbCustom->getResult($db,$sql);
 			</script>
 
 			<ul class="progress_list">
-				<li class="completed"><a href="<?php echo $ste_root;?>/organizers/profile-image.php" title="Change your profile image.">Profile Image uploaded and active.</a></li>
-				<li class="completed"><a href="<?php echo $ste_root;?>/organizers/profile-information.php" title="Update your 'About Me' information." >All fields in 'About Me' filled out.</a></li>
-				<li class="completed"><a href="<?php echo $ste_root;?>/organizers/profile-portfolio.php" title="Add photographs and update your porfolio." >At least one portfolio image uploaded with a caption/description.</a></li>
-				<li><a href="<?php echo $ste_root;?>/organizers/blog-new.php" title="Write a new blog entry.">At least one blog entry written.</a></li>
-				<li class="completed"><a href="<?php echo $ste_root;?>/organizers/questions-new.php" title="View all new questions you can answer." >At least one question answered.</a></li>
-				<li><a href="<?php echo $ste_root;?>/organizers/blog-new.php" title="Write a new blog entry.">At least one before/after blog entry written.</a></li>
-				<li><a href="<?php echo $ste_root;?>/organizers/profile-skills.php" title="Add skills to your profile.">At least two skills added.</a></li>
-				<li><a href="<?php echo $ste_root;?>/organizers/profile-specialties.php" title="Add a specialty to your profile.">At least one specialty added.</a></li>
+				<li class="completed"><a href="<?php echo SITEROOT;?>/organizers/profile-image.php" title="Change your profile image.">Profile Image uploaded and active.</a></li>
+				<li class="completed"><a href="<?php echo SITEROOT;?>/organizers/profile-information.php" title="Update your 'About Me' information." >All fields in 'About Me' filled out.</a></li>
+				<li class="completed"><a href="<?php echo SITEROOT;?>/organizers/profile-portfolio.php" title="Add photographs and update your porfolio." >At least one portfolio image uploaded with a caption/description.</a></li>
+				<li><a href="<?php echo SITEROOT;?>/organizers/blog-new.php" title="Write a new blog entry.">At least one blog entry written.</a></li>
+				<li class="completed"><a href="<?php echo SITEROOT;?>/organizers/questions-new.php" title="View all new questions you can answer." >At least one question answered.</a></li>
+				<li><a href="<?php echo SITEROOT;?>/organizers/blog-new.php" title="Write a new blog entry.">At least one before/after blog entry written.</a></li>
+				<li><a href="<?php echo SITEROOT;?>/organizers/profile-skills.php" title="Add skills to your profile.">At least two skills added.</a></li>
+				<li><a href="<?php echo SITEROOT;?>/organizers/profile-specialties.php" title="Add a specialty to your profile.">At least one specialty added.</a></li>
 			</ul>
 
 
@@ -166,7 +164,7 @@ $result = $dbCustom->getResult($db,$sql);
 
 <p class="clear"></p>
 <?php 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-footer.php');
+require_once($real_root.'/manage/admin-includes/manage-footer.php');
 ?>       
 
 </div>

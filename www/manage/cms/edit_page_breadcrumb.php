@@ -16,7 +16,7 @@ function update_bc_page_title(){
 	var new_title = $("#bc_page_title").val();
 
 	var q_str = "?action=change_title&new_bc_page_title="+new_title;
-	var t_url = "<?php echo $ste_root; ?>/manage/cms/ajax_set_breadcrumb_session.php"+q_str;
+	var t_url = "<?php echo SITEROOT; ?>manage/cms/ajax_set_breadcrumb_session.php"+q_str;
 
 	$.ajaxSetup({ cache: false}); 
 	$.ajax({
@@ -34,7 +34,7 @@ function update_label(page_seo_id){
 	var new_text = $("#breadcrumb_label_"+page_seo_id).val();
 
 	var q_str = "?action=change_label&new_text="+new_text+"&page_seo_id="+page_seo_id;
-	var t_url = "<?php echo $ste_root; ?>/manage/cms/ajax_set_breadcrumb_session.php"+q_str;
+	var t_url = "<?php echo SITEROOT; ?>manage/cms/ajax_set_breadcrumb_session.php"+q_str;
 
 	$.ajaxSetup({ cache: false}); 
 	$.ajax({
@@ -57,7 +57,7 @@ function update_seo_id(page_seo_id){
 	//alert(new_page_seo_id);
 
 	var q_str = "?action=change_seo_id&new_page_seo_id="+new_page_seo_id+"&page_seo_id="+page_seo_id;
-	var t_url = "<?php echo $ste_root; ?>/manage/cms/ajax_set_breadcrumb_session.php"+q_str;
+	var t_url = "<?php echo SITEROOT; ?>manage/cms/ajax_set_breadcrumb_session.php"+q_str;
 
 	$.ajaxSetup({ cache: false}); 
 	$.ajax({
@@ -75,7 +75,7 @@ function reorder_bc(page_seo_id){
 	var new_display_order = $("#breadcrumb_order_"+page_seo_id).val();
 	
 	var q_str = "?action=reorder&page_seo_id="+page_seo_id+"&new_display_order="+new_display_order;
-	var t_url = "<?php echo $ste_root; ?>/manage/cms/ajax_set_breadcrumb_session.php"+q_str;
+	var t_url = "<?php echo SITEROOT; ?>manage/cms/ajax_set_breadcrumb_session.php"+q_str;
 	
 	$.ajaxSetup({ cache: false}); 
 	$.ajax({
@@ -92,7 +92,7 @@ function remove_bc(page_seo_id){
 	
 	//alert(page_seo_id);
 	var q_str = "?action=remove&page_seo_id="+page_seo_id;
-	var t_url = "<?php echo $ste_root; ?>/manage/cms/ajax_set_breadcrumb_session.php"+q_str;
+	var t_url = "<?php echo SITEROOT; ?>manage/cms/ajax_set_breadcrumb_session.php"+q_str;
 		
 	$.ajaxSetup({ cache: false}); 
 	$.ajax({
@@ -107,7 +107,7 @@ function remove_bc(page_seo_id){
 function set_display(){
 
 	var q_str = "?action=display";
-	var t_url = "<?php echo $ste_root; ?>/manage/cms/ajax_set_breadcrumb_session.php"+q_str;
+	var t_url = "<?php echo SITEROOT; ?>manage/cms/ajax_set_breadcrumb_session.php"+q_str;
 		
 	$.ajaxSetup({ cache: false}); 
 	$.ajax({
@@ -128,7 +128,7 @@ function add_breadcrumb(){
 		q_str += "&new_breadcrumb_order="+$("#new_breadcrumb_order").val();
 		q_str += "&action=add";
 		
-	var t_url = "<?php echo $ste_root; ?>/manage/cms/ajax_set_breadcrumb_session.php"+q_str;
+	var t_url = "<?php echo SITEROOT; ?>manage/cms/ajax_set_breadcrumb_session.php"+q_str;
 		
 	$.ajaxSetup({ cache: false}); 
 	$.ajax({
@@ -182,7 +182,9 @@ if($i > 0){
 }
 
 ?>
-
+<hr />
+<span style="color:red;" >This breadcrumb editor needs integration if used on new site</span>
+<hr />
 <fieldset class="edit_breadcrumbs">
 	<legend>Edit Breadcrumbs <i class="icon-minus-sign icon-white"></i></legend>
 	<div class="colcontainer">

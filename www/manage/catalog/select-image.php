@@ -1,31 +1,35 @@
 <?php
-/* ms */
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
+if(strpos($_SERVER['REQUEST_URI'], 'solvitware/' )){ 
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/solvitware';
+}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/designitpro'; 
+}elseif(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
+}else{
+	$real_root = $_SERVER['DOCUMENT_ROOT']; 	
+}
+
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
 
 $progress = new SetupProgress;
 $module = new Module;
 
 $msg = '';
 
+$ret_path = (isset($_GET['ret_path'])) ? $_GET['ret_path'] : '';
 $ret_dir = (isset($_GET['ret_dir'])) ? $_GET['ret_dir'] : '';
 $ret_page = (isset($_GET['ret_page'])) ? $_GET['ret_page'] : '';
 $img_type = (isset($_GET['img_type'])) ? $_GET['img_type'] : '';
 $parent_cat_id = (isset($_GET['parent_cat_id'])) ? $_GET['parent_cat_id'] : 0;
 $cat_id = (isset($_GET['cat_id'])) ? $_GET['cat_id'] : 0;
 
-$ret_dest = $ste_root.'/manage/'.$ret_dir.'/'.$ret_page.'.php?is_new_img=1&cat_id='.$_SESSION['cat_id'].'&img_type'.$_SESSION['img_type'];
+$ret_dest = SITEROOT.'manage/'.$ret_path.'/'.$ret_page.'.php?is_new_img=1&cat_id='.$_SESSION['cat_id'].'&img_type='.$_SESSION['img_type'];
 
-
-
-$sel_img_id = (isset($_GET['sel_img_id'])) ? $_GET['sel_img_id'] : 0;
+//echo $ret_dest;
 
 if(isset($_POST["sel_img_id"])){
-
-	echo "sel_img_id ".$sel_img_id;
-		
-	
+	$_SESSION['img_id']	= $_POST["sel_img_id"];
 }
-
 
 if(isset($_POST["del_img_id"])){
 
@@ -38,6 +42,7 @@ if(isset($_POST["del_img_id"])){
 	$result = $dbCustom->getResult($db,$sql);
 		
 	if($result->num_rows > 0){
+
 $object = $result->fetch_object();		
 
 // only one
@@ -106,51 +111,33 @@ $msg = "Image deleted.";
 		
 }
 		
-
-
 }
 
-
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php'); 
+require_once($real_root.'/manage/admin-includes/doc_header.php'); 
 
 ?>
 <script>
 
-
 function select_img(img_id){
-	
 	document.getElementById("r"+img_id).checked = true;
-	
-	//alert("lll");
-		
 }
-
-
 
 </script>
 </head>
 <body class="lightbox">
 <div class="lightboxholder">
 
-<?php
-/*
-if(isset($_SESSION['ret_path'])){
-	if($_SESSION['ret_path'] != ''){
-$ret_dest = $ste_root.'/manage/'.$_SESSION['ret_path'].'/'.$_SESSION['ret_page'].'.php?is_new_img=1&cat_id='.$_SESSION['cat_id'].'&img_type'.$_SESSION['img_type'];
-	}
-}
-*/
-?>
 <a href="<?php echo $ret_dest; ?>" class="btn"><i class="icon-arrow-left"></i> Cancel &amp; Go Back</a>
 
 <?php
 
-?>
-<form name="add_image"  action="select-images.php" method="get"  enctype="multipart/form-data" target="_top">
+$url_str = "select-image.php";
+$url_str .= "?ret_page=".$ret_page;
+$url_str .= "&ret_path=".$ret_path;
+$url_str .= "&ret_dir=".$ret_dir;
 
-<input type="hidden" name="ret_dir" value="<?php echo $ret_dir; ?>">
-<input type="hidden" name="ret_page" value="<?php echo $ret_page; ?>">
-<input type="hidden" name="img_type" value="<?php echo $img_type; ?>">
+?>
+<form name="add_image"  action="<?php echo $url_str ?>" method="post"  enctype="multipart/form-data" target="_top">
 
 
     <table border="1" cellpadding="4">
@@ -167,25 +154,22 @@ $ret_dest = $ste_root.'/manage/'.$_SESSION['ret_path'].'/'.$_SESSION['ret_page']
 			FROM image
 			WHERE profile_account_id = '".$_SESSION['profile_account_id']."'
 			ORDER BY file_name";
-$result = $dbCustom->getResult($db,$sql);	
+	$result = $dbCustom->getResult($db,$sql);	
 	
 	$block = "<tr>"; 
     while($row = $result->fetch_object()) {
 			
-if(file_exists($_SERVER['DOCUMENT_ROOT']."/saascustuploads/".$_SESSION['profile_account_id']."/cart/small/".$row->file_name)){	
+		if(file_exists($_SERVER['DOCUMENT_ROOT']."/saascustuploads/".$_SESSION['profile_account_id']."/cart/small/".$row->file_name)){	
 				
 			$block .= "<td valign='top'>";
 	
-			//$sel = ($_SESSION['img_id']) ? "checked" : ''; 
-			$sel = '';
-				
-			$block .= "<img src='".$ste_root."/saascustuploads/".$_SESSION['profile_account_id']."/cart/small/".$row->file_name."' onClick='select_img(".$row->img_id.")' />";
-			//$block .= $row->img_id;
+			$block .= "<img src='".SITEROOT."/saascustuploads/".$_SESSION['profile_account_id']."/cart/small/".$row->file_name."' onClick='select_img(".$row->img_id.")' />";
 			$block .= "</td>";
 				
-			//$row->file_name
+			$sel = ($_SESSION['img_id'] == $row->img_id) ? "checked" : ''; 
+
 			$block .= "<td valign='top'>";	
-			$block .= "<input id='r".$row->img_id."' type='radio' name='sel_img_id' value='".$row->img_id."'/>";
+			$block .= "<input id='r".$row->img_id."' type='radio' name='sel_img_id' value='".$row->img_id."' ".$sel."/>";
 			$block .= "</td>";
 			
 			$block .= "<td valign='top'>";	
@@ -267,9 +251,9 @@ if(file_exists($_SERVER['DOCUMENT_ROOT']."/saascustuploads/".$_SESSION['profile_
 </div>
 
 <?php
-$url_str = $ret_dir;
+
+$url_str .= $ret_dir;
 $url_str .= '/'.$ret_page.'.php';
-$url_str .= '?parent_cat_id='.$parent_cat_id;
 $url_str .= '?cat_id='.$cat_id;
 
 ?>
@@ -282,7 +266,6 @@ $url_str .= '?cat_id='.$cat_id;
 $url_str = "select-image.php";
 $url_str .= "?ret_dir=".$ret_dir;
 $url_str .= "&ret_page=".$ret_page;
-
 
 ?>
 

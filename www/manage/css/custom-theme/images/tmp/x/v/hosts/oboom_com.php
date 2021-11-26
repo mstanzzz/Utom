@@ -51,7 +51,7 @@ class dl_oboom_com extends Download {
                 else return array(false, "accinvalid");
     }
        
-    public function Login($user, $pass){
+    public function login($dbCustom,$user, $pass){
                
                 $mysalt = strrev($pass);
                

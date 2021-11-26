@@ -1,5 +1,15 @@
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
+if(strpos($_SERVER['REQUEST_URI'], 'solvitware/' )){ 
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/solvitware';
+}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/designitpro'; 
+}elseif(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
+}else{
+	$real_root = $_SERVER['DOCUMENT_ROOT']; 	
+}
+
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
 $search_str = (isset($_REQUEST['search_str'])) ?  trim(addslashes($_REQUEST['search_str'])) : '';
 
 $cat_id = (isset($_GET['cat_id'])) ? $_GET['cat_id'] : 0;
@@ -124,8 +134,8 @@ if($search_str != ''){
 			if($img_res->num_rows > 0){
 				$img_object = $img_res->fetch_object();
 				
-				$block .= "<a class='fancybox' href='".$ste_root."/saascustuploads/".$_SESSION['profile_account_id']."/cart/full/".$img_object->file_name."'>";
-				$block .= "<img  src='".$ste_root."/saascustuploads/".$_SESSION['profile_account_id']."/cart/thumb/".$img_object->file_name."'></a>";
+				$block .= "<a class='fancybox' href='".SITEROOT."/saascustuploads/".$_SESSION['profile_account_id']."/cart/full/".$img_object->file_name."'>";
+				$block .= "<img  src='".SITEROOT."/saascustuploads/".$_SESSION['profile_account_id']."/cart/thumb/".$img_object->file_name."'></a>";
 			}
 			$block .= "</td>";
 			
@@ -181,8 +191,8 @@ if($search_str != ''){
 					$img_object = $img_res->fetch_object();
 					// childthumb
 					$block .= "<td valign='middle'><a class='fancybox' 
-					href='".$ste_root."/saascustuploads/".$_SESSION['profile_account_id']."/cart/full/".$img_object->file_name."'>";
-					$block .= "<img  src='".$ste_root."/saascustuploads/".$_SESSION['profile_account_id']."/cart/thumb/".$img_object->file_name."'></a>";
+					href='".SITEROOT."/saascustuploads/".$_SESSION['profile_account_id']."/cart/full/".$img_object->file_name."'>";
+					$block .= "<img  src='".SITEROOT."/saascustuploads/".$_SESSION['profile_account_id']."/cart/thumb/".$img_object->file_name."'></a>";
 				}else{
 					$block .= "<td  colspan='2'></td>";
 				}

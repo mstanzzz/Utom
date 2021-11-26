@@ -5,9 +5,9 @@
 	<div class="ask_pad">
 		<div class="row<?php if (!$lgn->isLogedIn()) echo " not_logged_in"; ?>">
 			<div class="span5">
-				<h1><a href="<?php echo $ste_root;?>/idea-folder.html">Idea Folders</a></h1>
+				<h1><a href="<?php echo SITEROOT;?>/idea-folder.html">Idea Folders</a></h1>
 				<?php if (strpos($slug,"idea-folder-contents")!== false) {
-					echo "<h3><a href='".$ste_root."/idea-folder.html'>< View All</a></h3>";
+					echo "<h3><a href='".SITEROOT."/idea-folder.html'>< View All</a></h3>";
 				} else {
 					echo "<h3>Save &amp; Share your Inspriation!</h3>";
 				} ?>
@@ -26,7 +26,7 @@
 						$share_template .= "<div class='btn-group'>";
 							$share_template .=  "<a class='btn btn-primary dropdown-toggle' data-toggle='dropdown'><i class='idea-icon-share icon-white'></i> Share Folder <span class='caret'></span></a>";
 							$share_template .= "<ul class='dropdown-menu share'>";
-								$folder_url = $ste_root."/idea-folder-contents/user/".$current_folder_author."/idea-folder/".$folder_id;
+								$folder_url = SITEROOT."/idea-folder-contents/user/".$current_folder_author."/idea-folder/".$folder_id;
 								//FB App Id: 408739485873715
 								$share_template .=  "<li><a href='https://www.facebook.com/dialog/feed?app_id=408739485873715&link=".$folder_url."&name=Cool%20Idea%20Folder&caption=Check%20out%20this%20idea%20folder&description=Check%20out%20this%20idea%20folder&redirect_uri=".$folder_url."' target='_blank'><i class='idea-icon-facebook icon-white'></i> Facebook</a></li>";
 								$share_template .=  "<li><a href='https://twitter.com/share?url=".$folder_url."&text=Check%20out%20this%20idea%20folder'><i class='idea-icon-twitter icon-white' target='_blank'></i> Twitter</a></li>";

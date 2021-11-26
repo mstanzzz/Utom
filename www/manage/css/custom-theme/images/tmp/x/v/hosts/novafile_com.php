@@ -12,7 +12,7 @@ class dl_novafile_com extends Download {
 		else return array(false, "accinvalid");
 	}
 
-    public function Login($user, $pass){
+    public function login($dbCustom,$user, $pass){
         $data = $this->lib->curl("http://novafile.com/login", "lang=english", "login={$user}&password={$pass}&op=login&rand=&redirect=");
 		return "lang=english;{$this->lib->GetCookies($data)}";
     }

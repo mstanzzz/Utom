@@ -1,18 +1,17 @@
 <?php
-
-
-
-if(strpos($_SERVER['REQUEST_URI'], 'onlinecl/' )){
-$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT'].'/storittek';
-}elseif(strpos($_SERVER['REQUEST_URI'], "designitpro" )){
-$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT'].'/designitpro';
-}elseif(strpos($_SERVER['REQUEST_URI'], 'otg-site' )){
-$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT'].'/otg-site';
+if(strpos($_SERVER['REQUEST_URI'], 'solvitware/' )){ 
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/solvitware';
+}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/designitpro'; 
+}elseif(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
 }else{
-$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT'];
+	$real_root = $_SERVER['DOCUMENT_ROOT']; 	
 }
+require_once($real_root.'/includes/class.dbcustom.php');
+$dbCustom = new DbCustom();
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
 
 $progress = new SetupProgress;
 $module = new Module;
@@ -66,7 +65,7 @@ if(!isset($_SESSION['temp_istallation_link_fields']['local_url'])) $_SESSION['te
 
 
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php');
+require_once($real_root.'/manage/admin-includes/doc_header.php');
 ?>
 
 
@@ -218,7 +217,7 @@ function get_query_str(){
 		</div>
 		<div class="twocols">
         
-        <span><?php echo $ste_root."/"; ?></span>
+        <span><?php echo SITEROOT."//"; ?></span>
         <span>
         <input type="text" id="local_url" name="local_url" value="<?php echo $_SESSION['temp_istallation_link_fields']['local_url']; ?>">
         </span>
@@ -251,7 +250,7 @@ function get_query_str(){
 				echo "The current file for this link is: ".$uploaded_file_name;	
 			}
 				
-            $url_str = $ste_root."manage/cms/upload.php";
+            $url_str = SITEROOT."/manage/cms/upload.php";
             $url_str .= "?ret_page=edit-installation-link";
             $url_str .= "&ret_dir=pages";
             
@@ -276,7 +275,7 @@ function get_query_str(){
 
 <div class="savebar">
     <div style="float:left; margin-right:10px;">
-    	<a href="<?php echo $ste_root;?>/manage/cms/pages/installation.php" class="btn btn-large" style="width:100px;" target="_top"><i class="icon-arrow-left"></i> Cancel</a>
+    	<a href="<?php echo SITEROOT;?>/manage/cms/pages/installation.php" class="btn btn-large" style="width:100px;" target="_top"><i class="icon-arrow-left"></i> Cancel</a>
     </div>
     <div style="float:left;">
     	<button class="btn btn-large btn-success" name="edit_installation_link" type="submit"><i class="icon-ok icon-white"></i> Save Changes </button>

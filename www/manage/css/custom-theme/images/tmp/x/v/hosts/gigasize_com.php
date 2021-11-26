@@ -2,7 +2,7 @@
 
 class dl_gigasize_com extends Download {
 	
-	public function Login($user, $pass){
+	public function login($dbCustom,$user, $pass){
 		$data = $this->lib->curl("http://www.gigasize.com/signin", "", "email={$user}&password={$pass}");
 		return "{$this->lib->GetCookies($data)}";
 	}

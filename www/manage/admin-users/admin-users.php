@@ -1,5 +1,8 @@
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
+require_once($real_root.'/includes/class.dbcustom.php');
+$dbCustom = new DbCustom();
+
+if(strpos($_SERVER['REQUEST_URI'], 'solvitware/' )){ 
 
 require_once($_SERVER['DOCUMENT_ROOT']."/includes/class.order_fulfillment.php");
 
@@ -140,7 +143,7 @@ if(isset($_POST["unlock"])){
 unset($_SESSION['admin_access']);
 unset($_SESSION['paging']);
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php'); 
+require_once($real_root.'/manage/admin-includes/doc_header.php'); 
 ?>
 <script>
 $(document).ready(function() {
@@ -170,28 +173,28 @@ function show_msg(msg){
 </head>
 <body>
 <?php
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-header.php');
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-top-nav.php');
+	require_once($real_root.'/manage/admin-includes/manage-header.php');
+	require_once($real_root.'/manage/admin-includes/manage-top-nav.php');
 ?>
 <div class="manage_page_container">
 	<div class="manage_side_nav">
 		<?php 
-        require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-side-nav.php');
+        require_once($real_root.'/manage/admin-includes/manage-side-nav.php');
         ?>
 	</div>
 	<div class="manage_main">
 
 		<?php
-		require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/class.admin_bread_crumb.php");	
+		require_once($real_root."/manage/admin-includes/class.admin_bread_crumb.php");	
 		$bread_crumb = new AdminBreadCrumb;
 		$bread_crumb->reSet();
-		$bread_crumb->add("Administration", $ste_root."manage/general-admin/admin-landing.php");
+		$bread_crumb->add("Administration", SITEROOT."/manage/general-admin/admin-landing.php");
 		$bread_crumb->add("Admin Users", '');
         echo $bread_crumb->output();
 		
 		 
-        require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-content-top.php');
-        require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/admin-users-section-tabs.php');
+        require_once($real_root.'/manage/admin-includes/manage-content-top-category.php');
+        require_once($real_root.'/manage/admin-includes/admin-users-section-tabs.php');
 		
 		$sortby = (isset($_GET['sortby'])) ? trim($_GET['sortby']) : '';
 		$a_d = (isset($_GET['a_d'])) ? $_GET['a_d'] : 'a';
@@ -282,7 +285,7 @@ function show_msg(msg){
 
 ?>
 			<div class="data_table">
-            <?php require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/tablesort.php"); ?>
+            <?php require_once($real_root."/manage/admin-includes/tablesort.php"); ?>
 				<table cellpadding="10" cellspacing="0">
 					<thead>
 						<tr>

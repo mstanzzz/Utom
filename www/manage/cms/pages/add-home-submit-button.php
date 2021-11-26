@@ -12,7 +12,7 @@ $_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT'].'/otg-site';
 $_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT'];
 }
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
 
 $progress = new SetupProgress;
 $module = new Module;
@@ -24,7 +24,7 @@ $page_group = "home";
 
 $msg = (isset($_GET['msg'])) ? $_GET['msg'] : '';
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php');
+require_once($real_root.'/manage/admin-includes/doc_header.php');
 ?>
 
 </head>
@@ -97,7 +97,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php');
 
 <div class="savebar">
     <div style="float:left; margin-right:10px;">
-    	<a href="<?php echo $ste_root;?>/manage/cms/pages/home.php" class="btn btn-large" style="width:100px;" target="_top"><i class="icon-arrow-left"></i> Cancel</a>
+    	<a href="<?php echo SITEROOT;?>/manage/cms/pages/home.php" class="btn btn-large" style="width:100px;" target="_top"><i class="icon-arrow-left"></i> Cancel</a>
     </div>
     <div style="float:left;">
     	<button class="btn btn-large btn-success" name="add_home_submit_button" type="submit"><i class="icon-ok icon-white"></i> Save Changes </button>

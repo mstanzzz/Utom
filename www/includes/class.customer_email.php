@@ -18,12 +18,8 @@ class CustomerEmail {
 	   $this->profile_company = (isset($_SESSION['profile_company']))? $_SESSION['profile_company'] : 'us';
 	}
 	
-	function getDesignRequestCustEmailBody(){
-		
-		$dbCustom = new DbCustom();
+	function getDesignRequestCustEmailBody($dbCustom){
 		$db = $dbCustom->getDbConnect(SITE_N_DATABASE);
-		
-		
 		$sql = "SELECT to_cust_email_body
 				FROM design_email_content 
 				WHERE design_email_content_id = (SELECT MAX(design_email_content_id) 
@@ -36,7 +32,6 @@ class CustomerEmail {
 		}else{
 			$to_cust_email_body = '';
 		}
-		
 		if(trim($to_cust_email_body) == ''){
 			$to_cust_email_body = "Thank you for your design request with ".$this->profile_company.". 
 				Your designer is Pam. If you have any questions you may contact her at pam@closetstogo.com or call her toll free at ".$this->getCompanyPhone().".";
@@ -49,11 +44,7 @@ class CustomerEmail {
 		
 	}
 	
-	
-	
-	function getInHomeConsultCustEmailBody(){
-
-		$dbCustom = new DbCustom();
+	function getInHomeConsultCustEmailBody($dbCustom){
 		$db = $dbCustom->getDbConnect(SITE_N_DATABASE);
 		$sql = "SELECT content
 				FROM consult_email_content 
@@ -68,7 +59,6 @@ class CustomerEmail {
 		}else{
 			$content = '';
 		}
-		
 		if(trim($content) == ''){
 			$content = "Thank you for your in-home consultation request with ".$this->profile_company; 			
 			$content .= "Your request will be reviewed and a representative from Closets To Go will contact you shortly.";
@@ -78,16 +68,10 @@ class CustomerEmail {
 			$content .= "<br /><br />Closets To Go";
 			
 		}
-		
 		return $content;
-
-
 	}
 
-
-	function getCompanyPhone(){
-		
-		$dbCustom = new DbCustom();
+	function getCompanyPhone($dbCustom){
 		$db = $dbCustom->getDbConnect(SITE_N_DATABASE);
 		$sql = sprintf("SELECT phone
 						FROM company_info 

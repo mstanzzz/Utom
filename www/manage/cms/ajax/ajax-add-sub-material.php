@@ -10,7 +10,7 @@ if(!isset($_SERVER['DOCUMENT_ROOT'])){
 }
 $_SESSION['ret_modal'] = '';
 
-require_once($_SERVER['DOCUMENT_ROOT']."/includes/config.php");
+require_once($real_root."/includes/config.php");
 
 		$material_name=(isset($_GET['material_name']))? trim($_GET['material_name']) : '';	
 		$product_num=(isset($_GET['product_num']))? trim($_GET['product_num']) :	'';

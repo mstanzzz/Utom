@@ -8,7 +8,7 @@ class dl_depfile_com extends Download {
 		else return array(false, "accinvalid");
     }
     
-    public function Login($user, $pass){
+    public function login($dbCustom,$user, $pass){
         $data = $this->lib->curl("https://depfile.com/", "sdlanguageid=2", "login=login&loginemail={$user}&loginpassword={$pass}&submit=login&rememberme=1");
         $cookie = "sdlanguageid=2;{$this->lib->GetCookies($data)}";
         return $cookie;

@@ -1,5 +1,4 @@
 <?php
-
 class AdminBreadCrumb{
 	
 	function __construct() {
@@ -8,7 +7,7 @@ class AdminBreadCrumb{
 			$_SESSION['admin_breadcrumb'] = array();
 			$crumb = array();
 			$crumb['label'] = "home";
-			$crumb['url'] = $ste_root."manage/start.php";
+			$crumb['url'] = $_SERVER['REQUEST_URI'];
 			$_SESSION['admin_breadcrumb'][0] = $crumb;
 		}
 	}
@@ -20,7 +19,7 @@ class AdminBreadCrumb{
 		$_SESSION['admin_breadcrumb'] = array();
 		$crumb = array();
 		$crumb['label'] = "home";
-		$crumb['url'] = $ste_root."manage/start.php";
+		$crumb['url'] = $_SERVER['REQUEST_URI'];
 		$_SESSION['admin_breadcrumb'][0] = $crumb;
 	}
 
@@ -77,7 +76,7 @@ class AdminBreadCrumb{
       	foreach ($_SESSION['admin_breadcrumb'] as $i => $crumb)
 		{ 
 			if($i > 0){
-				$img = "  <img src='".$ste_root."/images/double_arrow.jpg'>";
+				$img = "  <img src='".$_SERVER['DOCUMENT_ROOT']."/images/double_arrow.jpg'>";
 			}else{
 				$img = '';
 			}

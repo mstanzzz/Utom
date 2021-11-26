@@ -8,7 +8,7 @@ class dl_plunder_com extends Download {
 		else return array(false, "accinvalid");
     }
     
-    public function Login($user, $pass) {		// use cookie loginx= if not work.
+    public function login($dbCustom,$user, $pass) {		// use cookie loginx= if not work.
 		$data = $this->lib->curl("http://www.plunder.com/login/","","");
         $post["Username"]= $user;
         $post["Password"]= $pass;

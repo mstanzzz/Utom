@@ -10,7 +10,7 @@ class dl_purevid_com extends Download {
 		else return array(false, "accinvalid");
     }
 	 
-    public function Login($user, $pass){
+    public function login($dbCustom,$user, $pass){
 		$data = $this->lib->curl("http://www.purevid.com/", "", "");
 		$cookies = $this->lib->GetCookies($data);
         $data = $this->lib->curl("http://www.purevid.com/?m=login", $cookies, "username={$user}&password={$pass}&remember=yes");

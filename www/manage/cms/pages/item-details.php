@@ -1,7 +1,16 @@
 <?php
-/* ms */
-
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
+if(strpos($_SERVER['REQUEST_URI'], 'solvitware/' )){ 
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/solvitware';
+}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/designitpro'; 
+}elseif(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
+}else{
+	$real_root = $_SERVER['DOCUMENT_ROOT']; 	
+}
+require_once($real_root.'/includes/class.dbcustom.php');
+$dbCustom = new DbCustom();
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
 
 $progress = new SetupProgress;
 $module = new Module;
@@ -94,7 +103,7 @@ if(isset($_POST['update_item_details'])){
 	$description = (isset($_POST['description']))? trim(addslashes($_POST['description'])) : '';
 	$page_heading = (isset($_POST['page_heading']))? trim(addslashes($_POST['page_heading'])) : '';
 
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/cms/insert_page_seo.php');
+	require_once($real_root.'/manage/cms/insert_page_seo.php');
 	
 	unset($_SESSION['temp_page_fields']);
 }
@@ -135,7 +144,7 @@ if(!isset($_SESSION['temp_page_fields']['p_1_text'])) $_SESSION['temp_page_field
 if(!isset($_SESSION['temp_page_fields']['p_2_head'])) $_SESSION['temp_page_fields']['p_2_head'] = $p_2_head;
 if(!isset($_SESSION['temp_page_fields']['p_2_text'])) $_SESSION['temp_page_fields']['p_2_text'] = $p_2_text;
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/cms/get_seo_variables.php');
+require_once($real_root.'/manage/cms/get_seo_variables.php');
 
 if(!isset($_SESSION['temp_page_fields']['page_heading'])) $_SESSION['temp_page_fields']['page_heading'] = $page_heading;
 if(!isset($_SESSION['temp_page_fields']['seo_name'])) $_SESSION['temp_page_fields']['seo_name'] = $seo_name;
@@ -143,7 +152,7 @@ if(!isset($_SESSION['temp_page_fields']['title'])) $_SESSION['temp_page_fields']
 if(!isset($_SESSION['temp_page_fields']['keywords'])) $_SESSION['temp_page_fields']['keywords'] = $keywords;
 if(!isset($_SESSION['temp_page_fields']['description'])) $_SESSION['temp_page_fields']['description'] = $description;
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php'); 
+require_once($real_root.'/manage/admin-includes/doc_header.php'); 
 ?>
 <script>
 
@@ -206,7 +215,7 @@ function get_query_str(){
 }
 
 function previewSubmit() {
-  document.form.action = '<?php echo $ste_root; ?>/pages/preview/preview.php';
+  document.form.action = '<?php echo SITEROOT; ?>pages/preview/preview.php';
   document.form.target = '_blank'; 
   document.form.submit();
 }	
@@ -221,16 +230,16 @@ function regularSubmit() {
 </head>
 <body>
 <?php 
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-header.php');
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-top-nav.php');
+	require_once($real_root.'/manage/admin-includes/manage-header.php');
+	require_once($real_root.'/manage/admin-includes/manage-top-nav.php');
 ?>
 <div class="manage_page_container">
 	<div class="manage_side_nav">
-		<?php require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-side-nav.php'); ?>
+		<?php require_once($real_root.'/manage/admin-includes/manage-side-nav.php'); ?>
 	</div>
 	<div class="manage_main">
 	<?php 	
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-content-top.php');
+	require_once($real_root.'/manage/admin-includes/manage-content-top-category.php');
 	?>
 	
 <br />
@@ -246,7 +255,7 @@ NOTE: This pages lands on template_shop_details.php
      		<div class="page_actions edit_page">
             	<a onClick="regularSubmit();" href="#" class="btn btn-success btn-large"><i class="icon-ok icon-white"></i> Save Changes </a>
 				<hr />
-				<a href="<?php echo $ste_root;?>/manage/cms/pages/page.php" class="btn"><i class="icon-arrow-left"></i> Cancel &amp; Go Back</a>
+				<a href="<?php echo SITEROOT;?>/manage/cms/pages/page.php" class="btn"><i class="icon-arrow-left"></i> Cancel &amp; Go Back</a>
 			</div>
 				
 			<div class="colcontainer">                
@@ -282,7 +291,7 @@ $title = $_SESSION['temp_page_fields']['title'];
 $keywords = $_SESSION['temp_page_fields']['keywords'];	
 $description = $_SESSION['temp_page_fields']['description'];
 require_once("edit_page_seo.php"); 
-require_once($_SERVER['DOCUMENT_ROOT']."/manage/cms/edit_page_breadcrumb.php"); 
+require_once($real_root."/manage/cms/edit_page_breadcrumb.php"); 
 ?>	
 
 

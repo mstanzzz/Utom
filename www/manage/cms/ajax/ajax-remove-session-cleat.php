@@ -9,7 +9,7 @@ if(!isset($_SERVER['DOCUMENT_ROOT'])){
 	}
 }
 
-require_once($_SERVER['DOCUMENT_ROOT']."/includes/config.php");
+require_once($real_root."/includes/config.php");
 
 $cleat_id = isset($_GET['cleat_id'])? $_GET['cleat_id'] : 0;
 

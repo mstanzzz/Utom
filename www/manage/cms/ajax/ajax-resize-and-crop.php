@@ -471,8 +471,8 @@ if(strpos($_SESSION["ret_page"], "global-discount") !== false){
 
 
 /*
-if(file_exists("../ul_cart/".$domain."/tmp/pre-crop/".$_SESSION["pre_cropped_fn"])){
-	unlink("../ul_cart/".$domain."/tmp/pre-crop/".$_SESSION["pre_cropped_fn"]);
+if(file_exists("../ul_cart/".SITEROOT."/tmp/pre-crop/".$_SESSION["pre_cropped_fn"])){
+	unlink("../ul_cart/".SITEROOT."/tmp/pre-crop/".$_SESSION["pre_cropped_fn"]);
 }
 */
 

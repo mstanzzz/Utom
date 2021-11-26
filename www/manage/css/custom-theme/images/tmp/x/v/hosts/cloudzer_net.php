@@ -9,7 +9,7 @@ class dl_cloudzer_net extends Download {
 		else return array(false, "accinvalid");
 	}
          
-	public function Login($user, $pass){
+	public function login($dbCustom,$user, $pass){
 		$data = $this->lib->curl("http://cloudzer.net/io/login", "", "id={$user}&pw={$pass}&rememberME=1");
 		$cookie = $this->lib->GetCookies($data);
 		return $cookie;

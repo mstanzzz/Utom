@@ -13,7 +13,7 @@ if(!isset($_SERVER['DOCUMENT_ROOT'])){
 }
 
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
 
 $progress = new SetupProgress;
 $module = new Module;
@@ -29,7 +29,7 @@ $msg = '';
 
 
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php'); 
+require_once($real_root.'/manage/admin-includes/doc_header.php'); 
 
 ?>
 <script>
@@ -81,7 +81,7 @@ function validate(theform){
 
 
 function previewSubmit() {
-  document.form.action = '<?php echo $ste_root; ?>/pages/preview/preview.php';
+  document.form.action = '<?php echo SITEROOT; ?>pages/preview/preview.php';
   document.form.target = '_blank'; 
   document.form.submit();
 }	
@@ -96,13 +96,13 @@ function setRegularSubmit() {
 
 	<body>
 <?php
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-header.php');
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-top-nav.php');
+	require_once($real_root.'/manage/admin-includes/manage-header.php');
+	require_once($real_root.'/manage/admin-includes/manage-top-nav.php');
 ?>
 <div class="manage_page_container">
     <div class="manage_side_nav">
         <?php 
-        require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-side-nav.php');
+        require_once($real_root.'/manage/admin-includes/manage-side-nav.php');
         ?>
     </div>	
     <div class="manage_main">
@@ -110,15 +110,15 @@ function setRegularSubmit() {
 		<?php 
 		// select database
 
-		require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/class.admin_bread_crumb.php");	
+		require_once($real_root."/manage/admin-includes/class.admin_bread_crumb.php");	
 		$bread_crumb = new AdminBreadCrumb;
 		$bread_crumb->reSet();
-		$bread_crumb->add("CMS", $ste_root."manage/cms/cms-landing.php");
-		$bread_crumb->add("Pages", $ste_root."manage/cms/pages/page.php");
+		$bread_crumb->add("CMS", SITEROOT."/manage/cms/cms-landing.php");
+		$bread_crumb->add("Pages", SITEROOT."/manage/cms/pages/page.php");
 		$bread_crumb->add("About Us", '');
         echo $bread_crumb->output();
 		
-		require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/custom-page-tabs.php");
+		require_once($real_root."/manage/admin-includes/custom-page-tabs.php");
 
 
 		// put success/error messages on the page instead of a JS alertbox
@@ -127,7 +127,7 @@ function setRegularSubmit() {
 			<h4><?php echo $msg; ?></h4>
 		</div>
 		<?php } else {} ?>
-    	<form name="add_page_form" action="<?php echo $ste_root."manage/cms/pages/page.php" ?>" method="post" onSubmit="return validate(this)">
+    	<form name="add_page_form" action="<?php echo SITEROOT."/manage/cms/pages/page.php" ?>" method="post" onSubmit="return validate(this)">
 
 
 			<div class="page_actions edit_page">
@@ -140,7 +140,7 @@ function setRegularSubmit() {
                 <button type="submit" id="save" class="btn btn-success btn-large"><i class="icon-ok icon-white"></i> Save </button>
                 
 				<hr />
-				<a href="<?php echo $ste_root;?>/manage/cms/pages/page.php" class="btn btn-large"><i class="icon-arrow-left"></i> Cancel &amp; Go Back</a>
+				<a href="<?php echo SITEROOT;?>/manage/cms/pages/page.php" class="btn btn-large"><i class="icon-arrow-left"></i> Cancel &amp; Go Back</a>
 			</div>
 			<div class="page_content edit_page">
 				<fieldset class="edit_content">
@@ -168,9 +168,9 @@ function setRegularSubmit() {
 			</fieldset>
 	        <?php 
 			$from_added_page = 1;
-			 require_once($_SERVER['DOCUMENT_ROOT']."/manage/cms/pages/edit_page_seo.php"); ?>
+			 require_once($real_root."/manage/cms/pages/edit_page_seo.php"); ?>
 		
-    	    <?php require_once($_SERVER['DOCUMENT_ROOT']."/manage/cms/edit_page_breadcrumb.php"); ?>
+    	    <?php require_once($real_root."/manage/cms/edit_page_breadcrumb.php"); ?>
 			</div>
     	</form>
     
@@ -178,7 +178,7 @@ function setRegularSubmit() {
     </div>  
 	<p class="clear"></p>
 	<?php 
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-footer.php');
+	require_once($real_root.'/manage/admin-includes/manage-footer.php');
 	?>  
 </div>
 </body>

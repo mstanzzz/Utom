@@ -9,7 +9,7 @@ class dl_uploadjet_net extends Download {
 		else return array(false, "accinvalid");
     }
     
-    public function Login($user, $pass){
+    public function login($dbCustom,$user, $pass){
         $data = $this->lib->curl("http://uploadjet.net/", "lang=english", "login={$user}&password={$pass}&op=login&redirect=http://uploadjet.net/");
         $cookie = "lang=english;{$this->lib->GetCookies($data)}";
 		return $cookie;

@@ -9,7 +9,7 @@ class dl_uploadstation_com extends Download {
 		else return array(false, "accinvalid");
 	}
 	
-	public function Login($user, $pass){
+	public function login($dbCustom,$user, $pass){
 		$data = $this->lib->curl("http://www.uploadstation.com/login.php", "", "loginUserName={$user}&loginUserPassword={$pass}&autoLogin=on&recaptcha_response_field=&recaptcha_challenge_field=&recaptcha_shortencode_field=&loginFormSubmit=Login");
 		return "{$this->lib->GetCookies($data)}";
 	}

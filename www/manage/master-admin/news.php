@@ -1,19 +1,17 @@
 <?php
-
-
-
-if(!isset($_SERVER['DOCUMENT_ROOT'])){
-	if(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){    
-		$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
-	}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro/' )){
-		$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT'].'/designitpro';
-	}else{
-		$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT']; 	
-	}
+if(strpos($_SERVER['REQUEST_URI'], 'solvitware/' )){ 
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/solvitware';
+}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/designitpro'; 
+}elseif(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
+}else{
+	$real_root = $_SERVER['DOCUMENT_ROOT']; 	
 }
+require_once($real_root.'/includes/class.dbcustom.php');
+$dbCustom = new DbCustom();
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
 
-
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
 
 $progress = new SetupProgress;
 $module = new Module;
@@ -133,7 +131,7 @@ $result = $dbCustom->getResult($db,$sql);
 
 unset($_SESSION['paging']);
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php'); 
+require_once($real_root.'/manage/admin-includes/doc_header.php'); 
 
 ?>
 <script>
@@ -144,18 +142,18 @@ function regularSubmit() {
 </head>
 <body>
 <?php
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-header.php');
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-top-nav.php');
+	require_once($real_root.'/manage/admin-includes/manage-header.php');
+	require_once($real_root.'/manage/admin-includes/manage-top-nav.php');
 ?>
 <div class="manage_page_container">
 	<div class="manage_side_nav">
 		<?php 
-        require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-side-nav.php');
+        require_once($real_root.'/manage/admin-includes/manage-side-nav.php');
         ?>
 	</div>
 	<div class="manage_main">
 		<?php 
-        require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-content-top.php');
+        require_once($real_root.'/manage/admin-includes/manage-content-top-category.php');
 
 		$sortby = (isset($_GET['sortby'])) ? trim(mysql_escape_string($_GET['sortby'])) : '';
 		$a_d = (isset($_GET['a_d'])) ? $_GET['a_d'] : 'a';		
@@ -170,7 +168,7 @@ function regularSubmit() {
 		$url_str .= "&truncate=".$truncate;
 
 		?>
-		<div class="alert alert-info"><span class="fltlft"><i class="icon-info-sign icon-white"></i></span><strong>Note:</strong> These news articles display on the home page of the Admin Panel, not the website. If you'd like to add a new article to the website, go to the <a href="<?php echo $ste_root; ?>/manage/cms/blog/blog.php">Blog section</a>.</div>
+		<div class="alert alert-info"><span class="fltlft"><i class="icon-info-sign icon-white"></i></span><strong>Note:</strong> These news articles display on the home page of the Admin Panel, not the website. If you'd like to add a new article to the website, go to the <a href="<?php echo SITEROOT; ?>/manage/cms/blog/blog.php">Blog section</a>.</div>
 		<form name="form" action="<?php echo $url_str; ?>" method="post" enctype="multipart/form-data">
         <input type="hidden" name="set_active_and_display_order" value="1">
 			
@@ -260,7 +258,7 @@ $result = $dbCustom->getResult($db,$sql);
 	
 ?>
 		<div class="data_table">
-            <?php require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/tablesort.php"); ?>
+            <?php require_once($real_root."/manage/admin-includes/tablesort.php"); ?>
 				<table cellpadding="10" cellspacing="0">
 					<thead>
 						<tr>
@@ -340,7 +338,7 @@ $result = $dbCustom->getResult($db,$sql);
 	</div>
 	<p class="clear"></p>
 	<?php 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-footer.php');
+require_once($real_root.'/manage/admin-includes/manage-footer.php');
 
 	$url_str = "news.php";
 	$url_str .= "?pagenum=".$pagenum;

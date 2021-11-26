@@ -15,11 +15,11 @@ if(!isset($_SERVER['DOCUMENT_ROOT'])){
 
 unset($_SESSION['global_url_word']);
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
 
-require_once($_SERVER['DOCUMENT_ROOT']."/includes/class.store_data.php");
+require_once($real_root."/includes/class.store_data.php");
 
-require_once($_SERVER['DOCUMENT_ROOT']."/includes/class.nav.php");
+require_once($real_root."/includes/class.nav.php");
 
 $nav = new Nav;
 
@@ -53,7 +53,7 @@ function loadBrandsWithPaging($brand_id, $name){
 		$brand_name = getBrandName($brand_id);
 		$temp = $nav->getItemUrl($item['seo_url'], $item['name'], $item['profile_item_id'], $brand_name, 'shop', $item['hide_id_from_url']);
 		
-		$t[] = str_replace($ste_root, '', $temp);
+		$t[] = str_replace(SITEROOT, '', $temp);
 		//$t[] = '/'.$_SESSION['global_url_word'].'/'.$item['seo_url'].'/product.html?itemId='.$item['item_id'];	
 		
 	}
@@ -289,7 +289,7 @@ function loadItemsPerCat($cat_id, $show_in = 'cart', $price_bottom = 0, $price_t
 
 			$brand_name = getBrandName($val['brand_id']);
 			$temp = $nav->getItemUrl($val['seo_url'], $val['name'], $val['profile_item_id'], $brand_name, 'shop', $val['hide_id_from_url']);
-			$t[] = str_replace($ste_root, '', $temp);
+			$t[] = str_replace(SITEROOT, '', $temp);
 
 			$ch_tmp_array = getChildItemData($val['item_id']);
 			foreach($ch_tmp_array as $ch_tmp_v){
@@ -298,7 +298,7 @@ function loadItemsPerCat($cat_id, $show_in = 'cart', $price_bottom = 0, $price_t
 							
 				$brand_name = getBrandName($ch_tmp_v['brand_id']);
 				$temp = $nav->getItemUrl($ch_tmp_v['seo_url'], $ch_tmp_v['name'], $ch_tmp_v['profile_item_id'], $brand_name, 'shop', $ch_tmp_v['hide_id_from_url']);
-				$t[] = str_replace($ste_root, '', $temp);
+				$t[] = str_replace(SITEROOT, '', $temp);
 				
 				//echo "<br />";
 				//echo "<br />";				
@@ -312,7 +312,7 @@ function loadItemsPerCat($cat_id, $show_in = 'cart', $price_bottom = 0, $price_t
 		$long_array = $store_data->getItemDataFromCat($cat_id, $price_bottom, $price_top, 'showroom');
 		foreach($long_array as $val) {
 			$temp = $nav->getItemUrl($val['seo_url'], $val['name'], $val['profile_item_id'], '', 'showroom', $val['hide_id_from_url']);
-			$t[] = str_replace($ste_root, '', $temp);
+			$t[] = str_replace(SITEROOT, '', $temp);
 		
 		}
 		
@@ -321,7 +321,7 @@ function loadItemsPerCat($cat_id, $show_in = 'cart', $price_bottom = 0, $price_t
 		$long_array = $store_data->getItemDataFromCat($cat_id, $price_bottom, $price_top, 'showroom');
 		foreach($long_array as $val) {
 			$temp = $nav->getItemUrl($val['seo_url'], $val['name'], $val['profile_item_id'], '', 'showroom', $val['hide_id_from_url']);
-			$t[] = str_replace($ste_root, '', $temp);			
+			$t[] = str_replace(SITEROOT, '', $temp);			
 					
 		}
 	}
@@ -342,7 +342,7 @@ function getNumPages($total_count,$page_rows){
 if(isset($_GET['action'])){
 
 
-	require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/class.xml.sitemap.generator-modified.php");
+	require_once($real_root."/manage/admin-includes/class.xml.sitemap.generator-modified.php");
 
 	$url_array = array();
 
@@ -359,7 +359,7 @@ if(isset($_GET['action'])){
     foreach($navbar_labels as $navbar_label_v){
 
 		$t = $navbar_label_v['url'];
-		$url_array[] = str_replace($ste_root,'',$t);
+		$url_array[] = str_replace(SITEROOT,'',$t);
 		
 	}
 
@@ -375,7 +375,7 @@ if(isset($_GET['action'])){
 		}
 */
 
-		$top_cats =  $nav->getTopCats();
+		$top_cats =  $nav->getTopCats($dbCustom,);
 			
 		foreach($top_cats as $top_cat_val){	
 
@@ -385,7 +385,7 @@ if(isset($_GET['action'])){
 				$temp = $nav->getCatUrl($top_cat_val['name'], $top_cat_val['profile_cat_id'], 'shop');
 			}
 
-			$url_array[] = str_replace($ste_root, '', $temp);
+			$url_array[] = str_replace(SITEROOT, '', $temp);
 				
 			if(count($top_cat_val['child_array']) > 0){
 				
@@ -399,7 +399,7 @@ if(isset($_GET['action'])){
 						$temp = $nav->getCatUrl($child_cat_val['name'], $child_cat_val['profile_cat_id'], 'shop');
 					}
 						
-					$url_array[] = str_replace($ste_root, '', $temp);
+					$url_array[] = str_replace(SITEROOT, '', $temp);
 				}	
 			}				
 
@@ -484,20 +484,20 @@ if(isset($_GET['action'])){
 								
 				
 				$temp = $nav->getCatUrl($row->name, $row->profile_cat_id, 'shop');
-				$t[] = str_replace($ste_root, '', $temp);
+				$t[] = str_replace(SITEROOT, '', $temp);
 				
 				
 				$t = array_merge($t,loadItemsPerCat($row->cat_id, 'cart'));
 
 				$temp = $nav->getCatUrl($row->name, $row->profile_cat_id, 'showroom');
-				$t[] = str_replace($ste_root, '', $temp);
+				$t[] = str_replace(SITEROOT, '', $temp);
 				$t = array_merge($t,loadItemsPerCat($row->cat_id, 'showroom'));
 			
 			}elseif($destination == 'cart'){
 				$url_array = array_merge($url_array,loadCatsWithPaging($row->cat_id, 'cart'));
 					//$url_array = array_merge($url_array,loadBreadCrumbUrls($row->seo_list, 'cart'));
 				$temp = $nav->getCatUrl($row->name, $row->profile_cat_id, 'shop');
-				$t[] = str_replace($ste_root, '', $temp);
+				$t[] = str_replace(SITEROOT, '', $temp);
 		
 				$t = array_merge($t,loadItemsPerCat($row->cat_id, 'cart'));
 
@@ -506,7 +506,7 @@ if(isset($_GET['action'])){
 				$url_array = array_merge($url_array,loadCatsWithPaging($row->cat_id, 'showroom'));
 				
 				$temp = $nav->getCatUrl($row->name, $row->profile_cat_id, 'showroom');
-				$t[] = str_replace($ste_root, '', $temp);
+				$t[] = str_replace(SITEROOT, '', $temp);
 				$t = array_merge($t,loadItemsPerCat($row->cat_id, 'showroom'));
 				
 			}
@@ -613,7 +613,7 @@ foreach($final_array as $url){
 echo "count:".count($url_array);
 echo "<br />";
 foreach($url_array as $k => $v){
-	echo $k."   <a href='".$ste_root.$v."' target='_blank'>".$v."</a>";
+	echo $k."   <a href='".SITEROOT.$v."' target='_blank'>".$v."</a>";
 	echo "<br />";	
 }
 
@@ -663,7 +663,7 @@ foreach($url_array as $k => $v){
 
 		$entries[] = new xml_sitemap_entry($url, '0.5', 'daily');
 		
-		//echo $j."   <a href='".$ste_root.$url."' target='_blank'>".$url."</a>";
+		//echo $j."   <a href='".SITEROOT.$url."' target='_blank'>".$url."</a>";
 		//echo "<br />";
 		
 		if($i % 1000 == 0){
@@ -676,10 +676,10 @@ foreach($url_array as $k => $v){
 			$conf = new xml_sitemap_generator_config;
 			$file_name = 'sitemap'.$file_num.$file_ext;
 
-			if(substr_count($domain,'.') > 1){	
-				$conf->setDomain($domain);				
+			if(substr_count(SITEROOT,'.') > 1){	
+				$conf->setDomain(SITEROOT);				
 			}else{
-				$conf->setDomain('www.'.$domain);
+				$conf->setDomain('www.'.SITEROOT);
 			}
 			$conf->setPath($path);
 			$conf->setFilename($file_name);
@@ -696,10 +696,10 @@ foreach($url_array as $k => $v){
 	if(isset($entries)){
 		$file_name = 'sitemap'.$file_num.$file_ext;
 		$conf = new xml_sitemap_generator_config;
-		if(substr_count($domain,'.') > 1){	
-			$conf->setDomain($domain);				
+		if(substr_count(SITEROOT,'.') > 1){	
+			$conf->setDomain(SITEROOT);				
 		}else{
-			$conf->setDomain('www.'.$domain);
+			$conf->setDomain('www.'.SITEROOT);
 		}
 		$conf->setPath($path);
 		$conf->setFilename($file_name);
@@ -724,10 +724,10 @@ foreach($url_array as $k => $v){
 	if(isset($entries)){
 		$conf = new xml_sitemap_generator_config;
 		$file_name = 'sitemap'.$file_ext;
-		if(substr_count($domain,'.') > 1){	
-			$conf->setDomain($domain);				
+		if(substr_count(SITEROOT,'.') > 1){	
+			$conf->setDomain(SITEROOT);				
 		}else{
-			$conf->setDomain('www.'.$domain);
+			$conf->setDomain('www.'.SITEROOT);
 		}
 		$conf->setPath($path);
 		$conf->setFilename($file_name);
@@ -741,7 +741,7 @@ foreach($url_array as $k => $v){
 
 }
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php'); 
+require_once($real_root.'/manage/admin-includes/doc_header.php'); 
 
 ?>
 
@@ -795,15 +795,15 @@ $(document).ready(function() {
 <body>
 
 <?php
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-header.php');
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-top-nav.php');
+	require_once($real_root.'/manage/admin-includes/manage-header.php');
+	require_once($real_root.'/manage/admin-includes/manage-top-nav.php');
 
 
 ?>
 <div class="manage_page_container">
 	<div class="manage_side_nav">
 		<?php 
-        require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-side-nav.php');
+        require_once($real_root.'/manage/admin-includes/manage-side-nav.php');
         ?>
 	</div>
 	<div class="manage_main">
@@ -811,17 +811,17 @@ $(document).ready(function() {
 
 
     	<?php 
-		require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/class.admin_bread_crumb.php");	
+		require_once($real_root."/manage/admin-includes/class.admin_bread_crumb.php");	
 		$bread_crumb = new AdminBreadCrumb;
 		$bread_crumb->reSet();
-		$bread_crumb->add("CMS", $ste_root."manage/cms/cms-landing.php");
+		$bread_crumb->add("CMS", SITEROOT."manage/cms/cms-landing.php");
 		$bread_crumb->add("Site Map Generator", '');
         echo $bread_crumb->output();
 		
-        require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-content-top.php');
+        require_once($real_root.'/manage/admin-includes/manage-content-top-category.php');
         
 		//SEO section tabbed sub-navigation
-        require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/seo-section-tabs.php");
+        require_once($real_root."/manage/admin-includes/seo-section-tabs.php");
         $db = $dbCustom->getDbConnect(SITE_N_DATABASE);
 		
 
@@ -852,7 +852,7 @@ $(document).ready(function() {
 		<br /><br /><br />
         
         
-            <p style="visibility:hidden" id="inprogress"> <img id="inprogress_img" src="<?php echo $ste_root; ?>/images/progress.gif"> Please Wait... </p>
+            <p style="visibility:hidden" id="inprogress"> <img id="inprogress_img" src="<?php echo SITEROOT; ?>/images/progress.gif"> Please Wait... </p>
 
         
         
@@ -885,7 +885,7 @@ $(document).ready(function() {
         
     <p class="clear"></p>
 	<?php 
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-footer.php');
+	require_once($real_root.'/manage/admin-includes/manage-footer.php');
 	?>
 </div>
 </body>

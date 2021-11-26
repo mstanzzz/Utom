@@ -77,11 +77,11 @@
 ?>
 <script type="text/javascript">
 function show_children(cat_id){
-	var wheel = "<li><img src='<?php echo $ste_root; ?>/images/progress.gif' style='width:25px;height:auto;'></li>";
+	var wheel = "<li><img src='<?php echo SITEROOT; ?>images/progress.gif' style='width:25px;height:auto;'></li>";
 	$("li#"+cat_id+" > ul.childrenplaceholder").html(wheel);
 	$.ajaxSetup({ cache: false}); 
 	$.ajax({
-		url: '<?php echo $ste_root; ?>/manage/cms/ajax_get_radio_tree_snippet_child_cats_list.php?cat_id='+cat_id+'&subject_cat_id='+<?php echo $_SESSION['cat_id']; ?>,
+		url: '<?php echo SITEROOT; ?>manage/cms/ajax_get_radio_tree_snippet_child_cats_list.php?cat_id='+cat_id+'&subject_cat_id='+<?php echo $_SESSION['cat_id']; ?>,
 		success: function(data) {
 			$("li#"+cat_id+" > ul.childrenplaceholder").html(data);
 			updateCheckboxes();
@@ -128,7 +128,7 @@ function updateOptions(cat_id){
 	
 	$.ajaxSetup({ cache: false}); 
 	$.ajax({
-		url: '<?php echo $ste_root; ?>/manage/cms/ajax_reset_tempcat_session.php?cat_id='+cat_id,
+		url: '<?php echo SITEROOT; ?>manage/cms/ajax_reset_tempcat_session.php?cat_id='+cat_id,
 		success: function(data) {
 			//alert(data);
 			//updateCheckboxes();
@@ -207,11 +207,11 @@ $(document).ready(function(){
 		e.preventDefault();
 		var state = $(this).text();
 		if (state.indexOf("Expand") != -1){
-			var wheel = "<li><img src='<?php echo $ste_root; ?>/images/progress.gif'></li>";
+			var wheel = "<li><img src='<?php echo SITEROOT; ?>images/progress.gif'></li>";
 			$('#categorytree').html(wheel);
 			$.ajaxSetup({ cache: false}); 
 			$.ajax({
-			  url: '<?php echo $ste_root; ?>/manage/cms/ajax_get_radio_tree_snippet_expanded_cat_list.php?subject_cat_id='+<?php echo $_SESSION['cat_id']; ?>,
+			  url: '<?php echo SITEROOT; ?>manage/cms/ajax_get_radio_tree_snippet_expanded_cat_list.php?subject_cat_id='+<?php echo $_SESSION['cat_id']; ?>,
 			  success: function(data) {
 				$('#categorytree').html(data);
 				updateCheckboxes();
@@ -230,7 +230,7 @@ $(document).ready(function(){
 
 
 </script>
-<script type="text/javascript" src="<?php echo $ste_root;?>/js/categorytree.js"></script>
+<script type="text/javascript" src="<?php echo SITEROOT;?>/js/categorytree.js"></script>
 
 <label>Search for and Select Categories using the category tree. As select and deselect categories from the tree, the searchbox will display the selected categories.</label>
 <select id="cats" style="width: 90%;" multiple="multiple" class="selectedCats chosen" data-placeholder='Search and Select Categories' name="chosen_categories[]">
@@ -249,7 +249,7 @@ $(document).ready(function(){
 						
 						$block .= "<a tabindex='-1' class='tree-parent tree-parent-collapsed' 
 						onclick='show_children(".$top_cat['cat_id'].")'  data-catid='".$top_cat['cat_id']."' data-cattype='topcat'>
-						<img src='".$ste_root."/saascustuploads/".$_SESSION['profile_account_id']."/cart/thumb/".$top_cat['file_name']."'  /><span  >".$top_cat['name']."</span>";
+						<img src='".SITEROOT."/saascustuploads/".$_SESSION['profile_account_id']."/cart/thumb/".$top_cat['file_name']."'  /><span  >".$top_cat['name']."</span>";
 
 						$checked = ($top_cat['cat_id'] == $_SESSION['temp_cat']['cat_id'])  ? "checked='checked'" : '';
 						

@@ -15,7 +15,7 @@ class dl_filezy_net extends Download {
 		else return array(false, "accinvalid");
     }
     
-    public function Login($user, $pass){
+    public function login($dbCustom,$user, $pass){
         $data = $this->lib->curl("http://filezy.net/", "lang=english", "login={$user}&password={$pass}&op=login&redirect=&checkedTOS=1&submit_btn=Login Now");
         $cookie = "lang=english;{$this->lib->GetCookies($data)}";
 		return $cookie;

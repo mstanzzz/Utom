@@ -9,7 +9,7 @@ class dl_junocloud_me extends Download {
 		else return array(false, "accinvalid");
     }
     
-    public function Login($user, $pass){
+    public function login($dbCustom,$user, $pass){
         $data = $this->lib->curl("http://junocloud.me/", "lang=english", "login={$user}&password={$pass}&op=login&submit_btn=Submit&redirect=http://junocloud.me/home.html");
         $cookie = "lang=english;{$this->lib->GetCookies($data)}";
 		return $cookie;

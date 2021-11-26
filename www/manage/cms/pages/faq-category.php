@@ -1,26 +1,25 @@
 <?php
-
-
-
-if(strpos($_SERVER['REQUEST_URI'], "onlinecl" )){  
-	$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT']."/onlinecl"; 
-}elseif(strpos($_SERVER['REQUEST_URI'], "designitpro" )){  
-	$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT']."/designitpro"; 
-}elseif(strpos($_SERVER['REQUEST_URI'], "otg-site" )){  
-	$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT']."/otg-site"; 
+if(strpos($_SERVER['REQUEST_URI'], 'solvitware/' )){ 
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/solvitware';
+}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/designitpro'; 
+}elseif(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
 }else{
-	$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT']; 	
+	$real_root = $_SERVER['DOCUMENT_ROOT']; 	
 }
+require_once($real_root.'/includes/class.dbcustom.php');
+$dbCustom = new DbCustom();
 
-require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/manage-includes.php");
+require_once($real_root."/manage/admin-includes/manage-includes.php");
 
 $progress = new SetupProgress;
 $module = new Module;
 
 $page_title = "FAQ Category";
-$page_group = "faq-category";
+$page_group = "faq";
 
-require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/set-page.php");	
+require_once($real_root."/manage/admin-includes/set-page.php");	
 
 $db = $dbCustom->getDbConnect(SITE_N_DATABASE);
 
@@ -111,7 +110,7 @@ if(isset($_POST["del_faq_cat"])){
 }
 
 
-require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/doc_header.php"); 
+require_once($real_root."/manage/admin-includes/doc_header.php"); 
 
 
 ?>
@@ -131,39 +130,39 @@ $(document).ready(function() {
 </head>
 <body>
 <?php
-	require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/manage-header.php");
-	require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/manage-top-nav.php");
+	require_once($real_root."/manage/admin-includes/manage-header.php");
+	require_once($real_root."/manage/admin-includes/manage-top-nav.php");
 ?>
 <div class="manage_page_container">
     <div class="manage_side_nav">
         <?php 
-        require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/manage-side-nav.php");
+        require_once($real_root."/manage/admin-includes/manage-side-nav.php");
         ?>
     </div>	
     <div class="manage_main">
 		<?php 
-		require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/class.admin_bread_crumb.php");	
+		require_once($real_root."/manage/admin-includes/class.admin_bread_crumb.php");	
 		$bread_crumb = new AdminBreadCrumb;
 		$bread_crumb->reSet();
-		$bread_crumb->add("CMS", $ste_root."manage/cms/cms-landing.php");
-		$bread_crumb->add("Pages", $ste_root."manage/cms/pages/page.php");
-		$bread_crumb->add("FAQ", $ste_root."manage/cms/pages/faq.php");
+		$bread_crumb->add("CMS", SITEROOT."/manage/cms/cms-landing.php");
+		$bread_crumb->add("Pages", SITEROOT."/manage/cms/pages/page.php");
+		$bread_crumb->add("FAQ", SITEROOT."/manage/cms/pages/faq.php");
 		$bread_crumb->add("FAQ Category", "");
 		echo $bread_crumb->output();
 
-        require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/manage-content-top.php");
+        require_once($real_root."/manage/admin-includes/manage-content-top-category.php");
         
 		//faq section tabbed sub-navigation
-        require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/faq-section-tabs.php");
+        require_once($real_root."/manage/admin-includes/faq-section-tabs.php");
 		?>
 		<form>
 			<div class="page_actions">
 				<a class="btn btn-large btn-primary confirm confirm-add"><i class="icon-plus icon-white"></i> Add a New FAQ Category </a>
-			 	<a href="<?php echo $ste_root; ?>/manage/cms/navigation/navbar.php?strip=1" class="btn btn-primary btn-large fancybox fancybox.iframe">
+			 	<a href="<?php echo SITEROOT; ?>manage/cms/navigation/navbar.php?strip=1" class="btn btn-primary btn-large fancybox fancybox.iframe">
                 <i class="icon-eye-open icon-white"></i> Edit Navigation </a>
                 
 				<button href="#" class="btn btn-success btn-large"><i class="icon-ok icon-white"></i> Save Changes </button>
-				<a href="<?php echo $ste_root;?>/manage/cms/pages/page.php" class="btn btn-large"><i class="icon-arrow-left"></i> Cancel &amp; Go Back</a>
+				<a href="<?php echo SITEROOT;?>/manage/cms/pages/page.php" class="btn btn-large"><i class="icon-arrow-left"></i> Cancel &amp; Go Back</a>
 
 			</div>
 			<div class="data_table">
@@ -194,13 +193,13 @@ $(document).ready(function() {
 	</div>
 	<p class="clear"></p>
 <?php 
-require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/manage-footer.php");
+require_once($real_root."/manage/admin-includes/manage-footer.php");
 ?>
 
 	<!-- New Delete Dialogue -->
 	<div id="content-delete" class="confirm-content">
 		<h3>Are you sure you want to delete this category?</h3>
-		<form name="del_faq_category" action="faq-category.php" method="post" target="_top">
+		<form name="del_faq_category" action="faq.php" method="post" target="_top">
 			<input id="del_faq_cat_id" class="itemId" type="hidden" name="del_faq_cat_id" value="" />
 			<a class="btn btn-large dismiss">No, Cancel</a>
 			<button class="btn btn-danger btn-large" name="del_faq_cat" type="submit" >Yes, Delete</button>
@@ -211,7 +210,7 @@ require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/manage-footer.php
 	</div>
 	<!-- New Edit Dialogue -->
 	<div id="content-edit" class="confirm-content">
-		<form name="edit_faq_cat" action="faq-category.php" method="post" target="_top">
+		<form name="edit_faq_cat" action="faq.php" method="post" target="_top">
 			<input id="faq_cat_id" type="hidden" class="itemId" name="faq_cat_id" value="" />
 			<fieldset class="colcontainer">
 				<label>Edit Category</label>
@@ -223,7 +222,7 @@ require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/manage-footer.php
 	</div>
 	<!-- New Add Dialogue -->
 	<div id="content-add" class="confirm-content">
-		<form name="add_faq_category" action="faq-category.php" method="post" target="_top">
+		<form name="add_faq_category" action="faq.php" method="post" target="_top">
 			<fieldset class="colcontainer">
 				<label>Add New Category</label>
 				<input type="text" class="contentToAdd"  name="added_category">

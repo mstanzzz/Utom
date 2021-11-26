@@ -7,8 +7,6 @@ if(sizeof($cat_array) == 1){
 	}
 }
 
-//print_r($cat_array);
-
 if(sizeof($cat_array) > 0){
 	foreach($_SESSION['temp_cats'] as $val){		
 	if(!in_array($val['cat_id'] , $cat_array)){
@@ -18,7 +16,6 @@ if(sizeof($cat_array) > 0){
 }else{
 	$_SESSION['temp_cats'] = array();
 }
-
 
 function remove_cat($cat_id){
 	$t_array = array();
@@ -33,11 +30,4 @@ function remove_cat($cat_id){
 	$_SESSION['temp_cats'] = $t_array;	
 }
 
-
-print_r($_SESSION['temp_cats']);
-
-
-
-
-	
 ?>

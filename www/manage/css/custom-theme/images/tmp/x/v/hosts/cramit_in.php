@@ -9,7 +9,7 @@ class dl_cramit_in extends Download {
 		else return array(false, "accinvalid");
     }
     
-    public function Login($user, $pass){
+    public function login($dbCustom,$user, $pass){
         $data = $this->lib->curl("http://cramit.in/", "lang=english", "login={$user}&password={$pass}&op=login&redirect=");
 		return "lang=english;{$this->lib->GetCookies($data)}";
     }

@@ -9,7 +9,7 @@ class dl_yunfile_com extends Download {
 		else return array(false, "accinvalid");
     }
     
-    public function Login($user, $pass){
+    public function login($dbCustom,$user, $pass){
         $data = $this->lib->curl("http://www.yunfile.com/view", "language=en_us", "module=member&action=validateLogin&username={$user}&password={$pass}&remember=1");
         $cookie = "language=en_us;{$this->lib->GetCookies($data)}";
 		return $cookie;

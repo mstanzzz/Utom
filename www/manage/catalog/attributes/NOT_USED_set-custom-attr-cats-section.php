@@ -17,7 +17,7 @@ if(!isset($_SERVER['DOCUMENT_ROOT'])){
 	}
 }
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
 
 
 $db = $dbCustom->getDbConnect(CART_DATABASE);
@@ -67,12 +67,12 @@ $db = $dbCustom->getDbConnect(CART_DATABASE);
 
 
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php'); 
+require_once($real_root.'/manage/admin-includes/doc_header.php'); 
 
 ?>
 
 
-<script type="text/javascript" src="<?php echo $ste_root; ?>/js/categorytree.js"></script>
+<script type="text/javascript" src="<?php echo SITEROOT; ?>js/categorytree.js"></script>
 
 
 
@@ -86,7 +86,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php');
 /*
 
 function show_children(cat_id){
-	var wheel = "<li><img src='<?php echo $ste_root; ?>/images/progress.gif' style='width:25px;height:auto;'></li>";
+	var wheel = "<li><img src='<?php echo SITEROOT; ?>images/progress.gif' style='width:25px;height:auto;'></li>";
 	$("li#"+cat_id+" > ul.childrenplaceholder").html(wheel);
 
 	$.ajaxSetup({ cache: false}); 
@@ -179,7 +179,7 @@ $(document).ready(function(){
 		
 		var state = $(this).text();
 		if (state.indexOf("Expand") != -1){
-			var wheel = "<div><img src='<?php echo $ste_root; ?>/images/progress.gif'></div>";
+			var wheel = "<div><img src='<?php echo SITEROOT; ?>images/progress.gif'></div>";
 			$('#categorytree').html(wheel);
 			
 			$.ajaxSetup({ cache: false}); 
@@ -233,7 +233,7 @@ $(document).ready(function(){
 								
 								$block .= "<a tabindex='-1' class='tree-parent' onclick='show_children(".$top_cat['cat_id'].")'"; 
 								
-								$block .= "data-imageurl='".$ste_root."/saascustuploads/".$_SESSION['profile_account_id']."/cart/small/".$top_cat['file_name']."'"; 
+								$block .= "data-imageurl='".SITEROOT."/saascustuploads/".$_SESSION['profile_account_id']."/cart/small/".$top_cat['file_name']."'"; 
 								
 								$block .= "data-catid='".$top_cat['cat_id']."' data-cattype='topcat'>".stripslashes($top_cat['name'])."</a>";
 								

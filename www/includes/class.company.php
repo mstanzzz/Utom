@@ -2,46 +2,41 @@
 class Company {
 	
 	
-	function getCompanyBasicInfo()
+	function getCompanyBasicInfo($dbCustom)
 	{
 		unset($_SESSION["company_basic_info"]);
-		if(!isset($_SESSION['company_basic_info'])){
-	
-			$_SESSION['company_basic_info'] = array();	
-			$dbCustom = new DbCustom();	
+		if(!isset($_SESSION['company_basic_info']))
+			$_SESSION['company_basic_info']['company'] = "Closets To Go";
+			$_SESSION['company_basic_info']['phone'] = "1-888-312-7424";	
+		
 			$db = $dbCustom->getDbConnect(USER_DATABASE);
 			$sql = "SELECT company
 						,phone
 					FROM profile_account
-					WHERE profile_account_id = '".$_SESSION['profile_account_id']."'";
+					WHERE id = '".$_SESSION['profile_account_id']."'";
 			$result = $dbCustom->getResult($db,$sql);
 			if($result->num_rows > 0){
 				$object = $result->fetch_object();
 				$_SESSION['company_basic_info']['company'] = $object->company;
-				$_SESSION['company_basic_info']['phone'] = $object->phone;				
+				$_SESSION['company_basic_info']['phone'] = $object->phone;	
+				return $_SESSION['company_basic_info'];		
 			}
-		}
-		return $_SESSION['company_basic_info'];		
+		return '';		
 	}	
 
 
-	function getCompanyDisplayInfo()
+	function getCompanyDisplayInfo($dbCustom)
 	{
 		unset($_SESSION["company_display_info"]);
 		if(!isset($_SESSION['company_basic_info'])){
-	
 			$_SESSION['company_display_info'] = array();	
-			$dbCustom = new DbCustom();	
-
 			$db = $dbCustom->getDbConnect(SITE_N_DATABASE);
 			$sql = "SELECT *
 					FROM company_info
 					WHERE profile_account_id = '".$_SESSION['profile_account_id']."'";
-			$result = $dbCustom->getResult($db,$sql);			
-			
+			$result = $dbCustom->getResult($db,$sql);						
 			if($result->num_rows){
 				$object = $result->fetch_object();	
-				
 				$_SESSION['company_display_info']['company_phone'] = $object->phone;
 				$_SESSION['company_display_info']['company_fax'] = $object->fax;
 				$_SESSION['company_display_info']['days'] = $object->days;

@@ -1,6 +1,25 @@
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
-require_once($_SERVER['DOCUMENT_ROOT'].'/includes/class.shipping.php');
+if(strpos($_SERVER['REQUEST_URI'], 'solvitware/' )){ 
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/solvitware';
+}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/designitpro'; 
+}elseif(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
+}else{
+	$real_root = $_SERVER['DOCUMENT_ROOT']; 	
+}
+
+require_once($real_root.'/includes/class.dbcustom.php');
+$dbCustom = new DbCustom();
+
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
+require_once($real_root.'/includes/class.shipping.php');
+
+
+
+echo "Future options";
+exit;
+
 
 $shipping = new Shipping;
 
@@ -55,10 +74,10 @@ if(isset($_POST['del_custom_measurements_id'])){
 
 
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/class.admin_bread_crumb.php');	
+require_once($real_root.'/manage/admin-includes/class.admin_bread_crumb.php');	
 $bread_crumb = new AdminBreadCrumb;
 //$bread_crumb->reSet();
-//$bread_crumb->add("Product Catalog", $ste_root."manage/catalog/catalog-landing.php");
+//$bread_crumb->add("Product Catalog", SITEROOT."/manage/catalog/catalog-landing.php");
 
 $bc_parent_cat_id = 0;
 $bc_seo_name = '';
@@ -68,7 +87,7 @@ $db = $dbCustom->getDbConnect(CART_DATABASE);
 
 
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php'); 
+require_once($real_root.'/manage/admin-includes/doc_header.php'); 
 
 
 ?>
@@ -90,8 +109,8 @@ function regularSubmit() {
 
 <body>
 <?php
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-header.php');
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-top-nav.php');
+	require_once($real_root.'/manage/admin-includes/manage-header.php');
+	require_once($real_root.'/manage/admin-includes/manage-top-nav.php');
 	
 	
 ?>
@@ -99,17 +118,17 @@ function regularSubmit() {
 <div class="manage_page_container">
     <div class="manage_side_nav">
         <?php 
-        require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-side-nav.php');
+        require_once($real_root.'/manage/admin-includes/manage-side-nav.php');
         ?>
     </div>	
     <div class="manage_main">
 		<?php 
 		
 		$bread_crumb->prune($page_title);
-		$bread_crumb->add($page_title, $ste_root.$_SERVER['REQUEST_URI']);
+		$bread_crumb->add($page_title, SITEROOT.$_SERVER['REQUEST_URI']);
 		echo $bread_crumb->output();
 		
-        require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-content-top.php');
+        require_once($real_root.'/manage/admin-includes/manage-content-top-category.php');
 
 		$db = $dbCustom->getDbConnect(CART_DATABASE);
 
@@ -252,7 +271,7 @@ function regularSubmit() {
 					}
 					 ?>
 				</div>
-				<?php require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/tablesort.php"); ?>		
+				<?php require_once($real_root."/manage/admin-includes/tablesort.php"); ?>		
             	<table cellpadding="10" cellspacing="0">
 					<thead>
 						<tr>
@@ -337,7 +356,7 @@ function regularSubmit() {
   </div>
   <p class="clear"></p>
   <?php 
-    require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-footer.php');
+    require_once($real_root.'/manage/admin-includes/manage-footer.php');
 	$url_str= "custom-measurements.php";
 	$url_str.= "?pagenum=".$pagenum;
 	$url_str.= "&sortby=".$sortby;

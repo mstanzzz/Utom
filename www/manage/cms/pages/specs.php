@@ -1,5 +1,17 @@
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
+if(strpos($_SERVER['REQUEST_URI'], 'solvitware/' )){ 
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/solvitware';
+}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/designitpro'; 
+}elseif(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
+}else{
+	$real_root = $_SERVER['DOCUMENT_ROOT']; 	
+}
+require_once($real_root.'/includes/class.dbcustom.php');
+$dbCustom = new DbCustom();
+
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
 
 $progress = new SetupProgress;
 $module = new Module;
@@ -8,7 +20,7 @@ $page_title = "Specs";
 $page_group = "specs";
 $page = "specs";
 
-$db = $dbCustom->getDbConnect(SITE_N_DATABASE);
+$db = $dbCustom->getDbConnect(CART_DATABASE);
 
 $msg = (isset($_GET['msg'])) ? $_GET['msg'] : '';
 
@@ -19,44 +31,58 @@ $specs_content_id = (isset($_GET['specs_content_id'])) ? $_GET['specs_content_id
 if($specs_content_id > 0) $_SESSION['specs_content_id'] = $specs_content_id;
 
 if($_SESSION['specs_content_id'] == 0){
-	$_SESSION['specs_content_id'] = get_max_specs_content_id();
+	$_SESSION['specs_content_id'] = get_max_specs_content_id($dbCustom);
 }
+
+
+function get_svg_icon_spec($dbCustom, $spec_cat_id){
+
+	$db = $dbCustom->getDbConnect(CART_DATABASE);
+	$sql = "SELECT svg_code
+			FROM svg, spec_category
+			WHERE svg.svg_id = spec_category.svg_id 
+			AND spec_category.spec_cat_id = '".$spec_cat_id."'";
+	$re = $dbCustom->getResult($db,$sql);
+	if($re->num_rows > 0){
+		$object = $re->fetch_object();
+		return $object->svg_code;		
+		
+	}
+	return  '';
+}
+
 
 
 if(isset($_POST["specs_content_id"])){
 	$specs_content_id = (isset($_POST['specs_content_id']))? $_POST['specs_content_id'] : 0;
 	if($specs_content_id > 0) $_SESSION['specs_content_id'] = $specs_content_id;
 	if($_SESSION['specs_content_id'] == 0){
-		$_SESSION['specs_content_id'] = get_max_specs_content_id();
+		$_SESSION['specs_content_id'] = get_max_specs_content_id($dbCustom);
 	}
 
-	$p_1_text = (isset($_POST['p_1_text']))? trim(addslashes($_POST['p_1_text'])) : '';
-	$p_2_text = (isset($_POST['p_2_text']))? trim(addslashes($_POST['p_2_text'])) : '';
-
-	//$img_id = (isset($_POST['img_id']))? $_POST['img_id'] : 0;
-	//if(!is_numeric($img_id)) $img_id = 0;
+	$content = (isset($_POST['content']))? trim(addslashes($_POST['content'])) : '';
+	
+	$img_id = (isset($_POST['img_id']))? $_POST['img_id'] : 0;
+	if(!is_numeric($img_id)) $img_id = 0;
 	
 	$svg_id = (isset($_POST['svg_id']))? $_POST['svg_id'] : 0;
 	if(!is_numeric($svg_id)) $svg_id = 0;
 	
-	
-	
 	$sql = sprintf("UPDATE specs_content 
-					SET p_1_text = '%s'
-						,p_2_text = '%s'
-						,svg_id = '%u'
+					SET content = '%s'
 					WHERE specs_content_id = '%u'", 
-	$p_1_text, $p_2_text, $img_id, $_SESSION['specs_content_id']);
+	$content, $_SESSION['specs_content_id']);
 	$result = $dbCustom->getResult($db,$sql);
 		
 
-	//require_once($_SERVER['DOCUMENT_ROOT']."/manage/cms/insert_page_breadcrumb.php");
+	//require_once($real_root."/manage/cms/insert_page_breadcrumb.php");
 
 	$msg = "Your change is now live.";
 
+	require_once($real_root."/manage/cms/insert_page_seo.php");
+
 	
 }
-
 
 
 
@@ -67,17 +93,13 @@ if(isset($_POST['add_spec'])){
 	$description = (isset($_POST['description']))? trim(addslashes($_POST['description'])) : '';
 	$spec_details = (isset($_POST['spec_details']))? trim(addslashes($_POST['spec_details'])) : '';
 
-	$svg_id = (isset($_POST['svg_id']))? $_POST['svg_id'] : 0;
-	if(!is_numeric($svg_id)) $svg_id = 0;
-	
-	//$spec_cat_id = (isset($_POST['img_id']))? $_POST['spec_cat_id'] : 0;	
-	//$img_id = (isset($_POST['img_id']))? $_POST['img_id'] : 0;
-	//if(!is_numeric($spec_cat_id)) $spec_cat_id = 0;	
-	
+	$spec_cat_id = (isset($_POST['spec_cat_id']))? $_POST['spec_cat_id'] : 0;
+	if(!is_numeric($spec_cat_id)) $spec_cat_id = 0;
+	$db = $dbCustom->getDbConnect(CART_DATABASE);
 	$sql = sprintf("INSERT INTO spec 
-					(name, description, spec_details, svg_id, profile_account_id) 
+					(name, description, spec_details, spec_cat_id, profile_account_id) 
 					VALUES ('%s','%s','%s','%u','%u')", 
-	$name, $description, $spec_details, $svg_id, $_SESSION['profile_account_id']);
+	$name, $description, $spec_details, $spec_cat_id, $_SESSION['profile_account_id']);
 	$result = $dbCustom->getResult($db,$sql);	
 
 	$msg = "Your change is live.";
@@ -92,21 +114,17 @@ if(isset($_POST['update_spec'])){
 	$description = isset($_POST['description']) ? trim(addslashes($_POST['description'])) : '';
 	$spec_details = (isset($_POST['spec_details']))? trim(addslashes($_POST['spec_details'])) : '';
 	$spec_id = (isset($_POST['spec_id']))? $_POST['spec_id'] : 0;
-	$svg_id = (isset($_POST['svg_id']))? $_POST['svg_id'] : 0;
-
-	//$spec_cat_id = (isset($_POST['img_id']))? $_POST['spec_cat_id'] : 0;
-	//$img_id = (isset($_POST['img_id']))? $_POST['img_id'] : 0;
-	//if(!is_numeric($spec_cat_id)) $spec_cat_id = 0;
-	//if(!is_numeric($img_id)) $img_id = 0;
+	$spec_cat_id = (isset($_POST['spec_cat_id']))? $_POST['spec_cat_id'] : 0;
 	
-	if(!is_numeric($spec_id)) $spec_id = 0;	
-	if(!is_numeric($svg_id)) $svg_id = 0;
+	if(!is_numeric($spec_cat_id)) $spec_cat_id = 0;	
+	if(!is_numeric($spec_id)) $spec_id = 0;
+	$db = $dbCustom->getDbConnect(CART_DATABASE);
 
 	$sql = "UPDATE spec 
 			SET name = '".$name."'
 				,description = '".$description."'
 				,spec_details = '".$spec_details."'			
-				,svg_id = '".$svg_id."'
+				,spec_cat_id = '".$spec_cat_id."'
 			WHERE spec_id = '".$spec_id."'";
 	$result = $dbCustom->getResult($db,$sql);
 
@@ -118,17 +136,17 @@ if(isset($_POST['update_spec'])){
 if(isset($_POST["del_spec"])){
 	
 	$spec_id = $_POST["del_spec_id"];
+	$db = $dbCustom->getDbConnect(CART_DATABASE);
 	$sql = sprintf("DELETE FROM spec 
 					WHERE spec_id = '%u'", $spec_id);
 	$result = $dbCustom->getResult($db,$sql);
-
 	$msg = "Item Deleted.";
 }
 
 unset($_SESSION['temp_page_fields']);
 unset($_SESSION['spec_id']);
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php'); 
+require_once($real_root.'/manage/admin-includes/doc_header.php'); 
 
 ?>
 <script>
@@ -144,39 +162,35 @@ function regularSubmit() {
 
 <body>
 <?php
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-header.php');
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-top-nav.php');
+	require_once($real_root.'/manage/admin-includes/manage-header.php');
+	require_once($real_root.'/manage/admin-includes/manage-top-nav.php');
 ?>
 <div class="manage_page_container">
 	<div class="manage_side_nav">
 		<?php 
-        require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-side-nav.php');
+        require_once($real_root.'/manage/admin-includes/manage-side-nav.php');
         ?>
 	</div>
 	<div class="manage_main">
 		<?php 
-        require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/specs-section-tabs.php");
-
-
+        require_once($real_root."/manage/admin-includes/specs-section-tabs.php");
 		?>
 			<div class="page_actions"> 
             
             <!--  fancybox fancybox.iframe -->
             	<a class="btn btn-large btn-primary" href="add-spec.php?firstload=1">
 				<i class="icon-plus icon-white"></i> Add a New Spec </a> 
-			 	<a href="<?php echo $ste_root; ?>/manage/cms/navigation/navbar.php?strip=1" class="btn btn-primary btn-large fancybox fancybox.iframe">
+			 	<a href="<?php echo SITEROOT; ?>manage/cms/navigation/navbar.php?strip=1" class="btn btn-primary btn-large fancybox fancybox.iframe">
                 <i class="icon-eye-open icon-white"></i> Edit Navigation </a>
 
             	<!--<a onClick="previewSubmit();" href="#" class="btn btn-primary btn-large"><i class="icon-eye-open icon-white"></i> Preview </a>-->
 
-            	<a href="<?php echo $ste_root;?>/manage/cms/pages/page.php" class="btn btn-large">
+            	<a href="<?php echo SITEROOT;?>/manage/cms/pages/page.php" class="btn btn-large">
             	<i class="icon-arrow-left"></i> Cancel &amp; Go Back</a> 
 
 			</div>
-
-
 <?php
-			$db = $dbCustom->getDbConnect(SITE_N_DATABASE);        
+	$db = $dbCustom->getDbConnect(CART_DATABASE);
 
 			$sortby = (isset($_GET['sortby'])) ? trim(mysql_escape_string($_GET['sortby'])) : '';
 			$a_d = (isset($_GET['a_d'])) ? $_GET['a_d'] : 'a';
@@ -189,8 +203,8 @@ function regularSubmit() {
 			$sql = "SELECT spec.name
 						,spec.description 
 						,spec.spec_details
-						,spec.svg_id
 						,spec.spec_id
+						,spec.spec_cat_id
 					FROM spec
 					WHERE spec.profile_account_id = '".$_SESSION['profile_account_id']."'";		
 			if(isset($_POST["product_search"])){
@@ -198,7 +212,6 @@ function regularSubmit() {
 				$sql .= " AND (name like '%".$search_str."%' || name like '%".$search_str."%')";
 			}
 							
-			$db = $dbCustom->getDbConnect(SITE_N_DATABASE);
 			$nmx_res = $dbCustom->getResult($db,$sql);
 			
 			$total_rows = $nmx_res->num_rows;
@@ -233,7 +246,6 @@ function regularSubmit() {
 				$sql .= " ORDER BY name".$limit;					
 			}
 				
-			$db = $dbCustom->getDbConnect(SITE_N_DATABASE);
 			$result = $dbCustom->getResult($db,$sql);			
 			
 			if($total_rows > $rows_per_page){
@@ -258,14 +270,13 @@ function regularSubmit() {
 					while($row = $result->fetch_object()) {
 						$block = "<tr>";
 					
-						$sql = "SELECT svg_code FROM svg WHERE svg_id = '".$row->svg_id."'";
-						$img_res = $dbCustom->getResult($db,$sql);
+					
+					$svg_code = get_svg_icon_spec($dbCustom,$row->spec_cat_id);
 										
 						$block .= "<td>";		
-						if($img_res->num_rows){
-							$img_obj = $img_res->fetch_object();						
-							$block .= stripslashes($img_obj->svg_code); 
-						}
+						
+						$block .= $svg_code; 
+
 						$block .= "</td>";
 						
 						$block .= "<td>".stripslashes($row->name)."</td>";
@@ -293,7 +304,7 @@ function regularSubmit() {
 	</div>
 	<p class="clear"></p>
 	<?php 
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-footer.php');
+	require_once($real_root.'/manage/admin-includes/manage-footer.php');
 	?>
 </div>
 

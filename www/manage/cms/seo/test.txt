@@ -111,8 +111,8 @@ RewriteRule ^lb/([^/\.]+)?$ lightbox.php?slug=$1 [QSA,L]
 
 
 
-RewriteRule ^([^/\.]+)/catalog/([0-9]+)/?$ template_showroom.php?seo=$1&slug=showroom-sub-category&sr_cat_id=$2 [L]
-RewriteRule ^([^/\.]+)/catalog/([^/\.]+)/([0-9]+)/?$ template_showroom.php?seo=$1&slug=showroom-sub-category&cat_name=$2&sr_cat_id=$3 [L]
+RewriteRule ^([^/\.]+)/catalog/([0-9]+)/?$ template_showroom.php?seo=$1&slug=showroom-sub&sr_cat_id=$2 [L]
+RewriteRule ^([^/\.]+)/catalog/([^/\.]+)/([0-9]+)/?$ template_showroom.php?seo=$1&slug=showroom-sub&cat_name=$2&sr_cat_id=$3 [L]
 RewriteRule ^([^/\.]+)/catalog.html?$ template_showroom.php?seo=$1&slug=showroom-main [L]
 RewriteRule ^([^/\.]+)/blog-cat/([0-9]+)/?$ template_default.php?seo=$1&slug=$1&blog-cat=$2 [L]
 RewriteRule ^([^/\.]+)/news.html$ template_default.php?seo=$1&type=news [L]

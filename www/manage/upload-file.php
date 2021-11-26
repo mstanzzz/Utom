@@ -1,16 +1,18 @@
 <?php
 ini_set('max_execution_time', 300);
-if(!isset($_SERVER['DOCUMENT_ROOT'])){
-	if(strpos($_SERVER['REQUEST_URI'], '/www/dashboard/' )){    
-		$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT'].'/www/dashboard'; 
-	}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro/' )){
-		$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT'].'/designitpro';
-	}else{
-		$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT']; 	
-	}
+if(strpos($_SERVER['REQUEST_URI'], 'solvitware/' )){ 
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/solvitware';
+}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/designitpro'; 
+}elseif(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
+}else{
+	$real_root = $_SERVER['DOCUMENT_ROOT']; 	
 }
+require_once($real_root.'/includes/class.dbcustom.php');
+$dbCustom = new DbCustom();
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/includes/config.php');
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
 
 if(isset($_GET['ret_path'])) $_SESSION['ret_path'] = $_GET['ret_path'];
 if(isset($_GET['ret_page'])) $_SESSION['ret_page'] = $_GET['ret_page'];
@@ -113,7 +115,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 		$_FILES['uploadedfile']['name'] = str_replace('.jpeg', '.jpg', $_FILES['uploadedfile']['name']); 				
 	}
 		
-	require_once($_SERVER['DOCUMENT_ROOT'].'/includes/class.upload.php');	
+	require_once($real_root.'/includes/class.upload.php');	
 	
 	$handle = new Upload($_FILES['uploadedfile']);
 	
@@ -282,7 +284,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 	
 	
 	
-	//header('Location: '.$ste_root."manage/".$_SESSION['ret_path'].".php?img_id=".$_SESSION["img_id"]);
+	//header('Location: '.SITEROOT."/manage/".$_SESSION['ret_path'].".php?img_id=".$_SESSION["img_id"]);
 	
 	header('Location: '.$_SESSION['ret_path'].'?img_id='.$_SESSION['img_id']);	
 		

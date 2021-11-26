@@ -1,19 +1,16 @@
 <?php
-
-
-
-if(!isset($_SERVER['DOCUMENT_ROOT'])){
-	if(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){    
-		$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
-	}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro/' )){
-		$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT'].'/designitpro';
-	}else{
-		$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT']; 	
-	}
+if(strpos($_SERVER['REQUEST_URI'], 'solvitware/' )){ 
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/solvitware';
+}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/designitpro'; 
+}elseif(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
+}else{
+	$real_root = $_SERVER['DOCUMENT_ROOT']; 	
 }
-
-
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
+require_once($real_root.'/includes/class.dbcustom.php');
+$dbCustom = new DbCustom();
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
 
 $progress = new SetupProgress;
 $module = new Module;
@@ -58,7 +55,7 @@ if(isset($_POST['send_request'])){
 		
 		$object = $result->fetch_object();
 		$company = $object->company;
-		$domain_name = $object->domain_name;
+		SITEROOT_name = $object->domain_name;
 		$email = $object->email;
 		$phone = $object->phone;
 
@@ -77,7 +74,7 @@ if(isset($_POST['send_request'])){
 		$message .= "<div style='float:left; padding-left:12px; text-align:left;'>$company</div>";
 		$message .= "<div style='clear:both;'></div>";
 		$message .= "<div style='float:left; width:140px; text-align:right;'>Domain Name:</div>";
-		$message .= "<div style='float:left; padding-left:12px; text-align:left;'>$domain_name</div>";
+		$message .= "<div style='float:left; padding-left:12px; text-align:left;'>SITEROOT_name</div>";
 		$message .= "<div style='clear:both;'></div>";
 		$message .= "<div style='float:left; width:140px; text-align:right;'>Email:</div>";
 		$message .= "<div style='float:left; padding-left:12px; text-align:left;'>$email</div>";
@@ -120,7 +117,7 @@ if(isset($_POST['send_request'])){
 	}
 
 		
-	$url = $ste_root.'/manage/start.php';	
+	$url = SITEROOT.'/manage/start.php';	
 
 	header('Location: '.$url);
 
@@ -130,7 +127,7 @@ if(isset($_POST['send_request'])){
 
 
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php'); 
+require_once($real_root.'/manage/admin-includes/doc_header.php'); 
 
 
 ?>
@@ -194,25 +191,25 @@ tinyMCE.init({
 </head>
 <body>
 <?php
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-header.php');
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-top-nav.php');
+	require_once($real_root.'/manage/admin-includes/manage-header.php');
+	require_once($real_root.'/manage/admin-includes/manage-top-nav.php');
 ?>
 <div class="manage_page_container">
 	<div class="manage_side_nav">
 		<?php 
-        require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-side-nav.php');
+        require_once($real_root.'/manage/admin-includes/manage-side-nav.php');
         ?>
 	</div>
 	<div class="manage_main">
 		<?php 
-        require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/class.admin_bread_crumb.php");	
+        require_once($real_root."/manage/admin-includes/class.admin_bread_crumb.php");	
 		$bread_crumb = new AdminBreadCrumb;
 		$bread_crumb->reSet();
-		$bread_crumb->add("Administration", $ste_root."manage/general-admin/admin-landing.php");
+		$bread_crumb->add("Administration", SITEROOT."manage/general-admin/admin-landing.php");
 		$bread_crumb->add("Addon Change Request", '');
         echo $bread_crumb->output();
 		
-        require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-content-top.php');
+        require_once($real_root.'/manage/admin-includes/manage-content-top-category.php');
 		?>
 		<form name="edit_addons_form" action="add-on-change-request.php " method="post" onSubmit="return validate(this);">
             
@@ -266,7 +263,7 @@ tinyMCE.init({
 	</div>
 	<p class="clear"></p>
 	<?php 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-footer.php');
+require_once($real_root.'/manage/admin-includes/manage-footer.php');
 ?>
 </div>
 </body>

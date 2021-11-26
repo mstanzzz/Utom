@@ -9,6 +9,7 @@ if(strpos($_SERVER['REQUEST_URI'], 'solvitware/' )){
 	$real_root = $_SERVER['DOCUMENT_ROOT']; 	
 }
 
+
 require_once($real_root.'/includes/class.dbcustom.php');
 $dbCustom = new DbCustom();
 
@@ -23,6 +24,7 @@ require_once($real_root.'/includes/class.seo.php');
 require_once($real_root.'/includes/class.company.php');
 $_SESSION['no_order_refreash'] = 0;
 
+$seo = new Seo;
 $lgn = new CustomerLogin;
 $store_data = new StoreData;
 $cart = new ShoppingCart($dbCustom);
@@ -68,9 +70,23 @@ if(isset($_POST['reg_name'])){
 $ret_page =  (isset($_GET['ret_page'])) ? $_GET['ret_page'] : 'home';
 $slug = (isset($_GET['slug'])) ? $_GET['slug'] : 'home';
 $page = $slug;
+
+$seo->setMeta($slug);
+
+
+
+echo "slug: ".$slug;
+echo "<br />";
+echo "title: ".$seo->title;
+echo "page_name: ".$seo->page_name;
+echo "<br />";
+echo "keywords: ".$seo->keywords;
+echo "<br />";
+echo "description: ".$seo->description;
+echo "<br />";
+//print_r($seo);
 require_once($real_root."/pages/controllers/".$page.".php"); 
 require_once($real_root."/pages/views/".$page.".php"); 	
-
 
 if($page != 'design-request'){
 ?>
@@ -235,6 +251,41 @@ function show_logged_out_menu(){
     $('.js-account-logout').siblings('.account-menu-hidden').css('display', 'none');
 	$('.js-account-logout').parents('.js-account-wrap').find('.dropdown-toggle.account').removeClass('login');
     $('.js-account-logout').parents('.js-account-wrap').find('.account-name').css('display', 'none');
+}
+
+
+function click_item_count(item_id){
+	
+	alert(item_id);
+	
+	//	click_count = 	click_count+1
+	var url_str = "<?php echo SITEROOT; ?>ajax/ajax-click-item.php?item_id="+item_id;
+	$.ajaxSetup({ cache: false}); 
+	$.ajax({
+		url: url_str,
+		success: function(data) {	
+			alert(data);
+						
+		}
+	});
+
+}
+function click_cat_count(cat_id){
+	
+	alert(cat_id);
+	
+	//	click_count = 	click_count+1
+	/*
+	var url_str = "<?php echo SITEROOT; ?>ajax/ajax-click-cat.php?cat_id="+cat_id;
+	$.ajaxSetup({ cache: false}); 
+	$.ajax({
+		url: url_str,
+		success: function(data) {	
+			alert(data);
+						
+		}
+	});
+	*/
 }
 
 <?php

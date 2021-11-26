@@ -9,7 +9,7 @@ if(!isset($_SERVER['DOCUMENT_ROOT'])){
 	}
 }
 
-require_once($_SERVER['DOCUMENT_ROOT']."/includes/config.php");
+require_once($real_root."/includes/config.php");
 
 $qty_calc_param_id = isset($_GET['qty_calc_param_id'])? $_GET['qty_calc_param_id'] : 0;
 $list_number = isset($_GET['list_number'])? $_GET['list_number'] : 0;

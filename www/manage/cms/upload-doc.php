@@ -8,7 +8,7 @@ if(!isset($_SERVER['DOCUMENT_ROOT'])){
 		$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT']; 	
 	}
 }
-require_once($_SERVER['DOCUMENT_ROOT']."/includes/config.php"); 
+require_once($real_root."/includes/config.php"); 
 
 $msg = '';
 
@@ -94,7 +94,7 @@ require_once("../admin-includes/doc_header.php");
 <div class="manage_page_container">
 	<div class="manage_side_nav">
 		<?php 
-        //require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-side-nav.php');
+        //require_once($real_root.'/manage/admin-includes/manage-side-nav.php');
         ?>
 	</div>
 	<div class="manage_main">
@@ -116,14 +116,14 @@ require_once("../admin-includes/doc_header.php");
                 <div class="center">
                 
                 <?php
-                    $url_str = $ste_root.'/manage/cms/select-doc.php';		
+                    $url_str = SITEROOT.'/manage/cms/select-doc.php';		
                 ?>            
                 
                 
                 <a class="btn btn-large" 
                 href="<?php echo $url_str; ?>" target='_top'>Cancel</a> </div>
                 
-                <div class="loadinggif" id="inprogress"><img id="inprogress_img" src="<?php echo $ste_root; ?>/images/progress.gif">
+                <div class="loadinggif" id="inprogress"><img id="inprogress_img" src="<?php echo SITEROOT; ?>images/progress.gif">
                     <p>Please Wait...</p>
                 </div>
             

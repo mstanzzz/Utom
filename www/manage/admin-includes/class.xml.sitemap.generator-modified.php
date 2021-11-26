@@ -47,9 +47,9 @@ class xml_sitemap_generator_config
         }
     }
 
-    public function setDomain($domain)
+    public function setDomain(SITEROOT)
     {
-        $this->_domain = trim($domain);
+        $this->_domain = trim(SITEROOT);
         return $this;
     }
 

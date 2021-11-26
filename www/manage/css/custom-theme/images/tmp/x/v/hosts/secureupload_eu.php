@@ -9,7 +9,7 @@ class dl_secureupload_eu extends Download {
 		else return array(false, "accinvalid");
     }
     
-    public function Login($user, $pass){
+    public function login($dbCustom,$user, $pass){
         $data = $this->lib->curl("http://www.secureupload.eu/", "lang=english", "login={$user}&password={$pass}&op=login&redirect=http://www.secureupload.eu/account.html");
         $cookie = "lang=english;{$this->lib->GetCookies($data)}";
 		return $cookie;

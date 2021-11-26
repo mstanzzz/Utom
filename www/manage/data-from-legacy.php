@@ -12,7 +12,7 @@ if(!isset($_SERVER['DOCUMENT_ROOT'])){
 	}
 }
 
-//require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
+//require_once($real_root.'/manage/admin-includes/manage-includes.php');
 
 date_default_timezone_set('America/Vancouver');
 
@@ -825,8 +825,8 @@ while($row = $result->fetch_object()){
 		
 		
 		
-		$from = $_SERVER['DOCUMENT_ROOT']."/ul_cart/".$domain."/cart/cat/".$object->file_name;
-		$to = $_SERVER['DOCUMENT_ROOT']."/ul_cart/".$domain."/cart/cat/".$new_file_name;	
+		$from = $_SERVER['DOCUMENT_ROOT']."/ul_cart/".SITEROOT."/cart/cat/".$object->file_name;
+		$to = $_SERVER['DOCUMENT_ROOT']."/ul_cart/".SITEROOT."/cart/cat/".$new_file_name;	
 		if(file_exists($from)){
 			//rename($from , $to);
 			
@@ -834,23 +834,23 @@ while($row = $result->fetch_object()){
 		
 		
 		/*
-		$p = $_SERVER['DOCUMENT_ROOT']."/ul_cart/".$domain."/cart/details/".$object->file_name;
+		$p = $_SERVER['DOCUMENT_ROOT']."/ul_cart/".SITEROOT."/cart/details/".$object->file_name;
 		if(file_exists($p)) unlink($p);
-		$p = $_SERVER['DOCUMENT_ROOT']."/ul_cart/".$domain."/cart/details_large/".$object->file_name;
+		$p = $_SERVER['DOCUMENT_ROOT']."/ul_cart/".SITEROOT."/cart/details_large/".$object->file_name;
 		if(file_exists($p)) unlink($p);
-		$p = $_SERVER['DOCUMENT_ROOT']."/ul_cart/".$domain."/cart/details_med/".$object->file_name;
+		$p = $_SERVER['DOCUMENT_ROOT']."/ul_cart/".SITEROOT."/cart/details_med/".$object->file_name;
 		if(file_exists($p)) unlink($p);
-		$p = $_SERVER['DOCUMENT_ROOT']."/ul_cart/".$domain."/cart/grid/".$object->file_name;
+		$p = $_SERVER['DOCUMENT_ROOT']."/ul_cart/".SITEROOT."/cart/grid/".$object->file_name;
 		if(file_exists($p)) unlink($p);
-		$p = $_SERVER['DOCUMENT_ROOT']."/ul_cart/".$domain."/cart/landing/".$object->file_name;
+		$p = $_SERVER['DOCUMENT_ROOT']."/ul_cart/".SITEROOT."/cart/landing/".$object->file_name;
 		if(file_exists($p)) unlink($p);
-		$p = $_SERVER['DOCUMENT_ROOT']."/ul_cart/".$domain."/cart/like/".$object->file_name;
+		$p = $_SERVER['DOCUMENT_ROOT']."/ul_cart/".SITEROOT."/cart/like/".$object->file_name;
 		if(file_exists($p)) unlink($p);
-		$p = $_SERVER['DOCUMENT_ROOT']."/ul_cart/".$domain."/cart/list/".$object->file_name;
+		$p = $_SERVER['DOCUMENT_ROOT']."/ul_cart/".SITEROOT."/cart/list/".$object->file_name;
 		if(file_exists($p)) unlink($p);
-		$p = $_SERVER['DOCUMENT_ROOT']."/ul_cart/".$domain."/cart/promo/".$object->file_name;
+		$p = $_SERVER['DOCUMENT_ROOT']."/ul_cart/".SITEROOT."/cart/promo/".$object->file_name;
 		if(file_exists($p)) unlink($p);
-		$p = $_SERVER['DOCUMENT_ROOT']."/ul_cart/".$domain."/cart/tiny/".$object->file_name;
+		$p = $_SERVER['DOCUMENT_ROOT']."/ul_cart/".SITEROOT."/cart/tiny/".$object->file_name;
 		if(file_exists($p)) unlink($p);
 		*/
 		
@@ -1470,7 +1470,7 @@ $result = $dbCustom->getResult($db,$sql);
 //reSetAllItemSeoUrlAndListGlobal();
 
 
-//require_once($_SERVER['DOCUMENT_ROOT']."/includes/class.seo.php");
+//require_once($real_root."/includes/class.seo.php");
 //$seo = new Seo;
 
 //$seo->setMeta('shop', 1);

@@ -9,7 +9,7 @@ class dl_mixshared_com extends Download {
 		else return array(false, "accinvalid");
     }
     
-    public function Login($user, $pass){
+    public function login($dbCustom,$user, $pass){
         $data = $this->lib->curl("http://mixshared.com/", "lang=english", "login={$user}&password={$pass}&op=login&redirect=http://mixshared.com/plugin-status.html");
         $cookie = "lang=english;{$this->lib->GetCookies($data)}";
 		return $cookie;

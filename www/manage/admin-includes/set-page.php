@@ -4,7 +4,7 @@
 
 //echo $parts[count($parts) - 1];
 //echo in_array("manage",$parts); 
-//echo substr($ste_root,strrpos($ste_root,$ste_root)+1);
+//echo substr(SITEROOT,strrpos(SITEROOT,SITEROOT)+1);
 //int strrpos ( string $haystack , string $needle [, int $offset = 0 ] )
 //echo $_SERVER["SCRIPT_NAME"];
 //echo $_SERVER["HTTP_HOST"];
@@ -145,27 +145,27 @@ $bc_download_id = (isset($_GET['download_id'])) ? $_GET['download_id'] : 0;
 $bc_page_seo_id = (isset($_GET['page_seo_id'])) ? $_GET['page_seo_id'] : 0;
 $bc_added_page_id = (isset($_GET['added_page_id'])) ? $_GET['added_page_id'] : 0;
 $bc_ret_page = (isset($_GET['ret_page'])) ? $_GET['ret_page'] : 0;
-if($bread_crumb->crumb_count() > 8) $bread_crumb->reSet("start", $ste_root."manage/start.php");	
+if($bread_crumb->crumb_count() > 8) $bread_crumb->reSet("start", SITEROOT."/manage/start.php");	
 if($page_title == "start"){
-	$bread_crumb->reSet($page_title, $ste_root."manage/start.php");	
+	$bread_crumb->reSet($page_title, SITEROOT."/manage/start.php");	
 }elseif($admin_section == "cart"){
-	$cart_url = $ste_root."/".$manage_dir."/".$current_page;
+	$cart_url = SITEROOT."/".$manage_dir."/".$current_page;
 	$cart_url .= "?parent_cat_id=".$bc_parent_cat_id."&cat_id=".$bc_cat_id;
 	$cart_url .= "&item_id=".$bc_item_id."&cat_id=".$bc_cat_id;
 	$cart_url .= "&top_cat_id=".$bc_top_cat_id."&banner_id=".$bc_banner_id;
 	$bread_crumb->add($page_title, $cart_url);
 	$bread_crumb->prune($page_title);
 }elseif($admin_section == "order-management"){
-	if(getProfileType() == "master"){
-		$bread_crumb->add($page_title, $ste_root."/".$manage_dir."/master/".$current_page."?order_id=".$bc_order_id);
-	}elseif(getProfileType() == "sas-parent"){
-		$bread_crumb->add($page_title, $ste_root."/".$manage_dir."/sas-parent/".$current_page."?order_id=".$bc_order_id);		
+	if(getProfileType($dbCustom) == "master"){
+		$bread_crumb->add($page_title, SITEROOT."/".$manage_dir."/master/".$current_page."?order_id=".$bc_order_id);
+	}elseif(getProfileType($dbCustom) == "sas-parent"){
+		$bread_crumb->add($page_title, SITEROOT."/".$manage_dir."/sas-parent/".$current_page."?order_id=".$bc_order_id);		
 	}else{
-		$bread_crumb->add($page_title, $ste_root."/".$manage_dir."/sas-non-parent/".$current_page."?order_id=".$bc_order_id);				
+		$bread_crumb->add($page_title, SITEROOT."/".$manage_dir."/sas-non-parent/".$current_page."?order_id=".$bc_order_id);				
 	}
 	$bread_crumb->prune($page_title);
 }elseif($admin_section == "cms"){
-	$cms_url = $ste_root."/".$manage_dir."/".$current_page;
+	$cms_url = SITEROOT."/".$manage_dir."/".$current_page;
 	$cms_url .= "?navbar_label_id=".$bc_navbar_label_id."&navbar_submenu_label_id=".$bc_navbar_submenu_label_id;
 	$cms_url .= "&footer_nav-label_id=".$bc_footer_nav-label_id."&footer_nav_submenu_label_id=".$bc_footer_nav_submenu_label_id;
 	$cms_url .= "&shipping_time_id=".$bc_shipping_time_id."&shipping_term_id=".$bc_shipping_term_id;
@@ -181,7 +181,7 @@ if($page_title == "start"){
 	$bread_crumb->add($page_title, $cms_url);
 	$bread_crumb->prune($page_title);
 }else{
-	$bread_crumb->add($page_title, $ste_root."/".$manage_dir."/".$current_page);
+	$bread_crumb->add($page_title, SITEROOT."/".$manage_dir."/".$current_page);
 	$bread_crumb->prune($page_title);
 }
 
@@ -228,7 +228,7 @@ ProfileType
 if(!$module->hasShoppingCartModule($_SESSION['profile_account_id'])){
 	if($current_dir == "catalog" || $current_dir == "ecomsettings"){
 		$msg = "You are not currently setup for the shopping cart module. to request a module, <a href='general-admin/add-on-change-request.php'>click here</a> ";
-		$header_str =  "Location: ".$ste_root."manage/start.php?msg=".$msg;
+		$header_str =  "Location: ".SITEROOT."/manage/start.php?msg=".$msg;
 		header($header_str);		
 	}
 }

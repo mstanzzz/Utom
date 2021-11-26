@@ -13,7 +13,7 @@ if(!isset($_SERVER['DOCUMENT_ROOT'])){
 }
 
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
 
 $progress = new SetupProgress;
 $module = new Module;
@@ -71,37 +71,37 @@ if(isset($_POST["del_blog_cat"])){
 }
 
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php'); 
+require_once($real_root.'/manage/admin-includes/doc_header.php'); 
 
 ?>
 
 </head>
 <body>
 <?php
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-header.php');
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-top-nav.php');
+	require_once($real_root.'/manage/admin-includes/manage-header.php');
+	require_once($real_root.'/manage/admin-includes/manage-top-nav.php');
 ?>
 <div class="manage_page_container">
 	<div class="manage_side_nav">
 		<?php 
-        require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-side-nav.php');
+        require_once($real_root.'/manage/admin-includes/manage-side-nav.php');
         ?>
 	</div>
 	<div class="manage_main">
 		<?php 
 
-		require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/class.admin_bread_crumb.php");	
+		require_once($real_root."/manage/admin-includes/class.admin_bread_crumb.php");	
 		$bread_crumb = new AdminBreadCrumb;
 		$bread_crumb->reSet();
-		$bread_crumb->add("Blog", $ste_root."manage/cms/blog/blog.php");
+		$bread_crumb->add("Blog", SITEROOT."/manage/cms/blog/blog.php");
 		$bread_crumb->add("Blog Category", '');
 
         echo $bread_crumb->output();
 
-        require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-content-top.php');
+        require_once($real_root.'/manage/admin-includes/manage-content-top-category.php');
         
 		//faq section tabbed sub-navigation
-        require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/blog-section-tabs.php");
+        require_once($real_root."/manage/admin-includes/blog-section-tabs.php");
 	
 		if($admin_access->cms_level > 1){
 		?>		
@@ -146,12 +146,12 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php');
 	</div>
 	<p class="clear"></p>
 	<?php 
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-footer.php');
+	require_once($real_root.'/manage/admin-includes/manage-footer.php');
 	?>
 </div>
 <div id="content-delete" class="confirm-content">
 	<h3>Are you sure you want to delete this category?</h3>
-	<form name="del_blog_form" action="blog-category.php" method="post" target="_top">
+	<form name="del_blog_form" action="blog.php" method="post" target="_top">
 		<input id="del_blog_cat_id" class="itemId" type="hidden" name="del_blog_cat_id" value='' />
 		<a class="btn btn-large dismiss">No, Cancel</a>
 		<button class="btn btn-danger btn-large" name="del_blog_cat" type="submit" >Yes, Delete</button>
@@ -162,7 +162,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php');
 </div>
 <!-- New Edit Dialogue -->
 <div id="content-edit" class="confirm-content">
-	<form name="edit_blog_cat_form" action="blog-category.php" method="post" target="_top">
+	<form name="edit_blog_cat_form" action="blog.php" method="post" target="_top">
 		<input id="blog_cat_id" type="hidden" class="itemId" name="blog_cat_id" value='' />
 		<fieldset class="colcontainer">
 			<label>Edit Category</label>
@@ -174,7 +174,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php');
 </div>
 <!-- New Add Dialogue -->
 <div id="content-add" class="confirm-content">
-	<form name="add_blog_category_form" action="blog-category.php" method="post" target="_top">
+	<form name="add_blog_category_form" action="blog.php" method="post" target="_top">
 		<fieldset class="colcontainer">
 			<label>Add New Category</label>
 			<input type="text" class="contentToAdd"  name="added_category">

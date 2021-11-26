@@ -11,7 +11,7 @@ if(strpos($_SERVER['REQUEST_URI'], 'solvitware/' )){
 	$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT']; 	
 }
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
 
 $progress = new SetupProgress;
 $module = new Module;
@@ -396,7 +396,7 @@ EOD;
 							
 							
 		$conn_id = ftp_connect($ftp_server); 
-		$login_result = ftp_login($conn_id, $ftp_user_name, $ftp_user_pass); 
+		$login_result = ftp_login($dbCustom,$conn_id, $ftp_user_name, $ftp_user_pass); 
 		
 		ftp_pasv($conn_id, true);
 		
@@ -494,13 +494,13 @@ EOD;
 	// this is the encrypted files we download. Once they are downloaded, they are removed.
 	//$remote_path = "/closetstogo/costco/outgoing/orders";
 	
-	$local_path = "../../../costco/encrypted/";
-	//$local_path = "../../../test/";
+	$local_path = "<?php echo SITEROOT; ?>/../costco/encrypted/";
+	//$local_path = "<?php echo SITEROOT; ?>/../test/";
 	
 	// set up basic connection
 	$conn_id = ftp_connect($ftp_server); 
 	// login with username and password
-	$login_result = ftp_login($conn_id, $ftp_user_name, $ftp_user_pass); 
+	$login_result = ftp_login($dbCustom,$conn_id, $ftp_user_name, $ftp_user_pass); 
 	
 	//ftp_pasv($conn_id, true);
 	
@@ -604,7 +604,7 @@ EOD;
 
 
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php'); 
+require_once($real_root.'/manage/admin-includes/doc_header.php'); 
 
 ?>
 
@@ -631,18 +631,18 @@ $(document).ready(function() {
 </head>
 <body>
 <?php
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-header.php');
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-top-nav.php');
+	require_once($real_root.'/manage/admin-includes/manage-header.php');
+	require_once($real_root.'/manage/admin-includes/manage-top-nav.php');
 ?>
 <div class="manage_page_container">
     <div class="manage_side_nav">
         <?php 
-        require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-side-nav.php');
+        require_once($real_root.'/manage/admin-includes/manage-side-nav.php');
         ?>
     </div>	
     <div class="manage_main">
 		<?php 
-        require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-content-top.php');
+        require_once($real_root.'/manage/admin-includes/manage-content-top-category.php');
         
 
 		?>
@@ -718,7 +718,7 @@ $result = $dbCustom->getResult($db,$sql);
 		$block .= "<td>";
 		//$block .= "<a href='costco-view-xml.php?costco_save_data_id=".$row->costco_save_data_id."&ret=costco-order-list' style='text-decoration:none;'>view XML</a>"; 
 		
-		$block .= "<a target='_blank' href='".SITEROOT."/costco/decrypted/".$dec_fn."' class='btn btn-small btn-primary'>
+		$block .= "<a target='_blank' href='".SITEROOT."\/costco/decrypted/".$dec_fn."' class='btn btn-small btn-primary'>
 		<i class='icon-eye-open icon-white'></i> View XML</a>";
 		
 		$block .= "</td>";
@@ -829,7 +829,7 @@ $result = $dbCustom->getResult($db,$sql);
 		$block .= "<td>";
 		//$block .= "<a href='costco-view-xml.php?costco_save_data_id=".$row->costco_save_data_id."&ret=costco-order-list' style='text-decoration:none;'>view XML</a>"; 
 		
-		$block .= "<a target='_blank' href='".SITEROOT."/costco/decrypted/".$dec_fn."' class='btn btn-small btn-primary'>
+		$block .= "<a target='_blank' href='".SITEROOT."\/costco/decrypted/".$dec_fn."' class='btn btn-small btn-primary'>
 		<i class='icon-eye-open icon-white'></i> View XML</a>";
 		
 		$block .= "</td></tr>";
@@ -934,7 +934,7 @@ $result = $dbCustom->getResult($db,$sql);
 		$block .= "<td>";
 		//$block .= "<a href='costco-view-xml.php?costco_save_data_id=".$row->costco_save_data_id."&ret=costco-order-list' style='text-decoration:none;'>view XML</a>"; 
 		
-		$block .= "<a target='_blank' href='".SITEROOT."/costco/decrypted/".$dec_fn."' class='btn btn-small btn-primary'>
+		$block .= "<a target='_blank' href='".SITEROOT."\/costco/decrypted/".$dec_fn."' class='btn btn-small btn-primary'>
 		<i class='icon-eye-open icon-white'></i> View XML</a>";
 		
 		$block .= "</td></tr>";
@@ -957,7 +957,7 @@ $result = $dbCustom->getResult($db,$sql);
 	</div>
 <p class="clear"></p>
 <?php 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-footer.php');
+require_once($real_root.'/manage/admin-includes/manage-footer.php');
 ?>    
     
 </div>

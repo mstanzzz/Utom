@@ -9,7 +9,7 @@ if(!isset($_SERVER['DOCUMENT_ROOT'])){
 	}
 }
 
-require_once($_SERVER['DOCUMENT_ROOT']."/includes/config.php");
+require_once($real_root."/includes/config.php");
 
 
 
@@ -79,7 +79,7 @@ $db = $dbCustom->getDbConnect(COMPONENTS_DATABASE);
                                 	<input type="text" class="edit-input" style="width:220px;" id="edit_sub_swg_name" name="swg_name" value="<?php echo $swg_name; ?>">
                                 <div style="width:22px;position:relative; top: -35px; left:226px;">
                                 	<img style="opacity: 0.7; width: 22px;" 
-                                    src="<?php echo $ste_root; ?>/manage/assets/svg/edit.svg" alt="">
+                                    src="<?php echo SITEROOT; ?>manage/assets/svg/edit.svg" alt="">
                                 </div>
                                 
                             </div>

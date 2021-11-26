@@ -9,7 +9,7 @@ class dl_megashares_com extends Download {
 		else return array(false, "accinvalid");
     }
 	
-	public function Login($user, $pass){
+	public function login($dbCustom,$user, $pass){
 		$data = $this->lib->curl("http://d01.megashares.com/myms_login.php", "", "httpref=&mymslogin_name={$user}&mymspassword={$pass}&myms_login=Login");				
 		$cookie = $this->lib->GetCookies($data);
 		return $cookie;

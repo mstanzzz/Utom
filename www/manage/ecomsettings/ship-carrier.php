@@ -1,5 +1,16 @@
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
+if(strpos($_SERVER['REQUEST_URI'], 'solvitware/' )){ 
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/solvitware';
+}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/designitpro'; 
+}elseif(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
+}else{
+	$real_root = $_SERVER['DOCUMENT_ROOT']; 	
+}
+require_once($real_root.'/includes/class.dbcustom.php');
+$dbCustom = new DbCustom();
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
 
 $progress = new SetupProgress;
 $module = new Module;
@@ -65,7 +76,7 @@ $result = $dbCustom->getResult($db,$sql);
 
 }
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php'); 
+require_once($real_root.'/manage/admin-includes/doc_header.php'); 
 ?>
 <script>
 function regularSubmit() {
@@ -75,29 +86,29 @@ function regularSubmit() {
 </head>
 <body>
 <?php
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-header.php');
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-top-nav.php');
+	require_once($real_root.'/manage/admin-includes/manage-header.php');
+	require_once($real_root.'/manage/admin-includes/manage-top-nav.php');
 ?>
 <div class="manage_page_container">
     <div class="manage_side_nav">
         <?php 
-        require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-side-nav.php');
+        require_once($real_root.'/manage/admin-includes/manage-side-nav.php');
         ?>
     </div>	
     <div class="manage_main">
 		<?php
-		require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/class.admin_bread_crumb.php");	
+		require_once($real_root."/manage/admin-includes/class.admin_bread_crumb.php");	
 		$bread_crumb = new AdminBreadCrumb;
 		$bread_crumb->prune("Shiping Carriers");
-		$bread_crumb->add("Shiping Carriers", $ste_root."manage/ecomsettings/ship-carrier.php");
+		$bread_crumb->add("Shiping Carriers", SITEROOT."/manage/ecomsettings/ship-carrier.php");
 		
 		
 		echo $bread_crumb->output();
  
-        require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-content-top.php');
+        require_once($real_root.'/manage/admin-includes/manage-content-top-category.php');
         
 		//faq section tabbed sub-navigation
-        require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/shipping-section-tabs.php");
+        require_once($real_root."/manage/admin-includes/shipping-section-tabs.php");
 		?>
         Note: UPS is the only one that can be used at this time. 
 		<form name="form" name="select_carrier_form" action="ship-carrier.php" method="post" enctype="multipart/form-data">
@@ -179,7 +190,7 @@ function regularSubmit() {
 
 			?>
 			<div class="data_table">
-            	<?php require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/tablesort.php"); ?>
+            	<?php require_once($real_root."/manage/admin-includes/tablesort.php"); ?>
 				<table cellpadding="10" cellspacing="0">
             		<thead>
 						<tr>
@@ -221,7 +232,7 @@ function regularSubmit() {
 
 </div><p class="clear"></p>
     <?php 
-    require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-footer.php');
+    require_once($real_root.'/manage/admin-includes/manage-footer.php');
     ?>
 </div>
 

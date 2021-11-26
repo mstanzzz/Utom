@@ -10,8 +10,10 @@
 </head>
 <body class="clearfix product-detail">
 <?php	
-require_once($real_root."/includes/header.php"); 	
+//require_once($real_root."/includes/header.php"); 	
 ?>	
+
+<!--
 <main class="main clearfix main__payment-page">
 <section class="section-checkout">
 <div class="wrapper">
@@ -25,13 +27,10 @@ require_once($real_root."/includes/header.php");
 <a href="index.html" class="d-block"><img src="<?php echo SITEROOT; ?>images/back-icon.svg" alt=""></a>
 </span><span>Shopping Cart (<?php echo $cart->getItemCount(); ?>)</span>
 </h5>
-<!--SHOW THIS ON DESKTOP SCREEN-->
 <input class="checkbox__ch-card__checkbox selectable card-el__hide-on-md" id="checkbox__select-all" type="checkbox" value="value1">
 <label for="checkbox__select-all" class="checkbox__select-all__label card-el__hide-on-md">Select All</label>
-<!--#SHOW THIS ON DESKTOP SCREEN-->
 			</div>
 		</div>	
-		<!--PRODUCT ITEM-->
 		<div class="card card-checkout">
 			<div class="card-checkout__remove-item">
 				<button class="p-0">
@@ -39,7 +38,6 @@ require_once($real_root."/includes/header.php");
 				</button>
 			</div>
 			<div class="card-body d-flex align-items-center">
-				<!--SHOW THIS ON DESKTOP SCREEN-->
 				<div class="mr-1 card-el__hide-on-md">
 					<div>
 						<input class="checkbox__ch-card__checkbox selectable"
@@ -47,7 +45,6 @@ require_once($real_root."/includes/header.php");
 						<label for="checkbox-product-1"> </label>
 					</div>
 				</div>
-				<!--#SHOW THIS ON DESKTOP SCREEN-->
 				<div class="card-checkout__product__image mr-3">
 					<div class="img-wrap">
 						<img src="<?php echo SITEROOT; ?>images/hardware-resources-knob-oil-rubbed-bronze.png"
@@ -62,36 +59,29 @@ require_once($real_root."/includes/header.php");
 							</h5>
 							<p class="card-checkout__product__number">Product Id: 000168</p>
 						</div>
-						<!--SHOW THIS ON MOBILE SCREEN-->
 						<div class="col-auto card-el__show-on-md ">
 							<p class="card-checkout__product__label">
 								<span class="card-el__hide-on-md">Price:</span>
 								<span class="card-checkout__product__label-value mark-color">$44.44</span>
 							</p>
 						</div>
-						<!--#SHOW THIS ON MOBILE SCREEN-->
 					</div>
 					
-					<!--SHOW THIS ON DESKTOP SCREEN-->
 					<p class="card-checkout__product__description card-el__hide-on-md">
 					Packaged with 1 x #8 32 x 1'' screw, Easy to install. The classic knob.
 					Works well in offices and any closet alike. Available colors: Brushed
 					Chrome, Oil Rubbed Bronze and Polished Chrome.
 					</p>
 
-					<!--#SHOW THIS ON DESKTOP SCREEN-->
 					<div class="d-flex align-items-center justify-content-end justify-content-lg-between mt-2 mt-md-0">
-						<!--SHOW THIS ON DESKTOP SCREEN-->
 						<div class="card-el__hide-on-md">
 							<p class="card-checkout__product__label">
 							<span>Unit Price:</span> 
 							<span class="card-checkout__product__label-value">$22.22</span>
 							</p>
 						</div>
-						<!--#SHOW THIS ON DESKTOP SCREEN-->
 						<div class="card-checkout__product__label__buttons__wrap">
 
-							<!--SHOW THIS ON DESKTOP SCREEN-->
 							<p class="card-checkout__product__label card-el__hide-on-md">
 							<label for="checkbox-quantity-1">Quantity: </label>
 							<span class="input-wrap">
@@ -101,24 +91,18 @@ require_once($real_root."/includes/header.php");
 							value="2"/>
 							</span>
 							</p>
-							
-							<!-- #SHOW THIS ON DESKTOP SCREEN-->
 							<div class="card-checkout__product__label__buttons card-el__show-on-md">
 								<span class="butones minus">-</span>
 								<input class="text" type="text" value="1" id="prod-1"/>
 								<span class="butones plus">+</span>
 							</div>
 						</div>
-
-						<!--SHOW THIS ON DESKTOP SCREEN-->
 						<div class="card-el__hide-on-md">
 						<p class="card-checkout__product__label">
 						Price:
 						<span class="card-checkout__product__label-value mark-color">$44.44</span>
 						</p>
 						</div>
-						
-						<!--#SHOW THIS ON DESKTOP SCREEN-->
 						<div>
 							<div class="idea-folder-on-md">
 								<p class="card-checkout__product__label card-checkout__product__label__sm justify-content-end">
@@ -135,11 +119,9 @@ require_once($real_root."/includes/header.php");
 								transform="translate(13.1 24)" />
 								</svg>
 								</span>
-								<!--SHOW THIS ON DESKTOP SCREEN-->
 								<span class="card-el__hide-on-md">
 								Save to idea folder
 								</span>
-								<!--#SHOW THIS ON DESKTOP SCREEN-->
 								</a>
 								</p>
 							</div>
@@ -148,9 +130,6 @@ require_once($real_root."/includes/header.php");
 				</div>
 			</div>
 		</div>
-		<!--#PRODUCT ITEM-->
-		
-		<!--PRODUCT ITEM-->
 		<div class="card card-checkout you-design__mark">
 			<div class="card-checkout__remove-item">
 				<button class="p-0">
@@ -158,8 +137,6 @@ require_once($real_root."/includes/header.php");
 				</button>
 			</div>
 			<div class="card-body d-flex align-items-center">
-
-				<!--SHOW THIS ON DESKTOP SCREEN-->
 				<div class="mr-1 card-el__hide-on-md">
 					<div>
 						<input class="checkbox__ch-card__checkbox selectable"
@@ -167,12 +144,8 @@ require_once($real_root."/includes/header.php");
 						<label for="checkbox-product-2"> </label>
 					</div>
 				</div>
-				<!--#SHOW THIS ON DESKTOP SCREEN-->
-
 				<div class="card-checkout__product__image mr-3">
-					<!--SHOW YOU DESIGN ON TOP OF THE IMAGE ON MOBILE-->
 					<span class="card-checkout__product__badge badge__u-design card-el__show-on-md">you design</span>
-					<!--SHOW YOU DESIGN ON TOP OF THE IMAGE ON MOBILE-->
 					<div class="img-wrap">
 						<img src="<?php echo SITEROOT; ?>images/hardware-resources-knob-oil-rubbed-bronze.png"
 						class="img-fluid" alt="">
@@ -181,9 +154,7 @@ require_once($real_root."/includes/header.php");
 				
 				<div class="card-checkout__product">
 					<div class="card-checkout__product__badges ">
-						<!--HIDE YOU DESIGN ON MOBILE-->
 						<span class="card-checkout__product__badge badge__u-design card-el__hide-on-md">you design</span>
-						<!-- #HIDE YOU DESIGN ON MOBILE-->
 						<span class="card-checkout__product__badge badge__required">(E-sign required !)*</span>
 					</div>
 					<div class="row align-items-end align-items-lg-center ">
@@ -194,37 +165,28 @@ require_once($real_root."/includes/header.php");
 							<p class="card-checkout__product__number">Product Id: 000168</p>
 						</div>
 						
-						<!--SHOW THIS ON MOBILE SCREEN-->
 						<div class="col-auto card-el__show-on-md">
 							<p class="card-checkout__product__label">
 							<span class="card-el__hide-on-md">Price:</span>
 							<span class="card-checkout__product__label-value mark-color">$44.44</span>
 							</p>
 						</div>
-						
-						<!--#SHOW THIS ON MOBILE SCREEN-->
 					</div>
 					
-					<!--SHOW THIS ON DESKTOP SCREEN-->
 					<p class="card-checkout__product__description card-el__hide-on-md">
 					Packaged with 1 x #8 32 x 1'' screw, Easy to install. The classic knob.
 					Works well in offices and any closet alike. Available colors: Brushed
 					Chrome, Oil Rubbed Bronze and Polished Chrome.
 					</p>
-					<!--#SHOW THIS ON DESKTOP SCREEN-->
 
 					<div class="d-flex align-items-center justify-content-end justify-content-lg-between mt-2 mt-md-0">
-						<!--SHOW THIS ON DESKTOP SCREEN-->
 						<div class="card-el__hide-on-md">
 							<p class="card-checkout__product__label">
 							<span>Unit Price:</span> 
 							<span class="card-checkout__product__label-value">$22.22</span>
 							</p>
 						</div>
-						<!--#SHOW THIS ON DESKTOP SCREEN-->
-
 						<div class="card-checkout__product__label__buttons__wrap">
-							<!--SHOW THIS ON DESKTOP SCREEN-->
 							<p class="card-checkout__product__label card-el__hide-on-md">
 							<label for="checkbox-quantity-2">Quantity: </label>
 							<span class="input-wrap">
@@ -234,7 +196,6 @@ require_once($real_root."/includes/header.php");
 							value="2"/>
 							</span>
 							</p>
-							<!--#SHOW THIS ON DESKTOP SCREEN-->
 
 							<div class="card-checkout__product__label__buttons card-el__show-on-md">
 								<span class="butones minus">-</span>
@@ -263,11 +224,9 @@ require_once($real_root."/includes/header.php");
 							transform="translate(0 -172.603)"/></g>
 							</svg>
 							</span>
-							<!--SHOW THIS ON DESKTOP SCREEN-->
 							<span class="card-el__hide-on-md">
 							e-sign document
 							</span>
-							<!--#SHOW THIS ON DESKTOP SCREEN-->
 							</button>
 							</p>
 						</div>
@@ -288,11 +247,9 @@ require_once($real_root."/includes/header.php");
 								transform="translate(13.1 24)" />
 								</svg>
 								</span>
-								<!--SHOW THIS ON DESKTOP SCREEN-->
 								<span class="card-el__hide-on-md">
 								Save to idea folder
 								</span>
-								<!--#SHOW THIS ON DESKTOP SCREEN-->
 								</a>
 								</p>
 							</div>
@@ -301,26 +258,23 @@ require_once($real_root."/includes/header.php");
 				</div>
 			</div>
 			
-			<!--E-SIGN COMPLETE BARGE-->			
-			<div class="eSignComplete">
-				<div class="d-flex align-items-center justify-content-center">
-					<div>
-						<img src="<?php echo SITEROOT; ?>images/shield.svg" alt="">
-					</div>
-					<div>
-						<p class="eSignComplete-text">
-						e-sign complete
-						</p>
-					</div>
-				</div>
-			</div>
-			<!--E-SIGN COMPLETE BARGE-->
+<div class="eSignComplete">
+<div class="d-flex align-items-center justify-content-center">
+<div>
+<img src="<?php echo SITEROOT; ?>images/shield.svg" alt="">
+</div>
+<div>
+<p class="eSignComplete-text">
+e-sign complete
+</p>
+</div>
+</div>
+</div>
 			
 		</div>
-	<!--#PRODUCT ITEM-->
 	</div>
 
-		
+	
 	<div class="col col__card-checkout">
 		<div class="card-fixed width-inherit z-depth-3">
 			<div class="card card-checkout card-fixed__inner card-shadow no-border">
@@ -373,49 +327,73 @@ require_once($real_root."/includes/header.php");
 </div>
 </section>
 </main>
+-->
 
 
-<div class="scrollToTopBlock">
-<div class="people-working">
-<img src="<?php echo SITEROOT; ?>images/people-working-call-center_@2x.png" alt="" class="people-working__image">
-<div class="people-working__wrapper">
-<div class="people-working__content">
-<p class="people-working__text">Hi! I'm the Virtual assistant, and I'm here to help you.</p>
-</div>
-</div>
-</div>
-<a href="#" class="scrollToTop js-to-top">
-<img src="<?php echo SITEROOT; ?>images/arrows.svg" alt="">
-</a>
-</div>
+
+create initials
+<input type="text" max="15" class="init-title input" placeholder="Your initials"/>
+<button class="btn btn-primary">
+change font
+</button>
+
+	<ul class="nav nav__tabs-modal" id="pills-tab" role="tablist">
+	<li class="nav-item">
+					<a class="nav-link" id="pills-draw-tab" data-toggle="pill"
+					href="#pills-home" role="tab" aria-controls="pills-home"
+					aria-selected="true">Draw it in</a>
+	</li>
+	<li class="nav-item">
+					<a class="nav-link hover__ltr" id="pills-type-tab" data-toggle="pill"
+					href="#pills-type" role="tab" aria-controls="pills-profile"
+					aria-selected="false">Type it in</a>
+	</li>
+	<li class="nav-item">
+					<a class="nav-link hover__ltr" id="pills-upload-tab" data-toggle="pill"
+					href="#pills-upload" role="tab" aria-controls="pills-contact"
+					aria-selected="false">Upload image</a>
+	</li>
+	<li class="nav-item">
+					<button class="nav-link hover__ltr"
+					role="button"
+					aria-selected="false">Saved initials
+					</button>
+	</li>
+	</ul>
+			
+
+<button class="btn btn-secondary btn-secondary__outline"
+						disabled>click to sign
+</button>
+
+
+
+
+
 
 <?php
-require_once($real_root.'/includes/footer_shopping_cart.php');
+//require_once($real_root.'/includes/footer_shopping_cart.php');
+
+exit;
 ?>
 
-		<!-- Modal e-sign -->
-		<div class="modal modal-sign fade" id="modal__e-sign" tabindex="-1" role="dialog"
-			 aria-labelledby="exampleModalLabel" aria-hidden="true">
 
-			<div class="modal-dialog " role="document">
-
-				<div class="modal-content">
-					<!--SHOW THIS ON DESKTOP SCREEN-->
-					<div class="d-flex align-items-center justify-content-between modal-content__header card-el__hide-on-md">
-						<div class="f-1">
-							<div class="modal-sign__brand-wrap ">
-								<img src="<?php echo SITEROOT; ?>images/svgg.svg" class="img-fluid" alt="">
-							</div>
-						</div>
-						<div class="f-1">
-							<h2 class="modal-sign__header text-center">
-								E-sign
-							</h2>
-						</div>
-						<div class="f-1 modal-sign__close-icon-wrap text-right close close-modal" type=""
-							 data-dismiss="modal" aria-label="Close">
-							<img src="<?php echo SITEROOT; ?>images/close.svg" class="img-fluid" alt="">
-						</div>
+<div class="modal-content">
+	
+	<div class="f-1">
+		<div class="modal-sign__brand-wrap ">
+			<img src="<?php echo SITEROOT; ?>images/svgg.svg" class="img-fluid" alt="">
+		</div>
+	</div>
+	<div class="f-1">
+		<h2 class="modal-sign__header text-center">
+			E-sign
+		</h2>
+	</div>
+	<div class="f-1 modal-sign__close-icon-wrap text-right close close-modal" type=""
+		data-dismiss="modal" aria-label="Close">
+		<img src="<?php echo SITEROOT; ?>images/close.svg" class="img-fluid" alt="">
+	</div>
 					</div>
 					<!--#SHOW THIS ON DESKTOP SCREEN-->
 
@@ -698,7 +676,10 @@ require_once($real_root.'/includes/footer_shopping_cart.php');
 					</div>
 				</div>
 			</div>
-		</div>
+
+
+<?php
+/*	
 
 		<!-- Modal E-Sign Type-->
 		<div class="modal modal-sign modal-sign__type fade" id="modal__e-sign__type" tabindex="-1" role="dialog"
@@ -1107,6 +1088,10 @@ back to cart
 </div>
 </div>
 
+*/
+
+?>
+
 <script
   src="https://code.jquery.com/jquery-3.5.1.min.js"
   integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
@@ -1157,4 +1142,6 @@ function goto_checkout(){
 <script src="./app.js"></script>
 </body>
 </html>
+
+
 

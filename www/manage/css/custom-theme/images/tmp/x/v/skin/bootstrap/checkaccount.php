@@ -25,7 +25,7 @@ if (isset($_POST["check"])) {
 			if(method_exists($download, "CheckAcc")) {
 				if ($type == "account") {
 					list($user, $pass) = explode(':',$account);
-					$cookie = $download->Login($user, $pass);
+					$cookie = $download->login($dbCustom,$user, $pass);
 				}
 				else $cookie = $account;
 				$status = $download->CheckAcc($cookie);

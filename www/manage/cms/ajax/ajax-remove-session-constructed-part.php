@@ -9,7 +9,7 @@ if(!isset($_SERVER['DOCUMENT_ROOT'])){
 	}
 }
 
-require_once($_SERVER['DOCUMENT_ROOT']."/includes/config.php");
+require_once($real_root."/includes/config.php");
 
 $sub_name = isset($_GET['sub_name'])? trim($_GET['sub_name']) : 'cleat';
 $list_number = isset($_GET['list_number'])? trim($_GET['list_number']) : 0;	

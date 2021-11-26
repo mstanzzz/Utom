@@ -2,7 +2,7 @@
 
 class dl_asfile_com extends Download {
 	
-	public function Login($user, $pass){
+	public function login($dbCustom,$user, $pass){
 		$data = $this->lib->curl("http://asfile.com/en/login", "", "login={$user}&password={$pass}&remember_me=1&referer={$url}");
 		$cookie = $this->lib->GetCookies($data);
 		return $cookie;

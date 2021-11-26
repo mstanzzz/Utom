@@ -1,9 +1,22 @@
 <?php
+if(strpos($_SERVER['REQUEST_URI'], 'solvitware/' )){ 
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/solvitware';
+}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/designitpro'; 
+}elseif(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
+}else{
+	$real_root = $_SERVER['DOCUMENT_ROOT']; 	
+}
+require_once($real_root.'/includes/class.dbcustom.php');
+$dbCustom = new DbCustom();
 
-require_once($_SERVER['DOCUMENT_ROOT']."/includes/class.customer_login.php");
-require_once($_SERVER['DOCUMENT_ROOT'].'/includes/class.customer_account.php');
-require_once($_SERVER['DOCUMENT_ROOT'].'/includes/class.saas_customer.php');
-//require_once($_SERVER['DOCUMENT_ROOT'].'/includes/class.order.php');
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
+
+require_once($real_root."/includes/class.customer_login.php");
+require_once($real_root.'/includes/class.customer_account.php');
+require_once($real_root.'/includes/class.saas_customer.php');
+//require_once($real_root.'/includes/class.order.php');
 //$order = new Order;
 
 
@@ -95,7 +108,7 @@ function send_review_email($customer_id, $order_id, $shipping_name, $billing_nam
 	$CustAccnt = new CustomerAccount;
 	$saas_cust = new SaasCustomer;
 	
-	$c_data_array = $CustAccnt->getEmailData($customer_id);
+	$c_data_array = $CustAccnt->getEmailData($dbCustom,$customer_id);
 
 	$customer_name = $c_data_array['name'];
 	$customer_email = $c_data_array['username'];
@@ -115,15 +128,15 @@ function send_review_email($customer_id, $order_id, $shipping_name, $billing_nam
 	
 	
 
-	$domain = $_SERVER['HTTP_HOST'];
-	$domain =str_replace('www.' ,'',$domain);
+	SITEROOT = $_SERVER['HTTP_HOST'];
+	SITEROOT =str_replace('www.' ,'',SITEROOT);
 
 	if($customer_name != ''){
 		$dear_cust = "Hi ".$customer_name.", ";
-		$email_subject = $customer_name.' review your recent purchase on '.$domain;	
+		$email_subject = $customer_name.' review your recent purchase on '.SITEROOT;	
 	}else{
 		$dear_cust = "Hi:";
-		$email_subject = "Review your recent purchase on ".$domain;			
+		$email_subject = "Review your recent purchase on ".SITEROOT;			
 	}
 	
 	if(!isset($_SESSION['profile_company'])) $_SESSION['profile_company'] = 'Closets To Go';
@@ -141,7 +154,7 @@ function send_review_email($customer_id, $order_id, $shipping_name, $billing_nam
 	$logo_file_name = get_logo(); 
 	 
 	$message .= "<div style='margin-top: 6px;'>"; 
-	$message .= "<img src='".$ste_root."/saascustuploads/".$_SESSION['profile_account_id']."/logo/".$logo_file_name."'"; 
+	$message .= "<img src='".SITEROOT."/saascustuploads/".$_SESSION['profile_account_id']."/logo/".$logo_file_name."'"; 
     $message .= " alt='".$_SESSION['profile_company']."' /></div>";
 
 	$message .= "<div style='margin-top:6px;font-size:12px;'>"; 
@@ -166,14 +179,14 @@ function send_review_email($customer_id, $order_id, $shipping_name, $billing_nam
 	
 	$message .= "<br /><br /><hr /><br />";
 
-	$url_str = $ste_root."/give-us-feedback/item/".$customer_id."/".$order_id;
+	$url_str = SITEROOT."/give-us-feedback/item/".$customer_id."/".$order_id;
 
 	$items_array = get_items($order_id);
 	
 	
 	foreach($items_array as $items_v){ 
 		 
-		$message .= "<img src='".$ste_root."/saascustuploads/".$_SESSION['profile_account_id']."/cart/small/".$items_v['file_name']."'/>";
+		$message .= "<img src='".SITEROOT."/saascustuploads/".$_SESSION['profile_account_id']."/cart/small/".$items_v['file_name']."'/>";
 		$message .= "<br />";
 
 		$message .= "<div style='margin-top:6%; margin-left:14px; font-size:14px;'><b>".$items_v['name']."</b></div>";

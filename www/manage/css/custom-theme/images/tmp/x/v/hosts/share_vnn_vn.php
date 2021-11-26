@@ -9,7 +9,7 @@ class dl_share_vnn_vn extends Download {
 		 else return array(false, "accinvalid");
     }
 /* 
-    public function Login($user, $pass){
+    public function login($dbCustom,$user, $pass){
 		$data = $this->lib->curl('https://id.vnn.vn/login?service=http%3A%2F%2Fshare.vnn.vn%2Flogin.php%3Fdo%3Dlogin%26url%3Dhttp%253A%252F%252Fshare.vnn.vn%252F', '', '');
 		if(preg_match('%jsessionid=(.+)\?%U', $data, $match)) $jsid = $match[1]; 
 		$lt = $this->lib->cut_str($data, '"lt" value="', '" />');	
@@ -25,7 +25,7 @@ class dl_share_vnn_vn extends Download {
 		return $cookie;
     }
 */ 
-  public function Login($user, $pass){
+  public function login($dbCustom,$user, $pass){
 		$data = $this->lib->curl("https://id.vnn.vn/login?service=http%3A%2F%2Fshare.vnn.vn%2Flogin.php%3Fdo%3Dlogin%26url%3Dhttp%253A%252F%252Fshare.vnn.vn%252F", "", "");
 		$cookies = $jsid = $this->lib->GetCookies($data);
 		$lt = $this->lib->cut_str($data,'"lt" value="', '" />');	

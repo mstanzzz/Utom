@@ -14,15 +14,15 @@ if(!isset($_SERVER['DOCUMENT_ROOT'])){
 
 unset($_SESSION['global_url_word']);
 
-require_once($_SERVER['DOCUMENT_ROOT']."/includes/config.php");
-//require_once($_SERVER['DOCUMENT_ROOT']."/includes/db_connect.php"); 
-require_once($_SERVER['DOCUMENT_ROOT']."/includes/accessory_cart_functions.php");
-require_once($_SERVER['DOCUMENT_ROOT']."/includes/showroom_functions.php");
-require_once($_SERVER['DOCUMENT_ROOT']."/includes/class.module.php");
-require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/class.pages.php"); 
-require_once($_SERVER['DOCUMENT_ROOT']."/includes/class.store_data.php");
+require_once($real_root."/includes/config.php");
+//require_once($real_root."/includes/db_connect.php"); 
+require_once($real_root."/includes/accessory_cart_functions.php");
+require_once($real_root."/includes/showroom_functions.php");
+require_once($real_root."/includes/class.module.php");
+require_once($real_root."/manage/admin-includes/class.pages.php"); 
+require_once($real_root."/includes/class.store_data.php");
 
-require_once($_SERVER['DOCUMENT_ROOT']."/includes/class.nav.php");
+require_once($real_root."/includes/class.nav.php");
 
 $nav = new Nav;
 
@@ -396,7 +396,7 @@ function getNumPages($total_count,$page_rows){
 
 
 
-	require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/class.xml.sitemap.generator-modified.php");
+	require_once($real_root."/manage/admin-includes/class.xml.sitemap.generator-modified.php");
 
 	$url_array = array();
 
@@ -520,7 +520,7 @@ function getNumPages($total_count,$page_rows){
 
 	// ************ From header *************
 
-	$header_links = $nav->getHeaderSupportLabels();
+	$header_links = $nav->getHeaderSupportLabels($dbCustom);
 	foreach($header_links as $v){
 		$url_array[] = "/".$v['url'];
 	}
@@ -593,7 +593,7 @@ function getNumPages($total_count,$page_rows){
 				}
 			}
 		}else{
-    		$footer_nav_submenu_labels = $nav->getFooterNavSubmenuLabels($footer_nav_label_v["id"], $col);
+    		$footer_nav_submenu_labels = $nav->getFooterNavSubmenuLabels($dbCustom,$footer_nav_label_v["id"], $col);
 			foreach($footer_nav_submenu_labels as $footer_nav_submenu_label_v){
 				if((substr_count($footer_nav_submenu_label_v['url'], "account") < 1)){			
 					$url_array[] = "/".$footer_nav_submenu_label_v['url'];  

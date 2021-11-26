@@ -9,7 +9,7 @@ if(!isset($_SERVER['DOCUMENT_ROOT'])){
 	}
 }
 
-require_once($_SERVER['DOCUMENT_ROOT']."/includes/config.php");
+require_once($real_root."/includes/config.php");
 
 $_SESSION['ret_modal'] = 'edit';
 
@@ -130,7 +130,7 @@ open_sub_modal_by_id("<?php echo $ret_sub_modify; ?>");
             <label class="text-italic">Finish Name*</label>
             <input type="text" id="edit_finish_name" name="finish_name" value="<?php echo $_SESSION['tmp_vars']['finish_name']; ?>" 
             class="input-invisable-bold" style="width:340px;" />
-            <img class="icon" src="<?php echo $ste_root; ?>/manage/assets/svg/edit.svg" alt="">
+            <img class="icon" src="<?php echo SITEROOT; ?>manage/assets/svg/edit.svg" alt="">
         </div>
         <div class="edit-form-wrapper no-border">
             <div style="float:left; width:100px; margin-top:23px;">
@@ -178,7 +178,7 @@ open_sub_modal_by_id("<?php echo $ret_sub_modify; ?>");
 	</form>
 
 			<?php     
-				$url_str = $ste_root."manage/upload-pre-crop.php";
+				$url_str = SITEROOT."/manage/upload-pre-crop.php";
 				$url_str .= "?ret_path=tool-admin/finishes";
 				$url_str .= "&ret_modal=ajax-edit-finish";
 				$url_str .= "&ret_id=".$_SESSION['finish_id'];

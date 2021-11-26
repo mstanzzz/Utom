@@ -82,13 +82,13 @@ function setTopToolActiveTab($tab)
 
 
 		<ul class="nav nav-tabs">
-        	<li <?php echo setTopToolActiveTab('general-setup'); ?>><a href="<?php echo $ste_root;?>/manage/tool/general-setup.php">General Setup</a></li>
+        	<li <?php echo setTopToolActiveTab('general-setup'); ?>><a href="<?php echo SITEROOT;?>/manage/tool/general-setup.php">General Setup</a></li>
             
-            <li <?php echo setTopToolActiveTab('material-setup'); ?>><a href="<?php echo $ste_root;?>/manage/tool/material-setup.php">Material Setup</a></li>
+            <li <?php echo setTopToolActiveTab('material-setup'); ?>><a href="<?php echo SITEROOT;?>/manage/tool/material-setup.php">Material Setup</a></li>
             
-            <li <?php echo setTopToolActiveTab('pricing'); ?>><a href="<?php echo $ste_root;?>/manage/tool/pricing-schemas.php">Pricing</a></li>
+            <li <?php echo setTopToolActiveTab('pricing'); ?>><a href="<?php echo SITEROOT;?>/manage/tool/pricing-schemas.php">Pricing</a></li>
             
-            <li <?php echo setTopToolActiveTab('pieces'); ?>><a href="<?php echo $ste_root;?>/manage/tool/pieces.php">Pieces</a></li>
+            <li <?php echo setTopToolActiveTab('pieces'); ?>><a href="<?php echo SITEROOT;?>/manage/tool/pieces.php">Pieces</a></li>
               
 		</ul>
         

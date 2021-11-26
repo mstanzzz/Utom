@@ -9,7 +9,7 @@ class dl_tusfiles_net extends Download {
 		else return array(false, "accinvalid");
     }
     
-    public function Login($user, $pass){
+    public function login($dbCustom,$user, $pass){
         $data = $this->lib->curl("http://www.tusfiles.net/", "lang=english", "login={$user}&password={$pass}&op=login&redirect=http://www.tusfiles.net/");
         $cookie = "lang=english;{$this->lib->GetCookies($data)}";
 		return $cookie;

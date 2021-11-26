@@ -1,18 +1,17 @@
 <?php
-
-
-
-if(strpos($_SERVER['REQUEST_URI'], 'onlinecl/' )){
-$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT'].'/storittek';
-}elseif(strpos($_SERVER['REQUEST_URI'], "designitpro" )){
-$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT'].'/designitpro';
-}elseif(strpos($_SERVER['REQUEST_URI'], 'otg-site' )){
-$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT'].'/otg-site';
+if(strpos($_SERVER['REQUEST_URI'], 'solvitware/' )){ 
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/solvitware';
+}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/designitpro'; 
+}elseif(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
 }else{
-$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT'];
+	$real_root = $_SERVER['DOCUMENT_ROOT']; 	
 }
+require_once($real_root.'/includes/class.dbcustom.php');
+$dbCustom = new DbCustom();
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
 
 $progress = new SetupProgress;
 $module = new Module;
@@ -63,7 +62,7 @@ if(!isset($_SESSION['temp_page_fields']['img_alt_text'])) $_SESSION['temp_page_f
 
 if(!isset($_SESSION['img_id'])) $_SESSION['img_id'] = $img_id;
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php');
+require_once($real_root.'/manage/admin-includes/doc_header.php');
 
 
 ?>
@@ -151,13 +150,13 @@ function get_query_str(){
 						if($img_res->num_rows > 0){
 						$img_obj = $img_res->fetch_object();
 						//echo $_SESSION['img_id'];
-						echo "<img src='".$ste_root."/saascustuploads/".$_SESSION['profile_account_id']."/cms/".$img_obj->file_name."'>";	
+						echo "<img src='".SITEROOT."/saascustuploads/".$_SESSION['profile_account_id']."/cms/".$img_obj->file_name."'>";	
 					}
 					?>
                     
                     <div class="twocols"> 
 						<?php 
-                        $url_str = $ste_root."manage/upload-pre-crop.php";
+                        $url_str = SITEROOT."/manage/upload-pre-crop.php";
                         $url_str .= "?ret_page=edit-installation-tool";
                         $url_str .= "&ret_dir=cms/pages";
                         ?>

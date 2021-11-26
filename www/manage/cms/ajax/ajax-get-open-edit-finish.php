@@ -8,7 +8,7 @@ if(!isset($_SERVER['DOCUMENT_ROOT'])){
 		$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT']; 	
 	}
 }
-require_once($_SERVER['DOCUMENT_ROOT']."/includes/config.php");
+require_once($real_root."/includes/config.php");
  
 if(!isset($_SESSION['parent_modal'])) $_SESSION['parent_modal'] = 'add';
 
@@ -103,7 +103,7 @@ while($row = $result->fetch_object()){
     <label class="text-italic">Finish Name*</label>
     <input type="text" id="edit_this_finish_name" name="finish_name" value="<?php echo $_SESSION['tmp_vars']['finish_name']; ?>" 
 	    class="input-invisable-bold" style="width:340px;" />
-    <img class="icon" src="<?php echo $ste_root; ?>/manage/assets/svg/edit.svg" alt="">
+    <img class="icon" src="<?php echo SITEROOT; ?>manage/assets/svg/edit.svg" alt="">
 </div>
 
 <div class="edit-form-wrapper no-border">

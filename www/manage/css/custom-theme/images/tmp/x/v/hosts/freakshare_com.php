@@ -16,7 +16,7 @@ class dl_freakshare_com extends Download {
 		else return array(false, "accinvalid");
 	}   
 	
-	public function Login($user, $pass){
+	public function login($dbCustom,$user, $pass){
 		$data = $this->lib->curl("http://freakshare.com/?language=US", "", "");
 		$data = $this->lib->curl("http://freakshare.com/login.html", "", "user={$user}&pass={$pass}&submit=Login");
 		return $this->lib->GetCookies($data);

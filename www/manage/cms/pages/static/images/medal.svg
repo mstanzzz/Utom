@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="53.2" height="57.933" viewBox="0 0 53.2 57.933">
+  <g id="medal" transform="translate(-20.75)">
+    <circle id="Ellipse_9" data-name="Ellipse 9" cx="23.002" cy="23.002" r="23.002" transform="translate(24.297 0)" fill="#ffd15c"/>
+    <g id="Group_264" data-name="Group 264" transform="translate(20.75 36.391)">
+      <path id="Path_149" data-name="Path 149" d="M28.664,319.7,20.75,333.419l9.237-.49,4.2,8.245,7.321-12.693A22.979,22.979,0,0,1,28.664,319.7Z" transform="translate(-20.75 -319.632)" fill="#40596b"/>
+      <path id="Path_150" data-name="Path 150" d="M317.857,319.1a22.987,22.987,0,0,1-12.807,8.827l7.344,12.716,4.2-8.245,9.237.49Z" transform="translate(-272.628 -319.1)" fill="#40596b"/>
+    </g>
+    <circle id="Ellipse_10" data-name="Ellipse 10" cx="16.673" cy="16.673" r="16.673" transform="translate(30.626 6.329)" fill="#f8b64c"/>
+    <path id="Path_151" data-name="Path 151" d="M174.171,113.1a.871.871,0,0,0-.479-1.483l-6.58-.958a.858.858,0,0,1-.65-.479l-2.942-5.964a.87.87,0,0,0-1.562,0l-2.931,5.964a.906.906,0,0,1-.65.479l-6.58.958a.871.871,0,0,0-.479,1.483l4.756,4.641a.879.879,0,0,1,.251.764l-1.118,6.546a.869.869,0,0,0,1.266.912l5.885-3.091a.85.85,0,0,1,.81,0l5.885,3.091a.873.873,0,0,0,1.266-.912l-1.129-6.546a.858.858,0,0,1,.251-.764Z" transform="translate(-115.446 -91.896)" fill="#fff"/>
+  </g>
+</svg>

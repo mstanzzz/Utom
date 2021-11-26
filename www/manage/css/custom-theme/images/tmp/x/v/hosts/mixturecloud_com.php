@@ -9,12 +9,12 @@ class dl_mixturecloud_com extends Download {
 		else return array(false, "accinvalid");
     }
 /* 
-	public function Login($user, $pass){		
+	public function login($dbCustom,$user, $pass){		
         $data = $this->lib->curl("https://www.mixturecloud.com/", "mx_l=en;{$user}={$pass}", "");	
 		return "{$user}={$pass}; {$this->lib->GetCookies($data)}";
     }*/
    
-    public function Login($user, $pass){
+    public function login($dbCustom,$user, $pass){
         $data = $this->lib->curl("https://www.mixturecloud.com/", "mx_l=en", "");
 		$securecode = $this->lib->cut_str($this->lib->cut_str($data, 'method="post" action="login">','Sign in<'), 'name="securecode" value="', '" />');
 		$data = $this->lib->curl("https://www.mixturecloud.com/login", "mx_l=en", "back=&securecode={$securecode}&email={$user}&password={$pass}&login=1");

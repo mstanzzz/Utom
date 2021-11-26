@@ -1,10 +1,21 @@
 <?php
-require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/manage-includes.php");
+if(strpos($_SERVER['REQUEST_URI'], 'solvitware/' )){ 
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/solvitware';
+}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/designitpro'; 
+}elseif(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
+}else{
+	$real_root = $_SERVER['DOCUMENT_ROOT']; 	
+}
+require_once($real_root.'/includes/class.dbcustom.php');
+$dbCustom = new DbCustom();
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
 $progress   = new SetupProgress;
 $module     = new Module;
 $page_title = "Global Discount";
 $page_group = "discount";
-require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/set-page.php");
+require_once($real_root."/manage/admin-includes/set-page.php");
 $db = $dbCustom->getDbConnect(CART_DATABASE);
 $msg         = (isset($_GET['msg'])) ? $_GET['msg'] : '';
 // current unix time stamp
@@ -87,7 +98,7 @@ if(!isset($_SESSION['temp_page_fields']['can_use_with_other_discounts'])) $_SESS
 
 if(!isset($_SESSION['img_id'])) $_SESSION['img_id'] = $stored_img_id;
 
-require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/doc_header.php"); 
+require_once($real_root."/manage/admin-includes/doc_header.php"); 
 
 ?>
 
@@ -330,11 +341,11 @@ function show_msg(msg) {
 						if(!$img_result)die(mysql_error());
 						if(mysql_num_rows($img_result) > 0){
 							$img_obj = mysql_fetch_object($img_result);
-							echo "<img src='".$ste_root."/ul_cart/".$domain."/banner/".$img_obj->file_name."' />";
+							echo "<img src='".SITEROOT."/ul_cart/".SITEROOT."/banner/".$img_obj->file_name."' />";
 						}
 					}
 
-					$url_str = $ste_root."manage/upload-pre-crop.php";
+					$url_str = SITEROOT."manage/upload-pre-crop.php";
 					$url_str .= "?ret_page=edit-global-discount";
 					$url_str .= "&ret_dir=ecomsettings";
 

@@ -107,7 +107,7 @@ class Wishlist {
 
 
 
-	function addItem($item_id, $qty = 1)
+	function addItem($dbCustom,$item_id, $qty = 1)
 	{
 		
 		if($this->itemInCart($item_id)){
@@ -168,7 +168,7 @@ class Wishlist {
 	} 
 
 
-	function removeItem($item_id)
+	function removeItem($dbCustom,$item_id)
 	{
 		
 		
@@ -193,7 +193,7 @@ class Wishlist {
 		
 	}
 	
-	function emptyCart()
+	function emptyCart($dbCustom)
 	{ 
 		$_SESSION["wishlist"] = '';
 	} 

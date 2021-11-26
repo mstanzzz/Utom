@@ -1,13 +1,25 @@
 <?php
-require_once("../../includes/config.php"); 
-require_once("../../includes/class.customer_account.php"); 
+if(strpos($_SERVER['REQUEST_URI'], 'solvitware/' )){ 
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/solvitware';
+}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/designitpro'; 
+}elseif(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
+}else{
+	$real_root = $_SERVER['DOCUMENT_ROOT']; 	
+}
+require_once($real_root.'/includes/class.dbcustom.php');
+$dbCustom = new DbCustom();
+
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
+require_once("<?php echo SITEROOT; ?>includes/class.customer_account.php"); 
 
 $custAcc = new CustomerAccount();
 
 $customer_id = (isset($_GET['customer_id'])) ? $_GET['customer_id'] : 0;
 
 
-$custAcc->setDbAccData($customer_id);
+$custAcc->setDbAccData($dbCustom,$customer_id);
 	
 	$returnData = json_encode(array(
 						'shipping_name_first'=>$custAcc->shipping_name_first,

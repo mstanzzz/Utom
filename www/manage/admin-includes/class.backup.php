@@ -316,7 +316,7 @@ class Backup{
 							"policy_category", 
 							$ts, 
 							$user_id, 
-							"policy-category", 
+							"policy", 
 							addslashes($ex_object->category_name),
 							$ex_object->policy_cat_id,
 							$action);		
@@ -368,7 +368,7 @@ class Backup{
 							"process_category", 
 							$ts, 
 							$user_id, 
-							"process-category",
+							"process",
 							addslashes($ex_object->category_name),
 							$ex_object->process_cat_id,
 							$action);		
@@ -418,7 +418,7 @@ class Backup{
 							"faq_category", 
 							$ts, 
 							$user_id, 
-							"faq-category",
+							"faq",
 							addslashes($ex_object->category_name),
 							$ex_object->faq_cat_id,
 							$action);		
@@ -530,7 +530,7 @@ class Backup{
 							"guide_tip_category", 
 							$ts, 
 							$user_id, 
-							"guide-tip-category",
+							"guide-tip",
 							addslashes($ex_object->category_name),
 							$ex_object->guide_tip_cat_id,
 							$action);		

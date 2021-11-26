@@ -1,5 +1,5 @@
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
 
 $progress = new SetupProgress;
 $module = new Module;
@@ -28,11 +28,11 @@ if(isset($_FILES['uploadedfile'])){
 	$img_max_width = (isset($_REQUEST['img_max_width'])) ? $_REQUEST['img_max_width'] : 0;
 		
 	if($slug == "logo"){
-		$dir_dest = "../../saascustuploads/".$_SESSION['profile_account_id']."/logo";
+		$dir_dest = "<?php echo SITEROOT; ?>saascustuploads/".$_SESSION['profile_account_id']."/logo";
 	}elseif($slug == "video"){
-		$dir_dest = "../../saascustuploads/".$_SESSION['profile_account_id']."/video";		
+		$dir_dest = "<?php echo SITEROOT; ?>saascustuploads/".$_SESSION['profile_account_id']."/video";		
 	}else{
-		$dir_dest = "../../saascustuploads/".$_SESSION['profile_account_id']."/cms";	
+		$dir_dest = "<?php echo SITEROOT; ?>saascustuploads/".$_SESSION['profile_account_id']."/cms";	
 	}
 	
 	$this_uploaded_file_id = 0;
@@ -97,7 +97,7 @@ if(isset($_FILES['uploadedfile'])){
 		
 }
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php'); 
+require_once($real_root.'/manage/admin-includes/doc_header.php'); 
 
 ?>
 <script language="JavaScript">
@@ -155,11 +155,11 @@ if($ret_page == 'discount') $slug = 'discount';
 if($ret_page == 'discount-how') $slug = 'discount';
 if($ret_page == 'about-us') $slug = 'about-us';
 if($ret_page == 'testimonial-page') $slug = 'testimonial-page';
-if($ret_page == 'showroom-sub-category') $slug = 'showroom-sub-category';
+if($ret_page == 'showroom-sub') $slug = 'showroom-sub';
 if($ret_page == 'showroom-item') $slug = 'showroom-item';
 if($ret_page == 'guides-tips') $slug = 'guides-tips';
 if($ret_page == 'showroom-cat-item') $slug = 'showroom-item';
-if($ret_page == 'showroom-category') $slug = 'showroom-category';
+if($ret_page == 'showroom') $slug = 'showroom';
 if($ret_page == 'downloads-page') $slug = 'downloads-page';
 if($ret_page == 'add-home-banner') $slug = 'add-home-banner';
 if($ret_page == 'edit-installation-link') $slug = 'installation-link';
@@ -202,7 +202,7 @@ if($ret_page == 'faq') $slug = 'faq';
 			<a class="btn btn-large" 
             href="<?php echo $ret_dir."/".$ret_page.".php?ret_cat_id=".$ret_cat_id."&banner_id=".$banner_id."&page_id=".$page_id."&linktype=".$linktype; ?>" 
             <?php if(!$fromfancybox){ echo "target='_top'"; } ?>>Cancel</a> </div>
-			<div class="loadinggif" id="inprogress"><img id="inprogress_img" src="<?php echo $ste_root; ?>/images/progress.gif">
+			<div class="loadinggif" id="inprogress"><img id="inprogress_img" src="<?php echo SITEROOT; ?>images/progress.gif">
 				<p>Please Wait...</p>
 			</div>
 		</div>

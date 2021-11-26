@@ -28,13 +28,6 @@ require_once($real_root."/includes/header.php");
                         <h2>
                            <span>
 						   
-						   <?php
-						   echo $svg_code;
-						   ?>
-						   
-                              
-                           </span>
-                           <?php echo $name; ?>
                         </h2>
                      </div>
                   </div>
@@ -385,16 +378,12 @@ require_once($real_root."/includes/header.php");
                         <div class="specification-detial-header__wrap">
                            <span class="specification-detial-header__img">
                              
-						   <?php
-						   echo $svg_code;
-						   ?>
 						   
 							  
                            </span>
                            <div class="specification-detial-header__content">
-                              <h2 class="specification-detial-header__heading"><?php echo $name; ?></h2>
+                              <h2 class="specification-detial-header__heading"></h2>
                               <p class="specification-detial-header__text">
-							  <?php echo $description; ?>
 							  
                               </p>
                            </div>

@@ -13,7 +13,7 @@ if(!isset($_SERVER['DOCUMENT_ROOT'])){
 }
 
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
 
 $progress = new SetupProgress;
 $module = new Module;
@@ -69,7 +69,7 @@ if(isset($_POST["del_img_id"])){
 }
 
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php'); 
+require_once($real_root.'/manage/admin-includes/doc_header.php'); 
 
 ?>
 <script>
@@ -163,7 +163,7 @@ $url_str .= '/'.$ret_page.'.php';
 			//$sel = ($_SESSION['img_id']) ? "checked" : ''; 
 			$sel = '';
 			$block .= "<a onClick='select_img(".$row->img_id.")' >";	
-			$block .= "<img src='".$ste_root."/saascustuploads/".$_SESSION['profile_account_id']."/cms/".$row->file_name."'  />";
+			$block .= "<img src='".SITEROOT."/saascustuploads/".$_SESSION['profile_account_id']."/cms/".$row->file_name."'  />";
 			//$block .= $row->img_id;
 			$block .= "</a>";
 			$block .= "</td>";

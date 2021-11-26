@@ -8,7 +8,7 @@ class Discount {
 		$db = $dbCustom->getDbConnect(CART_DATABASE);
 		
 		$it = new ShoppingCart;
-		$price = $it->getItemPrice($item_id);	
+		$price = $it->getItemPrice($dbCustom,$item_id);	
 		
 		$sql = "SELECT amount_off, percent_off 
 				FROM item

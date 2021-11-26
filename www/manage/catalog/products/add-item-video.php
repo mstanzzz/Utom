@@ -1,70 +1,54 @@
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
+if(strpos($_SERVER['REQUEST_URI'], 'solvitware/' )){ 
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/solvitware';
+}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/designitpro'; 
+}elseif(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
+}else{
+	$real_root = $_SERVER['DOCUMENT_ROOT']; 	
+}
+require_once($real_root.'/includes/class.dbcustom.php');
+$dbCustom = new DbCustom();
 
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
+
+$db = $dbCustom->getDbConnect(CART_DATABASE);
 
 $strip = (isset($_GET['strip'])) ? $_GET['strip'] : 0;
-
-
 $page_title = "Add Video";
 $page_group = "video";
 
-
-
 $ret_page = (isset($_REQUEST['ret_page'])) ? $_REQUEST['ret_page'] : 'edit-item';
 $strip = (isset($_REQUEST['strip'])) ? $_REQUEST['strip'] : 0;
-
-
 $fromfancybox = (isset($_GET['fromfancybox'])) ? $_GET['fromfancybox'] : 0;
-
 
 $msg = '';
 
 if(isset($_POST['add_video'])){
 
 	if(!isset($_SESSION['temp_videos'])) $_SESSION['temp_videos'] = array();
-	
 	$youtube_url = trim($_POST['youtube_url']);
 	$temp = explode('?v=',$youtube_url);
-	
-	//print_r($temp);
-	
+
 	if(isset($temp[1])){
-		
-		
 		$youtube_id = $temp[1]; 
-		
 		$title = trim(addslashes($_POST['title']));
-		
 		$description = trim(addslashes($_POST['description']));
-	
 		$indx = count($_SESSION['temp_videos']);
-		
 		$video_id = 0;
 		
-		$db = $dbCustom->getDbConnect(CART_DATABASE);
-		
 		if ($stmt = $db->prepare("SELECT video_id FROM video WHERE youtube_id = ?")) {
-			
 			$stmt->bind_param('s', $youtube_id);
-			
 			$stmt->execute();
-			
-			
 			if($stmt->num_rows > 0){
-				
 				$stmt->bind_result($video_id);
-			
 				$stmt->fetch();
-				
 			}
-			
 			$stmt->close();
-			
 		}
-		
 
 		if($video_id > 0){
-			
 			$stmt = $db->prepare("UPDATE video
 								SET title = ?
 									,description = ?
@@ -189,7 +173,7 @@ if(isset($_POST['add_video'])){
 
 
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php'); 
+require_once($real_root.'/manage/admin-includes/doc_header.php'); 
 
 
 ?>

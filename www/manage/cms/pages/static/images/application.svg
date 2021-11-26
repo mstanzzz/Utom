@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="61.47" height="59.549" viewBox="0 0 61.47 59.549">
+  <g id="application" transform="translate(0 -8)">
+    <g id="Group_190" data-name="Group 190" transform="translate(0 8)">
+      <g id="Group_189" data-name="Group 189" transform="translate(0 0)">
+        <path id="Path_106" data-name="Path 106" d="M58.588,8H2.881A2.881,2.881,0,0,0,0,10.881v42.26a.961.961,0,0,0,.96.96H22.84L21.3,61.786H19.209a.961.961,0,0,0-.96.96v2.881H16.328v1.921H45.142V65.628H43.221V62.747a.961.961,0,0,0-.96-.96h-2.1L38.628,54.1H60.509a.961.961,0,0,0,.96-.96V10.881A2.881,2.881,0,0,0,58.588,8ZM39.379,63.707H41.3v1.921H20.17V63.707H39.379ZM23.262,61.786,24.8,54.1H36.671l1.537,7.684Zm36.286-9.6H1.921V43.537H59.549ZM6.723,41.616V14.723H54.747V41.616Zm52.826,0H56.667V13.763a.961.961,0,0,0-.96-.96H5.763a.961.961,0,0,0-.96.96V41.616H1.921V10.881a.961.961,0,0,1,.96-.96H58.588a.961.961,0,0,1,.96.96Z" transform="translate(0 -8)" fill="#949dae"/>
+      </g>
+    </g>
+    <g id="Group_192" data-name="Group 192" transform="translate(27.853 44.498)">
+      <g id="Group_191" data-name="Group 191">
+        <path id="Path_107" data-name="Path 107" d="M234.881,312a2.881,2.881,0,1,0,2.881,2.881A2.881,2.881,0,0,0,234.881,312Zm0,3.842a.96.96,0,1,1,.96-.96A.961.961,0,0,1,234.881,315.842Z" transform="translate(-232 -312)" fill="#949dae"/>
+      </g>
+    </g>
+    <g id="Group_194" data-name="Group 194" transform="translate(8.644 16.644)">
+      <g id="Group_193" data-name="Group 193">
+        <path id="Path_108" data-name="Path 108" d="M72.96,80a.961.961,0,0,0-.96.96v2.881h1.921V81.921h1.921V80Z" transform="translate(-72 -80)" fill="#949dae"/>
+      </g>
+    </g>
+    <g id="Group_196" data-name="Group 196" transform="translate(17.288 18.565)">
+      <g id="Group_195" data-name="Group 195" transform="translate(0 0)">
+        <path id="Path_109" data-name="Path 109" d="M150.723,96H144.96a.961.961,0,0,0-.96.96v5.763a.961.961,0,0,0,.96.96h5.763a.96.96,0,0,0,.96-.96V96.96A.96.96,0,0,0,150.723,96Zm-4.8,1.921h2.484l-2.484,2.484Zm3.842,3.842H147.28l2.483-2.483Z" transform="translate(-144 -96)" fill="#949dae"/>
+      </g>
+    </g>
+    <g id="Group_198" data-name="Group 198" transform="translate(27.853 19.526)">
+      <g id="Group_197" data-name="Group 197" transform="translate(0 0)">
+        <rect id="Rectangle_23" data-name="Rectangle 23" width="2" height="1" transform="translate(0.147 0.474)" fill="#949dae"/>
+      </g>
+    </g>
+    <g id="Group_200" data-name="Group 200" transform="translate(31.695 19.526)">
+      <g id="Group_199" data-name="Group 199" transform="translate(0 0)">
+        <rect id="Rectangle_24" data-name="Rectangle 24" width="2" height="1" transform="translate(0.305 0.474)" fill="#949dae"/>
+      </g>
+    </g>
+    <g id="Group_202" data-name="Group 202" transform="translate(27.853 23.367)">
+      <g id="Group_201" data-name="Group 201">
+        <rect id="Rectangle_25" data-name="Rectangle 25" width="15" height="2" transform="translate(0.147 -0.367)" fill="#949dae"/>
+      </g>
+    </g>
+    <g id="Group_204" data-name="Group 204" transform="translate(17.288 29.13)">
+      <g id="Group_203" data-name="Group 203">
+        <path id="Path_110" data-name="Path 110" d="M150.723,184H144.96a.961.961,0,0,0-.96.96v5.763a.961.961,0,0,0,.96.96h5.763a.961.961,0,0,0,.96-.96V184.96A.96.96,0,0,0,150.723,184Zm-.96,5.763h-3.842v-3.842h3.842Z" transform="translate(-144 -184)" fill="#949dae"/>
+      </g>
+    </g>
+    <g id="Group_206" data-name="Group 206" transform="translate(27.853 30.091)">
+      <g id="Group_205" data-name="Group 205">
+        <rect id="Rectangle_26" data-name="Rectangle 26" width="2" height="2" transform="translate(0.147 -0.091)" fill="#949dae"/>
+      </g>
+    </g>
+    <g id="Group_208" data-name="Group 208" transform="translate(31.695 30.091)">
+      <g id="Group_207" data-name="Group 207">
+        <rect id="Rectangle_27" data-name="Rectangle 27" width="2" height="2" transform="translate(0.305 -0.091)" fill="#949dae"/>
+      </g>
+    </g>
+    <g id="Group_210" data-name="Group 210" transform="translate(27.853 33.933)">
+      <g id="Group_209" data-name="Group 209">
+        <rect id="Rectangle_28" data-name="Rectangle 28" width="15" height="2" transform="translate(0.147 0.067)" fill="#949dae"/>
+      </g>
+    </g>
+  </g>
+</svg>

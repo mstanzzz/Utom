@@ -1,6 +1,6 @@
 <?php
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
 
 $progress = new SetupProgress;
 $module = new Module;
@@ -126,7 +126,7 @@ if(isset($_POST["del_blog_post_id"])){
 		$result = $dbCustom->getResult($db,$sql);
 		
 		
-		$myFile = $_SERVER['DOCUMENT_ROOT']."/ul_cms/".$domain."/".$img_obj->file_name;
+		$myFile = $_SERVER['DOCUMENT_ROOT']."/ul_cms/".SITEROOT."/".$img_obj->file_name;
 		if(file_exists($myFile)) unlink($myFile);
 	}
 
@@ -138,7 +138,7 @@ if(isset($_POST["del_blog_post_id"])){
 
 unset($_SESSION["temp_blog_fields"]);
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php'); 
+require_once($real_root.'/manage/admin-includes/doc_header.php'); 
 
 ?>
 <script>
@@ -149,27 +149,27 @@ function regularSubmit() {
 </head>
 <body>
 <?php
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-header.php');
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-top-nav.php');
+	require_once($real_root.'/manage/admin-includes/manage-header.php');
+	require_once($real_root.'/manage/admin-includes/manage-top-nav.php');
 ?>
 <div class="manage_page_container">
     <div class="manage_side_nav">
         <?php 
-        require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-side-nav.php');
+        require_once($real_root.'/manage/admin-includes/manage-side-nav.php');
         ?>
     </div>	
     <div class="manage_main">
 		<?php 
-		require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/class.admin_bread_crumb.php");	
+		require_once($real_root."/manage/admin-includes/class.admin_bread_crumb.php");	
 		$bread_crumb = new AdminBreadCrumb;
 		$bread_crumb->reSet();
 		$bread_crumb->add("Blog", '');
         echo $bread_crumb->output();
 
-        require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-content-top.php');
+        require_once($real_root.'/manage/admin-includes/manage-content-top-category.php');
         
 		//blog section tabbed sub-navigation
-        require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/blog-section-tabs.php");
+        require_once($real_root."/manage/admin-includes/blog-section-tabs.php");
 
 		$sortby = (isset($_GET['sortby'])) ? trim(mysql_escape_string($_GET['sortby'])) : '';
 		$a_d = (isset($_GET['a_d'])) ? $_GET['a_d'] : 'a';
@@ -250,7 +250,7 @@ function regularSubmit() {
 				?>
 
 				<?php
-                    require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/tablesort.php");
+                    require_once($real_root."/manage/admin-includes/tablesort.php");
                 ?>                
                 <table cellpadding="10" cellspacing="0">
 					<thead>
@@ -333,7 +333,7 @@ function regularSubmit() {
 </div>
 <p class="clear"></p>
 <?php 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-footer.php');
+require_once($real_root.'/manage/admin-includes/manage-footer.php');
 ?>
 </div>
 <!-- New Delete Confirmation Dialogue -->

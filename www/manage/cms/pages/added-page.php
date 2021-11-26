@@ -1,6 +1,17 @@
 <?php
-/* ms */
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
+if(strpos($_SERVER['REQUEST_URI'], 'solvitware/' )){ 
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/solvitware';
+}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/designitpro'; 
+}elseif(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
+}else{
+	$real_root = $_SERVER['DOCUMENT_ROOT']; 	
+}
+require_once($real_root.'/includes/class.dbcustom.php');
+$dbCustom = new DbCustom();
+
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
 
 $progress = new SetupProgress;
 $module = new Module;
@@ -27,7 +38,7 @@ $msg = (isset($_GET['msg'])) ? $_GET['msg'] : '';
 	
 	if(!isset($_SESSION['temp_page_fields']['content'])) $_SESSION['temp_page_fields']['content'] = $content;
 	
-	require_once($_SERVER['DOCUMENT_ROOT']."/manage/cms/get_seo_variables.php");
+	require_once($real_root."/manage/cms/get_seo_variables.php");
 	
 	if(!isset($_SESSION['temp_page_fields']['page_heading'])) $_SESSION['temp_page_fields']['page_heading'] = $page_heading;
 	if(!isset($_SESSION['temp_page_fields']['seo_name'])) $_SESSION['temp_page_fields']['seo_name'] = $seo_name;
@@ -38,7 +49,7 @@ $msg = (isset($_GET['msg'])) ? $_GET['msg'] : '';
 
 
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php'); 
+require_once($real_root.'/manage/admin-includes/doc_header.php'); 
 
 ?>
 <script>
@@ -120,7 +131,7 @@ function get_query_str(){
 
 
 function previewSubmit() {
-  document.form.action = '<?php echo $ste_root; ?>/pages/preview/preview.php';
+  document.form.action = '<?php echo SITEROOT; ?>pages/preview/preview.php';
   document.form.target = '_blank'; 
   document.form.submit();
 }	
@@ -136,8 +147,8 @@ function setRegularSubmit() {
 <body>
 <?php 
 
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-header.php');
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-top-nav.php');
+	require_once($real_root.'/manage/admin-includes/manage-header.php');
+	require_once($real_root.'/manage/admin-includes/manage-top-nav.php');
 
 
 
@@ -146,19 +157,19 @@ function setRegularSubmit() {
 <div class="manage_page_container">
 	<div class="manage_side_nav">
 		<?php 
-		require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-side-nav.php');
+		require_once($real_root.'/manage/admin-includes/manage-side-nav.php');
         ?>
 	</div>
 	<div class="manage_main">
 	<?php
-   		require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/class.admin_bread_crumb.php");	
+   		require_once($real_root."/manage/admin-includes/class.admin_bread_crumb.php");	
 		$bread_crumb = new AdminBreadCrumb;
 		$bread_crumb->reSet();
-		$bread_crumb->add("CMS", $ste_root."manage/cms/cms-landing.php");
-		$bread_crumb->add("Pages", $ste_root."manage/cms/pages/page.php");
+		$bread_crumb->add("CMS", SITEROOT."/manage/cms/cms-landing.php");
+		$bread_crumb->add("Pages", SITEROOT."/manage/cms/pages/page.php");
 		$bread_crumb->add($page_name, '');
 	 	 echo $bread_crumb->output();
-        require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-content-top.php');
+        require_once($real_root.'/manage/admin-includes/manage-content-top-category.php');
         ?>
 	<form name="form" action="page.php" method="post" enctype="multipart/form-data">
 		<input type="hidden" name="edit_added_page" value="1">        
@@ -176,7 +187,7 @@ function setRegularSubmit() {
 		<div class="page_actions edit_page"> 
             <a onClick="previewSubmit();" href="#" class="btn btn-primary btn-large"><i class="icon-eye-open icon-white"></i> Preview </a>
 
-            <a href="<?php echo $ste_root; ?>/manage/cms/navigation/navbar.php?strip=1" class="btn btn-primary btn-large fancybox fancybox.iframe">
+            <a href="<?php echo SITEROOT; ?>manage/cms/navigation/navbar.php?strip=1" class="btn btn-primary btn-large fancybox fancybox.iframe">
             <i class="icon-eye-open icon-white"></i> Add to Navigation </a>
             
 			<button onClick="setRegularSubmit();" id="save" href="#" class="btn btn-success btn-large"><i class="icon-ok icon-white"></i> Save </button>
@@ -190,7 +201,7 @@ function setRegularSubmit() {
 				<input type="checkbox" class="checkboxinput" name="mssl" value="1" <?php echo $checked; ?> />
 			</div>
 			<?php } ?>
-			<a href="<?php echo $ste_root;?>/manage/cms/pages/page.php" class="btn btn-large"><i class="icon-arrow-left"></i> Cancel &amp; Go Back</a>
+			<a href="<?php echo SITEROOT;?>/manage/cms/pages/page.php" class="btn btn-large"><i class="icon-arrow-left"></i> Cancel &amp; Go Back</a>
 		</div>
 		<div class="page_content edit_page">
 		<fieldset class="edit_content">
@@ -213,7 +224,7 @@ function setRegularSubmit() {
 		</fieldset>
         
 	        <?php require_once("edit_page_seo.php"); ?>
-    	    <?php require_once($_SERVER['DOCUMENT_ROOT']."/manage/cms/edit_page_breadcrumb.php"); ?>
+    	    <?php require_once($real_root."/manage/cms/edit_page_breadcrumb.php"); ?>
 
 
 
@@ -222,7 +233,7 @@ function setRegularSubmit() {
 </div>
 <p class="clear"></p>
 <?php 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-footer.php');
+require_once($real_root.'/manage/admin-includes/manage-footer.php');
 ?>
 </div>
 <div style="display:none">

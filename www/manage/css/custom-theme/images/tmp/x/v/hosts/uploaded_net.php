@@ -28,7 +28,7 @@ class dl_uploaded_net extends Download {
 		else return array(false, "accinvalid");
 	}
          
-	public function Login($user, $pass){
+	public function login($dbCustom,$user, $pass){
 		$data = $this->lib->curl("http://uploaded.net/io/login", "", "id={$user}&pw={$pass}");
 		$cookie = $this->lib->GetCookies($data);
 		return $cookie;

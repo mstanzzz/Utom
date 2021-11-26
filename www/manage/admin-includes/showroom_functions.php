@@ -10,11 +10,11 @@ function getSearchShowroomItemBar($num_res)
 	$block .="<div style='padding-left:30px; padding-top:3px; float:left;'>".$num_res."  Products Found</div>";
 	$block .="<div style='padding-left:40px;  padding-top:3px; float:left;'>View as:</div>";
 	$block .="<a style='cursor:pointer;' onclick='get_search_showroom_item_list();'>";
-	$block .="<div style='padding-left:8px;  padding-top:5px; float:left;'><img src='".$ste_root."/images/icons/list.gif' /></div>";
+	$block .="<div style='padding-left:8px;  padding-top:5px; float:left;'><img src='".SITEROOT."/images/icons/list.gif' /></div>";
 	$block .="<div style='padding-left:8px;  padding-top:3px; float:left;'>List</div>";
 	$block .="</a>";
 	$block .="<a style='cursor:pointer;' onclick='get_search_showroom_item_grid();'>";
-	$block .="<div style='padding-left:20px;  padding-top:5px; float:left;'><img src='".$ste_root."/images/icons/grid.gif' /></div>";
+	$block .="<div style='padding-left:20px;  padding-top:5px; float:left;'><img src='".SITEROOT."/images/icons/grid.gif' /></div>";
 	$block .="<div style='padding-left:8px;  padding-top:3px; float:left;'>Grid</div>";
 	$block .="</a>";	
 	$block .="</div><div class='clear'></div>";

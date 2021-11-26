@@ -1,4 +1,24 @@
 
+<?php
+if(isset($_POST['del_idea_house_id'])){
+
+	$del_idea_house_id = (isset($_POST['del_idea_house_id'])) ? $_POST['del_idea_house_id'] : 0;
+
+	$sql = "DELETE FROM  idea_house
+			WHERE idea_house_id = '".$del_idea_house_id."'";
+	$result = $dbCustom->getResult($db,$sql);
+	
+	$sql = "DELETE FROM idea_house_to_room
+			WHERE idea_house_id = '".$del_idea_house_id."'";
+	$result = $dbCustom->getResult($db,$sql);
+}
+?>
+
+
+<a href="account-idea-folder-details.html" 
+class="account-nav__link active account-menu-hidden">Idea folder detail</a>
+
+
 <nav class="account-block__navigation--navigation">
 <ul class="account-nav">
 <li class="mobile-show">
@@ -60,16 +80,10 @@ My orders
 Payment settings
 </a>
 </li>
-<li>
-<button class="account-block__buttons-block--button manage-folders" data-toggle="modal" 
-data-target="#manageFolders">
-<span class="button-image">
-<svg xmlns="http://www.w3.org/2000/svg" width="21.667" height="17.755" viewBox="0 0 21.667 17.755"><defs><style>.wallet{fill:#384765;}</style></defs><g transform="translate(0 -39)"><g transform="translate(0 39)"><g transform="translate(0 0)"><path class="wallet" d="M19.591,39H4.429a2.081,2.081,0,0,0-2.071,2.081v.025H2.076A2.075,2.075,0,0,0,0,43.173v11.5a2.088,2.088,0,0,0,2.076,2.081H17.238a2.081,2.081,0,0,0,2.071-2.081v-.025h.281a2.075,2.075,0,0,0,2.076-2.066v-11.5A2.085,2.085,0,0,0,19.591,39ZM17.238,55.752H2.076A1.085,1.085,0,0,1,1,54.673v-11.5A1.072,1.072,0,0,1,2.076,42.11H17.238a1.065,1.065,0,0,1,1.068,1.063v2.869a1.235,1.235,0,0,1-.266.03H15.147a2.856,2.856,0,0,0,0,5.713h2.889c.09-.005.181-.015.266-.025l.005,2.914A1.078,1.078,0,0,1,17.238,55.752Zm3.426-3.17a1.072,1.072,0,0,1-1.073,1.063H19.31V51.4a2.741,2.741,0,0,0,.577-.527l.777-1Zm-1.57-2.317a1.35,1.35,0,0,1-1.053.522H15.147a1.856,1.856,0,0,1,0-3.711h2.889a2.288,2.288,0,0,0,1-.226,2.332,2.332,0,0,0,.848-.682l.777-1,.005,3.064Zm1.57-6.741L19.31,45.269v-2.1a2.068,2.068,0,0,0-2.071-2.066H3.36v-.025A1.078,1.078,0,0,1,4.429,40H19.591a1.085,1.085,0,0,1,1.073,1.078v2.443Z" transform="translate(0 -39)"></path></g></g><g transform="translate(14.565 48.429)"><path class="wallet" d="M292.105,227h-1.2a.5.5,0,1,0,0,1h1.2a.5.5,0,0,0,0-1Z" transform="translate(-290.4 -227)"></path></g></g></svg>
-</span>
-Idea folders
-</button>
-</li>
+
 <li class="mobile-show">
+<a href="account-idea-folder-detail.html" title="" class="account-nav__link active account-menu-hidden">Idea folder</a>
+
 <a href="account-idea-folder.html" title="" class="account-nav__link active account-menu-hidden">Idea folder</a>
 </li>
 <li class="mobile-show">
@@ -87,167 +101,141 @@ Idea folders
 Sign out
 </a>
 </li>
+</ul>
+</nav>
+
+									
 
 
-
-
-
-
-<div class="modal fade" id="manageFolders" tabindex="-1" role="dialog" aria-labelledby="#manageFoldersTitle" aria-hidden="true">
-	<div class="modal-dialog modal-dialog-centered" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title manage-house-tite" id="manageFoldersTitle">Title folder name 1 - Living Room</h5>
-						
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-			</div>
-			<div class="modal-body manage-house-modal-body">
-				<div class="row">
-					<div class="col-12">
-						<div class="manage-house-houses">
-<table class="manage-house-houses__table">
-<thead>
-<tr>
-<th>Folder name</th>
-<th>Images</th>
-<th>Subfolders</th>
-<th colspan="2" class="text-center">
-<button class="manage-house-houses__table--button add-house" data-toggle="modal" data-target="#newFolder">New folder</button>
-</th>
-</tr>
-</thead>
-<tbody>
-						
-<?php
-
-$sql = "SELECT * 
-		FROM idea_folder
-		WHERE profile_account_id = '".$_SESSION['profile_account_id']."'";
-$result = $dbCustom->getResult($db,$sql);
-$f_block = '';
-while($row = $result->fetch_object()){
-	$f_block .= "<tr>";
-	$f_block .= "<td class='manage-house-houses__folder-name'>";
-	$f_block .= "<a href='".SITEROOT."account-idea-folder.html?idea-folder-id=".$row->idea_folder_id."'>".$row->name."</a>";
-	$f_block .= "<br /><span>88 items</span></td>";
-	$f_block .= "<td>99</td>";
-	$f_block .= "<td>0</td>";
-	$f_block .= "<td>";	
-	$f_block .= "<button onClick='update_folder(".$row->idea_folder_id.")' class='manage-house-houses__table--button edit js-edit-house' ";
-	$f_block .= "data-house-id='".$row->idea_folder_id."' data-toggle='modal' data-target='#newFolder'>";
-	$f_block .= "Rename";
-	$f_block .= "</button>";
-	$f_block .= "</td>";	
-	$f_block .= "<td>";
-	$f_block .= "<button onClick='del_folder(".$row->idea_folder_id.")' class='js-manage-house-delete' data-house-id='".$row->idea_folder_id."' ";
-	$f_block .= " data-toggle='modal' data-target='#deleteFolder'>";
-	$f_block .= '<svg xmlns="http://www.w3.org/2000/svg" width="14.932" height="16.033" viewBox="0 0 14.932 16.033"><defs><style>.trash-small{fill:#fb561b;}</style></defs><g transform="translate(0 0)"><g transform="translate(0 0)"><g transform="translate(0 0)"><path class="trash-small" d="M63.331,124.769a1.305,1.305,0,0,0,1.351,1.168h5.771a1.328,1.328,0,0,0,1.374-1.191l.939-9.8H62.186Z" transform="translate(-60.01 -109.905)"/><path class="trash-small" d="M27.028,2.061h-4.26V1.328A1.283,1.283,0,0,0,21.533,0H18.577a1.282,1.282,0,0,0-1.306,1.259q0,.035,0,.07v.733h-4.26a.458.458,0,0,0,0,.916H27.028a.458.458,0,1,0,0-.916Zm-5.176-.733v.733H18.188V1.328a.366.366,0,0,1,.389-.412h2.886a.366.366,0,0,1,.391.34A.362.362,0,0,1,21.852,1.328Z" transform="translate(-12.554 0)"/></g></g></g></svg>';
-	$f_block .= "</button>";
-	$f_block .= "</td>";
-	$f_block .= "</tr>";
-		
-}
-
-echo $f_block
-
-?>						
-</tbody>
-</table>
-</div>
-</div>
-</div>
-</div>
-<div class="modal-footer manage-house-modal-footer">
-<button type="button" class="btn btn-primary w-100" data-toggle="modal" data-target="#newFolder">Add new folder</button>
-</div>
-</div>
-</div>
-</div>
-
-
-
-<!-- Modal Add/Edit new folder -->
-<div class="modal addEditFolder fade" id="newFolder" tabindex="-1" role="dialog" aria-labelledby="#newFolderTitle" aria-hidden="true">
+<!-- Modal delete house -->
+<div class="modal fade" id="deleteHouse" tabindex="-1" role="dialog" aria-labelledby="#deleteHouseTitle" aria-hidden="true">
 <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
 <div class="modal-content">
 <div class="modal-header">
-<h5 class="modal-title" id="MS_edit_newFolderTitle">Folder title <span></span></h5>
+<h5 class="modal-title" id="deleteHouseTitle"><span>XXXX</span></h5>
 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 <span aria-hidden="true">&times;</span>
 </button>
 </div>
+
 <div class="modal-body">
 <div class="account-block__form">
-<form action="<?php echo SITEROOT; ?>account.html" method="post">
-<input type="hidden" name="add_edit_new_folder" value="1" />
-<input type="hidden" id="update_folder_id" name="update_folder_id" value="1" />
+
 <div class="row mb-3">
 <div class="col-12">
-<div class="form-group">
-<label for="folder-title">Folder title</label>
-<input type="text" class="form-control mt-2" name="folder_name" placeholder="Folder title">
-</div>
-</div>
-</div>
-<div class="row">
-<div class="col-12">
-<button type="submit" class="btn btn-primary w-100">confirm</button>
-</div>
-</div>
-</form>
-</div>
-</div>
-</div>
-</div>
-</div>
-
-
-
-<!-- Modal delete folder -->
-<div class="modal fade" id="deleteFolder" tabindex="-1" role="dialog" aria-labelledby="#deleteFolderTitle" aria-hidden="true">
-<div class="modal-dialog modal-sm modal-dialog-centered" role="document">
-<div class="modal-content">
-<div class="modal-header">
-<h5 class="modal-title" id="MS_del_newFolderTitle"><span>XXXX</span></h5>
-<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-<span aria-hidden="true">&times;</span>
-</button>
-</div>
-<div class="modal-body">
-<div class="account-block__form">
-<form action="<?php echo SITEROOT; ?>account.html" method="post">
-<input type="hidden" id="del_folder_id" name="del_folder_id" value="1" />
-<div class="row mb-3">
-<div class="col-12">
-<p class="js-delete-text">You are about to delete <span style="color: #17C3C6">XXXX</span>.<br /> 
+<p class="js-delete-text">You are about to delete 
+<span style="color: #17C3C6">XXXX</span>.<br /> 
 Are you sure that you want to continue?</p>
 </div>
 </div>
 <div class="row">
 <div class="col-12">
+
+
+<form  action"<?php echo SITEROOT.'account-idea-folder.html'; ?>" method="post">
+<input type="hidden" id="del_idea_house_id" name="del_idea_house_id" value="1">								<div class="row mb-3">
+
 <button type="submit" class="btn btn-secondary w-100">continue</button>
-</div>
-</div>
 </form>
+
 </div>
 </div>
+
+</div>
+</div>
+
 </div>
 </div>
 </div>
 
 
 
+
+<!-- Modal alert confirmation -->
+<div class="modal fade confirm-modal" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="#confirmModalTitle" aria-hidden="true">
+<div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+<div class="modal-content">
+	<div class="modal-header">
+		<h5 class="modal-title" id="confirmModalTitle"></h5>
+		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+	<div class="modal-body">
+		<div class="account-block__form">
+		
+
+<div class="col-12">
+<p class="js-delete-text">Are you sure that you would like to share your Idea Folder with Closets To Go?</p>
+</div>
+</div>
+<div class="row">
+<div class="col-6">
+<button type="submit" data-dismiss="modal" class="btn btn-secondary w-100">No</button>
+</div>
+<div class="col-6">
+<button type="submit" data-dismiss="modal" class="btn btn-primary w-100">Yes</button>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+ 		
 <script>
 
 function update_folder(id){
 	document.getElementById("update_folder_id").value = id;	
 }
 
+function set_del_house(id){
+	alert(id);
+	document.getElementById("del_idea_house_id").value = id;
+	alert(document.getElementById("del_idea_house_id"));	
+}
 
-function del_folder(id){
-	document.getElementById("del_folder_id").value = id;	
+function add_spec(){
+	//alert("kkkkkkkkkkkkkkk");
+	document.getElementById("add_spec_modal").style.display = "block";
+
 }
 
 </script>
+
+
+<!-- test add_spec -->
+<div id="add_spec_modal" 
+	style="z-index:36;
+		top:-140px;
+		left:500px;	
+		width:200px; 
+		height:60px; 
+		position:absolute;">
+<form  action"<?php echo SITEROOT.'account-idea-folder.html'; ?>" method="post" style="border-style:solid;">
+	<input type="hidden" name="add_spec" value="1">
+	
+	<input type="text" name="title" value="Spec Name">	
+	<input type="text" name="description" value="description">
+	<select name="spec_room">
+	<option value="0"> SELECT ROOM </option>
+	<?php
+	$sql = "SELECT idea_room_id, room_name
+			FROM idea_rooms 
+			WHERE active > '0'
+			AND profile_account_id  = '".$_SESSION['profile_account_id']."'";
+	$res = $dbCustom->getResult($db,$sql);
+	while($row = $res->fetch_object()){
+		echo "<option value='".$row->idea_room_id."'>".$row->room_name."</option>"; 
+	}
+	?>
+	</select>
+
+	<input type="submit" value="ADD Spec">
+</form>
+</div>
+
+<span onClick="add_spec();">
+>>>>>>>>>>>>>>>>> ADD SPEC
+</span>

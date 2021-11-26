@@ -369,7 +369,7 @@ EOD;
 							
 							
 		$conn_id = ftp_connect($ftp_server); 
-		$login_result = ftp_login($conn_id, $ftp_user_name, $ftp_user_pass); 
+		$login_result = ftp_login($dbCustom,$conn_id, $ftp_user_name, $ftp_user_pass); 
 		
 		ftp_pasv($conn_id, true);
 		
@@ -468,8 +468,8 @@ EOD;
 	// this is the encrypted files we download. Once they are downloaded, they are removed.
 	//$remote_path = "/closetstogo/costco/outgoing/orders";
 	
-	$local_path = "../../../costco/encrypted/";
-	//$local_path = "../../../test/";
+	$local_path = "<?php echo SITEROOT; ?>/../costco/encrypted/";
+	//$local_path = "<?php echo SITEROOT; ?>/../test/";
 	
 	// set up basic connection
 	//$conn_id = ftp_connect($ftp_server);
@@ -481,7 +481,7 @@ EOD;
 	//echo "<br />";
 	 
 	// login with username and password
-	$login_result = ftp_login($conn_id, $ftp_user_name, $ftp_user_pass); 
+	$login_result = ftp_login($dbCustom,$conn_id, $ftp_user_name, $ftp_user_pass); 
 	
 	//ftp_pasv($conn_id, true);
 	

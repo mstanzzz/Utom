@@ -103,7 +103,7 @@ if($profile_type != "master"){
 
 // tmp disabled
 if($do_redirect){
-	$header_str =  "Location: ".$ste_root."manage/start.php?nl=1";
+	$header_str =  "Location: ".SITEROOT."/manage/start.php?nl=1";
 	header($header_str);			
 }
 

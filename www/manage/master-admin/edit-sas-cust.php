@@ -1,19 +1,17 @@
 <?php
-
-
-
-if(!isset($_SERVER['DOCUMENT_ROOT'])){
-	if(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){    
-		$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
-	}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro/' )){
-		$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT'].'/designitpro';
-	}else{
-		$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT']; 	
-	}
+if(strpos($_SERVER['REQUEST_URI'], 'solvitware/' )){ 
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/solvitware';
+}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/designitpro'; 
+}elseif(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
+}else{
+	$real_root = $_SERVER['DOCUMENT_ROOT']; 	
 }
+require_once($real_root.'/includes/class.dbcustom.php');
+$dbCustom = new DbCustom();
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
 
-
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
 
 $page_title = "Edit SaaS Customer";
 $page_group = "admin-users";
@@ -34,7 +32,7 @@ $truncate = (isset($_GET['truncate'])) ? $_GET['truncate'] : 0;
 if(!isset($_SESSION['paging']['truncate'])) $_SESSION['paging']['truncate'] = $truncate;
 
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php'); 
+require_once($real_root.'/manage/admin-includes/doc_header.php'); 
 
 ?>
 <script>
@@ -143,17 +141,17 @@ function show_iframe_input(){
 </head>
 <body>
 <?php
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-header.php');
+	require_once($real_root.'/manage/admin-includes/manage-header.php');
 ?>
 <div class="manage_page_container">
 	<div class="manage_side_nav">
 		<?php 
-        require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-side-nav.php');
+        require_once($real_root.'/manage/admin-includes/manage-side-nav.php');
         ?>
 	</div>
 	<div class="manage_main">
 		<?php 
-        require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-content-top.php');
+        require_once($real_root.'/manage/admin-includes/manage-content-top-category.php');
         
 		$e_profile_account_id = $_GET['e_profile_account_id']; 
 		
@@ -191,7 +189,7 @@ $result = $dbCustom->getResult($db,$sql);		$object = $result->fetch_object();
 					<legend>Configuration &amp; Permissions<i class='icon-minus-sign icon-white'></i></legend>
 					
                     
-                    <?php if(getProfileType() == "master"){ ?>
+                    <?php if(getProfileType($dbCustom) == "master"){ ?>
                     <div class="colcontainer formcols">
 						<div class="twocols">
 							<label>Parent Company</label>
@@ -383,7 +381,7 @@ $result = $dbCustom->getResult($db,$sql);		$object = $result->fetch_object();
 
                
                 	<?php
-					if(getProfileType() == "master"){ 
+					if(getProfileType($dbCustom) == "master"){ 
 						$pages = new Pages;
 						$optional_pages_array = $pages->getOptionalPages($e_profile_account_id);
 						if(sizeof($optional_pages_array) > 0){
@@ -579,7 +577,7 @@ $result = $dbCustom->getResult($db,$sql);		$object = $result->fetch_object();
 	<p class="clear"></p>
 <?php
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-footer.php');
+require_once($real_root.'/manage/admin-includes/manage-footer.php');
 ?>       
 </div>
 </body>

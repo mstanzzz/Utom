@@ -15,11 +15,11 @@ if(!isset($_SERVER['DOCUMENT_ROOT'])){
 
 unset($_SESSION['global_url_word']);
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
 
-require_once($_SERVER['DOCUMENT_ROOT']."/includes/class.store_data.php");
+require_once($real_root."/includes/class.store_data.php");
 
-require_once($_SERVER['DOCUMENT_ROOT']."/includes/class.nav.php");
+require_once($real_root."/includes/class.nav.php");
 
 $nav = new Nav;
 
@@ -357,7 +357,7 @@ function getNumPages($total_count,$page_rows){
 
 if($action == 'generate'){
 		
-	require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/class.xml.sitemap.generator-modified.php");
+	require_once($real_root."/manage/admin-includes/class.xml.sitemap.generator-modified.php");
 
 	$url_array = array();
 
@@ -481,7 +481,7 @@ if($action == 'generate'){
 
 	// ************ From header *************
 
-	$header_links = $nav->getHeaderSupportLabels();
+	$header_links = $nav->getHeaderSupportLabels($dbCustom);
 	foreach($header_links as $v){
 		$url_array[] = "/".$v['url'];
 	}
@@ -551,7 +551,7 @@ if($action == 'generate'){
 				}
 			}
 		}else{
-    		$footer_nav_submenu_labels = $nav->getFooterNavSubmenuLabels($footer_nav_label_v["id"], $col);
+    		$footer_nav_submenu_labels = $nav->getFooterNavSubmenuLabels($dbCustom,$footer_nav_label_v["id"], $col);
 			foreach($footer_nav_submenu_labels as $footer_nav_submenu_label_v){
 				if((substr_count($footer_nav_submenu_label_v['url'], "account") < 1)){			
 					$url_array[] = "/".$footer_nav_submenu_label_v['url'];  
@@ -711,7 +711,7 @@ $url_array[] = '/'.$_SESSION['global_url_word'].getUrlText($row->name)."/".getUr
 	echo "count:".count($url_array);
 	echo "<br />";
 	foreach($url_array as $k => $v){
-		echo $k."   <a href='".$ste_root.$v."' target='_blank'>".$v."</a>";
+		echo $k."   <a href='".SITEROOT.$v."' target='_blank'>".$v."</a>";
 		echo "<br />";	
 	}
 */
@@ -759,7 +759,7 @@ $url_array[] = '/'.$_SESSION['global_url_word'].getUrlText($row->name)."/".getUr
 
 		$entries[] = new xml_sitemap_entry($url, '0.5', 'daily');
 		
-		//echo $j."   <a href='".$ste_root.$url."' target='_blank'>".$url."</a>";
+		//echo $j."   <a href='".SITEROOT.$url."' target='_blank'>".$url."</a>";
 		//echo "<br />";
 		
 		if($i % 1000 == 0){
@@ -772,10 +772,10 @@ $url_array[] = '/'.$_SESSION['global_url_word'].getUrlText($row->name)."/".getUr
 			$conf = new xml_sitemap_generator_config;
 			$file_name = 'sitemap'.$file_num.$file_ext;
 
-			if(substr_count($domain,'.') > 1){	
-				$conf->setDomain($domain);				
+			if(substr_count(SITEROOT,'.') > 1){	
+				$conf->setDomain(SITEROOT);				
 			}else{
-				$conf->setDomain('www.'.$domain);
+				$conf->setDomain('www.'.SITEROOT);
 			}
 			$conf->setPath($path);
 			$conf->setFilename($file_name);
@@ -792,10 +792,10 @@ $url_array[] = '/'.$_SESSION['global_url_word'].getUrlText($row->name)."/".getUr
 	if(isset($entries)){
 		$file_name = 'sitemap'.$file_num.$file_ext;
 		$conf = new xml_sitemap_generator_config;
-		if(substr_count($domain,'.') > 1){	
-			$conf->setDomain($domain);				
+		if(substr_count(SITEROOT,'.') > 1){	
+			$conf->setDomain(SITEROOT);				
 		}else{
-			$conf->setDomain('www.'.$domain);
+			$conf->setDomain('www.'.SITEROOT);
 		}
 		$conf->setPath($path);
 		$conf->setFilename($file_name);
@@ -820,10 +820,10 @@ $url_array[] = '/'.$_SESSION['global_url_word'].getUrlText($row->name)."/".getUr
 	if(isset($entries)){
 		$conf = new xml_sitemap_generator_config;
 		$file_name = 'sitemap'.$file_ext;
-		if(substr_count($domain,'.') > 1){	
-			$conf->setDomain($domain);				
+		if(substr_count(SITEROOT,'.') > 1){	
+			$conf->setDomain(SITEROOT);				
 		}else{
-			$conf->setDomain('www.'.$domain);
+			$conf->setDomain('www.'.SITEROOT);
 		}
 		$conf->setPath($path);
 		$conf->setFilename($file_name);
@@ -837,7 +837,7 @@ $url_array[] = '/'.$_SESSION['global_url_word'].getUrlText($row->name)."/".getUr
 
 }
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php'); 
+require_once($real_root.'/manage/admin-includes/doc_header.php'); 
 
 ?>
 
@@ -890,13 +890,13 @@ $(document).ready(function() {
 </head>
 <body>
 <?php
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-header.php');
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-top-nav.php');
+	require_once($real_root.'/manage/admin-includes/manage-header.php');
+	require_once($real_root.'/manage/admin-includes/manage-top-nav.php');
 ?>
 <div class="manage_page_container">
 	<div class="manage_side_nav">
 		<?php 
-        require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-side-nav.php');
+        require_once($real_root.'/manage/admin-includes/manage-side-nav.php');
         ?>
 	</div>
 	<div class="manage_main">
@@ -904,17 +904,17 @@ $(document).ready(function() {
 
 
     	<?php 
-		require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/class.admin_bread_crumb.php");	
+		require_once($real_root."/manage/admin-includes/class.admin_bread_crumb.php");	
 		$bread_crumb = new AdminBreadCrumb;
 		$bread_crumb->reSet();
-		$bread_crumb->add("CMS", $ste_root."manage/cms/cms-landing.php");
+		$bread_crumb->add("CMS", SITEROOT."manage/cms/cms-landing.php");
 		$bread_crumb->add("SEO", '');
         echo $bread_crumb->output();
 		
-        require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-content-top.php');
+        require_once($real_root.'/manage/admin-includes/manage-content-top-category.php');
         
 		//SEO section tabbed sub-navigation
-        require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/seo-section-tabs.php");
+        require_once($real_root."/manage/admin-includes/seo-section-tabs.php");
         $db = $dbCustom->getDbConnect(SITE_N_DATABASE);
 		
 
@@ -945,7 +945,7 @@ $(document).ready(function() {
 		<br /><br /><br />
         
         
-            <p style="visibility:hidden" id="inprogress"> <img id="inprogress_img" src="<?php echo $ste_root; ?>/images/progress.gif"> Please Wait... </p>
+            <p style="visibility:hidden" id="inprogress"> <img id="inprogress_img" src="<?php echo SITEROOT; ?>/images/progress.gif"> Please Wait... </p>
 
         
         
@@ -978,7 +978,7 @@ $(document).ready(function() {
         
     <p class="clear"></p>
 	<?php 
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-footer.php');
+	require_once($real_root.'/manage/admin-includes/manage-footer.php');
 	?>
 </div>
 </body>

@@ -1,0 +1,4 @@
+[24-Aug-2021 18:36:59 UTC] PHP Notice:  Undefined variable: dbCustom in /home/ctgtest/public_html/manage/admin-includes/manage-includes.php on line 13
+[24-Aug-2021 18:36:59 UTC] PHP Fatal error:  Call to a member function getDbConnect() on null in /home/ctgtest/public_html/manage/admin-includes/class.admin_access.php on line 52
+[30-Aug-2021 19:43:20 UTC] PHP Notice:  Undefined variable: dbCustom in /home/ctgtest/public_html/manage/admin-includes/manage-includes.php on line 13
+[30-Aug-2021 19:43:20 UTC] PHP Fatal error:  Call to a member function getDbConnect() on null in /home/ctgtest/public_html/manage/admin-includes/class.admin_access.php on line 52

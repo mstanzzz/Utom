@@ -30,7 +30,7 @@ class LikeItems {
 				$t[$i]['item_id'] = $row->item_id;
 				$t[$i]['name'] = $row->name;
 				$t[$i]['file_name'] = $row->file_name;
-				$t[$i]['cat_id'] = $it->getCat($row->item_id);
+				$t[$i]['cat_id'] = $it->getCat($dbCustom,$row->item_id);
 		}
 
 		$clean_likes_array = array();
@@ -55,7 +55,7 @@ class LikeItems {
 				FROM key_words 
 				WHERE item_id = '".$item_id."'";
 		$result = $dbCustom->getResult($db,$sql);
-		//$it = new ShoppingCart;	
+	
 		$i = 0;
 		$t = '';
 		while($row = $result->fetch_object()){

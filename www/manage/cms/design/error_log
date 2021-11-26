@@ -1,0 +1,6 @@
+[18-Feb-2020 23:05:39 UTC] PHP Parse error:  syntax error, unexpected '}' in /home/bridgepo/public_html/manage/design/clean-spam.php on line 53
+[18-Feb-2020 23:41:58 UTC] PHP Parse error:  syntax error, unexpected ',' in /home/bridgepo/public_html/manage/design/clean-spam.php on line 24
+[19-Feb-2020 00:09:30 UTC] PHP Parse error:  syntax error, unexpected 'design' (T_STRING) in /home/bridgepo/public_html/manage/design/clean-spam.php on line 59
+[19-Feb-2020 00:10:33 UTC] PHP Parse error:  syntax error, unexpected 'design' (T_STRING) in /home/bridgepo/public_html/manage/design/clean-spam.php on line 59
+[19-Feb-2020 00:11:20 UTC] PHP Parse error:  syntax error, unexpected 'design' (T_STRING) in /home/bridgepo/public_html/manage/design/clean-spam.php on line 60
+[19-Feb-2020 00:12:15 UTC] PHP Parse error:  syntax error, unexpected 'design' (T_STRING) in /home/bridgepo/public_html/manage/design/clean-spam.php on line 60

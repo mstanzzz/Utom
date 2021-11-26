@@ -1,19 +1,17 @@
 <?php
-
-
-
-if(!isset($_SERVER['DOCUMENT_ROOT'])){
-	if(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){    
-		$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
-	}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro/' )){
-		$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT'].'/designitpro';
-	}else{
-		$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT']; 	
-	}
+if(strpos($_SERVER['REQUEST_URI'], 'solvitware/' )){ 
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/solvitware';
+}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/designitpro'; 
+}elseif(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
+}else{
+	$real_root = $_SERVER['DOCUMENT_ROOT']; 	
 }
+require_once($real_root.'/includes/class.dbcustom.php');
+$dbCustom = new DbCustom();
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
 
-
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
 
 $progress = new SetupProgress;
 $module = new Module;
@@ -96,7 +94,7 @@ if(isset($_POST['edit_account'])){
 	$profile_account_id = $_POST['profile_account_id'];
 	$parent_id = $_POST["parent_id"];
 	$company = trim(addslashes($_POST["company"])); 
-	$domain_name = trim(addslashes($_POST["domain_name"])); 
+	SITEROOT_name = trim(addslashes($_POST["domain_name"])); 
 	$recurring_billing_id = trim(addslashes($_POST["recurring_billing_id"])); 
 	$email = trim(addslashes($_POST["email"])); 
 	$contact_email = trim(addslashes($_POST["contact_email"])); 
@@ -224,7 +222,7 @@ if(isset($_POST['edit_account'])){
 				$company
 				,$profile_account_type_id
 				,$parent_id
-				,$domain_name
+				,SITEROOT_name
 				,$recurring_billing_id
 				,$email
 				,$contact_email
@@ -283,7 +281,7 @@ if(isset($_POST['add_account'])){
 
 	$parent_id = $_POST["parent_id"];
 	$company = trim(addslashes($_POST["company"])); 
-	$domain_name = trim(addslashes($_POST["domain_name"])); 
+	SITEROOT_name = trim(addslashes($_POST["domain_name"])); 
 	$recurring_billing_id = trim(addslashes($_POST["recurring_billing_id"])); 
 	$email = trim(addslashes($_POST["email"])); 
 	$contact_email = trim(addslashes($_POST["contact_email"])); 
@@ -339,7 +337,7 @@ if(isset($_POST['add_account'])){
 				$company
 				,$profile_account_type_id
 				,$parent_id
-				,$domain_name
+				,SITEROOT_name
 				,$recurring_billing_id
 				,$email
 				,$contact_email
@@ -472,13 +470,13 @@ if(isset($_POST["del_profile_account"])){
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Users</title>
 
-<link rel="stylesheet" href="<?php echo $ste_root; ?>/js/fancybox/jquery.fancybox-1.3.1.css" type="text/css" media="screen" />
-<link type="text/css" rel="stylesheet" href="<?php echo $ste_root; ?>/css/manageStyle.css" />
-<link type="text/css" rel="stylesheet" href="<?php echo $ste_root; ?>/css/mce.css" />
+<link rel="stylesheet" href="<?php echo SITEROOT; ?>/js/fancybox/jquery.fancybox-1.3.1.css" type="text/css" media="screen" />
+<link type="text/css" rel="stylesheet" href="<?php echo SITEROOT; ?>/css/manageStyle.css" />
+<link type="text/css" rel="stylesheet" href="<?php echo SITEROOT; ?>/css/mce.css" />
 
-<script type="text/javascript" src="<?php echo $ste_root; ?>/js/jquery-1.4.4.js"></script>
-<script type="text/javascript" src="<?php echo $ste_root; ?>/js/fancybox/jquery.fancybox-1.3.1.pack.js"></script>
-<script type="text/javascript" src="<?php echo $ste_root; ?>/js/tiny_mce/tiny_mce.js"></script>
+<script type="text/javascript" src="<?php echo SITEROOT; ?>/js/jquery-1.4.4.js"></script>
+<script type="text/javascript" src="<?php echo SITEROOT; ?>/js/fancybox/jquery.fancybox-1.3.1.pack.js"></script>
+<script type="text/javascript" src="<?php echo SITEROOT; ?>/js/tiny_mce/tiny_mce.js"></script>
 
 <script>
 $(document).ready(function() {

@@ -1,5 +1,17 @@
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
+if(strpos($_SERVER['REQUEST_URI'], 'solvitware/' )){ 
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/solvitware';
+}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/designitpro'; 
+}elseif(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
+}else{
+	$real_root = $_SERVER['DOCUMENT_ROOT']; 	
+}
+require_once($real_root.'/includes/class.dbcustom.php');
+$dbCustom = new DbCustom();
+
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
 
 $progress = new SetupProgress;
 $module = new Module;
@@ -38,7 +50,7 @@ if(isset($_POST['del_order_id'])){
 	$result = $dbCustom->getResult($db,$sql);
 }
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php'); 
+require_once($real_root.'/manage/admin-includes/doc_header.php'); 
 ?>
 <script>
 $(document).ready(function() {
@@ -103,13 +115,13 @@ function select_img(img_id){
 </head>
 <body>
 <?php
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-header.php');
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-top-nav.php');
+	require_once($real_root.'/manage/admin-includes/manage-header.php');
+	require_once($real_root.'/manage/admin-includes/manage-top-nav.php');
 ?>
 <div class="manage_page_container">
 	<div class="manage_side_nav">
 		<?php 
-        require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-side-nav.php');
+        require_once($real_root.'/manage/admin-includes/manage-side-nav.php');
         ?>
 	</div>
 	<div class="manage_main">
@@ -117,22 +129,22 @@ function select_img(img_id){
 		
 		$ret_page = (isset($_GET['ret_page'])) ? $_GET['ret_page'] : '';
 
-		require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/class.admin_bread_crumb.php");	
+		require_once($real_root."/manage/admin-includes/class.admin_bread_crumb.php");	
 		$bread_crumb = new AdminBreadCrumb;
 		$actual_link = "";
 		$bread_crumb->reSet();
 		if($ret_page == 'customer-list'){	
-			$bread_crumb->add('Customer List', SITEROOT."/manage/customer/customer-list.php");
+			$bread_crumb->add('Customer List', SITEROOT."//manage/customer/customer-list.php");
 		}		
 		if($ret_page == 'customer-landing'){	
-			$bread_crumb->add("Customers", SITEROOT."/manage/customer/customer-landing.php");
+			$bread_crumb->add("Customers", SITEROOT."//manage/customer/customer-landing.php");
 		}
 		
 		$bread_crumb->add('Order List', $actual_link);
 
 		echo $bread_crumb->output();
 		 
-        require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-content-top.php');
+        require_once($real_root.'/manage/admin-includes/manage-content-top-category.php');
 		
 		$s_profile_account_id = $_SESSION['profile_account_id'];
 		if(isset($_REQUEST['s_profile_account_id'])){			
@@ -327,7 +339,7 @@ echo getPagination($total_rows, $rows_per_page, $pagenum, $truncate, $last, "fai
 				?>
 
 
-            	<?php require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/tablesort.php"); ?>
+            	<?php require_once($real_root."/manage/admin-includes/tablesort.php"); ?>
 				<table cellpadding="10" cellspacing="0">
 					<thead>
 						<tr>
@@ -472,7 +484,7 @@ echo getPagination($total_rows, $rows_per_page, $pagenum, $truncate, $last, "fai
     
 	<p class="clear"></p>
 	<?php 
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-footer.php');
+	require_once($real_root.'/manage/admin-includes/manage-footer.php');
 	
 	
 	

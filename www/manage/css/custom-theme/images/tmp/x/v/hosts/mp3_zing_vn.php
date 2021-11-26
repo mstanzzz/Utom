@@ -9,7 +9,7 @@ class dl_mp3_zing_vn extends Download {
          else return array(false, "accinvalid");
     }
 	
-	public function Login($user, $pass){	// use cookie zsid=
+	public function login($dbCustom,$user, $pass){	// use cookie zsid=
 		$this->error("notsupportacc");
 		return false;
 	}	

@@ -9,7 +9,7 @@ if(!isset($_SERVER['DOCUMENT_ROOT'])){
 	}
 }
 
-require_once($_SERVER['DOCUMENT_ROOT']."/includes/config.php");
+require_once($real_root."/includes/config.php");
 
 $component_id = isset($_GET['component_id'])? $_GET['component_id'] : 0;
 $list_number = isset($_GET['list_number'])? $_GET['list_number'] : 0;

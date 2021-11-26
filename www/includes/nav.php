@@ -1,28 +1,15 @@
 <?php 
-//$temp_username = "mark.stanz@gmail.com";
-//$temp_pswd = "toroman";
-$temp_username = '';
+/$temp_username = '';
 $temp_pswd = ''; 
 
 $db = $dbCustom->getDbConnect(SITE_N_DATABASE);
 $added_page = 0;
 $this_url = $_SERVER['REQUEST_URI'];
 
-
 ?>
 
 
 <script type="text/javascript">
-
-/*
-function testt(){
-
-	alert("uuu:::");
-	
-}
-*/
-
-
 $(document).ready(function(){
 
 /*
@@ -193,7 +180,7 @@ function send_password_reset(){
 				}
 			}
 			
-			$top_cats = $nav->getTopCats();
+			$top_cats = $nav->getTopCats($dbCustom,);
 			
 			//$three_level_cats = $nav->getThreeLevelCats();
 			
@@ -347,7 +334,7 @@ function send_password_reset(){
 			}else{
 				$main_active = '';
 			}
-			$home_cats = $nav->getHomePageCats();
+			$home_cats = $nav->getHomePageCats($dbCustom,);
 			$tmp_block = '';
 			$total_char_len = 20;
 

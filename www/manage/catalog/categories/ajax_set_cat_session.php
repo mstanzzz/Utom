@@ -1,6 +1,15 @@
 <?php
+if(strpos($_SERVER['REQUEST_URI'], 'solvitware/' )){ 
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/solvitware';
+}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/designitpro'; 
+}elseif(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
+}else{
+	$real_root = $_SERVER['DOCUMENT_ROOT']; 	
+}
 
-require_once($_SERVER['DOCUMENT_ROOT']."/includes/config.php"); 
+require_once($real_root."/includes/config.php"); 
 
 $action = (isset($_GET['action']))?	$_GET['action'] : 1;
 

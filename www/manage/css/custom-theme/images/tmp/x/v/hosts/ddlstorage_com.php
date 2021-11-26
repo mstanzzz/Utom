@@ -9,7 +9,7 @@ class dl_ddlstorage_com extends Download {
 		else return array(false, "accinvalid");
     }
     
-    public function Login($user, $pass){
+    public function login($dbCustom,$user, $pass){
         $data = $this->lib->curl("http://www.ddlstorage.com/", "lang=english", "login={$user}&password={$pass}&op=login&redirect=");
         $cookie = "lang=english;{$this->lib->GetCookies($data)}";
 		return $cookie;

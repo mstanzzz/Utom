@@ -1,16 +1,17 @@
 <?php
-session_start();
-
-if(strpos($_SERVER['REQUEST_URI'], 'solvitware/' )){  
-	$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT'].'/solvitware'; }elseif(strpos($_SERVER['REQUEST_URI'], "designitpro" )){  
-	$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT']."/designitpro"; 
-}elseif(strpos($_SERVER['REQUEST_URI'], 'otg-site' )){  
-	$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT'].'/otg-site'; 
+if(strpos($_SERVER['REQUEST_URI'], 'solvitware/' )){ 
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/solvitware';
+}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/designitpro'; 
+}elseif(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
 }else{
-	$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT']; 	
+	$real_root = $_SERVER['DOCUMENT_ROOT']; 	
 }
+require_once($real_root.'/includes/class.dbcustom.php');
+$dbCustom = new DbCustom();
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
 
 require_once($_SERVER['DOCUMENT_ROOT'].'/includes/class.shipping.php');
 
@@ -33,15 +34,15 @@ $msg = (isset($_GET['msg'])) ? $_GET['msg'] : '';
 
 
 
-require_once($_SERVER['DOCUMENT_ROOT']."/manage/order-management/process-update-include.php"); 
-require_once($_SERVER['DOCUMENT_ROOT']."/manage/order-management/send-ship-email-include.php"); 
+require_once($real_root."/manage/order-management/process-update-include.php"); 
+require_once($real_root."/manage/order-management/send-ship-email-include.php"); 
 
 
 
 
 
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php'); 
+require_once($real_root.'/manage/admin-includes/doc_header.php'); 
 
 ?>
 <script>
@@ -95,8 +96,8 @@ function show_msg(msg){
 	<body>
 <?php } 
 
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-header.php');
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-top-nav.php');
+	require_once($real_root.'/manage/admin-includes/manage-header.php');
+	require_once($real_root.'/manage/admin-includes/manage-top-nav.php');
 	
 	$order_id = (isset($_GET['order_id'])) ? $_GET['order_id'] : 0;
 	$pagenum = (isset($_GET['pagenum'])) ? $_GET['pagenum'] : 0;
@@ -115,7 +116,7 @@ function show_msg(msg){
 
     <div class="manage_side_nav">
         <?php 
-        require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-side-nav.php');
+        require_once($real_root.'/manage/admin-includes/manage-side-nav.php');
         ?>
     </div>	
 
@@ -128,7 +129,7 @@ function show_msg(msg){
 
 
 	<?php 
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-content-top.php');
+	require_once($real_root.'/manage/admin-includes/manage-content-top-category.php');
 	
 
     
@@ -169,7 +170,7 @@ function show_msg(msg){
 		$res = $dbCustom->getResult($db,$sql);
 		if($res->num_rows == 0){
 			echo "<br />Since this is a manually entered order or copied from the old site, to get a customer review, 
-			you must <a href='".SITEROOT."/manage/customer/send-review-request-for-manual-orders.php?order_id=".$object->order_id."' 
+			you must <a href='".SITEROOT."//manage/customer/send-review-request-for-manual-orders.php?order_id=".$object->order_id."' 
 			target='_blank' style='text-decoration: underline;'>click here</a> to send the request via email.";
 		}
 	}
@@ -400,7 +401,7 @@ function show_msg(msg){
 			$block .= "<div style='float:left; width:180px;'>";
 			//$block .= "<a href='line-item.php?order_line_item_id=".$row->order_line_item_id."'>".$row->name."</a>";
 			
-			$block .= "<a href='".SITEROOT."/app/?id=".$row->design_id."'>".$row->name."</a>";
+			$block .= "<a href='".SITEROOT."//app/?id=".$row->design_id."'>".$row->name."</a>";
 			
 			$block .= "</div>";
 			
@@ -626,7 +627,7 @@ function show_msg(msg){
 <?php } 
 
 	// this is the sql update			
-	//require_once($_SERVER['DOCUMENT_ROOT']."/manage/order-management/process-update-include.php"); 
+	//require_once($real_root."/manage/order-management/process-update-include.php"); 
 		
 	$url_str = 'order.php';
 	$url_str .= "?order_id=".$order_id;
@@ -722,7 +723,7 @@ function show_msg(msg){
 
 <p class="clear"></p>
 <?php 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-footer.php');
+require_once($real_root.'/manage/admin-includes/manage-footer.php');
 ?>    
   
 </div>

@@ -1,13 +1,13 @@
 <?php
-require_once("../../../includes/config.php"); 
-require_once("../../../includes/class.admin_login.php");
-require_once("../../../includes/class.admin_bread_crumb.php");
-require_once("../../../includes/accessory_cart_functions.php");	
-require_once("../../includes/tool-tip.php"); 
+require_once("<?php echo SITEROOT; ?>/../includes/config.php"); 
+require_once("<?php echo SITEROOT; ?>/../includes/class.admin_login.php");
+require_once("<?php echo SITEROOT; ?>/../includes/class.admin_bread_crumb.php");
+require_once("<?php echo SITEROOT; ?>/../includes/accessory_cart_functions.php");	
+require_once("<?php echo SITEROOT; ?>/includes/tool-tip.php"); 
 
-require_once("../../includes/class.setup_progress.php"); 
+require_once("<?php echo SITEROOT; ?>/includes/class.setup_progress.php"); 
 $progress = new SetupProgress;
-require_once("../../../includes/class.module.php");	
+require_once("<?php echo SITEROOT; ?>/../includes/class.module.php");	
 $module = new Module;
 
 $page_title = "Costco Order History";
@@ -15,7 +15,7 @@ $page_group = "order";
 
 $msg = (isset($_GET['msg'])) ? $_GET['msg'] : '';
 
-require_once("../../includes/set-page.php");	
+require_once("<?php echo SITEROOT; ?>/includes/set-page.php");	
 
 
 
@@ -103,8 +103,8 @@ function show_msg(msg){
 	<body>
 <?php } 
 
-	require_once("../../includes/manage-header.php");
-	require_once("../../includes/manage-top-nav.php");
+	require_once("<?php echo SITEROOT; ?>/includes/manage-header.php");
+	require_once("<?php echo SITEROOT; ?>/includes/manage-top-nav.php");
 
 
 ?>
@@ -116,7 +116,7 @@ function show_msg(msg){
 
     <div class="manage_side_nav">
         <?php 
-        require_once("../../includes/manage-side-nav.php");
+        require_once("<?php echo SITEROOT; ?>/includes/manage-side-nav.php");
         ?>
     </div>	
     
@@ -255,7 +255,7 @@ $result = $dbCustom->getResult($db,$sql);
 	</div>
 <p class="clear"></p>
 <?php 
-require_once("../../includes/manage-footer.php");
+require_once("<?php echo SITEROOT; ?>/includes/manage-footer.php");
 ?>    
     
 </div>

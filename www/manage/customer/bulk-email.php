@@ -1,4 +1,17 @@
 <?php
+if(strpos($_SERVER['REQUEST_URI'], 'solvitware/' )){ 
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/solvitware';
+}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/designitpro'; 
+}elseif(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
+}else{
+	$real_root = $_SERVER['DOCUMENT_ROOT']; 	
+}
+require_once($real_root.'/includes/class.dbcustom.php');
+$dbCustom = new DbCustom();
+
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
 
 
 echo "UNDER CONSTRUCTION";
@@ -16,7 +29,7 @@ if(!isset($_SERVER['DOCUMENT_ROOT'])){
 	}
 }
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
+if(strpos($_SERVER['REQUEST_URI'], 'solvitware/' )){ 
 
 $progress = new SetupProgress;
 $module = new Module;
@@ -80,7 +93,7 @@ exit;
 		
 		
 	
-	$CustAccnt->unsetAllDoBulkEmail($_SESSION['profile_account_id']);	
+	$CustAccnt->unsetAllDoBulkEmail($dbCustom,$_SESSION['profile_account_id']);	
 	
 	
 	$open_body = '';
@@ -100,9 +113,9 @@ exit;
 		
 	foreach($cust_ids as $cust_id){
 
-		$CustAccnt->setDoBulkEmail($cust_id);	
+		$CustAccnt->setDoBulkEmail($dbCustom,$cust_id);	
 		
-		$cust_data_array = $CustAccnt->getEmailData($cust_id);
+		$cust_data_array = $CustAccnt->getEmailData($dbCustom,$cust_id);
 
 		$message = $open_body;
 
@@ -178,7 +191,7 @@ if(isset($_GET['unset_all'])){
 
 	require_once($_SERVER['DOCUMENT_ROOT'].'/includes/class.customer_account.php');
 	$CustAccnt = new CustomerAccount;
-	$CustAccnt->unsetAllDoBulkEmail($_SESSION['profile_account_id']);	
+	$CustAccnt->unsetAllDoBulkEmail($dbCustom,$_SESSION['profile_account_id']);	
 
 }
 
@@ -186,7 +199,7 @@ if(isset($_GET['set_all'])){
 
 	require_once($_SERVER['DOCUMENT_ROOT'].'/includes/class.customer_account.php');
 	$CustAccnt = new CustomerAccount;
-	$CustAccnt->setAllDoBulkEmail($_SESSION['profile_account_id']);	
+	$CustAccnt->setAllDoBulkEmail($dbCustom,$_SESSION['profile_account_id']);	
 
 }
 
@@ -206,7 +219,7 @@ if(isset($_POST["del_email"])){
 }
 
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php'); 
+require_once($real_root.'/manage/admin-includes/doc_header.php'); 
 
 ?>
 
@@ -235,13 +248,13 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php');
 </head>
 <body>
 <?php
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-header.php');
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-top-nav.php');
+	require_once($real_root.'/manage/admin-includes/manage-header.php');
+	require_once($real_root.'/manage/admin-includes/manage-top-nav.php');
 ?>
 <div class="manage_page_container">
 	<div class="manage_side_nav">
 		<?php 
-        require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-side-nav.php');
+        require_once($real_root.'/manage/admin-includes/manage-side-nav.php');
 		
 		$sortby = (isset($_GET['sortby'])) ? trim(mysql_escape_string($_GET['sortby'])) : '';
 		$a_d = (isset($_GET['a_d'])) ? $_GET['a_d'] : 'a';
@@ -382,7 +395,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php');
 
 	<p class="clear"></p>
 	<?php 
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-footer.php');
+	require_once($real_root.'/manage/admin-includes/manage-footer.php');
 	
 	
 	$url_str = "bulk-email.php";

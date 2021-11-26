@@ -1,14 +1,24 @@
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
+if(strpos($_SERVER['REQUEST_URI'], 'solvitware/' )){ 
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/solvitware';
+}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/designitpro'; 
+}elseif(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
+}else{
+	$real_root = $_SERVER['DOCUMENT_ROOT']; 	
+}
+require_once($real_root.'/includes/class.dbcustom.php');
+$dbCustom = new DbCustom();
+
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
 
 $progress = new SetupProgress;
 $module = new Module;
 
 $page_title = "We Design";
-$page_group = "design";
+$page_group = "we-design";
 $page = "we-design";
-
-	
 
 $db = $dbCustom->getDbConnect(SITE_N_DATABASE);
 
@@ -22,8 +32,8 @@ $result = $dbCustom->getResult($db,$sql);
 
 if($result->num_rows == 0){
 	$sql = "INSERT INTO we_design 
-		(last_update, profile_account_id) 
-		VALUES ('".$ts."', '".$_SESSION['profile_account_id']."')"; 
+		(profile_account_id) 
+		VALUES ('".$_SESSION['profile_account_id']."')"; 
 	$result = $dbCustom->getResult($db,$sql);
 	$we_design_id = $db->insert_id;
 }
@@ -70,8 +80,8 @@ if(isset($_POST['update_we_design'])){
 	$description = trim(addslashes($_POST['description']));
 	$page_heading = trim(addslashes($_POST['page_heading']));
 	*/
-	//require_once($_SERVER['DOCUMENT_ROOT'].'/manage/cms/insert_page_seo.php');
-	//require_once($_SERVER['DOCUMENT_ROOT']."/manage/cms/insert_page_breadcrumb.php");
+	require_once($real_root.'/manage/cms/insert_page_seo.php');
+	//require_once($real_root."/manage/cms/insert_page_breadcrumb.php");
 	//unset($_SESSION['temp_page_fields']);
 
 }
@@ -93,19 +103,9 @@ $object = $result->fetch_object();
 $_SESSION['temp_page_fields']['top_1'] = $top_1;
 
 	
+require_once($real_root.'/manage/cms/get_seo_variables.php');
 
-	
-	/*
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/cms/get_seo_variables.php');
-	if(!isset($_SESSION['temp_page_fields']['page_heading'])) $_SESSION['temp_page_fields']['page_heading'] = $page_heading;
-	if(!isset($_SESSION['temp_page_fields']['seo_name'])) $_SESSION['temp_page_fields']['seo_name'] = $seo_name;
-	if(!isset($_SESSION['temp_page_fields']['title'])) $_SESSION['temp_page_fields']['title'] = $title;
-	if(!isset($_SESSION['temp_page_fields']['keywords'])) $_SESSION['temp_page_fields']['keywords'] = $keywords;
-	if(!isset($_SESSION['temp_page_fields']['description'])) $_SESSION['temp_page_fields']['description'] = $description;
-	*/
-
-
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php'); 
+require_once($real_root.'/manage/admin-includes/doc_header.php'); 
 
 ?>
 <script>
@@ -132,26 +132,7 @@ $(document).ready(function() {
 		width : 920	
 	});
 
-		tinyMCE.init({
-        // General options
-        mode : "specific_textareas",
-        editor_selector : "wysiwyg",
-        theme : "advanced",
-        skin : "o2k7",
-        plugins : "table,advhr,advlink,emotions,inlinepopups,insertdatetime,searchreplace,paste,style",
-        // Theme options
-        theme_advanced_buttons1 :"bold,italic,underline,strikethrough,|,styleselect,formatselect,fontsizeselect,|,forecolor,backcolor",
-        theme_advanced_buttons2 : "justifyleft,justifycenter,justifyright,justifyfull,|,bullist,numlist,|,outdent,indent,blockquote,|,cut,copy,paste,pastetext,pasteword,|,undo,redo,|,link,unlink,",
-		theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,code",
-        theme_advanced_toolbar_location : "top",
-        theme_advanced_toolbar_align : "left",
-        theme_advanced_statusbar_location : "bottom",
-        theme_advanced_resizing : true,
-		theme_advanced_resize_horizontal : false,
-		forced_root_block : false
-
-	});
-	
+		
 
 
 	$('.fancybox').click(function(){		
@@ -185,16 +166,16 @@ function ajax_set_page_session(){
 function get_query_str(){
 	
 	var query_str = '';
-	query_str += "&page_heading="+$("#page_heading").val().replace('&', '%26'); 
+	//query_str += "&page_heading="+$("#page_heading").val().replace('&', '%26'); 
 	//query_str += "&img_alt_text="+$("#img_alt_text").val(); 
-	query_str += "&content="+escape(tinyMCE.get('wysiwyg').getContent());
+	//query_str += "&content="+escape(tinyMCE.get('wysiwyg').getContent());
 	
-	query_str += "&design_fax_number="+$("#design_fax_number").val(); 
+	//query_str += "&design_fax_number="+$("#design_fax_number").val(); 
 		
-	query_str += "&seo_name="+document.form.seo_name.value; 
-	query_str += "&title="+document.form.title.value.replace('&', '%26'); 
-	query_str += "&keywords="+document.form.keywords.value.replace('&', '%26'); 
-	query_str += "&description="+document.form.description.value.replace('&', '%26'); 
+	//query_str += "&seo_name="+document.form.seo_name.value; 
+	//query_str += "&title="+document.form.title.value.replace('&', '%26'); 
+	//query_str += "&keywords="+document.form.keywords.value.replace('&', '%26'); 
+	//query_str += "&description="+document.form.description.value.replace('&', '%26'); 
 	
 	
 	
@@ -204,7 +185,7 @@ function get_query_str(){
 
 
 function previewSubmit() {
-  document.form.action = '<?php echo $ste_root; ?>/pages/preview/preview.php';
+  document.form.action = '<?php echo SITEROOT; ?>pages/preview/preview.php';
   document.form.target = '_blank'; 
   document.form.submit();
 }	
@@ -222,26 +203,17 @@ function regularSubmit() {
 <body>
 <?php 
 
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-header.php');
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-top-nav.php');
+	require_once($real_root.'/manage/admin-includes/manage-header.php');
+	require_once($real_root.'/manage/admin-includes/manage-top-nav.php');
 
 ?>
 <div class="manage_page_container">
 	<div class="manage_side_nav">
-		<?php require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-side-nav.php'); ?>
+		<?php require_once($real_root.'/manage/admin-includes/manage-side-nav.php'); ?>
 	</div>
 	<div class="manage_main">
-	<?php 
-		require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/class.admin_bread_crumb.php");	
-		$bread_crumb = new AdminBreadCrumb;
-		$bread_crumb->reSet();
-		$bread_crumb->add("CMS", $ste_root."manage/cms/cms-landing.php");
-		$bread_crumb->add("Pages", $ste_root."manage/cms/pages/page.php");
-		$bread_crumb->add("Fax", '');
-        echo $bread_crumb->output();
-        require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-content-top.php');
-        ?>
-	<form name="form" action="<?php echo $current_page; ?>" method="post" enctype="multipart/form-data">
+
+	<form name="form" action="we-design.php" method="post" enctype="multipart/form-data">
 		<input type="hidden" name="update_we_design" value="1">        
 		<input type="hidden" name="we_design_id" value="<?php echo $_SESSION['we_design_id']; ?>">		
 		<div class="page_actions edit_page"> 
@@ -259,7 +231,19 @@ function regularSubmit() {
 					</div>
 				</div>
             </fieldset>
+		
+		
+<?php 
+$page_heading = 'page_heading';
+$seo_name = $_SESSION['temp_page_fields']['seo_name'];
+$title = $_SESSION['temp_page_fields']['title'];
+$keywords = $_SESSION['temp_page_fields']['keywords'];	
+$description = $_SESSION['temp_page_fields']['description'];
+require_once("edit_page_seo.php"); 
+require_once($real_root."/manage/cms/edit_page_breadcrumb.php");
+?>	
 		</div>
+		
 	</form>	
 	</div>
 </div>	

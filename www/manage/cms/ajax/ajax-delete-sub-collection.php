@@ -9,7 +9,7 @@ if(!isset($_SERVER['DOCUMENT_ROOT'])){
 	}
 }
 
-require_once($_SERVER['DOCUMENT_ROOT']."/includes/config.php");
+require_once($real_root."/includes/config.php");
 
 $collection_id = isset($_GET['collection_id'])? $_GET['collection_id'] : 0;
 $rows_per_page = (isset($_GET['rows_per_page'])) ? $_GET['rows_per_page'] : 8;   
