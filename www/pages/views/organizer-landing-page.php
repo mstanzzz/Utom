@@ -1,34 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+<title>ClosetsToGo</title>
+<meta name="description" content="organizer-landing-page">
+<link href="<?php echo SITEROOT; ?>app.css" rel="stylesheet">
+</head>
+
 <?php	
-
 if(!isset($hero_file_name)) $hero_file_name = '';
-
 if($hero_file_name == ''){
-	
-	$hero = '../../images/organizer-landing-pahe-header.png';
-	
+	$hero = '<?php echo SITEROOT; ?>images/organizer-landing-pahe-header.png';
 }else{
-
 	$hero = '';
-
-	$hero .= "../../saascustuploads/";
+	$hero .= "<?php echo SITEROOT; ?>saascustuploads/";
 	$hero .= $_SESSION['profile_account_id'];
 	$hero .= "/cms/";
 	$hero .= $hero_file_name;
-	//$hero = preg_replace('/(\/+)/','/',$im);
-
 }
-
-//echo "hero ".$hero;
-//exit;
-
-//$hero = '../../images/organizer-landing-pahe-header.png';
-
-
-require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php"); 	
+require_once($real_root."/includes/header.php"); 	
 ?>	
-
-
-
 <section class="home-mobile-buttons-block covid-block">
 
 	<div class="accordion accordion-organizer-landing-page" id="accordion-organizer-landing">
@@ -118,7 +111,7 @@ require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php");
 <section class="first-fixed-block covid-block organizer-landing-page clearfix">
 
 <?php 
-//../../images/organizer-landing-pahe-header.png
+//<?php echo SITEROOT; ?>images/organizer-landing-pahe-header.png
 //echo $hero;
 ?>
 <figure class="col-12 first-fixed-block__img-group" 
@@ -366,7 +359,7 @@ style="background-image: url('<?php echo $hero; ?>');">
 							<figure class="col-12 col-lg-6 col-xl-4">
 								<a href="#" title="" class="catalog-block__content">
 									<div class="catalog-block__content--image">
-<img src="../../images/shopping-cart-catalog-1.png" alt="">
+<img src="<?php echo SITEROOT; ?>images/shopping-cart-catalog-1.png" alt="">
 									</div>
 									<figcaption>
 										<p>Closet Solutions: DIY Online Designs</p>
@@ -376,7 +369,7 @@ style="background-image: url('<?php echo $hero; ?>');">
 							<figure class="col-12 col-lg-6 col-xl-4">
 								<a href="#" title="" class="catalog-block__content">
 									<div class="catalog-block__content--image">
-										<img src="../../images/shopping-cart-catalog-2.png" alt="">
+										<img src="<?php echo SITEROOT; ?>images/shopping-cart-catalog-2.png" alt="">
 									</div>
 									<figcaption>
 										<p>Closet Solutions: DIY Online Designs</p>
@@ -386,7 +379,7 @@ style="background-image: url('<?php echo $hero; ?>');">
 							<figure class="col-12 col-lg-6 col-xl-4">
 								<a href="#" title="" class="catalog-block__content">
 									<div class="catalog-block__content--image">
-										<img src="../../images/shopping-cart-catalog-3.png" alt="">
+										<img src="<?php echo SITEROOT; ?>images/shopping-cart-catalog-3.png" alt="">
 									</div>
 									<figcaption>
 										<p>Closet Solutions: DIY Online Designs</p>
@@ -401,7 +394,7 @@ style="background-image: url('<?php echo $hero; ?>');">
 
 <div class="scrollToTopBlock">
 	<div class="people-working">
-	<img src="../../images/people-working-call-center_@2x.png" alt="" class="people-working__image">
+	<img src="<?php echo SITEROOT; ?>images/people-working-call-center_@2x.png" alt="" class="people-working__image">
 	<div class="people-working__wrapper">
 		<div class="people-working__content">
 			<p class="people-working__text">Hi! I'm the Virtual assistant, and I'm here to help you.</p>
@@ -409,19 +402,23 @@ style="background-image: url('<?php echo $hero; ?>');">
 	</div>
 </div>
 	<a href="#" title="" class="scrollToTop js-to-top">
-		<img src="../../images/arrows.svg" alt="">
+		<img src="<?php echo SITEROOT; ?>images/arrows.svg" alt="">
 	</a>
 </div>
 
 <div class="mobile-show">
 	<div class="mobile-footer-buttons">
 		<a href="#" title="" class="mobile-footer-buttons__first">you design</a>
-		<a href="#" title="" class="mobile-footer-buttons__second"><img src="../../images/icon-save.svg" alt="" class="img-fluid"></a>
+		<a href="#" title="" class="mobile-footer-buttons__second"><img src="<?php echo SITEROOT; ?>images/icon-save.svg" alt="" class="img-fluid"></a>
 		<a href="#" title="" class="mobile-footer-buttons__third">we design</a>
 	</div>
 </div>
 
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'].'/includes/footer.php');
+require_once($real_root.'/includes/footer.php');
 ?>
+
+<script src="<?php echo SITEROOT; ?>app.js"></script>
+</body>
+</html>
 	

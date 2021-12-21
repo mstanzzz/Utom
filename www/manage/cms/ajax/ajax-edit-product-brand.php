@@ -9,7 +9,7 @@ if(!isset($_SERVER['DOCUMENT_ROOT'])){
 	}
 }
 
-require_once($_SERVER['DOCUMENT_ROOT']."/includes/config.php");
+require_once($real_root."/includes/config.php");
 
 $_SESSION['ret_modal'] = 'edit';
 
@@ -54,7 +54,7 @@ $db = $dbCustom->getDbConnect(COMPONENTS_DATABASE);
         <label class="text-italic">Product Brand Name</label>
         <input type="text" class="edit-input" style="width:220px;" 
         id="edit_panel_brand_name" name="panel_brand_name" value="<?php echo $panel_brand_name; ?>">
-        <img class="icon" src="<?php echo $ste_root; ?>/manage/assets/svg/edit.svg" alt="">
+        <img class="icon" src="<?php echo SITEROOT; ?>manage/assets/svg/edit.svg" alt="">
     </div>
     </form>
 </div>

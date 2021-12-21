@@ -10,7 +10,7 @@ if(strpos($_SERVER['REQUEST_URI'], 'solvitware/' )){
 	$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT']; 	
 }
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
+if(strpos($_SERVER['REQUEST_URI'], 'solvitware/' )){ 
 
 $progress = new SetupProgress;
 $module = new Module;
@@ -21,13 +21,13 @@ $page_group = "order";
 
 $order_id = (isset($_REQUEST["order_id"]))? $_REQUEST["order_id"] : 0; 
 
-require_once("../../includes/set-page.php");	
+require_once("<?php echo SITEROOT; ?>includes/set-page.php");	
 
 $msg = (isset($_GET['msg'])) ? $_GET['msg'] : '';
 
 
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php'); 
+require_once($real_root.'/manage/admin-includes/doc_header.php'); 
 
 ?>
 <script>
@@ -56,8 +56,8 @@ function show_msg(msg){
 	<body>
 <?php } 
 
-	require_once("../../includes/manage-header.php");
-	require_once("../../includes/manage-top-nav.php");
+	require_once("<?php echo SITEROOT; ?>includes/manage-header.php");
+	require_once("<?php echo SITEROOT; ?>includes/manage-top-nav.php");
 
 
 ?>
@@ -66,7 +66,7 @@ function show_msg(msg){
 
     <div class="manage_side_nav">
         <?php 
-        require_once("../../includes/manage-side-nav.php");
+        require_once("<?php echo SITEROOT; ?>includes/manage-side-nav.php");
         ?>
     </div>	
 
@@ -134,7 +134,7 @@ $result = $dbCustom->getResult($db,$sql);
 </div> 
 <p class="clear"></p>
 <?php 
-require_once("../../includes/manage-footer.php");
+require_once("<?php echo SITEROOT; ?>includes/manage-footer.php");
 ?>    
    
 </div>

@@ -13,7 +13,7 @@ if(!isset($_SERVER['DOCUMENT_ROOT'])){
 }
 
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
 
 $progress = new SetupProgress;
 $module = new Module;
@@ -68,7 +68,7 @@ if(isset($_POST['edit_shipping_time'])){
 	$img_alt_text = trim(addslashes($_POST['img_alt_text']));
 	
 
-	require_once($_SERVER['DOCUMENT_ROOT']."/manage/cms/insert_page_seo.php");
+	require_once($real_root."/manage/cms/insert_page_seo.php");
 	
 	//if(in_array(2,$user_functions_array)){
 		// create a backup
@@ -90,7 +90,7 @@ if(isset($_POST['edit_shipping_time'])){
 	$result = $dbCustom->getResult($db,$sql);
 		
 	
-	require_once($_SERVER['DOCUMENT_ROOT']."/manage/cms/insert_page_breadcrumb.php");
+	require_once($real_root."/manage/cms/insert_page_breadcrumb.php");
 	
 	unset($_SESSION['temp_page_fields']);	
 
@@ -141,7 +141,7 @@ $result = $dbCustom->getResult($db,$sql);
 	}
 	
 
-	require_once($_SERVER['DOCUMENT_ROOT']."/manage/cms/get_seo_variables.php");
+	require_once($real_root."/manage/cms/get_seo_variables.php");
 
 	if(!isset($_SESSION['temp_page_fields']['content'])) $_SESSION['temp_page_fields']['content'] = $content;
 	if(!isset($_SESSION['temp_page_fields']['content_short1'])) $_SESSION['temp_page_fields']['content_short1'] = $content_short1;
@@ -155,7 +155,7 @@ $result = $dbCustom->getResult($db,$sql);
 	
 	
 	
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php'); 
+require_once($real_root.'/manage/admin-includes/doc_header.php'); 
 
 ?>
 
@@ -257,7 +257,7 @@ function validate(theform){
 
 
 function previewSubmit() {
-  document.form.action = '<?php echo $ste_root; ?>/pages/preview/preview.php';
+  document.form.action = '<?php echo SITEROOT; ?>pages/preview/preview.php';
   document.form.target = '_blank'; 
   document.form.submit();
 }	
@@ -274,28 +274,28 @@ function regularSubmit() {
 
 <body>
 <?php
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-header.php');
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-top-nav.php');
+	require_once($real_root.'/manage/admin-includes/manage-header.php');
+	require_once($real_root.'/manage/admin-includes/manage-top-nav.php');
 
 	
 ?>
 <div class="manage_page_container">
 	<div class="manage_side_nav">
 		<?php 
-        require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-side-nav.php');
+        require_once($real_root.'/manage/admin-includes/manage-side-nav.php');
         ?>
 	</div>
 	<div class="manage_main">
 		<?php 
-		require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/class.admin_bread_crumb.php");	
+		require_once($real_root."/manage/admin-includes/class.admin_bread_crumb.php");	
 		$bread_crumb = new AdminBreadCrumb;
 		$bread_crumb->reSet();
-		$bread_crumb->add("CMS", $ste_root."manage/cms/cms-landing.php");
-		$bread_crumb->add("Pages", $ste_root."manage/cms/pages/page.php");
+		$bread_crumb->add("CMS", SITEROOT."/manage/cms/cms-landing.php");
+		$bread_crumb->add("Pages", SITEROOT."/manage/cms/pages/page.php");
 		$bread_crumb->add("Shipping Time", '');
         echo $bread_crumb->output();
 
-        require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-content-top.php');
+        require_once($real_root.'/manage/admin-includes/manage-content-top-category.php');
         ?>
 		<form name="form" action="<?php echo $current_page; ?>" method="post" enctype="multipart/form-data">
 		<input type="hidden" name="edit_shipping_time" value="1">        
@@ -309,13 +309,13 @@ function regularSubmit() {
 	           <a onClick="previewSubmit();" href="#" class="btn btn-primary btn-large"><i class="icon-eye-open icon-white"></i> Preview </a>
 				<a onClick="regularSubmit();" href="#" class="btn btn-success btn-large"><i class="icon-ok icon-white"></i> Save </a>
                 
-                <a href="<?php echo $ste_root; ?>/manage/cms/navigation/navbar.php?strip=1" class="btn btn-primary btn-large fancybox fancybox.iframe">
+                <a href="<?php echo SITEROOT; ?>manage/cms/navigation/navbar.php?strip=1" class="btn btn-primary btn-large fancybox fancybox.iframe">
                 <i class="icon-eye-open icon-white"></i> Edit Navigation </a>
 
 
 				<hr />
 				<!-- I'm not sure if this was being used or not, but I left it in. You can just hide it or get rid of it if this feature isn't going to be released.-->
-				<a href="<?php echo $ste_root;?>/manage/cms/pages/page.php" class="btn"><i class="icon-arrow-left"></i> Cancel &amp; Go Back</a>
+				<a href="<?php echo SITEROOT;?>/manage/cms/pages/page.php" class="btn"><i class="icon-arrow-left"></i> Cancel &amp; Go Back</a>
 				<?php 
                 if($_SESSION['is_ssl']){ 
                     $checked = ($mssl)? "checked=checked" : ''; 		
@@ -360,7 +360,7 @@ function regularSubmit() {
 							
 						<div style="float:left; padding:10px;">
 							<?php   	
-                            echo "<img src='".$ste_root."/saascustuploads/".$_SESSION['profile_account_id']."/cms/".$img_row->file_name."' width='120px' />"; 
+                            echo "<img src='".SITEROOT."/saascustuploads/".$_SESSION['profile_account_id']."/cms/".$img_row->file_name."' width='120px' />"; 
                             $checked = ($img_id == $img_row->img_id) ? "checked=checked" : '';  
                             ?>
                         </div>
@@ -382,7 +382,7 @@ function regularSubmit() {
                         }
                         ?>
                             <a id="add_img" class="btn btn-large btn-primary fancybox fancybox.iframe" 
-                            href="<?php echo $ste_root;?>/manage/cms/upload.php?ret_page=shipping-time&ret_dir=<?php echo $current_dir; ?>"><i class="icon-plus icon-white"></i> Add New Image</a> 
+                            href="<?php echo SITEROOT;?>/manage/cms/upload.php?ret_page=shipping-time&ret_dir=<?php echo $current_dir; ?>"><i class="icon-plus icon-white"></i> Add New Image</a> 
                     </div>
                    <div class="colcontainer formcols">
                         <div class="twocols">
@@ -408,7 +408,7 @@ function regularSubmit() {
 			$keywords = $_SESSION['temp_page_fields']['keywords'];	
 			$description = $_SESSION['temp_page_fields']['description'];
 			require_once("edit_page_seo.php"); 
-    	    require_once($_SERVER['DOCUMENT_ROOT']."/manage/cms/edit_page_breadcrumb.php"); 
+    	    require_once($real_root."/manage/cms/edit_page_breadcrumb.php"); 
 			?>
 			</div>
 		</form>
@@ -416,7 +416,7 @@ function regularSubmit() {
 
 <p class="clear"></p>
 <?php 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-footer.php');
+require_once($real_root.'/manage/admin-includes/manage-footer.php');
 ?>
     
 </div>

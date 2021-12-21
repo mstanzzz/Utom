@@ -10,7 +10,7 @@ if(!isset($_SERVER['DOCUMENT_ROOT'])){
 }
 
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
 
 $progress = new SetupProgress;
 $module = new Module;
@@ -242,7 +242,7 @@ unset($_SESSION['ret_page']);
 unset($_SESSION['ret_dir']);
 unset($_SESSION['ret_path']);
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php'); 
+require_once($real_root.'/manage/admin-includes/doc_header.php'); 
 
 ?>
 <script>
@@ -337,7 +337,7 @@ function get_query_str(){
 }
 
 function previewSubmit() {
-  document.form.action = '<?php echo $ste_root; ?>/pages/preview/preview.php';
+  document.form.action = '<?php echo SITEROOT; ?>pages/preview/preview.php';
   document.form.target = '_blank'; 
   document.form.submit();
 }	
@@ -351,25 +351,25 @@ function regularSubmit() {
 <body>
 <?php 
 
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-header.php');
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-top-nav.php');
+	require_once($real_root.'/manage/admin-includes/manage-header.php');
+	require_once($real_root.'/manage/admin-includes/manage-top-nav.php');
 ?>
 <div class="manage_page_container">
 	<div class="manage_side_nav">
-		<?php require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-side-nav.php'); ?>
+		<?php require_once($real_root.'/manage/admin-includes/manage-side-nav.php'); ?>
 	</div>
 	<div class="manage_main">
 	<?php 
 	
-		require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/class.admin_bread_crumb.php");	
+		require_once($real_root."/manage/admin-includes/class.admin_bread_crumb.php");	
 		$bread_crumb = new AdminBreadCrumb;
 		$bread_crumb->reSet();
-		$bread_crumb->add("Keyword Landing Pages", $ste_root."manage/cms/keyword-landing/keyword-landing-page-list.php");
+		$bread_crumb->add("Keyword Landing Pages", SITEROOT."/manage/cms/keyword-landing/keyword-landing-page-list.php");
 		$bread_crumb->add("Add Keyword Landing Page", '');
         echo $bread_crumb->output();
 		
 	
-        require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-content-top.php');
+        require_once($real_root.'/manage/admin-includes/manage-content-top-category.php');
         ?>
 		<form name="form" action="keyword-landing-page-list.php" method="post" enctype="multipart/form-data">
 		<input type="hidden" name="add_keyword_landing" value="1">       
@@ -382,7 +382,7 @@ function regularSubmit() {
             <a onClick="previewSubmit();" href="#" class="btn btn-primary btn-large"><i class="icon-eye-open icon-white"></i> Preview </a>
             <a onClick="regularSubmit();" href="#" class="btn btn-success btn-large"><i class="icon-ok icon-white"></i> Save </a>
             
-            <a href="<?php echo $ste_root; ?>/manage/cms/navigation/navbar.php?strip=1" class="btn btn-primary btn-large fancybox fancybox.iframe">
+            <a href="<?php echo SITEROOT; ?>manage/cms/navigation/navbar.php?strip=1" class="btn btn-primary btn-large fancybox fancybox.iframe">
             <i class="icon-eye-open icon-white"></i> Edit Navigation </a>
             
 			<hr />
@@ -431,10 +431,10 @@ function regularSubmit() {
 						}else{
 							$file_name = '';
 						}
-						echo "<img src='".$ste_root."/saascustuploads/".$_SESSION['profile_account_id']."/cms/".$file_name."'>";
+						echo "<img src='".SITEROOT."/saascustuploads/".$_SESSION['profile_account_id']."/cms/".$file_name."'>";
 					}
 
-					$url_str = $ste_root."manage/upload-pre-crop.php";               				
+					$url_str = SITEROOT."/manage/upload-pre-crop.php";               				
 					$url_str .= "?ret_page=add-keyword-landing";
 					$url_str .= "&ret_dir=keyword-landing";
 					$url_str .= "&ret_path=cms/keyword-landing";
@@ -452,7 +452,7 @@ function regularSubmit() {
                         </div>
                         
                         <?php
-                        $url_str = $ste_root."manage/cms/select-cms-image.php";               				
+                        $url_str = SITEROOT."/manage/cms/select-cms-image.php";               				
                         $url_str .= "?ret_page=add-keyword-landing";
                         $url_str .= "&ret_dir=keyword-landing";
                         $url_str .= "&ret_path=cms/keyword-landing";
@@ -478,13 +478,13 @@ function regularSubmit() {
 							$img_obj = $img_res->fetch_object();
 							$file_name = $img_obj->file_name;
 							echo "<br />";
-							echo "<img src='".$ste_root."/saascustuploads/".$_SESSION['profile_account_id']."/cms/".$file_name."'>";			
+							echo "<img src='".SITEROOT."/saascustuploads/".$_SESSION['profile_account_id']."/cms/".$file_name."'>";			
 							echo "<a href='add-keyword-landing.php?delgalleryimgid=".$val."#img' class='btn btn-small btn-danger'><i class='icon-remove icon-white'></i></a>";
 							echo "<br />";
 						}
 					}
 
-					$url_str = $ste_root."manage/upload-pre-crop.php";               				
+					$url_str = SITEROOT."/manage/upload-pre-crop.php";               				
 					$url_str .= "?ret_page=add-keyword-landing";
 					$url_str .= "&ret_dir=keyword-landing";
 					$url_str .= "&ret_path=cms/keyword-landing";
@@ -499,7 +499,7 @@ function regularSubmit() {
                             <i class="icon-plus icon-white"></i> Upload New Gallery Image </a>
                         </div>
                         <?php
-                        $url_str = $ste_root."manage/cms/select-cms-image.php";               				
+                        $url_str = SITEROOT."/manage/cms/select-cms-image.php";               				
                         $url_str .= "?ret_page=add-keyword-landing";
                         $url_str .= "&ret_dir=keyword-landing";
                         $url_str .= "&ret_path=cms/keyword-landing";
@@ -538,11 +538,11 @@ function regularSubmit() {
 							}
 							
 							
-							echo "<img src='".$ste_root."/saascustuploads/".$_SESSION['profile_account_id']."/cms/".$file_name."'>";
+							echo "<img src='".SITEROOT."/saascustuploads/".$_SESSION['profile_account_id']."/cms/".$file_name."'>";
 									
 						}
 						
-						$url_str = $ste_root."manage/upload-pre-crop.php";               				
+						$url_str = SITEROOT."/manage/upload-pre-crop.php";               				
 						$url_str .= "?ret_page=add-keyword-landing";
 						$url_str .= "&ret_dir=keyword-landing";
 						$url_str .= "&ret_path=cms/keyword-landing";
@@ -567,7 +567,7 @@ function regularSubmit() {
                             <i class="icon-plus icon-white"></i> Upload New Image For Videos</a>
                         </div>
                         <?php
-                        $url_str = $ste_root."manage/cms/select-cms-image.php";               				
+                        $url_str = SITEROOT."/manage/cms/select-cms-image.php";               				
                         $url_str .= "?ret_page=add-keyword-landing";
                         $url_str .= "&ret_dir=keyword-landing";
                         $url_str .= "&ret_path=cms/keyword-landing";
@@ -599,11 +599,11 @@ function regularSubmit() {
 								$file_name = '';
 							}
 
-							echo "<img src='".$ste_root."/saascustuploads/".$_SESSION['profile_account_id']."/cms/".$file_name."'>";
+							echo "<img src='".SITEROOT."/saascustuploads/".$_SESSION['profile_account_id']."/cms/".$file_name."'>";
 									
 						}
 						
-						$url_str = $ste_root."manage/upload-pre-crop.php";               				
+						$url_str = SITEROOT."/manage/upload-pre-crop.php";               				
 						$url_str .= "?ret_page=add-keyword-landing";
 						$url_str .= "&ret_dir=keyword-landing";
 						$url_str .= "&ret_path=cms/keyword-landing";
@@ -628,7 +628,7 @@ function regularSubmit() {
                             <i class="icon-plus icon-white"></i> Upload New Image For Start Design</a>
                         </div>
                         <?php
-                        $url_str = $ste_root."manage/cms/select-cms-image.php";               				
+                        $url_str = SITEROOT."/manage/cms/select-cms-image.php";               				
                         $url_str .= "?ret_page=add-keyword-landing";
                         $url_str .= "&ret_dir=keyword-landing";
                         $url_str .= "&ret_path=cms/keyword-landing";
@@ -661,11 +661,11 @@ function regularSubmit() {
 								$file_name = '';
 							}
 
-							echo "<img src='".$ste_root."/saascustuploads/".$_SESSION['profile_account_id']."/cms/".$file_name."'>";
+							echo "<img src='".SITEROOT."/saascustuploads/".$_SESSION['profile_account_id']."/cms/".$file_name."'>";
 									
 						}
 						
-						$url_str = $ste_root."manage/upload-pre-crop.php";               				
+						$url_str = SITEROOT."/manage/upload-pre-crop.php";               				
 						$url_str .= "?ret_page=add-keyword-landing";
 						$url_str .= "&ret_dir=keyword-landing";
 						$url_str .= "&ret_path=cms/keyword-landing";
@@ -689,7 +689,7 @@ function regularSubmit() {
                             <i class="icon-plus icon-white"></i> Upload New Image For Specifications</a>
                         </div>
                         <?php
-                        $url_str = $ste_root."manage/cms/select-cms-image.php";               				
+                        $url_str = SITEROOT."/manage/cms/select-cms-image.php";               				
                         $url_str .= "?ret_page=add-keyword-landing";
                         $url_str .= "&ret_dir=keyword-landing";
                         $url_str .= "&ret_path=cms/keyword-landing";
@@ -732,10 +732,10 @@ function regularSubmit() {
 					echo "<label>Category 1</label>";
 					echo $name;
 					echo "<br/>";
-					echo "<img src='".$ste_root."/saascustuploads/".$_SESSION['profile_account_id']."/cart/small/".$file_name."' >";
+					echo "<img src='".SITEROOT."/saascustuploads/".$_SESSION['profile_account_id']."/cart/small/".$file_name."' >";
 					echo "<br/>";
                     
-					$url_str = $ste_root."manage/cms/radio-all-cats.php";
+					$url_str = SITEROOT."/manage/cms/radio-all-cats.php";
 					$url_str .= '?ret_page=add-keyword-landing';
 					$url_str .= "&ret_dir=keyword-landing";
 					$url_str .= "&ret_path=cms/keyword-landing";
@@ -780,10 +780,10 @@ function regularSubmit() {
 					echo "<label>Category 2</label>";
 					echo $name;
 					echo "<br/>";
-					echo "<img src='".$ste_root."/saascustuploads/".$_SESSION['profile_account_id']."/cart/small/".$file_name."' >";
+					echo "<img src='".SITEROOT."/saascustuploads/".$_SESSION['profile_account_id']."/cart/small/".$file_name."' >";
 					echo "<br/>";
                     
-					$url_str = $ste_root."manage/cms/radio-all-cats.php";
+					$url_str = SITEROOT."/manage/cms/radio-all-cats.php";
 					$url_str .= '?ret_page=add-keyword-landing';
 					$url_str .= "&ret_dir=keyword-landing";
 					$url_str .= "&ret_path=cms/keyword-landing";
@@ -827,10 +827,10 @@ function regularSubmit() {
 					echo "<label>Category 3</label>";
 					echo $name;
 					echo "<br/>";
-					echo "<img src='".$ste_root."/saascustuploads/".$_SESSION['profile_account_id']."/cart/small/".$file_name."' >";
+					echo "<img src='".SITEROOT."/saascustuploads/".$_SESSION['profile_account_id']."/cart/small/".$file_name."' >";
 					echo "<br/>";
                     
-					$url_str = $ste_root."manage/cms/radio-all-cats.php";
+					$url_str = SITEROOT."/manage/cms/radio-all-cats.php";
 					$url_str .= '?ret_page=add-keyword-landing';
 					$url_str .= "&ret_dir=keyword-landing";
 					$url_str .= "&ret_path=cms/keyword-landing";
@@ -874,10 +874,10 @@ function regularSubmit() {
 					echo "<label>Category 4</label>";
 					echo $name;
 					echo "<br/>";
-					echo "<img src='".$ste_root."/saascustuploads/".$_SESSION['profile_account_id']."/cart/small/".$file_name."' >";
+					echo "<img src='".SITEROOT."/saascustuploads/".$_SESSION['profile_account_id']."/cart/small/".$file_name."' >";
 					echo "<br/>";
                     
-					$url_str = $ste_root."manage/cms/radio-all-cats.php";
+					$url_str = SITEROOT."/manage/cms/radio-all-cats.php";
 					$url_str .= '?ret_page=add-keyword-landing';
 					$url_str .= "&ret_dir=keyword-landing";
 					$url_str .= "&ret_path=cms/keyword-landing";
@@ -960,7 +960,7 @@ function regularSubmit() {
                 
                 <?php
 				
-				$url_str = $ste_root."manage/cms/select-doc.php";
+				$url_str = SITEROOT."/manage/cms/select-doc.php";
 					$url_str .= '?ret_page=add-keyword-landing';
 					$url_str .= "&ret_dir=keyword-landing";
 					$url_str .= "&ret_path=cms/keyword-landing";
@@ -992,7 +992,7 @@ function regularSubmit() {
 						//label
 						$block .= "<td valign='middle'>".$val['name']."</td>";
 						//file name
-						$block .= "<td valign='middle'><a href='".$ste_root."/saascustuploads/".$_SESSION['profile_account_id']."/cms/doc/".$val['file_name']."' 
+						$block .= "<td valign='middle'><a href='".SITEROOT."/saascustuploads/".$_SESSION['profile_account_id']."/cms/doc/".$val['file_name']."' 
 							target='_blank' style='text-decoration:none'>".$val['file_name']."</a></td>";
 						
 						$block .= "<td valign='middle'><a class='btn btn-danger save_session' href='add-keyword-landing.php?remove_doc=1&doc_id=".$val['doc_id']."'>";						
@@ -1103,7 +1103,7 @@ function regularSubmit() {
             
                 <?php
 				
-				$url_str = $ste_root."manage/cms/select-video.php";
+				$url_str = SITEROOT."/manage/cms/select-video.php";
 					$url_str .= '?ret_page=add-keyword-landing';
 					$url_str .= "&ret_dir=keyword-landing";
 					$url_str .= "&ret_path=cms/keyword-landing";
@@ -1160,7 +1160,7 @@ function regularSubmit() {
 <p class="clear"></p>
 
 <?php 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-footer.php');
+require_once($real_root.'/manage/admin-includes/manage-footer.php');
 ?>
 </div>
 

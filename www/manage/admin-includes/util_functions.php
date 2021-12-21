@@ -7,9 +7,9 @@ if(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){
 	$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT'];
 }
 
-require_once($_SERVER['DOCUMENT_ROOT']."/includes/config.php");
+require_once($real_root."/includes/config.php");
 
-require_once($_SERVER['DOCUMENT_ROOT']."/includes/class.customer_account.php");
+require_once($real_root."/includes/class.customer_account.php");
 
 
 function get_ship_method($ship_method_id){

@@ -1,5 +1,15 @@
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
+if(strpos($_SERVER['REQUEST_URI'], 'solvitware/' )){ 
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/solvitware';
+}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/designitpro'; 
+}elseif(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
+}else{
+	$real_root = $_SERVER['DOCUMENT_ROOT']; 	
+}
+
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
 
 
 $page ="cart";
@@ -13,7 +23,7 @@ $item_id =  (isset($_REQUEST['item_id'])) ? $_REQUEST['item_id'] : 0;
 $cat_id =  (isset($_REQUEST['cat_id'])) ? $_REQUEST['cat_id'] : 0;
 
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php'); 
+require_once($real_root.'/manage/admin-includes/doc_header.php'); 
 
 
 ?>
@@ -84,7 +94,7 @@ $result = $dbCustom->getResult($db,$sql);	$object = $result->fetch_object();
     while($img_row = $img_res->fetch_object()) {
     	$block = ''; 
         $block .= "<div class='img_box'>";
-        $block .= "<img src='".$ste_root."/saascustuploads/cart/medium/".$img_row->file_name."' onClick='select_img_e(".$img_row->img_id.")' />";
+        $block .= "<img src='".SITEROOT."/saascustuploads/cart/medium/".$img_row->file_name."' onClick='select_img_e(".$img_row->img_id.")' />";
 		
 		$block .= "<input id='e".$img_row->img_id."' type='checkbox' name='img_id' value='".$img_row->img_id."' />";
 		

@@ -12,7 +12,7 @@ class dl_uploadable_ch extends Download {
 		else return array(false, "accinvalid");
     }
     
-    public function Login($user, $pass){
+    public function login($dbCustom,$user, $pass){
         $data = $this->lib->curl("http://www.uploadable.ch/login.php", "", "userName={$user}&userPassword={$pass}&autoLogin=true&action__login=normalLogin");
 		return $this->lib->GetCookies($data);
     }

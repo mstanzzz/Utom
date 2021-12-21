@@ -13,7 +13,8 @@
 $payment_method_nonce = isset($_POST['payment_method_nonce'])? $_POST['payment_method_nonce'] : '';
 
 // NEW VERSION
-//require_once("includes/braintree/lib/autoload.php");
+require_once("includes/braintree/lib/autoload.php");
+
 
 $_SESSION['no_order_refreash'] = 1;
 

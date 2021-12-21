@@ -1,11 +1,11 @@
 <?php
-require_once("../../includes/config.php");
-require_once("../../includes/class.shopping_cart.php");
-require_once('../../includes/class.design_cart.php');
-require_once('../../includes/accessory_cart_functions.php');
-require_once('../../includes/class.nav.php');
-//require_once("../../includes/class.shopping_cart_item.php");
-//require_once('../../includes/Mobile_Detect.php');
+require_once("<?php echo SITEROOT; ?>includes/config.php");
+require_once("<?php echo SITEROOT; ?>includes/class.shopping_cart.php");
+require_once('<?php echo SITEROOT; ?>includes/class.design_cart.php');
+require_once('<?php echo SITEROOT; ?>includes/accessory_cart_functions.php');
+require_once('<?php echo SITEROOT; ?>includes/class.nav.php');
+//require_once("<?php echo SITEROOT; ?>includes/class.shopping_cart_item.php");
+//require_once('<?php echo SITEROOT; ?>includes/Mobile_Detect.php');
 
 //1 phone
 //2 tablet
@@ -123,7 +123,7 @@ if(count($included_items_array) > 1 && $attr_count > 0){
 	//echo $item_id."-------------------------";
 	
 	
-	$cart->addItem($item_id, $qty);
+	$cart->addItem($dbCustom,$item_id, $qty);
 	
 	
 	
@@ -210,6 +210,6 @@ if(count($included_items_array) > 1 && $attr_count > 0){
 
 //echo 999;
 
-//$cart->saveCart();
+//$cart->saveCart($dbCustom);
 
 ?>

@@ -13,7 +13,7 @@ if(!isset($_SERVER['DOCUMENT_ROOT'])){
 }
 
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
 
 $progress = new SetupProgress;
 $module = new Module;
@@ -61,7 +61,7 @@ if(isset($_POST["remove_img"])){
 		$result = $dbCustom->getResult($db,$sql);
 		
 		
-		$myFile = $_SERVER['DOCUMENT_ROOT']."/ul_cms/".$domain."/".$img_obj->file_name;
+		$myFile = $_SERVER['DOCUMENT_ROOT']."/ul_cms/".SITEROOT."/".$img_obj->file_name;
 		if(file_exists($myFile)) unlink($myFile);
 	}
 
@@ -96,7 +96,7 @@ if(!isset($_SESSION["temp_blog_fields"]["blog_cat_id"])) $_SESSION["temp_blog_fi
 if(!isset($_SESSION["temp_blog_fields"]["type"])) $_SESSION["temp_blog_fields"]["type"] = $type;
 if(!isset($_SESSION["temp_blog_fields"]["content"])) $_SESSION["temp_blog_fields"]["content"] = $content;
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php'); 
+require_once($real_root.'/manage/admin-includes/doc_header.php'); 
 ?>
 
 <script>
@@ -152,12 +152,12 @@ function ajax_set_blog_session(){
         theme_advanced_statusbar_location : "bottom",
         theme_advanced_resizing : true,
 		theme_advanced_resize_horizontal : false,
-		content_css : "../../../css/mce.css"
+		content_css : "<?php echo SITEROOT; ?>../css/mce.css"
 	});
 
 
 function previewSubmit() {
-	document.form.action = '<?php echo $ste_root; ?>/pages/preview/preview.php';
+	document.form.action = '<?php echo SITEROOT; ?>pages/preview/preview.php';
 	document.form.target = '_blank'; 
 	document.form.submit();
 }	
@@ -183,8 +183,8 @@ function get_query_str(){
 
 <body>
 <?php
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-header.php');
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-top-nav.php');
+	require_once($real_root.'/manage/admin-includes/manage-header.php');
+	require_once($real_root.'/manage/admin-includes/manage-top-nav.php');
 ?>
 <div class="manage_page_container">
 	<div class="manage_side_nav">
@@ -192,14 +192,14 @@ function get_query_str(){
 
 
 		<?php 
-        	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-side-nav.php');
+        	require_once($real_root.'/manage/admin-includes/manage-side-nav.php');
         ?>
 	</div>
 	<div class="manage_main">
 		<?php 
-        	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-content-top.php');
+        	require_once($real_root.'/manage/admin-includes/manage-content-top-category.php');
 			//$url_str = "upload.php";
-			$url_str = $ste_root."manage/upload-pre-crop.php";               				
+			$url_str = SITEROOT."/manage/upload-pre-crop.php";               				
 			$url_str .= "?ret_page=edit-blog";
 			$url_str .= "&ret_dir=cms/blog";
 			$url_str .= "&upload_new_img=1";
@@ -325,7 +325,7 @@ function get_query_str(){
 							//echo "<div class='threecols'>";
                             if($img_res->num_rows > 0){
                             $img_obj = $img_res->fetch_object();
-                                echo "<img src='".$ste_root."/saascustuploads/".$_SESSION['profile_account_id']."/cms/".$img_obj->file_name."'>";
+                                echo "<img src='".SITEROOT."/saascustuploads/".$_SESSION['profile_account_id']."/cms/".$img_obj->file_name."'>";
 								//<a onclick='deleteImage(".$_SESSION['img_id'].")' class='btn btn-small btn-danger'><i class='icon-remove icon-white'></i></a>";
                             }
 							else {
@@ -363,7 +363,7 @@ function get_query_str(){
 
  	<p class="clear"></p>
 	<?php 
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-footer.php');
+	require_once($real_root.'/manage/admin-includes/manage-footer.php');
 	?>
 </div>
 </body>

@@ -1,26 +1,19 @@
 <?php
-
-
-
-if(!isset($_SERVER['DOCUMENT_ROOT'])){
-	if(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){    
-		$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
-	}elseif(strpos($_SERVER['REQUEST_URI'], 'aws/' )){
-		$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT'].'/aws';
-	}else{
-		$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT']; 	
-	}
+if(strpos($_SERVER['REQUEST_URI'], 'solvitware/' )){    
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/solvitware'; 
+}elseif(strpos($_SERVER['REQUEST_URI'], 'aws/' )){
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/aws';
+}else{
+	$real_root = $_SERVER['DOCUMENT_ROOT']; 	
 }
 
-
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
 
 $page_title = "View Design Request";
 $page_group = "design-email";
 $msg = '';
 
-
-require_once("../includes/set-page.php");	
+require_once($real_root.'/manage/admin-includes/set-page.php');	
 
 
 $pagenum = (isset($_GET['pagenum'])) ? $_GET['pagenum'] : 0;
@@ -37,7 +30,7 @@ if(!isset($_SESSION['paging']['truncate'])) $_SESSION['paging']['truncate'] = $t
 
 $search_str = isset($_GET['search_string']) ? $_GET['search_string'] : '';
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php'); 
+require_once($real_root.'/manage/admin-includes/doc_header.php'); 
 
 
 ?>
@@ -47,12 +40,12 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php');
 <div class="print_container">
 	<?php 
         
-    $db = $dbCustom->getDbConnect(SITE_N_DATABASE);
+    $db = $dbCustom->getDbConnect(SITE_DATABASE);
 
     $design_email_id = $_GET['design_email_id']; 
     
     //echo $discount_id;
-	$db = $dbCustom->getDbConnect(SITE_N_DATABASE);
+	$db = $dbCustom->getDbConnect(SITE_DATABASE);
 	$sql = "SELECT * FROM design_email WHERE design_email_id = '".$design_email_id."' ";
 $result = $dbCustom->getResult($db,$sql);	
 	$object = $result->fetch_object();
@@ -69,7 +62,7 @@ $result = $dbCustom->getResult($db,$sql);
 	<div class="fltrt"><a href="#" onClick="window.print();return false" class="btn btn-large"><i class="icon-print"></i> Print Page</a><br /><br />
     <a href="<?php echo $url_str; ?>" target="_top" class="btn btn-large"><i class="icon-arrow-left"></i> Go Back</a><br /></div>
 	<h1><?php if ($object->is_costco){echo "Costco Customer "; }?>Design Request <?php echo $design_email_id; ?></h1>
-	<h2><?php echo stripslashes($object->name);   ?><br /><?php echo date("F j, Y, g:i a", $object->date_submitted); ?></h2>
+	<h2><?php echo stripAllSlashes($object->name);   ?><br /><?php echo date("F j, Y, g:i a", $object->date_submitted); ?></h2>
 	<table border="0" cellpadding="6" width="100%">
 		<tr>
 			<td class="section_heading" colspan="4"><strong>Contact Info</strong></td>
@@ -95,7 +88,7 @@ $result = $dbCustom->getResult($db,$sql);
 		if($object->name != ''){ 
 			echo "<tr>";
 			echo "<td ><label>Name</label></td>";
-			echo "<td >".stripslashes($object->name)."</td>"; 
+			echo "<td >".stripAllSlashes($object->name)."</td>"; 
 			echo "</tr>";
 		}
 		
@@ -112,6 +105,8 @@ if(!is_numeric($zip)){
 	$zip = -1;	
 }
 
+
+/*
 if($zip != -1){
 	$acs_obj = getCityStateFromZip($zip);
 	$ret_city = $acs_obj['city'];
@@ -126,6 +121,12 @@ if($zip != -1){
 	$multi_cities = '';
 	
 }
+*/
+
+	$ret_city = $object->city;
+	$ret_state = $object->state;
+	$ret_country = '';
+	$multi_cities = '';
 
 		
 		if($multi_cities != ''){
@@ -177,7 +178,7 @@ if($zip != -1){
 		if($object->city != '' || $object->state || $object->zip){ 
 			echo "<tr>";
 			echo "<td ><label>Location</label></td>";
-			echo "<td>".stripslashes($object->city).", ".$object->state." ".$object->zip."</td>";
+			echo "<td>".stripAllSlashes($object->city).", ".$object->state." ".$object->zip."</td>";
 			echo "</tr>";
 		}
 		*/
@@ -248,7 +249,7 @@ if($zip != -1){
 		 if(trim($object->comments) != ''){		 
 			echo "<tr>";
 			echo "<td ><label>Comments</label></td>";
-			echo "<td >".stripslashes($object->comments)."</td>"; 
+			echo "<td >".stripAllSlashes($object->comments)."</td>"; 
 			echo "</tr>";		 
 		 }
 		 ?>
@@ -528,7 +529,7 @@ if($zip != -1){
 		</tr>
 		<?php 
 		
-		$db = $dbCustom->getDbConnect(SITE_N_DATABASE);
+		$db = $dbCustom->getDbConnect(SITE_DATABASE);
 		       
 			$sql = "SELECT file_name
 					FROM design_email_image 
@@ -553,17 +554,17 @@ if($zip != -1){
 					
 					$block .= "<tr><td>";
 					
-					if(file_exists ($_SERVER['DOCUMENT_ROOT']."/user_uploads/".$_SESSION['profile_account_id']."/".$img_row->file_name)){				
+					if(file_exists ($real_root."/user_uploads/".$_SESSION['profile_account_id']."/".$img_row->file_name)){				
 										
 						
-						//$block .= "<img src='".$ste_root."/user_uploads/".$_SESSION['profile_account_id']."/".$img_row->file_name."' />";
-						$block .= "<a href='".$ste_root."/user_uploads/".$_SESSION['profile_account_id']."/".$img_row->file_name."' target='_blank'>
+						//$block .= "<img src='".SITEROOT."/user_uploads/".$_SESSION['profile_account_id']."/".$img_row->file_name."' />";
+						$block .= "<a href='".SITEROOT."/user_uploads/".$_SESSION['profile_account_id']."/".$img_row->file_name."' target='_blank'>
 						<div style='font-size:18px;'>$img_row->file_name</div></a>";
 						
 					}
 					
 					$block .= "</td></tr>";
-					//$block .= "<tr><td><img src='".$ste_root."/user_uploads/".$_SESSION['profile_account_id']."/".$img_row->file_name."' /><hr /></td></tr>";
+					//$block .= "<tr><td><img src='".SITEROOT."/user_uploads/".$_SESSION['profile_account_id']."/".$img_row->file_name."' /><hr /></td></tr>";
 					$block .= "<tr><td><hr /></td></tr>";
 					
 				}

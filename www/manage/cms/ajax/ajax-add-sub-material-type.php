@@ -10,7 +10,7 @@ if(!isset($_SERVER['DOCUMENT_ROOT'])){
 }
 $_SESSION['ret_modal'] = '';
 
-require_once($_SERVER['DOCUMENT_ROOT']."/includes/config.php");
+require_once($real_root."/includes/config.php");
 
 $material_type_name = (isset($_GET['material_type_name'])) ? trim(addslashes($_GET['material_type_name'])) : '';   
 $rows_per_page = (isset($_GET['rows_per_page'])) ? $_GET['rows_per_page'] : 8;   

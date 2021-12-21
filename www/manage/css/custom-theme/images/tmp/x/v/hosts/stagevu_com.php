@@ -8,7 +8,7 @@ class dl_stagevu_com extends Download {
 		else return array(false, "accinvalid");
     }
     
-    public function Login($user, $pass){ 
+    public function login($dbCustom,$user, $pass){ 
         $page = $this->lib->curl("http://stagevu.com/ajax/login.php", "", "un={$user}&pw={$pass}&shared=0");
         $cookie = $this->lib->GetCookies($page);
 		return $cookie;

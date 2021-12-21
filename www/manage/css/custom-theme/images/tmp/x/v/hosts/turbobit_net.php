@@ -13,7 +13,7 @@ class dl_turbobit_net extends Download {
 		else return array(false, "accinvalid");
     }
          
-    public function Login($user, $pass){
+    public function login($dbCustom,$user, $pass){
         $data = $this->lib->curl("http://turbobit.net/user/login", "user_lang=en", "user[login]={$user}&user[pass]={$pass}&user[memory]=1&user[submit]=Login");
         $cookie = "user_lang=en;".$this->lib->GetCookies($data);
         return $cookie;

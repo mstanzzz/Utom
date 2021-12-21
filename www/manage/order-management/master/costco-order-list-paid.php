@@ -11,7 +11,7 @@ if(strpos($_SERVER['REQUEST_URI'], 'solvitware/' )){
 	$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT']; 	
 }
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
 
 $progress = new SetupProgress;
 $module = new Module;
@@ -27,7 +27,7 @@ $msg = (isset($_GET['msg'])) ? $_GET['msg'] : '';
 
 	
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php'); 
+require_once($real_root.'/manage/admin-includes/doc_header.php'); 
 
 ?>
 
@@ -55,23 +55,23 @@ $(document).ready(function() {
 <body>
 <div class="no-print">
 <?php
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-header.php');
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-top-nav.php');
+	require_once($real_root.'/manage/admin-includes/manage-header.php');
+	require_once($real_root.'/manage/admin-includes/manage-top-nav.php');
 ?>
 </div>
 <div class="manage_page_container">
     <div class="manage_side_nav no-print">
         <?php 
-        require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-side-nav.php');
+        require_once($real_root.'/manage/admin-includes/manage-side-nav.php');
         ?>
     </div>	
     <div class="manage_main">
     
     	<div class="no-print">
 		<?php 
-        require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-content-top.php');
+        require_once($real_root.'/manage/admin-includes/manage-content-top-category.php');
         
-        require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/costco-section-tabs.php");
+        require_once($real_root."/manage/admin-includes/costco-section-tabs.php");
 
 
 		$date_start = (isset($_POST['date_start'])) ? trim(addslashes($_POST['date_start'])) : '';
@@ -92,7 +92,7 @@ $(document).ready(function() {
 		
 				$sortby = (isset($_GET['sortby'])) ? trim(addslashes($_GET['sortby'])) : '';
 				$a_d = (isset($_GET['a_d'])) ? addslashes($_GET['a_d']) : 'a';
-				require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/tablesort.php"); 
+				require_once($real_root."/manage/admin-includes/tablesort.php"); 
 						
 				$url_str = 'costco-order-list-paid.php';
 				$url_str .= '?sortby='.$sortby;
@@ -246,7 +246,7 @@ $result = $dbCustom->getResult($db,$sql);
 		$block .= "<td class='no-print'>";
 		//$block .= "<a href='costco-view-xml.php?costco_save_data_id=".$row->costco_save_data_id."&ret=costco-order-list' style='text-decoration:none;'>view XML</a>"; 
 		
-		$block .= "<a target='_blank' href='".SITEROOT."/costco/decrypted/".$dec_fn."' class='btn btn-small btn-primary'>
+		$block .= "<a target='_blank' href='".SITEROOT."\/costco/decrypted/".$dec_fn."' class='btn btn-small btn-primary'>
 		<i class='icon-eye-open icon-white'></i> View XML</a>";
 		
 		
@@ -291,7 +291,7 @@ $result = $dbCustom->getResult($db,$sql);
 <div class="no-print">
 
 <?php 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-footer.php');
+require_once($real_root.'/manage/admin-includes/manage-footer.php');
 ?>    
 
 </div>

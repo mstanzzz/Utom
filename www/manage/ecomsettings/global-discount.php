@@ -1,10 +1,21 @@
 <?php
-require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/manage-includes.php");
+if(strpos($_SERVER['REQUEST_URI'], 'solvitware/' )){ 
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/solvitware';
+}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/designitpro'; 
+}elseif(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
+}else{
+	$real_root = $_SERVER['DOCUMENT_ROOT']; 	
+}
+require_once($real_root.'/includes/class.dbcustom.php');
+$dbCustom = new DbCustom();
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
 $progress = new SetupProgress;
 $module = new Module;
 $page_title = "Global Discount";
 $page_group = "discount";
-require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/set-page.php");
+require_once($real_root."/manage/admin-includes/set-page.php");
 $db = $dbCustom->getDbConnect(CART_DATABASE);
 $msg = (isset($_GET['msg'])) ? $_GET['msg'] : '';
 // current unix time stamp
@@ -264,7 +275,7 @@ unset($_SESSION['global_discount_id']);
 unset($_SESSION['temp_page_fields']);
 unset($_SESSION['paging']);
 
-require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/doc_header.php");
+require_once($real_root."/manage/admin-includes/doc_header.php");
 ?>
 <script>
 function regularSubmit() {
@@ -275,13 +286,13 @@ function regularSubmit() {
 
 <body>
 <?php
-require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/manage-header.php");
-require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/manage-top-nav.php");
+require_once($real_root."/manage/admin-includes/manage-header.php");
+require_once($real_root."/manage/admin-includes/manage-top-nav.php");
 ?>
 <div class="manage_page_container">
 	<div class="manage_side_nav">
 		<?php
-		require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/manage-side-nav.php");
+		require_once($real_root."/manage/admin-includes/manage-side-nav.php");
 		?>
 	</div>
 	<div class="manage_main">
@@ -360,7 +371,7 @@ $result = $dbCustom->getResult($db,$sql);
 ?>
 
 			<div class="data_table">
-            	<?php require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/tablesort.php"); ?>
+            	<?php require_once($real_root."/manage/admin-includes/tablesort.php"); ?>
 				<table cellpadding="10" cellspacing="0">
 					<thead>
 						<tr>
@@ -464,7 +475,7 @@ $result = $dbCustom->getResult($db,$sql);
 	</div>
 	<p class="clear"></p>
 	<?php
-require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/manage-footer.php");
+require_once($real_root."/manage/admin-includes/manage-footer.php");
 
 	$url_str = "global-discount.php";
 	$url_str .= "?pagenum=".$pagenum;

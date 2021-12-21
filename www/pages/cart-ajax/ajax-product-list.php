@@ -1,11 +1,11 @@
 <?php		
-require_once('../../includes/config.php');
-require_once('../../includes/db_connect.php'); 
-require_once('../../includes/accessory_cart_functions.php');
-require_once('../../includes/class.shopping_cart.php');
-require_once('../../includes/class.price_range_items.php'); 
-require_once('../../includes/class.module.php');
-require_once('../../includes/class.shopping_items_list.php');
+require_once('<?php echo SITEROOT; ?>includes/config.php');
+require_once('<?php echo SITEROOT; ?>includes/db_connect.php'); 
+require_once('<?php echo SITEROOT; ?>includes/accessory_cart_functions.php');
+require_once('<?php echo SITEROOT; ?>includes/class.shopping_cart.php');
+require_once('<?php echo SITEROOT; ?>includes/class.price_range_items.php'); 
+require_once('<?php echo SITEROOT; ?>includes/class.module.php');
+require_once('<?php echo SITEROOT; ?>includes/class.shopping_items_list.php');
 $module = new Module;
 $shoppingItemsList = new ShoppingItemsList;
 
@@ -29,7 +29,7 @@ $itemListData = $shoppingItemsList->getList($cat_id, $brand_id, $search_str, 'de
 
 $items = $itemListData['items'];
 if($itemListData["items_count"] > 0){
-	include('../../includes/template-product-list.php');
+	include('<?php echo SITEROOT; ?>includes/template-product-list.php');
 }
 else {
 	echo "<div class='alert'> No products match your selection. </div>";

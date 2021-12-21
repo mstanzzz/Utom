@@ -9,7 +9,7 @@ class dl_fileom_com extends Download {
 		else return array(false, "accinvalid");
     }
     
-    public function Login($user, $pass){
+    public function login($dbCustom,$user, $pass){
         $data = $this->lib->curl("http://fileom.com/", "lang=english", "login={$user}&password={$pass}&op=login&redirect=http://fileom.com/");
         return "lang=english; {$this->lib->GetCookies($data)}";
     }

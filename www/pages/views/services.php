@@ -1,6 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+<title>ClosetsToGo</title>
+<meta name="description" content="services">
+<link href="./app.css" rel="stylesheet">
+</head>
+<body>
 
 <?php	
-require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php"); 	
+require_once($real_root."/includes/header.php"); 	
 ?>	
 
 <section class="home-mobile-buttons-block covid-block">
@@ -27,7 +38,7 @@ require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php");
 					<div class="col-12">
 						<div class="breadcrumb-block__wrapper" aria-label="breadcrumb">
 							<ul class="breadcrumb">
-								<li class="breadcrumb-item"><a href="../../">Home</a></li>
+								<li class="breadcrumb-item"><a href="<?php echo SITEROOT; ?>">Home</a></li>
 								<li class="breadcrumb-item"><a href="#">Company</a></li>
 								<li class="breadcrumb-item active" aria-current="page">Services</li>
 							</ul>
@@ -73,7 +84,7 @@ Pre-Assembly service
 						<div class="services-four-elements-block__wrapper services-caro">
 							<figure class="services-four-elements-block__content" data-dismiss="modal" data-toggle="modal" data-target="#designConsultation">
 								<figcaption data-toggle="modal" data-target="#mobile-team-gallery">
-									<h2 class="services-four-elements-block__heading quarantine" style="background-image: url('../../images/quarantine.svg');">
+									<h2 class="services-four-elements-block__heading quarantine" style="background-image: url('<?php echo SITEROOT; ?>images/quarantine.svg');">
 In-home design consultation
 									</h2>
 									<p class="services-four-elements-block__first-text">
@@ -93,7 +104,7 @@ request service
 										
 							<figure class="services-four-elements-block__content" data-dismiss="modal" data-toggle="modal" data-target="#designRequest">
 								<figcaption>
-									<h2 class="services-four-elements-block__heading cube" style="background-image: url('../../images/cube.svg');">
+									<h2 class="services-four-elements-block__heading cube" style="background-image: url('<?php echo SITEROOT; ?>images/cube.svg');">
 Online design request (AKA Virtual design)
 									</h2>
 									<p class="services-four-elements-block__first-text">
@@ -114,7 +125,7 @@ request service
 							
 							<figure class="services-four-elements-block__content" data-dismiss="modal" data-toggle="modal" data-target="#preAssemblyService">
 								<figcaption>
-									<h2 class="services-four-elements-block__heading gearwheel" style="background-image: url('../../images/gearwheel.svg');">
+									<h2 class="services-four-elements-block__heading gearwheel" style="background-image: url('<?php echo SITEROOT; ?>images/gearwheel.svg');">
 Pre-Assembly service
 									</h2>
 									<p class="services-four-elements-block__first-text">
@@ -134,7 +145,7 @@ request service
 										
 							<figure class="services-four-elements-block__content" data-dismiss="modal" data-toggle="modal" data-target="#showroomTour">
 								<figcaption>
-									<h2 class="services-four-elements-block__heading laptop" style="background-image: url('../../images/laptop.svg');">
+									<h2 class="services-four-elements-block__heading laptop" style="background-image: url('<?php echo SITEROOT; ?>images/laptop.svg');">
 Installation and Virtual showroom tour
 									</h2>
 									<p class="services-four-elements-block__first-text">
@@ -215,7 +226,7 @@ request service
 			<section class="block-with-background about-us">
 				<div class="wrapper">
 					<div class="container-fluid">
-						<div class="block-with-background__wrapper" style="background-image: url('../../images/quality-service-banner.jpg');">
+						<div class="block-with-background__wrapper" style="background-image: url('<?php echo SITEROOT; ?>images/quality-service-banner.jpg');">
 							<div class="row">
 								<div class="col-12 col-lg-5">
 									<div class="block-with-background__content">
@@ -291,10 +302,10 @@ request service
 					<div class="container-fluid">
 						<div class="row">
 							<div class="col-6 col-lg-3 company-block__images">
-								<img src="../../images/about-us-services-11.png" alt="">
+								<img src="<?php echo SITEROOT; ?>images/about-us-services-11.png" alt="">
 							</div>
 							<div class="col-6 col-lg-3 company-block__images">
-								<img src="../../images/about-us-services-22.png" alt="">
+								<img src="<?php echo SITEROOT; ?>images/about-us-services-22.png" alt="">
 							</div>
 							<div class="col-12 col-lg-6 company-block__text">
 								<div class="company-block__text--wrapper">
@@ -327,7 +338,7 @@ request service
 							</div>
 							<div class="col-12 col-lg-7">
 								<div class="you-design-block__image">
-									<img src="../../images/about-us-services-33.png" alt="" class="js-get-image">
+									<img src="<?php echo SITEROOT; ?>images/about-us-services-33.png" alt="" class="js-get-image">
 								</div>
 							</div>
 						</div>
@@ -363,7 +374,7 @@ request service
 							<div class="col-12 col-lg-4 catalog-block__content">
 								<figure>
 									<div class="catalog-block__content--image">
-										<img src="../../images/about-us-choices.png" alt="">
+										<img src="<?php echo SITEROOT; ?>images/about-us-choices.png" alt="">
 									</div>
 									<figcaption>
 										<h2>Choices</h2>
@@ -375,7 +386,7 @@ request service
 							<div class="col-12 col-lg-4 catalog-block__content">
 								<figure>
 									<div class="catalog-block__content--image">
-										<img src="../../images/about-us-lifetime.png" alt="">
+										<img src="<?php echo SITEROOT; ?>images/about-us-lifetime.png" alt="">
 									</div>
 									<figcaption>
 										<h2>Lifetime Warranty</h2>
@@ -390,7 +401,7 @@ request service
 							<div class="col-12 col-lg-4 catalog-block__content">
 								<figure>
 									<div class="catalog-block__content--image">
-										<img src="../../images/about-us-showrom.png" alt="">
+										<img src="<?php echo SITEROOT; ?>images/about-us-showrom.png" alt="">
 									</div>
 									<figcaption>
 										<h2>Showrom-Design Center</h2>
@@ -412,7 +423,7 @@ request service
 
 		<div class="scrollToTopBlock">
 			<div class="people-working">
-				<img src="../../images/people-working-call-center_@2x.png" alt="" class="people-working__image">
+				<img src="<?php echo SITEROOT; ?>images/people-working-call-center_@2x.png" alt="" class="people-working__image">
 
 				<div class="people-working__wrapper">
 					<div class="people-working__content">
@@ -422,24 +433,24 @@ request service
 			</div>
 
 			<a href="#" class="scrollToTop js-to-top">
-				<img src="../../images/arrows.svg" alt="">
+				<img src="<?php echo SITEROOT; ?>images/arrows.svg" alt="">
 			</a>
 		</div>
 
 		<div class="mobile-show">
 			<div class="mobile-footer-buttons">
 				<a href="#" class="mobile-footer-buttons__first">you design</a>
-				<a href="#" class="mobile-footer-buttons__second"><img src="../../images/icon-save.svg" alt="" class="img-fluid"></a>
+				<a href="#" class="mobile-footer-buttons__second"><img src="<?php echo SITEROOT; ?>images/icon-save.svg" alt="" class="img-fluid"></a>
 				<a href="#" class="mobile-footer-buttons__third">we design</a>
 			</div>
 		</div>
 
 		
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'].'/includes/footer.php');
+require_once($real_root.'/includes/footer.php');
 ?>
 
-		<!-- Modal design consultation -->
+<!-- Modal design consultation.jpg -->
 		<div class="modal designConsultation fade" id="designConsultation" tabindex="-1" role="dialog" aria-labelledby="#designConsultationTitle" aria-hidden="true">
 			<div class="modal-dialog modal-dialog-centered" role="document">
 				<div class="modal-content">
@@ -452,7 +463,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/includes/footer.php');
 					<div class="modal-body">
 						<div class="row">
 							<div class="col-12 col-lg-4">
-								<img src="../../images/quality-service-modal.png" alt="" class="img-fluid">
+								<img src="<?php echo SITEROOT; ?>images/quality-service-modal.png" alt="" class="img-fluid">
 							</div>
 							<div class="col-12 col-lg-8">
 								<p class="designConsultation__first-text">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et </p>
@@ -485,7 +496,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/includes/footer.php');
 					<div class="modal-body">
 						<div class="row">
 							<div class="col-12 col-lg-4">
-								<img src="../../images/quality-service-modal.png" alt="" class="img-fluid">
+								<img src="<?php echo SITEROOT; ?>images/quality-service-modal.png" alt="" class="img-fluid">
 							</div>
 							<div class="col-12 col-lg-8">
 								<p class="designConsultation__first-text">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et </p>
@@ -518,7 +529,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/includes/footer.php');
 					<div class="modal-body">
 						<div class="row">
 							<div class="col-12 col-lg-4">
-								<img src="../../images/quality-service-modal.png" alt="" class="img-fluid">
+								<img src="<?php echo SITEROOT; ?>images/quality-service-modal.png" alt="" class="img-fluid">
 							</div>
 							<div class="col-12 col-lg-8">
 								<p class="designConsultation__first-text">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et </p>
@@ -551,7 +562,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/includes/footer.php');
 					<div class="modal-body">
 						<div class="row">
 							<div class="col-12 col-lg-4">
-								<img src="../../images/quality-service-modal.png" alt="" class="img-fluid">
+								<img src="<?php echo SITEROOT; ?>images/quality-service-modal.png" alt="" class="img-fluid">
 							</div>
 							<div class="col-12 col-lg-8">
 								<p class="designConsultation__first-text">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et </p>
@@ -587,6 +598,8 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/includes/footer.php');
 				</div>
 			</div>
 		</div>
-		
+	<script src="./app.js"></script></body>
+</html>
+
 		
 		

@@ -43,7 +43,7 @@ class dl_up_4share_vn extends Download {
 		else return array(false, "accinvalid");
 	}
 	
-	public function Login($user, $pass){
+	public function login($dbCustom,$user, $pass){
 		$data = $this->lib->curl("http://up.4share.vn/?control=login", "", "inputUserName={$user}&inputPassword={$pass}&rememberlogin=1");
 		$cookie = $this->lib->GetCookies($data);
 		return $cookie;

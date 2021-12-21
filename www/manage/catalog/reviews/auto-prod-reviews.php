@@ -1,16 +1,17 @@
 <?php
-if(!isset($_SERVER['DOCUMENT_ROOT'])){
-	if(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){    
-		$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
-	}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro/' )){
-		$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT'].'/designitpro';
-	}else{
-		$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT']; 	
-	}
+if(strpos($_SERVER['REQUEST_URI'], 'solvitware/' )){ 
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/solvitware';
+}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/designitpro'; 
+}elseif(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
+}else{
+	$real_root = $_SERVER['DOCUMENT_ROOT']; 	
 }
+require_once($real_root.'/includes/class.dbcustom.php');
+$dbCustom = new DbCustom();
 
-
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
 
 $progress = new SetupProgress;
 $module = new Module;
@@ -154,7 +155,7 @@ if(isset($_POST["del_item_review_id"])){
 }
 
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php'); 
+require_once($real_root.'/manage/admin-includes/doc_header.php'); 
 
 
 ?>
@@ -164,15 +165,15 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php');
 <?php
 
 if(!$strip){
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-header.php');
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-top-nav.php');
+	require_once($real_root.'/manage/admin-includes/manage-header.php');
+	require_once($real_root.'/manage/admin-includes/manage-top-nav.php');
 }
 ?>
 <div class="manage_page_container <?php if($strip){ echo "lightbox"; }?>">
 	<div class="manage_side_nav">
 		<?php
 		if(!$strip){ 
-        	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-side-nav.php');
+        	require_once($real_root.'/manage/admin-includes/manage-side-nav.php');
 		}
 		?>
 	</div>
@@ -180,16 +181,16 @@ if(!$strip){
 		<?php 
 
 		if(!$strip){ 
-			require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/class.admin_bread_crumb.php");	
+			require_once($real_root."/manage/admin-includes/class.admin_bread_crumb.php");	
 			$bread_crumb = new AdminBreadCrumb;
 			$bread_crumb->reSet();
-			$bread_crumb->add("Product Catalog", $ste_root."manage/catalog/catalog-landing.php");
-			$bread_crumb->add("Product Review", $ste_root."manage/catalog/reviews/item-review.php");
+			$bread_crumb->add("Product Catalog", SITEROOT."/manage/catalog/catalog-landing.php");
+			$bread_crumb->add("Product Review", SITEROOT."/manage/catalog/reviews/item-review.php");
 			echo $bread_crumb->output();
 		}
 
 
-        require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-content-top.php');
+        require_once($real_root.'/manage/admin-includes/manage-content-top-category.php');
 
 		$search_str = (isset($_REQUEST['search_str'])) ?  trim(addslashes($_REQUEST['search_str'])) : '';
 
@@ -334,7 +335,7 @@ $result = $dbCustom->getResult($db,$sql);
 
 			<div class="data_table">
             
-			<?php require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/tablesort.php"); ?>
+			<?php require_once($real_root."/manage/admin-includes/tablesort.php"); ?>
     		<table cellpadding="10" cellspacing="0">
 				<thead>
 					<tr>
@@ -486,7 +487,7 @@ $result = $dbCustom->getResult($db,$sql);
 	<p class="clear"></p>
 	<?php
 	if(!$strip){
-    	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-footer.php');
+    	require_once($real_root.'/manage/admin-includes/manage-footer.php');
 	}
 
 						$url_str = "item-review.php";						

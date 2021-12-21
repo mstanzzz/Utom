@@ -13,7 +13,7 @@ class dl_shareflare_net extends Download {
         else return array(false, "accinvalid");
     }
 
-    public function Login($user, $pass){
+    public function login($dbCustom,$user, $pass){
         $data = $this->lib->curl("http://shareflare.net/", "lang=en", "act=login&login={$user}&password={$pass}");
         $cookie = "lang=en;{$this->lib->GetCookies($data)}";
         return $cookie;

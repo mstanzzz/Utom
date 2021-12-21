@@ -28,7 +28,7 @@ class dl_filefactory_com extends Download {
 		else return array(false, "accinvalid");
 	}
 	
-	public function Login($user, $pass){
+	public function login($dbCustom,$user, $pass){
 		$data = $this->lib->curl("http://www.filefactory.com", "ff_locale=en_US.utf8", "");
 		$cookies = $this->lib->Getcookies($data);
 		$post["loginEmail"] = $user;

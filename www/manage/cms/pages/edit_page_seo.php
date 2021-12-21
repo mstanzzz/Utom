@@ -13,10 +13,10 @@ if($page == "showroom"){
 
 //if($module->hasSeoModule($_SESSION['profile_account_id'])){
 
-	if(!isset($_SESSION['temp_page_fields']['seo_name'])) $_SESSION['temp_page_fields']['seo_name'] = $seo_name;		
-	if(!isset($_SESSION['temp_page_fields']['title'])) $_SESSION['temp_page_fields']['title'] = '';	
-	if(!isset($_SESSION['temp_page_fields']['keywords'])) $_SESSION['temp_page_fields']['keywords'] = '';	
-	if(!isset($_SESSION['temp_page_fields']['description'])) $_SESSION['temp_page_fields']['description'] = '';
+if(!isset($_SESSION['temp_page_fields']['seo_name'])) $_SESSION['temp_page_fields']['seo_name'] = $seo_name;		
+if(!isset($_SESSION['temp_page_fields']['title'])) $_SESSION['temp_page_fields']['title'] = '';	
+if(!isset($_SESSION['temp_page_fields']['keywords'])) $_SESSION['temp_page_fields']['keywords'] = '';	
+if(!isset($_SESSION['temp_page_fields']['description'])) $_SESSION['temp_page_fields']['description'] = '';
 ?>
 
 		<fieldset>
@@ -26,7 +26,7 @@ if($page == "showroom"){
 				<div class="twocols">
 					<label>Page URL</label>
 				</div>
-				<div class="twocols"> <?php echo $ste_root."/"; ?>
+				<div class="twocols"> <?php echo SITEROOT."//"; ?>
 					<input id="seo_name" class="url_fragment" name="seo_name" type="text" value="<?php echo $_SESSION['temp_page_fields']['seo_name']; ?>" />
 					.html </div>
 			</div>

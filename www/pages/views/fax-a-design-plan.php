@@ -1,10 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+<title>ClosetsToGo</title>
+<meta name="description" content="fax a design plan">
+<link href="<?php echo SITEROOT; ?>app.css" rel="stylesheet">
+</head>
+<body>
 
 <?php
-require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php"); 	
+require_once($real_root."/includes/header.php"); 
 ?>	
 
 <section class="first-fixed-block covid-block fax-a-design clearfix">
-	<figure class="first-fixed-block__img-group" style="background-image: url('../../images/fax-a-design-plan-header.png');">
+	<figure class="first-fixed-block__img-group" style="background-image: url('<?php echo SITEROOT; ?>images/fax-a-design-plan-header.png');">
 		<figcaption class="first-fixed-block__img-group--text-block">
 			<div class="wrapper">
 				<h1 class="first-fixed-block__img-group--heading">
@@ -177,7 +188,7 @@ Etiam tristique est vel lacinia dignissim. Quisque facilisis, ligula ac volutpat
 							<div class="two-elements-block__wrapper--content">
 								<div class="two-elements-block__wrapper--image">
 									<div class="only-image">
-										<img src="../../images/fax-adesign-cheme.png" alt="">
+										<img src="<?php echo SITEROOT; ?>images/fax-adesign-cheme.png" alt="">
 									</div>
 								</div>
 							</div>
@@ -189,42 +200,42 @@ Etiam tristique est vel lacinia dignissim. Quisque facilisis, ligula ac volutpat
 							<h2 class="heading">Read Our Reviews</h2>
 							<div class="stars-wrapper">
 								<div class="block-stars__wrapper">
-									<img src="../../images/Rectangle12.png" alt="" class="block-stars__wrapper--image">
+									<img src="<?php echo SITEROOT; ?>images/Rectangle12.png" alt="" class="block-stars__wrapper--image">
 									<div class="block-stars__wrapper--text">
 										<div class="stars-container">
-											<img src="../../images/star.svg" alt="">
-											<img src="../../images/star.svg" alt="">
-											<img src="../../images/star.svg" alt="">
-											<img src="../../images/star.svg" alt="">
-											<img src="../../images/star.svg" alt="">
+											<img src="<?php echo SITEROOT; ?>images/star.svg" alt="">
+											<img src="<?php echo SITEROOT; ?>images/star.svg" alt="">
+											<img src="<?php echo SITEROOT; ?>images/star.svg" alt="">
+											<img src="<?php echo SITEROOT; ?>images/star.svg" alt="">
+											<img src="<?php echo SITEROOT; ?>images/star.svg" alt="">
 										</div>
 										<p class="first-text">Aubree W. Charlotte, North Carolina</p>
 										<p>Just had a successful installation!</p>
 									</div>
 								</div>
 								<div class="block-stars__wrapper">
-									<img src="../../images/Rectangle12.png" alt="" class="block-stars__wrapper--image">
+									<img src="<?php echo SITEROOT; ?>images/Rectangle12.png" alt="" class="block-stars__wrapper--image">
 									<div class="block-stars__wrapper--text">
 										<div class="stars-container">
-											<img src="../../images/star.svg" alt="">
-											<img src="../../images/star.svg" alt="">
-											<img src="../../images/star.svg" alt="">
-											<img src="../../images/star.svg" alt="">
-											<img src="../../images/star.svg" alt="">
+											<img src="<?php echo SITEROOT; ?>images/star.svg" alt="">
+											<img src="<?php echo SITEROOT; ?>images/star.svg" alt="">
+											<img src="<?php echo SITEROOT; ?>images/star.svg" alt="">
+											<img src="<?php echo SITEROOT; ?>images/star.svg" alt="">
+											<img src="<?php echo SITEROOT; ?>images/star.svg" alt="">
 										</div>
 										<p class="first-text">Aubree W. Charlotte, North Carolina</p>
 										<p>Just had a successful installation!</p>
 									</div>
 								</div>
 								<div class="block-stars__wrapper">
-									<img src="../../images/Rectangle12.png" alt="" class="block-stars__wrapper--image">
+									<img src="<?php echo SITEROOT; ?>images/Rectangle12.png" alt="" class="block-stars__wrapper--image">
 									<div class="block-stars__wrapper--text">
 										<div class="stars-container">
-													<img src="../../images/star.svg" alt="">
-													<img src="../../images/star.svg" alt="">
-													<img src="../../images/star.svg" alt="">
-													<img src="../../images/star.svg" alt="">
-													<img src="../../images/star.svg" alt="">
+													<img src="<?php echo SITEROOT; ?>images/star.svg" alt="">
+													<img src="<?php echo SITEROOT; ?>images/star.svg" alt="">
+													<img src="<?php echo SITEROOT; ?>images/star.svg" alt="">
+													<img src="<?php echo SITEROOT; ?>images/star.svg" alt="">
+													<img src="<?php echo SITEROOT; ?>images/star.svg" alt="">
 										</div>
 										<p class="first-text">Aubree W. Charlotte, North Carolina</p>
 										<p>Just had a successful installation!</p>
@@ -269,8 +280,8 @@ echo "p_3_head:  ".$p_3_head;
 ?>
 <!-- How to using a laser level if your floor is sloped -->
 </span>
-											<img class="collapse-icon collapse-icon__plus" src="../../images/minus-button-1.svg" alt="">
-											<img class="collapse-icon collapse-icon__minus" src="../../images/minus-button.svg" alt="">
+											<img class="collapse-icon collapse-icon__plus" src="<?php echo SITEROOT; ?>images/minus-button-1.svg" alt="">
+											<img class="collapse-icon collapse-icon__minus" src="<?php echo SITEROOT; ?>images/minus-button.svg" alt="">
 										</h5>
 									</div>
 									<div id="collapse-one" class="collapse" aria-labelledby="heading-one" data-parent="#accordion">
@@ -294,8 +305,8 @@ echo "p_4_head:  ".$p_4_head;
 ?>
 <!-- Do you know that... -->
 										</span>
-										<img class="collapse-icon collapse-icon__plus" src="../../images/minus-button-1.svg" alt="">
-										<img class="collapse-icon collapse-icon__minus" src="../../images/minus-button.svg" alt="">
+										<img class="collapse-icon collapse-icon__plus" src="<?php echo SITEROOT; ?>images/minus-button-1.svg" alt="">
+										<img class="collapse-icon collapse-icon__minus" src="<?php echo SITEROOT; ?>images/minus-button.svg" alt="">
 										</h5>
 									</div>
 									<div id="collapse-two" class="collapse" aria-labelledby="heading-two" data-parent="#accordion">
@@ -319,8 +330,8 @@ echo "p_5_head:  ".$p_5_head;
 ?>
 <!--How to prevent... -->
 </span>
-										<img class="collapse-icon collapse-icon__plus" src="../../images/minus-button-1.svg" alt="">
-										<img class="collapse-icon collapse-icon__minus" src="../../images/minus-button.svg" alt="">
+										<img class="collapse-icon collapse-icon__plus" src="<?php echo SITEROOT; ?>images/minus-button-1.svg" alt="">
+										<img class="collapse-icon collapse-icon__minus" src="<?php echo SITEROOT; ?>images/minus-button.svg" alt="">
 										</h5>
 									</div>
 									<div id="collapse-three" class="collapse" aria-labelledby="heading-three" data-parent="#accordion">
@@ -346,8 +357,8 @@ echo "p_6_head:  ".$p_6_head;
 How to using a laser level if your floor is sloped
 -->
 </span>
-										<img class="collapse-icon collapse-icon__plus" src="../../images/minus-button-1.svg" alt="">
-										<img class="collapse-icon collapse-icon__minus" src="../../images/minus-button.svg" alt="">
+										<img class="collapse-icon collapse-icon__plus" src="<?php echo SITEROOT; ?>images/minus-button-1.svg" alt="">
+										<img class="collapse-icon collapse-icon__minus" src="<?php echo SITEROOT; ?>images/minus-button.svg" alt="">
 										</h5>
 									</div>
 
@@ -372,8 +383,8 @@ echo "p_7_head:  ".$p_7_head;
 ?>
 <!-- Do you know that... -->
 </span>
-										<img class="collapse-icon collapse-icon__plus" src="../../images/minus-button-1.svg" alt="">
-										<img class="collapse-icon collapse-icon__minus" src="../../images/minus-button.svg" alt="">
+										<img class="collapse-icon collapse-icon__plus" src="<?php echo SITEROOT; ?>images/minus-button-1.svg" alt="">
+										<img class="collapse-icon collapse-icon__minus" src="<?php echo SITEROOT; ?>images/minus-button.svg" alt="">
 										</h5>
 									</div>
 									<div id="collapse-five" class="collapse" aria-labelledby="heading-five" data-parent="#accordion">
@@ -397,8 +408,8 @@ echo "p_8_head:  ".$p_8_head;
 ?>
 <!-- How to prevent... -->
 </span>
-											<img class="collapse-icon collapse-icon__plus" src="../../images/minus-button-1.svg" alt="">
-											<img class="collapse-icon collapse-icon__minus" src="../../images/minus-button.svg" alt="">
+											<img class="collapse-icon collapse-icon__plus" src="<?php echo SITEROOT; ?>images/minus-button-1.svg" alt="">
+											<img class="collapse-icon collapse-icon__minus" src="<?php echo SITEROOT; ?>images/minus-button.svg" alt="">
 										</h5>
 									</div>
 									<div id="collapse-six" class="collapse" aria-labelledby="heading-six" data-parent="#accordion">
@@ -436,7 +447,7 @@ Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis illum, neque dol
 												<td class="image-name example.jpg">example.jpg</td>
 												<td class="image-size">30 kb</td>
 												<td class="success-or-error">
-													<img src="../../images/checked.svg" alt="">
+													<img src="<?php echo SITEROOT; ?>images/checked.svg" alt="">
 												</td>
 											</tr>
 											<tr>
@@ -447,7 +458,7 @@ Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis illum, neque dol
 												<td class="image-name example1.jpg">example1.jpg</td>
 												<td class="image-size">124 kb</td>
 												<td class="success-or-error">
-													<img src="../../images/cancel.svg" alt="">
+													<img src="<?php echo SITEROOT; ?>images/cancel.svg" alt="">
 												</td>
 											</tr>
 										</tbody>
@@ -530,7 +541,7 @@ Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis illum, neque dol
 			<div class="container-fluid">
 				<div class="row organizer-caro fax-design">
 					<div class="col-12 col-lg-4 company-block__images">
-						<img src="../../images/company-1.png" alt="">
+						<img src="<?php echo SITEROOT; ?>images/company-1.png" alt="">
 						<div class="company-block__images--text">
 							<p>Closet Solutions:</p>
 							<p>DIY Online Designs</p>
@@ -543,7 +554,7 @@ Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis illum, neque dol
 						</div>
 					</div>
 					<div class="col-12 col-lg-4 company-block__images">
-						<img src="../../images/company-2.png" alt="">								
+						<img src="<?php echo SITEROOT; ?>images/company-2.png" alt="">								
 						<div class="company-block__images--text white-color">
 							<p>Custom Closets:</p>
 							<p>Order Online Today</p>
@@ -556,7 +567,7 @@ Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis illum, neque dol
 						</div>
 					</div>
 					<div class="col-12 col-lg-4 company-block__images">
-						<img src="../../images/company-3.png" alt="">								
+						<img src="<?php echo SITEROOT; ?>images/company-3.png" alt="">								
 						<div class="company-block__images--text white-color">
 							<p>Closet Organizer</p>
 							<p>Showroom</p>
@@ -576,7 +587,7 @@ Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis illum, neque dol
 
 		<div class="scrollToTopBlock">
 			<div class="people-working">
-				<img src="../../images/people-working-call-center_@2x.png" alt="" class="people-working__image">
+				<img src="<?php echo SITEROOT; ?>images/people-working-call-center_@2x.png" alt="" class="people-working__image">
 	
 				<div class="people-working__wrapper">
 					<div class="people-working__content">
@@ -586,14 +597,14 @@ Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis illum, neque dol
 			</div>
 	
 			<a href="#" class="scrollToTop js-to-top">
-				<img src="../../images/arrows.svg" alt="">
+				<img src="<?php echo SITEROOT; ?>images/arrows.svg" alt="">
 			</a>
 		</div>
 
 		<div class="mobile-show">
 			<div class="mobile-footer-buttons">
 				<a href="#" class="mobile-footer-buttons__first">you design</a>
-				<a href="#" class="mobile-footer-buttons__second"><img src="../../images/icon-save.svg" alt="" class="img-fluid"></a>
+				<a href="#" class="mobile-footer-buttons__second"><img src="<?php echo SITEROOT; ?>images/icon-save.svg" alt="" class="img-fluid"></a>
 				<a href="#" class="mobile-footer-buttons__third">we design</a>
 			</div>
 		</div>
@@ -601,12 +612,12 @@ Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis illum, neque dol
 
 
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'].'/includes/footer.php');
+require_once($real_root.'/includes/footer.php');
 ?>
 
-
-		<!-- Modal mobile fax a design buttons -->
-		<div class="modal mobile-full-screan-modal fade" id="mobile-fax-design" tabindex="-1" role="dialog" aria-labelledby="mobile-fax-design-title" aria-hidden="true">
+<!-- Modal mobile fax a design buttons -->
+		<div class="modal mobile-full-screan-modal fade" id="mobile-fax-design" tabindex="-1" role="dialog"
+			 aria-labelledby="mobile-fax-design-title" aria-hidden="true">
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
@@ -621,11 +632,12 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/includes/footer.php');
 						</div>
 					</div>
 				</div>
-				</div>
+			</div>
 		</div>
 
 		<!-- Modal delete -->
-		<div class="modal confirm-modal fade" id="deleteImgModal" tabindex="-1" role="dialog" aria-labelledby="#deleteImgModalTitle" aria-hidden="true">
+		<div class="modal confirm-modal fade" id="deleteImgModal" tabindex="-1" role="dialog"
+			 aria-labelledby="#deleteImgModalTitle" aria-hidden="true">
 			<div class="modal-dialog modal-sm modal-dialog-centered" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
@@ -636,24 +648,27 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/includes/footer.php');
 					</div>
 					<div class="modal-body">
 						<div class="account-block__form">
-							<form>
-								<div class="row mb-3">
-									<div class="col-12">
-										<p class="js-delete-text">You are about to delete <span style="color: #17C3C6">XXXX</span>.<br /> Are you sure that you want to continue?</p>
-									</div>
+							<!-- <form> -->
+							<div class="mb-3">
+								<p class="js-delete-text">You are about to delete <span
+										style="color: #17C3C6">XXXX</span>.<br/> Are you sure that you want to continue?
+								</p>
+								<div class="d-flex align-content-center justify-content-between">
+									<button type="submit" data-dismiss="modal" class="btn btn-primary mr-2">cancel
+									</button>
+									<button type="submit" data-dismiss="modal"
+											class="btn btn-secondary js-delete-uploaded-img-btn ml-2">continue
+									</button>
 								</div>
-								<div class="row">
-									<div class="col-6">
-										<button type="submit" data-dismiss="modal" class="btn btn-primary mw-100">cancel</button>
-									</div>
-									<div class="col-6">
-										<button type="submit" data-dismiss="modal" class="btn btn-secondary js-delete-uploaded-img-btn mw-100">continue</button>
-									</div>
-								</div>
-							</form>
+							</div>
+							<!-- </form> -->
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+
+<script src="<?php echo SITEROOT; ?>app.js"></script>
 	
+</body>
+</html>

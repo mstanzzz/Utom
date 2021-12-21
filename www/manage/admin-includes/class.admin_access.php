@@ -1,12 +1,6 @@
 <?php
-error_reporting(0);
-require_once($_SERVER['DOCUMENT_ROOT'].'/includes/class.admin_login.php');
-
-// This class depends on user being logged in
-// All properties are dependent on the current logged in user
 class AdminAccess
 {
-    // property declarations
     public $admin_group_ids = array();
     public $cms_level;
     public $product_catalog_level;
@@ -17,13 +11,14 @@ class AdminAccess
 	public $design_level;
 	public $master_level;
 	public $tool_level;
+	public $customers_orders_level = 1;
 	
 
-	function __construct(){
+	function __construct($dbCustom){
 
 
-		$this->admin_group_ids = $this->getAdminGroupIDs();
-		$this->cms_level = $this->getCmsLevel();		
+		$this->admin_group_ids = $this->getAdminGroupIDs($dbCustom);
+		$this->cms_level = $this->getCmsLevel($dbCustom);		
 		$this->product_catalog_level = $this->getProductCatalogLevel();		
 		$this->ecommerce_level = $this->getEcommerceLevel();		
 		$this->customers_level = $this->getCustomersLevel();	
@@ -51,12 +46,9 @@ class AdminAccess
 	}
 
 
-	public function getAdminGroupIDs(){
-		
-		//if(!isset($_SESSION['admin_access']['admin_group_ids'])){
+	public function getAdminGroupIDs($dbCustom){
 			$_SESSION['admin_access']['admin_group_ids'] = array();
 			$aLgn = new AdminLogin;
-			$dbCustom = new DbCustom();
 			$db = $dbCustom->getDbConnect(USER_DATABASE);
 			$sql = "SELECT admin_group_id
 					FROM admin_user_to_admin_group
@@ -67,17 +59,13 @@ class AdminAccess
 				$_SESSION['admin_access']['admin_group_ids'][$i] = $row->admin_group_id;	
 				$i++;
 			}
-		//}
-		
 		return $_SESSION['admin_access']['admin_group_ids'];
 	}
 	
-	public function getCmsLevel() {
-		//if(!isset($_SESSION['admin_access']['cms_level'])){	
+	public function getCmsLevel($dbCustom) {
 			$_SESSION['admin_access']['cms_level'] = 0;					
+			$db = $dbCustom->getDbConnect(USER_DATABASE);
 			foreach($_SESSION['admin_access']['admin_group_ids'] as $val){
-				$dbCustom = new DbCustom();
-				$db = $dbCustom->getDbConnect(USER_DATABASE);
 				$sql = "SELECT admin_section_level
 						FROM admin_access, admin_section
 						WHERE admin_access.admin_section_id = admin_section.id
@@ -91,8 +79,6 @@ class AdminAccess
 					}
 				}
 			}			
-		//}
-		
 		$_SESSION['admin_access']['cms_level'] = 5;
 		return $_SESSION['admin_access']['cms_level'];
 	}

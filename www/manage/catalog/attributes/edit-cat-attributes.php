@@ -1,19 +1,17 @@
 <?php
-
-
-if(!isset($_SERVER['DOCUMENT_ROOT'])){
-	if(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){    
-		$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
-	}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro/' )){
-		$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT'].'/designitpro';
-	}else{
-		$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT']; 	
-	}
+if(strpos($_SERVER['REQUEST_URI'], 'solvitware/' )){ 
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/solvitware';
+}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/designitpro'; 
+}elseif(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
+}else{
+	$real_root = $_SERVER['DOCUMENT_ROOT']; 	
 }
+require_once($real_root.'/includes/class.dbcustom.php');
+$dbCustom = new DbCustom();
 
-
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
-
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
 
 $strip = (isset($_GET['strip'])) ? $_GET['strip'] : 0;
 $progress = new SetupProgress;
@@ -112,7 +110,7 @@ if(!isset($_SESSION['name'])) $_SESSION['name'] = $name;
 
 
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php'); 
+require_once($real_root.'/manage/admin-includes/doc_header.php'); 
 
 ?>
 
@@ -131,7 +129,7 @@ $(document).ready(function() {
 			
 			//alert(data);
 			
-			location.href = "edit-category.php?copy_attr=1"; 
+			location.href = "edit.php?copy_attr=1"; 
 		  }
 		});		
 	});
@@ -167,7 +165,7 @@ function get_query_str(){
     
     	<?php 
 		
-		require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-content-top.php');
+		require_once($real_root.'/manage/admin-includes/manage-content-top-category.php');
 		
         
 		$url_str = "edit-cat-attributes.php";
@@ -215,7 +213,7 @@ function get_query_str(){
 							
 							if($img_res->num_rows > 0){
 								$img_obj = $img_res->fetch_object();
-								echo "<img src='".$ste_root."/saascustuploads/".$_SESSION['profile_account_id']."/cart/small/".$img_obj->file_name."'>";	
+								echo "<img src='".SITEROOT."/saascustuploads/".$_SESSION['profile_account_id']."/cart/small/".$img_obj->file_name."'>";	
 							}
 							
 					?>
@@ -277,7 +275,7 @@ function get_query_str(){
  <p class="clear"></p>
     <?php
 	if(!$strip){  
-    	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-footer.php');
+    	require_once($real_root.'/manage/admin-includes/manage-footer.php');
 	}
 	?>
 </div>

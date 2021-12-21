@@ -11,7 +11,7 @@ class dl_bitshare_com extends Download {
 		else return array(false, "accinvalid");
 	}
 	
-	public function Login($user, $pass){
+	public function login($dbCustom,$user, $pass){
 		$data = $this->lib->curl("http://bitshare.com/login.html", "language_selection=EN", "user={$user}&password={$pass}&rememberlogin=&submit=Login");
 		$cookie = "language_selection=EN;{$this->lib->GetCookies($data)}";
 		return $cookie;

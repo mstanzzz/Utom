@@ -9,7 +9,7 @@ class dl_datafile_com extends Download {
 		else return array(false, "accinvalid"); 
 	}
   
-	public function Login($user, $pass){
+	public function login($dbCustom,$user, $pass){
 		$data = $this->lib->curl("https://www.datafile.com/login.html", "lang=en", "login={$user}&password={$pass}&remember_me=1");
 		$cookie = "lang=en;".$this->lib->GetCookies($data);
 		return $cookie;
@@ -22,7 +22,7 @@ class dl_datafile_com extends Download {
 			$data = $this->lib->curl($link,$this->lib->cookie,"");
 			if(stristr($data, "ErrorCode 6: Download limit in")) $this->error("LimitAcc", true, false);
 			if($this->isredirect($data)) $redir = trim($this->redirect); 
-			$name = $this->lib->getname($redir, $this->lib->cookie);
+			$name = $this->lib->getName($dbCustom,$redir, $this->lib->cookie);
 			$tach = explode(';', $name);
 			$this->lib->reserved['filename'] = $tach[0];
 			return $redir;

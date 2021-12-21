@@ -9,7 +9,7 @@ class dl_keep2share_cc extends Download {
 		else return array(false, "accinvalid");
 	}
 	
-	public function Login($user, $pass){
+	public function login($dbCustom,$user, $pass){
 		$data = $this->lib->curl("http://keep2share.cc/login.html", "", "LoginForm[username]={$user}&LoginForm[password]={$pass}&LoginForm[rememberMe]=1&yt0=login");
 		$cookie = $this->lib->GetCookies($data);
 		return $cookie;

@@ -1,6 +1,6 @@
 <?php
 error_reporting(0);
-require_once($_SERVER['DOCUMENT_ROOT'].'/includes/class.admin_login.php');
+require_once($real_root.'/includes/class.admin_login.php');
 
 // This class depends on user being logged in
 // All properties are dependent on the current logged in user

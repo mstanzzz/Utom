@@ -7,7 +7,7 @@ if(!$lgn->isLogedIn()){
 $customer_id = $lgn->getCustId();
 $smsg = '';
 $acc = new CustomerAccount();
-$acc->setDbAccData($customer_id);
+$acc->setDbAccData($dbCustom,$customer_id);
 
 if(isset($_POST['update_address'])){
 	

@@ -1,8 +1,17 @@
-		
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<title>ClosetsToGo</title>
+<meta name="description" content="category list view">
+<link href="<?php echo SITEROOT; ?>app.css" rel="stylesheet">
+</head>
+<body>
 
 <?php	
-require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php"); 	
+require_once($real_root."/includes/header.php"); 	
 ?>	
 		
 <main class="main clearfix">
@@ -207,13 +216,13 @@ require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php");
 				</div>
 			</div>
 
-			<div class="js-list-category" id="list-view">
+			<div class="js-list" id="list-view">
 				<div class="container-fluid">
 					<div class="row">
 						<div class="col-12">
 							<a href="#" title="" class="category-block__wrapper">
 								<div class="category-block__wrapper--image">
-									<img src="../../images/category-big-1.png" alt="">
+									<img src="<?php echo SITEROOT; ?>images/category-big-1.png" alt="">
 									<p class="category-name">Color</p>
 								</div>
 								<div class="category-block__wrapper--description">
@@ -231,13 +240,13 @@ require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php");
 												<li>- Edgebanding</li>
 											</ul>
 								</div>
-								<img src="../../images/left-arrow-orange.svg" alt="" class="left-arrow">
+								<img src="<?php echo SITEROOT; ?>images/left-arrow-orange.svg" alt="" class="left-arrow">
 							</a>
 						</div>
 						<div class="col-12">
 							<a href="#" title="" class="category-block__wrapper">
 								<div class="category-block__wrapper--image">
-									<img src="../../images/category-big-2.png" alt="">
+									<img src="<?php echo SITEROOT; ?>images/category-big-2.png" alt="">
 									<p class="category-name">Doors</p>
 								</div>
 								<div class="category-block__wrapper--description">
@@ -250,13 +259,13 @@ require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php");
 												<li>- Edgebanding</li>
 											</ul>
 								</div>
-								<img src="../../images/left-arrow-orange.svg" alt="" class="left-arrow">
+								<img src="<?php echo SITEROOT; ?>images/left-arrow-orange.svg" alt="" class="left-arrow">
 							</a>
 						</div>
 						<div class="col-12">
 							<a href="#" title="" class="category-block__wrapper">
 								<div class="category-block__wrapper--image">
-											<img src="../../images/category-big-3.png" alt="">
+											<img src="<?php echo SITEROOT; ?>images/category-big-3.png" alt="">
 											<p class="category-name">Decorative Hardware</p>
 								</div>
 								<div class="category-block__wrapper--description">
@@ -269,13 +278,13 @@ require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php");
 												<li>- Edgebanding</li>
 											</ul>
 								</div>
-								<img src="../../images/left-arrow-orange.svg" alt="" class="left-arrow">
+								<img src="<?php echo SITEROOT; ?>images/left-arrow-orange.svg" alt="" class="left-arrow">
 							</a>
 						</div>
 						<div class="col-12">
 							<a href="#" title="" class="category-block__wrapper">
 								<div class="category-block__wrapper--image">
-											<img src="../../images/category-big-4.png" alt="">
+											<img src="<?php echo SITEROOT; ?>images/category-big-4.png" alt="">
 											<p class="category-name">Edge Banding</p>
 								</div>
 								<div class="category-block__wrapper--description">
@@ -288,13 +297,13 @@ require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php");
 												<li>- Edgebanding</li>
 											</ul>
 								</div>
-								<img src="../../images/left-arrow-orange.svg" alt="" class="left-arrow">
+								<img src="<?php echo SITEROOT; ?>images/left-arrow-orange.svg" alt="" class="left-arrow">
 							</a>
 						</div>
 						<div class="col-12">
 							<a href="#" title="" class="category-block__wrapper">
 								<div class="category-block__wrapper--image">
-											<img src="../../images/category-big-5.png" alt="">
+											<img src="<?php echo SITEROOT; ?>images/category-big-5.png" alt="">
 											<p class="category-name">Wardrobe Tubes</p>
 								</div>
 								<div class="category-block__wrapper--description">
@@ -307,7 +316,7 @@ require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php");
 												<li>- Edgebanding</li>
 											</ul>
 								</div>
-								<img src="../../images/left-arrow-orange.svg" alt="" class="left-arrow">
+								<img src="<?php echo SITEROOT; ?>images/left-arrow-orange.svg" alt="" class="left-arrow">
 							</a>
 						</div>
 					</div>
@@ -333,7 +342,7 @@ require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php");
 					<div class="col-12 col-xl-8">
 						<div class="two-elements-block__wrapper mw-100">
 							<div class="two-elements-block__wrapper--position-content">
-								<img src="../../images/category-list-view-img.png" alt="" class="img-fluid">
+								<img src="<?php echo SITEROOT; ?>images/category-list-view-img.png" alt="" class="img-fluid">
 									<div class="two-elements-block__wrapper--position-right-text">
 										<p>Custom Closets:</p>
 										<p>Order Online Today</p>
@@ -353,14 +362,14 @@ require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php");
 									<div class="two-elements-block__wrapper--video">
 										<h2 class="heading">Watch Our Installation Video</h2>
 										<div class="video-wrapper">
-											<img src="../../images/video.png" alt="">
+											<img src="<?php echo SITEROOT; ?>images/video.png" alt="">
 										</div>
 										<p class="flex-p">
-											<img src="../../images/passage-of-time.svg" alt="">
+											<img src="<?php echo SITEROOT; ?>images/passage-of-time.svg" alt="">
 											Just 4-6 hours to install a 10 x 10 closet.
 										</p>
 										<p class="flex-p underlined-text">
-											<img src="../../images/security-yellow.svg" alt="">
+											<img src="<?php echo SITEROOT; ?>images/security-yellow.svg" alt="">
 											100% Perfect Fit Guarantee
 										</p>
 									</div>
@@ -373,42 +382,42 @@ require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php");
 									<h2 class="heading">Read Our Reviews</h2>
 									<div class="stars-wrapper">
 										<div class="block-stars__wrapper">
-											<img src="../../images/Rectangle12.png" alt="" class="block-stars__wrapper--image">
+											<img src="<?php echo SITEROOT; ?>images/Rectangle12.png" alt="" class="block-stars__wrapper--image">
 											<div class="block-stars__wrapper--text">
 												<div class="stars-container">
-													<img src="../../images/star.svg" alt="">
-													<img src="../../images/star.svg" alt="">
-													<img src="../../images/star.svg" alt="">
-													<img src="../../images/star.svg" alt="">
-													<img src="../../images/star.svg" alt="">
+													<img src="<?php echo SITEROOT; ?>images/star.svg" alt="">
+													<img src="<?php echo SITEROOT; ?>images/star.svg" alt="">
+													<img src="<?php echo SITEROOT; ?>images/star.svg" alt="">
+													<img src="<?php echo SITEROOT; ?>images/star.svg" alt="">
+													<img src="<?php echo SITEROOT; ?>images/star.svg" alt="">
 												</div>
 												<p class="first-text">Aubree W. Charlotte, North Carolina</p>
 												<p>Just had a successful installation!</p>
 											</div>
 										</div>
 										<div class="block-stars__wrapper">
-											<img src="../../images/Rectangle12.png" alt="" class="block-stars__wrapper--image">
+											<img src="<?php echo SITEROOT; ?>images/Rectangle12.png" alt="" class="block-stars__wrapper--image">
 											<div class="block-stars__wrapper--text">
 												<div class="stars-container">
-													<img src="../../images/star.svg" alt="">
-													<img src="../../images/star.svg" alt="">
-													<img src="../../images/star.svg" alt="">
-													<img src="../../images/star.svg" alt="">
-													<img src="../../images/star.svg" alt="">
+													<img src="<?php echo SITEROOT; ?>images/star.svg" alt="">
+													<img src="<?php echo SITEROOT; ?>images/star.svg" alt="">
+													<img src="<?php echo SITEROOT; ?>images/star.svg" alt="">
+													<img src="<?php echo SITEROOT; ?>images/star.svg" alt="">
+													<img src="<?php echo SITEROOT; ?>images/star.svg" alt="">
 												</div>
 												<p class="first-text">Aubree W. Charlotte, North Carolina</p>
 												<p>Just had a successful installation!</p>
 											</div>
 										</div>
 										<div class="block-stars__wrapper">
-											<img src="../../images/Rectangle12.png" alt="" class="block-stars__wrapper--image">
+											<img src="<?php echo SITEROOT; ?>images/Rectangle12.png" alt="" class="block-stars__wrapper--image">
 											<div class="block-stars__wrapper--text">
 												<div class="stars-container">
-													<img src="../../images/star.svg" alt="">
-													<img src="../../images/star.svg" alt="">
-													<img src="../../images/star.svg" alt="">
-													<img src="../../images/star.svg" alt="">
-													<img src="../../images/star.svg" alt="">
+													<img src="<?php echo SITEROOT; ?>images/star.svg" alt="">
+													<img src="<?php echo SITEROOT; ?>images/star.svg" alt="">
+													<img src="<?php echo SITEROOT; ?>images/star.svg" alt="">
+													<img src="<?php echo SITEROOT; ?>images/star.svg" alt="">
+													<img src="<?php echo SITEROOT; ?>images/star.svg" alt="">
 												</div>
 												<p class="first-text">Aubree W. Charlotte, North Carolina</p>
 												<p>Just had a successful installation!</p>
@@ -432,7 +441,7 @@ require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php");
 
 <div class="scrollToTopBlock">
 <div class="people-working">
-<img src="../../images/people-working-call-center_@2x.png" alt="" class="people-working__image">
+<img src="<?php echo SITEROOT; ?>images/people-working-call-center_@2x.png" alt="" class="people-working__image">
 <div class="people-working__wrapper">
 <div class="people-working__content">
 <p class="people-working__text">Hi! I'm the Virtual assistant, and I'm here to help you.</p>
@@ -440,21 +449,24 @@ require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php");
 </div>
 </div>
 <a href="#" title="" class="scrollToTop js-to-top">
-<img src="../../images/arrows.svg" alt="">
+<img src="<?php echo SITEROOT; ?>images/arrows.svg" alt="">
 </a>
 </div>
 <div class="mobile-show">
 	<div class="mobile-footer-buttons">
 	<a href="#" class="mobile-footer-buttons__first">you design</a>
-	<a href="#" class="mobile-footer-buttons__second"><img src="../../images/icon-save.svg" alt="" class="img-fluid"></a>
+	<a href="#" class="mobile-footer-buttons__second"><img src="<?php echo SITEROOT; ?>images/icon-save.svg" alt="" class="img-fluid"></a>
 	<a href="#" class="mobile-footer-buttons__third">we design</a>
 	</div>
 </div>
 
 
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'].'/includes/footer.php');
+require_once($real_root.'/includes/footer.php');
 ?>
-		
+
+<script src="<?php echo SITEROOT; ?>app.js"></script>
+</body>
+</html>		
 		
 		

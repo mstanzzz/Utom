@@ -1,6 +1,17 @@
 <?php
+if(strpos($_SERVER['REQUEST_URI'], 'solvitware/' )){ 
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/solvitware';
+}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/designitpro'; 
+}elseif(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
+}else{
+	$real_root = $_SERVER['DOCUMENT_ROOT']; 	
+}
+require_once($real_root.'/includes/class.dbcustom.php');
+$dbCustom = new DbCustom();
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
 
 //ini_set("memory_limit","256M");
 
@@ -52,17 +63,17 @@ foreach ($top_cats as $top_cat) {
 	
 		$block .= "<li role='treeitem' aria-expanded='true' id='".$top_cat['cat_id']."'>"; 
 		$block .= "<a tabindex='-1' class='tree-parent' onclick='show_children(".$top_cat['cat_id'].")'  data-catid='".$top_cat['cat_id']."' data-cattype='topcat'>
-		<img src='".$ste_root."/saascustuploads/".$_SESSION['profile_account_id']."/cart/thumb/".$top_cat['file_name']."' />".stripslashes($top_cat['name'])."</a>";
+		<img src='".SITEROOT."/saascustuploads/".$_SESSION['profile_account_id']."/cart/thumb/".$top_cat['file_name']."' />".stripslashes($top_cat['name'])."</a>";
 		$checked = inArray($top_cat['cat_id'], $_SESSION["temp_cats"], "cat_id") ? "checked='checked'" : '';
 		$block .= "<input class='checkbox' onclick='updateOptions()' type='checkbox' id='".$top_cat['cat_id']."' value='".$top_cat['cat_id']."' ".$checked." />
 		<input type='hidden' value='".$top_cat['name']."' name='categoryname' class='categoryname' />";
-		$block .= "<ul role='group' class='childrenplaceholder'>".getChildren($top_cat['cat_id'], $domain, $subject_cat_id, $max_depth, $dbCustom)."</ul></li>";
+		$block .= "<ul role='group' class='childrenplaceholder'>".getChildren($top_cat['cat_id'], SITEROOT, $subject_cat_id, $max_depth, $dbCustom)."</ul></li>";
 }
 echo $block;
 
 //echo $cat_id;
 
-function getChildren($cat_id, $domain, $subject_cat_id, $max_depth, $dbCustom){
+function getChildren($cat_id, SITEROOT, $subject_cat_id, $max_depth, $dbCustom){
 
 	$max_depth--;
 
@@ -95,11 +106,11 @@ function getChildren($cat_id, $domain, $subject_cat_id, $max_depth, $dbCustom){
 	
 			$block .= "<li role='treeitem' aria-expanded='true' id='".$row->cat_id."'>";
 			$block .= "<a tabindex='-1' class='tree-parent' onclick='show_children(".$row->cat_id.")' >";
-			$block .= "<img  src='".$ste_root."/saascustuploads/".$_SESSION['profile_account_id']."/cart/tiny/".$file_name."'/>".stripslashes($row->name)."</a>";
+			$block .= "<img  src='".SITEROOT."/saascustuploads/".$_SESSION['profile_account_id']."/cart/tiny/".$file_name."'/>".stripslashes($row->name)."</a>";
 			$checked = inArray($row->cat_id, $_SESSION["temp_cats"], "cat_id") ? "checked='checked'" : '';
 			$block .= "<input class='checkbox' onclick='updateOptions()' type='checkbox' id='".$row->cat_id."' value='".$row->cat_id."' ".$checked." /><input type='hidden' value='".$row->name."' name='categoryname' class='categoryname' />"	;
 			$block .= "<ul role='group' class='childrenplaceholder'>";
-			$block .= getChildren($row->cat_id, $domain, $subject_cat_id, $max_depth, $dbCustom);
+			$block .= getChildren($row->cat_id, SITEROOT, $subject_cat_id, $max_depth, $dbCustom);
 			$block .= "</ul></li>";
 		}	
 	}

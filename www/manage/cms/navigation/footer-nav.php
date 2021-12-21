@@ -1,19 +1,18 @@
 <?php
-
-
-if(!isset($_SERVER['DOCUMENT_ROOT'])){
-	if(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){    
-		$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
-	}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro/' )){
-		$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT'].'/designitpro';
-	}else{
-		$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT']; 	
-	}
+if(strpos($_SERVER['REQUEST_URI'], 'solvitware/' )){ 
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/solvitware';
+}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/designitpro'; 
+}elseif(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
+}else{
+	$real_root = $_SERVER['DOCUMENT_ROOT']; 	
 }
+require_once($real_root.'/includes/class.dbcustom.php');
+$dbCustom = new DbCustom();
 
-
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
-require_once($_SERVER['DOCUMENT_ROOT'].'/includes/class.nav.php');
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
+require_once($real_root.'/includes/class.nav.php');
 $nav = new Nav;
 
 $progress = new SetupProgress;
@@ -135,7 +134,7 @@ unset($_SESSION['footer_nav_cats']);
 unset($_SESSION['footer_nav_home_cats']);
 unset($_SESSION['footer_nav_labels']);
 unset($_SESSION['footer_nav_submenu_labels']);
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php'); 
+require_once($real_root.'/manage/admin-includes/doc_header.php'); 
 
 ?>
 
@@ -155,8 +154,8 @@ $fancy = (!$strip) ? "fancybox fancybox.iframe" : '';
 $qs_strip = ($strip) ? "strip=1" : ''; 
 
 if(!$strip){
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-header.php');
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-top-nav.php');
+	require_once($real_root.'/manage/admin-includes/manage-header.php');
+	require_once($real_root.'/manage/admin-includes/manage-top-nav.php');
 }
 ?>
 
@@ -164,18 +163,18 @@ if(!$strip){
 	<?php 
 		if(!$strip){
 			echo "<div class='manage_side_nav'>";
-        	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-side-nav.php');
+        	require_once($real_root.'/manage/admin-includes/manage-side-nav.php');
 			echo "</div>";
 		}
 		?>
 	<div class="manage_main">
     <?php
 		if(!$strip){
-			require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/class.admin_bread_crumb.php");	
+			require_once($real_root."/manage/admin-includes/class.admin_bread_crumb.php");	
 			$bread_crumb = new AdminBreadCrumb;
 			$bread_crumb->reSet();
-			$bread_crumb->add("CMS", $ste_root."manage/cms/cms-landing.php");		
-			$bread_crumb->add("Nav Bar", $ste_root."manage/cms/navigation/navbar.php");
+			$bread_crumb->add("CMS", SITEROOT."/manage/cms/cms-landing.php");		
+			$bread_crumb->add("Nav Bar", SITEROOT."/manage/cms/navigation/navbar.php");
 			$bread_crumb->add("Footer Nav", '');
 			echo $bread_crumb->output();
 		}
@@ -183,7 +182,7 @@ if(!$strip){
 
 		
 		//navigation section tabbed sub-navigation
-        require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/navigation-section-tabs.php");
+        require_once($real_root."/manage/admin-includes/navigation-section-tabs.php");
 		
 		//display success & error messages on the page instead of a JS alert
 		if($msg != ''){ ?>
@@ -298,7 +297,7 @@ if(!$strip){
     <p class="clear"></p>
 	<?php 
 	if(!$strip){
-		require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-footer.php');
+		require_once($real_root.'/manage/admin-includes/manage-footer.php');
 	}
 	?>
 </div>

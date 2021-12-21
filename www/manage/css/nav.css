@@ -282,7 +282,7 @@ border-left-color-rtl-source: physical;
 }
 
 .sub ul li ul li:hover{
-	background-image: url(../../images/nav/nav_arrow.png);
+	background-image: url(<?php echo SITEROOT; ?>images/nav/nav_arrow.png);
 	background-repeat: no-repeat;
 	background-position: .5em .6em;
 }
@@ -290,7 +290,7 @@ border-left-color-rtl-source: physical;
 
 
 .sub_arrow{
-	background-image: url(../../images/nav/nav_arrow.png);
+	background-image: url(<?php echo SITEROOT; ?>images/nav/nav_arrow.png);
 	background-repeat: no-repeat;
 	background-position: .5em .6em;
 	margin-left:10px;

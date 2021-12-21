@@ -1,18 +1,17 @@
 <?php
-
-
-
-if(strpos($_SERVER['REQUEST_URI'], 'onlinecl/' )){
-$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT'].'/storittek';
-}elseif(strpos($_SERVER['REQUEST_URI'], "designitpro" )){
-$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT'].'/designitpro';
-}elseif(strpos($_SERVER['REQUEST_URI'], 'otg-site' )){
-$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT'].'/otg-site';
+if(strpos($_SERVER['REQUEST_URI'], 'solvitware/' )){ 
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/solvitware';
+}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/designitpro'; 
+}elseif(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
 }else{
-$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT'];
+	$real_root = $_SERVER['DOCUMENT_ROOT']; 	
 }
+require_once($real_root.'/includes/class.dbcustom.php');
+$dbCustom = new DbCustom();
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
 
 $progress = new SetupProgress;
 $module = new Module;
@@ -138,7 +137,7 @@ if(isset($_POST["del_installation_step"])){
 		$sql = "DELETE FROM image WHERE img_id = '".$img_obj->img_id."'";
 		$result = $dbCustom->getResult($db,$sql);
 				
-		$myFile = "../ul_cms/".$domain."/".$img_obj->file_name;
+		$myFile = "../ul_cms/".SITEROOT."/".$img_obj->file_name;
 		if(file_exists($myFile)) unlink($myFile);
 	}
 
@@ -161,7 +160,7 @@ unset($_SESSION['new_img_id']);
 
 
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php');
+require_once($real_root.'/manage/admin-includes/doc_header.php');
 
 ?>
 
@@ -208,7 +207,7 @@ document.set_ssl.submit();
 */
 
 function previewSubmit() {
-document.form.action = '<?php echo $ste_root; ?>/pages/preview/preview.php';
+document.form.action = '<?php echo SITEROOT; ?>pages/preview/preview.php';
 document.form.target = '_blank';
 document.form.submit();
 
@@ -225,30 +224,30 @@ function regularSubmit() {
 </head>
 <body>
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-header.php');
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-top-nav.php');
+require_once($real_root.'/manage/admin-includes/manage-header.php');
+require_once($real_root.'/manage/admin-includes/manage-top-nav.php');
 
 
 ?>
 <div class="manage_page_container">
     <div class="manage_side_nav">
 		<?php
-        require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-side-nav.php');
+        require_once($real_root.'/manage/admin-includes/manage-side-nav.php');
         ?>
     </div>
 	<div class="manage_main">
 	<?php
-		require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/class.admin_bread_crumb.php");	
+		require_once($real_root."/manage/admin-includes/class.admin_bread_crumb.php");	
 		$bread_crumb = new AdminBreadCrumb;
 		$bread_crumb->reSet();
-		$bread_crumb->add("CMS", $ste_root."manage/cms/cms-landing.php");
-		$bread_crumb->add("Pages", $ste_root."manage/cms/pages/page.php");
+		$bread_crumb->add("CMS", SITEROOT."/manage/cms/cms-landing.php");
+		$bread_crumb->add("Pages", SITEROOT."/manage/cms/pages/page.php");
 		$bread_crumb->add("Installation Steps", '');
         echo $bread_crumb->output();
 
-        require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-content-top.php');
+        require_once($real_root.'/manage/admin-includes/manage-content-top-category.php');
 		//installation section tabbed sub-navigation
-        require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/installation-section-tabs.php");
+        require_once($real_root."/manage/admin-includes/installation-section-tabs.php");
         ?>
         <form name="form" action="<?php echo $current_page; ?>" method="post" enctype="multipart/form-data">
         
@@ -259,16 +258,16 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-top-nav.ph
             <!-- all page button/submit actions should be in one place that scrolls with the user so that they don't miss the 'save' button.-->
             
             <!--  fancybox fancybox.iframe -->
-            <a href="<?php echo $ste_root;?>/manage/cms/pages/add-installation-step.php?firstload=1" 
+            <a href="<?php echo SITEROOT;?>/manage/cms/pages/add-installation-step.php?firstload=1" 
             class="btn btn-primary btn-large"><i class="icon-plus icon-white"></i> Add Installation Step </a>
-            <a href="<?php echo $ste_root;?>/manage/cms/pages/edit-installation-appearance.php" 
+            <a href="<?php echo SITEROOT;?>/manage/cms/pages/edit-installation-appearance.php" 
             class="btn btn-primary btn-large fancybox fancybox.iframe"><i class="icon-cog icon-white"></i> Edit Appearance </a>
             
-            <a href="<?php echo $ste_root; ?>/manage/cms/navigation/navbar.php?strip=1" class="btn btn-primary btn-large fancybox fancybox.iframe">
+            <a href="<?php echo SITEROOT; ?>manage/cms/navigation/navbar.php?strip=1" class="btn btn-primary btn-large fancybox fancybox.iframe">
             <i class="icon-eye-open icon-white"></i> Edit Navigation </a>
 
             <a onClick="regularSubmit();" href="#" class="btn btn-success btn-large"><i class="icon-ok icon-white"></i> Save </a>
-            <a href="<?php echo $ste_root;?>/manage/cms/pages/page.php" class="btn"><i class="icon-arrow-left"></i> Cancel &amp; Go Back</a>
+            <a href="<?php echo SITEROOT;?>/manage/cms/pages/page.php" class="btn"><i class="icon-arrow-left"></i> Cancel &amp; Go Back</a>
 
             </div>
 			<div class="data_table">
@@ -299,7 +298,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-top-nav.ph
 				;
 				if($img_res->num_rows > 0){
 					$img_obj = $img_res->fetch_object();
-					$pic =  "<img src='".$ste_root."/saascustuploads/".$_SESSION['profile_account_id']."/cms/".$img_obj->file_name."'>";	
+					$pic =  "<img src='".SITEROOT."/saascustuploads/".$_SESSION['profile_account_id']."/cms/".$img_obj->file_name."'>";	
 				}else{
 					$pic = '';
 				}
@@ -338,7 +337,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-top-nav.ph
 </div>
 <p class="clear"></p>
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-footer.php');
+require_once($real_root.'/manage/admin-includes/manage-footer.php');
 ?>
 
 </div>

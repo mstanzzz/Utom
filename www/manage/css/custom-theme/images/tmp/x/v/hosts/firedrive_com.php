@@ -13,7 +13,7 @@ class dl_firedrive_com extends Download {
 		else return array(false, "accinvalid");
     }
 	
-    public function Login($user, $pass){
+    public function login($dbCustom,$user, $pass){
 		$post = "user={$user}&pass={$pass}&remember=1&login_submit=Log%20In";
         $data = $this->lib->curl("https://auth.firedrive.com/", "", $post);
 		return $this->lib->GetCookies($data);

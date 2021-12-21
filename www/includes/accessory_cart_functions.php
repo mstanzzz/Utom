@@ -1,15 +1,24 @@
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'].'/includes/class.store_data.php');
-require_once($_SERVER['DOCUMENT_ROOT'].'/includes/class.shopping_cart_item.php');
-require_once($_SERVER['DOCUMENT_ROOT'].'/includes/class.shipping.php');
-require_once($_SERVER['DOCUMENT_ROOT'].'/includes/class.module.php');
-require_once($_SERVER['DOCUMENT_ROOT'].'/includes/class.seo.php');
+if(strpos($_SERVER['REQUEST_URI'], 'solvitware/' )){ 
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/solvitware';
+}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/designitpro'; 
+}elseif(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
+}else{
+	$real_root = $_SERVER['DOCUMENT_ROOT']; 	
+}
+
+require_once($real_root.'/includes/class.store_data.php');
+require_once($real_root.'/includes/class.shopping_cart_item.php');
+require_once($real_root.'/includes/class.shipping.php');
+require_once($real_root.'/includes/class.module.php');
+require_once($real_root.'/includes/class.seo.php');
 
 
 
-function get_svg_block($svg_id){
+function get_svg_block($dbCustom,$svg_id){
 		
-	$dbCustom = new DbCustom();
 	$db = $dbCustom->getDbConnect(SITE_N_DATABASE);
 	
 	$svg = '';
@@ -76,9 +85,8 @@ function has_add_to_cart_btn($has_sc_module, $call_for_pricing, $price, $ship_ty
 	return $has_add_btn;
 }
 
-function get_details_price_and_btn($item_id, $deviceType){
-
-	$dbCustom = new DbCustom();	
+function get_details_price_and_btn($dbCustom,$item_id, $deviceType){
+	
 	$db = $dbCustom->getDbConnect(CART_DATABASE);
 	
 	$shipping = new Shipping;
@@ -192,7 +200,7 @@ function get_details_heading($item_id){
 	$heading1 = "<h1>";
 
 	if($item_id > 0){
-		$item_array = $item->getItem($item_id);
+		$item_array = $item->getItem($dbCustom,$item_id);
 		
 		if($item_array['brand_name'] != '') $heading1 .= $item_array['brand_name'].' ';
 	
@@ -209,10 +217,9 @@ function get_details_heading($item_id){
 }
 
 
-function get_details_pic($item_id, $deviceType){
+function get_details_pic($dbCustom,$item_id, $deviceType){
 
 	$ret_str = '';	
-	$dbCustom = new DbCustom();	
 	$db = $dbCustom->getDbConnect(CART_DATABASE);
 	$sql = "SELECT image.file_name
 				,item.img_alt_text				
@@ -265,112 +272,6 @@ function is_valid_email($email){
 }
 
 
-
-function getOS() { 
-
-	$user_agent     =   $_SERVER['HTTP_USER_AGENT'];
-
-    $os_platform    =   "Unknown OS Platform";
-	$os_array       =   array(
-                            '/windows nt 10/i'     =>  'Windows 10',
-                            '/windows nt 6.3/i'     =>  'Windows 8.1',
-                            '/windows nt 6.2/i'     =>  'Windows 8',
-                            '/windows nt 6.1/i'     =>  'Windows 7',
-                            '/windows nt 6.0/i'     =>  'Windows Vista',
-                            '/windows nt 5.2/i'     =>  'Windows Server 2003/XP x64',
-                            '/windows nt 5.1/i'     =>  'Windows XP',
-                            '/windows xp/i'         =>  'Windows XP',
-                            '/windows nt 5.0/i'     =>  'Windows 2000',
-                            '/windows me/i'         =>  'Windows ME',
-                            '/win98/i'              =>  'Windows 98',
-                            '/win95/i'              =>  'Windows 95',
-                            '/win16/i'              =>  'Windows 3.11',
-                            '/macintosh|mac os x/i' =>  'Mac OS X',
-                            '/mac_powerpc/i'        =>  'Mac OS 9',
-                            '/linux/i'              =>  'Linux',
-                            '/ubuntu/i'             =>  'Ubuntu',
-                            '/iphone/i'             =>  'iPhone',
-                            '/ipod/i'               =>  'iPod',
-                            '/ipad/i'               =>  'iPad',
-                            '/android/i'            =>  'Android',
-                            '/blackberry/i'         =>  'BlackBerry',
-                            '/webos/i'              =>  'Mobile'
-                        );
-						
-	foreach ($os_array as $regex => $value) { 
-
-        if (preg_match($regex, $user_agent)) {
-            $os_platform    =   $value;
-        }
-
-    }   
-
-    return $os_platform;
-
-}
-
-
-
-
-function getBrowser() {
-
-	$user_agent     =   $_SERVER['HTTP_USER_AGENT'];
-
-    $browser        =   "Unknown Browser";
-
-    $browser_array  =   array(
-                            '/msie/i'       =>  'Internet Explorer',
-                            '/firefox/i'    =>  'Firefox',
-                            '/safari/i'     =>  'Safari',
-                            '/chrome/i'     =>  'Chrome',
-                            '/opera/i'      =>  'Opera',
-                            '/netscape/i'   =>  'Netscape',
-                            '/maxthon/i'    =>  'Maxthon',
-                            '/konqueror/i'  =>  'Konqueror',
-                            '/mobile/i'     =>  'Handheld Browser'
-                        );
-
-    foreach ($browser_array as $regex => $value) { 
-
-        if (preg_match($regex, $user_agent)) {
-            $browser    =   $value;
-        }
-
-    }
-
-    return $browser;
-
-}
-
-
-
-
-function getRealIP() {
-        $ipaddress = '';
-        if(isset($_SERVER['HTTP_CF_CONNECTING_IP'])) {
-            $ipaddress =  $_SERVER['HTTP_CF_CONNECTING_IP'];
-        } else if (isset($_SERVER['HTTP_X_REAL_IP'])) {
-            $ipaddress = $_SERVER['HTTP_X_REAL_IP'];
-        }
-        else if (isset($_SERVER['HTTP_CLIENT_IP']))
-            $ipaddress = $_SERVER['HTTP_CLIENT_IP'];
-        else if(isset($_SERVER['HTTP_X_FORWARDED_FOR']))
-            $ipaddress = $_SERVER['HTTP_X_FORWARDED_FOR'];
-        else if(isset($_SERVER['HTTP_X_FORWARDED']))
-            $ipaddress = $_SERVER['HTTP_X_FORWARDED'];
-        else if(isset($_SERVER['HTTP_FORWARDED_FOR']))
-            $ipaddress = $_SERVER['HTTP_FORWARDED_FOR'];
-        else if(isset($_SERVER['HTTP_FORWARDED']))
-            $ipaddress = $_SERVER['HTTP_FORWARDED'];
-        else if(isset($_SERVER['REMOTE_ADDR']))
-            $ipaddress = $_SERVER['REMOTE_ADDR'];
-        else
-            $ipaddress = 'UNKNOWN';
-
-        return $ipaddress;
-}
-
-
 function getWordFromDigit($digit){
 		
 	switch ($digit) {
@@ -415,78 +316,43 @@ function getWordFromDigit($digit){
 
 function getCityStateFromZip($zip) {
 	
-	
-    $url = "http://maps.googleapis.com/maps/api/geocode/json?address=".$zip."&sensor=true";
-
-	$address_info = file_get_contents($url);
-    $json = json_decode($address_info);
     $city = '';
     $state = '';
-    $country = '';
-	$multi_cities = '';
-	$formatted_address = '';
-    
-	if (count($json->results) > 0) {
-		
-		if(isset($json->results[0]->formatted_address)){
-			$formatted_address = $json->results[0]->formatted_address;
-		}
-
-        $arrComponents = $json->results[0]->address_components;
-
-        foreach($arrComponents as $index=>$component) {
-            
-			$type = $component->types[0];
-			if ($city == "" && ($type == "locality" || $type == "neighborhood")){
-                $city = trim($component->short_name);
-				//echo $city;
-            }
-            if ($state == "" && $type=="administrative_area_level_1") {
-                $state = trim($component->short_name);
-				//echo $state;
-            }
-			if ($country == "" && $type=="country") {
-                $country = trim($component->short_name);
-				//echo $country;
-            }
-			if ($city != '' && $state != '' && $country != '') {
-                break;
-            }
-        }
-		
-		if(isset($json->results[0]->postcode_localities)){
-		
-			$arr_multi_cities = $json->results[0]->postcode_localities;
-			
-			if(is_array($arr_multi_cities)){
-				
-				if(count($arr_multi_cities) > 1){
-					
-					$i = 0;
-					foreach($arr_multi_cities as $val){
-						
-						if($i == 0){
-							$multi_cities .= $val.' ';
-						}else{
-							$multi_cities .= ', '.$val;			
-						}
-						$i++;
-					}
-					
-				}
-				
-			}
-		
-		}
-		
-    }
 	
-    $arrReturn = array("city"=>$city."   ".$zip
-						,"state"=>$state
-						,"country"=>$country
-						,"multi_cities"=>$multi_cities
-						,"formatted_address"=>$formatted_address);
+	$curl = curl_init();
 
+	curl_setopt_array($curl, [
+		CURLOPT_URL => "https://us-zip-code-information.p.rapidapi.com/?zipcode=".$zip,
+		CURLOPT_RETURNTRANSFER => true,
+		CURLOPT_FOLLOWLOCATION => true,
+		CURLOPT_ENCODING => "",
+		CURLOPT_MAXREDIRS => 10,
+		CURLOPT_TIMEOUT => 30,
+		CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+		CURLOPT_CUSTOMREQUEST => "GET",
+		CURLOPT_HTTPHEADER => [
+			"x-rapidapi-host: us-zip-code-information.p.rapidapi.com",
+			"x-rapidapi-key: 98ffbcd992mshde911fcbed0a352p171177jsn4615509598c3"
+		],
+	]);
+
+	$response = curl_exec($curl);
+	$err = curl_error($curl);
+
+	curl_close($curl);
+
+	if ($err) {
+		echo "cURL Error #:" . $err;
+	} else {
+		//echo $response;
+	}
+
+	$json = json_decode($response);
+	
+	if(isset($json[0]->City)) $city = $json[0]->City;
+	if(isset($json[0]->State)) $state = $json[0]->State;
+		
+    $arrReturn = array("city"=>$city, "state"=>$state);
 	return $arrReturn;
 }
 	
@@ -511,9 +377,8 @@ function deleteDir($dir) {
 } 
 
 
-function getDesignDiscountTierLevelName($discTierID){
+function getDesignDiscountTierLevelName($dbCustom,$discTierID){
 	
-	$dbCustom = new DbCustom();	
 	$db = $dbCustom->getDbConnect(COMPONENTS_DATABASE);	
 	
 	$sql = "SELECT discount_tier_name
@@ -662,12 +527,11 @@ function inArray($v, $array, $indx_name = ''){
 }
 
 
-function getCatImgInfo($cat_id){
+function getCatImgInfo($dbCustom,$cat_id){
 
 	$ret_array['name'] = '';
 	$ret_array['file_name'] = '';
 	
-	$dbCustom = new DbCustom();
 	$db = $dbCustom->getDbConnect(CART_DATABASE);
 	$sql = "SELECT category.name
 				,image.file_name 
@@ -686,45 +550,9 @@ function getCatImgInfo($cat_id){
 }
 
 
-function getCMSImgFilename($img_id){
-	
-	$dbCustom = new DbCustom();	
-	$db = $dbCustom->getDbConnect(SITE_N_DATABASE);
-	$sql = "SELECT file_name
-			FROM image
-			WHERE img_id = '".$img_id."'";
-	$result = $dbCustom->getResult($db,$sql);
-	if($result->num_rows > 0){
-		$object = $result->fetch_object();
-		return $object->file_name; 	
-	}
-	return '';
-	
-}
-
-
-function getProfileCatId($cat_id){
-	
-	$ret = 0;	
-	$dbCustom = new DbCustom();	
-	$db = $dbCustom->getDbConnect(CART_DATABASE);		
-	$sql = "SELECT profile_cat_id 
-			FROM category
-			WHERE cat_id = '".$cat_id."'";
-	$result = $dbCustom->getResult($db,$sql);	
-	if($result->num_rows > 0){
-		$object = $result->fetch_object();		
-		$ret = $object->profile_cat_id;	
-	}
-
-	return $ret;
-}
-
-
-function getBrandName($brand_id){
+function getBrandName($dbCustom,$brand_id){
 
 	$ret = '';	
-	$dbCustom = new DbCustom();	
 	$db = $dbCustom->getDbConnect(CART_DATABASE);		
 	$sql = "SELECT name 
 			FROM brand
@@ -741,11 +569,10 @@ function getBrandName($brand_id){
 }
 
 
-function getCompanyPhone(){
+function getCompanyPhone($dbCustom){
 
 	$ret = '';
 
-	$dbCustom = new DbCustom();	
 	$db = $dbCustom->getDbConnect(USER_DATABASE);
 
 	$sql = "SELECT phone
@@ -764,42 +591,12 @@ function getCompanyPhone(){
 
 
 
-function getPaymentProcessor(){
-
-	$payment_processor = 'braintree';	
-	// get processor for OTG as defoult
-	$dbCustom = new DbCustom();
-	$db = $dbCustom->getDbConnect(USER_DATABASE);
-	
-	$sql = "SELECT payment_processor_id
-			FROM profile_account
-			WHERE id = '1'";
-						
-	$result = $dbCustom->getResult($db,$sql);
-	
-	if($result->num_rows > 0){
-		$object = $result->fetch_object();		
-		$payment_processor_id = $object->payment_processor_id;
-		if($payment_processor_id < 1) $payment_processor_id = 1;
+function getPaymentProcessor($dbCustom){
 		
-		$db = $dbCustom->getDbConnect(CART_DATABASE);		
-		
-		$sql = "SELECT name
-				FROM payment_processor
-				WHERE payment_processor_id = '".$payment_processor_id."'";
+	$db = $dbCustom->getDbConnect(CART_DATABASE);		
 
-		if(!$n_res = $db->query($sql)){
-			die('There was an error running the query [' . $db->error . ']');
-		}
-		$n_res = $dbCustom->getResult($db,$sql);
-		if($n_res->num_rows > 0){
-			$n_obj = $n_res->fetch_object();
-			$payment_processor = $n_obj->name;			
-		}	
-	}
 	
-	
-	return $payment_processor;
+	return "";
 
 }
 
@@ -1144,7 +941,7 @@ function getLowerNavCats()
 }
 
 
-function getAllCats()
+function getAllCats($dbCustom)
 {
 	if(!isset($_SESSION['all_cats'])){
 		
@@ -1370,14 +1167,14 @@ function check_email_address($email) {
    // Validate the domain exists with a DNS check
    // if the checks cannot be made (soft fail over to true)
    /*
-   list($user,$domain) = explode('@',$email);
+   list($user,SITEROOT) = explode('@',$email);
    if( function_exists('checkdnsrr') ) {
-      if( !checkdnsrr($domain,"MX") ) { // Linux: PHP 4.3.0 and higher & Windows: PHP 5.3.0 and higher
+      if( !checkdnsrr(SITEROOT,"MX") ) { // Linux: PHP 4.3.0 and higher & Windows: PHP 5.3.0 and higher
          return false;
       }
    }
    else if( function_exists("getmxrr") ) {
-      if ( !getmxrr($domain, $mxhosts) ) {
+      if ( !getmxrr(SITEROOT, $mxhosts) ) {
          return false;
       }
    }
@@ -1601,37 +1398,15 @@ function getCatPath($cat_id){
 	$dbCustom = new DbCustom();
 	$db = $dbCustom->getDbConnect(CART_DATABASE);
 	$i = 0;
-	while(1){
-		$sql = "SELECT category.name, category.cat_id 
-				FROM category, child_cat_to_parent_cat
-				WHERE category.cat_id = child_cat_to_parent_cat.parent_cat_id
-				AND child_cat_to_parent_cat.child_cat_id = '".$tmp_cat_id."'";
-				
-		$result = $dbCustom->getResult($db,$sql);		
-		if($result->num_rows > 0){
-			$object	= $result->fetch_object();
-			$tmp_cat_id = $object->cat_id;
-			$ret_array[$i] = $object->name;
-			$i++;
-		}else{
-			//$proceed = 0;
-			break;
-		}
-	}
-	
 	$sql = "SELECT name 
 			FROM category
 			WHERE category.cat_id = '".$cat_id."'";
 	$result = $dbCustom->getResult($db,$sql);
-	
 	if($result->num_rows > 0){
 		$object	= $result->fetch_object();
 		$ret_array[$i] = $object->name;
 	}
-	
-		
 	return $ret_array;	
-	
 }
 
 
@@ -1853,7 +1628,7 @@ function getUrlByCatId($cat_id){
 }
 
 
-function getItemPic($item_id)
+function getItemPic($dbCustom,$item_id)
 {	
 
 	$ret = '';
@@ -2250,7 +2025,7 @@ function get_keyword_landing_tabs($dbCustom, $keyword_landing_id, $description_t
 function get_details_tabs_and_review($item_id){
 	
 	$item = new ShoppingCartItem;
-	$item_array = $item->getItem($item_id);
+	$item_array = $item->getItem($dbCustom,$item_id);
 
 	$overview_block = '';
 	$reviews_block = '';
@@ -2533,7 +2308,7 @@ function get_details_gallery($item_id){
 	$result = $dbCustom->getResult($db,$sql);					
 	$block = '';
 	if($result->num_rows > 0){
-		$gallery_img_array[] = $item->getFileNameFromItemId($item_id);		
+		$gallery_img_array[] = $item->getFileNameFromItemId($dbCustom,$item_id);		
 		while($row = $result->fetch_object()){
 			$gallery_img_array[] = $row->file_name;
 		}
@@ -2741,7 +2516,7 @@ function getUrlText($str)
 	return strtolower($t); 
 }
 
-function getTopCats()
+function getTopCats($dbCustom,)
 {
 	
 	
@@ -2862,7 +2637,7 @@ $result = $dbCustom->getResult($db,$sql);
 }
 
 
-function getHomePageCats()
+function getHomePageCats($dbCustom,)
 {
 	
 	

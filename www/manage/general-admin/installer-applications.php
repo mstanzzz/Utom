@@ -1,19 +1,16 @@
 <?php
-
-
-
-if(!isset($_SERVER['DOCUMENT_ROOT'])){
-	if(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){    
-		$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
-	}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro/' )){
-		$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT'].'/designitpro';
-	}else{
-		$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT']; 	
-	}
+if(strpos($_SERVER['REQUEST_URI'], 'solvitware/' )){ 
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/solvitware';
+}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/designitpro'; 
+}elseif(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
+}else{
+	$real_root = $_SERVER['DOCUMENT_ROOT']; 	
 }
-
-
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
+require_once($real_root.'/includes/class.dbcustom.php');
+$dbCustom = new DbCustom();
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
 
 $progress = new SetupProgress;
 $module = new Module;
@@ -39,7 +36,7 @@ if(isset($_POST["del_installer"])){
 
 }
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php'); 
+require_once($real_root.'/manage/admin-includes/doc_header.php'); 
 
 
 ?>
@@ -76,8 +73,8 @@ $(document).ready(function() {
 <body>
 
 <?php 
-include($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/manage-header.php"); 
-include($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/manage-nav.php"); 
+include($real_root."/manage/admin-includes/manage-header.php"); 
+include($real_root."/manage/admin-includes/manage-nav.php"); 
 ?>
 
 <div class="page_title_top_spacer"></div>
@@ -120,11 +117,11 @@ echo "<div style='color:blue;'>".$msg."</div>";
 
 
 		$block .= "<td valign='top'><a href='view-installer.php?installer_id=".$row->installer_id."'>
-		<img src='".$ste_root."/images/button_view.jpg' /></a></td>";
+		<img src='".SITEROOT."/images/button_view.jpg' /></a></td>";
 
 
 		$block .= "<td valign='top'><a class='inline' href='#delete'>
-		<img src='".$ste_root."/images/button_delete.jpg' /><div class='e_sub' id='".$row->installer_id."' style='display:none'></div> </a></td>";
+		<img src='".SITEROOT."/images/button_delete.jpg' /><div class='e_sub' id='".$row->installer_id."' style='display:none'></div> </a></td>";
 
 
 		$block .= "<td valign='top'>".date("F j, Y, g:i a", $row->date_submitted)."</td>";			

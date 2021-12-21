@@ -23,9 +23,9 @@ if($lev <= 3){
 	$man_root = './manage';
 }elseif($lev == 4){
 	// GOOD
-	$man_root = '../../manage';
+	$man_root = '<?php echo SITEROOT; ?>/manage';
 }elseif($lev >= 5){
-	$man_root = '../../../manage';		
+	$man_root = '<?php echo SITEROOT; ?>/../manage';		
 }else{
 	$man_root = '';
 }

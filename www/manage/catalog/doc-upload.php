@@ -1,21 +1,18 @@
 <?php
-
-
-
-if(!isset($_SERVER['DOCUMENT_ROOT'])){
-	if(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){    
-		$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
-	}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro/' )){
-		$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT'].'/designitpro';
-	}else{
-		$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT']; 	
-	}
+if(strpos($_SERVER['REQUEST_URI'], 'solvitware/' )){ 
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/solvitware';
+}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/designitpro'; 
+}elseif(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
+}else{
+	$real_root = $_SERVER['DOCUMENT_ROOT']; 	
 }
+require_once($real_root.'/includes/class.dbcustom.php');
+$dbCustom = new DbCustom();
 
-
-//require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
-require_once($_SERVER['DOCUMENT_ROOT']."/includes/config.php"); 
-require_once($_SERVER['DOCUMENT_ROOT']."/includes/accessory_cart_functions.php");
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
+require_once($real_root."/includes/accessory_cart_functions.php");
 
 $msg = '';
 
@@ -124,7 +121,7 @@ if($_POST){
 	}
 
 }
-require_once($_SERVER['DOCUMENT_ROOT'] ."/manage/admin-includes/doc_header.php"); 
+require_once($real_root ."/manage/admin-includes/doc_header.php"); 
 
 
 ?>
@@ -209,7 +206,7 @@ $fromfancybox = (isset($_GET['fromfancybox'])) ? $_GET['fromfancybox'] : 0;
 			<a class="btn btn-large" 
             href="<?php echo $ret_dir."/".$ret_page.".php?parent_cat_id=".$parent_cat_id."&cat_id=".$cat_id; ?>" 
             <?php if(!$fromfancybox){ echo "target='_top'"; } ?>>Cancel</a> </div>
-			<div class="loadinggif" id="inprogress"><img id="inprogress_img" src="<?php echo $ste_root; ?>/images/progress.gif">
+			<div class="loadinggif" id="inprogress"><img id="inprogress_img" src="<?php echo SITEROOT; ?>images/progress.gif">
 				<p>Please Wait...</p>
 			</div>
 		</div>

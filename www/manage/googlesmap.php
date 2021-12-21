@@ -14,15 +14,15 @@ if(!isset($_SERVER['DOCUMENT_ROOT'])){
 
 unset($_SESSION['global_url_word']);
 
-require_once($_SERVER['DOCUMENT_ROOT']."/includes/config.php");
-//require_once($_SERVER['DOCUMENT_ROOT']."/includes/db_connect.php"); 
-require_once($_SERVER['DOCUMENT_ROOT']."/includes/accessory_cart_functions.php");
-require_once($_SERVER['DOCUMENT_ROOT']."/includes/showroom_functions.php");
-require_once($_SERVER['DOCUMENT_ROOT']."/includes/class.module.php");
-require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/class.pages.php"); 
-require_once($_SERVER['DOCUMENT_ROOT']."/includes/class.store_data.php");
+require_once($real_root."/includes/config.php");
+//require_once($real_root."/includes/db_connect.php"); 
+require_once($real_root."/includes/accessory_cart_functions.php");
+require_once($real_root."/includes/showroom_functions.php");
+require_once($real_root."/includes/class.module.php");
+require_once($real_root."/manage/admin-includes/class.pages.php"); 
+require_once($real_root."/includes/class.store_data.php");
 
-require_once($_SERVER['DOCUMENT_ROOT']."/includes/class.nav.php");
+require_once($real_root."/includes/class.nav.php");
 
 $nav = new Nav;
 
@@ -298,7 +298,7 @@ function getNumPages($total_count,$page_rows){
 
 
 
-	require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/class.xml.sitemap.generator-modified.php");
+	require_once($real_root."/manage/admin-includes/class.xml.sitemap.generator-modified.php");
 
 	$url_array = array();
 
@@ -345,7 +345,7 @@ function getNumPages($total_count,$page_rows){
 		$url_array[] = "/".$_SESSION['global_url_word'].$navbar_label_v['url'];
 		if($navbar_label_v["submenu_content_type"] == 1){			
 		
-			$top_cats =  $nav->getTopCats();
+			$top_cats =  $nav->getTopCats($dbCustom,);
 			foreach($top_cats as $val){				
 				if(strpos($val['destination'], "showroom") !== false){		
 					$url_array[] = $_SESSION['global_url_word'].$val['seo_url']."/showroom.html?prodCatId=".$val['profile_cat_id'];
@@ -399,7 +399,7 @@ function getNumPages($total_count,$page_rows){
 				}
 			}
 		}else{
-			$hp_cats = $nav->getHomePageCats();
+			$hp_cats = $nav->getHomePageCats($dbCustom,);
 			foreach($hp_cats as $val){				
 				$db = $dbCustom->getDbConnect(CART_DATABASE);
 				$sql = "SELECT seo_list
@@ -429,7 +429,7 @@ function getNumPages($total_count,$page_rows){
 
 	// ************ From header *************
 
-	$header_links = $nav->getHeaderSupportLabels();
+	$header_links = $nav->getHeaderSupportLabels($dbCustom);
 	foreach($header_links as $v){
 		$url_array[] = "/".$v['url'];
 	}
@@ -466,7 +466,7 @@ function getNumPages($total_count,$page_rows){
 			
 		}elseif($footer_nav_label_v["submenu_content_type"] == 3){
 
-    		$footer_nav_submenu_labels = $nav->getFooterNavSubmenuLabels($footer_nav_label_v["id"], $i);
+    		$footer_nav_submenu_labels = $nav->getFooterNavSubmenuLabels($dbCustom,$footer_nav_label_v["id"], $i);
 			foreach($footer_nav_submenu_labels as $val){
 				if((substr_count($val['url'], "account") < 1)){			
 					$url_array[] = $val['url'];
@@ -513,7 +513,7 @@ $result = $dbCustom->getResult($db,$sql);
 				
 			$submenu_content_type = $object->submenu_content_type;
 			if($submenu_content_type == 1){
-				$t = $nav->getTopCats();
+				$t = $nav->getTopCats($dbCustom,);
 
 				foreach($t as $val){
 
@@ -552,7 +552,7 @@ $result = $dbCustom->getResult($db,$sql);
 					$url_array[] = $_SESSION['global_url_word'].$val['url'];
 				}
 			}else{
-				$t = $nav->getHomePageCats();
+				$t = $nav->getHomePageCats($dbCustom,);
 				foreach($t as $val){
 
 					$db = $dbCustom->getDbConnect(CART_DATABASE);

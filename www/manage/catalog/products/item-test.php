@@ -9,8 +9,8 @@ if(!isset($_SERVER['DOCUMENT_ROOT'])){
 	}
 }
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
-require_once($_SERVER['DOCUMENT_ROOT'].'/includes/class.shipping.php');
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
+require_once($real_root.'/includes/class.shipping.php');
 
 $shipping = new Shipping;
 
@@ -63,7 +63,7 @@ unset($_SESSION['side_nav_showroom_cats']); // frontend class.nav
 
 
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/class.admin_bread_crumb.php');	
+require_once($real_root.'/manage/admin-includes/class.admin_bread_crumb.php');	
 $bread_crumb = new AdminBreadCrumb;
 
 $bc_parent_cat_id = 0;
@@ -94,7 +94,7 @@ if($cat_id > 0){
 
 }
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php'); 
+require_once($real_root.'/manage/admin-includes/doc_header.php'); 
 
 
 ?>
@@ -153,17 +153,17 @@ function regularSubmit() {
 <div class="manage_page_container">
     <div class="manage_side_nav">
         <?php 
-        require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-side-nav.php');
+        require_once($real_root.'/manage/admin-includes/manage-side-nav.php');
         ?>
     </div>	
     <div class="manage_main">
 		<?php 
 		
 		$bread_crumb->prune($page_title);
-		$bread_crumb->add($page_title, $ste_root.$_SERVER['REQUEST_URI']);
+		$bread_crumb->add($page_title, SITEROOT.$_SERVER['REQUEST_URI']);
 		echo $bread_crumb->output();
 		
-        require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-content-top.php');
+        require_once($real_root.'/manage/admin-includes/manage-content-top-category.php');
 
 		$db = $dbCustom->getDbConnect(CART_DATABASE);
 
@@ -248,7 +248,7 @@ function regularSubmit() {
 	        <input type="hidden" name="set_active" value="1">
 
     		<div class="data_table clearfix">
-				<?php require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/tablesort.php"); ?>		
+				<?php require_once($real_root."/manage/admin-includes/tablesort.php"); ?>		
             	<table cellpadding="10" cellspacing="0">
 					<thead>
 						<tr>
@@ -325,8 +325,8 @@ function regularSubmit() {
 			if($img_res->num_rows > 0){
 				$img_object = $img_res->fetch_object();
 				
-				$block .= "<a class='fancybox' href='".$ste_root."/saascustuploads/".$_SESSION['profile_account_id']."/cart/full/".$img_object->file_name."'>";
-				$block .= "<img  src='".$ste_root."/saascustuploads/".$_SESSION['profile_account_id']."/cart/thumb/".$img_object->file_name."'></a>";
+				$block .= "<a class='fancybox' href='".SITEROOT."/saascustuploads/".$_SESSION['profile_account_id']."/cart/full/".$img_object->file_name."'>";
+				$block .= "<img  src='".SITEROOT."/saascustuploads/".$_SESSION['profile_account_id']."/cart/thumb/".$img_object->file_name."'></a>";
 			}
 			$block .= "</td>";
 			
@@ -411,8 +411,8 @@ function regularSubmit() {
 				if($img_res->num_rows > 0){
 					$img_object = $img_res->fetch_object();
 					$block .= "<td colspan='3' valign='middle' align='left'><a class='fancybox childthumb' 
-					href='".$ste_root."/saascustuploads/".$_SESSION['profile_account_id']."/cart/full/".$img_object->file_name."'>";
-					$block .= "<img  src='".$ste_root."/saascustuploads/".$_SESSION['profile_account_id']."/cart/thumb/".$img_object->file_name."'></a>";
+					href='".SITEROOT."/saascustuploads/".$_SESSION['profile_account_id']."/cart/full/".$img_object->file_name."'>";
+					$block .= "<img  src='".SITEROOT."/saascustuploads/".$_SESSION['profile_account_id']."/cart/thumb/".$img_object->file_name."'></a>";
 				}else{
 					$block .= "<td colspan='3'>";
 				}
@@ -490,7 +490,7 @@ function regularSubmit() {
   </div>
   <p class="clear"></p>
   <?php 
-    require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-footer.php');
+    require_once($real_root.'/manage/admin-includes/manage-footer.php');
 	************************************************************************>>$url_str= "item.php";
 	$url_str.= "?cat_id=".$cat_id;
 	$url_str.= "&parent_cat_id=".$parent_cat_id;

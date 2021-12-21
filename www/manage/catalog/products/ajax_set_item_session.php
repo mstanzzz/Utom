@@ -1,84 +1,48 @@
 <?php
-require_once($_SERVER['DOCUMENT_ROOT']."/includes/config.php"); 
+if(strpos($_SERVER['REQUEST_URI'], 'solvitware/' )){ 
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/solvitware';
+}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/designitpro'; 
+}elseif(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
+}else{
+	$real_root = $_SERVER['DOCUMENT_ROOT']; 	
+}
+require_once($real_root.'/includes/class.dbcustom.php');
+$dbCustom = new DbCustom();
 
-$action = (isset($_GET['action']))?	$_GET['action'] : 1;
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
 
-//echo $action;
-
-/*
-if(stripos($action, "parent") > 0){
-$parent_item_id = (isset($_GET["parent_item_id"]))? $_GET["parent_item_id"] : 0;
+$db = $dbCustom->getDbConnect(CART_DATABASE);
+$sql = "SELECT attribute_id
+		FROM  attribute
+		WHERE profile_account_id = '".$_SESSION['profile_account_id']."' 
+		ORDER BY attribute_id";	
+$res = $dbCustom->getResult($db,$sql);
+while($attr_row = $res->fetch_object()) {
+	if(isset($_GET["attr_".$attr_row->attribute_id])){
+		$_SESSION['temp_item_fields']["attr_".$attr_row->attribute_id] = $_GET["attr_".$attr_row->attribute_id];
+	}
+}
+$opt_array = (isset($_GET['opt_list']))? explode("|",$_GET['opt_list']) : array(); 
+	
+if(sizeof($opt_array) == 1){
+	if($opt_array[0] == ''){
+		$opt_array = array();
+	}
 }
 
-if($action == "copy_from_sibling"){
+$i = 0;
+$_SESSION['temp_attr_opt_ids'] = array();
+foreach($opt_array as $opt_v){
+	$_SESSION['temp_attr_opt_ids'][$i] = $opt_v;
+	$i++;
 }
-*/	
-
-if($action == 1){
-		
-		
-		
-	$db = $dbCustom->getDbConnect(CART_DATABASE);
-	
-	$sql = "SELECT attribute_id
-			FROM  attribute
-			WHERE profile_account_id = '".$_SESSION['profile_account_id']."' 
-			ORDER BY attribute_id";
-			
-   $res = $dbCustom->getResult($db,$sql);
-   
-	while($attr_row = $res->fetch_object()) {
-	
-		if(isset($_GET["attr_".$attr_row->attribute_id])){
-			$_SESSION['temp_item_fields']["attr_".$attr_row->attribute_id] = $_GET["attr_".$attr_row->attribute_id];
-			//$_SESSION['temp_item_fields']["attr_".$attr_row->attribute_id] = 9;
-					
-		}
-	}
-	
-
-
-
-
-	//echo "h";
-
-/*
-	$ct_out = (isset($_GET['str_cats']))? explode(",",$_GET['str_cats']) : array(); 
-	$i = 0;
-	foreach($ct_out as $ct_out_v){
-		$ct_in = explode("|",$ct_out_v);		
-		if(count($ct_in) > 1){
-			if($ct_in[1] == 1){
-				//echo $ct_in[0]."-";
-				$_SESSION['temp_cats'][$i] = $ct_in[0];
-				$i++;
-			}
-		}
-	}
-*/	
-		
-	$opt_array = (isset($_GET['opt_list']))? explode("|",$_GET['opt_list']) : array(); 
-	
-	if(sizeof($opt_array) == 1){
-		if($opt_array[0] == ''){
-			$opt_array = array();
-		}
-	}
-
-	$i = 0;
-	$_SESSION['temp_attr_opt_ids'] = array();
-	foreach($opt_array as $opt_v){
-		$_SESSION['temp_attr_opt_ids'][$i] = $opt_v;
-		$i++;
-	}
-	
-
 
 	if(isset($_GET['style_id'])) $_SESSION['temp_item_fields']['style_id'] = $_GET['style_id'];
 	if(isset($_GET['lead_time_id'])) $_SESSION['temp_item_fields']['lead_time_id'] = $_GET['lead_time_id'];
 	if(isset($_GET['skill_level_id'])) $_SESSION['temp_item_fields']['skill_level_id'] = $_GET['skill_level_id'];
 	if(isset($_GET['type_id'])) $_SESSION['temp_item_fields']['type_id'] = $_GET['type_id'];
-	
 	if(isset($_GET['date_active'])) $_SESSION['temp_item_fields']['date_active'] = $_GET['date_active'];
 	if(isset($_GET['date_inactive'])) $_SESSION['temp_item_fields']['date_inactive'] = $_GET['date_inactive'];
 	if(isset($_GET['name'])) $_SESSION['temp_item_fields']['name'] = $_GET['name'];
@@ -100,7 +64,6 @@ if($action == 1){
 	if(isset($_GET['additional_information'])) $_SESSION['temp_item_fields']['additional_information'] = $_GET['additional_information'];
 	if(isset($_GET['ship_port_id'])) $_SESSION['temp_item_fields']['ship_port_id'] = $_GET['ship_port_id'];
 	if(isset($_GET['return_to_id'])) $_SESSION['temp_item_fields']['return_to_id'] = $_GET['return_to_id'];
-
 	if(isset($_GET['is_taxable'])) $_SESSION['temp_item_fields']['is_taxable'] = $_GET['is_taxable'];
 	if(isset($_GET['call_for_pricing'])) $_SESSION['temp_item_fields']['call_for_pricing'] = $_GET['call_for_pricing'];
 	if(isset($_GET['is_new_product'])) $_SESSION['temp_item_fields']['is_new_product'] = $_GET['is_new_product'];
@@ -110,88 +73,25 @@ if($action == 1){
 	if(isset($_GET['is_closet'])) $_SESSION['temp_item_fields']['is_closet'] = $_GET['is_closet'];
 	if(isset($_GET['show_in_cart'])) $_SESSION['temp_item_fields']['show_in_cart'] = $_GET['show_in_cart'];
 	if(isset($_GET['show_in_showroom'])) $_SESSION['temp_item_fields']['show_in_showroom'] = $_GET['show_in_showroom'];
-	
 	if(isset($_GET['shipping_flat_charge'])) $_SESSION['temp_item_fields']['shipping_flat_charge'] = $_GET['shipping_flat_charge'];
 	if(isset($_GET['weight'])) $_SESSION['temp_item_fields']['weight'] = $_GET['weight'];
-	
 	if(isset($_GET['keywords'])) $_SESSION['temp_item_fields']['keywords'] = $_GET['keywords'];
-	
 	if(isset($_GET['img_alt_text'])) $_SESSION['temp_item_fields']['img_alt_text'] = $_GET['img_alt_text'];
-	
 	if(isset($_GET['show_in_tool'])) $_SESSION['temp_item_fields']['show_in_tool'] = $_GET['show_in_tool'];
-	
 	if(isset($_GET['hide_id_from_url'])) $_SESSION['temp_item_fields']['hide_id_from_url'] = $_GET['hide_id_from_url'];
-
 	if(isset($_GET['doc_area_text'])) $_SESSION['temp_item_fields']['doc_area_text'] = $_GET['doc_area_text'];
-
 	if(isset($_GET['is_kit'])) $_SESSION['temp_item_fields']['is_kit'] = $_GET['is_kit'];
-	
 	if(isset($_GET['is_free_shipping'])) $_SESSION['temp_item_fields']['is_free_shipping'] = $_GET['is_free_shipping'];
-	
 	if(isset($_GET['show_doc_tab'])) $_SESSION['temp_item_fields']['show_doc_tab'] = $_GET['show_doc_tab'];
 	if(isset($_GET['show_meas_form_tab'])) $_SESSION['temp_item_fields']['show_meas_form_tab'] = $_GET['show_meas_form_tab'];
 	if(isset($_GET['show_atc_btn_or_cfp'])) $_SESSION['temp_item_fields']['show_atc_btn_or_cfp'] = $_GET['show_atc_btn_or_cfp'];
-	
 	if(isset($_GET['show_start_design_btn'])) $_SESSION['temp_item_fields']['show_start_design_btn'] = $_GET['show_start_design_btn'];
 	if(isset($_GET['show_design_request_btn'])) $_SESSION['temp_item_fields']['show_design_request_btn'] = $_GET['show_design_request_btn'];
-	
 	if(isset($_GET['show_videos'])) $_SESSION['temp_item_fields']['show_videos'] = $_GET['show_videos'];
 	if(isset($_GET['show_associated_kits'])) $_SESSION['temp_item_fields']['show_associated_kits'] = $_GET['show_associated_kits'];
-
-
 	if(isset($_GET['show_specs_tab'])) $_SESSION['temp_item_fields']['show_specs_tab'] = $_GET['show_specs_tab'];
-
-
-
-	
-	//foreach($_SESSION['temp_item_fields'] as $key=>$v){
-	
-		//$_SESSION['temp_item_fields'][$key] = str_replace("zzzz","#", $v); 
-		
-	//}
-
-
-
-	
-
-	//echo $_GET["call_for_pricing"];
-
-}
 		
 	
-	
-/*	
-	$ct_out = explode(",",$_GET['str_attr']);
-	//print_r($ct_out);
-	foreach($ct_out as $ct_out_v){
-		$ct_in = explode("\|",$ct_out_v);		
-		
-		//print_r($ct_in);
-		//echo "<br />";
-		
-		
-		if(count($ct_in) > 1){
-				
-			
-			foreach($_SESSION['temp_attribute_ids'] as $j => $v){
-				
-				if($v["attribute_id"] == $ct_in[0]){
-					
-					//echo $ct_in[1]."<br />";
-					
-					$_SESSION['temp_attribute_ids'][$j]["checked"] = $ct_in[1];
-					
-					echo $_SESSION['temp_attribute_ids'][$j]["checked"]."<br />";
-					
-				
-				}
-				
-			}
-		
-		}
-		
-	}
-*/
 
 ?>
 

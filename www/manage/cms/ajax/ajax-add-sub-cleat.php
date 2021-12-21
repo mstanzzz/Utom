@@ -12,7 +12,7 @@ $_SESSION['ret_modal'] = '';
 if(!isset($_SESSION['constructed_part_array'])) $_SESSION['constructed_part_array'] = array();
 if(!isset($_SESSION['fixed_part_array'])) $_SESSION['fixed_part_array'] = array();
 
-require_once($_SERVER['DOCUMENT_ROOT']."/includes/config.php");
+require_once($real_root."/includes/config.php");
 
 $db = $dbCustom->getDbConnect(COMPONENTS_DATABASE);
 

@@ -1,19 +1,17 @@
 <?php
-
-
-if(!isset($_SERVER['DOCUMENT_ROOT'])){
-if(!isset($_SERVER['DOCUMENT_ROOT'])){
-	if(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){    
-		$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
-	}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro/' )){
-		$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT'].'/designitpro';
-	}else{
-		$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT']; 	
-	}
+if(strpos($_SERVER['REQUEST_URI'], 'solvitware/' )){ 
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/solvitware';
+}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/designitpro'; 
+}elseif(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
+}else{
+	$real_root = $_SERVER['DOCUMENT_ROOT']; 	
 }
-}
+require_once($real_root.'/includes/class.dbcustom.php');
+$dbCustom = new DbCustom();
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
 
 $progress = new SetupProgress;
 $module = new Module;
@@ -229,13 +227,13 @@ if(!isset($_SESSION['temp_item_cats'])) $_SESSION['temp_item_cats'] = getItemCat
 if(!isset($_SESSION['temp_attr_opt_ids'])) $_SESSION['temp_attr_opt_ids'] = getItemAttrOptionsArray($_SESSION['item_id']);
 
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php'); 
+require_once($real_root.'/manage/admin-includes/doc_header.php'); 
 
 
 ?>
 
 
-<link type="text/css" href="<?php echo $ste_root; ?>/css/custom-theme/jquery-ui-1.8.23.custom.css" rel="stylesheet">
+<link type="text/css" href="<?php echo SITEROOT; ?>css/custom-theme/jquery-ui-1.8.23.custom.css" rel="stylesheet">
 
 <script>
 
@@ -379,7 +377,7 @@ $(document).ready(function() {
 		$db = $dbCustom->getDbConnect(CART_DATABASE);
 
 		//echo $msg;
-		 require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-content-top.php');
+		 require_once($real_root.'/manage/admin-includes/manage-content-top-category.php');
 		 
 		//echo $page_title;
 
@@ -476,7 +474,7 @@ $(document).ready(function() {
 							}else{
 								$file_name = '';
 							}
-							echo "<img src='".$ste_root."/saascustuploads/".$_SESSION['profile_account_id']."/cart/thumb/".$file_name."'>";
+							echo "<img src='".SITEROOT."/saascustuploads/".$_SESSION['profile_account_id']."/cart/thumb/".$file_name."'>";
 						?>							
 						</div>
                         <div class="colcontainer formcols">
@@ -558,7 +556,7 @@ $(document).ready(function() {
 
  <p class="clear"></p>
     <?php 
-    require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-footer.php');
+    require_once($real_root.'/manage/admin-includes/manage-footer.php');
     ?>
 </div>
 

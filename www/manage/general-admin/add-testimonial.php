@@ -1,19 +1,16 @@
 <?php
-
-
-
-if(!isset($_SERVER['DOCUMENT_ROOT'])){
-	if(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){    
-		$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
-	}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro/' )){
-		$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT'].'/designitpro';
-	}else{
-		$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT']; 	
-	}
+if(strpos($_SERVER['REQUEST_URI'], 'solvitware/' )){ 
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/solvitware';
+}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/designitpro'; 
+}elseif(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
+}else{
+	$real_root = $_SERVER['DOCUMENT_ROOT']; 	
 }
-
-
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
+require_once($real_root.'/includes/class.dbcustom.php');
+$dbCustom = new DbCustom();
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
 $progress = new SetupProgress;
 $module = new Module;
 
@@ -27,12 +24,12 @@ $db = $dbCustom->getDbConnect(SITE_N_DATABASE);
 
 $msg = '';
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php'); 
+require_once($real_root.'/manage/admin-includes/doc_header.php'); 
 
 
 ?>
 
-<link rel="stylesheet" href="<?php echo $ste_root; ?>/plupload-2.1.8/js/jquery.plupload.queue/css/jquery.plupload.queue.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="<?php echo SITEROOT; ?>plupload-2.1.8/js/jquery.plupload.queue/css/jquery.plupload.queue.css" type="text/css" media="screen" />
 
 <script type="text/javascript" language="javascript">
 		tinyMCE.init({
@@ -174,8 +171,8 @@ $(document).ready(function () {
         </form>
                 
 
-<script type="text/javascript" src="<?php echo $ste_root; ?>/plupload-2.1.8/js/plupload.full.min.js"></script>
-<script type="text/javascript" src="<?php echo $ste_root; ?>/plupload-2.1.8/js/jquery.plupload.queue/jquery.plupload.queue.js"></script>
+<script type="text/javascript" src="<?php echo SITEROOT; ?>plupload-2.1.8/js/plupload.full.min.js"></script>
+<script type="text/javascript" src="<?php echo SITEROOT; ?>plupload-2.1.8/js/jquery.plupload.queue/jquery.plupload.queue.js"></script>
 
 <script type="text/javascript">
 $(function() {
@@ -184,7 +181,7 @@ $(function() {
 	$("#uploader").pluploadQueue({
 		// General settings
 		runtimes : 'html5,flash,silverlight,html4',
-		url : '<?php echo $ste_root; ?>/plupload-2.1.8/otg/upload.php',
+		url : '<?php echo SITEROOT; ?>plupload-2.1.8/otg/upload.php',
 		chunk_size: '1mb',
 		rename : true,
 		dragdrop: true,
@@ -202,8 +199,8 @@ $(function() {
 		// Resize images on clientside if we can
 		resize : {width : 680, quality : 90},
 
-		flash_swf_url : '<?php echo $ste_root; ?>/plupload-2.1.8/js/Moxie.swf',
-		silverlight_xap_url : '<?php echo $ste_root; ?>/plupload-2.1.8/js/Moxie.xap'
+		flash_swf_url : '<?php echo SITEROOT; ?>plupload-2.1.8/js/Moxie.swf',
+		silverlight_xap_url : '<?php echo SITEROOT; ?>plupload-2.1.8/js/Moxie.xap'
 	});
 	
 	var uploader = $('#uploader').pluploadQueue();

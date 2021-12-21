@@ -1,14 +1,14 @@
 <?php
 // NOTE: add  validate function to check if another child item has the same attributes selected.
 
-require_once("../../includes/config.php"); 
-require_once("../../includes/class.admin_login.php");
-require_once("../../admin-includes/class.admin_bread_crumb.php");	
+require_once("<?php echo SITEROOT; ?>includes/config.php"); 
+require_once("<?php echo SITEROOT; ?>includes/class.admin_login.php");
+require_once("<?php echo SITEROOT; ?>admin-includes/class.admin_bread_crumb.php");	
 require_once("../admin-includes/tool-tip.php"); 
 
 require_once("../admin-includes/class.setup_progress.php"); 
 $progress = new SetupProgress;
-require_once("../../admin-includes/class.module.php");	
+require_once("<?php echo SITEROOT; ?>admin-includes/class.module.php");	
 $module = new Module;
 
 
@@ -215,20 +215,20 @@ $_SESSION["copied"] = 0;
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Add accessory_item</title>
 
-<link rel="stylesheet" href="<?php echo $ste_root; ?>/js/fancybox/jquery.fancybox-1.3.1.css" type="text/css" media="screen" />
-<link type="text/css" rel="stylesheet" href="<?php echo $ste_root; ?>/css/manageStyle.css" />
-<link type="text/css" rel="stylesheet" href="<?php echo $ste_root; ?>/css/mce.css" />
+<link rel="stylesheet" href="<?php echo SITEROOT; ?>js/fancybox/jquery.fancybox-1.3.1.css" type="text/css" media="screen" />
+<link type="text/css" rel="stylesheet" href="<?php echo SITEROOT; ?>css/manageStyle.css" />
+<link type="text/css" rel="stylesheet" href="<?php echo SITEROOT; ?>css/mce.css" />
 
 <!-- look -->
 <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
 
-<script type="text/javascript" src="<?php echo $ste_root; ?>/js/jquery-1.4.4.js"></script>
-<script type="text/javascript" src="<?php echo $ste_root; ?>/js/fancybox/jquery.fancybox-1.3.1.pack.js"></script>
-<script type="text/javascript" src="<?php echo $ste_root; ?>/js/tiny_mce/tiny_mce.js"></script>
+<script type="text/javascript" src="<?php echo SITEROOT; ?>js/jquery-1.4.4.js"></script>
+<script type="text/javascript" src="<?php echo SITEROOT; ?>js/fancybox/jquery.fancybox-1.3.1.pack.js"></script>
+<script type="text/javascript" src="<?php echo SITEROOT; ?>js/tiny_mce/tiny_mce.js"></script>
 
-<script src="<?php echo $ste_root; ?>/js/ui/jquery.ui.core.js"></script>
-<script src="<?php echo $ste_root; ?>/js/ui/jquery.ui.widget.js"></script>
-<script src="<?php echo $ste_root; ?>/js/ui/jquery.ui.datepicker.js"></script>
+<script src="<?php echo SITEROOT; ?>js/ui/jquery.ui.core.js"></script>
+<script src="<?php echo SITEROOT; ?>js/ui/jquery.ui.widget.js"></script>
+<script src="<?php echo SITEROOT; ?>js/ui/jquery.ui.datepicker.js"></script>
 
 <script>
 
@@ -808,7 +808,7 @@ $(document).ready(function() {
 			theme : "advanced",
 			editor_selector : "selector_1",
 			plugins : "safari",
-			content_css : "../../css/mce.css"
+			content_css : "<?php echo SITEROOT; ?>css/mce.css"
 	});
 	
 	tinyMCE.init({
@@ -816,7 +816,7 @@ $(document).ready(function() {
 			theme : "advanced",
 			editor_selector : "selector_2",
 			plugins : "safari",
-			content_css : "../../css/mce.css"
+			content_css : "<?php echo SITEROOT; ?>css/mce.css"
 	});
 
 
@@ -911,7 +911,7 @@ $(document).ready(function(){
 <div class="manage_page_container">
 
 
-<!--<div id="t">TTTTTTTTTTT</div>-->
+<!--<div id="t">SITEROOTTTTTT</div>-->
 
 
     <div class="manage_side_nav">
@@ -1036,7 +1036,7 @@ $db = $dbCustom->getDbConnect(SITE_N_DATABASE);
 					
 					echo "
 					<div>If this is not the image you want, upoload another one.</div>
-					<img src='".$ste_root."/ul_cart/".$domain."/cart/list/".$file_name."'>";			
+					<img src='".SITEROOT."/ul_cart/".SITEROOT."/cart/list/".$file_name."'>";			
             
 			?>	
 			

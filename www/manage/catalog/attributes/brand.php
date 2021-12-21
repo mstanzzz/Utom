@@ -1,5 +1,18 @@
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
+if(strpos($_SERVER['REQUEST_URI'], 'solvitware/' )){ 
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/solvitware';
+}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/designitpro'; 
+}elseif(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
+}else{
+	$real_root = $_SERVER['DOCUMENT_ROOT']; 	
+}
+require_once($real_root.'/includes/class.dbcustom.php');
+$dbCustom = new DbCustom();
+
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
+
 $progress = new SetupProgress;
 $module = new Module;
 
@@ -168,7 +181,7 @@ unset($_SESSION['footer_nav_brands']);
 
 
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php'); 
+require_once($real_root.'/manage/admin-includes/doc_header.php'); 
 
 
 ?>
@@ -197,31 +210,31 @@ $(document).ready(function(){
 
 
 if(!$strip){ 
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-header.php');
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-top-nav.php');
+	require_once($real_root.'/manage/admin-includes/manage-header.php');
+	require_once($real_root.'/manage/admin-includes/manage-top-nav.php');
 
 
 	
 	echo "<div class='manage_side_nav'>";
 
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-side-nav.php');
+	require_once($real_root.'/manage/admin-includes/manage-side-nav.php');
 	
 	echo "</div>";
 	echo "<div class='manage_main'>";	
     echo "<div class='manage_main'>";
 
-			require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/class.admin_bread_crumb.php");	
+			require_once($real_root."/manage/admin-includes/class.admin_bread_crumb.php");	
 			$bread_crumb = new AdminBreadCrumb;
 			$bread_crumb->reSet();
-			$bread_crumb->add("Product Catalog", $ste_root."manage/catalog/catalog-landing.php");
-			$bread_crumb->add("Brand", $ste_root."manage/catalog/attributes/brand.php");
+			$bread_crumb->add("Product Catalog", SITEROOT."/manage/catalog/catalog-landing.php");
+			$bread_crumb->add("Brand", SITEROOT."/manage/catalog/attributes/brand.php");
 			echo $bread_crumb->output();
 }
-        require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-content-top.php');
+        require_once($real_root.'/manage/admin-includes/manage-content-top-category.php');
         
 if(!$strip){ 
 
-       require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/attribute-section-tabs.php");
+       require_once($real_root."/manage/admin-includes/attribute-section-tabs.php");
 
 }
 
@@ -308,7 +321,7 @@ if($vend_man_id){
 }
 
 
-		$url_str= $ste_root.'manage/catalog/attributes/brand.php';
+		$url_str= SITEROOT.'manage/catalog/attributes/brand.php';
 $url_str = preg_replace('/(\/+)/','/',$url_str);
 
 $url_str .= "?strip=".$strip;
@@ -324,7 +337,7 @@ $url_str .= "&truncate=".$truncate;
 
 	<?php if($admin_access->product_catalog_level > 1){ 
 	
-		$url_str= $ste_root.'manage/catalog/attributes/add-brand.php';
+		$url_str= SITEROOT.'manage/catalog/attributes/add-brand.php';
 $url_str = preg_replace('/(\/+)/','/',$url_str);
 
 		$url_str .= "?strip=".$strip;
@@ -362,7 +375,7 @@ if($result->num_rows < 1){
 
 
 
-<?php require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/tablesort.php"); ?>
+<?php require_once($real_root."/manage/admin-includes/tablesort.php"); ?>
 	<table cellpadding="10" cellspacing="0">
 		<thead>
 			<tr>
@@ -461,7 +474,7 @@ if($result->num_rows < 1){
 		echo "</div>
 		<p class='clear'></p>";
 		 
-		require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-footer.php');
+		require_once($real_root.'/manage/admin-includes/manage-footer.php');
 	
 	}	
 	echo "</div>";

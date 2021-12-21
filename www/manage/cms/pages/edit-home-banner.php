@@ -13,7 +13,7 @@ if(!isset($_SERVER['DOCUMENT_ROOT'])){
 }
 
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
 
 $progress = new SetupProgress;
 $module = new Module;
@@ -88,7 +88,7 @@ if(!isset($_SESSION['temp_banner_fields']['description'])) $_SESSION['temp_banne
 if(!isset($_SESSION['temp_banner_fields']['img_alt_text'])) $_SESSION['temp_banner_fields']['img_alt_text'] = $img_alt_text;
 
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php'); 
+require_once($real_root.'/manage/admin-includes/doc_header.php'); 
 
 
 ?>
@@ -182,13 +182,13 @@ function goto_isfancybox(url){
 
 <body>
 <?php
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-header.php');
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-top-nav.php');
+	require_once($real_root.'/manage/admin-includes/manage-header.php');
+	require_once($real_root.'/manage/admin-includes/manage-top-nav.php');
 ?>
 <div class="manage_page_container">
     <div class="manage_side_nav">
         <?php 
-        require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-side-nav.php');
+        require_once($real_root.'/manage/admin-includes/manage-side-nav.php');
         ?>
     </div>	
     <div class="manage_main">
@@ -212,7 +212,7 @@ function goto_isfancybox(url){
                     
                    
                     <!--
-						<a id="add_img" class="btn btn-primary" href='<?php echo $ste_root; ?>/manage/upload-pre-crop.php?ret_page=edit-home-banner&ret_dir=cms/pages'> Upload a New Image </a><br /><br />
+						<a id="add_img" class="btn btn-primary" href='<?php echo SITEROOT; ?>manage/upload-pre-crop.php?ret_page=edit-home-banner&ret_dir=cms/pages'> Upload a New Image </a><br /><br />
 						
                         <a class="btn btn-primary" href='select-image.php?ret_page=edit-home-banner&banner_id=<?php //echo $banner_id ?>'> Select Existing Image </a>
 						-->
@@ -225,7 +225,7 @@ function goto_isfancybox(url){
 							if($img_res->num_rows > 0){
 								$img_obj = $img_res->fetch_object();
 								//echo $img_obj->file_name;
-								echo "<img src='".$ste_root."/saascustuploads/".$_SESSION['profile_account_id']."/cms/banner/large/".$img_obj->file_name."' style='width: 100%;'>";
+								echo "<img src='".SITEROOT."/saascustuploads/".$_SESSION['profile_account_id']."/cms/banner/large/".$img_obj->file_name."' style='width: 100%;'>";
 							}
 							else {
 								echo "No Image.";	
@@ -234,7 +234,7 @@ function goto_isfancybox(url){
 						?>
 					
                     <br />                        
-                    <a onClick="goto_isfancybox('<?php echo $ste_root; ?>/manage/upload-pre-crop.php?ret_page=edit-home-banner&ret_dir=cms/pages')" class="btn btn-primary">
+                    <a onClick="goto_isfancybox('<?php echo SITEROOT; ?>manage/upload-pre-crop.php?ret_page=edit-home-banner&ret_dir=cms/pages')" class="btn btn-primary">
                     <i class="icon-plus icon-white"></i>Upload new Image</a>
 
 				</div>
@@ -273,7 +273,7 @@ function goto_isfancybox(url){
                 <div class="colcontainer">
                     If there is a category url, selectable page and custom url will be ignored.<br />
                     <label>Category URL</label>
-                    <?php require_once($_SERVER['DOCUMENT_ROOT']."/manage/cms/radio-category-tree-snippet.php");  ?>
+                    <?php require_once($real_root."/manage/cms/radio-tree-snippet.php");  ?>
                 </div>
 
             
@@ -295,7 +295,7 @@ function goto_isfancybox(url){
 </div>
 <p class="clear"></p>
 	<?php 
-    require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-footer.php');
+    require_once($real_root.'/manage/admin-includes/manage-footer.php');
     ?>
 </div>
 

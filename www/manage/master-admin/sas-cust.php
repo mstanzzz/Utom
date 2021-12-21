@@ -1,5 +1,17 @@
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
+if(strpos($_SERVER['REQUEST_URI'], 'solvitware/' )){ 
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/solvitware';
+}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/designitpro'; 
+}elseif(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
+}else{
+	$real_root = $_SERVER['DOCUMENT_ROOT']; 	
+}
+require_once($real_root.'/includes/class.dbcustom.php');
+$dbCustom = new DbCustom();
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
+
 //require_once($_SERVER['DOCUMENT_ROOT']."/includes/braintree/lib/Braintree.php");
 
 $progress = new SetupProgress;
@@ -19,11 +31,11 @@ if(isset($_POST['edit_account'])){
 	
 	$parent_id = ($_POST["parent_id"] > 0) ? $_POST["parent_id"] : $_SESSION['profile_account_id'];
 	$company = trim(addslashes($_POST["company"])); 
-	$domain_name = trim(addslashes($_POST["domain_name"])); 
+	SITEROOT_name = trim(addslashes($_POST["domain_name"])); 
 	
-	$domain_name = str_replace('http://','',$domain_name);
-	$domain_name = str_replace('https://','',$domain_name);
-	$domain_name = str_replace('www.','',$domain_name);
+	SITEROOT_name = str_replace('http://','',SITEROOT_name);
+	SITEROOT_name = str_replace('https://','',SITEROOT_name);
+	SITEROOT_name = str_replace('www.','',SITEROOT_name);
 	
 	$recurring_billing_id = trim(addslashes($_POST["recurring_billing_id"])); 
 	$email = trim(addslashes($_POST["email"])); 
@@ -171,7 +183,7 @@ if(isset($_POST['edit_account'])){
 				$company
 				,$profile_account_type_id
 				,$parent_id
-				,$domain_name
+				,SITEROOT_name
 				,$recurring_billing_id
 				,$email
 				,$contact_email
@@ -358,13 +370,13 @@ $result = $dbCustom->getResult($db,$sql);
 
 
 	//echo "<br />e_profile_account_id  ".$e_profile_account_id;
-	//echo "<br />domain_name  ".$domain_name;
+	//echo "<br />domain_name  ".SITEROOT_name;
 	
 
 	// we need this
 	unset($_SESSION["pages"]);
 
-  	require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/class.htaccess_writer.php"); 
+  	require_once($real_root."/manage/admin-includes/class.htaccess_writer.php"); 
 	$htaccess_writer = new HtaccessWriter;
 	$htaccess_writer->writeHtaccess();
 
@@ -373,19 +385,19 @@ $result = $dbCustom->getResult($db,$sql);
 
 
 if(isset($_POST['add_account'])){	
-	$domain_name = trim(addslashes($_POST['domain_name'])); 
-	$domain_name = str_replace('http://','',$domain_name);
-	$domain_name = str_replace('https://','',$domain_name);
-	$domain_name = str_replace('www.','',$domain_name);
+	SITEROOT_name = trim(addslashes($_POST['domain_name'])); 
+	SITEROOT_name = str_replace('http://','',SITEROOT_name);
+	SITEROOT_name = str_replace('https://','',SITEROOT_name);
+	SITEROOT_name = str_replace('www.','',SITEROOT_name);
 	
 	$sql = "SELECT id 
 			FROM profile_account
-			WHERE domain_name = '".$domain_name."'";
+			WHERE domain_name = '".SITEROOT_name."'";
 	
 	$result = $dbCustom->getResult($db,$sql);
 	
 	if($result->num_rows > 0){
-		echo "You already have $domain_name";
+		echo "You already have SITEROOT_name";
 		echo "<br /><a href='sas-cust.php'>BACK</a>";
 		exit;
 	}
@@ -441,7 +453,7 @@ if(isset($_POST['add_account'])){
 				$company
 				,$profile_account_type_id
 				,$parent_id
-				,$domain_name
+				,SITEROOT_name
 				,$recurring_billing_id
 				,$email
 				,$contact_email
@@ -695,7 +707,7 @@ $result = $dbCustom->getResult($db,$sql);
 	}
 	$fp = fopen($path.'/robots.txt',"w"); 
 	
-	fwrite($fp, '# robots.txt for '.$ste_root.PHP_EOL.PHP_EOL);
+	fwrite($fp, '# robots.txt for '.SITEROOT.PHP_EOL.PHP_EOL);
 	fwrite($fp, 'User-agent: *'.PHP_EOL.PHP_EOL);
 	fwrite($fp, '# disallow pages/folders'.PHP_EOL.PHP_EOL);
 	fwrite($fp, 'Disallow: /blueimp/'.PHP_EOL);
@@ -726,16 +738,16 @@ $result = $dbCustom->getResult($db,$sql);
 		mkdir($path);         
 	}
 
-	require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/class.xml.sitemap.generator-modified.php");
+	require_once($real_root."/manage/admin-includes/class.xml.sitemap.generator-modified.php");
 	$entries[] = new xml_sitemap_entry('/', '1.0', 'daily');
 	$file_ext = '.gz';	
 	$file_name = 'sitemap'.$file_ext;
 	$conf = new xml_sitemap_generator_config;
 
-	if(substr_count($domain_name,'.') > 1){	
-		$conf->setDomain($domain_name);				
+	if(substr_count(SITEROOT_name,'.') > 1){	
+		$conf->setDomain(SITEROOT_name);				
 	}else{
-		$conf->setDomain('www.'.$domain_name);		
+		$conf->setDomain('www.'.SITEROOT_name);		
 	}
 
 	$conf->setPath($path);
@@ -744,7 +756,7 @@ $result = $dbCustom->getResult($db,$sql);
 	$generator = new xml_sitemap_generator($conf);
 	$generator->write();	
 
-  	require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/class.htaccess_writer.php"); 
+  	require_once($real_root."/manage/admin-includes/class.htaccess_writer.php"); 
 	$htaccess_writer = new HtaccessWriter;
 	$htaccess_writer->writeHtaccess();
 
@@ -801,7 +813,7 @@ $sql = sprintf("UPDATE profile_account SET active = '%u' WHERE id = '%u'", '0',$
 		}	
 	}
 
-  	require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/class.htaccess_writer.php"); 
+  	require_once($real_root."/manage/admin-includes/class.htaccess_writer.php"); 
 	$htaccess_writer = new HtaccessWriter;
 	$htaccess_writer->writeHtaccess();
 
@@ -893,7 +905,7 @@ $result = $dbCustom->getResult($db,$sql);
 			rmdir($_SERVER['DOCUMENT_ROOT']."/saas-customers"."/".$d_profile_account_id);
 		}	
 		
-		require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/class.htaccess_writer.php"); 
+		require_once($real_root."/manage/admin-includes/class.htaccess_writer.php"); 
 		$htaccess_writer = new HtaccessWriter;
 		$htaccess_writer->writeHtaccess();
 	
@@ -935,7 +947,7 @@ if(isset($_POST['update_fees'])){
 }
 
 if(isset($_GET['write_htaccess'])){
-	require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/class.htaccess_writer.php"); 
+	require_once($real_root."/manage/admin-includes/class.htaccess_writer.php"); 
 	$htaccess_writer = new HtaccessWriter;
 	$htaccess_writer->writeHtaccess();
 }
@@ -943,7 +955,7 @@ if(isset($_GET['write_htaccess'])){
 unset($_SESSION['paging']);
 
 //$pages->undoProfileSetup(0);
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php'); 
+require_once($real_root.'/manage/admin-includes/doc_header.php'); 
 ?>
 <script>
 $(document).ready(function() {
@@ -978,17 +990,17 @@ $(document).ready(function() {
 </head>
 <body>
 <?php
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-header.php');
+	require_once($real_root.'/manage/admin-includes/manage-header.php');
 ?>
 <div class="manage_page_container">
 	<div class="manage_side_nav">
 		<?php 
-        require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-side-nav.php');
+        require_once($real_root.'/manage/admin-includes/manage-side-nav.php');
         ?>
 	</div>
 	<div class="manage_main">
 		<?php 
-        require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-content-top.php');
+        require_once($real_root.'/manage/admin-includes/manage-content-top-category.php');
 
 		$sortby = (isset($_GET['sortby'])) ? trim(mysql_escape_string($_GET['sortby'])) : '';
 		$a_d = (isset($_GET['a_d'])) ? $_GET['a_d'] : 'a';
@@ -1110,7 +1122,7 @@ $(document).ready(function() {
 
 		?>
 				<div class="data_table">
-					<?php require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/tablesort.php"); ?>
+					<?php require_once($real_root."/manage/admin-includes/tablesort.php"); ?>
 					<table border="0" cellpadding="10">
 						<thead>
 							<tr>
@@ -1214,7 +1226,7 @@ $(document).ready(function() {
 	<p class="clear"></p>
 	<?php
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-footer.php');
+require_once($real_root.'/manage/admin-includes/manage-footer.php');
 
 $url_str = "sas-cust.php";
 $url_str .= "?pagenum=".$pagenum;

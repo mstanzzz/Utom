@@ -1,9 +1,14 @@
 <?php
-require_once("../includes/config.php"); 
-require_once("../admin-includes/db_connect.php");
-
-// NOTE $_SESSION["pre_cropped_fn"] is the file name after it has been uploaded.
-
+if(strpos($_SERVER['REQUEST_URI'], 'solvitware/' )){ 
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/solvitware';
+}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/designitpro'; 
+}elseif(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
+}else{
+	$real_root = $_SERVER['DOCUMENT_ROOT']; 	
+}
+require_once($real_root."/includes/config.php"); 
 
 list($width, $height) = getimagesize($_POST["imageSource"]);
 $pWidth = $_POST["imageW"];
@@ -55,12 +60,7 @@ if($ext != "png"){
 	imagefill($viewport, 0, 0, $white);
 }
 
-
-
-
 $selector = imagecreatetruecolor($_POST["selectorW"],$_POST["selectorH"]);
-
-//echo "selectorW:".$_POST["selectorW"]."   selectorH:".$_POST["selectorH"]."<br />";
 
 setTransparency($viewport,$selector,$ext);
 imagecopy($selector, $viewport, 0, 0, $_POST["selectorX"], $_POST["selectorY"],$_POST["viewPortW"],$_POST["viewPortH"]);
@@ -472,8 +472,8 @@ if(strpos($_SESSION["ret_page"], "global-discount") !== false){
 
 
 /*
-if(file_exists("../ul_cart/".$domain."/tmp/pre-crop/".$_SESSION["pre_cropped_fn"])){
-	unlink("../ul_cart/".$domain."/tmp/pre-crop/".$_SESSION["pre_cropped_fn"]);
+if(file_exists("../ul_cart/".SITEROOT."/tmp/pre-crop/".$_SESSION["pre_cropped_fn"])){
+	unlink("../ul_cart/".SITEROOT."/tmp/pre-crop/".$_SESSION["pre_cropped_fn"]);
 }
 */
 

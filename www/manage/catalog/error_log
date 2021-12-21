@@ -1,0 +1,35 @@
+[02-Apr-2021 18:02:53 UTC] PHP Notice:  Undefined variable: ste_root in /home/ctgtest/public_html/manage/admin-includes/class.admin_bread_crumb.php on line 11
+[02-Apr-2021 18:02:53 UTC] PHP Notice:  Undefined variable: ste_root in /home/ctgtest/public_html/manage/admin-includes/class.admin_bread_crumb.php on line 23
+[02-Apr-2021 18:02:53 UTC] PHP Notice:  Undefined variable: ste_root in /home/ctgtest/public_html/manage/admin-includes/class.admin_bread_crumb.php on line 80
+[02-Apr-2021 18:02:54 UTC] PHP Notice:  Undefined variable: ste_root in /home/ctgtest/public_html/manage/admin-includes/class.admin_bread_crumb.php on line 23
+[02-Apr-2021 18:02:54 UTC] PHP Notice:  Undefined variable: ste_root in /home/ctgtest/public_html/manage/admin-includes/class.admin_bread_crumb.php on line 80
+[02-Apr-2021 19:23:58 UTC] PHP Notice:  Undefined property: stdClass::$name in /home/ctgtest/public_html/manage/catalog/select-item-to-cat.php on line 15
+[02-Apr-2021 19:23:58 UTC] PHP Notice:  Undefined property: stdClass::$name in /home/ctgtest/public_html/manage/catalog/select-item-to-cat.php on line 15
+[02-Apr-2021 19:23:58 UTC] PHP Notice:  Undefined property: stdClass::$name in /home/ctgtest/public_html/manage/catalog/select-item-to-cat.php on line 15
+[02-Apr-2021 19:23:58 UTC] PHP Notice:  Undefined property: stdClass::$name in /home/ctgtest/public_html/manage/catalog/select-item-to-cat.php on line 15
+[02-Apr-2021 19:23:58 UTC] PHP Notice:  Undefined property: stdClass::$name in /home/ctgtest/public_html/manage/catalog/select-item-to-cat.php on line 15
+[02-Apr-2021 19:23:58 UTC] PHP Notice:  Undefined property: stdClass::$name in /home/ctgtest/public_html/manage/catalog/select-item-to-cat.php on line 15
+[02-Apr-2021 19:23:58 UTC] PHP Notice:  Undefined property: stdClass::$name in /home/ctgtest/public_html/manage/catalog/select-item-to-cat.php on line 15
+[02-Apr-2021 19:23:58 UTC] PHP Notice:  Undefined property: stdClass::$name in /home/ctgtest/public_html/manage/catalog/select-item-to-cat.php on line 15
+[02-Apr-2021 19:23:58 UTC] PHP Notice:  Undefined property: stdClass::$name in /home/ctgtest/public_html/manage/catalog/select-item-to-cat.php on line 15
+[02-Apr-2021 19:23:58 UTC] PHP Notice:  Undefined property: stdClass::$name in /home/ctgtest/public_html/manage/catalog/select-item-to-cat.php on line 15
+[02-Apr-2021 19:23:58 UTC] PHP Notice:  Undefined property: stdClass::$name in /home/ctgtest/public_html/manage/catalog/select-item-to-cat.php on line 15
+[02-Apr-2021 19:23:58 UTC] PHP Notice:  Undefined property: stdClass::$name in /home/ctgtest/public_html/manage/catalog/select-item-to-cat.php on line 15
+[02-Apr-2021 19:23:58 UTC] PHP Notice:  Undefined property: stdClass::$name in /home/ctgtest/public_html/manage/catalog/select-item-to-cat.php on line 15
+[02-Apr-2021 19:23:58 UTC] PHP Notice:  Undefined property: stdClass::$name in /home/ctgtest/public_html/manage/catalog/select-item-to-cat.php on line 15
+[02-Apr-2021 19:23:58 UTC] PHP Notice:  Undefined property: stdClass::$name in /home/ctgtest/public_html/manage/catalog/select-item-to-cat.php on line 15
+[02-Apr-2021 19:23:58 UTC] PHP Notice:  Undefined property: stdClass::$name in /home/ctgtest/public_html/manage/catalog/select-item-to-cat.php on line 15
+[02-Apr-2021 19:25:42 UTC] PHP Notice:  Undefined variable: value in /home/ctgtest/public_html/manage/catalog/select-item-to-cat.php on line 49
+[02-Apr-2021 19:28:38 UTC] PHP Notice:  Undefined variable: value in /home/ctgtest/public_html/manage/catalog/select-item-to-cat.php on line 47
+[30-Aug-2021 16:11:34 UTC] PHP Notice:  Undefined variable: dbCustom in /home/ctgtest/public_html/manage/admin-includes/manage-includes.php on line 13
+[30-Aug-2021 16:11:34 UTC] PHP Fatal error:  Call to a member function getDbConnect() on null in /home/ctgtest/public_html/manage/admin-includes/class.admin_access.php on line 52
+[30-Aug-2021 16:18:06 UTC] PHP Notice:  Undefined variable: dbCustom in /home/ctgtest/public_html/manage/admin-includes/manage-includes.php on line 13
+[30-Aug-2021 16:18:06 UTC] PHP Fatal error:  Call to a member function getDbConnect() on null in /home/ctgtest/public_html/manage/admin-includes/class.admin_access.php on line 52
+[30-Aug-2021 16:18:37 UTC] PHP Notice:  Undefined variable: dbCustom in /home/ctgtest/public_html/manage/admin-includes/manage-includes.php on line 13
+[30-Aug-2021 16:18:37 UTC] PHP Fatal error:  Call to a member function getDbConnect() on null in /home/ctgtest/public_html/manage/admin-includes/class.admin_access.php on line 52
+[30-Aug-2021 16:20:42 UTC] PHP Notice:  Undefined variable: dbCustom in /home/ctgtest/public_html/manage/admin-includes/manage-includes.php on line 13
+[30-Aug-2021 16:20:42 UTC] PHP Fatal error:  Call to a member function getDbConnect() on null in /home/ctgtest/public_html/manage/admin-includes/class.admin_access.php on line 52
+[30-Aug-2021 16:20:57 UTC] PHP Notice:  Undefined variable: dbCustom in /home/ctgtest/public_html/manage/admin-includes/manage-includes.php on line 13
+[30-Aug-2021 16:20:57 UTC] PHP Fatal error:  Call to a member function getDbConnect() on null in /home/ctgtest/public_html/manage/admin-includes/class.admin_access.php on line 52
+[30-Aug-2021 16:31:51 UTC] PHP Notice:  Undefined variable: dbCustom in /home/ctgtest/public_html/manage/admin-includes/manage-includes.php on line 13
+[30-Aug-2021 16:31:51 UTC] PHP Fatal error:  Call to a member function getDbConnect() on null in /home/ctgtest/public_html/manage/admin-includes/class.admin_access.php on line 52

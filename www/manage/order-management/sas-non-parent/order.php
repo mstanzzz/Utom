@@ -10,7 +10,7 @@ if(strpos($_SERVER['REQUEST_URI'], 'solvitware/' )){
 	$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT']; 	
 }
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
+if(strpos($_SERVER['REQUEST_URI'], 'solvitware/' )){ 
 
 $progress = new SetupProgress;
 $module = new Module;
@@ -27,7 +27,7 @@ $ret = (isset($_GET["ret"]))? $_GET["ret"] : 'order-list';
 
 $msg = (isset($_GET['msg'])) ? $_GET['msg'] : '';
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php'); 
+require_once($real_root.'/manage/admin-includes/doc_header.php'); 
 
 ?>
 <script>
@@ -81,8 +81,8 @@ function show_msg(msg){
 	<body>
 <?php } 
 
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-header.php');
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-top-nav.php');
+	require_once($real_root.'/manage/admin-includes/manage-header.php');
+	require_once($real_root.'/manage/admin-includes/manage-top-nav.php');
 	
 	$order_id = (isset($_GET['order_id'])) ? $_GET['order_id'] : 0;
 	$pagenum = (isset($_GET['pagenum'])) ? $_GET['pagenum'] : 0;
@@ -101,7 +101,7 @@ function show_msg(msg){
 
     <div class="manage_side_nav">
         <?php 
-        require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-side-nav.php');
+        require_once($real_root.'/manage/admin-includes/manage-side-nav.php');
         ?>
     </div>	
 
@@ -110,7 +110,7 @@ function show_msg(msg){
 <a href="<?php echo $ret.'.php'.$url_str; ?>" class='btn btn-small'>Back</a>
 
 	<?php 
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-content-top.php');
+	require_once($real_root.'/manage/admin-includes/manage-content-top-category.php');
 	
 
     
@@ -338,7 +338,7 @@ function show_msg(msg){
 			$block .= "<div style='float:left; width:180px;'>";
 			//$block .= "<a href='line-item.php?order_line_item_id=".$row->order_line_item_id."'>".$row->name."</a>";
 			
-			$block .= "<a href='".SITEROOT."/app/?id=".$row->design_id."'>".$row->name."</a>";
+			$block .= "<a href='".SITEROOT."//app/?id=".$row->design_id."'>".$row->name."</a>";
 			
 			$block .= "</div>";
 			
@@ -572,7 +572,7 @@ function show_msg(msg){
 <?php
 
 	// this is the sql update			
-	require_once($_SERVER['DOCUMENT_ROOT']."/manage/order-management/process-update-include.php"); 
+	require_once($real_root."/manage/order-management/process-update-include.php"); 
 		
 	$url_str = 'order-list.php';
 	$url_str .= "?order_id=".$order_id;
@@ -642,7 +642,7 @@ function show_msg(msg){
 
 <p class="clear"></p>
 <?php 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-footer.php');
+require_once($real_root.'/manage/admin-includes/manage-footer.php');
 ?>    
   
 </div>

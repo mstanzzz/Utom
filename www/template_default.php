@@ -1,178 +1,307 @@
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'].'/includes/config.php'); 										
-require_once($_SERVER['DOCUMENT_ROOT'].'/includes/accessory_cart_functions.php');
-require_once($_SERVER['DOCUMENT_ROOT'].'/includes/class.shopping_cart.php');
-require_once($_SERVER['DOCUMENT_ROOT'].'/includes/class.shopping_cart_item.php');
-require_once($_SERVER['DOCUMENT_ROOT'].'/includes/class.store_data.php');
-require_once($_SERVER['DOCUMENT_ROOT'].'/includes/class.nav.php');
-require_once($_SERVER['DOCUMENT_ROOT'].'/includes/class.customer_login.php');
-require_once($_SERVER['DOCUMENT_ROOT'].'/includes/class.seo.php');
-require_once($_SERVER['DOCUMENT_ROOT'].'/includes/class.company.php');
+if(strpos($_SERVER['REQUEST_URI'], 'solvitware/' )){ 
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/solvitware';
+}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/designitpro'; 
+}elseif(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
+}else{
+	$real_root = $_SERVER['DOCUMENT_ROOT']; 	
+}
 
+
+require_once($real_root.'/includes/class.dbcustom.php');
+$dbCustom = new DbCustom();
+
+require_once($real_root.'/includes/config.php');
+require_once($real_root.'/includes/class.shopping_cart.php');
+require_once($real_root.'/includes/accessory_cart_functions.php');
+require_once($real_root.'/includes/class.shopping_cart_item.php');
+require_once($real_root.'/includes/class.store_data.php');
+require_once($real_root.'/includes/class.nav.php');
+require_once($real_root.'/includes/class.customer_login.php');
+require_once($real_root.'/includes/class.seo.php');
+require_once($real_root.'/includes/class.company.php');
+$_SESSION['no_order_refreash'] = 0;
+
+$seo = new Seo;
 $lgn = new CustomerLogin;
 $store_data = new StoreData;
-$cart = new ShoppingCart;
+$cart = new ShoppingCart($dbCustom);
 $item = new ShoppingCartItem;
 $nav = new Nav;
 
-$cust_id = $lgn->getCustId();
-
-$id = (isset($_GET['id'])) ? addslashes($_GET['id']) : 1;
-if(!is_numeric($id)) $id = 0;
-
 $company = new Company;
-$company_display_info = $company->getCompanyDisplayInfo();
-//print_r($company_display_info);
-//echo $company_display_info['company_phone'];
+$comp_basic = $company->getCompanyBasicInfo($dbCustom);
+$navCats = $nav->getNavCats($dbCustom,'footer');
 
-$seo = new Seo;
-// needed to prevent checkout refresh
-$_SESSION['no_order_refreash'] = 0;
+$id = (isset($_GET['id'])) ? $_GET['id'] : 1;
+if(!is_numeric($id)) $id = 0;
+if($id<2)$id=1;
 
-$slug =  (isset($_GET['slug'])) ? addslashes($_GET['slug']) : 'home';
-$page = $slug;
-//echo "<br />";
-//echo "page: ".$page;
-//echo "<br />";
+$cat_id = (isset($_GET['cat_id'])) ? $_GET['cat_id'] : 1;
+if(!is_numeric($cat_id)) $cat_id = 0;
 
-$seo->setMeta($slug);
-// change this back later
-//$page = $seo->page_name;
+//print_r($_REQUEST);
+$msg = '';
+
+if(isset($_POST['si_email'])){
+	
+	$username = trim($_POST['si_email']);
+	$password = trim($_POST['si_pswd']);
+	$lgn->login($dbCustom, $username, $password);
+		
+	if(!$lgn->isLogedIn()){
+		$msg = "<p style='color:red; font-size:0.6em;'>Incorrect user name<br />or password<br />please try again</p>";	
+	}
+}
+
+
+if(isset($_POST['reg_name'])){
+
+	$name = trim($_POST['reg_name']);
+	$username = trim($_POST['reg_email']);
+	$password = trim($_POST['reg_password']);
+	$get_letter = $_POST['r'];
+	$lgn->create_user($dbCustom, $password, $username, $name);
+
+}
 
 $ret_page =  (isset($_GET['ret_page'])) ? $_GET['ret_page'] : 'home';
+$slug = (isset($_GET['slug'])) ? $_GET['slug'] : 'home';
+$page = $slug;
 
-function url_origin($s, $use_forwarded_host = false )
-{
-    $ssl      = (!empty($s['HTTPS'] ) && $s['HTTPS'] == 'on' );
-    $sp       = strtolower( $s['SERVER_PROTOCOL'] );
-    $protocol = substr( $sp, 0, strpos( $sp, '/' ) ) . ( ( $ssl ) ? 's' : '' );
-    $port     = $s['SERVER_PORT'];
-    $port     = ( ( ! $ssl && $port=='80' ) || ( $ssl && $port=='443' ) ) ? '' : ':'.$port;
-    $host     = ( $use_forwarded_host && isset( $s['HTTP_X_FORWARDED_HOST'] ) ) ? $s['HTTP_X_FORWARDED_HOST'] : ( isset( $s['HTTP_HOST'] ) ? $s['HTTP_HOST'] : null );
-    $host     = isset( $host ) ? $host : $s['SERVER_NAME'] . $port;
-    return $protocol . '://' . $host;
-}
-function full_url( $s, $use_forwarded_host = false )
-{
-    return url_origin( $s, $use_forwarded_host ) . $s['REQUEST_URI'];
-}
-$absolute_url = full_url($_SERVER);
-//echo "<hr />";
-//echo $absolute_url;
-$parts = Explode('/', $absolute_url);
+$seo->setMeta($slug);
 
-//print_r($parts);
-/*
+
+
+echo "slug: ".$slug;
 echo "<br />";
+echo "title: ".$seo->title;
+echo "page_name: ".$seo->page_name;
 echo "<br />";
+echo "keywords: ".$seo->keywords;
 echo "<br />";
-echo "0 ".$parts[0];
+echo "description: ".$seo->description;
 echo "<br />";
-echo "1 ".$parts[1];
-echo "<br />";
-echo "2 ".$parts[2];
-echo "<br />";
-echo "3 ".$parts[3];
-echo "<br />";
-echo "4 ".$parts[4];
-echo "<br />";
-echo "5 ".$parts[5];
+//print_r($seo);
+require_once($real_root."/pages/controllers/".$page.".php"); 
+require_once($real_root."/pages/views/".$page.".php"); 	
+
+if($page != 'design-request'){
+?>
+<script
+  src="https://code.jquery.com/jquery-3.5.1.min.js"
+  integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+  crossorigin="anonymous">
+</script>
+<?php
+}
+?>
+
+
+
+<script>
+/* usefull
+window.onload = function() {
+    if (window.jQuery) {  
+        alert("Yeah!");
+    } else {
+        alert("Doesn't Work");
+    }
+}
 */
 
-$lev = count($parts);
-if($lev <= 3){
-	$ste_root = '../';
-}elseif($lev == 4){
-	$ste_root = '../../';
-}elseif($lev == 5){
-	$ste_root = '../../../';	
-}elseif($lev == 6){
-	$ste_root = '../../../../';	
-}else{
-	$ste_root = './';
-}
-$ste_root = preg_replace('/(\/+)/','/',$ste_root);
-
-if(strpos($_SERVER['DOCUMENT_ROOT'], '/var/www/') !== false) {
-	$ste_root = preg_replace('/(\/+)/','/',$ste_root);
-}else{
-	$ste_root = SITEROOT.'/';
+function clear_cart(){	
+	var url_str = "<?php echo SITEROOT; ?>pages/cart-ajax/ajax-clear-cart.php";
+	$.ajaxSetup({ cache: false}); 
+	$.ajax({
+		url: url_str,
+		success: function(data) {
+			alert(data);				
+		}
+	});
+	alert("CLEAR");	
 }
 
-?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-<title>ClosetsToGo</title>
-<meta name="description" content="home description">		
-<link href="<?php echo $ste_root."app.css" ?>" rel="stylesheet">
 
-<script>
+function add_item(item_id){
+	//alert("item_id "+item_id);
+	var qty = 1;
+	var addMsg = "1 Item Added";
+	var url_str = "<?php echo SITEROOT; ?>pages/cart-ajax/ajax-add-item.php?item_id="+item_id+"&qty="+qty;
+	$.ajaxSetup({ cache: false}); 
+	$.ajax({
+		url: url_str,
+		success: function(data) {	
+			//alert(data);
+			$( ".MS_item_count" ).each(function() {
+				$(this).text(data);
+			});
+						
+		}
+	});
+}
+
+function sign_in(){
+	//alert("sign_in");	
+	$("#si_form").submit();
+
+	/*	
+	var sign_in_email = $("#sign_in_email").val();
+	var sign_in_pswd = $("#sign_in_pswd").val();
+
+	$.ajaxSetup({ cache: false}); 
+	$.ajax({
+	  url: 'ajax/ajax-sign-in.php?email='+sign_in_email+'&pswd='+sign_in_pswd,
+	  success: function(data) {
+		if(data.indexOf("y") > -1){
+			alert("signin success");
+			show_logged_in_menu();
+		}else{
+			
+			alert("signin problem");
+	  	}
+	  }
+	});
+	*/
+}
+
+function register(){
+	alert("register");	
+	var register_name = $("#register_name").val();
+	var register_email = $("#register_email").val();
+	var register_pswd = $("#register_pswd").val();
+	var register_c_pswd = $("#register_c_pswd").val();
+	alert(register_name);
+	alert(register_email);
+	alert(register_pswd);
+	alert(register_c_pswd);
+}
 
 function getScreenWidth(){
-	
 	var h = $(window).height();
 	var w = $(window).width();
-	
 	alert("------- width:"+w);
+}
+
+
+function accessories_select_option(s_attr){
+
+	var opt = 0;
+
+	if(s_attr == 0){				
+		opt  = $("#s_attr_0").val();
+		$("#opt_0").val(opt);		
+		alert("opt_0: "+opt);		
+	}
+	
+	if(s_attr == 1){			
+		opt  = $("#s_attr_1").val();		
+		$("#opt_1").val(opt);				
+		alert("opt_1: "+opt);	
+	}
+	
+	if(s_attr == 2){				
+		opt  = $("#s_attr_2").val();		
+		$("#opt_2").val(opt);				
+		alert("opt_2: "+opt);	
+	}
+	
+	if(s_attr == 3){				
+		opt  = $("#s_attr_3").val();		
+		$("#opt_3").val(opt);				
+		alert("opt_3: "+opt);	
+	}
+}
+
+
+$('.js-account-login').on('click', function () {
+    $(this).css('display', 'none');  
+	$(this).siblings('.account-menu-visible').css('display', 'none');
+    $(this).siblings('.account-menu-hidden').css('display', 'block');
+	$(this).parents('.js-account-wrap').find('.dropdown-toggle.account').addClass('login');
+    $(this).parents('.js-account-wrap').find('.account-name').css('display', 'inline-block');
+});
+
+$('.js-account-logout').on('click', function () {
+    $(this).css('display', 'none');
+    $(this).siblings('.account-menu-visible').css('display', 'block');
+    $(this).siblings('.account-menu-hidden').css('display', 'none');
+	$(this).parents('.js-account-wrap').find('.dropdown-toggle.account').removeClass('login');
+    $(this).parents('.js-account-wrap').find('.account-name').css('display', 'none');
+	
+}); 
+
+
+function show_logged_in_menu(){
+	
+	$(".js-account-login").css('display', 'none');
+	$(".js-account-login").siblings('.account-menu-visible').css('display', 'none');
+	$(".js-account-login").siblings('.account-menu-hidden').css('display', 'block');
+	$(".js-account-login").parents('.js-account-wrap').find('.dropdown-toggle.account').removeClass('login');
+	$(".js-account-login").parents('.js-account-wrap').find('.account-name').css('display', 'inline-block');
 	
 }
 
-</script>
+function show_logged_out_menu(){
 
-</head>
-<body>
-<!--
-<a style="float:right; margin:10px;" href="<?php echo $ste_root; ?>home.html"> HOME </a>
-<a style="float:right; margin:10px;" href="<?php echo $ste_root; ?>shopping-cart.html"> CART </a>
-<a style="float:right; margin:10px;" href="<?php echo $ste_root; ?>shop.html">Shop</a>
-<a style="float:right; margin:10px;" href="<?php echo $ste_root; ?>showroom.html">Showroom</a>
-<br />
--->
+    $('.js-account-logout').css('display', 'none');
+    $('.js-account-logout').siblings('.account-menu-visible').css('display', 'block');
+    $('.js-account-logout').siblings('.account-menu-hidden').css('display', 'none');
+	$('.js-account-logout').parents('.js-account-wrap').find('.dropdown-toggle.account').removeClass('login');
+    $('.js-account-logout').parents('.js-account-wrap').find('.account-name').css('display', 'none');
+}
+
+
+function click_item_count(item_id){
+	
+	alert(item_id);
+	
+	//	click_count = 	click_count+1
+	var url_str = "<?php echo SITEROOT; ?>ajax/ajax-click-item.php?item_id="+item_id;
+	$.ajaxSetup({ cache: false}); 
+	$.ajax({
+		url: url_str,
+		success: function(data) {	
+			alert(data);
+						
+		}
+	});
+
+}
+function click_cat_count(cat_id){
+	
+	alert(cat_id);
+	
+	//	click_count = 	click_count+1
+	/*
+	var url_str = "<?php echo SITEROOT; ?>ajax/ajax-click-cat.php?cat_id="+cat_id;
+	$.ajaxSetup({ cache: false}); 
+	$.ajax({
+		url: url_str,
+		success: function(data) {	
+			alert(data);
+						
+		}
+	});
+	*/
+}
+
 <?php
-echo "<hr />";
-echo "page: ".$page;
-echo "<hr />";
-echo "<br />";
-//echo $ste_root;
-//echo "<br />";
-//exit;
+if($lgn->isLogedIn()){
+?>	
+	
+	show_logged_in_menu();
 
-//echo file_exists($_SERVER['DOCUMENT_ROOT']."/pages/controllers/".$page.".php");
-if(file_exists($_SERVER['DOCUMENT_ROOT']."/pages/controllers/".$page.".php")){
-	require_once($_SERVER['DOCUMENT_ROOT']."/pages/controllers/".$page.".php"); 											
+<?php
+}else{
+?>	
+	show_logged_out_menu();
+
+<?php	
 }
-
-
-if(file_exists($_SERVER['DOCUMENT_ROOT']."/pages/views/".$page.".php")){
-	require_once($_SERVER['DOCUMENT_ROOT']."/pages/views/".$page.".php"); 											
-}
-
-echo "<hr />";
-echo "<br />";
-echo "<hr />";
-echo "<br />";
-echo "<hr />";
-echo "<br />";
-echo $ste_root;
-
 ?>
 
 
-<script>
-function getScreenWidth(){
-	var h = $(window).height();
-	var w = $(window).width();
-	alert("------- width:"+w);
-}
 </script>
-<script src="app.js"></script>
-<script src="ms.js"></script>
-
-</body>
-</html>
-
- 

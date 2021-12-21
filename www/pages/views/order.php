@@ -1,7 +1,17 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+<title>ClosetsToGo</title>
+<meta name="description" content="order">
+<link href="<?php echo SITEROOT; ?>app.css" rel="stylesheet">
+</head>
+<body class="clearfix page-order">
 
 <?php	
-require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php"); 	
+require_once($real_root."/includes/header.php"); 	
 ?>	
 
 <main class="main clearfix main__order-page">
@@ -14,7 +24,7 @@ require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php");
 							
 							<!--SHOW THIS ON MOBILE SCREEN-->
 							<div class="card-el__show-on-md check-circled__header">
-								<img src="../../images/check-circled.svg" alt="">
+								<img src="<?php echo SITEROOT; ?>images/check-circled.svg" alt="">
 							</div>
 							<!--#SHOW THIS ON MOBILE SCREEN-->
 							
@@ -83,7 +93,7 @@ require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php");
 										</h5>
 										<div class="radio-image col-6 mx-auto mx-lg-0 p-lg-0">
 											<div class="pay__method-wrap">
-												<img src="../../images/footer-visa.png" class="img img-fluid">
+												<img src="<?php echo SITEROOT; ?>images/footer-visa.png" class="img img-fluid">
 											</div>
 										</div>
 									</div>
@@ -154,5 +164,11 @@ require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php");
 </main>
 
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'].'/includes/footer.php');
+require_once($real_root.'/includes/footer.php');
 ?>
+
+
+<script src="<?php echo SITEROOT; ?>app.js"></script>
+</body>
+</html>
+

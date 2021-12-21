@@ -1,5 +1,5 @@
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
 
 $progress = new SetupProgress;
 //$module = new Module;
@@ -78,7 +78,7 @@ unset($_SESSION["home_id"]);
 unset($_SESSION['new_img_id']);
 unset($_SESSION['img_id']);
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php'); 
+require_once($real_root.'/manage/admin-includes/doc_header.php'); 
 ?>
 <script>
 function regularSubmit() {
@@ -91,13 +91,13 @@ function regularSubmit() {
 <body>
 <?php
 
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-header.php');
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-top-nav.php');
+	require_once($real_root.'/manage/admin-includes/manage-header.php');
+	require_once($real_root.'/manage/admin-includes/manage-top-nav.php');
 ?>
 <div class="manage_page_container">
 	<div class="manage_side_nav">
 		<?php 
-        require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-side-nav.php');
+        require_once($real_root.'/manage/admin-includes/manage-side-nav.php');
         ?>
 	</div>
 	<div class="manage_main">
@@ -109,10 +109,10 @@ function regularSubmit() {
 		// select database
     	$db = $dbCustom->getDbConnect(SITE_N_DATABASE);
 		
-		require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/class.admin_bread_crumb.php");	
+		require_once($real_root."/manage/admin-includes/class.admin_bread_crumb.php");	
 		$bread_crumb = new AdminBreadCrumb;
 		$bread_crumb->reSet();
-		$bread_crumb->add("CMS", $ste_root."manage/cms/cms-landing.php");
+		$bread_crumb->add("CMS", SITEROOT."/manage/cms/cms-landing.php");
 		$bread_crumb->add($page_title, '');
         echo $bread_crumb->output();
 
@@ -139,7 +139,7 @@ function regularSubmit() {
 						<tr>
 							<th width="30%">Page Name</th>
 							<th>Page URL</th>
-							<?php if(getProfileType() == "master"){ ?>
+							<?php if(getProfileType($dbCustom) == "master"){ ?>
                             <th width="13%">Optional</th>
                             <?php } ?>
 							<th width="13%">Is SSL</th>
@@ -167,7 +167,7 @@ function regularSubmit() {
                         <?php 
 						$disabled = ($admin_access->cms_level < 2)? "disabled" : '';
 						
-						if(getProfileType() == "master"){ 
+						if(getProfileType($dbCustom) == "master"){ 
 							
 							if($page_v['page_name'] != 'home'){
 							
@@ -247,7 +247,7 @@ echo " href='".$page_v['page_manage_path']."'> <i class='icon-cog icon-white'></
 	</div>
 	<p class="clear"></p>
 	<?php 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-footer.php');
+require_once($real_root.'/manage/admin-includes/manage-footer.php');
 ?>
 </div>
 <div id="content-delete" class="confirm-content">

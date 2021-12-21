@@ -142,7 +142,7 @@ function add_del_cat_in_session(the_cat_id, add_the_cat){
 	if(add_the_cat){
 		$.ajaxSetup({ cache: false}); 
 		$.ajax({
-		  url: "<?php echo $ste_root; ?>/manage/catalog/products/ajax_add_cat_to_session.php?cat_id="+the_cat_id,
+		  url: "<?php echo SITEROOT; ?>manage/catalog/products/ajax_add_cat_to_session.php?cat_id="+the_cat_id,
 		  success: function(data) {
 			set_attr_section();
 		  }
@@ -150,7 +150,7 @@ function add_del_cat_in_session(the_cat_id, add_the_cat){
 	}else{
 		$.ajaxSetup({ cache: false}); 
 		$.ajax({
-		  url: '<?php echo $ste_root; ?>/manage/catalog/products/ajax_del_cat_from_session.php?cat_id='+the_cat_id,
+		  url: '<?php echo SITEROOT; ?>manage/catalog/products/ajax_del_cat_from_session.php?cat_id='+the_cat_id,
 		  success: function(data) {
 		  	set_attr_section();
 		  }
@@ -172,7 +172,7 @@ function ajax_set_cats(selectedCatsArr){
 	$.ajaxSetup({ cache: false}); 
 	$.ajax({
 	  
-	  url: '<?php echo $ste_root; ?>/manage/catalog/products/ajax_set_cats.php'+q_str,
+	  url: '<?php echo SITEROOT; ?>manage/catalog/products/ajax_set_cats.php'+q_str,
 	  success: function(data) {
 		//alert(data);
 
@@ -188,7 +188,7 @@ function set_attr_section(){
 		
 	$.ajaxSetup({ cache: false}); 
 	$.ajax({
-	  url: '<?php echo $ste_root; ?>/manage/catalog/products/ajax_get_attr_area.php',
+	  url: '<?php echo SITEROOT; ?>manage/catalog/products/ajax_get_attr_area.php',
 	  success: function(data) {
 		$("#attr_section").html(data);
 		//$(".chosen").chosen();
@@ -243,11 +243,11 @@ $(document).ready(function(){
 		var state = $(this).text();
 		
 		if (state.indexOf("Expand") != -1){
-			var wheel = "<li><img src='<?php echo $ste_root; ?>/images/progress.gif'></li>";
+			var wheel = "<li><img src='<?php echo SITEROOT; ?>images/progress.gif'></li>";
 			$('#categorytree').html(wheel);
 			$.ajaxSetup({ cache: false}); 
 			$.ajax({
-			  url: '<?php echo $ste_root; ?>/manage/catalog/products/ajax_get_item_tree_snippet_expanded_cat_list.php',
+			  url: '<?php echo SITEROOT; ?>manage/catalog/products/ajax_get_item_tree_snippet_expanded_cat_list.php',
 			  success: function(data) {
 					$('#categorytree').html(data);
 			  }
@@ -267,7 +267,7 @@ $(document).ready(function(){
 });
 
 </script>
-<script type="text/javascript" src="<?php $ste_root;?>/js/categorytree.js"></script>
+<script type="text/javascript" src="<?php SITEROOT;?>/js/categorytree.js"></script>
 		
 <label>Search for and Select Categories. The searchbox will display the selected categories.</label>
 <select style="width: 90%;" multiple="multiple" class="selectedCats chosen" 
@@ -284,7 +284,7 @@ foreach ($top_cats as $top_cat) {
 	$block .= "<li role='treeitem' aria-expanded='true' id='".$top_cat['cat_id']."'>"; 
 	$block .= "<a tabindex='-1' class='tree-parent tree-parent-collapsed' ";   
 	$block .= "data-catid='".$top_cat['cat_id']."' data-cattype='topcat'>";
-	$block .= "<img src='".$ste_root."/saascustuploads/".$_SESSION['profile_account_id']."/cart/tiny/".$top_cat['file_name']."' />".$top_cat['name'].'';
+	$block .= "<img src='".SITEROOT."/saascustuploads/".$_SESSION['profile_account_id']."/cart/tiny/".$top_cat['file_name']."' />".$top_cat['name'].'';
 	$checked = inArray($top_cat['cat_id'], $_SESSION['temp_item_cats'], 'cat_id') ? "checked='checked'" : '';
 	$block .= "<input class='checkbox' onclick='updateOptions(".$top_cat['cat_id'].")' ";
 	$block .= " type='checkbox' id='".$top_cat['cat_id']."' value='".$top_cat['cat_id']."' ".$checked." />";

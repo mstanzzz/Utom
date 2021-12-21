@@ -1,5 +1,17 @@
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
+if(strpos($_SERVER['REQUEST_URI'], 'solvitware/' )){ 
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/solvitware';
+}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/designitpro'; 
+}elseif(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
+}else{
+	$real_root = $_SERVER['DOCUMENT_ROOT']; 	
+}
+require_once($real_root.'/includes/class.dbcustom.php');
+$dbCustom = new DbCustom();
+
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
 
 $progress = new SetupProgress;
 //$module = new Module;
@@ -104,7 +116,7 @@ if(isset($_POST["add_page"])){
 			
 	
 	$page = $page_name;
-	require_once($_SERVER['DOCUMENT_ROOT']."/manage/cms/insert_page_breadcrumb.php");
+	require_once($real_root."/manage/cms/insert_page_breadcrumb.php");
 
 	$msg = "Your change is now live.";		
 
@@ -173,7 +185,7 @@ if(isset($_POST["edit_added_page"])){
 			
 
 	$page = $page_name;
-	require_once($_SERVER['DOCUMENT_ROOT']."/manage/cms/insert_page_breadcrumb.php");
+	require_once($real_root."/manage/cms/insert_page_breadcrumb.php");
 
 	$msg = "Your change is now live.";		
 
@@ -305,8 +317,6 @@ if(isset($_POST['set_active'])){
 
 }
 
-
-
 $sql = "UPDATE page_seo 
 		SET available = '1' 
 		WHERE optional = '0'";
@@ -348,7 +358,30 @@ unset($_SESSION['contact_us_id']);
 unset($_SESSION['keyword_landing_id']);
 unset($_SESSION['pages']);
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php'); 
+
+
+
+
+$sql = "
+INSERT INTO page_seo
+(
+page_name
+,seo_name
+,profile_account_id
+)VALUES(
+'we-design'
+,'we-design'
+,'0'			
+)	
+			";	
+$result = $dbCustom->getResult($db,$sql);			
+
+	
+
+
+
+
+require_once($real_root.'/manage/admin-includes/doc_header.php'); 
 
 ?>
 <script>
@@ -360,24 +393,24 @@ function regularSubmit() {
 
 <body>
 <?php 
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-header.php');
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-top-nav.php');
+	require_once($real_root.'/manage/admin-includes/manage-header.php');
+	require_once($real_root.'/manage/admin-includes/manage-top-nav.php');
 ?>
 <div class="manage_page_container">
 	<div class="manage_side_nav">
 		<?php 
-        require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-side-nav.php');
+        require_once($real_root.'/manage/admin-includes/manage-side-nav.php');
         ?>
 	</div>
 	<div class="manage_main"> 
 		<h1>Pages</h1>
 		<?php 
     	$db = $dbCustom->getDbConnect(SITE_N_DATABASE);
-		
-		require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/class.admin_bread_crumb.php");	
+		$page_title = "Pages";
+		require_once($real_root."/manage/admin-includes/class.admin_bread_crumb.php");	
 		$bread_crumb = new AdminBreadCrumb;
 		$bread_crumb->reSet();
-		$bread_crumb->add("CMS", $ste_root."manage/cms/cms-landing.php");
+		$bread_crumb->add("CMS", "../cms-landing.php");
 		$bread_crumb->add($page_title, '');
         echo $bread_crumb->output();
 		
@@ -404,10 +437,9 @@ function regularSubmit() {
 						<tr>
 							<th width="30%">Page Name</th>
 							<th>Page URL</th>
-							<?php if(getProfileType() == "master"){ ?>
+							<?php if(getProfileType($dbCustom) == "master"){ ?>
                             <th width="13%">Optional</th>
                             <?php } ?>
-							<th width="13%">Is SSL</th>
                             <th width="13%">Edit</th>
 							<th width="13%">Active</th>
 							<th width="5%">Delete</th>
@@ -423,7 +455,6 @@ function regularSubmit() {
 				?>
 
 					<tr> 
-						<!-- Page Name -->
 						<td>
 						<?php 
 						
@@ -437,14 +468,13 @@ function regularSubmit() {
 						?>
 						</td>
 						
-						<!-- Page URL (front end)-->
 						<td><?php echo $page_v['url']; ?></td>
 						
                         <?php 
 						
 						$disabled = ($admin_access->cms_level < 2)? "disabled" : '';
 						
-						if(getProfileType() == "master"){ 
+						if(getProfileType($dbCustom) == "master"){ 
 							
 							if($page_v['page_name'] != 'home'){
 							
@@ -463,30 +493,12 @@ function regularSubmit() {
 						?>
                         
                         </td>
-                		<!-- Is SSL -->
-						<td valign="middle">
-						<?php
-						if($page_v['page_name'] != 'home'){
-							$is_ssl = ($page_v['mssl'])? "checked='checked'" : '';
-							echo "<div class='checkboxtoggle on ".$disabled." '> 
-							<span class='ontext'>ON</span>
-							<a class='switch on' href='#'></a>
-							<span class='offtext'>OFF</span>
-							<input type='checkbox' class='checkboxinput' name='ssl[]' value='".$page_v['page_seo_id']."' $is_ssl /></div>";
-						}
-						?>                
-						</td>                
-                        <!-- Edit Button -->
 						<td valign="middle">
                         <?php
-						
-//echo $page_v['page_manage_path'];						
-//echo "page_id:".$page_v['page_id']; 
-echo "<a class='btn btn-primary ".$disabled." '"; 
-echo "href='".$page_v['page_manage_path']."'>"; 
-echo "<i class='icon-cog icon-white'></i>Edit</a>";
+						echo "<a class='btn btn-primary ".$disabled." '"; 
+						echo "href='".$page_v['page_manage_path']."'>"; 
+						echo "<i class='icon-cog icon-white'></i>Edit</a>";
 						?>
-						
                         </td>
 						<td valign="middle">
 						<?php if($page_v['page_name'] != 'home' && $page_v['available']){ 
@@ -527,7 +539,7 @@ echo "<i class='icon-cog icon-white'></i>Edit</a>";
 	</div>
 	<p class="clear"></p>
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-footer.php');
+require_once($real_root.'/manage/admin-includes/manage-footer.php');
 ?>
 </div>
 

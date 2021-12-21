@@ -9,7 +9,7 @@ class dl_dizzcloud_com extends Download {
 		else return array(false, "accinvalid");
 	}
    
-    public function Login($user, $pass){
+    public function login($dbCustom,$user, $pass){
         $data = $this->lib->curl("http://dizzcloud.com/login", "", "email={$user}&pass={$pass}");
 		return "{$this->lib->GetCookies($data)}";
     }

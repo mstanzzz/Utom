@@ -4,7 +4,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/includes/class.customer_account.php');
 require_once($_SERVER['DOCUMENT_ROOT'].'/includes/class.order.php');
 $order = new Order;
 $acc = new CustomerAccount;
-$acc->setDbAccData($customer_id);
+$acc->setDbAccData($dbCustom,$customer_id);
 $customer_id = $lgn->getCustId();	
 
 if(!$lgn->isLogedIn()){

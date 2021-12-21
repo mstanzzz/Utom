@@ -35,7 +35,7 @@ class dl_mediafire_com extends Download {
 		else return array(false, "accinvalid");
 	}	
 	
-	public function Login($user, $pass){
+	public function login($dbCustom,$user, $pass){
 		$page1 = $this->lib->curl("http://www.mediafire.com/", "", "");
 		$cookies = $this->lib->GetCookies($page1);
 		$page2 = $this->lib->curl("http://www.mediafire.com/dynamic/login.php?popup=1", $cookies, "login_email={$user}&login_pass={$pass}&login_remember=1&submit_login=Log%20in%20to%20MediaFire");

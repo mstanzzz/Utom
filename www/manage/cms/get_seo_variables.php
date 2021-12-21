@@ -19,7 +19,7 @@
 	}else{
 		$mssl = 0;
 		$seo_name = "";
-		$title = "About Our Company | ".$ste_root;
+		$title = "About Our Company | ".SITEROOT;
 		$keywords = "comma, separated, keywords, go, here";	
 		$description = '';
 		$page_heading = '';	

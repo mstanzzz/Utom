@@ -9,7 +9,7 @@ if(!isset($_SERVER['DOCUMENT_ROOT'])){
 	}
 }
 
-require_once($_SERVER['DOCUMENT_ROOT']."/includes/config.php");
+require_once($real_root."/includes/config.php");
 
 $_SESSION['ret_modal'] = 'edit';
 
@@ -92,7 +92,7 @@ while($row = $result->fetch_object()){
         <label class="text-italic">Material Type Name*</label>
         <input type="text" id="edit_material_type_name" name="material_type_name" value="<?php echo $material_type_name; ?>" 
         class="input-invisable-bold" style="width:240px;" />
-        <img class="icon" src="<?php echo $ste_root; ?>/manage/assets/svg/edit.svg" alt="">
+        <img class="icon" src="<?php echo SITEROOT; ?>manage/assets/svg/edit.svg" alt="">
     </div>
 	<div class="edit-form-wrapper no-border">
     	<label class="text-italic">Choose one or more Collections</label>

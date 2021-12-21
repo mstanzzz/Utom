@@ -1,5 +1,5 @@
 <?php
-require_once("../../../includes/config.php"); 
+require_once("<?php echo SITEROOT; ?>/../includes/config.php"); 
 
 $ts = time();
 
@@ -43,15 +43,15 @@ $remote_path = "/costco/outgoing/orders/";
 //$remote_path = "/closetstogo/costco/outgoing/orders";
 
 
-$local_path = "../../../costco/encrypted/";
-//$local_path = "../../../test/";
+$local_path = "<?php echo SITEROOT; ?>/../costco/encrypted/";
+//$local_path = "<?php echo SITEROOT; ?>/../test/";
 
 
 
 // set up basic connection
 $conn_id = ftp_connect($ftp_server); 
 // login with username and password
-$login_result = ftp_login($conn_id, $ftp_user_name, $ftp_user_pass); 
+$login_result = ftp_login($dbCustom,$conn_id, $ftp_user_name, $ftp_user_pass); 
 
 //ftp_pasv($conn_id, true);
 
@@ -110,7 +110,7 @@ if ((!$conn_id) || (!$login_result)) {
 				$enc_filename = $local_path.$fn;
 				
 				$dec_filename = "/home/organize/public_html/costco/decrypted/dec_".$fn;
-				//$file = "../../../costco/decrypted/dec_".$fn; 
+				//$file = "<?php echo SITEROOT; ?>/../costco/decrypted/dec_".$fn; 
 				
 				$decrypted = shell_exec("echo $passphrase| $gpg --passphrase-fd 0 --batch --no-secmem-warning --no-tty --yes --homedir $gpgkeydir -d $enc_filename");
 	
@@ -145,7 +145,7 @@ ftp_close($conn_id);
 
 
 
-//$filename ="../../../costco/decrypted/test_file.xml";
+//$filename ="<?php echo SITEROOT; ?>/../costco/decrypted/test_file.xml";
 
 /************  Parse the XML and ************/
 function processXml($dec_filename, $dec_file_contents, $en_file_contents){
@@ -368,8 +368,8 @@ function show_msg(msg){
 	<body>
 <?php } 
 
-	require_once("../../includes/manage-header.php");
-	require_once("../../includes/manage-top-nav.php");
+	require_once("<?php echo SITEROOT; ?>/includes/manage-header.php");
+	require_once("<?php echo SITEROOT; ?>/includes/manage-top-nav.php");
 
 
 ?>
@@ -381,7 +381,7 @@ function show_msg(msg){
 
     <div class="manage_side_nav">
         <?php 
-        require_once("../../includes/manage-side-nav.php");
+        require_once("<?php echo SITEROOT; ?>/includes/manage-side-nav.php");
         ?>
     </div>	
     
@@ -402,7 +402,7 @@ if($success) echo "The files were successfully downloaded and inserted into our 
 
     <p class="clear"></p>
     <?php 
-    require_once("../../includes/manage-footer.php");
+    require_once("<?php echo SITEROOT; ?>/includes/manage-footer.php");
     ?>    
     
 </div>

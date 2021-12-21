@@ -1,19 +1,17 @@
 <?php
-
-
-
-if(!isset($_SERVER['DOCUMENT_ROOT'])){
-	if(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){    
-		$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
-	}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro/' )){
-		$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT'].'/designitpro';
-	}else{
-		$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT']; 	
-	}
+if(strpos($_SERVER['REQUEST_URI'], 'solvitware/' )){ 
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/solvitware';
+}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/designitpro'; 
+}elseif(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
+}else{
+	$real_root = $_SERVER['DOCUMENT_ROOT']; 	
 }
+require_once($real_root.'/includes/class.dbcustom.php');
+$dbCustom = new DbCustom();
 
-
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
 
 $progress = new SetupProgress;
 $module = new Module;
@@ -34,13 +32,16 @@ if(isset($_POST['facebook'])){
 	$pinterest = trim(addslashes($_POST["pinterest"])); 
 	$houzz = trim(addslashes($_POST["houzz"])); 
 	$google_plus = trim(addslashes($_POST["google_plus"])); 
-
+	$linkedin = trim(addslashes($_POST["linkedin"])); 
+	$instagram = trim(addslashes($_POST["instagram"])); 
 	$facebook_active = isset($_POST["facebook_active"]) ? 1 : 0; 
 	$twitter_active = isset($_POST["twitter_active"]) ? 1 : 0; 
 	$youtube_active = isset($_POST["youtube_active"]) ? 1 : 0; 
 	$pinterest_active = isset($_POST["pinterest_active"]) ? 1 : 0; 
 	$houzz_active = isset($_POST["houzz_active"]) ? 1 : 0; 
 	$google_plus_active = isset($_POST["google_plus_active"]) ? 1 : 0; 
+	$linkedin_active = isset($_POST["linkedin_active"]) ? 1 : 0; 
+	$instagram_active = isset($_POST["instagram_active"]) ? 1 : 0; 
 	
 	$sql = sprintf("UPDATE company_info 
 				SET facebook = '%s'
@@ -49,12 +50,17 @@ if(isset($_POST['facebook'])){
 				,pinterest = '%s'
 				,houzz = '%s'
 				,google_plus = '%s'
+				,linkedin = '%s'
+				,instagram = '%s'
 				,facebook_active = '%u'
 				,twitter_active = '%u'
 				,youtube_active = '%u'
 				,pinterest_active = '%u'
 				,houzz_active = '%u'
 				,google_plus_active = '%u'
+				,linkedin_active = '%u'
+				,instagram_active = '%u'
+				
 			WHERE profile_account_id = '%u'", 
 				$facebook
 				,$twitter
@@ -62,12 +68,16 @@ if(isset($_POST['facebook'])){
 				,$pinterest
 				,$houzz
 				,$google_plus
+				,$linkedin 
+				,$instagram				
 				,$facebook_active
 				,$twitter_active
 				,$youtube_active
 				,$pinterest_active
 				,$houzz_active
 				,$google_plus_active
+				,$linkedin_active
+				,$instagram_active
 				,$_SESSION['profile_account_id']
 				);
 
@@ -78,7 +88,7 @@ if(isset($_POST['facebook'])){
 }
 
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php'); 
+require_once($real_root.'/manage/admin-includes/doc_header.php'); 
 
 
 ?>
@@ -109,26 +119,25 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php');
 </head>
 <body>
 <?php
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-header.php');
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-top-nav.php');
+	require_once($real_root.'/manage/admin-includes/manage-header.php');
+	require_once($real_root.'/manage/admin-includes/manage-top-nav.php');
 ?>
 <div class="manage_page_container">
 	<div class="manage_side_nav">
 		<?php 
-        require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-side-nav.php');
+        require_once($real_root.'/manage/admin-includes/manage-side-nav.php');
         ?>
 	</div>
 	<div class="manage_main">
 		<?php 
-        require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/class.admin_bread_crumb.php");	
+        require_once($real_root."/manage/admin-includes/class.admin_bread_crumb.php");	
 		$bread_crumb = new AdminBreadCrumb;
 		$bread_crumb->reSet();
-		$bread_crumb->add("CMS", $ste_root."manage/cms/cms-landing.php");
+		$bread_crumb->add("CMS", SITEROOT."/manage/cms/cms-landing.php");
 		$bread_crumb->add("Social Media", '');
         echo $bread_crumb->output();
 		
-        require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-content-top.php');
-
+    
 		$db = $dbCustom->getDbConnect(SITE_N_DATABASE);
 		$sql = "SELECT facebook
 				,twitter
@@ -136,6 +145,10 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php');
 				,pinterest
 				,houzz
 				,google_plus
+				,linkedin
+				,instagram
+				,linkedin_active
+				,instagram_active
 				,facebook_active	
 				,twitter_active	
 				,youtube_active
@@ -153,12 +166,16 @@ $result = $dbCustom->getResult($db,$sql);
 			$pinterest = $company_obj->pinterest;
 			$houzz = $company_obj->houzz;	
 			$google_plus = $company_obj->google_plus;
+			$linkedin = $company_obj->linkedin;	
+			$instagram = $company_obj->instagram;	
 			$facebook_active = $company_obj->facebook_active;	
 			$twitter_active = $company_obj->twitter_active;	
 			$youtube_active = $company_obj->youtube_active;
 			$pinterest_active = $company_obj->pinterest_active;	
 			$houzz_active = $company_obj->houzz_active;
 			$google_plus_active = $company_obj->google_plus_active;
+			$linkedin_active = $company_obj->linkedin_active;
+			$instagram_active = $company_obj->instagram_active;
 		
 		}else{
 			$facebook = '';	
@@ -166,13 +183,17 @@ $result = $dbCustom->getResult($db,$sql);
 			$youtube = '';
 			$pinterest = '';
 			$houzz = '';	
-			$google_plus = '';		
-			$facebook_active = '';	
-			$twitter_active = '';	
-			$youtube_active = '';
-			$pinterest_active = '';	
-			$houzz_active = '';
-			$google_plus_active = '';
+			$google_plus = '';
+			$linkedin = '';	
+			$instagram = '';	
+			$facebook_active = 0;	
+			$twitter_active = 0;	
+			$youtube_active = 0;
+			$pinterest_active = 0;	
+			$houzz_active = 0;
+			$google_plus_active = 0;
+			$linkedin_active = 0;
+			$instagram_active = 0;
 
 		}
         ?>
@@ -315,6 +336,48 @@ $result = $dbCustom->getResult($db,$sql);
                     <div style="clear:both"></div>        
 
  				</div>
+				
+				
+				<div class="colcontainer">
+					<label>Linkedin</label>
+                    <div style="float:left; position:relative; top:8px;">
+                            <?php
+                            $status = ($linkedin_active)? "checked='checked'" : '';
+							echo "<div class='checkboxtoggle on'> 
+							<span class='ontext'>ON</span>
+							<a class='switch on' href='#'></a>
+							<span class='offtext'>OFF</span>
+							<input type='checkbox' class='checkboxinput' name='linkedin_active' value='1' $status /></div>";
+							?>
+					</div>
+                    <div style="float:left;">            
+	                    <input type="text" name="linkedin" style="width:440px;" value="<?php echo $linkedin; ?>">
+                    </div>
+                    <div style="clear:both"></div>        
+
+ 				</div>
+				
+				
+				
+				<div class="colcontainer">
+					<label>Instagram</label>
+                    <div style="float:left; position:relative; top:8px;">
+                            <?php
+                            $status = ($instagram_active)? "checked='checked'" : '';
+							echo "<div class='checkboxtoggle on'> 
+							<span class='ontext'>ON</span>
+							<a class='switch on' href='#'></a>
+							<span class='offtext'>OFF</span>
+							<input type='checkbox' class='checkboxinput' name='instagram_active' value='1' $status /></div>";
+							?>
+					</div>
+                    <div style="float:left;">            
+	                    <input type="text" name="instagram" style="width:440px;" value="<?php echo $instagram; ?>">
+                    </div>
+                    <div style="clear:both"></div>        
+
+ 				</div>
+				
 
 
 				</fieldset>
@@ -324,7 +387,7 @@ $result = $dbCustom->getResult($db,$sql);
 	<p class="clear"></p>
 	<?php 
 	
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-footer.php');
+require_once($real_root.'/manage/admin-includes/manage-footer.php');
 ?>
 </div>
 </body>

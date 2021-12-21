@@ -13,7 +13,7 @@ if(!isset($_SERVER['DOCUMENT_ROOT'])){
 }
 
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
 
 $progress = new SetupProgress;
 $module = new Module;
@@ -60,7 +60,7 @@ if(isset($_POST["del_blog_member_id"])){
 	//
 }
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php'); 
+require_once($real_root.'/manage/admin-includes/doc_header.php'); 
 
 ?>
 
@@ -112,8 +112,8 @@ tinyMCE.init({
 <body>
 
 <?php 
-include($_SERVER['DOCUMENT_ROOT']."/manageincludes/manage-header.php"); 
-include($_SERVER['DOCUMENT_ROOT']."/manageincludes/manage-nav.php"); 
+include($real_root."/manageincludes/manage-header.php"); 
+include($real_root."/manageincludes/manage-nav.php"); 
 ?>
 
 <div class="page_title_top_spacer"></div>

@@ -12,7 +12,7 @@ if(!isset($_SERVER['DOCUMENT_ROOT'])){
 }
 
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
 
 	
 
@@ -61,11 +61,11 @@ if($result->num_rows > 0){
 
 
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php'); 
+require_once($real_root.'/manage/admin-includes/doc_header.php'); 
 
 
 ?>
-<script type="text/javascript" src="<?php echo $ste_root; ?>/js/breadcrumbpreviews.js"></script>
+<script type="text/javascript" src="<?php echo SITEROOT; ?>/js/breadcrumbpreviews.js"></script>
 <script>
 
 function select_img(img_id){
@@ -150,7 +150,7 @@ function select_img(img_id){
     	    <?php
 			if(($page_name != "home") && ($admin_access->cms_level > 1)){ 
 				$page = $page_name;
-				require_once($_SERVER['DOCUMENT_ROOT']."/manage/cms/edit_page_breadcrumb.php"); 
+				require_once($real_root."/manage/cms/edit_page_breadcrumb.php"); 
 			}
 			?>
 		<br /><br />

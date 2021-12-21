@@ -1,0 +1,4 @@
+[24-Jul-2021 14:52:50 UTC] PHP Warning:  require_once(includes/config.php): failed to open stream: No such file or directory in /home/ctgtest/public_html/ajax/ajax-sign-in.php on line 2
+[24-Jul-2021 14:52:50 UTC] PHP Fatal error:  require_once(): Failed opening required 'includes/config.php' (include_path='.:/opt/cpanel/ea-php56/root/usr/share/pear') in /home/ctgtest/public_html/ajax/ajax-sign-in.php on line 2
+[24-Jul-2021 14:52:56 UTC] PHP Warning:  require_once(includes/config.php): failed to open stream: No such file or directory in /home/ctgtest/public_html/ajax/ajax-sign-in.php on line 2
+[24-Jul-2021 14:52:56 UTC] PHP Fatal error:  require_once(): Failed opening required 'includes/config.php' (include_path='.:/opt/cpanel/ea-php56/root/usr/share/pear') in /home/ctgtest/public_html/ajax/ajax-sign-in.php on line 2

@@ -13,7 +13,7 @@ if(!isset($_SERVER['DOCUMENT_ROOT'])){
 }
 
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
 
 $progress = new SetupProgress;
 $module = new Module;
@@ -464,35 +464,35 @@ if(isset($_POST['del_keyword_landing'])){
 unset($_SESSION['temp_page_fields']);
 unset($_SESSION['gal_img_id']);
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php'); 
+require_once($real_root.'/manage/admin-includes/doc_header.php'); 
 
 
 ?>
 </head>
 <body>
 <?php
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-header.php');
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-top-nav.php');
+	require_once($real_root.'/manage/admin-includes/manage-header.php');
+	require_once($real_root.'/manage/admin-includes/manage-top-nav.php');
 ?>
 <div class="manage_page_container">
 	<div class="manage_side_nav">
 		<?php 
-        require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-side-nav.php');
+        require_once($real_root.'/manage/admin-includes/manage-side-nav.php');
         ?>
 	</div>
 	<div class="manage_main">
 		<?php 
 		
-		require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/class.admin_bread_crumb.php");	
+		require_once($real_root."/manage/admin-includes/class.admin_bread_crumb.php");	
 		$bread_crumb = new AdminBreadCrumb;
 		$bread_crumb->reSet();
-		//$bread_crumb->add("Keyword Landing Pages", $ste_root."manage/cms/keyword-landing/keyword-landing-page-list.php");
+		//$bread_crumb->add("Keyword Landing Pages", SITEROOT."/manage/cms/keyword-landing/keyword-landing-page-list.php");
 		$bread_crumb->add("Keyword Landing Pages", '');
         echo $bread_crumb->output();
 		
 		
 		
-        require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-content-top.php');
+        require_once($real_root.'/manage/admin-includes/manage-content-top-category.php');
         
 		$sortby = (isset($_GET['sortby'])) ? trim($_GET['sortby']) : '';
 		$a_d = (isset($_GET['a_d'])) ? $_GET['a_d'] : 'a';
@@ -531,9 +531,9 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php');
 					$block = ''; 
 					while($row = $result->fetch_object()) {
 						$block .= "<tr>";
-						$block .= "<td><a href='".$ste_root."/".$_SESSION['global_url_word'].$row->url_name.".html?k=".$row->keyword_landing_id."' target='_blank'>";
+						$block .= "<td><a href='".SITEROOT."/".$_SESSION['global_url_word'].$row->url_name.".html?k=".$row->keyword_landing_id."' target='_blank'>";
 						
-						$block .= $ste_root."/".$_SESSION['global_url_word'].$row->url_name.".html?k=".$row->keyword_landing_id."</a></td>";
+						$block .= SITEROOT."/".$_SESSION['global_url_word'].$row->url_name.".html?k=".$row->keyword_landing_id."</a></td>";
 						
 						$url_str = "edit-keyword-landing.php";						
 						$url_str .= "?strip=".$strip;
@@ -559,7 +559,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php');
 	</div>
 	<p class="clear"></p>
 	<?php 
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-footer.php');
+	require_once($real_root.'/manage/admin-includes/manage-footer.php');
 	
 	
 	$url_str = "keyword-landing-page-list.php";

@@ -1,10 +1,13 @@
 <?php
-require_once("../../includes/config.php"); 
-require_once("../../includes/class.admin_login.php");
+require_once('<?php echo SITEROOT; ?>includes/class.dbcustom.php');
+$dbCustom = new DbCustom();
+
+require_once("<?php echo SITEROOT; ?>includes/config.php"); 
+require_once("<?php echo SITEROOT; ?>includes/class.admin_login.php");
 
 require_once("../admin-includes/class.setup_progress.php"); 
 $progress = new SetupProgress;
-require_once("../../admin-includes/class.module.php");	
+require_once("<?php echo SITEROOT; ?>admin-includes/class.module.php");	
 $module = new Module;
 
 

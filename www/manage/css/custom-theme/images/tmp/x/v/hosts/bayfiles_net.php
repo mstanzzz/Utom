@@ -10,7 +10,7 @@ class dl_bayfiles_net extends Download {
 	}
 	
 	
-	public function Login($user, $pass){
+	public function login($dbCustom,$user, $pass){
 		$post["username"]= $user;
 		$post["password"]= $pass;
 		$post["next"] = "%2F";

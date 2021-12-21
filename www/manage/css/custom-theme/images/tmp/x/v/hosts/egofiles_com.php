@@ -9,7 +9,7 @@ class dl_egofiles_com extends Download {
 		else return array(false, "accinvalid");
     }
     
-    public function Login($user, $pass){
+    public function login($dbCustom,$user, $pass){
         $data = $this->lib->curl("http://egofiles.com/ajax/register.php", "lang=en", "log=1&loginV={$user}&passV={$pass}");
         $cookie = "lang=en;".$this->lib->GetCookies($data);
 		return $cookie;

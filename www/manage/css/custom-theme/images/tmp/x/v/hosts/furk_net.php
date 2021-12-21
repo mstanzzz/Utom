@@ -9,7 +9,7 @@ class dl_furk_net extends Download {
 		else return array(false, "accinvalid");
     } 
     
-    public function Login($user, $pass){
+    public function login($dbCustom,$user, $pass){
 		$data = $this->lib->curl("https://www.furk.net/api/login/login", "", "login={$user}&pwd={$pass}");
 		$cookie = $this->lib->GetCookies($data);
 		return $cookie;

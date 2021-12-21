@@ -1,91 +1,51 @@
 <?php
+if(strpos($_SERVER['REQUEST_URI'], 'solvitware/' )){ 
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/solvitware';
+}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/designitpro'; 
+}elseif(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
+}else{
+	$real_root = $_SERVER['DOCUMENT_ROOT']; 	
+}
+
 
 	if(!isset($_SESSION['cat_id'])) $_SESSION['cat_id'] = 0;
 	if(!isset($_SESSION['parent_cat_id'])) $_SESSION['parent_cat_id'] = 0;
-
 	$top_cats = array();
-		$db = $dbCustom->getDbConnect(CART_DATABASE);
+	$db = $dbCustom->getDbConnect(CART_DATABASE);
 		
-		$sql = "SELECT cat_id, name, img_id, show_on_home_page 
-				FROM category 
-				WHERE profile_account_id = '".$_SESSION['profile_account_id']."'
-				ORDER BY name";
-		$result = $dbCustom->getResult($db,$sql);				
-		$i = 0;
-		while($row = $result->fetch_object()) {
-	
-	
-			$sql = "SELECT child_cat_to_parent_cat_id 
-					FROM child_cat_to_parent_cat
-					WHERE child_cat_to_parent_cat.child_cat_id = '".$row->cat_id."'";
-		
-			$res = $dbCustom->getResult($db,$sql);
-		
-			if(!$res->num_rows > 0){
-				$top_cats[$i]['cat_id'] = $row->cat_id;
-				$top_cats[$i]['name'] = $row->name;
-				$top_cats[$i]['show_on_home_page'] = $row->show_on_home_page;
-				$sql = "SELECT file_name 
-						FROM image
-						WHERE img_id = '".$row->img_id."'";
-				$img_res = $dbCustom->getResult($db,$sql);
-				if($img_res->num_rows > 0){
-					$img_obj = $img_res->fetch_object();
-					$top_cats[$i]['file_name'] = $img_obj->file_name;
-				}else{
-					$top_cats[$i]['file_name'] = '';					
-				}
+	$sql = "SELECT cat_id, name, img_id, show_on_home_page 
+			FROM category 
+			WHERE profile_account_id = '".$_SESSION['profile_account_id']."'
+			ORDER BY name";
+	$result = $dbCustom->getResult($db,$sql);				
+	$i = 0;
+	while($row = $result->fetch_object()) {
+		$top_cats[$i]['cat_id'] = $row->cat_id;
+		$top_cats[$i]['name'] = $row->name;
+		$top_cats[$i]['show_on_home_page'] = $row->show_on_home_page;
+		$sql = "SELECT file_name 
+				FROM image
+				WHERE img_id = '".$row->img_id."'";
+		$img_res = $dbCustom->getResult($db,$sql);
+		if($img_res->num_rows > 0){
+			$img_obj = $img_res->fetch_object();
+			$top_cats[$i]['file_name'] = $img_obj->file_name;
+		}else{
+			$top_cats[$i]['file_name'] = '';					
+		}
 									
-				$i++;
-			}
-			
-		}
-		
-		if(!isset($_SESSION['temp_cats'])) $_SESSION['temp_cats'] = array();
-		
-		if($_SESSION['parent_cat_id'] > 0){
-			if(!inArray($_SESSION['parent_cat_id'], $_SESSION["temp_cats"], "cat_id")){
-		
-				$db = $dbCustom->getDbConnect(CART_DATABASE);
-				$sql = "SELECT name 
-						FROM category 
-						WHERE cat_id = '".$_SESSION['parent_cat_id']."'";
-				$result = $dbCustom->getResult($db,$sql);				
-				if($result->num_rows > 0){		
-					$object = $result->fetch_object();
-					$indx = sizeof($_SESSION['temp_cats']);
-					$_SESSION['temp_cats'][$indx]['cat_id'] = $_SESSION['parent_cat_id'];	
-					$_SESSION['temp_cats'][$indx]['name'] = $object->name;	
-				
-				}
-			}
-				
-		}
-
-		
-		
-	
+		$i++;
+	}
+	$_SESSION["temp_cats"] = $top_cats; 	
 ?>
 <script type="text/javascript">
-function show_children(cat_id){
-	var wheel = "<li><img src='<?php echo $ste_root; ?>/images/progress.gif' style='width:25px;height:auto;'></li>";
-	$("li#"+cat_id+" > ul.childrenplaceholder").html(wheel);
-	$.ajaxSetup({ cache: false}); 
-	$.ajax({
-		url: '<?php echo $ste_root; ?>/manage/catalog/categories/ajax_get_tree_snippet_child_cats_list.php?cat_id='+cat_id+'&subject_cat_id='+<?php echo $_SESSION['cat_id']; ?>,
-		success: function(data) {
-			$("li#"+cat_id+" > ul.childrenplaceholder").html(data);
-			updateCheckboxes();
-	  }
-	});
-}
 function setCatBox(){
 	var $optarr = $("select.selectedCats");
 	<?php
-	if(is_array($_SESSION["temp_cats"])){	
-		foreach($_SESSION["temp_cats"] as $val){
-		
-			$cat_path_array = getCatPath($val['cat_id']);
+	foreach($_SESSION["temp_cats"] as $val){		
+		$cat_path_array = getCatPath($val['cat_id']);
 			$cat_tooltip = '';
 			$i = 0;
 			$last_index = sizeof($cat_path_array);
@@ -97,8 +57,6 @@ function setCatBox(){
 					$cat_tooltip .= " -> ";
 				}
 			}
-
-	//title='<?php echo $cat_tooltip 
 	?>
 		var option = "<option title='' id='<?php echo $val['cat_id']; ?>' value='<?php echo $val['cat_id']; ?>' ><?php echo $val['name']; ?></option>";
 		var opt = $(option);
@@ -106,7 +64,7 @@ function setCatBox(){
 		opt.attr("selected","selected");
 	
 	<?php	
-	} }
+	}
 	?>
 	$(".selectedCats").trigger("liszt:updated");
 }
@@ -170,11 +128,11 @@ $(document).ready(function(){
 		e.preventDefault();
 		var state = $(this).text();
 		if (state.indexOf("Expand") != -1){
-			var wheel = "<li><img src='<?php echo $ste_root; ?>/images/progress.gif'></li>";
+			var wheel = "<li><img src='<?php echo SITEROOT; ?>images/progress.gif'></li>";
 			$('#categorytree').html(wheel);
 			$.ajaxSetup({ cache: false}); 
 			$.ajax({
-			  url: '<?php echo $ste_root; ?>/manage/catalog/categories/ajax_get_tree_snippet_expanded_cat_list.php?subject_cat_id='+<?php echo $_SESSION['cat_id']; ?>,
+			  url: '<?php echo SITEROOT; ?>manage/catalog/categories/ajax_get_tree_snippet_expanded_cat_list.php?subject_cat_id='+<?php echo $_SESSION['cat_id']; ?>,
 			  success: function(data) {
 					$('#categorytree').html(data);
 					updateCheckboxes();
@@ -193,7 +151,7 @@ $(document).ready(function(){
 
 
 </script>
-<script type="text/javascript" src="<?php echo $ste_root;?>/js/categorytree.js"></script>
+<script type="text/javascript" src="<?php echo SITEROOT;?>/js/categorytree.js"></script>
 
 <label>Search for and Select Categories using the category tree. As select and deselect categories from the tree, the searchbox will display the selected categories.</label>
 <select id="cats" style="width: 90%;" multiple="multiple" class="selectedCats chosen" data-placeholder='Search and Select Categories' name="chosen_categories[]">
@@ -212,7 +170,7 @@ $(document).ready(function(){
 						
 						$block .= "<a tabindex='-1' class='tree-parent tree-parent-collapsed' 
 						onclick='show_children(".$top_cat['cat_id'].")'  data-catid='".$top_cat['cat_id']."' data-cattype='topcat'>
-						<img src='".$ste_root."/saascustuploads/".$_SESSION['profile_account_id']."/cart/tiny/".$top_cat['file_name']."'  /><span  >".$top_cat['name']."</span>";
+						<img src='".SITEROOT."/saascustuploads/".$_SESSION['profile_account_id']."/cart/tiny/".$top_cat['file_name']."'  /><span  >".$top_cat['name']."</span>";
 						
 						$checked = inArray($top_cat['cat_id'], $_SESSION["temp_cats"], "cat_id") ? "checked='checked'" : '';
 						

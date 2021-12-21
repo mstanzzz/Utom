@@ -138,7 +138,7 @@ $(document).ready(function(){
 							$block .= "<tr class='hoverable'>"; 
 							$block .= "<td><a href='#' class='show-children btn btn-tiny'><i class='icon-chevron-right'></i></a>";
 							//category image
-							$block .= "<td valign='middle'><a class='fancybox' href='".$ste_root."/ul_cart/".$domain."/tmp/pre-crop/".$top_cat['file_name']."'><img  src='".$ste_root."/ul_cart/".$domain."/cart/list/".$top_cat['file_name']."'></a></td>";
+							$block .= "<td valign='middle'><a class='fancybox' href='".SITEROOT."/ul_cart/".SITEROOT."/tmp/pre-crop/".$top_cat['file_name']."'><img  src='".SITEROOT."/ul_cart/".SITEROOT."/cart/list/".$top_cat['file_name']."'></a></td>";
 							//category name
 							$block .= "<td valign='middle'>".$top_cat['name']."</td>";
 							//relationship
@@ -212,7 +212,7 @@ $(document).ready(function(){
 									if (sizeof($more_sub_cats) > 0){
 											$block .= "<a href='#' class='show-children btn btn-tiny'><i class='icon-chevron-right'></i></a>&nbsp;";
 									}
-									$block .= "<a class='fancybox' href='".$ste_root."/ul_cart/".$domain."/tmp/pre-crop/".$subcat['file_name']."'><img  src='".$ste_root."/ul_cart/".$domain."/cart/list/".$subcat['file_name']."'></a></td>";	
+									$block .= "<a class='fancybox' href='".SITEROOT."/ul_cart/".SITEROOT."/tmp/pre-crop/".$subcat['file_name']."'><img  src='".SITEROOT."/ul_cart/".SITEROOT."/cart/list/".$subcat['file_name']."'></a></td>";	
 									//subcategory name
 									$block .= "<td width='30%' class='indent'>".$subcat['name']."</td>";	
 									//relationship
@@ -225,7 +225,7 @@ $(document).ready(function(){
 									foreach ($more_sub_cats as $anothersubcat) {
 										$block .= "<tr class='hoverable'>";
 										//subcategory image
-										$block .= "<td width='18%' align='right'><a class='fancybox' href='".$ste_root."/ul_cart/".$domain."/tmp/pre-crop/".$anothersubcat['file_name']."'><img  src='".$ste_root."/ul_cart/".$domain."/cart/list/".$anothersubcat['file_name']."'></a></td>";	
+										$block .= "<td width='18%' align='right'><a class='fancybox' href='".SITEROOT."/ul_cart/".SITEROOT."/tmp/pre-crop/".$anothersubcat['file_name']."'><img  src='".SITEROOT."/ul_cart/".SITEROOT."/cart/list/".$anothersubcat['file_name']."'></a></td>";	
 										//subcategory name
 										$block .= "<td width='26%' class='indent'>".$anothersubcat['name']."</td>";	
 										//relationship

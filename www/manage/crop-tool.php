@@ -1,5 +1,19 @@
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
+if(strpos($_SERVER['REQUEST_URI'], 'solvitware/' )){ 
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/solvitware';
+}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/designitpro'; 
+}elseif(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
+}else{
+	$real_root = $_SERVER['DOCUMENT_ROOT']; 	
+}
+
+require_once($real_root.'/includes/class.dbcustom.php');
+$dbCustom = new DbCustom();
+
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
+
 if(isset($_GET['cart_crop_n'])){
 	//echo "cart_crop_n:  ".$_GET['cart_crop_n'];
 	//exit;
@@ -15,40 +29,18 @@ if($_SESSION['pre_cropped_fn'] == ''){
 	$_SESSION['pre_cropped_fn'] = $fn;	
 }
 
-//echo "pre_cropped_fn ".$_SESSION['pre_cropped_fn'];
-//echo "<br />";
-//echo "<br />";
 
-/*****************************************
-
-TRY THIS http://fengyuanchen.github.io/cropper/
-
-THIS IS BETTER http://dev.vizuina.com/cropper/
--- cannot zoom in or out
--- maybe just force aspect ratio and re-size as needed
--- set min width and min height to 520 for cart images
-
-OR
-http://odyniec.net/projects/imgareaselect/
-
-*****************************************/
 if(!isset($_SESSION['crop_n'])) $_SESSION['crop_n'] = 1;
 if(!isset($_SESSION['new_img_id']))$_SESSION['new_img_id'] = 0;
 if(!isset($_SESSION['img_id']))$_SESSION['img_id'] = 0;
 if(!isset($_SESSION['img_type'])) $_SESSION['img_type'] = 'cart';
-
-
-// TEST
-//$_SESSION['img_type'] = 'hero';
-
-echo $_SESSION['img_type'];
-echo "<br />";
-echo "<br />";
-echo "<br />";
-
 $fromfancybox = (isset($_REQUEST["fromfancybox"])) ? $_REQUEST["fromfancybox"] : 0;
 
-if(strpos($_SESSION['img_type'], 'cart') !== false){
+$op_b = "minWidth: 300, minHeight: 300, maxWidth: 1600, maxHeight: 1600, aspectRatio: '1:1', handles: true,";		
+
+
+if(strpos($_SESSION['img_type'], 'spec_gal') !== false){
+	
 	// do square
 	if($_SESSION['crop_n'] == 1){
 $op_b = "minWidth: 380, minHeight: 380, maxWidth: 1220, maxHeight: 1220, aspectRatio: '1:1', handles: true,"; 	
@@ -62,26 +54,41 @@ $op_b = "minWidth: 477, minHeight: 336, maxWidth: 1220, maxHeight: 946, aspectRa
 $op_b = "minWidth: 600, minHeight: 300, maxWidth: 1600, maxHeight: 800, aspectRatio: '2:1', handles: true,";		
 	}
 
-	//echo $op_b;
-	//echo "<br />";
-
+	
+}elseif(strpos($_SESSION['img_type'], 'cart') !== false  ||  strpos($_SESSION['img_type'], 'gallery') !== false){
+	// do square
+	if($_SESSION['crop_n'] == 1){
+$op_b = "minWidth: 380, minHeight: 380, maxWidth: 1220, maxHeight: 1220, aspectRatio: '1:1', handles: true,"; 	
+	}
+	// do wide		
+	if($_SESSION['crop_n'] == 2){
+$op_b = "minWidth: 477, minHeight: 336, maxWidth: 1220, maxHeight: 946, aspectRatio: '800:620', handles: true,";
+	}
+	// do extra wide	
+	if($_SESSION['crop_n'] > 2){
+$op_b = "minWidth: 600, minHeight: 300, maxWidth: 1600, maxHeight: 800, aspectRatio: '2:1', handles: true,";		
+	}
 }elseif(strpos($_SESSION['ret_page'], 'tool-admin') !== false){
 	$op_b = "minWidth: 280, minHeight: 280, maxWidth: 2000, maxHeight: 2000, aspectRatio: '1:1', handles: true,"; 
 
 }elseif(strpos($_SESSION['img_type'], 'hero') !== false){
 
-	$op_b = "minWidth: 600
+// 1920 X 414
+// .2156
+
+	$op_b = "minWidth: 800
 	, minHeight: 300
-	, maxWidth: 2000
-	, maxHeight: 1200
-	, aspectRatio: '10:4'
+	, maxWidth: 2100
+	, maxHeight: 500
+	, aspectRatio: '1920:414'
 	, handles: true,"; 
 
 }else{
-	$op_b = "minWidth: 480, minHeight: 480, maxWidth: 1020, maxHeight: 1020, aspectRatio: '1:1', handles: true,"; 
+	$op_b = "minWidth: 600, minHeight: 600, maxWidth: 800, maxHeight: 800, aspectRatio: '1:1', handles: true,"; 
 }
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php'); 
+
+require_once($real_root.'/manage/admin-includes/doc_header.php'); 
 
 ?>
 <link href="./js/css/ui-lightness/jquery-ui-1.8.7.custom.css" rel="Stylesheet" type="text/css" />
@@ -113,13 +120,8 @@ body{
 <script>
 
 $(document).ready(function () {
-		
-		//alert("ggg");
-		
     var ias = $('#pre_cropped').imgAreaSelect({
-				 
 		<?php echo 	$op_b; ?>
-		
 		onSelectEnd: function (img, selection) {
 			
 			$('input[name="x1"]').val(selection.x1);
@@ -127,16 +129,8 @@ $(document).ready(function () {
             $('input[name="x2"]').val(selection.x2);
             $('input[name="y2"]').val(selection.y2);            
         }
-		
     });
-	
-	
-	
 });
-
-function testt(){
-	alert("testttt");
-}
 
 function validate(){
 
@@ -163,37 +157,7 @@ function validate(){
 
 </head>
 <body>
-<!--
-<div style="height:22px; background-color:#F0F6F9; padding-top:6px;">
-<h3>You must crop the image before it can be saved.</h3>
-</div>
--->
 <?php
-
-
-
-/*
-if(!isset($_SESSION['ret_path'])) $_SESSION['ret_path'] = 'catalog/categories';
-if($_SESSION['ret_path'] == '') $_SESSION['ret_path'] = 'catalog/categories';
-if(!isset($_SESSION['ret_page'])) $_SESSION['ret_path'] = 'top-category.php';
-if($_SESSION['ret_page'] == '') $_SESSION['ret_path'] = 'top-category.php';
-echo "<br />";
-echo "_SESSION['img_type ".$_SESSION['img_type'];
-echo "<br />";
-echo "_SESSION['ret_page ".$_SESSION['ret_page'];
-echo "<br />";
-echo "_SESSION['ret_path ".$_SESSION['ret_path'];
-echo "<br />";
-echo "_SESSION['ret_dir ".$_SESSION['ret_dir'];
-echo "<br />";
-echo "_SESSION['crop_n ".$_SESSION['crop_n'];
-echo "<br />";
-echo "<br />";
-echo "<br />";
-*/
-					          
-//$ret_dest = $site_root."manage/".$_SESSION['ret_dir'].'/'.$_SESSION['ret_page'].'.php?is_new_img=1&cat_id='.$_SESSION['cat_id'].'&img_type'.$_SESSION['img_type'];
-
 if($_SESSION['ret_path'] != ""){
 $ret_dest = $_SESSION['ret_path'].'/'.$_SESSION['ret_page'].'.php?is_new_img=1&cat_id='.$_SESSION['cat_id'].'&img_type'.$_SESSION['img_type'];
 }else{
@@ -205,7 +169,9 @@ if(strpos($_SESSION['ret_path'], 'cms') !== false){
 }else{
 	$f_path = "../saascustuploads/".$_SESSION['profile_account_id']."/cart/full/";
 }
-
+?>
+<div style="font-size: 25px;"> 
+<?php
 if($_SESSION['crop_n'] == 1){
 	echo "Doing Square Crop";
 }
@@ -215,16 +181,10 @@ if($_SESSION['crop_n'] == 2){
 if($_SESSION['crop_n'] > 2){
 	echo "Doing Extra Wide Crop";
 }
-
-
 ?>
+</div>
 
-<div style="margin-top:8px;">
-
-<a style="margin-right:30px;" class="btn btn-info"  
-href="<?php echo $ret_dest; ?>"> Cancel </a>
-
-Use the handles in the corners and the sides to enlarge the crop area. Drag the box to the area you want in the final image.
+<div style="margin-top:-2px; font-size:0.8em;"> 
 <!--
 onsubmit="return validate();"
 -->
@@ -241,17 +201,10 @@ onsubmit="return validate();"
   <input type="submit" name="submit" class="btn btn-primary" value=">>>>> Submit <<<<<" />
 
 </form>
+
 </div>
 
-
-<div style="background:#FFF; margin-top:6px;">
-
 <?php
-
-
-//echo "<br />";
-//echo $f_path.$_SESSION['pre_cropped_fn'];
-//echo "<br />";
 echo " 
 <div class='original'>
 <img id='pre_cropped' src='".$f_path.$_SESSION['pre_cropped_fn']."' />
@@ -260,37 +213,19 @@ echo "
 
 if(isset($_SESSION['ret_path'])){
 	if($_SESSION['ret_path'] != ''){
-		$ret_dest = $ste_root."manage/".$_SESSION['ret_path'].'/'.$_SESSION['ret_page'].'.php?is_new_img=1&cat_id='.$_SESSION['cat_id'].'&img_type'.$_SESSION['img_type'];
-		$ret_dest = preg_replace('/(\/+)/','/',$ret_dest);
-
 	
+		$ret_dest = SITEROOT."manage/".$_SESSION['ret_path'].'/'.$_SESSION['ret_page'].'.php?is_new_img=1&cat_id='.$_SESSION['cat_id'].'&img_type'.$_SESSION['img_type'];
+		
 	}
 }
-
-/*
-echo "<br />";
-echo "ret_dir  ".$_SESSION["ret_dir"];
-echo "<br />";
-echo "ret_page  ".$_SESSION["ret_page"];
-echo "<br />";
-echo "img_type  ".$_SESSION["img_type"];
-echo "<br />";
-echo "<br />";
-
-*/
-
-
-echo "<br />";
-echo "<br />";
-echo "ret_dest:  ".$ret_dest;
-echo "<br />";
-echo "<br />";
-
 ?>
+<span style="color:blue;">
+Use the handles in the corners and the sides to enlarge the crop area. Drag the box to the area you want in the final image.
+</span>
+
 <a class="btn btn-info"  href="<?php echo $ret_dest; ?>"> Cancel </a>
-           
-           
- </div>
+
+
 </body>
 </html>
 

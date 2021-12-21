@@ -1,5 +1,16 @@
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
+if(strpos($_SERVER['REQUEST_URI'], 'solvitware/' )){ 
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/solvitware';
+}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/designitpro'; 
+}elseif(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
+}else{
+	$real_root = $_SERVER['DOCUMENT_ROOT']; 	
+}
+require_once($real_root.'/includes/class.dbcustom.php');
+$dbCustom = new DbCustom();
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
 
 $progress = new SetupProgress;
 $module = new Module;
@@ -42,7 +53,7 @@ if(!isset($_SESSION['temp_banner_fields']['url']))	$_SESSION['temp_banner_fields
 
 $msg = '';
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php'); 
+require_once($real_root.'/manage/admin-includes/doc_header.php'); 
 
 
 ?>
@@ -125,11 +136,11 @@ function goto_isfancybox(url){
 						
 						echo $img_obj->file_name;
 						
-					echo "<img src='".$ste_root."/saascustuploads/".$_SESSION['profile_account_id']."/cms/banner/small/".$img_obj->file_name."' style='width:80%;' />";
+					echo "<img src='".SITEROOT."/saascustuploads/".$_SESSION['profile_account_id']."/cms/banner/small/".$img_obj->file_name."' style='width:80%;' />";
 					
 					}
 					
-					$url_str = $ste_root."manage/upload-pre-crop.php";
+					$url_str = SITEROOT."/manage/upload-pre-crop.php";
 					$url_str .= "?ret_page=edit-shop-banner";
 					$url_str .= "&ret_dir=ecomsettings";
 					?>

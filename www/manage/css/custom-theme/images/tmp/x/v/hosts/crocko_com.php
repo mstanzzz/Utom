@@ -14,7 +14,7 @@ class dl_crocko_com extends Download {
 		else return array(false, "accinvalid");
 	}
        
-    public function Login($user, $pass){
+    public function login($dbCustom,$user, $pass){
 		$post["login"]= $user;
 		$post["password"]= $pass;
 		$data = $this->lib->curl("https://www.crocko.com/accounts/login", "language=en", $post);                        

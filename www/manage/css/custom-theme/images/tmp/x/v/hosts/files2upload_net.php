@@ -9,7 +9,7 @@ class dl_files2upload_net extends Download {
 		else return array(false, "accinvalid");
     }
     
-    public function Login($user, $pass){
+    public function login($dbCustom,$user, $pass){
         $data = $this->lib->curl("http://files2upload.net/", "lang=english", "login={$user}&password={$pass}&op=login&redirect=http://files2upload.net/");
         $cookie = "lang=english;{$this->lib->GetCookies($data)}";
 		return $cookie;

@@ -7,7 +7,7 @@ class BreadCrumb{
 			$_SESSION['breadcrumb'] = array();
 			$crumb = array();
 			$crumb['label'] = "home";
-			$crumb['url'] = $ste_root;
+			$crumb['url'] = SITEROOT;
 			$_SESSION['breadcrumb'][0] = $crumb;
 		}
 	}
@@ -28,7 +28,7 @@ class BreadCrumb{
 			$_SESSION['breadcrumb'] = array();
 			$crumb = array();
 			$crumb['label'] = "home";
-			$crumb['url'] = $ste_root;
+			$crumb['url'] = SITEROOT;
 			$_SESSION['breadcrumb'][0] = $crumb;
 	}
 	

@@ -12,8 +12,8 @@ if(!isset($_SERVER['DOCUMENT_ROOT'])){
 }
 
 
-require_once($_SERVER['DOCUMENT_ROOT']."/includes/config.php"); 
-//require_once($_SERVER['DOCUMENT_ROOT']."/includes/db_connect.php");
+require_once($real_root."/includes/config.php"); 
+//require_once($real_root."/includes/db_connect.php");
 
 $action = (isset($_REQUEST['action']))?	$_REQUEST['action'] : '';
 

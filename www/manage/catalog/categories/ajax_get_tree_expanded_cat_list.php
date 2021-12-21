@@ -1,6 +1,18 @@
 <?php
+if(strpos($_SERVER['REQUEST_URI'], 'solvitware/' )){ 
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/solvitware';
+}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/designitpro'; 
+}elseif(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
+}else{
+	$real_root = $_SERVER['DOCUMENT_ROOT']; 	
+}
+require_once($real_root.'/includes/class.dbcustom.php');
+$dbCustom = new DbCustom();
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
+
 
 
 $db = $dbCustom->getDbConnect(CART_DATABASE);			
@@ -47,16 +59,16 @@ foreach ($top_cats as $top_cat) {
 								
 	$block .= "<li role='treeitem' aria-expanded='true' id='".$top_cat['cat_id']."'>"; 
 	$block .= "<a tabindex='-1' class='tree-parent' 
-	data-imageurl='".$ste_root."/saascustuploads/".$_SESSION['profile_account_id']."/cart/tiny/".$top_cat['file_name']."' 
+	data-imageurl='".SITEROOT."/saascustuploads/".$_SESSION['profile_account_id']."/cart/tiny/".$top_cat['file_name']."' 
 	data-catid='".$top_cat['cat_id']."' data-cattype='topcat'>".stripslashes($top_cat['name'])."</a>";
-	$block .= "<ul role='group' class='childrenplaceholder'>".getChildren($top_cat['cat_id'], $domain, $max_depth, $dbCustom)."</ul></li>"; 
+	$block .= "<ul role='group' class='childrenplaceholder'>".getChildren($top_cat['cat_id'], SITEROOT, $max_depth, $dbCustom)."</ul></li>"; 
 }
 echo $block;
 
 //echo $cat_id;
 
 
-function getChildren($cat_id, $domain, $max_depth, $dbCustom){
+function getChildren($cat_id, SITEROOT, $max_depth, $dbCustom){
 
 	//$dbCustom = new DbCustom();
 	$db = $dbCustom->getDbConnect(CART_DATABASE);
@@ -89,10 +101,10 @@ function getChildren($cat_id, $domain, $max_depth, $dbCustom){
 			$block .= "<li role='treeitem' aria-expanded='true' id='".$row->cat_id."'>";
 			
 			$block .= "<a href='#' tabindex='-1' class='tree-parent' onclick='show_children(".$row->cat_id.")' 
-			data-imageurl='".$ste_root."/saascustuploads/".$_SESSION['profile_account_id']."/cart/small/".$file_name."' 
+			data-imageurl='".SITEROOT."/saascustuploads/".$_SESSION['profile_account_id']."/cart/small/".$file_name."' 
 			data-catid=".$row->cat_id."'>".stripslashes($row->name)."</a>";	
 			//subcategory name
-			$block .= "<ul role='group' class='childrenplaceholder'>".getChildren($row->cat_id, $domain, $max_depth, $dbCustom)."</ul></li>";	
+			$block .= "<ul role='group' class='childrenplaceholder'>".getChildren($row->cat_id, SITEROOT, $max_depth, $dbCustom)."</ul></li>";	
 		}
 	}
 	

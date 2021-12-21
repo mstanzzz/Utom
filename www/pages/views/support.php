@@ -1,7 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>ClosetsToGo</title>
+	<meta name="description" content="support"><link href="./app.css" rel="stylesheet"></head>
+	<body>
 
 
 <?php	
-require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php"); 	
+require_once($real_root."/includes/header.php"); 	
 ?>
 
 <section class="home-mobile-buttons-block covid-block">
@@ -89,7 +98,7 @@ require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php");
 							<div class="col-12 col-lg-3">
 								<figure class="four-elements-block__wrapper">
 									<div class="four-elements-block__wrapper--image js-open-custom-modal" data-employee-ID="1" data-custom-modal-id="#custom-fixed-modal">
-										<img src="../../images/team-1.png" alt="" class="four-elements-block__wrapper--img img-fluid">
+										<img src="<?php echo SITEROOT; ?>images/team-1.png" alt="" class="four-elements-block__wrapper--img img-fluid">
 										<button class="four-elements-block__wrapper--image-button js-open-custom-modal" data-employee-ID="1" data-custom-modal-id="#custom-fixed-modal">View more</button>
 									</div>
 									<figcaption>
@@ -115,7 +124,7 @@ require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php");
 							<div class="col-12 col-lg-3">
 								<figure class="four-elements-block__wrapper">
 									<div class="four-elements-block__wrapper--image js-open-custom-modal" data-employee-ID="2" data-custom-modal-id="#custom-fixed-modal">
-										<img src="../../images/team-2.png" alt="" class="four-elements-block__wrapper--img img-fluid">
+										<img src="<?php echo SITEROOT; ?>images/team-2.png" alt="" class="four-elements-block__wrapper--img img-fluid">
 										<button class="four-elements-block__wrapper--image-button js-open-custom-modal" data-employee-ID="2" data-custom-modal-id="#custom-fixed-modal">View more</button>
 									</div>
 									<figcaption>
@@ -141,7 +150,7 @@ require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php");
 							<div class="col-12 col-lg-3">
 								<figure class="four-elements-block__wrapper">
 									<div class="four-elements-block__wrapper--image js-open-custom-modal" data-employee-ID="3" data-custom-modal-id="#custom-fixed-modal">
-										<img src="../../images/team-3.png" alt="" class="four-elements-block__wrapper--img img-fluid">
+										<img src="<?php echo SITEROOT; ?>images/team-3.png" alt="" class="four-elements-block__wrapper--img img-fluid">
 										<button class="four-elements-block__wrapper--image-button js-open-custom-modal" data-employee-ID="3" data-custom-modal-id="#custom-fixed-modal">View more</button>
 									</div>
 									
@@ -168,7 +177,7 @@ require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php");
 							<div class="col-12 col-lg-3">
 								<figure class="four-elements-block__wrapper">
 									<div class="four-elements-block__wrapper--image js-open-custom-modal" data-employee-ID="4" data-custom-modal-id="#custom-fixed-modal">
-										<img src="../../images/team-4.png" alt="" class="four-elements-block__wrapper--img img-fluid">
+										<img src="<?php echo SITEROOT; ?>images/team-4.png" alt="" class="four-elements-block__wrapper--img img-fluid">
 										<button class="four-elements-block__wrapper--image-button js-open-custom-modal" data-employee-ID="4" data-custom-modal-id="#custom-fixed-modal">View more</button>
 									</div>
 									<figcaption>
@@ -194,7 +203,7 @@ require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php");
 							<div class="col-12 col-lg-3">
 								<figure class="four-elements-block__wrapper">
 									<div class="four-elements-block__wrapper--image js-open-custom-modal" data-employee-ID="5" data-custom-modal-id="#custom-fixed-modal">
-										<img src="../../images/team-5.png" alt="" class="four-elements-block__wrapper--img img-fluid">
+										<img src="<?php echo SITEROOT; ?>images/team-5.png" alt="" class="four-elements-block__wrapper--img img-fluid">
 										<button class="four-elements-block__wrapper--image-button js-open-custom-modal" data-employee-ID="5" data-custom-modal-id="#custom-fixed-modal">View more</button>
 									</div>
 									<figcaption>
@@ -220,7 +229,7 @@ require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php");
 							<div class="col-12 col-lg-3">
 								<figure class="four-elements-block__wrapper">
 									<div class="four-elements-block__wrapper--image js-open-custom-modal" data-employee-ID="6" data-custom-modal-id="#custom-fixed-modal">
-										<img src="../../images/team-6.png" alt="" class="four-elements-block__wrapper--img img-fluid">
+										<img src="<?php echo SITEROOT; ?>images/team-6.png" alt="" class="four-elements-block__wrapper--img img-fluid">
 										<button class="four-elements-block__wrapper--image-button js-open-custom-modal" data-employee-ID="6" data-custom-modal-id="#custom-fixed-modal">View more</button>
 									</div>
 									<figcaption>
@@ -246,7 +255,7 @@ require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php");
 							<div class="col-12 col-lg-3">
 								<figure class="four-elements-block__wrapper">
 									<div class="four-elements-block__wrapper--image js-open-custom-modal" data-employee-ID="7" data-custom-modal-id="#custom-fixed-modal">
-										<img src="../../images/team-7.png" alt="" class="four-elements-block__wrapper--img img-fluid">
+										<img src="<?php echo SITEROOT; ?>images/team-7.png" alt="" class="four-elements-block__wrapper--img img-fluid">
 										<button class="four-elements-block__wrapper--image-button js-open-custom-modal" data-employee-ID="7" data-custom-modal-id="#custom-fixed-modal">View more</button>
 									</div>
 									<figcaption>
@@ -272,7 +281,7 @@ require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php");
 							<div class="col-12 col-lg-3">
 								<figure class="four-elements-block__wrapper">
 									<div class="four-elements-block__wrapper--image js-open-custom-modal" data-employee-ID="8" data-custom-modal-id="#custom-fixed-modal">
-										<img src="../../images/team-8.png" alt="" class="four-elements-block__wrapper--img img-fluid">
+										<img src="<?php echo SITEROOT; ?>images/team-8.png" alt="" class="four-elements-block__wrapper--img img-fluid">
 										<button class="four-elements-block__wrapper--image-button js-open-custom-modal" data-employee-ID="8" data-custom-modal-id="#custom-fixed-modal">View more</button>
 									</div>
 									<figcaption>
@@ -366,7 +375,7 @@ require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php");
 							<div class="col-12 col-sm-6 col-xl-3">
 								<div class="four-elements-block__wrapper">
 									<div class="four-elements-block__wrapper--bordered">
-										<img src="../../images/delivery-truck-grey.svg" alt="" class="four-elements-block__wrapper--icon">
+										<img src="<?php echo SITEROOT; ?>images/delivery-truck-grey.svg" alt="" class="four-elements-block__wrapper--icon">
 										<p class="four-elements-block__wrapper--bold-text">Shipping to USA &amp; Canada</p>
 										<p class="four-elements-block__wrapper--underline-text">
 											We ship direct to the lower 48 states and Canada. We can also ship to Alaska &amp; Hawaii. 
@@ -378,7 +387,7 @@ require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php");
 							<div class="col-12 col-sm-6 col-xl-3">
 								<div class="four-elements-block__wrapper">
 									<div class="four-elements-block__wrapper--bordered">
-										<img src="../../images/phone-call.svg" alt="" class="four-elements-block__wrapper--icon">
+										<img src="<?php echo SITEROOT; ?>images/phone-call.svg" alt="" class="four-elements-block__wrapper--icon">
 										<p class="four-elements-block__wrapper--bold-text">Call us at 1-888-312-7424</p>
 										<p class="four-elements-block__wrapper--underline-text">
 											<a href="tel:503-639-7068" class="text-link" title="">Fax: 503-639-7068</a><br>
@@ -392,7 +401,7 @@ require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php");
 							<div class="col-12 col-sm-6 col-xl-3">
 								<div class="four-elements-block__wrapper">
 									<address class="four-elements-block__wrapper--bordered">
-										<img src="../../images/address.svg" alt="" class="four-elements-block__wrapper--icon">
+										<img src="<?php echo SITEROOT; ?>images/address.svg" alt="" class="four-elements-block__wrapper--icon">
 										<p class="four-elements-block__wrapper--bold-text">Company Headquarters</p>
 										<p class="four-elements-block__wrapper--underline-text">
 											<a href="#" class="text-link" title="">
@@ -407,12 +416,12 @@ require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php");
 							<div class="col-12 col-sm-6 col-xl-3">
 								<div class="four-elements-block__wrapper">
 									<div class="four-elements-block__wrapper--bordered">
-										<img src="../../images/credit-card.svg" alt="" class="four-elements-block__wrapper--icon">
+										<img src="<?php echo SITEROOT; ?>images/credit-card.svg" alt="" class="four-elements-block__wrapper--icon">
 										<p class="four-elements-block__wrapper--bold-text">We Proudly Accept:</p>
 										<div class="four-elements-block__wrapper--cards">
-											<img src="../../images/aes.svg" alt="">
-											<img src="../../images/master.svg" alt="">
-											<img src="../../images/visa.svg" alt="">
+											<img src="<?php echo SITEROOT; ?>images/aes.svg" alt="">
+											<img src="<?php echo SITEROOT; ?>images/master.svg" alt="">
+											<img src="<?php echo SITEROOT; ?>images/visa.svg" alt="">
 										</div>
 									</div>
 								</div>
@@ -427,7 +436,7 @@ require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php");
 					<div class="container-fluid">
 						<div class="row">
 							<div class="col-12 col-lg-9">
-								<img src="../../images/map.png" alt="" class="map-contact-block__image">
+								<img src="<?php echo SITEROOT; ?>images/map.png" alt="" class="map-contact-block__image">
 							</div>
 							<div class="col-12 col-lg-3">
 								<div class="map-contact-block__wrapper">
@@ -477,7 +486,7 @@ require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php");
 
 <div class="scrollToTopBlock">
 <div class="people-working">
-<img src="../../images/people-working-call-center_@2x.png" alt="" class="people-working__image">
+<img src="<?php echo SITEROOT; ?>images/people-working-call-center_@2x.png" alt="" class="people-working__image">
 <div class="people-working__wrapper">
 <div class="people-working__content">
 <p class="people-working__text">Hi! I'm the Virtual assistant, and I'm here to help you.</p>
@@ -485,7 +494,7 @@ require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php");
 </div>
 </div>
 <a href="#" title="" class="scrollToTop js-to-top">
-<img src="../../images/arrows.svg" alt="">
+<img src="<?php echo SITEROOT; ?>images/arrows.svg" alt="">
 </a>
 </div>
 
@@ -493,17 +502,15 @@ require_once($_SERVER['DOCUMENT_ROOT']."/includes/header.php");
 		<div class="mobile-show">
 			<div class="mobile-footer-buttons">
 				<a href="#" title="" class="mobile-footer-buttons__first">you design</a>
-				<a href="#" title="" class="mobile-footer-buttons__second"><img src="../../images/icon-save.svg" alt="" class="img-fluid"></a>
+				<a href="#" title="" class="mobile-footer-buttons__second"><img src="<?php echo SITEROOT; ?>images/icon-save.svg" alt="" class="img-fluid"></a>
 				<a href="#" title="" class="mobile-footer-buttons__third">we design</a>
 			</div>
 		</div>
 
 
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'].'/includes/footer.php');
+require_once($real_root.'/includes/footer.php');
 ?>
-
-
 		<!-- Modal mobile теам block -->
 		<div class="modal about-us-modal fade" id="mobile-team-gallery" tabindex="-1" role="dialog" aria-labelledby="mobile-team-gallery-title" aria-hidden="true">
 			<div class="modal-dialog" role="document">
@@ -531,7 +538,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/includes/footer.php');
 				</div>
 
 				<div class="custom-fixed-modal__employee">
-					<img src="../../images/team-1.png" alt="" class="mb-3 img-fluid">
+					<img src="<?php echo SITEROOT; ?>images/team-1.png" alt="" class="mb-3 img-fluid">
 					<a href="mailto:" title="" class="text-center">
 						<p class="four-elements-block__wrapper--name">Angela pern senera</p>
 						<p class="four-elements-block__wrapper--position">Closet Installation director</p>
@@ -552,4 +559,5 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/includes/footer.php');
 				</div>
 			</div>
 		</div>
-	
+	<script src="./app.js"></script></body>
+</html>

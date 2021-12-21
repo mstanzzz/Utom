@@ -9,7 +9,7 @@ class dl_sendspace_com extends Download {
 		else return array(false, "accinvalid");
     }
 	
-    public function Login($user, $pass){
+    public function login($dbCustom,$user, $pass){
         $data = $this->lib->curl("http://www.sendspace.com/login.html", "", "remember=on&action=login&submit=login&username={$user}&password={$pass}");
         $cookie = $this->lib->GetCookies($data);
 		return $cookie;

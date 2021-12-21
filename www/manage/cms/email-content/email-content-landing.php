@@ -9,7 +9,7 @@
 		$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT']; 	
 	}
 }
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
 
 $msg = '';
 
@@ -72,7 +72,7 @@ if(isset($_POST['edit_in_home_consult_email'])){
 
 
 	
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
 	
 $progress = new SetupProgress;
 $module = new Module;
@@ -84,21 +84,21 @@ $page_group = "email content";
 	
 $db = $dbCustom->getDbConnect(SITE_N_DATABASE);
 		
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php'); 
+require_once($real_root.'/manage/admin-includes/doc_header.php'); 
 ?>
 
 </head>
 <body>
 <?php 
 	//the header and top navigation portion of the template
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-header.php');
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-top-nav.php');
+	require_once($real_root.'/manage/admin-includes/manage-header.php');
+	require_once($real_root.'/manage/admin-includes/manage-top-nav.php');
 ?>
 <div class="manage_page_container">
 		<div class="manage_side_nav">
 		<?php 
 		//the side navigation portion of the template
-        require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-side-nav.php');
+        require_once($real_root.'/manage/admin-includes/manage-side-nav.php');
         ?>
 		</div>
 		<div class="manage_main"> 
@@ -108,7 +108,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php');
 			
 			<h1>Email Content</h1>
 			<?php
-			require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/class.admin_bread_crumb.php");	
+			require_once($real_root."/manage/admin-includes/class.admin_bread_crumb.php");	
 			$bread_crumb = new AdminBreadCrumb;
 			$bread_crumb->reSet();
 			$bread_crumb->add("Email Content", '');
@@ -116,9 +116,9 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php');
          	?>			
 			<div class="subnav_buttons">
 				<ul>
-					<li><a class="landingbtn designtools" href="<?php echo $ste_root;?>/manage/cms/email-content/design-request-email.php"><span>Design Request Email</span></a></li>
+					<li><a class="landingbtn designtools" href="<?php echo SITEROOT;?>/manage/cms/email-content/design-request-email.php"><span>Design Request Email</span></a></li>
                     
-                    <li><a class="landingbtn designtools" href="<?php echo $ste_root;?>/manage/cms/email-content/in-home-consult-email.php"><span>In Home Consult Email</span></a></li>
+                    <li><a class="landingbtn designtools" href="<?php echo SITEROOT;?>/manage/cms/email-content/in-home-consult-email.php"><span>In Home Consult Email</span></a></li>
                     
 				</ul>
 			</div>
@@ -127,7 +127,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php');
 		<p class="clear"></p>
 	<?php 
 	//the footer portion of the template
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-footer.php');
+	require_once($real_root.'/manage/admin-includes/manage-footer.php');
 ?>
 </div>
 </body>

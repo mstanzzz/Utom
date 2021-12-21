@@ -1,6 +1,19 @@
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
-require_once($_SERVER['DOCUMENT_ROOT'].'/includes/class.customer_login.php');
+if(strpos($_SERVER['REQUEST_URI'], 'solvitware/' )){ 
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/solvitware';
+}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/designitpro'; 
+}elseif(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
+}else{
+	$real_root = $_SERVER['DOCUMENT_ROOT']; 	
+}
+require_once($real_root.'/includes/class.dbcustom.php');
+$dbCustom = new DbCustom();
+
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
+
+require_once($real_root.'/includes/class.customer_login.php');
 
 if(!isset($lgn)){
 	$lgn = new CustomerLogin;
@@ -369,7 +382,7 @@ if(isset($_POST['del_cust_id'])){
 
 //$objPHPExcel = new PHPExcel(); 
 unset($_SESSION['paging']);
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php'); 
+require_once($real_root.'/manage/admin-includes/doc_header.php'); 
 ?>
 <script>
 $(document).ready(function() {
@@ -419,7 +432,7 @@ tinyMCE.init({
 <div class="manage_page_container">
 	<div class="manage_side_nav">
 		<?php 
-        require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-side-nav.php');
+        require_once($real_root.'/manage/admin-includes/manage-side-nav.php');
         ?>
 	</div>
 	<div class="manage_main">
@@ -593,7 +606,7 @@ echo getPagination($total_rows, $rows_per_page, $pagenum, $truncate, $last, "../
 
 		?>
    		<div class="data_table">
-                <?php require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/tablesort.php"); ?>
+                <?php require_once($real_root."/manage/admin-includes/tablesort.php"); ?>
 				<table cellpadding="10" cellspacing="0">
 					<thead>
 						<tr>
@@ -656,15 +669,15 @@ echo getPagination($total_rows, $rows_per_page, $pagenum, $truncate, $last, "../
 						<i class='icon-cog icon-white'></i> Edit</a></td>"; 
 
 						if($module->hasShoppingCartModule($_SESSION['profile_account_id'])){					
-							if(getProfileType() == 'master'){
+							if(getProfileType($dbCustom) == 'master'){
 								$url_dir = 'master';
-							}elseif(getProfileType() == 'parent'){
+							}elseif(getProfileType($dbCustom) == 'parent'){
 								$url_dir = 'sas-parent';
 							}else{
 								$url_dir = 'sas-non-parent';
 							}
 							$block .= "<td><a class='btn btn-primary btn-small' 
-							href='".SITEROOT."/manage/order-management/".$url_dir."/order-list.php?order_customer_id=".$row->id."&ret_page=customer-list&s_profile_account_id=".$s_profile_account_id."'>
+							href='".SITEROOT."//manage/order-management/".$url_dir."/order-list.php?order_customer_id=".$row->id."&ret_page=customer-list&s_profile_account_id=".$s_profile_account_id."'>
 							<i class='icon-shopping-cart icon-white'></i> Orders</a></td>";
 						}
 						
@@ -716,7 +729,7 @@ echo getPagination($total_rows, $rows_per_page, $pagenum, $truncate, $last, "../
     
 	<p class="clear"></p>
 	<?php 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/includes/manage-footer.php');
+require_once($real_root.'/manage/includes/manage-footer.php');
 ?>
 </div>
 <div style="display:none">

@@ -1,5 +1,17 @@
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
+if(strpos($_SERVER['REQUEST_URI'], 'solvitware/' )){ 
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/solvitware';
+}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/designitpro'; 
+}elseif(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
+}else{
+	$real_root = $_SERVER['DOCUMENT_ROOT']; 	
+}
+require_once($real_root.'/includes/class.dbcustom.php');
+$dbCustom = new DbCustom();
+
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
 
 $progress = new SetupProgress;
 $module = new Module;
@@ -9,7 +21,7 @@ $page_group = "design-email";
 $msg = '';
 
 	
-$db = $dbCustom->getDbConnect(SITE_N_DATABASE);
+$db = $dbCustom->getDbConnect(SITE_DATABASE);
 
 if(isset($_POST["edit_email_content"])){
 
@@ -60,7 +72,7 @@ if(isset($_POST["del_design_email"])){
 
 unset($_SESSION['paging']);
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php'); 
+require_once($real_root.'/manage/admin-includes/doc_header.php'); 
 ?>
 <script>
 $(document).ready(function() {
@@ -73,28 +85,32 @@ $(document).ready(function() {
 </head>
 <body>
 <?php
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-header.php');
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-top-nav.php');
+	require_once($real_root.'/manage/admin-includes/manage-header.php');
+	require_once($real_root.'/manage/admin-includes/manage-top-nav.php');
 ?>
 <div class="manage_page_container">
 	<div class="manage_side_nav">
 		<?php 
-        require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-side-nav.php');
+        require_once($real_root.'/manage/admin-includes/manage-side-nav.php');
         ?>
 	</div>
 	<div class="manage_main">
+	
+	<a class="btn btn-primary btn-large" href="design-email-sel.php"> Select to Export </a>
+	
 		<?php 
-		$ret_page = (isset($_GET['ret_page'])) ? $_GET['ret_page'] : '';
-		require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/class.admin_bread_crumb.php");	
+	
+	
+	$ret_page = (isset($_GET['ret_page'])) ? $_GET['ret_page'] : '';
+		require_once($real_root."/manage/admin-includes/class.admin_bread_crumb.php");	
 		$bread_crumb = new AdminBreadCrumb;
 		$bread_crumb->reSet();
 		if($ret_page == "design-tool-landing"){	
-			$bread_crumb->add("Design Area", $ste_root."manage/design-tool-landing.php");
+			$bread_crumb->add("Design Area", SITEROOT."/manage/design-tool-landing.php");
 		}		
 		$bread_crumb->add("Design Request Email", '');
 		echo $bread_crumb->output();
 		
-        require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-content-top.php');
         
 		$sortby = (isset($_GET['sortby'])) ? $_GET['sortby'] : '';
 		$a_d = (isset($_GET['a_d'])) ? $_GET['a_d'] : 'a';
@@ -115,11 +131,7 @@ $(document).ready(function() {
 			$date_to = ''; 
 		}
 		
-		//$db = $dbCustom->getDbConnect(SITE_N_DATABASE);
-		//$sql = "DELETE FROM design_email WHERE name = 'Jeremiah Henning'";
-		//$res = $dbCustom->getResult($db,$sql);
-		
-		$db = $dbCustom->getDbConnect(SITE_N_DATABASE);
+		$db = $dbCustom->getDbConnect(SITE_DATABASE);
 		$sql = "SELECT * FROM design_email WHERE profile_account_id = '".$_SESSION['profile_account_id']."'";
 		
 		if($search_str != ''){
@@ -245,12 +257,12 @@ $(document).ready(function() {
 			<div class="data_table">
 				<?php 
 				if($total_rows > $rows_per_page){
-echo getPagination($total_rows, $rows_per_page, $pagenum, $truncate, $last, "design-email.php", $sortby, $a_d, 0, 0,  $search_str);
+echo getPagination($total_rows, $rows_per_page, $pagenum, $truncate, $last, "../manage/design/design-email.php", $sortby, $a_d, 0, 0,  $search_str);
 					echo "<br /><br /><br /><br />";
 				}
 				?>	
             
-                <?php require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/tablesort.php"); ?>
+                <?php require_once($real_root."/manage/admin-includes/tablesort.php"); ?>
 				<table cellpadding="10" cellspacing="0">
 					<thead>
 						<tr>
@@ -258,7 +270,7 @@ echo getPagination($total_rows, $rows_per_page, $pagenum, $truncate, $last, "des
                             Name
                             <i <?php addSortAttr('name',false); ?>></i>
                             </th>
-
+							<th>Location</th>
           					<th <?php addSortAttr('email',true); ?>>
                             Email Address
                             <i <?php addSortAttr('email',false); ?>></i>
@@ -278,29 +290,28 @@ echo getPagination($total_rows, $rows_per_page, $pagenum, $truncate, $last, "des
 					</thead>
 					<?php
 					
-					require_once($_SERVER['DOCUMENT_ROOT']."/includes/class.customer_login.php");
+					require_once($real_root."/includes/class.customer_login.php");
 					$lgn = new CustomerLogin();
 					
 					$block = ''; 
-					while($row = $result->fetch_object()) {
+					while($row = $result->fetch_object()){
 						
-						
-						//REMOVE after going live for a few days
-						if($row->user_id == 0){
-							$customer_id = $lgn->getUserIdByEmail($row->email);
-							if($customer_id > 0){
-								$db = $dbCustom->getDbConnect(SITE_N_DATABASE);
-								$sql = "UPDATE design_email
-										SET user_id = '".$customer_id."'
-										WHERE design_email_id = '".$row->design_email_id."'";	
-								$re = $dbCustom->getResult($db,$sql);
-							}
+						/*
+						$acs_obj = getCityStateFromZip($row->zip);
+						$ret_city = ucwords(strtolower($acs_obj['city']));
+						$ret_state = $acs_obj['state'];
+						if($ret_city != ''){
+							$sql = "UPDATE design_email
+									SET city = '".$ret_city."', state = '".$ret_state."'
+									WHERE design_email_id = '".$row->design_email_id."'";	
+							$r = $dbCustom->getResult($db,$sql);
 						}
+						*/
 
 						$block .= "<tr>"; 
 						// strip all slashes
 						$block .= "<td valign='top'>".stripSlashes($row->name)."</td>";			
-						//$block .= "<td valign='top'>".stripslashes($row->city)." ".$row->state."</td>";
+						$block .= "<td valign='top'>".$row->city." ".$row->state." ".$row->zip."</td>";
 						$block .= "<td valign='top'>".$row->email."</td>";								
 						$block .= "<td valign='top'>".date("F j, Y, g:i a", $row->date_submitted)."</td>";			
 						$block .= "<td valign='top'>".$row->user_id;
@@ -326,7 +337,7 @@ echo getPagination($total_rows, $rows_per_page, $pagenum, $truncate, $last, "des
 				</table>
 				<?php 
 				if($total_rows > $rows_per_page){
-echo getPagination($total_rows, $rows_per_page, $pagenum, $truncate, $last, "design-email.php", $sortby, $a_d, 0, 0,  $search_str);
+echo getPagination($total_rows, $rows_per_page, $pagenum, $truncate, $last, "../manage/design/design-email.php", $sortby, $a_d, 0, 0,  $search_str);
 				}
 				?>	                
 			</div>
@@ -334,7 +345,7 @@ echo getPagination($total_rows, $rows_per_page, $pagenum, $truncate, $last, "des
 	</div>
 	<p class="clear"></p>
 	<?php 
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-footer.php');
+	require_once($real_root.'/manage/admin-includes/manage-footer.php');
 	
 	$url_str = "design-email.php";
 	$url_str .= "?pagenum=".$pagenum;

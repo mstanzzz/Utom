@@ -1,5 +1,5 @@
 <?php
-require_once("../../includes/config.php"); 
+require_once("<?php echo SITEROOT; ?>includes/config.php"); 
 $_SESSION['admin_logged_in'] = 0; 
 
 $db = $dbCustom->getDbConnect(SITE_N_DATABASE);

@@ -1,19 +1,17 @@
 <?php
-
-
-
-if(!isset($_SERVER['DOCUMENT_ROOT'])){
-	if(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){    
-		$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
-	}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro/' )){
-		$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT'].'/designitpro';
-	}else{
-		$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT']; 	
-	}
+if(strpos($_SERVER['REQUEST_URI'], 'solvitware/' )){ 
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/solvitware';
+}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/designitpro'; 
+}elseif(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
+}else{
+	$real_root = $_SERVER['DOCUMENT_ROOT']; 	
 }
+require_once($real_root.'/includes/class.dbcustom.php');
+$dbCustom = new DbCustom();
 
-
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
 
 $progress = new SetupProgress;
 $module = new Module;
@@ -30,27 +28,19 @@ $truncate = (isset($_GET['truncate'])) ? addslashes($_GET['truncate']) : 1;
 $sortby = (isset($_GET['sortby'])) ? trim(mysql_escape_string($_GET['sortby'])) : '';
 $a_d = (isset($_GET['a_d'])) ? $_GET['a_d'] : 'a';
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php'); 
+require_once($real_root.'/manage/admin-includes/doc_header.php'); 
 ?>
-<script type="text/javascript">
-		tinyMCE.init({
-        // General options
-        mode : "specific_textareas",
-        editor_selector : "wysiwyg",
-        theme : "advanced",
-        skin : "o2k7",
-        plugins : "table,advhr,advlink,emotions,inlinepopups,insertdatetime,searchreplace,paste,style",
-        // Theme options
-        theme_advanced_buttons1 :"bold,italic,underline,strikethrough,|,styleselect,formatselect,fontsizeselect,|,forecolor,backcolor",
-        theme_advanced_buttons2 : "justifyleft,justifycenter,justifyright,justifyfull,|,bullist,numlist,|,outdent,indent,blockquote,|,cut,copy,paste,pastetext,pasteword,|,undo,redo,|,link,unlink,",
-		theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,",
-        theme_advanced_toolbar_location : "top",
-        theme_advanced_toolbar_align : "left",
-        theme_advanced_statusbar_location : "bottom",
-        theme_advanced_resizing : true,
-        theme_advanced_resize_horizontal : false,
-	content_css : "../../../css/mce.css"
-	});
+<script src="https://cdn.tiny.cloud/1/iyk23xxriyqcd2gt44r230a2yjinya99cx1kd3tk9huatz50/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+<script>
+tinymce.init({
+	selector: 'textarea',
+	plugins: 'advlist link image lists code',
+	forced_root_block : false
+
+});
+</script>
+
+<script>
 
 $(document).ready(function() {
 	$("#datepicker1").datepicker();
@@ -61,15 +51,15 @@ $(document).ready(function() {
 <body>
 <?php
 if(!$strip){
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-header.php');
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-top-nav.php');
+	require_once($real_root.'/manage/admin-includes/manage-header.php');
+	require_once($real_root.'/manage/admin-includes/manage-top-nav.php');
 }
 ?>
 <div class="manage_page_container">
 	<div class="manage_side_nav">
 		<?php
 		if(!$strip){ 
-        	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-side-nav.php');
+        	require_once($real_root.'/manage/admin-includes/manage-side-nav.php');
 		}
 		?>
 	</div>
@@ -77,15 +67,15 @@ if(!$strip){
 		<?php 
 
 		if(!$strip){ 
-			require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/class.admin_bread_crumb.php");	
+			require_once($real_root."/manage/admin-includes/class.admin_bread_crumb.php");	
 			$bread_crumb = new AdminBreadCrumb;
 			$bread_crumb->reSet();
-			$bread_crumb->add("Product Catalog", $ste_root."manage/catalog/catalog-landing.php");
-			$bread_crumb->add("Product Review", $ste_root."manage/catalog/reviews/item-review.php");
+			$bread_crumb->add("Product Catalog", SITEROOT."/manage/catalog/catalog-landing.php");
+			$bread_crumb->add("Product Review", SITEROOT."/manage/catalog/reviews/item-review.php");
 			$bread_crumb->add("Add Product Review", '');
 			echo $bread_crumb->output();
 		}		
-        require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-content-top.php');
+        require_once($real_root.'/manage/admin-includes/manage-content-top-category.php');
         
 		
 		$url_str = "item-review.php";
@@ -198,7 +188,7 @@ if(!$strip){
 	</div>
 	<p class="clear"></p>
 	<?php 
-    require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-footer.php');
+    require_once($real_root.'/manage/admin-includes/manage-footer.php');
     ?>
 </div>
 </body>

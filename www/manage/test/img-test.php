@@ -1,19 +1,7 @@
 <?php
-if(!isset($_SERVER['DOCUMENT_ROOT'])){
-	if(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){    
-		$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
-	}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro/' )){
-		$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT'].'/designitpro';
-	}else{
-		$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT']; 	
-	}
-}
-
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
 
 if(!isset($_SESSION['img_id'])) $_SESSION['img_id'] = 0;
-
-
 $msg = (isset($_GET['msg'])) ? $_GET['msg'] : '';
 if(isset($_GET["nl"])){
 	$msg = " ";	
@@ -21,9 +9,6 @@ if(isset($_GET["nl"])){
 
 $del_img_id = (isset($_GET['del_img_id'])) ? $_GET['del_img_id'] : 0;
 $db = $dbCustom->getDbConnect(CART_DATABASE);
-
-
-//clear_img_files();
 
 function clear_img_files(){
 
@@ -239,7 +224,7 @@ if(file_exists($p)) unlink($p);
 }
 
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php'); 
+require_once($real_root.'/manage/admin-includes/doc_header.php'); 
 
 
 ?>
@@ -289,7 +274,7 @@ while($row = $res->fetch_object()){
 		<br />
 		<br />
 		<?php
-		$url_str = $ste_root."manage/catalog/select-image.php";
+		$url_str = SITEROOT."manage/catalog/select-image.php";
 		$url_str .= "?ret_page=img-test";
 		$url_str .= "&ret_path=test";
 		$url_str .= "&ret_dir=test";
@@ -301,7 +286,7 @@ while($row = $res->fetch_object()){
 		$_SESSION['crop_n'] = 1;
 		$_SESSION['img_type'] = 'cart';
 
-		$url_str = $ste_root."manage/upload-pre-crop.php";
+		$url_str = SITEROOT."manage/upload-pre-crop.php";
 		$url_str .= "?ret_page=img-test";
 		$url_str .= "&ret_path=test";
 		$url_str .= "&ret_dir=test";
@@ -323,7 +308,7 @@ echo "<br />";
 		$img_res = $dbCustom->getResult($db,$sql);
 		if($img_res->num_rows > 0){
 			$img_obj = $img_res->fetch_object();
-echo "<img src='".$ste_root."/saascustuploads/".$_SESSION['profile_account_id']."/cart/large/".$img_obj->file_name."'>";	
+echo "<img src='".SITEROOT."/saascustuploads/".$_SESSION['profile_account_id']."/cart/large/".$img_obj->file_name."'>";	
 		}
 		?>
 		<br />
@@ -331,7 +316,7 @@ echo "<img src='".$ste_root."/saascustuploads/".$_SESSION['profile_account_id'].
 		<br />
 		<?php
 		if($img_res->num_rows > 0){
-echo "<img src='".$ste_root."/saascustuploads/".$_SESSION['profile_account_id']."/cart/large/wide/".$img_obj->file_name."'>";
+echo "<img src='".SITEROOT."/saascustuploads/".$_SESSION['profile_account_id']."/cart/large/wide/".$img_obj->file_name."'>";
 		}			
 		?>
 		<br />
@@ -339,7 +324,7 @@ echo "<img src='".$ste_root."/saascustuploads/".$_SESSION['profile_account_id'].
 		<br />
 		<?php
 		if($img_res->num_rows > 0){
-echo "<img src='".$ste_root."/saascustuploads/".$_SESSION['profile_account_id']."/cart/large/exwide/".$img_obj->file_name."'>";
+echo "<img src='".SITEROOT."/saascustuploads/".$_SESSION['profile_account_id']."/cart/large/exwide/".$img_obj->file_name."'>";
 		}			
 		?>
 		<br />

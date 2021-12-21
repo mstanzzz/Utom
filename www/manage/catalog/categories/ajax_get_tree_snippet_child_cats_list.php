@@ -1,6 +1,18 @@
 <?php
+if(strpos($_SERVER['REQUEST_URI'], 'solvitware/' )){ 
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/solvitware';
+}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/designitpro'; 
+}elseif(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
+}else{
+	$real_root = $_SERVER['DOCUMENT_ROOT']; 	
+}
+require_once($real_root.'/includes/class.dbcustom.php');
+$dbCustom = new DbCustom();
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
+
 
 $cat_id = (isset($_GET['cat_id'])) ? $_GET['cat_id'] : 0;
 
@@ -47,7 +59,7 @@ while($row = $result->fetch_object()) {
 	
 	$block .= "<li title='' role='treeitem' aria-expanded='false' id='".$row->cat_id."'>";
 	$block .= "<a tabindex='-1' class='tree-parent tree-parent-collapsed' onclick='show_children(".$row->cat_id.")' >";
-	$block .= "<img  src='".$ste_root."/saascustuploads/".$_SESSION['profile_account_id']."/cart/medium/".$file_name."'/>".$row->name;
+	$block .= "<img  src='".SITEROOT."/saascustuploads/".$_SESSION['profile_account_id']."/cart/medium/".$file_name."'/>".$row->name;
 	$checked = inArray($row->cat_id, $_SESSION["temp_cats"], "cat_id") ? "checked='checked'" : '';
 	$block .= "<input class='checkbox' onclick='updateOptions()' type='checkbox' id='".$row->cat_id."' value='".$row->cat_id."' ".$checked." />
 	<input type='hidden' value='".$row->name."' name='categoryname' class='categoryname' /></a>"	;

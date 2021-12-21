@@ -20,7 +20,7 @@ class dl_rapidshare_com extends Download {
 		else return array(false, "accinvalid");
     }
 	
-	public function Login($user, $pass){
+	public function login($dbCustom,$user, $pass){
         $data = $this->lib->curl("http://api.rapidshare.com/cgi-bin/rsapi.cgi", "lang=en", "sub=getaccountdetails&withcookie=1&withpublicid=1&login={$user}&cbf=RSAPIDispatcher&cbid=2&password={$pass}");
 		preg_match('/ncookie=([A-Z0-9]+)/', $data, $thuytinh);
 		return "enc={$thuytinh[1]}; lang=en";

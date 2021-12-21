@@ -59,7 +59,7 @@ $(document).ready(function() {
 		//alert(item_id);
 		$.ajaxSetup({ cache: false}); 
 		$.ajax({
-			url: '<?php echo SITEROOT; ?>/pages/cart/ajax-remove-item.php?item_id='+item_id,
+			url: '<?php echo SITEROOT; ?>pages/cart/ajax-remove-item.php?item_id='+item_id,
 			success: function() {
 				location.reload(true);
 				//setCartContent();
@@ -73,12 +73,12 @@ $(document).ready(function() {
 		//alert(item_id);
 		$.ajaxSetup({ cache: false}); 
 		$.ajax({
-			url: '<?php echo SITEROOT; ?>/pages/cart/ajax-add-to-wishlist.php?item_id='+item_id,
+			url: '<?php echo SITEROOT; ?>pages/cart/ajax-add-to-wishlist.php?item_id='+item_id,
 		});
 
 		$.ajaxSetup({ cache: false}); 
 		$.ajax({
-			url: '<?php echo SITEROOT; ?>/pages/cart/ajax-remove-item.php?item_id='+item_id,
+			url: '<?php echo SITEROOT; ?>pages/cart/ajax-remove-item.php?item_id='+item_id,
 			success: function() {
 				setCartContent();
 				//alert('L');
@@ -99,7 +99,7 @@ $(document).ready(function() {
 		
 			$.ajaxSetup({ cache: false}); 
 			$.ajax({
-				url: '<?php echo SITEROOT; ?>/pages/cart/ajax-update-qty.php?item_id='+item_id+'&qty='+qty,
+				url: '<?php echo SITEROOT; ?>pages/cart/ajax-update-qty.php?item_id='+item_id+'&qty='+qty,
 				success: function() {
 					location.reload(true);
 					//setCartContent();
@@ -125,7 +125,7 @@ $(document).ready(function() {
 				
 			$.ajaxSetup({ cache: false}); 
 			$.ajax({
-				url: '<?php echo SITEROOT; ?>/pages/cart/ajax-add-item-with-qty.php?item_id='+product_code+'&qty='+qty,
+				url: '<?php echo SITEROOT; ?>pages/cart/ajax-add-item-with-qty.php?item_id='+product_code+'&qty='+qty,
 				success: function() {
 					location.reload(true);
 					//setCartContent();			
@@ -212,7 +212,7 @@ if(0){
 
 	$i = 1;
 	foreach ($cart_contents_array as $cart_array) {
-		$item_array = $item->getItem($cart_array["item_id"]);
+		$item_array = $item->getItem($dbCustom,$cart_array["item_id"]);
 		$item_discount = $discount->getItemDiscount($cart_array["item_id"]);
 		$total_item_discount += $item_discount;
 		if($item_array["is_taxable"]){
@@ -229,7 +229,7 @@ if(0){
             <div style="float:left; width:90px; height:10px;">
                 <a class="inline" href="<?php echo "uploads/tmp/pre-crop/".$item_array['file_name']; ?>">
                  <img id="item_img<?php $i; ?>" 
-                    src="<?php echo SITEROOT; ?>/uploads/cart/list/<?php echo $item_array['file_name']; ?>" 
+                    src="<?php echo SITEROOT; ?>uploads/cart/list/<?php echo $item_array['file_name']; ?>" 
                     alt='<?php echo $item_array['name']; ?>' /> 
             </a>
                       
@@ -480,17 +480,17 @@ if($cart_has_items){
 				$block .= "<span id='signin' class='blue_button' title='sign in' >Sign In</span>";
 				$block .= "</div>";
                 $block .= "<div style='float:left;'>";
-                $block .= "<a href='".SITEROOT."/custom-closet-signup.html'><span class='blue_button'>Register</span></a>"; 
+                $block .= "<a href='".SITEROOT."//custom-closet-signup.html'><span class='blue_button'>Register</span></a>"; 
                 $block .= "</div>";
                 $block .= "<div style='float:left;'>";
-                $block .= "<a href='".SITEROOT."/closet-accessory-checkout.html'><span class='blue_button'>Guest Checkout</span></a>"; 
+                $block .= "<a href='".SITEROOT."//closet-accessory-checkout.html'><span class='blue_button'>Guest Checkout</span></a>"; 
                 $block .= "</div>";
 				echo $block;
 			
 			}else{
 				$block = '';
                 $block .= "<div style='float:right;'>";
-                $block .= "<a href='".SITEROOT."/closet-accessory-checkout.html'><span class='blue_button'>Checkout</span></a>"; 
+                $block .= "<a href='".SITEROOT."//closet-accessory-checkout.html'><span class='blue_button'>Checkout</span></a>"; 
                 $block .= "</div>";
 				echo $block;
 				
@@ -499,7 +499,7 @@ if($cart_has_items){
         </div>    
 		<div class="clear"></div>
         <div id="sign_in" class="cart_sign_in">
-			<form id="sign_in_form" name="sign_in_form" action="<?php echo SITEROOT; ?>/signin.php" method="post">
+			<form id="sign_in_form" name="sign_in_form" action="<?php echo SITEROOT; ?>signin.php" method="post">
                 <input type="hidden" name="page" value="cart" />
                 <input type="hidden" name="slug" value="cart" />
                 <span style="color:#666666;" class="bold">Email Address</span><br />
@@ -508,7 +508,7 @@ if($cart_has_items){
                 <span style="color:#666666;" class="bold">Password</span><br />
                 <input type="password" name="password" style="width:206px;" />
                 <br /><br />
-                <input type="image" src="<?php echo SITEROOT; ?>/images/button_signin.png" alt="Sign In">
+                <input type="image" src="<?php echo SITEROOT; ?>images/button_signin.png" alt="Sign In">
                </form>
         </div>
     </div>
@@ -560,8 +560,8 @@ if(is_array($likes_ret)){
 		foreach($likes_ret as $value){
             $block = '';
 			$block .= "<div class='like_pic_box'>";
-			$block .= "<a href='".SITEROOT."/closet-accessory-details/closets-accessory-item/".getUrlText($value['name'])."/".$value["item_id"]."/0' style='text-decoration:none;'>";
-            $block .= "<img src='".SITEROOT."/uploads/cart/like/".$value["file_name"]."' alt='closet organizers'/><br />";
+			$block .= "<a href='".SITEROOT."//closet-accessory-details/closets-accessory-item/".getUrlText($value['name'])."/".$value["item_id"]."/0' style='text-decoration:none;'>";
+            $block .= "<img src='".SITEROOT."//uploads/cart/like/".$value["file_name"]."' alt='closet organizers'/><br />";
             $block .= "<div class='like_item_name'>".$value['name']."</div>";
             $block .= "</a>";
             $block .= "</div>";

@@ -1,6 +1,20 @@
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
-require_once($_SERVER['DOCUMENT_ROOT'].'/includes/class.shipping.php');
+if(strpos($_SERVER['REQUEST_URI'], 'solvitware/' )){ 
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/solvitware';
+}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/designitpro'; 
+}elseif(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
+}else{
+	$real_root = $_SERVER['DOCUMENT_ROOT']; 	
+}
+
+require_once($real_root.'/includes/class.dbcustom.php');
+$dbCustom = new DbCustom();
+
+require_once($real_root.'/includes/config.php');
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
+require_once($real_root.'/includes/class.shipping.php');
 
 $shipping = new Shipping;
 
@@ -10,38 +24,29 @@ $module = new Module;
 $page_title = 'Products';
 $page_group = 'item';
 
-function get_file_name($img_id){
+function get_file_name($dbCustom,$img_id){
 	$dbCustom = new DbCustom();
 	$db = $dbCustom->getDbConnect(CART_DATABASE);
-
 	$sql = "SELECT file_name
 			FROM image
 			WHERE img_id = '".$img_id."'";
 	$re = $dbCustom->getResult($db,$sql);
 	if($re->num_rows > 0){
 		$object = $re->fetch_object();
-		$name = $object->name;
-			
 		return  $object->file_name;
-			
 	}
-	
 	return  '';
-	
 }
+ 
+$_SESSION['from_top_cats'] = isset($_GET['from_top_cats']) ? 1 : 0;
 
-$parent_cat_id =  (isset($_GET['parent_cat_id'])) ? $_GET['parent_cat_id'] : 0;
-
+$parent_cat_id =  0;
 $cat_id =  (isset($_GET['cat_id'])) ? $_GET['cat_id'] : 0;
-//if($cat_id == 0) $cat_id = $parent_cat_id;
-
 $msg = (isset($_GET['msg'])) ? $_GET['msg'] : '';
-
 $sortby = (isset($_GET['sortby'])) ? trim(addslashes($_GET['sortby'])) : '';
 $a_d = (isset($_GET['a_d'])) ? addslashes($_GET['a_d']) : 'a';
 $pagenum = (isset($_GET['pagenum'])) ? addslashes($_GET['pagenum']) : 0;
 $truncate = (isset($_GET['truncate'])) ? addslashes($_GET['truncate']) : 1;
-
 $search_str = (isset($_REQUEST['search_str'])) ?  trim(addslashes($_REQUEST['search_str'])) : ''; 
 
 $db = $dbCustom->getDbConnect(CART_DATABASE);
@@ -71,8 +76,6 @@ if(isset($_POST['become_child'])){
 		}
 	}
 }
-
-
 
 if(isset($_POST['become_associated'])){
 	
@@ -143,24 +146,15 @@ if(isset($_POST['set_associated_items'])){
 	}
 }
 
-
-
-
-
 if(isset($_POST['add_item'])){
-
 	include('../include-add-item.php');
 }
 
 
-
 if(isset($_POST['edit_item'])){
-
 	include('../include-edit-item.php');
-	
 }
 	
-
 
 if(isset($_POST['set_active'])){
 	
@@ -171,7 +165,7 @@ if(isset($_POST['set_active'])){
 	//print_r($items_from_page_array);
 
 	foreach($items_from_page_array as $item_id){
-		if(is_numeric($cat_id)){
+		if(is_numeric($item_id)){
 			$sql = "UPDATE item 
 					SET active = '0' 
 					WHERE item_id = '".$item_id."'";
@@ -191,10 +185,10 @@ if(isset($_POST['set_active'])){
 }
 
 
-if(isset($_POST['del_item_id'])){
 
+if(isset($_POST['del_id'])){
 
-	$item_id = $_POST['del_item_id'];
+	$item_id = $_POST['del_id'];
 
 	$sql = "UPDATE item
 			SET parent_item_id = '0'
@@ -265,9 +259,6 @@ if(isset($_POST['del_item_id'])){
 		if($res->num_rows > 0){	
 			$obj = $res->fetch_object();
 			
-			echo $file_name = $obj->file_name; 
-			
-			exit;
 			
 			$p = $_SERVER['DOCUMENT_ROOT']."/saascustuploads/".$_SESSION['profile_account_id']."/cart/full/".$file_name;
 			if(file_exists($p)) unlink($p);
@@ -328,13 +319,7 @@ if(isset($_POST['del_item_id'])){
 	
 	}
 
-
-
-
-
 	$msg = 'Your change is now live.';
-
-
 }
 
 unset($_SESSION['ret_page']);
@@ -355,36 +340,12 @@ unset($_SESSION['temp_videos']);
 unset($_SESSION['img_type']);
 unset($_SESSION['side_nav_showroom_cats']); // frontend class.nav
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/class.admin_bread_crumb.php');	
+require_once($real_root.'/manage/admin-includes/class.admin_bread_crumb.php');	
 $bread_crumb = new AdminBreadCrumb;
-//$bread_crumb->reSet();
-//$bread_crumb->add("Product Catalog", $ste_root."manage/catalog/catalog-landing.php");
 
 $bc_parent_cat_id = 0;
 $bc_seo_name = '';
 $db = $dbCustom->getDbConnect(CART_DATABASE);
-
-
-/* ****************  DO THIS ONCE */
-/*
-$sql = "UPDATE item 
-		SET hide_id_from_url = '1'";
-$res = $dbCustom->getResult($db,$sql);			
-
-$sql = "SELECT item_id 
-		FROM item";
-$result = $dbCustom->getResult($db,$sql);		
-while($r = $result->fetch_object()){
-
-	$seo_url = getItemSeoUrl($r->item_id);
-	$sql = "UPDATE item 
-			SET seo_url = '".$seo_url."', hide_id_from_url = '1'
-			WHERE item_id = '".$r->item_id."'";
-	$res = $dbCustom->getResult($db,$sql);
-	
-}
-
-*/
 
 
 if($cat_id > 0){
@@ -399,103 +360,15 @@ if($cat_id > 0){
 		$cat_name = stripslashes($c_obj->name);
 		$page_title = $cat_name." Products"; 
 		
-		/*
-
-		$bc_data_out = explode('|',$c_obj->seo_list);
-		$i=0;
-		$bc_parent_cat_id = $cat_id;		
-		foreach($bc_data_out as $bc_out_v){
-			$bc_data_in = explode(',',$bc_out_v);
-			$bc_cat_id = 0;
-			$bc_seo_name = '';
-			if(isset($bc_data_in[0])){
-				if(is_numeric($bc_data_in[0])){
-					$bc_cat_id = $bc_data_in[0];
-				}
-			}
-			if(isset($bc_data_in[1])){
-				$bc_seo_name = strtolower($bc_data_in[1]);
-			}
-			
-			$bc_parent_cat_id = $parent_cat_id;
-			if(count($bc_data_out) > 1 && $i == 0){
-				$bc_parent_cat_id = $bc_cat_id;
-			}
-			
-			*/			
-			//if($bc_cat_id > 0){
-				//$bread_crumb->add($bc_seo_name, $ste_root.'manage/catalog/categories/category.php?parent_cat_id='.$bc_parent_cat_id);	
-				//$bread_crumb->prune($bc_seo_name);				
-			//}
-		//}
 	}
 
-
-
-}elseif($parent_cat_id > 0){
-
-/*
-
-	$sql = "SELECT name, seo_url, seo_list 
-			FROM category
-			WHERE cat_id = '".$cat_id."'";
-	$c_res = mysql_query ($sql);
-	if(!$c_res)die(mysql_error());
-	if(mysql_num_rows($c_res) > 0){
-		$c_obj = mysql_fetch_object($c_res);		
-		$parent_cat_name = stripslashes($c_obj->name);
-		$page_title = $parent_cat_name." Products"; 
-
-		$bc_data_out = explode('|',$c_obj->seo_list);
-		$i=0;
-		$bc_parent_cat_id = $parent_cat_id;	
-		foreach($bc_data_out as $bc_out_v){
-			$bc_data_in = explode(',',$bc_out_v);
-			$bc_cat_id = 0;
-			$bc_seo_name = '';
-			if(isset($bc_data_in[0])){
-				if(is_numeric($bc_data_in[0])){
-					$bc_cat_id = $bc_data_in[0];
-				}
-			}
-			if(isset($bc_data_in[1])){
-				$bc_seo_name = strtolower($bc_data_in[1]);
-			}
-			if($bc_cat_id > 0){
-				if($bc_parent_cat_id > 0){
-					//$bread_crumb->add($bc_seo_name, $ste_root.'manage/catalog/categories/category.php?parent_cat_id='.$bc_parent_cat_id."&cat_id=".$cat_id);										
-				}else{
-					//$bread_crumb->add($bc_seo_name, $ste_root.'manage/catalog/categories/category.php?cat_id='.$bc_cat_id);					
-				}
-				//$bread_crumb->prune($bc_seo_name);
-			}
-		}
-	}
-	
-	*/
 }
 
-
-// SET all items canonical_part
-/*
-$sql = "SELECT item_id, seo_url FROM item";
-$result = $dbCustom->getResult($db,$sql);		
-while($r = $result->fetch_object()){
-	$canonical_part = $ste_root."/".$_SESSION['global_url_word'].$r->seo_url;
-	$sql = "UPDATE item
-			SET canonical_part = '".$canonical_part."'
-			WHERE item_id = '".$r->item_id."'";
-	$res = $dbCustom->getResult($db,$sql);	
-}
-*/
-
-
-
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php'); 
+require_once($real_root.'/manage/admin-includes/doc_header.php'); 
 
 ?>
-<script>
 
+<script>
 
 $(document).ready(function(){
 	
@@ -531,8 +404,6 @@ $(document).ready(function(){
 			$(this).html('<i class="icon-chevron-right"></i>');	
 		}
 	});
-	
-	
 
 });
 
@@ -545,31 +416,24 @@ function regularSubmit() {
 </head>
 
 <body>
+
 <?php
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-header.php');
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-top-nav.php');
-	
-	//echo getItemSeoList(101, 'tie rack');
-	
+	require_once($real_root.'/manage/admin-includes/manage-header.php');
+	require_once($real_root.'/manage/admin-includes/manage-top-nav.php');
 ?>
-<!--<a onClick="test();">TEST</a>-->
 <div class="manage_page_container">
     <div class="manage_side_nav">
         <?php 
-        require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-side-nav.php');
+        require_once($real_root.'/manage/admin-includes/manage-side-nav.php');
         ?>
     </div>	
     <div class="manage_main">
 		<?php 
+		if($_SESSION['from_top_cats']){
+			echo "<a class='btn btn-primary btn-large' href='../categories/top-category.php'> BACK TO CATS </a>";	
+		}
 		
-		$bread_crumb->prune($page_title);
-		$bread_crumb->add($page_title, $ste_root.$_SERVER['REQUEST_URI']);
-		echo $bread_crumb->output();
-		
-        require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-content-top.php');
-
-
-
+		        
 		$db = $dbCustom->getDbConnect(CART_DATABASE);
 
 		if($cat_id > 0){
@@ -585,6 +449,8 @@ function regularSubmit() {
 				,item.prod_number
 				,item.sku
 				,item.active
+				,item.click_count
+				
 			FROM  item, item_to_category 
 			WHERE profile_account_id = '".$_SESSION['profile_account_id']."'			
 			AND item.item_id = item_to_category.item_id 						
@@ -603,6 +469,7 @@ function regularSubmit() {
 				,item.prod_number
 				,item.sku
 				,item.active
+				,item.click_count
 			FROM  item 
 			WHERE profile_account_id = '".$_SESSION['profile_account_id']."'			
 			AND parent_item_id = '0'";	
@@ -634,13 +501,8 @@ function regularSubmit() {
 		if ($pagenum < 1){ 
 			$pagenum = 1; 
 		}
-		
-		//echo "last".$last;
 			
 		$limit = ' limit ' .($pagenum - 1) * $rows_per_page.','.$rows_per_page;
-		
-		// OR same thing with
-		//$limit = ' limit '.$rows_per_page.' OFFSET '.($pagenum - 1) * $rows_per_page;
 		
 		if($sortby != ''){
 			if($sortby == 'name'){
@@ -648,15 +510,6 @@ function regularSubmit() {
 					$sql .= " ORDER BY item.name DESC".$limit;
 				}else{
 					$sql .= " ORDER BY item.name".$limit;		
-				}
-			}
-			
-			
-			if($sortby == 'sku'){
-				if($a_d == 'd'){
-					$sql .= " ORDER BY item.sku DESC".$limit;
-				}else{
-					$sql .= " ORDER BY item.sku".$limit;		
 				}
 			}
 			
@@ -669,16 +522,27 @@ function regularSubmit() {
 			}
 			if($sortby == 'active'){
 				if($a_d == 'd'){
-					$sql .= " ORDER BY active DESC";
+					$sql .= " ORDER BY active DESC".$limit;
 				}else{
-					$sql .= " ORDER BY active";		
+					$sql .= " ORDER BY active".$limit;;		
 				}
-			}
+			}	
+			
+			if($sortby == 'click_count'){
+				
+				//echo $a_d;
+				//exit;
+				
+				if($a_d == 'd'){
+					$sql .= " ORDER BY click_count DESC".$limit;
+				}else{
+					$sql .= " ORDER BY click_count".$limit;		
+				}
+			}	
+			
 			
 			
 		}else{
-						
-			//$sql .= " ORDER BY item.name".$limit;
 		
 			$sql .= " ORDER BY item.item_id".$limit;
 		
@@ -687,8 +551,6 @@ function regularSubmit() {
 		$result = $dbCustom->getResult($db,$sql);		
 		
 		$url_str= 'item.php';
-	$url_str = preg_replace('/(\/+)/','/',$url_str);
-		
 		$url_str.= "?cat_id=".$cat_id;
 		$url_str.= "&parent_cat_id=".$parent_cat_id;
 		$url_str.= "&pagenum=".$pagenum;
@@ -710,7 +572,6 @@ function regularSubmit() {
                 if($admin_access->product_catalog_level > 1){ 
 					
 					$url_str= 'item.php';
-					//$url_str = preg_replace('/(\/+)/','/',$url_str);
 					
 					?>
 					<a class="btn btn-large btn-primary" href="<?php echo $url_str; ?>">List All Products </a>            
@@ -718,7 +579,6 @@ function regularSubmit() {
 					<?php
 
 					$url_str = 'add-item.php';
-
 					$url_str.= "?cat_id=".$cat_id;
 					$url_str.= "&firstload=1";
 					$url_str.= "&parent_cat_id=".$parent_cat_id;
@@ -727,6 +587,8 @@ function regularSubmit() {
 					$url_str.= "&a_d=".$a_d;
 					$url_str.= "&truncate=".$truncate;
 					$url_str.= "&search_str=".$search_str;
+					$url_str.= "&from_top_cats=".$_SESSION['from_top_cats'];
+					
 					?>
 					<a class="btn btn-large btn-primary" href="<?php echo $url_str; ?>"><i class="icon-plus icon-white"></i> Add a New Product </a>            
 
@@ -740,8 +602,6 @@ function regularSubmit() {
 
 
 		$url_str= 'item.php';
-		//$url_str = preg_replace('/(\/+)/','/',$url_str);
-
 		$url_str.= "?parent_cat_id=".$parent_cat_id;
 		$url_str.= "&cat_id=".$cat_id;
 		$url_str.= "&pagenum=".$pagenum;
@@ -749,6 +609,7 @@ function regularSubmit() {
 		$url_str.= "&a_d=".$a_d;
 		$url_str.= "&truncate=".$truncate;
 		$url_str.= "&search_str=".$search_str;
+		$url_str.= "&from_top_cats=".$_SESSION['from_top_cats'];
 		?>
     	<form name="form" action="<?php echo $url_str; ?>" method="post" enctype="multipart/form-data">
 	        <input type="hidden" name="set_active" value="1">
@@ -761,33 +622,33 @@ function regularSubmit() {
 					}
 					 ?>
 				</div>
-				<?php require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/tablesort.php"); ?>		
+				<?php require_once($real_root."/manage/admin-includes/tablesort.php"); ?>		
             	<table cellpadding="10" cellspacing="0">
 					<thead>
-						<tr>
-							<th width="2%"></th>
-							<th width="7%">Image</th>
-           					<th <?php addSortAttr('name',true); ?>>
-                            Name
-                            <i <?php addSortAttr('name',false); ?>></i>
+						<tr height="80">
+                            <th width="16%">pic</th>
+						
+           					<th>	
+<a href="item.php?sortby=name&a_d=a">ascending</a>	
+<br />
+Name
+<br />
+<a href="item.php?sortby=name&a_d=d">descending</a>	
                             </th>
-
-           					<th <?php addSortAttr('sku',true); ?>>
-                            SKU
-                            <i <?php addSortAttr('sku',false); ?>></i>
-                            </th>
-							<!--                            
-           					<th <?php //addSortAttr('prod_number',true); ?>>
-                            Product ID
-                            <i <?php //addSortAttr('prod_number',false); ?>></i>
-                            </th>
-                            -->
-                                            
-							<th>Categories</th>
-
-							<th width="10%" <?php addSortAttr('active',true); ?>>
-                            Active
-                            <i <?php addSortAttr('active',false); ?>></i>
+           					<th>
+<a href="item.php?sortby=click_count&a_d=a">ascending</a>
+<br />
+                            click_count
+<br />
+<a href="item.php?sortby=click_count&a_d=d">descending</a>	
+                             </th>
+							<th width="10%">
+<a href="item.php?sortby=active&a_d=a">ascending</a>	
+<br />
+Active
+<br />
+<a href="item.php?sortby=active&a_d=d">descending</a>	
+							
                             </th>
 							
                             <th width="12%">Add Children</th>
@@ -801,6 +662,7 @@ $items_from_this_page = '';
 $block = '';
 while($row = $result->fetch_object()) {
 	$items_from_this_page .= $row->item_id.",";	
+	
 	//children products for this product...
 	$sql = "SELECT name
 				,item_id
@@ -808,44 +670,34 @@ while($row = $result->fetch_object()) {
 				,parent_item_id
 				,prod_number
 				,sku
-				,active			
-			FROM  item
+				,active
+				,click_count
+			FROM item
 			WHERE parent_item_id = '".$row->item_id."'
-			AND profile_account_id = '".$_SESSION['profile_account_id']."' 
-			ORDER BY item_id";
+			AND profile_account_id = '".$_SESSION['profile_account_id']."'
+			AND parent_item_id > '99999999999999'";
 						
 	$child_res = $dbCustom->getResult($db,$sql);
 			
 	$block .= "<tr class='hoverable'>";
 			
-	$block .= "<td>";
-	if($child_res->num_rows > 0){
+	//$block .= "<td>";
+	//if($child_res->num_rows > 0){
 		//collapse/expand
-		$block .= "<a href='#' class='show-children btn btn-tiny'><i class='icon-chevron-right'></i></a>";
-	}
-	$block .= "</td>";
-	$block .= "<td>";
-
-	$file_name = get_file_name($row->img_id);
-	$t_img = $ste_root."/saascustuploads/".$_SESSION['profile_account_id']."/cart/thumb/".$file_name;
-	$t_img = preg_replace('/(\/+)/','/',$t_img);
-	$block .= "<img width='100' src='".$t_img."'>";
-	$block .= "</td>";
+		//$block .= "<a href='#' class='show-children btn btn-tiny'><i class='icon-chevron-right'>>>></i></a>";
+	//}
+	//$block .= "</td>";
 	
-	$block .= "<td>".stripslashes($row->name)."    ".$row->item_id."</td>";
-	//$block .= "<td>".$row->prod_number."</td>";
-	$block .= "<td>".$row->sku."</td>";
-	//product Categories
 	$block .= "<td>";
-	$sql = "SELECT DISTINCT category.name  
-                    FROM category, item_to_category 
-                    WHERE category.cat_id = item_to_category.cat_id
-                    AND item_to_category.item_id = '".$row->item_id."'";
-	$res = $dbCustom->getResult($db,$sql);		
-	while($cg_row = $res->fetch_object()) {
-		$block .= "<br />".stripslashes($cg_row->name);	
-	}
-	$block .= "</td>";     
+	$file_name = get_file_name($dbCustom,$row->img_id);
+	$block .= "<a class='fancybox' href='".SITEROOT."saascustuploads/".$_SESSION['profile_account_id']."/cart/full/".$file_name."'>";
+	$block .= "<img src='".SITEROOT."saascustuploads/".$_SESSION['profile_account_id']."/cart/thumb/".$file_name."'></a></td>";
+	$block .= "</td>";
+
+	$block .= "<td>".stripslashes($row->name)."</td>";
+
+	$block .= "<td>".$row->click_count."</td>";
+	
 	$disabled = ($admin_access->product_catalog_level < 2)? "disabled" : '';
 	$checked = ($row->active)? "checked='checked'" : ''; 
 	$block	.= "<td align='center' valign='middle' >
@@ -857,7 +709,6 @@ while($row = $result->fetch_object()) {
 
 			// Add Child
 			$url_str= 'add-item.php';
-			//$url_str = preg_replace('/(\/+)/','/',$url_str);
 			$url_str.= "?parent_item_id=".$row->item_id;
 			$url_str.= "&parent_cat_id=".$parent_cat_id;
 			$url_str.= "&cat_id=".$cat_id;
@@ -871,7 +722,6 @@ while($row = $result->fetch_object()) {
 	
 	
 			$url_str= 'edit-item.php';
-			//$url_str = preg_replace('/(\/+)/','/',$url_str);
 
 			$url_str.= "?item_id=".$row->item_id;
 			$url_str.= "&firstload=1";
@@ -890,60 +740,48 @@ while($row = $result->fetch_object()) {
 	$block .= " href='".$url_str."'><i class='icon-cog icon-white'></i> Edit</a>";
 	$block .= "</td>";
 
-
-//$block .= "<td>";
-//$block	.= $url_str;
-//$block .= "</td>";
-
-			
-	$block .= "<td valign='middle'>";
-	$block .= "<a class='btn btn-danger confirm ".$disabled." '>";
-	$block .= "<i class='icon-remove icon-white'></i>";
-	$block .= "<input type='hidden' id='".$row->item_id."' class='itemId' value='".$row->item_id."' /></a>";
+	$block .= "<td><a class='btn btn-danger confirm '>
+			<input type='hidden' id='".$row->item_id."' class='itemId' value='".$row->item_id."' />DEL</a>";
 	$block .= "</td>";
-			
+
 	$block .= "</tr>";
-
-
 
 	while($child_row = $child_res->fetch_object()) {
 		$items_from_this_page .= $child_row->item_id.",";
 		$block .= "<tr class='hoverable child'>";
-		
-		$file_name = get_file_name($child_row->img_id);
-		$t_img = $ste_root."/saascustuploads/".$_SESSION['profile_account_id']."/cart/thumb/".$file_name;
-		$t_img = preg_replace('/(\/+)/','/',$t_img);
 
-		$block .= "<td colspan='3' valign='middle' align='left'>";
-		$block .= "<img style='width:40px; height:40px;' src='".$t_img."'></td>";
+
+		$block .= "<td>";
+		$block .= "</td>";
+
 		
-		$block .= "<td>".stripSlashes($child_row->name)."</td>";				
-		$block .= "<td>".$child_row->sku."</td>";
+		$file_name = get_file_name($dbCustom,$child_row->img_id);
+		
+		$block .= "<td>";
+		$file_name = get_file_name($dbCustom,$row->img_id);
+		$block .= "<a href='".SITEROOT."manage/show-pic.php?img_id=".$row->img_id."' target='_blank'>";
+		$block .= "<img src='".SITEROOT."saascustuploads/".$_SESSION['profile_account_id']."/cart/thumb/".$file_name."'/>";
+		$block .= "</a>";
+		$block .= "</td>";
+	
+			
+		$block .= "<td>".stripSlashes($child_row->name)."</td>";
 				
-		$sql = "SELECT DISTINCT category.name  
-						FROM category, item_to_category 
-						WHERE category.cat_id = item_to_category.cat_id
-						AND item_to_category.item_id = '".$child_row->item_id."'";
-						
-		$res = $dbCustom->getResult($db,$sql);
-
-		$block .= "<td>";						
-		while($cg_row = $res->fetch_object()) {
-			$block .= "<br />".stripslashes($cg_row->name);	
-		}
-		$block .= "</td>";     
+		
 		$checked = ($child_row->active)? "checked='checked'" : ''; 
-		$block	.= "<td align='center' valign='middle' >";
+
+		$block .= "<td>CCCCCCC".$child_row->click_count."</td>";
 				
 				
-				$block	.= "<div class='checkboxtoggle on ".$disabled." '> 
+				
+		$block .= "<div class='checkboxtoggle on ".$disabled." '> 
 				<span class='ontext'>ON</span>
 				<a class='switch on' href='#'></a>
 				<span class='offtext'>OFF</span>
 				<input type='checkbox' class='checkboxinput' name='active[]' value='".$child_row->item_id."' ".$checked." /></div></td>";	
+
 				
 				$url_str= 'edit-item.php';
-				//$url_str = preg_replace('/(\/+)/','/',$url_str);
 				
 				$url_str.= "?item_id=".$child_row->item_id;
 				$url_str.= "&parent_cat_id=".$parent_cat_id;
@@ -955,28 +793,21 @@ while($row = $result->fetch_object()) {
 				$url_str.= "&search_str=".$search_str;
 
 
-$block .= "<td>";
-$block .= "<a class='btn btn-primary btn-small' href='".$url_str."'>";
-$block .= "<i class='icon-cog icon-white'></i> Edit</a>";
-$block .= "</td>";
-			
+		$block .= "<td>";
+		$block .= "<a class='btn btn-primary btn-small' href='".$url_str."'>";
+		$block .= "<i class='icon-cog icon-white'></i> Edit</a>";
+		$block .= "</td>";
 
-								
-//$block .= "<td><a class='btn btn-primary btn-small' href='".$url_str."'><i class='icon-cog icon-white'></i> Edit</a></td>";
+		$block .= "<td><a class='btn btn-danger confirm '>
+				<input type='hidden' id='".$child_row->item_id."' class='itemId' value='".$child_row->item_id."' />DEL</a>";
+		$block .= "</td>";
 
-$block .= "<td valign='middle'><a class='btn btn-danger confirm'><i class='icon-remove icon-white'></i><input type='hidden' id='".$child_row->item_id."' class='itemId' value='".$child_row->item_id."' /></a></td>";	
-			$block .= "</tr>";	
+		$block .= "</tr>";	
+
 	}
 
-			
-
-//echo $ste_root;
-//exit;
-			
-			
 	
 }
-
 echo  $block;
 ?>
 </tbody>
@@ -992,64 +823,35 @@ echo getPagination($total_rows, $rows_per_page, $pagenum, $truncate, $last, "ite
 	</form>
   </div>
   <p class="clear"></p>
-  <?php 
-    require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-footer.php');
+  
+</div>
 
-	$url_str= $ste_root.'manage/catalog/products/item.php';
-	$url_str = preg_replace('/(\/+)/','/',$url_str);
+<div class="disabledMsg">
+	<p>Sorry, this item can't be deleted or inactive.</p>
+</div>
 
+<?php
+
+	$url_str= SITEROOT.'manage/catalog/products/item.php';
 	$url_str.= "?cat_id=".$cat_id;
-	$url_str.= "&parent_cat_id=".$parent_cat_id;
 	$url_str.= "&pagenum=".$pagenum;
 	$url_str.= "&sortby=".$sortby;
 	$url_str.= "&a_d=".$a_d;
 	$url_str.= "&truncate=".$truncate;
 	$url_str.= "&search_str=".$search_str;
-	?>
-</div>
+
+?>
+
 <div id="content-delete" class="confirm-content">
-	<h3>Are you sure you want to delete this product?</h3>
-	<form name="del_item_form" action="<?php echo $url_str; ?>" method="post" target="_top">
-		<input id="del_item_id" class="itemId" type="hidden" name="del_item_id" value='' />
+	<h3>Are you sure you want to delete this Product?</h3>
+	<form name="del_item" action="<?php echo $url_str; ?>" method="post" target="_top">
+		<input id="del_id" class="itemId" type="hidden" name="del_id" value='' />
 		<a class="btn btn-large dismiss">No, Cancel</a>
-		<button class="btn btn-danger btn-large" name="del_page" type="submit" >Yes, Delete</button>
+		<button class="btn btn-danger btn-large" name="del_item" type="submit" >Yes, Delete</button>
 	</form>
 </div>
-<div class="disabledMsg">
-	<p>Sorry, this item can't be deleted or inactive.</p>
-</div>
-<div style="display:none">
-  <div id="edit" style="width:900px; height:620px;"> </div>
-</div>
-<div style="display:none">
-  <div id="upload" style="width:280px; height:200px;"> </div>
-</div>
-<div style="display:none">
-  <div id="add" style="width:900px; height:620px;"> </div>
-</div>
-<div style="display:none">
-  <div id="view_desc" style="width:500px; height:200px;"> </div>
-</div>
+
+
+
 </body>
 </html>
-<?php 
-
-/*
-        $block .= "<td valign='top'>";
-		$sql = "SELECT star_count
-				FROM item_rating 
-				WHERE item_id = '".$row->item_id."'";		
-		$result = $dbCustom->getResult($db,$sql);
-		
-		if($res->num_rows){
-			$star_obj = $result->fetch_object();
-			$block .= $star_obj->star_count;			
-		}else{
-			$block .= "not rated";
-		}
-		$block .= "</td>";
-*/
-
-
-
- ?>

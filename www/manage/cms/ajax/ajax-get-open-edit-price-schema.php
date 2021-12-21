@@ -9,8 +9,8 @@ if(!isset($_SERVER['DOCUMENT_ROOT'])){
 	}
 }
 
-require_once($_SERVER['DOCUMENT_ROOT']."/includes/config.php");
-require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/util_functions.php");
+require_once($real_root."/includes/config.php");
+require_once($real_root."/manage/admin-includes/util_functions.php");
 
 $price_schema_id = isset($_GET['price_schema_id'])? $_GET['price_schema_id'] : 0;
 

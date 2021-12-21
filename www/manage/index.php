@@ -1,8 +1,19 @@
 <?php
-require_once("../includes/config.php");
-//require_once('./admin-includes/manage-includes.php');
+if(strpos($_SERVER['REQUEST_URI'], 'solvitware/' )){ 
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/solvitware';
+}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/designitpro'; 
+}elseif(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
+}else{
+	$real_root = $_SERVER['DOCUMENT_ROOT']; 	
+}
 
-unset($_SESSION['breadcrumb']);
+require_once($real_root."/includes/class.dbcustom.php");
+require_once($real_root."/includes/config.php");
+$dbCustom = new DbCustom();
+$db = $dbCustom->getDbConnect(USER_DATABASE);
+require_once($real_root."/manage/admin-includes/manage-includes.php");
 
 if(isset($_GET["nl"])){
 	$msg = "You have been logged off due to inactivity.";	
@@ -19,8 +30,6 @@ if(isset($_GET["nl"])){
 }
 
 require_once('./admin-includes/doc_header.php'); 
-
-//echo "profile_company".$_SESSION['profile_company'];
 
 ?>
 </head>
@@ -45,5 +54,13 @@ require_once('./admin-includes/doc_header.php');
 		<button class="btn btn-large btn-success" type="submit">Login</button>
 	</form>
 </div>
+
+
+
 </body>
 </html>
+
+<!--
+45.86.201.101
+176.219.193.247
+-->

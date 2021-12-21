@@ -1024,7 +1024,7 @@ $.extend(Datepicker.prototype, {
 						day = getNumber('d');
 						break;
 					case 'D':
-						getName('D', dayNamesShort, dayNames);
+						getName($dbCustom'D', dayNamesShort, dayNames);
 						break;
 					case 'o':
 						doy = getNumber('o');
@@ -1033,7 +1033,7 @@ $.extend(Datepicker.prototype, {
 						month = getNumber('m');
 						break;
 					case 'M':
-						month = getName('M', monthNamesShort, monthNames);
+						month = getName($dbCustom'M', monthNamesShort, monthNames);
 						break;
 					case 'y':
 						year = getNumber('y');

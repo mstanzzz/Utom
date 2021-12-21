@@ -11,7 +11,7 @@ if(strpos($_SERVER['REQUEST_URI'], 'solvitware/' )){
 	$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT']; 	
 }
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
+if(strpos($_SERVER['REQUEST_URI'], 'solvitware/' )){ 
 
 $progress = new SetupProgress;
 $module = new Module;
@@ -22,7 +22,7 @@ $page_group = "order";
 $msg = (isset($_GET['msg'])) ? $_GET['msg'] : '';
 
 	
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php'); 
+require_once($real_root.'/manage/admin-includes/doc_header.php'); 
 
 ?>
 
@@ -76,28 +76,28 @@ function select_img(img_id){
 </head>
 <body>
 <?php
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-header.php');
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-top-nav.php');
+	require_once($real_root.'/manage/admin-includes/manage-header.php');
+	require_once($real_root.'/manage/admin-includes/manage-top-nav.php');
 ?>
 <div class="manage_page_container">
     <div class="manage_side_nav">
         <?php 
-        require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-side-nav.php');
+        require_once($real_root.'/manage/admin-includes/manage-side-nav.php');
         ?>
     </div>	
     <div class="manage_main">
 		<?php 
 		$ret_page = (isset($_GET['ret_page'])) ? $_GET['ret_page'] : ''; 
-		require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/class.admin_bread_crumb.php");	
+		require_once($real_root."/manage/admin-includes/class.admin_bread_crumb.php");	
 		$bread_crumb = new AdminBreadCrumb;
 		$bread_crumb->reSet();
 		if($ret_page == "customer-landing"){	
-			$bread_crumb->add("Customers", SITEROOT."/manage/customer-landing.php");
+			$bread_crumb->add("Customers", SITEROOT."//manage/customer-landing.php");
 		}
 		$bread_crumb->add("Transactions List", '');
 		echo $bread_crumb->output();
 
-        require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-content-top.php');
+        require_once($real_root.'/manage/admin-includes/manage-content-top-category.php');
     
 		$sortby = (isset($_GET['sortby'])) ? trim(mysql_escape_string($_GET['sortby'])) : '';
 		$a_d = (isset($_GET['a_d'])) ? $_GET['a_d'] : 'a';
@@ -180,7 +180,7 @@ function select_img(img_id){
 			</div>
             <div class="clear"></div>
 			<div class="data_table">
-        		<?php require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/tablesort.php"); ?>
+        		<?php require_once($real_root."/manage/admin-includes/tablesort.php"); ?>
         		<table cellpadding="10" cellspacing="0">
 					<thead>
 						<tr>
@@ -258,7 +258,7 @@ function select_img(img_id){
 	</div>
 <p class="clear"></p>
 <?php 
-require_once("../../includes/manage-footer.php");
+require_once("<?php echo SITEROOT; ?>includes/manage-footer.php");
 ?>    
    
 </div>

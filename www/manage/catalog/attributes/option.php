@@ -1,27 +1,23 @@
 <?php
-
-
-
-if(!isset($_SERVER['DOCUMENT_ROOT'])){
-	if(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){    
-		$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
-	}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro/' )){
-		$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT'].'/designitpro';
-	}else{
-		$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT']; 	
-	}
+if(strpos($_SERVER['REQUEST_URI'], 'solvitware/' )){ 
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/solvitware';
+}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/designitpro'; 
+}elseif(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
+}else{
+	$real_root = $_SERVER['DOCUMENT_ROOT']; 	
 }
+require_once($real_root.'/includes/class.dbcustom.php');
+$dbCustom = new DbCustom();
 
-
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
 
 $progress = new SetupProgress;
 $module = new Module;
 
 $page_title = "options";
 $page_group = "attribute";
-
-	
 
 $db = $dbCustom->getDbConnect(CART_DATABASE);
 
@@ -37,7 +33,9 @@ $msg = '';
 
 if(isset($_POST['add_opt'])){
 
-	$added_opt = addslashes($_POST['added_opt']); 
+	$opt_name = (isset($_POST['opt_name']))? addslashes($_POST['opt_name']) : ''; 
+	
+	$color_val = (isset($_POST['color_val']))? addslashes($_POST['color_val']) : ''; 
 	
 	$sql = sprintf("SELECT opt_id 
 					FROM opt, attribute 
@@ -45,13 +43,15 @@ if(isset($_POST['add_opt'])){
 					AND opt_name = '%s' 
 					AND opt.attribute_id = '%u' 
 					AND attribute.profile_account_id = '%u'",
-	$added_opt, $attribute_id, $_SESSION['profile_account_id']);	
+	$opt_name, $attribute_id, $_SESSION['profile_account_id']);	
 	$result = $dbCustom->getResult($db,$sql);	
 	
 	if(!$result->num_rows){
-		$sql = sprintf("INSERT INTO opt (opt_name, attribute_id) VALUES ('%s','%u')", $added_opt, $attribute_id);
-		$result = $dbCustom->getResult($db,$sql);
 		
+		$sql = sprintf("INSERT INTO opt (opt_name, color_val, attribute_id) VALUES ('%s','%s','%u')", $opt_name, $color_val, $attribute_id);
+		
+		
+		$result = $dbCustom->getResult($db,$sql);
 		
 		$msg = 'Option added.';
 
@@ -64,14 +64,19 @@ if(isset($_POST['add_opt'])){
 
 if(isset($_POST['edit_opt'])){
 	
-	$name = addslashes($_POST['opt_name']); 
-	$opt_id = $_POST['opt_id'];
+	$opt_name = (isset($_POST['opt_name']))? addslashes($_POST['opt_name']) : ''; 
+	
+	$color_val = (isset($_POST['color_val']))? addslashes($_POST['color_val']) : ''; 
+	
+	$opt_id = (isset($_POST['opt_id']))? $_POST['opt_id'] : 0; 
 
-	$sql = sprintf("UPDATE opt SET opt_name = '%s' WHERE opt_id = '%u'", 
-	$name, $opt_id);
+	$sql = sprintf("UPDATE opt 
+					SET opt_name = '%s' 
+					,color_val = '%s'
+					WHERE opt_id = '%u'", 
+	$opt_name, $color_val, $opt_id);
 	$result = $dbCustom->getResult($db,$sql);
 	
-
 	$msg = 'Changes saved.';
 	
 }
@@ -96,20 +101,13 @@ if(isset($_POST['del_opt'])){
 
 }
 
-
-
-
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php'); 
-
-
+require_once($real_root.'/manage/admin-includes/doc_header.php'); 
 ?>
 
 <script>
 $(document).ready(function() {
 	
-
 	$(".inline").click(function(){ 
-
 
 		if(this.href.indexOf("edit") > 1){
 			var f_id = $(this).find(".e_sub").attr('id');
@@ -152,10 +150,11 @@ $(document).ready(function() {
 	<?php 
 		} 
  	?>
-		<div class="lightboxcontent">
+	<div class="lightboxcontent">
  
 	<?php 
-		
+	$is_color = 0;
+	
 	$sortby = (isset($_GET['sortby'])) ? trim(mysql_escape_string($_GET['sortby'])) : '';
 	$a_d = (isset($_GET['a_d'])) ? $_GET['a_d'] : 'a';
 
@@ -205,64 +204,56 @@ $(document).ready(function() {
 	$res = $dbCustom->getResult($db,$sql);
 		
 	if($res->num_rows > 0){
-	$name_obj = $res->fetch_object();
-		echo "<h2>Edit ".$name_obj->attribute_name." Options</h2>";		
+		$name_obj = $res->fetch_object();
+		echo "<h2>Edit ".$name_obj->attribute_name." Options</h2>";	
+		$is_color = (strripos($name_obj->attribute_name,'color') !== false)?1:0;
 	}
+	
+	$ret_page = "set-custom-attributes";	
+		
 		
 	if($admin_access->product_catalog_level > 1){
 	?>
-            <div class="page_actions">
-                <a class='btn btn-primary btn-large confirm confirm-add'><i class="icon-plus icon-white"></i> Add New Option </a>
-                <a class="btn btn-large" href="<?php echo $ret_page.".php"; ?>" target="_top">Done Editing</a>
-            </div>
+		<div class="page_actions">
+			<a href="add-option.php?is_color=<?php echo $is_color; ?>&attribute_id=<?php echo $attribute_id; ?>" class='btn btn-primary btn-large'><i class="icon-plus icon-white"></i> Add New Option </a>
+			<a class="btn btn-large" href="<?php echo $ret_page.".php"; ?>" target="_top">Done Editing</a>
+		</div>
 	<?php
 	}else{
-			echo "<div class='alert'>
-					<span class='fltlft'>
-					<i class='icon-warning-sign'></i></span> Sorry, you don't have the permissions to edit this item.</div>	";	
+		echo "<div class='alert'>
+			<span class='fltlft'>
+			<i class='icon-warning-sign'></i></span> Sorry, you don't have the permissions to edit this item.</div>	";	
+	}
+	
+	if($total_rows > $rows_per_page){			
+		$uid1 = $attribute_id;
+		echo getPagination($total_rows, $rows_per_page, $pagenum, $truncate, $last, "catalog/attributes/option.php", $sortby, $a_d, $uid1);
+		echo "<br /><br />";
 	}
 	?>
-				
-		
-		
-		
-		<?php
-		if($total_rows > $rows_per_page){			
-			$uid1 = $attribute_id;
-			echo getPagination($total_rows, $rows_per_page, $pagenum, $truncate, $last, "catalog/attributes/option.php", $sortby, $a_d, $uid1);
-			echo "<br /><br />";
-		}
-		?>
 
-		<div class="data_table">
-        	
-        	<?php 
-			require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/tablesort.php"); 
-			?>
-			<table border="0" cellspacing="0" cellpadding="10">
-				<thead>
-					<tr>
-                        <th <?php addSortAttr('opt_name',true); ?>>
-                            Option Name
-                           <i <?php addSortAttr('opt_name',false); ?>></i>
-                        </th>
-						<th>Edit</th>
-						<th>Delete</th>
-					</tr>
-				</thead>
-				<?php
-				$block = "<tr>"; 
-				while($row = $result->fetch_object()) {
-					$block .= "<td valign='top'>".stripslashes($row->opt_name)."</td>";
-					$block .= "<td><a class='btn btn-primary confirm confirm-edit'>
-					<i class='icon-cog icon-white'></i> Edit<input type='hidden' class='itemId' id='".$row->opt_id."' value='".$row->opt_id."' />
-					<input type='hidden' class='contentToEdit' id='".$row->opt_id."' value=\"".stripslashes($row->opt_name)."\" /></a></td>";
-					$block .= "<td valign='middle'><a class='btn btn-danger confirm'><i class='icon-remove icon-white'></i><input type='hidden' id='".$row->opt_id."' class='itemId' value='".$row->opt_id."' /></a></td>";
-					$block .= "</tr>";
-				}
-				echo $block;
-				?>
-    		</table>
+	<div class="data_table">
+		<table border="0" cellspacing="0" cellpadding="10">
+		<thead>
+		<tr>
+		<th>Option Name</th>
+		<th>Edit</th>
+		<th>Delete</th>
+		</tr>
+		</thead>
+		<?php
+		$block = "<tr>"; 
+		while($row = $result->fetch_object()) {
+			
+			$block .= "<td valign='top'>".stripslashes($row->opt_name)."</td>";
+			$block .= "<td><a href='edit-option.php?attribute_id=".$attribute_id."&opt_id=".$row->opt_id."&is_color=".$is_color."' class='btn btn-primary'>
+			<i class='icon-cog icon-white'></i> Edit</a></td>";
+			$block .= "<td valign='middle'><a class='btn btn-danger confirm'><i class='icon-remove icon-white'></i><input type='hidden' id='".$row->opt_id."' class='itemId' value='".$row->opt_id."' /></a></td>";
+			$block .= "</tr>";
+		}
+		echo $block;
+		?>
+		</table>
 		<?php
 		if($total_rows > $rows_per_page){			
 			$uid1 = $attribute_id;
@@ -285,29 +276,8 @@ $(document).ready(function() {
 <div class="disabledMsg">
 	<p>Sorry, this item can't be deleted or inactive.</p>
 </div>
-	<!-- New Edit Dialogue -->
-	<div id="content-edit" class="confirm-content">
-		<form name="edit_opt" action="option.php?attribute_id=<?php echo $attribute_id;  ?>" method="post" target="_self">
-			<input id="opt_id" type="hidden" class="itemId" name="opt_id" value='' />
-			<fieldset class="colcontainer">
-				<label>Edit Option</label>
-				<input type="text" class="contentToEdit"  name="opt_name" value=''>
-			</fieldset>
-			<a class="btn btn-large dismiss"> Cancel </a>
-			<button name="edit_opt" type="submit" class="btn btn-large btn-success"><i class="icon-ok icon-white"></i> Save </button>
-		</form>
-	</div>
-	<!-- New Add Dialogue -->
-	<div id="content-add" class="confirm-content">
-		<form name="add_opt" action="option.php?attribute_id=<?php echo $attribute_id; ?>" method="post" target="_self">
-			<fieldset class="colcontainer">
-				<label>Add New Option</label>
-				<input type="text" class="contentToAdd"  name="added_opt">
-			</fieldset>
-			<a class="btn btn-large dismiss"> Cancel </a>
-			<button name="add_opt" type="submit" class="btn btn-large btn-success"><i class="icon-ok icon-white"></i> Add </button>
-		</form>
-	</div>
+	
+	
 </body>
 </html>
 

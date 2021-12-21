@@ -10,7 +10,7 @@ class dl_fastshare_cz extends Download {
 		else return array(false, "accinvalid");
     }
     
-    public function Login($user, $pass){
+    public function login($dbCustom,$user, $pass){
         $data = $this->lib->curl("http://fastshare.cz/sql.php", "lang=en", "login={$user}&heslo={$pass}");
         $cookie = "lang=en;{$this->lib->GetCookies($data)}";
 		return $cookie;

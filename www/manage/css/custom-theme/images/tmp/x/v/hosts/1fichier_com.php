@@ -9,7 +9,7 @@ class dl_1fichier_com extends Download {
 			else return array(false, "accfree");
 	}
 	
-	public function Login($user, $pass){
+	public function login($dbCustom,$user, $pass){
 		$data = $this->lib->curl("https://www.1fichier.com/en/login.pl", "", "mail={$user}&pass={$pass}&lt=on&Login=Login");
 		$cookie = $this->lib->GetCookies($data);
 			return $cookie;

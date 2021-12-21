@@ -1,15 +1,28 @@
 <?php
-/* ms */
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
+if(strpos($_SERVER['REQUEST_URI'], 'solvitware/' )){ 
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/solvitware';
+}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/designitpro'; 
+}elseif(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
+}else{
+	$real_root = $_SERVER['DOCUMENT_ROOT']; 	
+}
+require_once($real_root.'/includes/class.dbcustom.php');
+$dbCustom = new DbCustom();
+
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
 
 $progress = new SetupProgress;
 $module = new Module;
 
+$page_title = "Editing: Spec Content";
+$page_group = "specs-content";
 $page = "specs-content";
 $msg = (isset($_GET['msg'])) ? $_GET['msg'] : '';
 $ts = time();
 
-$db = $dbCustom->getDbConnect(SITE_N_DATABASE);
+$db = $dbCustom->getDbConnect(CART_DATABASE);
 
 // add if not exist
 $sql = "SELECT specs_content_id FROM specs_content WHERE profile_account_id = '".$_SESSION['profile_account_id']."'"; 
@@ -17,8 +30,8 @@ $result = $dbCustom->getResult($db,$sql);
 
 if($result->num_rows == 0){
 	$sql = "INSERT INTO specs_content 
-		(p_1_text, profile_account_id) 
-		VALUES ('Add Content', '".$_SESSION['profile_account_id']."')"; 
+		(profile_account_id) 
+		VALUES ('".$_SESSION['profile_account_id']."')"; 
 	$result = $dbCustom->getResult($db,$sql);
 	$_SESSION['specs_content_id'] = $db->insert_id;
 }else{
@@ -26,10 +39,8 @@ if($result->num_rows == 0){
 }
 
 if($_SESSION['specs_content_id'] == 0){
-	$_SESSION['specs_content_id'] = get_max_specs_content_id();
+	$_SESSION['specs_content_id'] = get_max_specs_content_id($dbCustom);
 }
-
-//$_SESSION['img_id'] = 11;
 
 $sql = "SELECT *
 		FROM specs_content
@@ -38,14 +49,11 @@ $result = $dbCustom->getResult($db,$sql);
 
 if($result->num_rows > 0){
 	$object = $result->fetch_object();
-	$p_1_text = $object->p_1_text;
-	$p_2_text = $object->p_2_text;
+	$content = $object->content;
 	$img_id = $object->img_id;
+		
+	$_SESSION["temp_page_fields"]["content"] = $content;
 	
-	
-	$_SESSION["temp_page_fields"]["p_1_text"] = $p_1_text;
-	$_SESSION["temp_page_fields"]["p_2_text"] = $p_2_text;
-
 	
 }else{
 	$img_id = 0;
@@ -53,8 +61,10 @@ if($result->num_rows > 0){
 	$p_2_text = '';
 
 }
-if(!isset($_SESSION["temp_page_fields"]["p_1_text"])) $_SESSION["temp_page_fields"]["p_1_text"] = $p_1_text;
-if(!isset($_SESSION["temp_page_fields"]["p_2_text"])) $_SESSION["temp_page_fields"]["p_2_text"] = $p_2_text;
+
+if(!isset($_SESSION["temp_page_fields"]["content"])) $_SESSION["temp_page_fields"]["content"] = $content;
+
+if(!isset($_SESSION['img_id']))$_SESSION['img_id']=0;
 
 if($_SESSION['img_id'] > 0){
 
@@ -67,11 +77,18 @@ if($_SESSION['img_id'] > 0){
 if(!isset($_SESSION['img_id']))$_SESSION['img_id'] = 0;
 if($_SESSION['img_id'] == 0) $_SESSION['img_id'] = $img_id;
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php'); 
+require_once($real_root."/manage/cms/get_seo_variables.php");
 
-
+require_once($real_root.'/manage/admin-includes/doc_header.php'); 
 ?>
+<script src="https://cdn.tiny.cloud/1/iyk23xxriyqcd2gt44r230a2yjinya99cx1kd3tk9huatz50/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 <script>
+tinymce.init({
+	selector: 'textarea',
+	plugins: 'advlist link image lists code',
+	forced_root_block : false
+
+});
 
 function ajax_set_page_session(){
 	
@@ -99,15 +116,6 @@ function get_query_str(){
 	return query_str;
 }
 
-
-tinymce.init({
-	selector: 'textarea',
-	plugins: 'advlist link image lists code',
-	forced_root_block : false
-
-});
-
-
 function setRegularSubmit() {
   document.form.action = 'specs.php';
   document.form.target = '_self'; 
@@ -118,31 +126,27 @@ function setRegularSubmit() {
 
 <body>
 <?php
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-header.php');
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-top-nav.php');
+	require_once($real_root.'/manage/admin-includes/manage-header.php');
+	require_once($real_root.'/manage/admin-includes/manage-top-nav.php');
 ?>
 <div class="manage_page_container">
 	<div class="manage_side_nav">
 		<?php 
-        require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-side-nav.php');
+        require_once($real_root.'/manage/admin-includes/manage-side-nav.php');
         ?>
 	</div>
 	<div class="manage_main">
 		<?php 
-
+			
         
 //specs section tabbed sub-navigation
-require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/specs-section-tabs.php");
+require_once($real_root."/manage/admin-includes/specs-section-tabs.php");
 
 $db = $dbCustom->getDbConnect(SITE_N_DATABASE);
 $sql = "SELECT file_name 
 		FROM image
 		WHERE img_id = '".$_SESSION['img_id']."'";
 $img_res = $dbCustom->getResult($db,$sql);
-
-echo "num_rows ".$img_res->num_rows;
-echo "<br />";
-
 if($img_res->num_rows > 0){
 	$img_obj = $img_res->fetch_object();
 	$file_name = $img_obj->file_name;
@@ -153,23 +157,20 @@ if($img_res->num_rows > 0){
 //echo $file_name;
 
 $im = "";
-$im .= $ste_root;
+$im .= SITEROOT;
 $im .= "/saascustuploads/";
 $im .= $_SESSION['profile_account_id'];
 $im .= "/cms/";
 $im .= $file_name;
-
 $im = preg_replace('/(\/+)/','/',$im);
 
-//echo $im;
-//exit;
 echo "<h1>Hero Image </h1>";
 echo "<img src='".$im."' width='500'>";
 
 //$_SESSION['crop_n'] = 1;
 $_SESSION['img_type'] = 'hero';
 
-$url_str= "../../upload-pre-crop.php"; 
+$url_str= SITEROOT."manage/upload-pre-crop.php"; 
 //$url_str = preg_replace('/(\/+)/','/',$url_str);
 //echo $url_str;
 //exit;
@@ -200,33 +201,23 @@ $url_str.= "&specs_content_id=".$_SESSION['specs_content_id'];
 				
 	<div class="colcontainer">
 
-	<label>p_1_text</label>
-	<textarea rows="16"
-	name="p_1_text"><?php echo $_SESSION["temp_page_fields"]["p_1_text"]; ?></textarea>
+	<label>content</label>
+	<textarea rows="46"
+	name="content"><?php echo $_SESSION["temp_page_fields"]["content"]; ?></textarea>
 						
 						
 	</div>
 
-	<div class="colcontainer">
-
-	<label>p_2_text</label>
-	<textarea rows="16"
-	name="p_2_text"><?php echo $_SESSION["temp_page_fields"]["p_2_text"]; ?></textarea>
-						
-						
-	</div>
 
 
 <?php 
-/*
-$page_heading = $_SESSION['temp_page_fields']['page_heading'];
+$page_heading = 'page_heading';
 $seo_name = $_SESSION['temp_page_fields']['seo_name'];
 $title = $_SESSION['temp_page_fields']['title'];
 $keywords = $_SESSION['temp_page_fields']['keywords'];	
 $description = $_SESSION['temp_page_fields']['description'];
 require_once("edit_page_seo.php"); 
-require_once($_SERVER['DOCUMENT_ROOT']."/manage/cms/edit_page_breadcrumb.php");
-*/
+require_once($real_root."/manage/cms/edit_page_breadcrumb.php");
 ?>	
 </form>
 </div>

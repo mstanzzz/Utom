@@ -13,7 +13,7 @@ class dl_rapidgator_net extends Download {
 		else return array(false, "accinvalid");
 	}
 	
-	public function Login($user, $pass){
+	public function login($dbCustom,$user, $pass){
 		$data = $this->lib->curl("https://rapidgator.net/auth/login", "lang=en", "LoginForm[email]={$user}&LoginForm[password]={$pass}&LoginForm[rememberMe]=1");
 		$cookie = "lang=en;".$this->lib->GetCookies($data);
 		return $cookie;

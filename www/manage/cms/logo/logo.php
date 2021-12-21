@@ -1,5 +1,17 @@
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
+if(strpos($_SERVER['REQUEST_URI'], 'solvitware/' )){ 
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/solvitware';
+}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/designitpro'; 
+}elseif(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
+}else{
+	$real_root = $_SERVER['DOCUMENT_ROOT']; 	
+}
+require_once($real_root.'/includes/class.dbcustom.php');
+$dbCustom = new DbCustom();
+
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
 
 $progress = new SetupProgress;
 $module = new Module;
@@ -74,8 +86,8 @@ if(isset($_POST["del_logo"])){
 			$sql ="DELETE FROM image WHERE img_id = '".$img_obj->img_id."'";
 			$result = $dbCustom->getResult($db,$sql);
 			
-			if(file_exists($_SERVER['DOCUMENT_ROOT']."/ul_cms/".$domain."/logo/".$img_obj->file_name)){
-				unlink ($_SERVER['DOCUMENT_ROOT']."/ul_cms/".$domain."/logo/".$img_obj->file_name);
+			if(file_exists($_SERVER['DOCUMENT_ROOT']."/ul_cms/".SITEROOT."/logo/".$img_obj->file_name)){
+				unlink ($_SERVER['DOCUMENT_ROOT']."/ul_cms/".SITEROOT."/logo/".$img_obj->file_name);
 			}
 		}
 		
@@ -140,12 +152,12 @@ if(isset($_POST['set_active'])){
 	$progress->completeStep('logo"' ,$_SESSION['profile_account_id']);
 }
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php'); 
+require_once($real_root.'/manage/admin-includes/doc_header.php'); 
 ?>
 <script>
 
 function previewSubmit() {
-  document.form.action = '<?php echo $ste_root; ?>/pages/preview/preview.php';
+  document.form.action = '<?php echo SITEROOT; ?>pages/preview/preview.php';
   document.form.target = '_blank'; 
   document.form.submit();
 }	
@@ -160,21 +172,21 @@ function regularSubmit() {
 </head>
 <body>
 <?php
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-header.php');
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-top-nav.php');
+	require_once($real_root.'/manage/admin-includes/manage-header.php');
+	require_once($real_root.'/manage/admin-includes/manage-top-nav.php');
 ?>
 <div class="manage_page_container">
 	<div class="manage_side_nav">
 		<?php 
-        require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-side-nav.php');
+        require_once($real_root.'/manage/admin-includes/manage-side-nav.php');
         ?>
 	</div>
 	<div class="manage_main">
    		<?php
-        require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/class.admin_bread_crumb.php");	
+        require_once($real_root."/manage/admin-includes/class.admin_bread_crumb.php");	
 		$bread_crumb = new AdminBreadCrumb;
 		$bread_crumb->reSet();
-		$bread_crumb->add("CMS", $ste_root."manage/cms/cms-landing.php");
+		$bread_crumb->add("CMS", SITEROOT."/manage/cms/cms-landing.php");
 		$bread_crumb->add("Logo", '');
         echo $bread_crumb->output();
 		?>
@@ -197,7 +209,7 @@ function regularSubmit() {
 			
             <?php if($admin_access->cms_level > 1){ ?>
 			<div class="page_actions"> 
-            	<a class="btn btn-large btn-primary fancybox fancybox.iframe" href='<?php echo $ste_root ?>/manage/cms/upload.php?ret_dir=logo&ret_page=logo&img_height=70'>
+            	<a class="btn btn-large btn-primary fancybox fancybox.iframe" href='<?php echo SITEROOT ?>/manage/cms/upload.php?ret_dir=logo&ret_page=logo&img_height=70'>
             	<i class="icon-plus icon-white"></i> Upload Image</a> 
 <!--
 <a onClick="previewSubmit();" href="#" class="btn btn-primary btn-large"><i class="icon-eye-open icon-white"></i> Preview </a>
@@ -239,8 +251,8 @@ function regularSubmit() {
 			 
 $block .= "<td valign='middle'>";
 $block .= "<a class='fancybox' 
-href='".$ste_root."/saascustuploads/".$_SESSION['profile_account_id']."/logo/".$img_row->file_name."'>
-<img src='".$ste_root."/saascustuploads/".$_SESSION['profile_account_id']."/logo/".$img_row->file_name."'>";
+href='".SITEROOT."/saascustuploads/".$_SESSION['profile_account_id']."/logo/".$img_row->file_name."'>
+<img src='".SITEROOT."/saascustuploads/".$_SESSION['profile_account_id']."/logo/".$img_row->file_name."'>";
 
 			$block .= '</td>';
 		
@@ -258,7 +270,7 @@ href='".$ste_root."/saascustuploads/".$_SESSION['profile_account_id']."/logo/".$
 
 		$block .= "<td valign='middle' class='center'>
 			<a class='btn btn-danger confirm logo-delete ".$disabled." '>
-			<input type='hidden' id=".$img_row->logo_id."' class='imgId'  value='".$ste_root."/saascustuploads/".$_SESSION['profile_account_id']."/logo/".$img_row->file_name."'/>
+			<input type='hidden' id=".$img_row->logo_id."' class='imgId'  value='".SITEROOT."/saascustuploads/".$_SESSION['profile_account_id']."/logo/".$img_row->file_name."'/>
 			<i class='icon-remove icon-white'></i></a></td>";
 		
 		$block .= "</tr>";
@@ -284,7 +296,7 @@ href='".$ste_root."/saascustuploads/".$_SESSION['profile_account_id']."/logo/".$
 		</form>
 	</div>
 	<?php 
-    require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-footer.php');
+    require_once($real_root.'/manage/admin-includes/manage-footer.php');
     ?>
 </div>
 </body>

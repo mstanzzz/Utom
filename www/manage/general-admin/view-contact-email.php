@@ -1,19 +1,17 @@
 <?php
-
-
-
-if(!isset($_SERVER['DOCUMENT_ROOT'])){
-	if(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){    
-		$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
-	}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro/' )){
-		$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT'].'/designitpro';
-	}else{
-		$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT']; 	
-	}
+if(strpos($_SERVER['REQUEST_URI'], 'solvitware/' )){ 
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/solvitware';
+}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/designitpro'; 
+}elseif(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
+}else{
+	$real_root = $_SERVER['DOCUMENT_ROOT']; 	
 }
+require_once($real_root.'/includes/class.dbcustom.php');
+$dbCustom = new DbCustom();
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
 
-
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
 
 $page_title = "View Contact Request";
 $page_group = '';
@@ -22,7 +20,7 @@ $msg = '';
 	
 $db = $dbCustom->getDbConnect(SITE_N_DATABASE);
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php'); 
+require_once($real_root.'/manage/admin-includes/doc_header.php'); 
 
 ?>
 </head>
@@ -148,8 +146,8 @@ $result = $dbCustom->getResult($db,$sql);
 					if(file_exists ($_SERVER['DOCUMENT_ROOT']."/user_uploads/".$_SESSION['profile_account_id']."/".$img_row->file_name)){				
 										
 						$block .= "<tr><td>";
-						$block .= "<a href=''".$ste_root."/user_uploads/".$_SESSION['profile_account_id']."/".$img_row->file_name."' target='_blank'>";
-						$block .= "<img src='".$ste_root."/user_uploads/".$_SESSION['profile_account_id']."/".$img_row->file_name."' />";
+						$block .= "<a href=''".SITEROOT."/user_uploads/".$_SESSION['profile_account_id']."/".$img_row->file_name."' target='_blank'>";
+						$block .= "<img src='".SITEROOT."/user_uploads/".$_SESSION['profile_account_id']."/".$img_row->file_name."' />";
 						$block .= "</a>";
 						$block .= "</td></tr>";
 						$block .= "<tr><td><hr /></td></tr>";

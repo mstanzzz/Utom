@@ -13,7 +13,7 @@ if(!isset($_SERVER['DOCUMENT_ROOT'])){
 }
 
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
 
 $progress = new SetupProgress;
 $module = new Module;
@@ -60,7 +60,7 @@ $result = $dbCustom->getResult($db,$sql);
 	
 	$fp = fopen($path.'/robots.txt',"w"); 
 	
-	fwrite($fp, '# robots.txt for '.$ste_root.PHP_EOL.PHP_EOL);
+	fwrite($fp, '# robots.txt for '.SITEROOT.PHP_EOL.PHP_EOL);
 	fwrite($fp, 'User-agent: *'.PHP_EOL.PHP_EOL);
 	fwrite($fp, '# disallow pages/folders'.PHP_EOL.PHP_EOL);
 		
@@ -91,7 +91,7 @@ $result = $dbCustom->getResult($db,$sql);
 		}
 	}
 
-	fwrite($fp, PHP_EOL.'Sitemap: '.$ste_root.'/sitemap.xml.gz'.PHP_EOL);
+	fwrite($fp, PHP_EOL.'Sitemap: '.SITEROOT.'/sitemap.xml.gz'.PHP_EOL);
 
 	fclose($fp);
 		
@@ -137,7 +137,7 @@ $_SESSION['exclude_values'] = (isset($_SESSION['exclude_values'])) ? $_SESSION['
 
 
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php'); 
+require_once($real_root.'/manage/admin-includes/doc_header.php'); 
 
 ?>
 <script>
@@ -178,29 +178,29 @@ function set_form(q_str){
 </head>
 <body>
 <?php
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-header.php');
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-top-nav.php');
+	require_once($real_root.'/manage/admin-includes/manage-header.php');
+	require_once($real_root.'/manage/admin-includes/manage-top-nav.php');
 ?>
 <div class="manage_page_container">
 	<div class="manage_side_nav">
 		<?php 
-        require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-side-nav.php');
+        require_once($real_root.'/manage/admin-includes/manage-side-nav.php');
         ?>
 	</div>
 	<div class="manage_main">
 		<?php 
 		
-		require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/class.admin_bread_crumb.php");	
+		require_once($real_root."/manage/admin-includes/class.admin_bread_crumb.php");	
 		$bread_crumb = new AdminBreadCrumb;
 		$bread_crumb->reSet();
-		$bread_crumb->add("CMS", $ste_root."manage/cms/cms-landing.php");
+		$bread_crumb->add("CMS", SITEROOT."/manage/cms/cms-landing.php");
 		$bread_crumb->add("Robots", '');
         echo $bread_crumb->output();
 		
-        require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-content-top.php');
+        require_once($real_root.'/manage/admin-includes/manage-content-top-category.php');
         
 		//SEO section tabbed sub-navigation
-        require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/seo-section-tabs.php");
+        require_once($real_root."/manage/admin-includes/seo-section-tabs.php");
 		
 		?>
         <form name="form" action="robots.php" method="post" enctype="multipart/form-data">
@@ -233,7 +233,7 @@ function set_form(q_str){
         
     <p class="clear"></p>
 	<?php 
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-footer.php');
+	require_once($real_root.'/manage/admin-includes/manage-footer.php');
 	?>
 </div>
 </body>

@@ -1,6 +1,17 @@
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
+if(strpos($_SERVER['REQUEST_URI'], 'solvitware/' )){ 
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/solvitware';
+}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/designitpro'; 
+}elseif(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
+}else{
+	$real_root = $_SERVER['DOCUMENT_ROOT']; 	
+}
+require_once($real_root.'/includes/class.dbcustom.php');
+$dbCustom = new DbCustom();
 
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
 $ts = time();
 
 $progress = new SetupProgress;
@@ -8,12 +19,10 @@ $module = new Module;
 
 $page_title = "Add New Product";
 $page_group = "item";
-
 $firstload =  (isset($_GET['firstload'])) ? $_GET['firstload'] : 0;
 if($firstload){
 	unset($_SESSION['cat_id']);
 	unset($_SESSION['parent_cat_id']);
-			
 }
 
 $img_id = (isset($_GET['img_id'])) ? $_GET['img_id'] : 0;
@@ -21,6 +30,8 @@ if(!is_numeric($img_id)) $img_id = 0;
 if($img_id > 0){
 	$_SESSION['img_id'] = $img_id;
 }
+
+$_SESSION['from_top_cats'] = isset($_GET['from_top_cats']) ? 1 : 0;
 
 $pagenum = (isset($_GET['pagenum'])) ? $_GET['pagenum'] : 0;
 if(!isset($_SESSION['paging']['pagenum'])) $_SESSION['paging']['pagenum'] = $pagenum;
@@ -43,10 +54,8 @@ if(!isset($_SESSION['cat_id'])) $_SESSION['cat_id'] = $cat_id;
 $parent_item_id = (isset($_GET['parent_item_id'])) ? $_GET['parent_item_id'] : 0;
 if(!isset($_SESSION['temp_item_fields']['parent_item_id'])) $_SESSION['temp_item_fields']['parent_item_id'] = $parent_item_id;
 
-
 $search_str = (isset($_GET['search_str'])) ? addslashes($_GET['search_str']) : 0;
 if(!isset($_SESSION["search_str"])) $_SESSION["search_str"] = $search_str;
-
 
 $ret_page = (isset($_GET['ret_page'])) ? $_GET['ret_page'] : 'item'; 
 $ret_dir = (isset($_GET['ret_dir'])) ? $_GET['ret_dir'] : '';
@@ -66,37 +75,25 @@ if($_SESSION['temp_item_fields']['parent_item_id'] > 0){
 	}
 }
 
-
 $copy_from_parent = (isset($_GET['copy_from_parent'])) ? 1 : 0; 
-
 $action = (isset($_GET['action'])) ? $_GET['action'] : '';
 
 if(!isset($_SESSION['temp_attr_opt_ids'])) $_SESSION['temp_attr_opt_ids'] = array();
 if(!isset($_SESSION['temp_gallery'])) $_SESSION['temp_gallery'] = array();
 if(!isset($_SESSION['temp_documents'])) $_SESSION['temp_documents'] = array();
 if(!isset($_SESSION['temp_videos'])) $_SESSION['temp_videos'] = array();
-
-if(!isset($_SESSION['temp_item_cats'])) $_SESSION['temp_item_cats'] = getItemCats($_SESSION['temp_item_fields']['parent_item_id']);
-
-
+if(!isset($_SESSION['temp_item_cats'])) $_SESSION['temp_item_cats'] = getItemCats($dbCustom, $_SESSION['temp_item_fields']['parent_item_id']);
 $msg = (isset($_GET['msg'])) ? $_GET['msg'] : '';
-
 if(!isset($_SESSION["copied"])) $_SESSION["copied"] = 0;
-
 if(!isset($_SESSION['img_id'])) $_SESSION['img_id'] = 0;
 if(!isset($_SESSION['gal_img_id'])) $_SESSION['gal_img_id'] = 0;
 if(!isset($_SESSION['img_type'])) $_SESSION['img_type'] = '';
-
-
 if(isset($_GET['sel_img_id'])){
 	$_SESSION['img_id'] = $_GET['sel_img_id'];
 }
 
-
 if(isset($_POST['selected_video'])){
-	
 	$video_id = $_POST['video_id'];
-	
 	$sql = "SELECT video_id
 				,youtube_id
 				,title
@@ -120,7 +117,7 @@ if($action == 'update_document' && isset($_GET['document_id'])){
 			$sql = "SELECT document.name					
 				FROM document
 				WHERE document_id = '".$_GET['document_id']."'";
-	$result = $dbCustom->getResult($db,$sql);							
+			$result = $dbCustom->getResult($db,$sql);							
 			if($result->num_rows > 0){
 				$object = $result->fetch_object();
 				$_SESSION['temp_documents'][$key]['name'] = $object->name;
@@ -152,7 +149,7 @@ if(isset($_GET['sel_doc_id']) || ($action == 'upload_document' && isset($_GET['d
 				,document.file_name
 			FROM document
 			WHERE document_id = '".$doc_id."'";
-$result = $dbCustom->getResult($db,$sql);						
+			$result = $dbCustom->getResult($db,$sql);						
 		if($result->num_rows > 0){
 			$object = $result->fetch_object();
 			$indx = count($_SESSION['temp_documents']);
@@ -199,12 +196,7 @@ if(isset($_GET['delvidid'])){
 }
 
 
-//print_r($_SESSION['temp_gallery']);
-
-
-
 if(isset($copy_from_sibling)){
-	
 	 
 	$sql = "SELECT * 
 			FROM item
@@ -236,7 +228,6 @@ if(isset($copy_from_sibling)){
 		
 		$_SESSION['temp_item_fields']['date_active'] = $date_active;
 		$_SESSION['temp_item_fields']['date_inactive'] = $date_inactive;	
-
 		$_SESSION['temp_item_fields']['style_id'] = $object->style_id;	
 		$_SESSION['temp_item_fields']['lead_time_id'] = $object->lead_time_id;	
 		$_SESSION['temp_item_fields']['skill_level_id'] = $object->skill_level_id;	
@@ -273,55 +264,37 @@ if(isset($copy_from_sibling)){
 		$_SESSION['temp_item_fields']['shipping_flat_charge'] = $object->shipping_flat_charge;	
 		$_SESSION['temp_item_fields']['weight'] = $object->weight;	
 		$_SESSION['temp_item_fields']['img_alt_text'] = $object->img_alt_text;
-		
 		$_SESSION['temp_item_fields']['show_in_tool'] = $object->show_in_tool;
-		
 		$_SESSION['temp_item_fields']['hide_id_from_url'] = $object->hide_id_from_url;
-
 		$_SESSION['temp_item_fields']['doc_area_text'] = $object->doc_area_text;
-		
 		$_SESSION['temp_item_fields']['is_kit'] = $object->is_kit;
-		
 		$_SESSION['temp_item_fields']['is_free_shipping'] = $object->is_free_shipping;
-		
 		$_SESSION['temp_item_fields']['show_doc_tab'] = $object->show_doc_tab;
 		$_SESSION['temp_item_fields']['show_meas_form_tab'] = $object->show_meas_form_tab;
 		$_SESSION['temp_item_fields']['show_atc_btn_or_cfp'] = $object->show_atc_btn_or_cfp;
-		
 		$_SESSION['temp_item_fields']['show_start_design_btn'] = $object->show_start_design_btn;
 		$_SESSION['temp_item_fields']['show_design_request_btn'] = $object->show_design_request_btn;
-
 		$_SESSION['temp_item_fields']['show_videos'] = $object->show_videos;
 		$_SESSION['temp_item_fields']['show_associated_kits'] = $object->show_associated_kits;
-		
 		$_SESSION['temp_item_fields']['show_specs_tab'] = $object->show_specs_tab;
-
 	}
-
 }
-
 
 if($copy_from_parent > 0 || (($_SESSION['temp_item_fields']['parent_item_id'] > 0) && (!isset($_SESSION['temp_item_fields']['name'])))){
 
-
 	$sql = sprintf("SELECT * FROM item WHERE item_id = '%u'", $_SESSION['temp_item_fields']['parent_item_id']);
 	$result = $dbCustom->getResult($db,$sql);	
-	
 	if($result->num_rows > 0){
-		
 		$object = $result->fetch_object();
 		$_SESSION['img_id'] = $object->img_id;
-		
 		if($object->date_active < $ts){
 			$date_active = date('m/d/Y',$ts);
 		}else{
 			$date_active = date('m/d/Y',$object->date_active);
 		}
-		
 		if($object->date_inactive >= '2000000000'){
 			$date_inactive = 'never';
 		}else{
-			
 			if(strlen($date_inactive) < 10){	
 				$date_inactive = '2142148196';	
 			}else{					
@@ -331,7 +304,6 @@ if($copy_from_parent > 0 || (($_SESSION['temp_item_fields']['parent_item_id'] > 
 		
 		$_SESSION['temp_item_fields']['date_active'] = $date_active;
 		$_SESSION['temp_item_fields']['date_inactive'] = $date_inactive;	
-
 		$_SESSION['temp_item_fields']['style_id'] = $object->style_id;	
 		$_SESSION['temp_item_fields']['lead_time_id'] = $object->lead_time_id;	
 		$_SESSION['temp_item_fields']['skill_level_id'] = $object->skill_level_id;	
@@ -368,31 +340,19 @@ if($copy_from_parent > 0 || (($_SESSION['temp_item_fields']['parent_item_id'] > 
 		$_SESSION['temp_item_fields']['shipping_flat_charge'] = $object->shipping_flat_charge;	
 		$_SESSION['temp_item_fields']['weight'] = $object->weight;	
 		$_SESSION['temp_item_fields']['img_alt_text'] = $object->img_alt_text;
-		
 		$_SESSION['temp_item_fields']['show_in_tool'] = $object->show_in_tool;
-		
 		$_SESSION['temp_item_fields']['hide_id_from_url'] = $object->hide_id_from_url;
-		
 		$_SESSION['temp_item_fields']['doc_area_text'] = $object->doc_area_text;
-
 		$_SESSION['temp_item_fields']['is_kit'] = $object->is_kit;
-		
 		$_SESSION['temp_item_fields']['is_free_shipping'] = $object->is_free_shipping;
-		
 		$_SESSION['temp_item_fields']['show_doc_tab'] = $object->show_doc_tab;
 		$_SESSION['temp_item_fields']['show_meas_form_tab'] = $object->show_meas_form_tab;
 		$_SESSION['temp_item_fields']['show_atc_btn_or_cfp'] = $object->show_atc_btn_or_cfp;
-		
 		$_SESSION['temp_item_fields']['show_start_design_btn'] = $object->show_start_design_btn;
 		$_SESSION['temp_item_fields']['show_design_request_btn'] = $object->show_design_request_btn;
-		
 		$_SESSION['temp_item_fields']['show_videos'] = $object->show_videos;
 		$_SESSION['temp_item_fields']['show_associated_kits'] = $object->show_associated_kits;
-		
 		$_SESSION['temp_item_fields']['show_specs_tab'] = $object->show_specs_tab;
-		
-		
-
 	}
 }
 
@@ -436,101 +396,72 @@ if($copy_from_parent > 0 || (($_SESSION['temp_item_fields']['parent_item_id'] > 
 	if(!isset($_SESSION['temp_item_fields']['shipping_flat_charge'])) $_SESSION['temp_item_fields']['shipping_flat_charge'] = 0;
 	if(!isset($_SESSION['temp_item_fields']['weight'])) $_SESSION['temp_item_fields']['weight'] = '';
 	if(!isset($_SESSION['temp_item_fields']['img_alt_text'])) $_SESSION['temp_item_fields']['img_alt_text'] = '';
-
 	if(!isset($_SESSION['temp_item_fields']['show_in_tool'])) $_SESSION['temp_item_fields']['show_in_tool'] = 0;
-	
 	if(!isset($_SESSION['temp_item_fields']['hide_id_from_url'])) $_SESSION['temp_item_fields']['hide_id_from_url'] = 0;
-	
 	if(!isset($_SESSION['temp_item_fields']['doc_area_text'])) $_SESSION['temp_item_fields']['doc_area_text'] = '';
-
 	if(!isset($_SESSION['temp_item_fields']['is_kit'])) $_SESSION['temp_item_fields']['is_kit'] = 0;
-	
 	if(!isset($_SESSION['temp_item_fields']['is_free_shipping'])) $_SESSION['temp_item_fields']['is_free_shipping'] = 0;
-	
 	if(!isset($_SESSION['temp_item_fields']['show_doc_tab'])) $_SESSION['temp_item_fields']['show_doc_tab'] = 1;
 	if(!isset($_SESSION['temp_item_fields']['show_meas_form_tab'])) $_SESSION['temp_item_fields']['show_meas_form_tab'] = 1;
 	if(!isset($_SESSION['temp_item_fields']['show_atc_btn_or_cfp'])) $_SESSION['temp_item_fields']['show_atc_btn_or_cfp'] = 1;
-	
 	if(!isset($_SESSION['temp_item_fields']['show_start_design_btn'])) $_SESSION['temp_item_fields']['show_start_design_btn'] = 0;
 	if(!isset($_SESSION['temp_item_fields']['show_design_request_btn'])) $_SESSION['temp_item_fields']['show_design_request_btn'] = 0;
-
 	if(!isset($_SESSION['temp_item_fields']['show_videos'])) $_SESSION['temp_item_fields']['show_videos'] = 0;
 	if(!isset($_SESSION['temp_item_fields']['show_associated_kits'])) $_SESSION['temp_item_fields']['show_associated_kits'] = 1;
-	
 	if(!isset($_SESSION['temp_item_fields']['show_specs_tab'])) $_SESSION['temp_item_fields']['show_specs_tab'] = 1;
 	
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php'); 
 
-
-//print_r($_SESSION["temp_cats"]);
-
+require_once($real_root.'/manage/admin-includes/doc_header.php'); 
 ?>
-
+<script src="https://cdn.tiny.cloud/1/iyk23xxriyqcd2gt44r230a2yjinya99cx1kd3tk9huatz50/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 <script>
-
-
 tinymce.init({
 	selector: 'textarea',
 	plugins: 'advlist link image lists code',
 	forced_root_block : false
 
 });
+</script>
 
-//=======================================
-// DEFINE VALIDATION FUNCTIONS
-//=======================================
+<script>
+
+var requiredFields = ["product_name"];
+var invalidFields = [];
 	
-	//var requiredFields = ["product_name", "product_number", "sku", "price_flat", "price_wholesale", "is_taxable", "datepicker1", "show_in_cart", "show_in_showroom", "weight"];
-	
-	var requiredFields = ["product_name"];
-	
-	//console.log(requiredFields);
-	var invalidFields = [];
-	
-	
-	
-	function validate(){
-		var theform = document.forms["add_item"];
-		var j = 0;
-		var string = "<div class='confirm-content validationNotification'><h3>Please correct the following fields:</h3><ul>";
-		var isValid = true;
+function validate(){
+	var theform = document.forms["add_item"];
+	var j = 0;
+	var string = "<div class='confirm-content validationNotification'><h3>Please correct the following fields:</h3><ul>";
+	var isValid = true;
 		
-		for (i=0; i < theform.elements.length; i++){
-			var elem = theform.elements[i];
-			//we don't need to validate hidden fields, buttons, fieldsets, legends or submit elements...
-			if (elem.type != 'hidden' && elem.type != 'button' && elem.type != 'fieldset' && elem.type != 'legend' && elem.type != 'submit'){
-				var elementId = elem.id;				
-				// if the input field has an ID and it is one of the required fields...
-				if(elementId.length > 0 && $.inArray(elementId,requiredFields) != -1){
-					//if the input field is a text field, validate that it is not zero, empty, or null
-					if (elem.type == "text" && (elem.value == 0 || elem.value == '' || elem.value == null)){
-						var elementLabel = $("#"+elementId).closest(".colcontainer").find("label").text();
-						string += "<li>"+elementLabel+"</li>";
-						invalidFields[j] = elementId;
-						j++;
-						isValid = false;
-					}
-					//if the input field is any other type of field, just make sure it has a value
-					else if (elem.value == '' || elem.value == null){
-						var elementLabel = $("#"+elementId).closest(".colcontainer").find("label").text();
-						string += "<li>"+elementLabel+"</li>";
-						invalidFields[j] = elementId;
-						j++;
-						isValid = false;
-					}
+	for (i=0; i < theform.elements.length; i++){
+		var elem = theform.elements[i];
+		if (elem.type != 'hidden' && elem.type != 'button' && elem.type != 'fieldset' && elem.type != 'legend' && elem.type != 'submit'){
+			var elementId = elem.id;				
+			if(elementId.length > 0 && $.inArray(elementId,requiredFields) != -1){
+				if (elem.type == "text" && (elem.value == 0 || elem.value == '' || elem.value == null)){
+					var elementLabel = $("#"+elementId).closest(".colcontainer").find("label").text();
+					string += "<li>"+elementLabel+"</li>";
+					invalidFields[j] = elementId;
+					j++;
+					isValid = false;
+				}
+				else if (elem.value == '' || elem.value == null){
+					var elementLabel = $("#"+elementId).closest(".colcontainer").find("label").text();
+					string += "<li>"+elementLabel+"</li>";
+					invalidFields[j] = elementId;
+					j++;
+					isValid = false;
 				}
 			}
-			
-			
-			
-			
 		}
-		string += "</ul><p><a class='btn btn-large dismiss'>Ok, got it.</a></p></div>";
-		if (!isValid){
+	}
+	string += "</ul><p><a class='btn btn-large dismiss'>Ok, got it.</a></p></div>";
+	if (!isValid){
 			
-			$(string).appendTo(".manage_main");
-			$(".validationNotification .dismiss").click(function(){
+		$(string).appendTo(".manage_main");
+		$(".validationNotification .dismiss").click(function(){
 				$(".validationNotification").remove();
 				$($("input.required").get().reverse()).trigger('focus').trigger('blur');
 				$(".manage_main").click();
@@ -538,43 +469,36 @@ tinymce.init({
 			$(".validationNotification").fadeIn("fast");
 		}
 		else if (isValid){
-			theform.submit();	
+		theform.submit();	
+	}
+}
+	
+	
+	
+function IsNumeric(values)
+{
+	var ValidChars = "0123456789.";
+	var IsNumber=true;
+	var Char;
+	for (i = 0; i < values.sText.length && IsNumber == true; i++){ 
+			Char = values.sText.charAt(i); 
+		if (ValidChars.indexOf(Char) == -1) {
+			IsNumber = false;
 		}
 	}
-	
-	
-	
-	function IsNumeric(values)
-	{
-		var ValidChars = "0123456789.";
-		var IsNumber=true;
-		var Char;
-		for (i = 0; i < values.sText.length && IsNumber == true; i++) 
-			{ 
-				Char = values.sText.charAt(i); 
-				if (ValidChars.indexOf(Char) == -1) 
-				{
-					IsNumber = false;
-				}
-			}
-		if (IsNumber){
-			return {valid:true}	
-		}
-		else {
-			return {valid:false,message:'Please only enter numeric values in this field.'}	
-		}
+	if (IsNumber){
+		return {valid:true}	
 	}
+	else {
+		return {valid:false,message:'Please only enter numeric values in this field.'}	
+	}
+}
 	
-	
-	
-	function get_query_str(){
-		var query_str = '';
-		var is_in_form = 0;
-		var opt_list = '';
-		
-		<?php
-		
-
+function get_query_str(){
+	var query_str = '';
+	var is_in_form = 0;
+	var opt_list = '';
+	<?php
 		$db = $dbCustom->getDbConnect(CART_DATABASE);
 
 		$sql = "SELECT attribute_id
@@ -585,59 +509,13 @@ tinymce.init({
 		$attr_res = $dbCustom->getResult($db,$sql);
 	
 		while($attr_row = $attr_res->fetch_object()) {
-			//$nn = "attr_".$attr_row->attribute_id."[]"; use for multiple 
 			$nn = "attr_".$attr_row->attribute_id;
 		
 		}		
 		?>
-		
-		<!--
-			for(i = 0; i < document.add_item.elements.length; i++)
-			{
-				if(document.add_item.elements[i].name == '<?php echo $nn; ?>'){
-					is_in_form = 1;
-					//alert("FFF");
-				}
-			}
-			if(is_in_form){
-				//opt_list += this.value+"|";
-				$("#<?php echo $nn; ?>  option:selected").each(
-				
-					function(){ 
-						opt_list += this.value+"|"; 
-					}
-				);	
-	
-			}
-		
-			is_in_form = 0;
-		-->
-		<?php
-	//	}
-		?>
-			// remove last char
-			opt_list = opt_list.replace(/(\s+)?.$/, '');	
+		opt_list = opt_list.replace(/(\s+)?.$/, '');	
 			
-			query_str += "&opt_list="+opt_list;
-		/*
-		var str_cats = '';	
-		var all_cats = $(".data_table .tree_table input[type='checkbox']");	
-		var i = 0;
-		$(all_cats).each(function() {
-			var cat_id = $(this).val();
-			str_cats = str_cats + cat_id+"|";  
-			if($(this).attr("checked") == "checked"){
-				str_cats = str_cats + 1;
-			}else{
-				str_cats = str_cats + 0;
-			}
-			str_cats = str_cats + ",";
-			i++;
-		})
-	
-		query_str += "&str_cats="+str_cats;
-	
-		*/
+		query_str += "&opt_list="+opt_list;
 		
 		if($('#main_attr_id').length > 0){
 			query_str += "&main_attr_id="+$('#main_attr_id').val(); 
@@ -653,8 +531,6 @@ tinymce.init({
 		query_str += "&parent_item_id="+document.add_item.parent_item_id.value; 
 		query_str += "&name="+document.add_item.name.value.replace('&', '%26'); 
 		
-		//alert(document.add_item.name.value);
-		
 		query_str += "&price_flat="+document.add_item.price_flat.value;
 		query_str += "&price_wholesale="+document.add_item.price_wholesale.value;
 		query_str += "&percent_markup="+document.add_item.percent_markup.value;
@@ -666,22 +542,14 @@ tinymce.init({
 		query_str += (document.add_item.is_promo_product.checked)? "&is_promo_product=1" : "&is_promo_product=0";
 		query_str += (document.add_item.allow_back_order.checked)? "&allow_back_order=1" : "&allow_back_order=0"; 
 		query_str += (document.add_item.is_drop_shipped.checked)? "&is_drop_shipped=1" : "&is_drop_shipped=0"; 
-
-
-		//query_str += (document.add_item.is_closet.checked)? "&is_closet=1" : "&is_closet=0";
-		
-		//query_str += ($('#is_closet_yes').attr("checked") == 'checked')? "&is_closet=1" : "&is_closet=0";  
-		//alert($('#is_closet_yes').attr('checked') == 'checked');  
 		
 		query_str += (document.add_item.show_in_cart.checked)? "&show_in_cart=1" : "&show_in_cart=0"; 
 		query_str += (document.add_item.show_in_showroom.checked)? "&show_in_showroom=1" : "&show_in_showroom=0"; 
 		
 		query_str += "&brand_id="+document.add_item.brand_id.value;
-		//query_str += "&prod_number="+document.add_item.prod_number.value;
 		query_str += "&internal_prod_number="+document.add_item.internal_prod_number.value;
 		query_str += "&sku="+document.add_item.sku.value;
 		query_str += "&upc="+document.add_item.upc.value;
-		//query_str += "&short_description="+escape(tinyMCE.get('wysiwyg1').getContent());
 		query_str += "&short_description="+document.add_item.short_description.value;
 		
 		query_str += "&description="+escape(tinyMCE.get('wysiwyg2').getContent());
@@ -717,10 +585,6 @@ tinymce.init({
 	
 		query_str += (document.add_item.show_specs_tab.checked)? "&show_specs_tab=1" : "&show_specs_tab=0";
 
-		//query_str += (document.add_item.hide_id_from_url.checked)? "&hide_id_from_url=1" : "&hide_id_from_url=0"; 
-	
-		//alert(str);
-		
 		return query_str;
 	}
 
@@ -741,7 +605,6 @@ function set_item_session(){
 	});	
 }
 
-
 $(document).ready(function() {
 	
 	$(".fancybox").click(function(e){
@@ -752,7 +615,6 @@ $(document).ready(function() {
 	$(".upload").click(function(){
 		set_item_session();		
 	});
-
 	
 	$("#datepicker1").datepicker();
 	$("#datepicker2").datepicker();	
@@ -770,7 +632,6 @@ $(document).ready(function() {
     	}	
 	});
 
-
 	$("#copy_from_parent").click(function(e){
 		var q_str = "add-item.php?copy_from_parent=1&parent_item_id="+<?php echo $_SESSION['temp_item_fields']['parent_item_id']; ?>;
 		location.href = q_str; 
@@ -787,7 +648,6 @@ $(document).ready(function() {
 				$("#show_atc_btn_or_cfp_toggle").find(".switch").animate({right: "38px"},300).css("left","auto");
 				$("#show_atc_btn_or_cfp_toggle").find("input.checkboxinput").removeAttr("checked");
 			}
-			//alert("was off");
 		}
 	});
 
@@ -825,9 +685,6 @@ $(document).ready(function() {
 		}
 	});
 	
-
-	
-	
 	$("#show_videos_toggle").click(function(e){
 		if($(this).hasClass("on")){
 			//alert("was on");
@@ -841,10 +698,6 @@ $(document).ready(function() {
 			//alert("was off");
 		}
 	});
-
-
-
-
 	
 	$("#show_associated_kits_toggle").click(function(e){
 		if($(this).hasClass("on")){
@@ -859,54 +712,6 @@ $(document).ready(function() {
 			//alert("was off");
 		}
 	});
-
-
-/*
-	
-show_videos
-show_associated_kits
-
-show_videos_toggle
-show_associated_kits_toggle
-
-*/	
-
-	
-	
-	
-	
-	//=======================================
-	// Apply Valid8 to appropriate Fields
-	//=======================================
-	
-	
-
-	//$("#product_name, #product_number, #sku, #price_flat, #is_taxable, #datepicker1, #show_in_cart, #show_in_showroom, #weight").valid8();
-	//$("#product_name").valid8();
-	
-	/* make this not required but must be numeric */
-
-		
-	
-/*	
-	$('#price_flat').valid8({
-		'jsFunctions': [
-			{ function: IsNumeric, values: function(){
-					return { sText: $('#price_flat').val()}
-				}
-			}
-		]
-	});
-	$('#price_wholesale').valid8({
-		'jsFunctions': [
-			{ function: IsNumeric, values: function(){
-					return { sText: $('#price_wholesale').val()}
-				}
-			}
-		]
-	});
-	*/
-	
 });
 
 
@@ -915,55 +720,30 @@ show_associated_kits_toggle
 </head>
 <body>
 <?php
-
-
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-header.php');
-	require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-top-nav.php');
-
-
-//print_r($_SESSION["temp_cats"]);
-
-
+	require_once($real_root.'/manage/admin-includes/manage-header.php');
+	require_once($real_root.'/manage/admin-includes/manage-top-nav.php');
 	$db = $dbCustom->getDbConnect(CART_DATABASE);
-
 ?>
-
-<!--
-<a onClick="test();">TEST</a>
--->
 <div class="manage_page_container">
 	<div class="manage_side_nav">
 		<?php 
-        require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-side-nav.php');
-		
-
+        require_once($real_root.'/manage/admin-includes/manage-side-nav.php');
         ?>
 	</div>
 	<div class="manage_main">
 		<?php 
-
-		require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/class.admin_bread_crumb.php");	
+		require_once($real_root."/manage/admin-includes/class.admin_bread_crumb.php");	
 		$bread_crumb = new AdminBreadCrumb;
 		echo $bread_crumb->output();
-
 		if($parent_name != ''){		
 			$page_title .=  '<br />Child of: '.$parent_name;
 		}
-
-        require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-content-top.php');
-		
+        
 		if($_SESSION['ret_page'] == '/category-tree'){
-
 			$url_str = "../categories/category-tree.php";				
-
 		}else{
-			//if($_SESSION['ret_dir'] != ''){
-				$url_str = $ste_root."manage/".$_SESSION['ret_dir']."/".$_SESSION['ret_page'].".php";				
-			//}else{
-				$url_str = "item.php";
-			//}
 			
-		$url_str = preg_replace('/(\/+)/','/',$url_str);
+			$url_str = "item.php";			
 			$url_str.= '?parent_cat_id='.$_SESSION['parent_cat_id'];
 			$url_str.= '&cat_id='.$_SESSION['cat_id'];		
 			$url_str.= '&pagenum='.$_SESSION['paging']['pagenum'];
@@ -992,22 +772,6 @@ show_associated_kits_toggle
 				<a onClick="validate()" class="btn btn-success btn-large">
 				<i class="icon-ok icon-white"></i> Save Product </a>
 				<hr />
-				<a class="btn btn-primary toggleFieldsets" href="#"><i class="icon-minus-sign icon-white icon-white"></i> Collapse All Edit Areas </a><br />
-				<select class="jumpMenu">
-					<option value="#" selected>Jump to Section...</option>
-					<option value="#product_basics">Product Basics</option>
-					<option value="#product_pricing">Pricing &amp; Discounts</option>
-					<option value="#product_stock">Stock &amp Visibility</option>
-					<option value="#product_attributes">Product Attributes</option>
-					<option value="#product_images">Product Images</option>
-                    
-                    
-                    <option value="#product_videos">Product Videos</option>
-                    
-                    
-					<option value="#product_shipping">Shipping Options</option>
-					<option value="#product_categories">Categories &amp; Keywords</option>
-				</select>
                 
                
                 <?php
@@ -1015,11 +779,9 @@ show_associated_kits_toggle
 					
 				if($_SESSION['ret_page'] == 'category-tree'){
 					$url_str= '../categories/category-tree.php';
-	//$url_str = preg_replace('/(\/+)/','/',$url_str);
 
 				}else{					               				
 					$url_str= 'item.php';
-					//$url_str = preg_replace('/(\/+)/','/',$url_str);
 
 					$url_str.= "?parent_item_id=".$_SESSION['temp_item_fields']['parent_item_id'];
 					$url_str.= "&parent_cat_id=".$_SESSION['parent_cat_id'];
@@ -1030,9 +792,6 @@ show_associated_kits_toggle
 					$url_str.= "&truncate=".$_SESSION['paging']['truncate'];					
 					$url_str.= '&search_str='.$_SESSION['search_str'];
 				}
-
-	$url_str = "item.php";	 
-	//$url_str = preg_replace('/(\/+)/','/',$url_str);
 
 				?>
 				<a href="<?php echo $url_str; ?>" class="btn">
@@ -1338,20 +1097,18 @@ show_associated_kits_toggle
 								$file_name = '';
 							}
 
-							echo "<img src='".$ste_root."/saascustuploads/".$_SESSION['profile_account_id']."/cart/medium/".$file_name."'>";
+							echo "<img src='".SITEROOT."/saascustuploads/".$_SESSION['profile_account_id']."/cart/medium/".$file_name."'>";
 							//<a href='#' class='btn btn-small btn-danger confirm'><i class='icon-remove icon-white'></i></a>";			
 						}
 						
 				$_SESSION['crop_n'] = 1;
-				$_SESSION['img_type'] = 'cart';
 						
-						
-						$url_str= $ste_root."manage/upload-pre-crop.php"; 
-	$url_str = preg_replace('/(\/+)/','/',$url_str);
+						$url_str= SITEROOT."manage/upload-pre-crop.php"; 
 						
 						$url_str.= "?ret_page=add-item";
 						$url_str.= "&ret_dir=products";
 						$url_str.= "&ret_path=catalog/products";
+						$url_str.= "&img_type=cart";
 						$url_str.= "&upload_new_img=1";
 						$url_str.= "&parent_cat_id=".$_SESSION['parent_cat_id'];
 						$url_str.= "&cat_id=".$_SESSION['cat_id'];		
@@ -1363,16 +1120,14 @@ show_associated_kits_toggle
 					</div>
                     <div class="colcontainer">
                         <div class="twocols">
-                        <!--  fancybox fancybox.iframe -->
+                       
                             <a class="btn btn-large btn-primary upload" href="<?php echo $url_str; ?>">
                             <i class="icon-plus icon-white"></i> Upload New Main Image </a>
                         </div>
                         
                     <?php
 						$url_str= "../select-image.php";               				
-						//$url_str = preg_replace('/(\/+)/','/',$url_str);
 
-						
 						$url_str.= "?ret_page=add-item";
 						$url_str.= "&ret_dir=products";
 						$url_str.= "&ret_path=catalog/products";
@@ -1382,11 +1137,10 @@ show_associated_kits_toggle
 					?>                    
 						
                         <div class="twocols">
-                        <!--  fancybox fancybox.iframe -->
-                            <a class="btn btn-large btn-primary fancybox fancybox.iframe" href="<?php echo $url_str; ?>">
-                            <i class="icon-plus icon-white"></i> Select New Main Image </a>
-
-						</div>
+                   
+<a  class="btn btn-large btn-primary" href="<?php echo $url_str; ?>">Select a Main Image </a>
+</div>
+						
 					</div>
                     
                     <br />
@@ -1409,15 +1163,13 @@ show_associated_kits_toggle
 						
 						if($img_res->num_rows > 0){
 							$img_obj = $img_res->fetch_object();
-							echo "<img src='".$ste_root."/saascustuploads/".$_SESSION['profile_account_id']."/cart/small/".$img_obj->file_name."'>";			
+							echo "<img src='".SITEROOT."/saascustuploads/".$_SESSION['profile_account_id']."/cart/small/".$img_obj->file_name."'>";			
 							echo "<a href='add-item.php?delgalleryimgid=".$val."#img' class='btn btn-small btn-danger'><i class='icon-remove icon-white'></i></a>";
 							echo "<br />";
 						}
 					}
 
-						$url_str= "../../upload-pre-crop.php";               				
-						//$url_str = preg_replace('/(\/+)/','/',$url_str);
-
+						$url_str= SITEROOT."manage/upload-pre-crop.php";               				
 						$url_str.= "?ret_page=add-item";
 						$url_str.= "&ret_dir=products";
 						$url_str.= "&ret_path=catalog/products";
@@ -1434,8 +1186,7 @@ show_associated_kits_toggle
 						</div>
 						<?php
 							$url_str= "../select-image.php";               				
-							//$url_str = preg_replace('/(\/+)/','/',$url_str);
-
+						
                             $url_str.= "?ret_page=add-item";
                             $url_str.= "&ret_dir=products";
 							$url_str.= "&ret_path=catalog/products";
@@ -1482,7 +1233,6 @@ show_associated_kits_toggle
 						
 
 					$url_str= 'edit-item-video.php';
-					//$url_str = preg_replace('/(\/+)/','/',$url_str);
 						
 						$url_str.= "?ret_page=add-item";
 						$url_str.= "&video_id=".$val['video_id'];
@@ -1499,8 +1249,6 @@ show_associated_kits_toggle
 				</table>
 				<?php                     				
 				$url_str= 'add-item-video.php';
-				//$url_str = preg_replace('/(\/+)/','/',$url_str);
-						
 				$url_str.= "?ret_page=add-item";
 				?>
                     <div class="colcontainer">
@@ -1512,8 +1260,7 @@ show_associated_kits_toggle
 						<?php
 					$url_str= 'select-item-video.php';
 					$url_str.= "?ret_page=add-item";
-					
-                        ?>                    
+					                        ?>                    
                         <div class="twocols"> 
                             <a class="btn btn-primary fancybox fancybox.iframe" href="<?php echo $url_str; ?>">
                             <i class="icon-plus icon-white"></i> Select Video </a>
@@ -1524,17 +1271,11 @@ show_associated_kits_toggle
 
 
 
-
-
-
-
-
-
 				<fieldset class="edit_page" id="product_categories">
 					<legend>Categories &amp; Keywords<i class="icon-minus-sign icon-white"></i></legend>
 					<div class="alert alert-info"><strong>Note:</strong> You can manage and add new categories from the 
                     <a class='fancybox fancybox.iframe' 
-                    href="<?php echo $ste_root; ?>/manage/catalog/categories/top-category.php?strip=1">Category</a> section.</div>
+                    href="<?php echo SITEROOT; ?>manage/catalog/categories/top-category.php?strip=1">Category</a> section.</div>
 
                     
                     <div class="colcontainer formcols">
@@ -1546,22 +1287,9 @@ show_associated_kits_toggle
 						</div>
 					</div>
 					<div class="colcontainer">
-						<?php
-						 echo "<a class='btn btn-large btn-primary fancybox fancybox.iframe' 
-                            href='".$ste_root."manage/catalog/categories/category-tree.php?strip=1'
-                            <i class='icon-plus icon-white'></i> Edit Categories </a>";
-						
-						
-						
-						//if($_SESSION["parent_item_id"] == 0){ 
-						//we have to keep the tree here in order to get the dynamic attributes
-							require_once($_SERVER['DOCUMENT_ROOT']."/manage/catalog/products/item-category-tree-snippet.php"); 
-						//}
-						?>
+					
 					</div>
 				</fieldset>
-
-
 
 
 				<fieldset class="edit_page" id="product_stock">
@@ -1604,27 +1332,7 @@ show_associated_kits_toggle
 							<?php if($_SESSION['temp_item_fields']["show_in_tool"]) echo "checked='checked'";?> /></div>
 						</div>
                     
-                    <!--
-						<div class="fourcols">
-							<label>Show in store section?*</label>
-                            <div class="radiotoggle on"> 
-                            <span class="ontext">YES</span>
-                            <a class="switch on" href="#"></a>
-                            <span class="offtext">NO</span>
-                            <input id='is_closet_no' type="radio" class="radioinput" name="is_closet" value="0"
-							<?php //if(!$_SESSION['temp_item_fields']["is_closet"]) echo "checked='checked'";?> /></div>
-						</div>
-						<div class="fourcols">
-							<label>Show in showroom?*</label>
-                            <div class="radiotoggle on"> 
-                            <span class="ontext">YES</span>
-                            <a class="switch on" href="#"></a>
-                            <span class="offtext">NO</span>
-                            <input id='is_closet_yes' type="radio" class="radioinput" name="is_closet" value="1" 
-							<?php //if($_SESSION['temp_item_fields']["is_closet"]) echo "checked='checked'";?> /></div>
-						</div>
-                        -->
-                        
+                   
                          <div class="fourcols">
 							<label>Show in store section?*</label>
 							<div class="checkboxtoggle on"> 
@@ -1675,10 +1383,9 @@ show_associated_kits_toggle
 					<div class="alert alert-info"><strong>Note:</strong> 
                     You can also manage and add new attributes in the 
                     <a class='fancybox fancybox.iframe'
-                    href="<?php echo $ste_root; ?>/manage/catalog/attributes/attribute.php?strip=1">
-                    Product Attributes</a> section, and restrict product attributes by 
-                    <a class='fancybox fancybox.iframe' 
-                    href="<?php echo $ste_root; ?>/manage/catalog/categories/top-category.php?strip=1">Category</a>.</div>
+                    href="<?php echo SITEROOT; ?>manage/catalog/attributes/attribute.php?strip=1">
+                    Product Attributes</a>
+                  </div>
                     
                     
                     <div id="attr_section">
@@ -1953,30 +1660,17 @@ show_associated_kits_toggle
 						</div>
 					</div>
                     
-                    
-                    <!--
-					<div class="colcontainer formcols">
-						<div class="twocols">
-							<label>Hide ID From URL?</label>
-						</div>
-						<div class="twocols">
-							<div class="checkboxtoggle on"> 
-                            	<span class="ontext">YES</span>
-                                <a class="switch on" href="#"></a>
-                                <span class="offtext">NO</span>
-                                <input type="checkbox" 
-                                class="checkboxinput" 
-                                name="hide_id_from_url" 
-                                id="hide_id_from_url" 
-                                value="1" 
-								<?php //if($_SESSION['temp_item_fields']['hide_id_from_url']) echo "checked='checked'";?> />
-                            </div>
-						</div>
-					</div>
-                    -->
-                    
- 
 				</fieldset>
+				
+				
+				
+				
+					<div class="colcontainer">
+						<?php require_once($real_root."/manage/catalog/products/item-category-tree-snippet.php"); ?>
+					</div>
+
+				
+				
 
 <a id="doc"></a>
 
@@ -2056,50 +1750,23 @@ show_associated_kits_toggle
 
 			</div>
 		</form>
-</div>
-
-
-
-       
-
- <p class="clear"></p>
-    <?php 
-    require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-footer.php');
-    ?>
-
-
-
+	</div>
 
 <p class="clear"></p>
 </div>
 
-
-
-	<div style="display:none">
-        <div id="add_attribute" style="width:300px; height:140px;">
-      
-        </div>
-	</div>
-
-<div style="display:none">
-        <div id="add_keyword" style="width:200px; height:80px;">
-      
-        </div>
-</div>
-
-<div style="display:none">
-        <div id="del_keyword" style="width:200px; height:180px;">
-   
-        </div>
-</div> 
-<div class="disabledMsg">
-	<p>Sorry, this item can't be modified.</p>
-</div>
+<div id="add_attribute" style="width:300px; height:140px; display:none"></div>
+<div id="add_keyword" style="width:200px; height:80px; display:none"></div>
+<div id="del_keyword" style="width:200px; height:180px; display:none"></div>
+<div class="disabledMsg"><p>Sorry, this item can't be modified.</p></div>
 <script>
 	set_attr_section();
 </script>
+
 </body>
 </html>
+
+
 
 
 

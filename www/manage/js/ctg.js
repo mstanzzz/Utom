@@ -189,8 +189,8 @@ $(document).ready(function() {
 		if(url.indexOf("http") > -1){
 			window.open(url);
 		}else{
-			var $ste_root = $(this).find(".s_sub").attr('id');
-			window.location = $ste_root+"/"+url;
+			var SITEROOT = $(this).find(".s_sub").attr('id');
+			window.location = SITEROOT+"/"+url;
 		
 		}
 			
@@ -201,7 +201,7 @@ $(document).ready(function() {
 	$(".header_cart_row").click(function(){ 
 		//var item_id = $(this).find(".i_sub").attr('id');
 		//var cat_id = $(this).find(".c_sub").attr('id');			
-		//var $ste_root = $(this).find(".r_sub").attr('id');			
+		//var SITEROOT = $(this).find(".r_sub").attr('id');			
 		var url = $(this).find(".r_sub").attr('id');
 		
 		//alert(url);
@@ -209,7 +209,7 @@ $(document).ready(function() {
 		window.location = url;
 		
 		
-		//window.location = $ste_root+"/closet-accessory-details/closets-accessory-item/"+item_id+"/"+cat_id;
+		//window.location = SITEROOT+"/closet-accessory-details/closets-accessory-item/"+item_id+"/"+cat_id;
 	})
 
 */
@@ -218,11 +218,11 @@ $(document).ready(function() {
 	$(".footer_nav_cats_li").click(function(){ 
 		var cat_name = $(this).find(".n_sub").attr('id');
 		var cat_id = $(this).find(".c_sub").attr('id');			
-		var $ste_root = $(this).find(".r_sub").attr('id');
+		var SITEROOT = $(this).find(".r_sub").attr('id');
 		var shop_name = $(this).find(".s_sub").attr('id');			
 		//alert(cat_name);
-		//window.location = $ste_root+"/storage-shop/category/"+cat_name+"/"+cat_id;
-		window.location = $ste_root+"/"+shop_name+"/category/"+cat_name+"/"+cat_id;
+		//window.location = SITEROOT+"/storage-shop/category/"+cat_name+"/"+cat_id;
+		window.location = SITEROOT+"/"+shop_name+"/category/"+cat_name+"/"+cat_id;
 	})
 
 */
@@ -231,9 +231,9 @@ $(document).ready(function() {
 	$(".nav_li_out").click(function(){ 
 		var cat_name = $(this).find(".n_sub").attr('id');
 		var cat_id = $(this).find(".c_sub").attr('id');			
-		var $ste_root = $(this).find(".r_sub").attr('id');
+		var SITEROOT = $(this).find(".r_sub").attr('id');
 		var shop_name = $(this).find(".s_sub").attr('id');			
-		window.location = $ste_root+"/"+shop_name+"/category/"+cat_name+"/"+cat_id;
+		window.location = SITEROOT+"/"+shop_name+"/category/"+cat_name+"/"+cat_id;
 		
 	})
 */	
@@ -243,8 +243,8 @@ $(document).ready(function() {
 	
 		var cat_name = $(this).find(".n_sub").attr('id');
 		var cat_id = $(this).find(".c_sub").attr('id');			
-		var $ste_root = $(this).find(".r_sub").attr('id');
-		window.location = $ste_root+"/"+shop_name+"/category/"+cat_name+"/"+cat_id;
+		var SITEROOT = $(this).find(".r_sub").attr('id');
+		window.location = SITEROOT+"/"+shop_name+"/category/"+cat_name+"/"+cat_id;
 		
 	})
 */
@@ -255,11 +255,11 @@ $(document).ready(function() {
 		//alert("hhhh");
 		var name = $(this).find(".n_sub").attr('id');
 		var vend_man_id = $(this).find(".v_sub").attr('id');			
-		var $ste_root = $(this).find(".r_sub").attr('id');			
+		var SITEROOT = $(this).find(".r_sub").attr('id');			
 		var shop_name = $(this).find(".s_sub").attr('id');			
 		//alert(shop_name);
-		//window.location = $ste_root+"/storage-shop/brand/"+name+"/"+vend_man_id;
-		window.location = $ste_root+"/"+shop_name+"/brand/"+name+"/"+vend_man_id;
+		//window.location = SITEROOT+"/storage-shop/brand/"+name+"/"+vend_man_id;
+		window.location = SITEROOT+"/"+shop_name+"/brand/"+name+"/"+vend_man_id;
 
 	})
 */
@@ -276,9 +276,9 @@ $(document).ready(function() {
 			
 		}else{
 			
-			var $ste_root = $(this).find(".r_sub").attr('id');
+			var SITEROOT = $(this).find(".r_sub").attr('id');
 			
-			window.location = $ste_root+"/"+url;
+			window.location = SITEROOT+"/"+url;
 		}
 	})
 

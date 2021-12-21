@@ -13,7 +13,7 @@ if(!isset($_SERVER['DOCUMENT_ROOT'])){
 }
 
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
 
 $progress = new SetupProgress;
 $module = new Module;
@@ -23,7 +23,7 @@ $module = new Module;
 $db = $dbCustom->getDbConnect(SITE_N_DATABASE);
 
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php'); 
+require_once($real_root.'/manage/admin-includes/doc_header.php'); 
 
 ?>
 </head>
@@ -41,7 +41,7 @@ $result = $dbCustom->getResult($db,$sql);$object = $result->fetch_object();
 
 ?>
     
-        <form name="edit_blog_cat_form" action="blog-category.php" method="post">
+        <form name="edit_blog_cat_form" action="blog.php" method="post">
        	<input id="blog_cat_id" type="hidden" name="blog_cat_id" value="<?php echo $blog_cat_id;  ?>" />
         	
 		<table border="0" cellpadding="15">

@@ -1,5 +1,17 @@
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
+if(strpos($_SERVER['REQUEST_URI'], 'solvitware/' )){ 
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/solvitware';
+}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/designitpro'; 
+}elseif(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
+}else{
+	$real_root = $_SERVER['DOCUMENT_ROOT']; 	
+}
+require_once($real_root.'/includes/class.dbcustom.php');
+$dbCustom = new DbCustom();
+
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
 
 $progress = new SetupProgress;
 $module = new Module;
@@ -152,7 +164,7 @@ if(!isset($_SESSION['temp_order_fields'])){
 }
 
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php'); 
+require_once($real_root.'/manage/admin-includes/doc_header.php'); 
 ?>
 
 <script>
@@ -312,7 +324,7 @@ function IsNumeric(sText)
 <div class="manage_page_container">
 	<div class="manage_side_nav">
 		<?php 
-        require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-side-nav.php');
+        require_once($real_root.'/manage/admin-includes/manage-side-nav.php');
 		
 
         ?>
@@ -320,7 +332,7 @@ function IsNumeric(sText)
 	<div class="manage_main">
 
 	<?php 
-		require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/class.admin_bread_crumb.php");	
+		require_once($real_root."/manage/admin-includes/class.admin_bread_crumb.php");	
 		$bread_crumb = new AdminBreadCrumb;
 		echo $bread_crumb->output();
 
@@ -397,7 +409,7 @@ function IsNumeric(sText)
 					if($res->num_rows == 0){
 
 						echo "<br />Since this is a manually entered order or copied from the old site, to get a customer review, 
-						you must <a href='".SITEROOT."/manage/customer/send-review-request-for-manual-orders.php?order_id=".$_SESSION['temp_order_fields']['order_id']."' 
+						you must <a href='".SITEROOT."//manage/customer/send-review-request-for-manual-orders.php?order_id=".$_SESSION['temp_order_fields']['order_id']."' 
 						target='_blank' style='text-decoration: underline;'>click here</a> to send the request via email.";
 					}
                 }

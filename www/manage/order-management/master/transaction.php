@@ -1,5 +1,17 @@
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
+if(strpos($_SERVER['REQUEST_URI'], 'solvitware/' )){ 
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/solvitware';
+}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/designitpro'; 
+}elseif(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
+}else{
+	$real_root = $_SERVER['DOCUMENT_ROOT']; 	
+}
+require_once($real_root.'/includes/class.dbcustom.php');
+$dbCustom = new DbCustom();
+
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
 
 $progress = new SetupProgress;
 $module = new Module;
@@ -14,11 +26,11 @@ $ret_page = (isset($_REQUEST["ret_page"]))? $_REQUEST["ret_page"] : 'order';
 
 //echo $order_id;
 
-require_once("../../includes/set-page.php");	
+require_once("<?php echo SITEROOT; ?>includes/set-page.php");	
 
 $msg = (isset($_GET['msg'])) ? $_GET['msg'] : '';
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php'); 
+require_once($real_root.'/manage/admin-includes/doc_header.php'); 
 
 ?>
 <script>
@@ -47,8 +59,8 @@ function show_msg(msg){
 	<body>
 <?php } 
 
-	require_once("../../includes/manage-header.php");
-	require_once("../../includes/manage-top-nav.php");
+	require_once("<?php echo SITEROOT; ?>includes/manage-header.php");
+	require_once("<?php echo SITEROOT; ?>includes/manage-top-nav.php");
 
 ?>
 
@@ -56,7 +68,7 @@ function show_msg(msg){
 
     <div class="manage_side_nav">
         <?php 
-        require_once("../../includes/manage-side-nav.php");
+        require_once("<?php echo SITEROOT; ?>includes/manage-side-nav.php");
         ?>
     </div>	
 
@@ -67,11 +79,11 @@ function show_msg(msg){
 	
 	
 	
-		require_once($_SERVER['DOCUMENT_ROOT']."/manage/admin-includes/class.admin_bread_crumb.php");	
+		require_once($real_root."/manage/admin-includes/class.admin_bread_crumb.php");	
 		$bread_crumb = new AdminBreadCrumb;
 		$actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 		if($ret_page == 'transaction_list'){	
-			$bread_crumb->add('Transaction List', SITEROOT."/manage/order-management/transaction-list.php");
+			$bread_crumb->add('Transaction List', SITEROOT."//manage/order-management/transaction-list.php");
 		}
 		
 		$bread_crumb->add('Transaction', $actual_link);
@@ -201,7 +213,7 @@ $sql = "DELETE FROM order_to_order_state WHERE order_id < '104'";
 </div> 
 <p class="clear"></p>
 <?php 
-require_once("../../includes/manage-footer.php");
+require_once("<?php echo SITEROOT; ?>includes/manage-footer.php");
 ?>    
    
 </div>

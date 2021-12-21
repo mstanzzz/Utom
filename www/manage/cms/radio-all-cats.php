@@ -10,7 +10,7 @@ if(!isset($_SERVER['DOCUMENT_ROOT'])){
 }
 
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
 
 //ini_set("memory_limit","256M");
 
@@ -75,7 +75,7 @@ foreach ($top_cats as $top_cat) {
 		
 	$c_block .= "<a tabindex='-1' class='tree-parent' data-cattype='topcat'>";
 		
-	//$c_block .= "<img src='".$ste_root."/saascustuploads/".$_SESSION['profile_account_id']."/cart/thumb/".$top_cat['file_name']."' />";
+	//$c_block .= "<img src='".SITEROOT."/saascustuploads/".$_SESSION['profile_account_id']."/cart/thumb/".$top_cat['file_name']."' />";
 		//$checked = ($top_cat['cat_id'] == $_SESSION['temp_cat']['cat_id'])  ? "checked='checked'" : '';
 
 	$checked = '';
@@ -84,10 +84,10 @@ foreach ($top_cats as $top_cat) {
 		
 	$c_block .= stripslashes($top_cat['name'])."</a>";
 		
-	$c_block .= "<ul role='group' class='childrenplaceholder'>".getChildren($top_cat['cat_id'], $domain, $subject_cat_id, $max_depth)."</ul></li>";
+	$c_block .= "<ul role='group' class='childrenplaceholder'>".getChildren($top_cat['cat_id'], SITEROOT, $subject_cat_id, $max_depth)."</ul></li>";
 }
 
-$block .= "<form action='".$ste_root."manage/".$ret_path."/".$ret_page.".php' method='post' enctype='multipart/form-data' target='_top'>";
+$block .= "<form action='".SITEROOT."/manage/".$ret_path."/".$ret_page.".php' method='post' enctype='multipart/form-data' target='_top'>";
 $block .= "<input type='hidden' name='set_cat' value='".$num_cat."' />";
 $block .= $c_block;
 $block .= "<br /><input type='submit' name='submit' value='Submit' />";
@@ -96,7 +96,7 @@ $block .= "</form>";
 echo $block;
 
 
-function getChildren($cat_id, $domain, $subject_cat_id, $max_depth){
+function getChildren($cat_id, SITEROOT, $subject_cat_id, $max_depth){
 
 	$max_depth--;
 
@@ -130,7 +130,7 @@ function getChildren($cat_id, $domain, $subject_cat_id, $max_depth){
 			$block .= "<li role='treeitem' aria-expanded='true'>";
 			$block .= "<a tabindex='-1' class='tree-parent' >";
 			
-			//$block .= "<img  src='".$ste_root."/saascustuploads/".$_SESSION['profile_account_id']."/cart/list/".$file_name."'/>";
+			//$block .= "<img  src='".SITEROOT."/saascustuploads/".$_SESSION['profile_account_id']."/cart/list/".$file_name."'/>";
 			//$checked = ($row->cat_id == $_SESSION['temp_cat']['cat_id'])  ? "checked='checked'" : '';
 
 			$checked = '';
@@ -141,7 +141,7 @@ function getChildren($cat_id, $domain, $subject_cat_id, $max_depth){
 			
 			
 			$block .= "<ul role='group' class='childrenplaceholder'>";
-			$block .= getChildren($row->cat_id, $domain, $subject_cat_id, $max_depth);
+			$block .= getChildren($row->cat_id, SITEROOT, $subject_cat_id, $max_depth);
 			$block .= "</ul></li>";
 		}	
 	}

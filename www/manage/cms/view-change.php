@@ -13,7 +13,7 @@ if(!isset($_SERVER['DOCUMENT_ROOT'])){
 }
 
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
 
 $progress = new SetupProgress;
 $module = new Module;
@@ -244,7 +244,7 @@ if (document.images)
 		
 		?>
 			pic<?php echo $i; ?>= new Image();
-		  	pic<?php echo $i; ?>.src="<?php echo $ste_root; ?>/uploads/<?php echo $gallery_row->file_name; ?>"; 
+		  	pic<?php echo $i; ?>.src="<?php echo SITEROOT; ?>uploads/<?php echo $gallery_row->file_name; ?>"; 
 		
 		<?php
 		$i++;
@@ -991,30 +991,30 @@ $result = $dbCustom->getResult($db,$sql);
 		while($row = $cat_res->fetch_object()) {
 			if($row->process_cat_id == $object->content_record_id){
 				$block .= "<div class='side_nav_box' $sub_width_style>";
-				$block .= "<div class='side_nav_box_edge_left'><img src='".$ste_root."/images/side_nav_box_edge.jpg' alt='closet organizers' /></div>";
+				$block .= "<div class='side_nav_box_edge_left'><img src='".SITEROOT."/images/side_nav_box_edge.jpg' alt='closet organizers' /></div>";
 				$block .= "<a href='#".$row->process_cat_id."'><div class='red_box'>$row->category_name</div></a>";
-				$block .= "<div class='side_nav_box_edge_right'><img src='".$ste_root."/images/side_nav_box_edge.jpg' alt='closet organizers' /></div>";			
+				$block .= "<div class='side_nav_box_edge_right'><img src='".SITEROOT."/images/side_nav_box_edge.jpg' alt='closet organizers' /></div>";			
 				$block .= "</div>";
 			}else{
 				$block .= "<div class='side_nav_box' $sub_width_style>";
-				$block .= "<div class='side_nav_box_edge_left'><img src='".$ste_root."/images/side_nav_box_edge.jpg' alt='closet organizers' /></div>";
+				$block .= "<div class='side_nav_box_edge_left'><img src='".SITEROOT."/images/side_nav_box_edge.jpg' alt='closet organizers' /></div>";
 				$block .= "<a href='#".$row->process_cat_id."'>$row->category_name</a>";
-				$block .= "<div class='side_nav_box_edge_right'><img src='".$ste_root."/images/side_nav_box_edge.jpg' alt='closet organizers' /></div>";			
+				$block .= "<div class='side_nav_box_edge_right'><img src='".SITEROOT."/images/side_nav_box_edge.jpg' alt='closet organizers' /></div>";			
 				$block .= "</div>";
 			}
 		}
 		if($object->action == "add"){
 			$block .= "<div class='side_nav_box' $sub_width_style>";
-			$block .= "<div class='side_nav_box_edge_left'><img src='".$ste_root."/images/side_nav_box_edge.jpg' alt='closet organizers' /></div>";
+			$block .= "<div class='side_nav_box_edge_left'><img src='".SITEROOT."/images/side_nav_box_edge.jpg' alt='closet organizers' /></div>";
 			$block .= "<a href='#".$object->cat_id."'><div class='red_box'>$object->content_short1</div></a>";
-			$block .= "<div class='side_nav_box_edge_right'><img src='".$ste_root."/images/side_nav_box_edge.jpg' alt='closet organizers' /></div>";			
+			$block .= "<div class='side_nav_box_edge_right'><img src='".SITEROOT."/images/side_nav_box_edge.jpg' alt='closet organizers' /></div>";			
 			$block .= "</div>";
 		}
 		if($object->action == "delete"){
 			$block .= "<div class='side_nav_box' $sub_width_style>";
-			$block .= "<div class='side_nav_box_edge_left'><img src='".$ste_root."/images/side_nav_box_edge.jpg' alt='closet organizers' /></div>";
+			$block .= "<div class='side_nav_box_edge_left'><img src='".SITEROOT."/images/side_nav_box_edge.jpg' alt='closet organizers' /></div>";
 			$block .= "<a href='#".$object->cat_id."'><div class='red_box'>$object->content_short1</div></a>";
-			$block .= "<div class='side_nav_box_edge_right'><img src='".$ste_root."/images/side_nav_box_edge.jpg' alt='closet organizers' /></div>";			
+			$block .= "<div class='side_nav_box_edge_right'><img src='".SITEROOT."/images/side_nav_box_edge.jpg' alt='closet organizers' /></div>";			
 			$block .= "</div>";
 		}
 
@@ -1072,9 +1072,9 @@ $result = $dbCustom->getResult($db,$sql);
 		$block = '';
 		while($row = $cat_res->fetch_object()) {
 			$block .= "<div class='side_nav_box' $sub_width_style>";
-			$block .= "<div class='side_nav_box_edge_left'><img src='".$ste_root."/images/side_nav_box_edge.jpg' alt='closet organizers' /></div>";
+			$block .= "<div class='side_nav_box_edge_left'><img src='".SITEROOT."/images/side_nav_box_edge.jpg' alt='closet organizers' /></div>";
 			$block .= "<a href='#".$row->process_cat_id."'>$row->category_name</a>";
-			$block .= "<div class='side_nav_box_edge_right'><img src='".$ste_root."/images/side_nav_box_edge.jpg' alt='closet organizers' /></div>";			
+			$block .= "<div class='side_nav_box_edge_right'><img src='".SITEROOT."/images/side_nav_box_edge.jpg' alt='closet organizers' /></div>";			
 			$block .= "</div>";
 		}
 		echo $block;
@@ -1141,23 +1141,23 @@ $result = $dbCustom->getResult($db,$sql);
 				while($row = $cat_res->fetch_object()) {
 					if($row->faq_cat_id == $object->content_record_id){
 						$block .= "<div class='side_nav_box' $sub_width_style>";
-						$block .= "<div class='side_nav_box_edge_left'><img src='".$ste_root."/images/side_nav_box_edge.jpg' alt='closet organizers'/></div>";
+						$block .= "<div class='side_nav_box_edge_left'><img src='".SITEROOT."/images/side_nav_box_edge.jpg' alt='closet organizers'/></div>";
 						$block .= "<a href='#".$row->faq_cat_id."'><div class='red_box'>$object->content_short1</div></a>";
-						$block .= "<div class='side_nav_box_edge_right'><img src='".$ste_root."/images/side_nav_box_edge.jpg' alt='closet organizers'/></div>";
+						$block .= "<div class='side_nav_box_edge_right'><img src='".SITEROOT."/images/side_nav_box_edge.jpg' alt='closet organizers'/></div>";
 						$block .= "</div>";
 					}else{
 						$block .= "<div class='side_nav_box' $sub_width_style>";
-						$block .= "<div class='side_nav_box_edge_left'><img src='".$ste_root."/images/side_nav_box_edge.jpg' alt='closet organizers'/></div>";
+						$block .= "<div class='side_nav_box_edge_left'><img src='".SITEROOT."/images/side_nav_box_edge.jpg' alt='closet organizers'/></div>";
 						$block .= "<a href='#".$row->faq_cat_id."'>$row->category_name</a>";
-						$block .= "<div class='side_nav_box_edge_right'><img src='".$ste_root."/images/side_nav_box_edge.jpg' alt='closet organizers'/></div>";
+						$block .= "<div class='side_nav_box_edge_right'><img src='".SITEROOT."/images/side_nav_box_edge.jpg' alt='closet organizers'/></div>";
 						$block .= "</div>";
 					}
 				}
 				if($object->action == "add"){
 					$block .= "<div class='side_nav_box' $sub_width_style>";
-					$block .= "<div class='side_nav_box_edge_left'><img src='".$ste_root."/images/side_nav_box_edge.jpg' alt='closet organizers'/></div>";
+					$block .= "<div class='side_nav_box_edge_left'><img src='".SITEROOT."/images/side_nav_box_edge.jpg' alt='closet organizers'/></div>";
 					$block .= "<a href='#".$row->faq_cat_id."'><div class='red_box'>$object->content_short1</div></a>";
-					$block .= "<div class='side_nav_box_edge_right'><img src='".$ste_root."/images/side_nav_box_edge.jpg' alt='closet organizers'/></div>";
+					$block .= "<div class='side_nav_box_edge_right'><img src='".SITEROOT."/images/side_nav_box_edge.jpg' alt='closet organizers'/></div>";
 					$block .= "</div>";
 				}
 				
@@ -1212,9 +1212,9 @@ $result = $dbCustom->getResult($db,$sql);
 				$block = '';
 				while($row = $cat_res->fetch_object()) {
 					$block .= "<div class='side_nav_box' $sub_width_style>";
-					$block .= "<div class='side_nav_box_edge_left'><img src='".$ste_root."/images/side_nav_box_edge.jpg' alt='closet organizers'/></div>";
+					$block .= "<div class='side_nav_box_edge_left'><img src='".SITEROOT."/images/side_nav_box_edge.jpg' alt='closet organizers'/></div>";
 					$block .= "<a href='#".$row->faq_cat_id."'>$row->category_name</a>";
-					$block .= "<div class='side_nav_box_edge_right'><img src='".$ste_root."/images/side_nav_box_edge.jpg' alt='closet organizers'/></div>";
+					$block .= "<div class='side_nav_box_edge_right'><img src='".SITEROOT."/images/side_nav_box_edge.jpg' alt='closet organizers'/></div>";
 					$block .= "</div>";
 				}
 				
@@ -1471,36 +1471,36 @@ $result = $dbCustom->getResult($db,$sql);
 			
 			if($row->guide_tip_cat_id == $object->content_record_id){
 				$block .= "<div class='side_nav_box' $sub_width_style>";
-				$block .= "<div class='side_nav_box_edge_left'><img src='".$ste_root."/images/side_nav_box_edge.jpg' alt='closet organizers'/></div>";
+				$block .= "<div class='side_nav_box_edge_left'><img src='".SITEROOT."/images/side_nav_box_edge.jpg' alt='closet organizers'/></div>";
 				$block .= "<div style='border-style:dotted; border-color:#F00;'>";
 				$block .= "<a href='#".$row->guide_tip_cat_id."'>$row->category_name</a>";
 				$block .= "</div>";
-				$block .= "<div class='side_nav_box_edge_right'><img src='".$ste_root."/images/side_nav_box_edge.jpg' alt='closet organizers'/></div>";
+				$block .= "<div class='side_nav_box_edge_right'><img src='".SITEROOT."/images/side_nav_box_edge.jpg' alt='closet organizers'/></div>";
 				$block .= "</div>";
 			}else{
 				$block .= "<div class='side_nav_box' $sub_width_style>";
-				$block .= "<div class='side_nav_box_edge_left'><img src='".$ste_root."/images/side_nav_box_edge.jpg' alt='closet organizers'/></div>";
+				$block .= "<div class='side_nav_box_edge_left'><img src='".SITEROOT."/images/side_nav_box_edge.jpg' alt='closet organizers'/></div>";
 				$block .= "<a href='#".$row->guide_tip_cat_id."'>$row->category_name</a>";
-				$block .= "<div class='side_nav_box_edge_right'><img src='".$ste_root."/images/side_nav_box_edge.jpg' alt='closet organizers'/></div>";
+				$block .= "<div class='side_nav_box_edge_right'><img src='".SITEROOT."/images/side_nav_box_edge.jpg' alt='closet organizers'/></div>";
 				$block .= "</div>";
 			}			
 		}
 		if($object->action == "add"){
 			$block .= "<div class='side_nav_box' $sub_width_style>";
-			$block .= "<div class='side_nav_box_edge_left'><img src='".$ste_root."/images/side_nav_box_edge.jpg' alt='closet organizers'/></div>";
+			$block .= "<div class='side_nav_box_edge_left'><img src='".SITEROOT."/images/side_nav_box_edge.jpg' alt='closet organizers'/></div>";
 			$block .= "<div style='border-style:dotted; border-color:#F00;'>";
 			$block .= "<a href='#".$object->cat_id."'>$object->content_short1</a>";
 			$block .= "</div>";
-			$block .= "<div class='side_nav_box_edge_right'><img src='".$ste_root."/images/side_nav_box_edge.jpg' alt='closet organizers'/></div>";
+			$block .= "<div class='side_nav_box_edge_right'><img src='".SITEROOT."/images/side_nav_box_edge.jpg' alt='closet organizers'/></div>";
 			$block .= "</div>";
 		}
 		if($object->action == "delete"){
 			$block .= "<div class='side_nav_box' $sub_width_style>";
-			$block .= "<div class='side_nav_box_edge_left'><img src='".$ste_root."/images/side_nav_box_edge.jpg' alt='closet organizers'/></div>";
+			$block .= "<div class='side_nav_box_edge_left'><img src='".SITEROOT."/images/side_nav_box_edge.jpg' alt='closet organizers'/></div>";
 			$block .= "<div style='border-style:dotted; border-color:#F00;'>";
 			$block .= "<a href='#".$object->cat_id."'>$object->content_short1</a>";
 			$block .= "</div>";
-			$block .= "<div class='side_nav_box_edge_right'><img src='".$ste_root."/images/side_nav_box_edge.jpg' alt='closet organizers'/></div>";
+			$block .= "<div class='side_nav_box_edge_right'><img src='".SITEROOT."/images/side_nav_box_edge.jpg' alt='closet organizers'/></div>";
 			$block .= "</div>";						
 		}
 	
@@ -1555,9 +1555,9 @@ $result = $dbCustom->getResult($db,$sql);
 		while($row = $cat_res->fetch_object()) {
 
 			$block .= "<div class='side_nav_box' $sub_width_style>";
-			$block .= "<div class='side_nav_box_edge_left'><img src='".$ste_root."/images/side_nav_box_edge.jpg' alt='closet organizers'/></div>";
+			$block .= "<div class='side_nav_box_edge_left'><img src='".SITEROOT."/images/side_nav_box_edge.jpg' alt='closet organizers'/></div>";
 			$block .= "<a href='#".$row->guide_tip_cat_id."'>$row->category_name</a>";
-			$block .= "<div class='side_nav_box_edge_right'><img src='".$ste_root."/images/side_nav_box_edge.jpg' alt='closet organizers'/></div>";
+			$block .= "<div class='side_nav_box_edge_right'><img src='".SITEROOT."/images/side_nav_box_edge.jpg' alt='closet organizers'/></div>";
 			$block .= "</div>";
 
 		}
@@ -1676,7 +1676,7 @@ $result = $dbCustom->getResult($db,$sql);
 		}
 		
 		echo "<div style='float:left; width:250px;'>Actual link:</div>
-			<div style='float:left;'><a href='".$ste_root.$object->content_short1."' target='_blank'>".$object->content_short2."</a></div>
+			<div style='float:left;'><a href='".SITEROOT.$object->content_short1."' target='_blank'>".$object->content_short2."</a></div>
 			<div class='clear'></div><br /><br />";
 		
 		echo "<div style='float:left; width:250px;'>Link URL:</div><div style='float:left;'>".$object->content_short1."</div>

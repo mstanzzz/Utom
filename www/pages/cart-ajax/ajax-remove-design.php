@@ -1,7 +1,7 @@
 <?php
-require_once("../../includes/config.php");
-require_once("../../includes/db_connect.php"); 
-require_once("../../includes/class.design_cart.php");
+require_once("<?php echo SITEROOT; ?>includes/config.php");
+require_once("<?php echo SITEROOT; ?>includes/db_connect.php"); 
+require_once("<?php echo SITEROOT; ?>includes/class.design_cart.php");
 
 $design_cart = new DesignCart;
 
@@ -27,6 +27,6 @@ if($shipping->getShipType() == "carrier"){
 }
 */
 
-//$design_cart->saveCart();
+//$design_cart->saveCart($dbCustom);
 
 ?>

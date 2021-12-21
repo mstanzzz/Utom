@@ -9,7 +9,7 @@ class dl_czshare_com extends Download {
         else return array(false, "accinvalid");
     }
     
-    public function Login($user, $pass){
+    public function login($dbCustom,$user, $pass){
         $data = $this->lib->curl("https://czshare.com/index.php", "","login-name={$user}&login-password={$pass}&trvale=1&Prihlasit=Přihlásit SSL&submit=Obnov heslo");
         $cookie = $this->lib->GetCookies($data);
         return $cookie;

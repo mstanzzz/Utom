@@ -13,7 +13,7 @@ if(!isset($_SERVER['DOCUMENT_ROOT'])){
 }
 
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
 
 $progress = new SetupProgress;
 $module = new Module;
@@ -30,7 +30,7 @@ $msg = (isset($_GET['msg'])) ? $_GET['msg'] : '';
 $logo_id = (isset($_GET["logo_id"]))? $_GET["logo_id"] : 0;
 
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php'); 
+require_once($real_root.'/manage/admin-includes/doc_header.php'); 
 
 ?>
 <script>
@@ -68,7 +68,7 @@ function select_img(img_id){
 	
 	if($result->num_rows > 0){
 		$img_obj = $result->fetch_object();
-		echo "<img src='".$ste_root."/uploads/logo/".$img_obj->file_name."'  />";
+		echo "<img src='".SITEROOT."/uploads/logo/".$img_obj->file_name."'  />";
 	}
 	
 	?>

@@ -1,6 +1,17 @@
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'].'/includes/class.shopping_cart.php');
-//require_once($_SERVER['DOCUMENT_ROOT'].'/includes/class.design_cart.php');
+if(strpos($_SERVER['REQUEST_URI'], 'solvitware/' )){ 
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/solvitware';
+}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/designitpro'; 
+}elseif(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
+}else{
+	$real_root = $_SERVER['DOCUMENT_ROOT']; 	
+}
+
+require_once($real_root."/includes/class.shopping_cart.php"); 	
+
+//require_once($real_root."/includes/class.shopping_cart.php"); 	
 
 
 class Shipping {

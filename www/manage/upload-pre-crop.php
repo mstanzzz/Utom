@@ -1,16 +1,24 @@
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
+if(strpos($_SERVER['REQUEST_URI'], 'solvitware/' )){ 
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/solvitware';
+}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/designitpro'; 
+}elseif(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
+}else{
+	$real_root = $_SERVER['DOCUMENT_ROOT']; 	
+}
+require_once($real_root.'/includes/class.dbcustom.php');
+$dbCustom = new DbCustom();
 
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
 ini_set('max_execution_time', 300);
-/* ms */
 
 unset($_SESSION['pre_cropped_fn']);
 //clearstatcache();
 
 $fromfancybox = (isset($_REQUEST["fromfancybox"])) ? $_REQUEST["fromfancybox"] : 0;
 //$_SESSION["fromfancybox"] = $fromfancybox;
-
-
 	if(isset($_GET['specs_content_id'])) $_SESSION['specs_content_id'] = $_GET['specs_content_id'];
 
 // finish
@@ -95,10 +103,6 @@ $fromfancybox = (isset($_REQUEST["fromfancybox"])) ? $_REQUEST["fromfancybox"] :
 	if(isset($_GET['width_constraints_id']))	$_SESSION['tmp_vars']['width_constraints_id'] = $_GET['width_constraints_id'];
 
 
-
-
-
-
 if(isset($_GET['part_id'])) $_SESSION['part_id'] = $_GET['part_id']; 
 if(isset($_GET['material_id'])) $_SESSION['material_id'] = $_GET['material_id']; 
 if(isset($_GET['panel_id'])) $_SESSION['panel_id'] = $_GET['panel_id']; 
@@ -132,6 +136,7 @@ if(!isset($_SESSION['ret_dir'])) $_SESSION['ret_dir'] = '';
 if(!isset($_SESSION['ret_path'])) $_SESSION['ret_path'] = '';
 if(!isset($_SESSION['crop_n'])) $_SESSION['crop_n'] = 0;
 
+if(!isset($_SESSION['spec_id'])) $_SESSION['spec_id'] = 0;
 
 $msg = '';
 
@@ -168,7 +173,7 @@ function img_resize($cur_dir, $cur_file, $newwidth, $output_dir, $stretch = 0)
 		list($src_w, $src_h) = getimagesize($cur_dir.$cur_file);
 
 		if($src_w > $newwidth || $stretch == 1){
-			
+						
 			$newheight=$src_h*$newwidth/$src_w;
 			$dst_img = imagecreatetruecolor($newwidth,$newheight);
 			$src_image = imagecreatefromjpeg($cur_dir.$cur_file);
@@ -178,22 +183,17 @@ function img_resize($cur_dir, $cur_file, $newwidth, $output_dir, $stretch = 0)
 			
 			
 		}else{
-			copy($cur_dir.$cur_file,$output_dir.$cur_file);
+			copy($cur_dir.$cur_file, $output_dir.$cur_file);
 		}
 	}
 }
 
 if(isset($_FILES['uploadedfile'])){
 		
-	include($_SERVER['DOCUMENT_ROOT'].'/includes/class.upload.php');	
-
+	include($real_root.'/includes/class.upload.php');	
 	$handle = new Upload($_FILES['uploadedfile']);
-
 	$img_name = '';
-
 	if ($handle->uploaded) {
-
-		
 		// this works but may not get used
 		// add watermark
 		//$handle->image_watermark = 'watermark/water.png';
@@ -202,19 +202,14 @@ if(isset($_FILES['uploadedfile'])){
 		//$handle->image_watermark_y = 5;
 		//echo "<img src='".$r_path."water.png'>";			
 		//exit;
-
 		$handle->image_resize 	= false;
 		$handle->file_overwrite	= false;
-		
 		$ext  = pathinfo($_FILES['uploadedfile']['name'], PATHINFO_EXTENSION);
 		
 		//if($ext != 'png' && $ext != 'gif'){
-			
 			$handle->image_convert = "jpg";		
 			$handle->jpeg_quality  = 100;
-		
 		//}
-
 
 		$dir_dest = "../saascustuploads/".$_SESSION['profile_account_id']."/tmp/pre-crop/";
 
@@ -234,24 +229,24 @@ if(isset($_FILES['uploadedfile'])){
 				$r_path = "../saascustuploads/".$_SESSION['profile_account_id']."/cart/full/";
 			}
 		
-			img_resize($dir_dest, $img_name, 1024, $r_path);
-
+			//($cur_dir, $cur_file, $newwidth, $output_dir, $stretch = 0)
+			
+			if(strpos($_SESSION['img_type'], 'hero') !== false){
+				img_resize($dir_dest, $img_name, 1920, $r_path);				
+			}else{			
+				img_resize($dir_dest, $img_name, 1024, $r_path);
+			}
+			
 		
 		}else{	
 			$msg = "  Error: " . $handle->error;        
 		}
-			
-		// delete the temporary files
 		$handle->clean();
 		
 	} else {
 		$msg = "  Error: " . $handle->error;        
 	}
-
-
 	$_SESSION['msg'] = $msg;
-	
-	
 	//echo $_SESSION['pre_cropped_fn'];
 	//exit;
 	
@@ -263,10 +258,7 @@ if(isset($_FILES['uploadedfile'])){
 
 }
 	
-$msg = ''; 
-
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php'); 
-
+require_once($real_root.'/manage/admin-includes/doc_header.php'); 
 ?>
 <script language="JavaScript">
 /*
@@ -286,17 +278,13 @@ function doSubmit() {
 
 function check_file(){
 	
-	var file = $("#uploadedfile").val();
-	
+	var file = $("#uploadedfile").val();	
 	if(file == ""){
-		
 		alert("Please select a file to upload");
-		document.getElementById('inprogress').style.visibility='hidden'
+		document.getElementById('inprogress').style.visibility='visible';
 		return false;	
 	}
-	
 	return true;
-	//alert(t);
 }
 
 function location_fb(url){
@@ -311,16 +299,48 @@ function location_fb(url){
 }
 
 </script>
-
 </head>
-
 <body>
+<center>
 <div class="manage_page_container">
-	<div class="manage_main">
-
+<br />
+<br />
+<form action="upload-pre-crop.php" method="post" enctype="multipart/form-data" 
+	onSubmit="return check_file()" target="_self">
+	
+	<input type="hidden" name="fromfancybox" value="<?php echo $fromfancybox; ?>">
+	
+	<div class='lightboxcontent'>
+	<fieldset>
+	<p style="color:blue; font-size:22px;">Image File Upload </p>
+	<label>Select a File</label>
+	<input type="file" name="uploadedfile" id="uploadedfile">
+	<br />
+	</fieldset>
+	<p style="visibility:hidden" id="inprogress"> 
+	<img id="inprogress_img" src="../images/progress.gif"> Please Wait... </p>
+	<?php 
+$ret_dest = SITEROOT."/manage/".$_SESSION['ret_dir'].'/'.$_SESSION['ret_page'].'.php?is_new_img=1&cat_id='.$_SESSION['cat_id'].'&img_type'.$_SESSION['img_type'];
+	if(isset($_SESSION['ret_path'])){
+		if($_SESSION['ret_path'] != ''){
+$ret_dest = SITEROOT."/manage/".$_SESSION['ret_path'].'/'.$_SESSION['ret_page'].'.php?is_new_img=1&cat_id='.$_SESSION['cat_id'].'&img_type'.$_SESSION['img_type'];
+		}
+	}
+	?>
+	<input type="button" value="Cancel" class="btn btn-large" style="margin-right:30px;" 
+	onClick="location_fb('<?php echo $ret_dest; ?>');" />
+	<button type="submit" name="submit" class="btn btn-success btn-large" 
+	onClick="document.getElementById('inprogress').style.visibility='visible'"><p style="margin:10px;"> Upload </p></button>
+	</form>
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+</div>
+</center>
 <?php
 /*
-
 echo "<br />";
 echo "_SESSION['img_type ".$_SESSION['img_type'];
 echo "<br />";
@@ -334,57 +354,15 @@ echo "_SESSION['crop_n ".$_SESSION['crop_n'];
 echo "<br />";
 echo "<br />";
 echo "<br />";
-
 echo "img_type ".$_SESSION['img_type'];
 echo "<br />";
 echo "spec_id ".$_SESSION['spec_id'];
 */
-
 ?>
-<div class='lightboxholder'>
-	<form action="upload-pre-crop.php" method="post" enctype="multipart/form-data" onSubmit="return check_file()" target="_self">
 
-		<input type="hidden" name="fromfancybox" value="<?php echo $fromfancybox; ?>">
-  
-		<div class='lightboxcontent'>
-			<fieldset>
-				<legend>Upload File</legend>
-				<label>Select a File</label>
-				<input type="file" name="uploadedfile" id="uploadedfile">
-				<br />
-			</fieldset>
-			<p style="visibility:hidden" id="inprogress"> 
-			<img id="inprogress_img" src="<?php echo $ste_root; ?>/images/progress.gif"> Please Wait... </p>
-		
-        	
-        	<?php 
-			
-$ret_dest = $site_root.$_SESSION['ret_dir'].'/'.$_SESSION['ret_page'].'.php?is_new_img=1&cat_id='.$_SESSION['cat_id'].'&img_type'.$_SESSION['img_type'];
-if(isset($_SESSION['ret_path'])){
-	if($_SESSION['ret_path'] != ''){
-		$ret_dest = $site_root.$_SESSION['ret_path'].'/'.$_SESSION['ret_page'].'.php?is_new_img=1&cat_id='.$_SESSION['cat_id'].'&img_type'.$_SESSION['img_type'];
-	}
-}
-
-			
-				
-
-			?>
-
-<br /><br /><br />
-
-
-<input type="button" value="Cancel" class="btn btn-large" onClick="location_fb('<?php echo 	$ret_dest; ?>');" />
-			
-<button type="submit" name="submit" class="btn btn-success btn-large" 
-onClick="document.getElementById('inprogress').style.visibility='visible'">Upload</button>
-
-
-        </div>
-			
-
-	</form>
-    </div>
-</div>
 </body>
 </html>
+
+
+
+

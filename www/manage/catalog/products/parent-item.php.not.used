@@ -1,13 +1,13 @@
 <?php
-require_once("../../includes/config.php"); 
-require_once("../../admin-includes/db_connect.php");
-require_once("../../includes/class.admin_login.php");
-require_once("../../admin-includes/class.admin_bread_crumb.php");	
+require_once("<?php echo SITEROOT; ?>includes/config.php"); 
+require_once("<?php echo SITEROOT; ?>admin-includes/db_connect.php");
+require_once("<?php echo SITEROOT; ?>includes/class.admin_login.php");
+require_once("<?php echo SITEROOT; ?>admin-includes/class.admin_bread_crumb.php");	
 require_once("../admin-includes/tool-tip.php"); 
 
 require_once("../admin-includes/class.setup_progress.php"); 
 $progress = new SetupProgress;
-require_once("../../admin-includes/class.module.php");	
+require_once("<?php echo SITEROOT; ?>admin-includes/class.module.php");	
 $module = new Module;
 
 
@@ -575,8 +575,8 @@ function show_msg(msg){
 		}else{
 						
 			$block .= "<td valign='top'>";
-			$block .= "<a class='inline' href='".$ste_root."/uploads/tmp/pre-crop/".$img_object->file_name."'>";
-			$block .= "<img  src='".$ste_root."/uploads/cart/list/".$img_object->file_name."'>";
+			$block .= "<a class='inline' href='".SITEROOT."/uploads/tmp/pre-crop/".$img_object->file_name."'>";
+			$block .= "<img  src='".SITEROOT."/uploads/cart/list/".$img_object->file_name."'>";
 			$block .= "</a>";
 			$block .= "</td>";		
 		}

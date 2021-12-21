@@ -4,7 +4,7 @@ require_once("db_connect.php");
 require_once("class.encryption.php");
 
 
-function verifyIframeSite($idstr,$domain){
+function verifyIframeSite($idstr,SITEROOT){
 
 	$converter = new Encryption;
 		
@@ -43,14 +43,14 @@ function verifyIframeSite($idstr,$domain){
 					echo "<br />";
 					echo $object->domain_name;
 					echo "<br />";
-					echo $domain;
+					echo SITEROOT;
 					*/
 
 			
 			if($object->active){
 		
 				if($object->id == $iframe_id){
-					if($object->domain_name == $domain){
+					if($object->domain_name == SITEROOT){
 						$ret = 1;		
 					}
 	

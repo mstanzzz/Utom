@@ -15,11 +15,14 @@ function sortby(thisfile, sortby, a_d){
 	var uid2 = <?php echo $uid2; ?>;
 	
 	var url = thisfile+"?sortby="+sortby+"&a_d="+a_d+"&uid1="+uid1+"&uid2="+uid2;
-	location.href = url; 
+
+
+	//location.href = url; 
 }
 
 $(document).ready(function() {
 	$("th.sortable").click(function(){
+		
 		var sortdata = $(this).attr("data-sortby");
 		if ($(this).hasClass("sorted_ascending")){
 			sortby(filename,sortdata,'d');

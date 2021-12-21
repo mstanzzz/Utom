@@ -4,7 +4,7 @@ function signIn2(){
 	var password = $("#nsi_password_2").val();
 	$.ajaxSetup({ cache: false}); 
 	$.ajax({
-	  url: '<?php echo $ajax_$ste_root; ?>/ajax-sign-in.php?user='+user+'&password='+password,
+	  url: '<?php echo $ajax_SITEROOT; ?>/ajax-sign-in.php?user='+user+'&password='+password,
 	  success: function(data) {
 		
 		if(data.indexOf("y") > -1){
@@ -30,7 +30,7 @@ function send_password_reset(){
 	if(isValidEmail(email_addr)){
 		$.ajaxSetup({ cache: false}); 
 		$.ajax({
-		  url: '<?php echo $ajax_$ste_root; ?>/ajax-send-reset-pasword.php?email_addr='+email_addr,
+		  url: '<?php echo $ajax_SITEROOT; ?>/ajax-send-reset-pasword.php?email_addr='+email_addr,
 		  success: function(data) {
 			if(data.indexOf("y") > -1){
 				$("#input_email_addr_msg").html("<span>An email was sent to "+email_addr+"</span>");
@@ -58,7 +58,7 @@ function send_password_reset(){
 						<input id="nsi_password_2" type="password" name="nsi_password" placeholder="<?php echo $temp_pswd; ?>" />
 						<hr />
 						<button class="btn btn-success" id="signin_button_2" onClick='signIn2();'>Sign In</button>&nbsp;&nbsp;
-						<button class="btn btn-primary" id="register_button_2" onClick="window.location.href='<?php echo $ste_root;?>/signup-form.html'">Register</button>
+						<button class="btn btn-primary" id="register_button_2" onClick="window.location.href='<?php echo SITEROOT;?>/signup-form.html'">Register</button>
 				</div>
 				<div class="align-center gutter-bottom"><button class="btn-link align-center" onClick='setForgotPswdForm();'>Forgot Password?</button></div>
 		</div>

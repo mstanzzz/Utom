@@ -9,7 +9,7 @@ if(!isset($_SERVER['DOCUMENT_ROOT'])){
 	}
 }
 
-require_once($_SERVER['DOCUMENT_ROOT']."/includes/config.php");
+require_once($real_root."/includes/config.php");
 
 $_SESSION['ret_modal'] = 'edit';
 
@@ -88,7 +88,7 @@ $db = $dbCustom->getDbConnect(COMPONENTS_DATABASE);
     <div class="edit-form-wrapper name">
         <label class="text-italic">Dimension Restriction Name</label>
         <input type="text" class="edit-input" style="width:220px;" id="edit_swg_name" name="swg_name" value="<?php echo $swg_name; ?>">
-        <img class="icon" src="<?php echo $ste_root; ?>/manage/assets/svg/edit.svg" alt="">
+        <img class="icon" src="<?php echo SITEROOT; ?>manage/assets/svg/edit.svg" alt="">
     </div>
     <div class="edit-form-wrapper no-border">
         <label class="text-italic">Select Option</label>

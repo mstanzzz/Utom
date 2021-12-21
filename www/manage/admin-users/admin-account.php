@@ -1,7 +1,7 @@
 <?php
 
-require_once("../../includes/config.php"); 
-require_once("../../includes/class.admin_login.php");
+require_once("<?php echo SITEROOT; ?>includes/config.php"); 
+require_once("<?php echo SITEROOT; ?>includes/class.admin_login.php");
 $aLgn = new AdminLogin;
 if(!$aLgn->isLogedIn()){
 	$aLgn->redirect("index.php", "Please Log In");	

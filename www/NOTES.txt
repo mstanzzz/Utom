@@ -18,24 +18,30 @@ git clone https://github.com/sprintcube/docker-compose-lamp.git
 
 Note: .htaccess controls url destinations to the appropriate php file (template):
 
-
-
-
-
 Here is the link to the page that is accessed through the header main navigation "Room"   
 http://clients2.atomsolutions.net/ClosetsToGo-website/showroom-detail-view-categories.html  
 On this page are the main categories for the types of ROOMS as shown by some of the examples 
 displayed.  The determining factor for which image is shown is based on overall image views 
 within it's perspective category.  
 
-Once a user selects the image/category they are interested in, the nesx page they are directed to will be this page  http://clients2.atomsolutions.net/ClosetsToGo-website/organizer-landing-page.html  (the order of images displayed are based on overall views).  allowing the user to further refine their search by applying filters.  
 
-I'm not really sure where the browse by room link you provided came from as it appears to be an older version which was replaced by the Room Gallery page on the link provided above.
 
-I believe you can ping Ivan for any clarification on what is old vs new designs??
+I have to customize app.js as follows:
+  $('.js-img-up').on('change', function () {
+    if (this.files && this.files[0]) {
+      var reader = new FileReader(),
+		changedInput = this;
+		reader.onload = function (e) {
+//M Stanz
+$('.house_blob_image').val(e.target.result);
+        $('.js-my-house-defalt-img').hide();
+        $('.js-my-house-img-view').attr('src', e.target.result).show().parent('a').attr('href', e.target.result);
+        $(changedInput).siblings('label').text($(changedInput).val().split('\\').pop());
+      };
 
-Let me know if you have any questions?
-
+      reader.readAsDataURL(this.files[0]);
+    }
+  });
 
 
 

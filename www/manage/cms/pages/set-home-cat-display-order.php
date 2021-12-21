@@ -9,16 +9,16 @@ if(!isset($_SERVER['DOCUMENT_ROOT'])){
 	}
 }
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/includes/class.nav.php');
+require_once($real_root.'/includes/class.nav.php');
 $nav = new Nav;
 
 
 $list_type = (isset($_GET['list_type'])) ? $_GET['list_type'] : 'cart'; 
 
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php'); 
+require_once($real_root.'/manage/admin-includes/doc_header.php'); 
 ?>
 </head>
 <body>
@@ -55,9 +55,9 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php');
 	<?php
 	
 	if($list_type == 'cart'){
-		$cats = $nav->getHomePageCats('cart');
+		$cats = $nav->getHomePageCats($dbCustom,'cart');
 	}else{
-		$cats = $nav->getHomePageCats('showroom');		
+		$cats = $nav->getHomePageCats($dbCustom,'showroom');		
 	}
 
 
@@ -66,8 +66,8 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php');
 	foreach($cats as $val){
 		
 		$block .= "<tr>";
-			$block .= "<td><a  href='".$ste_root."/saascustuploads/".$_SESSION['profile_account_id']."/cart/full/".$val['file_name']."'>";
-			$block .= "<img  src='".$ste_root."/saascustuploads/".$_SESSION['profile_account_id']."/cart/thumb/".$val['file_name']."'></a></td>";
+			$block .= "<td><a  href='".SITEROOT."/saascustuploads/".$_SESSION['profile_account_id']."/cart/full/".$val['file_name']."'>";
+			$block .= "<img  src='".SITEROOT."/saascustuploads/".$_SESSION['profile_account_id']."/cart/thumb/".$val['file_name']."'></a></td>";
 		
 		$block .= "<td>".$val['name']."</td>";
 		

@@ -9,7 +9,7 @@ class dl_ryushare_com extends Download {
 		else return array(false, "accinvalid" );
 	}
 	
-	public function Login($user, $pass){
+	public function login($dbCustom,$user, $pass){
 		$data = $this->lib->curl("http://ryushare.com/", "lang=english", "op=login&login={$user}&password={$pass}&loginFormSubmit=Login&redirect=http://ryushare.com/");
 		$cookie = "lang=english;".$this->lib->GetCookies($data);
 		return $cookie;

@@ -1,5 +1,17 @@
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/manage-includes.php');
+if(strpos($_SERVER['REQUEST_URI'], 'solvitware/' )){ 
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/solvitware';
+}elseif(strpos($_SERVER['REQUEST_URI'], 'designitpro' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/designitpro'; 
+}elseif(strpos($_SERVER['REQUEST_URI'], 'storittek/' )){  
+	$real_root = $_SERVER['DOCUMENT_ROOT'].'/storittek'; 
+}else{
+	$real_root = $_SERVER['DOCUMENT_ROOT']; 	
+}
+require_once($real_root.'/includes/class.dbcustom.php');
+$dbCustom = new DbCustom();
+
+require_once($real_root.'/manage/admin-includes/manage-includes.php');
 
 require_once($_SERVER['DOCUMENT_ROOT'].'/includes/class.shipping.php');
 require_once($_SERVER['DOCUMENT_ROOT'].'/includes/Mobile_Detect.php');
@@ -21,7 +33,7 @@ $ret = (isset($_GET["ret"]))? $_GET["ret"] : 'order-list';
 
 $msg = (isset($_GET['msg'])) ? $_GET['msg'] : '';
 
-//require_once($_SERVER['DOCUMENT_ROOT'].'/manage/admin-includes/doc_header.php'); 
+//require_once($real_root.'/manage/admin-includes/doc_header.php'); 
 
 ?>
 <!DOCTYPE html>
@@ -36,22 +48,22 @@ $msg = (isset($_GET['msg'])) ? $_GET['msg'] : '';
 <meta name="msnbot" content="noodp, index, follow">
 <meta name="googlebot" content="noodp, index, follow">
 
-<link href="<?php echo SITEROOT; ?>/css/base.min.css" rel="stylesheet">
+<link href="<?php echo SITEROOT; ?>css/base.min.css" rel="stylesheet">
 
 <!--
-<link href="<?php echo SITEROOT; ?>/css/base.css" rel="stylesheet">
+<link href="<?php echo SITEROOT; ?>css/base.css" rel="stylesheet">
 -->
 
 
-<link href="<?php echo SITEROOT; ?>/css/responsive.min.css" rel="stylesheet">
+<link href="<?php echo SITEROOT; ?>css/responsive.min.css" rel="stylesheet">
 <!--
 <link href="<?php //echo SITEROOT; ?>/css/responsive.css" rel="stylesheet">
 -->
 
-<link href="<?php echo SITEROOT; ?>/js/fancybox2/source/jquery.fancybox.css?v=2.1.4" rel="stylesheet">
+<link href="<?php echo SITEROOT; ?>js/fancybox2/source/jquery.fancybox.css?v=2.1.4" rel="stylesheet">
 
 
-<link type="text/css" rel="stylesheet" media="all" href="<?php echo SITEROOT; ?>/css/mmenu.min.css" />
+<link type="text/css" rel="stylesheet" media="all" href="<?php echo SITEROOT; ?>css/mmenu.min.css" />
 <!--
 <link type="text/css" rel="stylesheet" media="all" href="<?php //echo SITEROOT; ?>/css/mmenu.css" />
 -->
@@ -134,7 +146,7 @@ if($result->num_rows > 0){
 	<section class="row confirmation">
 		<div class="span12">
         
-        	<img src="<?php echo SITEROOT."/saascustuploads/".$_SESSION['profile_account_id']."/logo/".get_logo(); ?>">
+        	<img src="<?php echo SITEROOT."//saascustuploads/".$_SESSION['profile_account_id']."/logo/".get_logo(); ?>">
             
             
         <span style="font-size:18px;">Questions? Problem? Call Us: <?php echo getCompanyPhone(); ?></span><span style="float:right; margin-top:16px; font-size:18px; clear:both;"><?php echo SITEROOT; ?></span> 
@@ -291,7 +303,7 @@ if($result->num_rows > 0){
 				$id = ($row->item_id > 0) ? $row->item_id : $row->design_id;
 				$type = ($row->item_id > 0) ? 'Product' : 'Custom Design';
 				
-				$image = ($type == "Product") ? SITEROOT."/saascustuploads/".$_SESSION['profile_account_id']."/cart/".$imgdir."/".getItemPic($id) : SITEROOT."/images/custom-item-in-cart.jpg";
+				$image = ($type == "Product") ? SITEROOT."//saascustuploads/".$_SESSION['profile_account_id']."/cart/".$imgdir."/".getItemPic($dbCustom,$id) : SITEROOT."//images/custom-item-in-cart.jpg";
 				
 				$block .= "<div class='span12 cart-item'>";
 					$block .= "<div class='itembox'>";
