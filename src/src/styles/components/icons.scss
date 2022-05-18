@@ -1,0 +1,105 @@
+.icon-share__circle {
+	position: relative;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+
+	&__gray {
+		background-color: #696969;
+	}
+
+	&__00fbff {
+		background-color: #00fbff;
+	}
+
+	&__18C4C7 {
+		background-color: #18C4C7;
+	}
+
+	#img-check,
+	#Save {
+		path {
+			fill: #FFFFFF;
+		}
+	}
+
+	#img-check {
+		#check path {
+			fill: #18C4C7;
+		}
+	}
+
+	svg,
+	#Rectangle_148 {
+		-webkit-transition: all 0.5s ease;
+		-moz-transition: all 0.5s ease;
+		-o-transition: all 0.5s ease;
+		transition: all 0.5s ease;
+	}
+
+
+	#Path_207 {
+		-webkit-transform: translate(13px, 24px) scale(1);
+		-moz-transform: translate(13px, 24px) scale(1);
+		-o-transform: translate(13px, 24px) scale(1);
+		-ms-transform: translate(13px, 24px) scale(1);
+		transform: translate(13px, 24px) scale(1);
+	}
+
+	#Path_419 {
+		-webkit-transform: translate(0px, 0.963px) scale(1);
+		-moz-transform: translate(0px, 0.963px) scale(1);
+		-o-transform: translate(0px, 0.963px) scale(1);
+		-ms-transform: translate(0px, 0.963px) scale(1);
+		transform: translate(0px, 0.963px) scale(1);
+	}
+	#Rectangle_148 {
+		-webkit-transform: translate(15.189px, 18.043px) scale(1);
+		-moz-transform: translate(15.189px, 18.043px) scale(1);
+		-o-transform: translate(15.189px, 18.043px) scale(1);
+		-ms-transform: translate(15.189px, 18.043px) scale(1);
+		transform: translate(15.189px, 18.043px) scale(1);
+	}
+
+	.icon__scale-up {
+		fill: #18C4C7 !important;
+		-webkit-transform: translate(19px, -39px) scale(1.1);
+		-moz-transform: translate(19px, -39px) scale(1.1);
+		-o-transform: translate(19px, -39px) scale(1.1);
+		-ms-transform: translate(19px, -39px) scale(1.1);
+		transform: translate(19px, -39px) scale(1.1);
+	}
+
+	&:hover {
+		svg:not(#Save):not(#img-check) {
+			-webkit-transform: scale(0.6);
+			-moz-transform: scale(0.6);
+			-o-transform: scale(0.6);
+			-ms-transform: scale(0.6);
+			transform: scale(0.6);
+		}
+
+		#img-check {
+			//transform: scale(1);
+
+			.icon__scale-down {
+				-webkit-transform: scale(0.6);
+				-moz-transform: scale(0.6);
+				-o-transform: scale(0.6);
+				-ms-transform: scale(0.6);
+				transform: scale(0.6);
+			}
+
+			.icon__scale-up {
+				fill: #ffffff !important;
+				-webkit-transform: translate(0px, -215px) scale(4);
+				-moz-transform: translate(0px, -215px) scale(4);
+				-o-transform: translate(0px, -215px) scale(4);
+				-ms-transform: translate(0px, -215px) scale(4);
+				transform: translate(0px, -215px) scale(4);
+			}
+		}
+	}
+}

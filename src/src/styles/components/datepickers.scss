@@ -1,0 +1,106 @@
+.datepicker-body {
+	.datepicker {
+		top: 75px !important;
+		left: 15px !important;
+		width: calc(100% - 30px);
+		padding: 1rem;
+		z-index: 1151 !important;
+	}
+}
+
+body.datapicker-block {
+	position: relative;
+}
+
+.datapicker-block {
+	.datepicker {
+		//top: 75px !important;
+
+		width: calc(100% - 30px);
+		padding: 1rem;
+		z-index: 1151 !important;
+
+		@include minw-media($breakPoints-l) {
+			//top: 107% !important;
+			z-index: 3 !important;
+			max-width: 400px;
+		}
+
+		@include media-breakpoint-down(md){
+			left: 15px !important;
+		}
+
+		.datepicker-days, .datepicker-months, .datepicker-years, .datepicker-decades, .datepicker-centuries {
+			background: #FBFBFB;
+			border-radius: 5px;
+		}
+
+		.datepicker-switch:hover, .prev:hover, .next:hover, tfoot tr th:hover {
+			color: $default-color;
+		}
+
+		table {
+			width: 100%;
+
+			tr {
+				td {
+					&.day:hover, &.focused {
+						color: $default-color;
+					}
+				}
+			}
+		}
+	}
+
+	.date-pikcer {
+		background: transparent;
+		z-index: 1;
+		cursor: pointer;
+	}
+
+	&__label {
+		margin-bottom: 5px;
+		padding: 0 1rem;
+		color: $default-color;
+		font-family: $default-font-family;
+		@include fluid-type(font-size, 320px, 1400px, 18px, 22px);
+		line-height: 1.89;
+
+		@include minw-media($breakPoints-l) {
+			padding: 0;
+			@include fluid-type(font-size, 320px, 1400px, 14px, 18px);
+		}
+	}
+
+	&__image {
+		position: absolute;
+		top: 2.7rem;
+		right: 10px;
+		display: inline-block;
+		cursor: pointer;
+
+		@include minw-media($breakPoints-l) {
+			top: 42px
+		}
+	}
+
+	.form-control {
+		padding: 0 1rem;
+	}
+
+	.datepicker-in-modal {
+		.datepicker-dropdown:before,
+		.datepicker-dropdown:after {
+			content: none;
+		}
+	}
+}
+
+.home-consult-form__content.second-content {
+
+	.datapicker-block {
+		margin-bottom: 20px;
+		border-bottom: 1px solid #dee2e6;
+		padding-bottom: 15px;
+	}
+}

@@ -1,0 +1,164 @@
+.card-collapse {
+	&__header {
+		padding: 15px 10px;
+		background-color: #F9FBFF;
+		cursor: pointer;
+
+		.collapse-icon {
+			width: 15px;
+			height: 15px;
+
+			&__plus {
+				display: none;
+			}
+
+			&__minus {
+				display: block;
+			}
+		}
+
+		&.collapsed {
+			.collapse-icon {
+				&__plus {
+					display: block;
+				}
+
+				&__minus {
+					display: none;
+				}
+			}
+		}
+	}
+
+	&__title {
+		margin: 0;
+		color: $default-color;
+		font-family: $default-font-family-semi-bold;
+		@include fluid-type(font-size, 320px, 1400px, 16px, 18px);
+
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		width: 100%;
+
+		span {
+			display: inline-block;
+			width: calc(100% - 16px);
+		}
+	}
+
+	&__body {
+		padding: 15px 10px;
+		// border-top: 2px solid #e5ecf9;
+		font-family: $second-font-regular;
+		@include fluid-type(font-size, 320px, 1400px, 16px, 26px);
+		line-height: 1.5;
+
+		@include minw-media($breakPoints-l) {
+			@include fluid-type(font-size, 320px, 1400px, 6px, 16px);
+		}
+
+		&.js-diy-detached-div {
+			padding: 0;
+			border-top: none;
+
+			@include maxw-media($breakPoints-l) {
+				display: flex;
+				flex-direction: column-reverse;
+			}
+
+			@include minw-media($breakPoints-l) {
+				padding: 15px 10px;
+				border-top: 2px solid #e5ecf9;
+			}
+
+			.card-collapse__body--images {
+				flex-wrap: nowrap;
+				overflow-y: hidden;
+				overflow-x: scroll;
+
+				&::-webkit-scrollbar {
+					display: none;
+				}
+
+				img:nth-child(2n) {
+					margin-right: 1rem;
+				}
+			}
+		}
+
+		.special-text {
+			color: #DB440D;
+		}
+
+		&--images {
+			display: flex;
+			flex-wrap: wrap;
+
+			img {
+				flex: 0 0 120px;
+				max-width: 120px;
+				display: inline-block;
+				width: 100%;
+				margin-right: 1rem;
+				margin-bottom: 1rem;
+
+				&:nth-child(2n) {
+					margin-right: 0;
+
+					@include minw-media($breakPoints-m) {
+						margin-right: 1rem;
+					}
+				}
+
+				&:last-child {
+					margin-right: 0;
+				}
+			}
+		}
+	}
+
+	&__text {
+		color: $eighth-bg-color;
+		font-family: $default-font-family;
+		@include fluid-type(font-size, 320px, 1400px, 14px, 16px);
+	}
+}
+
+
+.info-text-custom-collapse {
+	height: 80px;
+	overflow: hidden;
+
+	&.active {
+		height: 100%;
+	}
+}
+
+[data-role="btn-info-text-custom-collapse"],
+[data-role="btn-info-text-custom-collapse"]:focus {
+	padding: 0;
+	color: #DB440D;
+	text-decoration: underline;
+}
+
+#accordion {
+
+	//.collapsing:not(.shown) {
+	//	-webkit-transition-delay: 900ms;
+	//	transition-delay: 900ms;
+	//}
+	//.collapsing {
+	//	-webkit-transition-delay: 0ms;
+	//	transition-delay: 0ms;
+	//}
+	//
+	//.collapse:not(.shown) {
+	//	-webkit-transition-delay: 900ms;
+	//	transition-delay: 900ms;
+	//}
+	//.collapse.shown {
+	//	-webkit-transition-delay: 0ms;
+	//	transition-delay: 0ms;
+	//}
+}

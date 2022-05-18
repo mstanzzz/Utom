@@ -1,0 +1,42 @@
+.nav {
+	&__tabs-modal {
+		.hover__ltr {
+			&:before {
+				background-color: $default-color;
+			}
+
+			&.active {
+				&:before {
+					background-color: $fifth-color;
+				}
+			}
+		}
+
+		.nav-link {
+			color: $default-color;
+			font-family: $default-font-family-semi-bold;
+			@include fluid-type(font-size, 320px, 1400px, 14px, 16px);
+			line-height: 1.3;
+			padding: 10px 15px;
+
+			&.active {
+				color: $fifth-color;
+			}
+
+
+		}
+
+		.nav-item {
+			&:not(:first-child) {
+				margin-left: 10px;
+			}
+
+		}
+	}
+
+	&-content{
+		&__wrap {
+			width: 72%;
+		}
+	}
+}

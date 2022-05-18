@@ -1,0 +1,158 @@
+// start media queries mixin
+@mixin minw-media($query) {
+	@media (min-width: $query) {
+		@content;
+	}
+}
+
+@mixin maxw-media($query) {
+	@media (max-width: $query) {
+		@content;
+	}
+}
+
+@mixin between-width-media($query-small, $query-big) {
+	@media (min-width:$query-small) and (max-width:$query-big) {
+		@content;
+	}
+}
+// end media queries mixin
+
+// start fluid mixin
+@function strip-unit($number) {
+	@if type-of($number) == "number" and not unitless($number) {
+		@return $number / ($number * 0 + 1);
+	}
+
+	@return $number;
+}
+
+@mixin fluid-type($properties, $min-vw, $max-vw, $min-value, $max-value) {
+	@each $property in $properties {
+		#{$property}: $min-value;
+	}
+
+	@media (min-width: $min-vw) {
+		@each $property in $properties {
+			#{$property}: calc(#{$min-value} + #{strip-unit($max-value - $min-value)} * (100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)});
+		}
+	}
+
+	@media (min-width: $max-vw) {
+		@each $property in $properties {
+			#{$property}: $max-value;
+		}
+	}
+}
+//@include fluid-type(font-size, 320px, 1366px, 14px, 18px);
+// end fluid mixin
+
+// Breakpoints
+$breakPoints-xs: 320px;
+$breakPoints-s: 576px;
+$breakPoints-m: 768px;
+$breakPoints-l: 992px;
+$breakPoints-xl: 1200px;
+$breakPoints-xxl: 1440px;
+$breakPoints-xxxl: 1921px;
+
+//fonts families
+$default-font-family: 'SegoeUI', sans-serif;
+$default-font-family-light: 'SegoeUI-Light', sans-serif;
+$default-font-family-bold: 'SegoeUI-Bold', sans-serif;
+$default-font-family-italic: 'SegoeUI-Italic', sans-serif;
+$default-font-family-black: 'SegoeUI-Black', sans-serif;
+$default-font-family-semi-light: 'SegoeUI-SemiLight', sans-serif;
+$default-font-family-semi-bold: 'SegoeUI-SemiBold', sans-serif;
+
+$second-font-regular: 'OpenSans-Regular', sans-serif;
+$second-font-bold: 'OpenSans-Bold', sans-serif;
+$second-font-semi-bold: 'OpenSans-SemiBold', sans-serif;
+$second-font-family-italic: 'OpenSans-Italic', sans-serif;
+$second-font-family-semi-bold-italic: 'OpenSans-SemiBoldItalic', sans-serif;
+
+$third-font-family-book: 'Futura-Book', sans-serif;
+$third-font-family-medium: 'Futura-Medium', sans-serif;
+$third-font-family-medium-italic: 'Futura-MediumItalic', sans-serif;
+$third-font-family-bold: 'Futura-Bold', sans-serif;
+$third-font-family-black: 'Futura-Black', sans-serif;
+
+$fourth-font-family-BS-book: 'Futurica-BS-Book', sans-serif;
+$fourth-font-family-BS-Medium: 'Futurica-BS-Medium', sans-serif;
+$fourth-font-family-BS-bold: 'Futurica-BS-Bold', sans-serif;
+$fourth-font-family-BS-semi-bold: 'Futurica-BS-Semi-Bold', sans-serif;
+$fourth-font-family-BS-light: 'Futurica-BS-light', sans-serif;
+
+//background and border colors
+$default-backgroung-color: #ffffff;
+
+$first-header-bg-color: #384765;
+$second-header-bg-color: #ffffff;
+$third-header-bg-color: #F6F6F6;
+$covid-header-bg-color: #5C667B;
+
+$breadcrumb-bg-color: #F9FBFF;
+
+$first-bg-color: #000000;
+$second-bg-color: #CDD3E0;
+$third-bg-color: #FFFFFF;
+$fourth-bg-color: #EDEDED;
+$fifth-bg-color: #F9F9F9;
+$sisth-bg-color: #E3C064;
+$seventh-bg-color: #EDB700;
+$eighth-bg-color: #E7EBF2;
+$ninth-bg-color: #707070;
+$tenth-bg-color: #696969;
+$eleventh-bg-color: #E2E2E2;
+$twelfth-bg-color: #FB561B;
+$thirteenth-bg-color: #CBCBCB;
+$fourteenth-bg-color: #384765;
+$fifteenth-bg-color: #949DAE;
+$sixteenth-bg-color: #EEF9F9;
+$seventeenth-bg-color: #18C4C7;
+$nineteenth-bg-color: #EB5C25;
+$twentieth-bg-color: #EBEBEB;
+$twenty-first-bg-color: #E5997C;
+$twenty-second-bg-color: #AE441C;
+$twenty-third-bg-color: #8CBADE;
+$twenty-fifth-bg-color: #4386B8;
+$twenty-sisth-bg-color: #8C9EC2;
+$twenty-seventh-bg-color: #5B6F97;
+$twenty-eighth-bg-color: #A0A0A0;
+$twenty-ninth-bg-color: #DEB27F;
+$thirtieth-bg-color:#A18B86;
+
+//butons background
+$first-backgroung-color: #18C4C7;
+$second-backgroung-color: #ED9C00;
+$third-backgroung-color: #384765;
+
+//colors
+$default-color: #000000;
+$default-hover-color: #DB440D;
+
+$first-color: #ffffff;
+$second-color: #384765;
+$third-color: #02C1C4;
+$fourth-color: #EDB700;
+$fifth-color: #DB440D;
+$sixth-color: #18C4C7;
+$seventh-color: #949DAE;
+$eighth-color: #7E7E7E;
+$ninth-color: #696969;
+$tenth-color: #ED9C00;
+$eleventh-color: #EB5C25;
+$twelfth-color: #656565;
+$thirteenth-color: #7679AE;
+$fourteenth-color: #5D7CD4;
+$fifteenth-color: #59C2C4;
+$success-color: #18C4C7;
+
+$placeholder-color: #B2B2B2;
+
+$account-first-color: #64B8D2;
+$account-second-color: #17C3C6;
+$account-third-color: #5C667B;
+$account-fourth-color: #D2D2D2;
+$account-fifth-color: #FB561B;
+$account-sixth-color: #5EAE5E;

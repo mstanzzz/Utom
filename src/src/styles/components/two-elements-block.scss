@@ -1,0 +1,663 @@
+.two-elements-block {
+
+	&.category-view-page {
+		.stars-wrapper .block-stars__wrapper {
+			margin-bottom: 20px;
+		}
+	}
+
+	&.fax-design {
+		display: none;
+
+		@include minw-media($breakPoints-l) {
+			display: block;
+		}
+
+		.two-elements-block__wrapper {
+			max-width: 100%;
+		}
+
+		.two-elements-block__wrapper--heading {
+			margin-bottom: 25px;
+		}
+
+		.two-elements-block__wrapper--text + .two-elements-block__wrapper--text {
+			margin-top: 30px;
+		}
+	}
+
+	&.about-us {
+		padding-bottom: 20px;
+
+		@include maxw-media($breakPoints-l) {
+			padding-top: 1rem;
+		}
+
+		.mobile-show {
+			width: 100%;
+		}
+
+		.two-elements-block {
+			&__wrapper {
+				display: flex;
+				flex-direction: column;
+				width: 100%;
+				height: 100%;
+				align-items: center;
+				justify-content: center;
+
+				&--heading {
+					color: $second-color;
+					text-align: center;
+					line-height: 1.375;
+					letter-spacing: 0.68px;
+
+					@include maxw-media($breakPoints-l) {
+						color: #000;
+						@include fluid-type(font-size, 320px, 1400px, 24px, 34px);
+					}
+				}
+
+				&--subheading {
+					color: $fifth-color;
+					font-family: $third-font-family-book;
+					text-align: center;
+					@include fluid-type(font-size, 320px, 1400px, 24px, 34px);
+					line-height: 1.375;
+					letter-spacing: 0.6px;
+
+					@include maxw-media($breakPoints-l) {
+						margin-bottom: 1rem;
+					}
+				}
+			}
+		}
+	}
+
+	&.support, &.support-modal {
+
+		.two-elements-block__wrapper {
+			@include maxw-media($breakPoints-l) {
+				padding-bottom: 30px;
+			}
+		}
+
+		.two-elements-block__wrapper--heading {
+			text-align: left;
+			font-family: $third-font-family-medium-italic;
+			@include fluid-type(font-size, 320px, 1400px, 24px, 34px);
+			line-height: 1.41;
+			letter-spacing: 2.4px;
+			text-align: center;
+
+			@include minw-media($breakPoints-l) {
+				text-align: left;
+				@include fluid-type(font-size, 320px, 1400px, 14px, 24px);
+				line-height: 1.375;
+			}
+		}
+
+		.two-elements-block__wrapper--text {
+			color: $default-color;
+			text-align: center;
+			font-family: $third-font-family-book;
+			@include fluid-type(font-size, 320px, 1400px, 18px, 28px);
+			line-height: 1.44;
+
+			@include minw-media($breakPoints-l) {
+				text-align: left;
+				@include fluid-type(font-size, 320px, 1400px, 8px, 18px);
+			}
+		}
+	}
+
+	&.support-modal {
+		@include maxw-media($breakPoints-l) {
+			padding-bottom: 0;
+		}
+	}
+
+	.no-shadow {
+		padding: 0;
+		border: none;
+		box-shadow: none;
+
+		.heading {
+			width: 100%;
+			margin: 0 0 25px 0;
+			// color: $second-color;
+			color: $fifteenth-color;
+			text-align: left;
+			font-family: $third-font-family-book;
+			@include fluid-type(font-size, 320px, 1400px, 14px, 24px);
+			line-height: 34px;
+			letter-spacing: 0.68px;
+		}
+
+		.home-consult-form__image-area {
+			.bigger-col {
+				//width: 70%;
+			}
+
+			.image-size {
+				width: 20%;
+			}
+
+			.success-or-error {
+				width: 10%;
+			}
+		}
+	}
+
+	&__wrapper {
+		width: 100%;
+		height: 100%;
+		text-align: center;
+
+		@include minw-media($breakPoints-l) {
+			text-align: left;
+		}
+
+		&.with-border {
+			padding: 20px 0;
+			border: 1px solid $eighth-bg-color;
+
+			@include minw-media($breakPoints-l) {
+				max-width: 100%;
+				padding: 25px;
+			}
+
+			.two-elements-block__wrapper--text {
+				flex: 1;
+			}
+
+			.link-button {
+				margin: 20px 0 0;
+
+				@include maxw-media($breakPoints-l) {
+					background: transparent;
+					@include fluid-type(font-size, 320px, 1400px, 14px, 24px);
+				}
+
+				&:active {
+					background: #59C2C4;
+					background-color: #59C2C4;
+					color: #fff;
+				}
+
+				&.active {
+					@include maxw-media($breakPoints-l) {
+						background: $fourteenth-bg-color;
+						color: #fff;
+
+						svg {
+							fill: #fff;
+						}
+					}
+				}
+			}
+		}
+
+		&--heading {
+			max-width: 100%;
+			margin-bottom: 25px;
+			// color: $second-color;
+			color: $fifteenth-color;
+			font-family: $third-font-family-book;
+			text-align: center;
+			@include fluid-type(font-size, 320px, 1400px, 24px, 34px);
+			line-height: 26px;
+			letter-spacing: 0.6px;
+
+			@include minw-media($breakPoints-l) {
+				text-align: left;
+				@include fluid-type(font-size, 320px, 1400px, 14px, 24px);
+			}
+
+			&.about-us-heading-24 {
+				@include minw-media($breakPoints-l) {
+					@include fluid-type(font-size, 320px, 1400px, 14px, 24px);
+				}
+			}
+
+			&.about-us-heading-26 {
+				@include minw-media($breakPoints-l) {
+					@include fluid-type(font-size, 320px, 1400px, 16px, 26px);
+				}
+			}
+		}
+
+		&--text {
+			margin: 0;
+			color: $default-color;
+			text-align: center;
+			font-family: $second-font-regular;
+			@include fluid-type(font-size, 320px, 1400px, 16px, 26px);
+			line-height: 30px;
+
+			-webkit-transition: all 0.5s ease;
+			-moz-transition: all 0.5s ease;
+			-o-transition: all 0.5s ease;
+			transition: all 0.5s ease;
+
+			@include minw-media($breakPoints-l) {
+				text-align: left;
+				@include fluid-type(font-size, 320px, 1400px, 6px, 16px);
+			}
+
+			&.small-text {
+				max-height: 90px;
+				overflow: hidden;
+
+				@include minw-media($breakPoints-l) {
+					max-height: 60px;
+				}
+			}
+
+			&.show-text {
+				max-height: 100%;
+			}
+		}
+
+		&--link-block {
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+			justify-content: flex-start;
+			width: 100%;
+			margin-top: 40px;
+			margin-bottom: 15px;
+
+			@include minw-media($breakPoints-l) {
+				flex-direction: row;
+			}
+
+			.link-button {
+				margin-right: 15px;
+				margin-bottom: 15px;
+
+				&:last-child {
+					margin-right: 0;
+				}
+
+				&:active {
+					background: #59C2C4;
+					background-color: #59C2C4;
+					color: #fff;
+				}
+
+				&.modal-fax-design-btn {
+					max-width: 48%;
+					flex: 0 0 48%;
+					justify-content: center;
+					padding: 0;
+					background: transparent;
+					border: 1px solid #B4B4B4;
+					color: #000;
+					text-transform: none;
+
+					svg {
+						display: none;
+					}
+				}
+			}
+		}
+
+		&--position-content {
+			position: relative;
+		}
+
+		&--position-right-text {
+			position: absolute;
+			bottom: 7%;
+			right: 7%;
+
+			@include maxw-media($breakPoints-l) {
+				right: 25px;
+				bottom: 15px;
+			}
+
+			p {
+				margin: 0;
+				color: $first-color;
+				font-family: $default-font-family-bold;
+				@include fluid-type(font-size, 320px, 1400px, 10px, 16px);
+				line-height: 21px;
+				text-transform: uppercase;
+
+				& + p {
+					margin: 0 0 15px 0;
+				}
+			}
+
+			.link-button {
+				background: transparent;
+				border-color: $default-backgroung-color;
+				color: $first-color;
+
+				&:active {
+					background: #59C2C4;
+					background-color: #59C2C4;
+					color: #fff;
+				}
+
+				svg {
+					fill: $first-color;
+				}
+			}
+		}
+
+		&--position-left-text {
+			position: absolute;
+			left: 7%;
+			bottom: 7%;
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+			justify-content: flex-start;
+			width: 80%;
+			z-index: 1;
+
+			@include maxw-media($breakPoints-l) {
+				left: 25px;
+				bottom: 15px;
+			}
+
+			p {
+				margin: 0;
+				color: $default-color;
+				font-family: $default-font-family-bold;
+				@include fluid-type(font-size, 320px, 1400px, 10px, 16px);
+				line-height: 21px;
+				text-transform: uppercase;
+
+				& + p {
+					margin: 0 0 15px 0;
+				}
+			}
+
+			.link-button {
+				background: transparent;
+				color: $default-color;
+
+				&:active {
+					background: #59C2C4;
+					background-color: #59C2C4;
+					color: #fff;
+				}
+
+				svg {
+					fill: $default-color;
+				}
+			}
+
+			&.white-color {
+				p {
+					color: $first-color;
+				}
+
+				.link-button {
+					border: 1px solid $default-backgroung-color;
+					color: $first-color;
+
+					&:active {
+						background: #59C2C4;
+						background-color: #59C2C4;
+						color: #fff;
+					}
+
+					svg {
+						fill: $first-color;
+					}
+				}
+			}
+		}
+
+		&--content {
+			display: flex;
+			align-items: flex-start;
+			justify-content: space-between;
+			width: 100%;
+			height: 100%;
+
+			@include maxw-media($breakPoints-xl) {
+				margin-top: 30px;
+			}
+		}
+
+		&--video, &--stars, &--image {
+			// flex: 0 0 49%;
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+			justify-content: flex-start;
+			width: 100%;
+			height: 100%;
+			// max-width: 49%;
+			padding: 15px;
+			border: 1px solid $fourth-bg-color;
+
+			& .stars-wrapper {
+				margin-top: 0;
+				padding: 0;
+			}
+
+			.only-image {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: flex-start;
+				width: 100%;
+				height: 100%;
+
+				img {
+					display: block;
+					width: 100%;
+				}
+			}
+
+			.video-wrapper {
+				display: flex;
+				flex-direction: column;
+				width: 100%;
+				margin-bottom: 20px;
+
+				img {
+					display: block;
+					width: 100%;
+				}
+			}
+
+			.heading {
+				width: 100%;
+				margin: 0 0 25px 0;
+				// color: $second-color;
+				color: $fifteenth-color;
+				text-align: left;
+				font-family: $third-font-family-book;
+				@include fluid-type(font-size, 320px, 1400px, 14px, 24px);
+				line-height: 34px;
+				letter-spacing: 0.68px;
+			}
+
+			a.link-button {
+				margin: 0 auto 15px;
+
+				&:active {
+					background: #59C2C4;
+					background-color: #59C2C4;
+					color: #fff;
+				}
+			}
+		}
+
+		&--image {
+			padding: 0;
+		}
+
+		&--stars {
+			margin-top: 30px;
+			padding: 15px;
+
+
+			&.fax-a-design {
+				@include maxw-media($breakPoints-l) {
+					padding: 0;
+					border: none;
+				}
+
+				.stars-wrapper {
+					@include maxw-media($breakPoints-l) {
+						flex-direction: column;
+						// flex
+					}
+				}
+			}
+		}
+	}
+}
+
+.consult-wrap {
+	padding: 2rem 1rem;
+	background: #949DAE;
+
+	@include minw-media($breakPoints-l) {
+		padding: 1rem;
+		border: 1px solid #E7EBF2;
+	}
+
+	&.virtual-consultation {
+		background: #384765;
+
+		.consult-wrap__image-block--button {
+
+			&:active {
+				border: 1px solid #fff !important;
+				background: #949DAE !important;
+				background-color: #949DAE !important;
+				color: #fff !important;
+			}
+
+			&:focus {
+				background: #fff;
+				border: 1px solid #fff;
+				color: #384765;
+			}
+
+			&:hover {
+				background: #fff;
+				border: 1px solid #fff;
+				color: #384765;
+				@include minw-media($breakPoints-l) {
+					border: 1px solid #fff;
+					background: #949DAE;
+					color: #fff;
+				}
+			}
+		}
+	}
+
+	&__image-block {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		width: 100%;
+
+		&.right-border {
+			&::after {
+				@include minw-media($breakPoints-l) {
+					content: "";
+					position: absolute;
+					top: 5%;
+					right: -8px;
+					display: block;
+					width: 2px;
+					height: 90%;
+					background: #E7EBF2;
+				}
+			}
+		}
+
+		&--img {
+			display: block;
+			width: 100%;
+			max-width: 68px;
+
+			@include minw-media($breakPoints-l) {
+				max-width: 90px;
+			}
+		}
+
+		&--heading {
+			margin: 1.5rem 0 0;
+			color: #fff;
+			text-align: center;
+			font-family: $default-font-family-semi-bold;
+			@include fluid-type(font-size, 320px, 1400px, 20px, 26px);
+			line-height: 1.45;
+			text-transform: uppercase;
+
+			@include minw-media($breakPoints-l) {
+				@include fluid-type(font-size, 320px, 1400px, 14px, 20px);
+			}
+		}
+
+		&--text {
+			display: none;
+			margin: 0;
+			color: #fff;
+			font-family: $second-font-regular;
+			@include fluid-type(font-size, 320px, 1400px, 16px, 22px);
+			line-height: 1.75;
+
+			@include minw-media($breakPoints-l) {
+				display: block;
+				@include fluid-type(font-size, 320px, 1400px, 10px, 16px);
+			}
+		}
+
+		&--button {
+			padding: 0.25rem 0.75rem;
+			margin: 1.5rem 0 0;
+			background: #fff;
+			background-color: #fff;
+			border: 1px solid #fff;
+			color: #384765;
+			font-family: $default-font-family-bold;
+			@include fluid-type(font-size, 320px, 1400px, 16px, 22px);
+			line-height: 1.875;
+			text-transform: uppercase;
+
+			@include minw-media($breakPoints-l) {
+				@include fluid-type(font-size, 320px, 1400px, 10px, 16px);
+			}
+
+			&:active {
+				border: 1px solid #fff !important;
+				background: #384765 !important;
+				background-color: #384765 !important;
+				color: #fff !important;
+			}
+
+			&:focus {
+				background: #fff;
+				border: 1px solid #fff;
+				color: #384765;
+			}
+
+			&:hover {
+				background: #fff;
+				border: 1px solid #fff;
+				color: #384765;
+
+				@include minw-media($breakPoints-l) {
+					border: 1px solid #fff;
+					background: #384765;
+					color: #fff;
+				}
+			}
+		}
+	}
+}

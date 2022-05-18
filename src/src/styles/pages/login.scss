@@ -1,0 +1,68 @@
+.login-page {
+	@include media-breakpoint-down(md) {
+		padding-top: 110px;
+	}
+
+	&__header {
+		height: auto;
+		margin-bottom: 40px;
+	}
+
+	.form-wrap {
+		max-width: 320px;
+		margin: 0 auto;
+	}
+
+	.nav__tabs-modal .nav-link {
+		text-transform: uppercase;
+		font-family: $default-font-family-bold;
+	}
+
+	.form-group__default__label:hover {
+
+		&.hover__ltr {
+			color: $fifth-color;
+			text-decoration: none;
+
+			&:before {
+				background-color: $fifth-color;;
+			}
+		}
+	}
+
+	@include media-breakpoint-up(lg) {
+		main {
+			margin: 0;
+			padding-top: 21.5vh;
+		}
+	}
+
+	@include media-breakpoint-down(md) {
+		p {
+			margin: 0;
+		}
+
+		.second-header, main {
+			background: #ffffff;
+		}
+
+		.form-wrap {
+			margin: 0 auto 50px;
+		}
+
+		.home-consult-form__radio-block {
+			padding: 0;
+			justify-content: flex-start;
+		}
+
+		p.form-group__default__label {
+			margin-top: 30px;
+			margin-left: 0 !important;
+			margin-bottom: 15px;
+		}
+
+		.btn-sign {
+			margin-top: 80px;
+		}
+	}
+}

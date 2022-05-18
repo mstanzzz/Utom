@@ -1,0 +1,198 @@
+.we-desing-page_margin-for-hero-image {
+	margin-top: 560px;
+	@include maxw-media($breakPoints-l) {
+		margin-top: 15px;
+	}
+}
+
+.diy-instructions-page_margin-for-hero-image {
+	margin-top: 564px!important;
+	@include maxw-media($breakPoints-l) {
+		margin-top: 0!important;
+	}	
+}
+.hero-images-from-specification__a {
+	@include maxw-media($breakPoints-l) {
+		display: none;
+	}	
+	.first-fixed-block__img-group--text {
+		max-width: 1316px;
+		font-family: "SegoeUI-SemiBold", sans-serif;
+		line-height: 1.42;
+		font-size: 24px;
+	}
+}
+
+.we-design-block {
+
+	&__index-content {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		width: 100%;
+		height: calc(100% - 1rem);
+		margin-top: 1rem;
+		padding: 1rem;
+		background: #F5F5F5;
+
+		@include minw-media ($breakPoints-l) {
+			height: 100%;
+			margin-top: 0;
+		}
+
+		svg {
+			width: 70px;
+			height: 70px;
+
+			@include minw-media ($breakPoints-l) {
+				width: 100px;
+				height: 100px;
+			}
+		}
+
+		&--text {
+			width: 100%;
+			margin: 1rem 0 0;
+			color: $second-color;
+			text-align: center;
+			font-family: $default-font-family-semi-bold;
+			@include fluid-type(font-size, 320px, 1400px, 16px, 22px);
+			line-height: 1.48;
+		}
+	}
+
+	&__form {
+		padding: 1rem;
+		background: $fourteenth-bg-color;
+		border: 1px solid $ninth-bg-color;
+
+		&--heading {
+			color: $first-color;
+			text-align: center;
+			font-family: $default-font-family;
+			@include fluid-type(font-size, 320px, 1400px, 28px, 32px);
+			line-height: 1.21;
+
+			@include minw-media ($breakPoints-l) {
+				@include fluid-type(font-size, 320px, 1400px, 24px, 28px);
+			}
+		}
+
+		&--input {
+			padding: 0.3rem 0.75rem;
+			background: #fff;
+			border: 1px solid $default-backgroung-color;
+			border-radius: 0;
+			color: #384765;
+			caret-color: $tenth-color;
+			font-family: $default-font-family;
+			@include fluid-type(font-size, 320px, 1400px, 18px, 22px);
+			line-height: 1.88;
+
+			@include minw-media ($breakPoints-l) {
+				@include fluid-type(font-size, 320px, 1400px, 14px, 18px);
+			}
+
+			&:hover, &:focus {
+				border-color: $default-backgroung-color;
+				background: #fff;
+				color: #384765;
+				box-shadow: none;
+			}
+
+			&::-webkit-input-placeholder {
+				color: #384765;
+			}
+			&:-moz-placeholder { 
+				color: #384765;
+				opacity:  1;
+			}
+			&::-moz-placeholder { 
+				color: #384765;
+				opacity:  1;
+			}
+			&:-ms-input-placeholder {
+				color: #384765;
+			}
+			&::-ms-input-placeholder {
+				color: #384765;
+			}
+			&::placeholder {
+				color: #384765;
+			}
+			&:-webkit-autofill,
+			&:-webkit-autofill:hover,
+			&:-webkit-autofill:focus,
+			&:-webkit-autofill:active {
+				-webkit-text-fill-color: #384765;
+				transition: background-color 5000s ease-in-out 0s;
+			}
+		}
+
+		.btn.btn-primary {
+			background-color: $second-backgroung-color;
+			border-color: $second-backgroung-color;
+			height: 40px;
+
+			@include fluid-type(font-size, 320px, 1510px, 16px, 20px);
+
+			@include minw-media ($breakPoints-l) {
+				@include fluid-type(font-size, 320px, 1510px, 12px, 16px);
+			}
+
+			&:active{
+				background-color: #ffffff !important;
+				border-color: #ED9C00 !important;
+				color: #ED9C00 !important;
+			}
+			
+			&:not(:disabled):not(.disabled).active:focus, 
+			&:focus {
+				background-color: $second-backgroung-color;
+				border-color: $second-backgroung-color;
+			}
+			
+			&:hover
+				{
+					@include minw-media($breakPoints-l) {
+						background-color: $default-backgroung-color;
+						border-color: $default-backgroung-color;
+						color: $tenth-color;
+					}
+			}
+		}
+	}
+	
+	.first-fixed-block__text-group {
+		&--items {
+			flex: 1;
+			height: auto;
+			min-height: auto;
+			padding: 0;
+			border-bottom: none;
+			width: 100%;
+
+			& + .first-fixed-block__text-group--items {
+				margin-top: 1rem;
+			}
+
+			p {
+				@include fluid-type(font-size, 320px, 1400px, 24px, 28px);
+
+				@include minw-media ($breakPoints-l) {
+					@include fluid-type(font-size, 320px, 1400px, 22px, 26px);
+				}
+
+				& + P {
+					@include fluid-type(font-size, 320px, 1400px, 16px, 20px);
+					text-transform: uppercase;
+
+					@include minw-media ($breakPoints-l) {
+						@include fluid-type(font-size, 320px, 1400px, 12px, 16px);
+					}
+				}
+			}
+		}
+	}
+}

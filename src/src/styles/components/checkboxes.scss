@@ -1,0 +1,229 @@
+.checkbox {
+	&__ch-card {
+
+		&__checkbox {
+			position: absolute;
+			opacity: 0;
+			z-index: 4;
+
+			& + label {
+				flex: 0 0 130px;
+				max-width: 130px;
+
+				position: relative;
+				cursor: pointer;
+				padding: 0;
+				display: flex;
+				align-items: center;
+				justify-content: flex-start;
+				margin-bottom: 0;
+				font-family: $default-font-family;
+				@include fluid-type(font-size, 320px, 1400px, 12px, 16px);
+				color: $default-color;
+				font-weight: normal;
+				height: 34px;
+				line-height: 34px;
+				z-index: 4;
+
+				&.full {
+					flex: none;
+					max-width: initial;
+				}
+			}
+
+			&.bigger-text + label {
+				flex: 0 0 180px;
+				max-width: 180px;
+			}
+
+			& + label::before {
+				content: '';
+				display: inline-block;
+				width: 16px;
+				height: 16px;
+				margin-right: 10px;
+				vertical-align: text-top;
+				background: $default-backgroung-color;
+				border: 1px solid $seventh-color;
+			}
+
+			@include media-breakpoint-up(lg) {
+
+				&:hover + label::before {
+					//background: $twelfth-bg-color;
+					border: 1px solid $twelfth-bg-color;
+				}
+
+				&:hover + label::after {
+					content: "";
+					position: absolute;
+					top: 10px;
+					left: 1px;
+					display: block;
+					width: 14px;
+					height: 14px;
+					border: 2px solid $default-backgroung-color;
+				}
+			}
+
+
+			&:checked + label::before {
+				background: $twelfth-bg-color;
+				border: 1px solid #384765;
+			}
+
+			&:disabled + label {
+				color: $eighth-color;
+				cursor: auto;
+			}
+
+			&:disabled + label::before {
+				background: $default-backgroung-color;
+			}
+
+			&:checked + label:after {
+				content: "";
+				position: absolute;
+				top: 10px;
+				left: 1px;
+				display: block;
+				width: 14px;
+				height: 14px;
+				border: 2px solid $default-backgroung-color;
+			}
+
+			&:active + label::after {
+				border: none !important;
+			}
+		}
+	}
+}
+
+.card-checkout #checkbox__select-all:checked + label {
+	color: $fifth-color;
+}
+
+
+.checkbox-brand.checkbox__ch-card__checkbox:disabled + label::before {
+	background: #FB561B;
+}
+
+.checkbox-brand.checkbox__ch-card__checkbox:disabled + label:after {
+	content: "";
+	position: absolute;
+	top: 10px;
+	left: 1px;
+	display: block;
+	width: 14px;
+	height: 14px;
+	border: 2px solid #ffffff;
+}
+
+.custom-checkbox {
+	position: absolute;
+	opacity: 0;
+	z-index: 2;
+
+	@include maxw-media($breakPoints-l) {
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+
+	& + label {
+		position: relative;
+		cursor: pointer;
+		padding: 0;
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+		margin-bottom: 0;
+		font-family: $default-font-family;
+		@include fluid-type(font-size, 320px, 1400px, 18px, 22px);
+		font-weight: normal;
+		height: 34px;
+		line-height: 1.89;
+		z-index: 1;
+
+		@include minw-media($breakPoints-l) {
+			flex: 0 0 150px;
+			max-width: 150px;
+			@include fluid-type(font-size, 320px, 1400px, 14px, 18px);
+		}
+	}
+
+	&.bigger-text + label {
+		@include minw-media($breakPoints-l) {
+			flex: 0 0 200px;
+			max-width: 200px;
+		}
+	}
+
+	& + label::before {
+		content: '';
+		display: inline-block;
+		width: 22px;
+		height: 22px;
+		margin-right: 10px;
+		vertical-align: text-top;
+		background: $default-backgroung-color;
+		border: 1px solid $seventh-color;
+
+		// @include minw-media($breakPoints-l) {
+		// 	margin-right: 10px;
+		// }
+	}
+
+	&:hover + label::before {
+		@include minw-media($breakPoints-l) {
+			background: $third-backgroung-color;
+		}
+	}
+
+	&:hover + label::after {
+		@include minw-media($breakPoints-l) {
+			content: "";
+			position: absolute;
+			top: 8px;
+			left: 2px;
+			display: block;
+			width: 18px;
+			height: 18px;
+			border: 2px solid $default-backgroung-color;
+		}
+	}
+
+	&:checked + label::before {
+		background: $third-backgroung-color;
+	}
+
+	&:disabled + label {
+		color: $eighth-color;
+		cursor: auto;
+	}
+
+	&:disabled + label::before {
+		background: $default-backgroung-color;
+	}
+
+	&:checked + label:after {
+		// content: '';
+		// position: absolute;
+		// left: 8px;
+		// top: 9px;
+		// width: 8px;
+		// height: 13px;
+		// border: solid white;
+		// border-width: 0 3px 3px 0;
+		// transform: rotate(45deg);
+
+		content: "";
+		position: absolute;
+		top: 8px;
+		left: 2px;
+		display: block;
+		width: 18px;
+		height: 18px;
+		border: 2px solid $default-backgroung-color;
+	}
+}

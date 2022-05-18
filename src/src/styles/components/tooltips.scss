@@ -1,0 +1,29 @@
+.tooltip {
+	&__save-images {
+		position: absolute;
+		top: 100%;
+		right: 0;
+		// left: auto;
+		width: 235px;
+		background: $first-color;
+		box-shadow: 0 0 20px rgba(0, 0, 0, 0.30);
+		padding: 10px 15px;
+		visibility: hidden;
+		opacity: 0;
+		transition: opacity 0.3s;
+
+		// @media (min-width: 1830px) {
+		// 	right: auto;
+		// 	left: 0;
+		// }
+
+		.text {
+			margin: 0;
+			color: $default-color;
+			font-size: 14px;
+			font-family: $default-font-family;
+			@include fluid-type(font-size, 320px, 1510px, 12px, 14px);
+
+		}
+	}
+}

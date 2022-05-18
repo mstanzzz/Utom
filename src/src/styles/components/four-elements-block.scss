@@ -1,0 +1,790 @@
+.four-elements-block {
+	background: $default-backgroung-color;
+
+	&.team-block {
+		display: none;
+		background: $default-backgroung-color;
+
+		@include minw-media ($breakPoints-l) {
+			display: block;
+		}
+
+		figcaption {
+			width: 100%;
+			text-align: center;
+		}
+
+		.call-img {
+			@include maxw-media ($breakPoints-l) {
+				position: absolute;
+				top: 2.3rem;
+				right: 2.3rem;
+
+			}
+		}
+
+		.four-elements-block__wrapper {
+			align-items: flex-start;
+			justify-content: flex-start;
+			text-align: center;
+
+			@include minw-media ($breakPoints-l) {
+				align-items: center;
+				justify-content: center;
+				text-align: left;
+			}
+
+			.team-call {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				margin: 1rem 0 0.3rem;
+				color: $second-color;
+				font-family: $default-font-family-semi-bold;
+				@include fluid-type(font-size, 320px, 1410px, 14px, 18px);
+				line-height: 1.31;
+
+				svg {
+					width: 30px;
+					height: 30px;
+
+					@include minw-media ($breakPoints-l) {
+						margin-right: 1rem;
+					}
+
+					path {
+						fill: $seventeenth-bg-color;
+					}
+				}
+
+				&:hover {
+					svg {
+						path {
+							fill: $fourteenth-bg-color;
+						}
+					}
+				}
+			}
+
+			&--image {
+				
+				img {
+					border: 6px solid transparent;
+					transform: scale(1);
+
+					&.bordered-img {
+						border: 6px solid #384765;
+					}
+				}
+
+				&-button {
+					position: absolute;
+					bottom: 3rem;
+					left: calc(50% - 110px);
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					width: 222px;
+					height: 44px;
+					background: #fff;
+					border: 1px solid #59C2C4;
+					color: #59C2C4;
+					font-family: $default-font-family-bold;
+					@include fluid-type(font-size, 320px, 1410px, 16px, 20px);
+					text-transform: uppercase;
+
+					@include minw-media ($breakPoints-l) {
+						left: calc(50% - 51px);
+						bottom: -3rem;
+						width: 106px;
+						height: 24px;
+						@include fluid-type(font-size, 320px, 1410px, 8px, 12px);
+					}
+
+					&:active {
+						background: #59C2C4;
+						border: 1px solid #59C2C4;
+						color: #fff;
+					}
+
+					&:focus {
+						background: #fff;
+						border: 1px solid #59C2C4;
+						color: #59C2C4;
+					}
+
+					&:hover {
+						@include minw-media ($breakPoints-l) {
+							background: #59C2C4;
+							border: 1px solid #59C2C4;
+							color: #fff;
+						}
+					}
+				}
+
+				&:hover {
+					img {
+						transform: scale(1);
+					}
+
+					.four-elements-block__wrapper--image-button {
+						@include minw-media ($breakPoints-l) {
+							bottom: 3rem;
+						}
+					}
+				}
+			}
+
+			&--email {
+				line-height: 1.325;
+				margin-bottom: 30px;
+			}
+		}
+	}
+
+	&.support {
+		.four-elements-block__wrapper--bordered {
+			align-items: center;
+			justify-content: center;
+
+			@include minw-media ($breakPoints-l) {
+				align-items: flex-start;
+				justify-content: flex-start;
+			}
+		}
+
+		.four-elements-block__wrapper--bold-text, .four-elements-block__wrapper--underline-text {
+			text-align: center;
+
+			@include minw-media ($breakPoints-l) {
+				text-align: left;
+			}
+		}
+	}
+
+	&.four-elements-block--bordered {
+
+		& .wrapper {
+			padding: 0 5px;
+		}
+	}
+
+	.col-sm-6:nth-last-child(-n + 2) {
+		.four-elements-block__wrapper--bordered {
+			@include minw-media ($breakPoints-s) {
+				margin-bottom: 0;
+			}
+		}
+	}
+
+	&.showroom-detail-product {
+
+		.showroom-detail-product-video {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 100%;
+			height: 100%;
+			background: #000;
+		}
+		
+		.we-design-block__form {
+			margin-top: 1.5rem;
+			padding: 1rem;
+			background: #E9EDF4;
+			border: none;
+
+			@include minw-media ($breakPoints-l) {
+				margin-top: 0;
+				padding: 0.8rem;
+			}
+
+			&--heading {
+				color: #384765;
+				font-family: $fourth-font-family-BS-bold;
+				@include fluid-type(font-size, 320px, 1410px, 16px, 20px);
+				// font-weight: bold;
+				text-transform: uppercase;
+
+				@include minw-media ($breakPoints-l) {
+					@include fluid-type(font-size, 320px, 1410px, 12px, 16px);
+				}
+			}
+
+			&--input {
+				padding: 0.2rem 0.55rem;
+				border-radius: 3px;
+				background: #fff;
+				color: #000;
+				font-family: $fourth-font-family-BS-book;
+				@include fluid-type(font-size, 320px, 1410px, 16px, 20px);
+				line-height: 1.5625;
+
+				@include minw-media ($breakPoints-l) {
+					@include fluid-type(font-size, 320px, 1410px, 12px, 16px);
+				}
+
+				&::-webkit-input-placeholder {
+					color: #000;
+				}
+				&:-moz-placeholder { 
+					color: #000;
+					opacity:  1;
+				}
+				&::-moz-placeholder { 
+					color: #000;
+					opacity:  1;
+				}
+				&:-ms-input-placeholder {
+					color: #000;
+				}
+				&::-ms-input-placeholder {
+					color: #000;
+				}
+				&::placeholder {
+					color: #000;
+				}
+				&:-webkit-autofill,
+				&:-webkit-autofill:hover,
+				&:-webkit-autofill:focus,
+				&:-webkit-autofill:active {
+					-webkit-text-fill-color: #000;
+					transition: background-color 5000s ease-in-out 0s;
+				}
+			}
+
+			.btn.btn-primary {
+				font-family: $fourth-font-family-BS-bold;
+				@include fluid-type(font-size, 320px, 1400px, 16px, 26px);
+
+				@include minw-media ($breakPoints-l) {
+					@include fluid-type(font-size, 320px, 1400px, 6px, 16px);
+				}
+			}
+		}
+
+		.showroom-detail-product-design {
+			display: flex;
+			align-items: center;
+			justify-content: flex-start;
+			width: 100%;
+			height: calc(100% - 1.5rem);
+			margin-top: 1.5rem;
+			padding: 1rem 2rem;
+			background: #E3F0F1;
+
+			@include minw-media ($breakPoints-l) {
+				height: 100%;
+				margin-top: 0;
+				flex-direction: column;
+				justify-content: center;
+				padding: 1rem;
+			}
+
+			&__img {
+				svg {
+					@include maxw-media ($breakPoints-l) {
+						margin-right: 1rem;
+					}
+					path {
+						fill: #02ADB0;
+					}
+				}
+			}
+
+			&__text {
+				display: inline-block;
+				margin: 0;
+				color: #02ADB0;
+				font-family: $fourth-font-family-BS-light;
+				text-transform: none;
+				@include fluid-type(font-size, 320px, 1410px, 20px, 24px);
+
+				@include minw-media ($breakPoints-l) {
+					@include fluid-type(font-size, 320px, 1410px, 22px, 26px);
+				}
+			}
+		}
+
+		.showroom-detail-product-specification {
+			display: flex;
+			align-items: center;
+			justify-content: flex-start;
+			width: 100%;
+			height: calc(100% - 1.5rem);
+			margin-top: 1.5rem;
+			padding: 1rem 2rem;
+			background:#E8ECF3;
+
+			@include minw-media ($breakPoints-l) {
+				flex-direction: column;
+				justify-content: center;
+				height: 100%;
+				margin-top: 0;
+				padding: 1rem;
+			}
+
+			&__img {
+				svg {
+					@include maxw-media ($breakPoints-l) {
+						margin-right: 1rem;
+					}
+					path, rect {
+						fill: #384765 !important;
+					}
+				}
+			}
+
+			&__text {
+				display: inline-block;
+				margin: 0;
+				color: #384765;
+				font-family: $fourth-font-family-BS-light;
+				text-transform: none;
+				@include fluid-type(font-size, 320px, 1410px, 20px, 24px);
+
+				@include minw-media ($breakPoints-l) {
+					@include fluid-type(font-size, 320px, 1410px, 22px, 26px);
+				}
+			}
+		}
+
+		.showroom-detail-product-images-block {
+			position: relative;
+			display: flex;
+			flex-direction: column-reverse;
+			align-items: center;
+			justify-content: center;
+			width: 100%;
+			margin-top: 1.5rem;
+
+			@include minw-media ($breakPoints-l) {
+				flex-direction: column;
+				margin-top: 0.5rem;
+			}
+
+			&__image {
+				width: 100%;
+				overflow: hidden;
+
+				img {
+					-webkit-transition: all 0.3s ease-in-out;
+					-moz-transition: all 0.3s ease-in-out;
+					-o-transition: all 0.3s ease-in-out;
+					transition: all 0.3s ease-in-out;
+				}
+
+				&:hover {
+					img {
+						@include minw-media ($breakPoints-l) {
+							transform: scale(1.2);
+						}
+					}
+				}
+			}
+
+			&__text {
+				color: #000000;
+				text-align: center;
+				font-family: $fourth-font-family-BS-book;
+				@include fluid-type(font-size, 320px, 1410px, 18px, 22px);
+
+				@include minw-media ($breakPoints-l) {
+					margin-top: 1rem;
+					margin-bottom: 0;
+					@include fluid-type(font-size, 320px, 1410px, 14px, 18px);
+				}
+			}
+
+			&__button {
+				position: absolute;
+				bottom: 40px;
+				left: calc(50% - 110px);
+				width: 220px;
+				max-width: 220px;
+
+				&:active {
+					background: #02ADB0;
+					background-color: #02ADB0;
+					color: #fff;
+				}
+
+				@include minw-media ($breakPoints-l) {
+					display: none;
+				}
+			}
+		}
+
+		.four-elements-block {
+			&__heading {
+				font-family: $fourth-font-family-BS-light;
+				@include fluid-type(font-size, 320px, 1410px, 26px, 30px);
+
+				@include minw-media ($breakPoints-l) {
+					margin-bottom: 0.5rem;
+					@include fluid-type(font-size, 320px, 1410px, 22px, 26px);
+				}
+			}
+		}
+
+		.block-stars__wrapper {
+			min-width: 100%;
+
+			&--text {
+				p {
+					@include fluid-type(font-size, 320px, 1410px, 18px, 22px);
+
+					@include minw-media ($breakPoints-l) {
+						@include fluid-type(font-size, 320px, 1410px, 14px, 18px);
+					}
+				}
+			}
+		}
+
+	}
+
+	&__wrapper {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		width: 100%;
+		height: 100%;
+		text-align: center;
+		cursor: pointer;
+
+		a {
+			&:hover, &:focus {
+				text-decoration: none;
+			}
+		}
+
+		&--image {
+			position: relative;
+			width: 100%;
+			overflow: hidden;
+			cursor: pointer;
+
+			&:hover {
+				img {
+					transform: scale(1.2);
+				}
+			}
+
+			img {
+				width: 100%;
+				-webkit-transition: all 0.3s ease-in-out;
+				-moz-transition: all 0.3s ease-in-out;
+				-o-transition: all 0.3s ease-in-out;
+				transition: all 0.3s ease-in-out;
+			}
+		}
+
+		&--bordered {
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+			justify-content: flex-start;
+			width: 100%;
+			height: 100%;
+			padding: 20px;
+			margin-bottom: 30px;
+			border: 1px solid #E1E1E1;
+			text-align: left;
+
+			@include minw-media ($breakPoints-xl) {
+				margin-bottom: 0;
+				border: 1px solid $eighth-bg-color;
+			}
+		}
+
+		&--name {
+			margin: 0;
+			color: $second-color;
+			font-family: $default-font-family-semi-bold;
+			@include fluid-type(font-size, 320px, 1410px, 16px, 26px);
+			line-height: 1.3125;
+
+			@include minw-media ($breakPoints-l) {
+				font-family: $third-font-family-book;
+				@include fluid-type(font-size, 320px, 1410px, 10px, 20px);
+				line-height: 1.3;
+			}
+		}
+
+		&--position {
+			margin: 0 auto 0.5rem;
+			color: $sixth-color;
+			font-family: $default-font-family;
+			@include fluid-type(font-size, 320px, 1410px, 16px, 26px);
+			line-height: 1.25;
+			
+			@include minw-media ($breakPoints-l) {
+				margin: 0 auto;
+				font-family: $third-font-family-book;
+				@include fluid-type(font-size, 320px, 1410px, 12px, 18px);
+				line-height: 1.625;
+			}
+		}
+
+		&--email {
+			display: block;
+			margin: 0;
+			color: #384765;
+			font-family: $default-font-family-semi-bold;
+			@include fluid-type(font-size, 320px, 1410px, 16px, 26px);
+			line-height: 1.625;
+			text-decoration: none;
+			
+			@include minw-media ($breakPoints-l) {
+				color: $default-color;
+				font-family: $default-font-family;
+				@include fluid-type(font-size, 320px, 1410px, 6px, 16px);
+				border-bottom: 1px solid $first-bg-color;
+			}
+
+			span {
+				display: none;
+
+				@include minw-media ($breakPoints-l) {
+					display: inline;
+				}
+			}
+		}
+
+		&--icon {
+			display: inline-block;
+			height: 100%;
+			max-height: 43px;
+			margin-bottom: 15px;
+		}
+
+		&--bold-text {
+			width: 100%;
+			margin: 0 0 10px;
+			color: $second-color;
+			font-family: $third-font-family-book;
+			@include fluid-type(font-size, 320px, 1400px, 16px, 26px);
+			line-height: 1.31;
+			text-transform: uppercase;
+
+			@include minw-media ($breakPoints-l) {
+				@include fluid-type(font-size, 320px, 1800px, 6px, 16px);
+			}
+		}
+
+		&--underline-text {
+			width: 100%;
+			margin: 0;
+			color: $eighth-color;
+			font-family: $second-font-regular;
+			@include fluid-type(font-size, 320px, 1400px, 16px, 26px);
+			line-height: 1.625;
+			text-decoration: underline;
+
+			@include minw-media ($breakPoints-l) {
+				@include fluid-type(font-size, 320px, 1400px, 6px, 16px);
+			}
+
+			.text-link {
+				color: $eighth-color;
+				font-family: $second-font-regular;
+				text-decoration: underline;
+			}
+		}
+
+		&--cards {
+			display: flex;
+			align-items: flex-start;
+			justify-content: flex-start;
+
+			img {
+				display: inline-block;
+				height: 100%;
+				max-height: 40px;
+
+				& + img {
+					margin-left: 10px;
+				}
+			}
+		}
+	}
+
+	&__heading {
+		margin: 0 0 15px;
+		color: $fifteenth-color;
+		text-align: center;
+		font-family: $third-font-family-book;
+		@include fluid-type(font-size, 320px, 1400px, 24px, 34px);
+		line-height: 36px;
+		letter-spacing: 0.68px;
+
+		@include minw-media ($breakPoints-l) {
+			margin: 0 0 30px;
+			text-align: left;
+			@include fluid-type(font-size, 320px, 1600px, 24px, 34px);
+		}
+	}
+
+	.red-link {
+		// border-bottom: 1px solid $fifth-color;
+		color: $fifth-color;
+		font-family: $default-font-family;
+		@include fluid-type(font-size, 320px, 1400px, 12px, 16px);
+		line-height: 1.875;
+		text-decoration: underline;
+
+		&:hover, &:focus, &.active {
+			color: $fifth-color;
+		}
+	}
+}
+
+.services-four-elements-block {
+	&__wrap {
+		position: relative;
+		@include maxw-media ($breakPoints-l) {
+			overflow: hidden;
+		}
+	}
+
+	// &__button {
+	// 	position: absolute;
+	// 	top: calc(50% - 20px);
+	// 	display: flex;
+	// 	align-items: center;
+	// 	justify-content: center;
+	// 	width: 24px;
+	// 	height: 40px;
+	// 	padding: 0;
+	// 	background: #384765;
+	// 	z-index: 2;
+
+	// 	&:hover, &:focus, &.active {
+	// 		background: #384765;
+	// 	}
+
+	// 	svg {
+	// 		width: 15px;
+	// 		height: 100%;
+	// 	}
+
+	// 	&.js-service-prev-btn {
+	// 		left: 10px;
+	// 	}
+
+	// 	&.js-service-next-btn {
+	// 		right: 10px;
+	// 	}
+
+	// 	@include minw-media ($breakPoints-l) {
+	// 		display: none;
+	// 	}
+	// }
+
+	&__wrapper {
+		position: relative;
+		display: flex;
+		width: 100%;
+
+		&::-webkit-scrollbar {
+			display: none;
+		}
+
+		@include minw-media ($breakPoints-l) {
+			overflow: hidden;
+		}
+	}
+
+	&__content {
+		// flex: 0 0 289px;
+		// max-width: 289px;
+		height: 350px;
+		padding: 5px;
+		margin: 0;
+
+		@include minw-media ($breakPoints-l) {
+			padding: 15px;
+			flex: 0 0 25%;
+			max-width: 25%;
+		}
+
+		figcaption {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: space-between;
+			width: 100%;
+			height: 100%;
+			padding: 1rem;
+			border: 1px solid #E1E1E1;
+
+			@include minw-media ($breakPoints-l){	
+				align-items: flex-start;			
+				border: 1px solid $eighth-bg-color;
+			}
+
+			&:hover {
+				box-shadow: 0 0 20px 0 rgba(0,0,0,0.2);
+			}
+		}
+	}
+
+	&__heading {
+		width: 100%;
+		min-height: 40px;
+		padding-left: 3.5rem;
+		background-repeat: no-repeat;
+		background-size: 38px 37px;
+		text-align: left;
+		color: $fifteenth-color;
+		font-family: $third-font-family-book;
+		@include fluid-type(font-size, 320px, 1410px, 20px, 30px);
+		line-height: 1.18;
+
+		@include maxw-media ($breakPoints-l) {
+			max-height: 75px;
+			overflow: hidden;
+		}
+
+		@include minw-media ($breakPoints-l) {
+			@include fluid-type(font-size, 320px, 1410px, 11px, 21px);
+		}
+
+		&.laptop {
+			padding-left: 4rem;
+			background-size: 47px 46px;
+		}			
+	}
+
+	&__first-text {
+		text-align: left;
+		color: $default-color;
+		font-family: $third-font-family-book;
+		@include fluid-type(font-size, 320px, 1410px, 18px, 28px);
+		line-height: 1.22;
+
+		@include minw-media ($breakPoints-l) {
+			@include fluid-type(font-size, 320px, 1410px, 7px, 17px);
+		}
+	}
+
+	&__second-text {
+		text-align: left;
+		color: $fifth-color;
+		font-family: $third-font-family-book;
+		@include fluid-type(font-size, 320px, 1410px, 15px, 25px);
+		line-height: 1.22;
+
+		@include minw-media ($breakPoints-l) {
+			@include fluid-type(font-size, 320px, 1410px, 5px, 15px);
+		}
+	}
+
+	.link-button {
+		@include maxw-media($breakPoints-l) {
+			@include fluid-type(font-size, 320px, 1410px, 10px, 20px);
+		}
+	}
+}

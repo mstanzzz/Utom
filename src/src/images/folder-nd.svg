@@ -1,0 +1,9 @@
+<svg id="unun" xmlns="http://www.w3.org/2000/svg" width="33.398" height="33.33" viewBox="0 0 33.398 33.33">
+  <circle id="Ellipse_23" data-name="Ellipse 23" cx="16.5" cy="16.5" r="16.5" fill="#fff"/>
+  <g id="Group_597" data-name="Group 597" transform="translate(0.068)">
+    <path id="Path_434" data-name="Path 434" d="M94.586,100.138H87.051l-1.985-1.8H81.683a.47.47,0,0,0-.469.469v11.522a.47.47,0,0,0,.469.469h.356l1.871-9.631H95.055v-.558A.47.47,0,0,0,94.586,100.138Z" transform="translate(-71.859 -87.074)" fill="#18c4c7"/>
+    <path id="Path_435" data-name="Path 435" d="M16.666,0A16.665,16.665,0,1,0,33.331,16.665,16.665,16.665,0,0,0,16.666,0Zm8.582,23.633a2.221,2.221,0,0,1-2.149,2.1c-.011,0-.022,0-.033,0H9.516A2.224,2.224,0,0,1,7.3,23.517v-12.1A2.224,2.224,0,0,1,9.517,9.2h4.219l2.084,1.892h7.245a2.224,2.224,0,0,1,2.221,2.222V13.9h1.989Z" transform="translate(-0.001)" fill="#18c4c7"/>
+  </g>
+  <circle id="Ellipse_25" data-name="Ellipse 25" cx="6" cy="6" r="6" transform="translate(16 17)" fill="#18c4c7"/>
+  <path id="Path_2319" data-name="Path 2319" d="M10.089-5.794H7.02v3.069H5.409V-5.794H2.324V-7.413H5.409V-10.5H7.02v3.085h3.069Z" transform="translate(16.08 29.904)" fill="#fff"/>
+</svg>

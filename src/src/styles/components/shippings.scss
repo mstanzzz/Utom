@@ -1,0 +1,157 @@
+.address-shipping {
+	&__info {
+		display: inline-block !important;
+
+		.is-default {
+			line-height: 1.5;
+			font-family: $default-font-family-bold;
+			@include fluid-type(font-size, 320px, 1400px, 12px, 14px);
+			color: $sixth-color;
+		}
+
+		.street, .city {
+			color: $default-color;
+			font-family: $second-font-regular;
+			@include fluid-type(font-size, 320px, 1400px, 12px, 14px);
+			line-height: 1.875;
+		}
+
+		.name, .tel {
+			margin-bottom: 10px;
+			font-family: $default-font-family-bold;
+			@include fluid-type(font-size, 320px, 1400px, 14px, 16px);
+			color: $default-color;
+			line-height: 1.6;
+		}
+	}
+
+	&__customer {
+
+		.home-consult-form__radio {
+			margin: 0;
+		}
+
+		.home-consult-form__radio input + span:before, .home-consult-form__radio input + span:after {
+			top: 3px;
+			left: -2px;
+			width: 18px;
+			height: 18px;
+		}
+
+		margin-top: 15px;
+
+		.cta {
+			@include fluid-type(font-size, 320px, 1400px, 12px, 14px);
+			line-height: 1.6;
+			margin-left: 30px;
+
+			@include media-breakpoint-down(md) {
+				font-size: 16px;
+			}
+
+			&__edit {
+				font-family: $default-font-family-bold;
+				margin-bottom: 10px;
+				color: $second-color;
+			}
+
+			&__add {
+				font-family: $default-font-family;
+				margin-bottom: 0;
+				color: $fifth-color;
+			}
+		}
+
+		.home-consult-form__select select,
+		.label-above,
+		.home-consult-form__input {
+			@include fluid-type(font-size, 320px, 1510px, 12px, 14px);
+		}
+
+
+		//.select-custom .home-consult-form__select__selected .select-custom__option__wrap {
+		//	padding-top: 5px;
+		//	padding-bottom: 5px;
+		//}
+		//
+		//
+		//
+		//.home-consult-form__input,
+		//.home-consult-form__select,
+		//.home-consult-form__select select {
+		//	height: 30px;
+		//}
+
+		.select-custom__list .select-custom__option__wrap:hover {
+			color: #db440d;
+		}
+	}
+
+	[type=number] {
+		&::-webkit-outer-spin-button,
+		&::-webkit-inner-spin-button {
+			-webkit-appearance: none;
+			margin: 0;
+		}
+
+		/* Firefox */
+		&[type=number] {
+			-moz-appearance: textfield;
+		}
+	}
+
+	&.form__add-new-address {
+		@include media-breakpoint-down(md) {
+			.label-above {
+				font-size: 18px;
+			}
+		}
+	}
+
+	.form__add-new-address {
+		&__btn-form {
+			padding-top: 10px;
+			padding-right: 20px;
+			padding-bottom: 10px;
+			padding-left: 20px;
+			@include fluid-type(font-size, 320px, 1510px, 12px, 14px);
+
+
+		}
+
+		@include media-breakpoint-down(md) {
+			.label-above {
+				font-size: 18px;
+			}
+		}
+	}
+}
+
+.label-above {
+	@include fluid-type(font-size, 320px, 1400px, 14px, 16px);
+	margin-bottom: 10px;
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-end;
+
+	&.required {
+		position: relative;
+		@include minw-media ($breakPoints-l) {
+			align-items: center;
+			justify-content: flex-start;
+		}
+
+		span {
+			margin-left: 10px;
+			color: #FB561B; 
+		}
+	}
+
+	&__label {
+		@include fluid-type(font-size, 320px, 1400px, 12px, 14px);
+		color: $eighth-color;
+	}
+}
+
+
+

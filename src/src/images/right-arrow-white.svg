@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="13.75" height="9.666" viewBox="0 0 13.75 9.666">
+	<defs>
+		<style>.white-arrow{fill:#fff;}</style>
+	</defs>
+	<path 
+		class="white-arrow" 
+		d="M4.485,4.821a.487.487,0,1,1,.693.686L1.664,9.02H13.257a.488.488,0,0,1,.492.485.494.494,0,0,1-.492.492H1.664L5.177,13.5a.5.5,0,0,1,0,.693.485.485,0,0,1-.693,0L.14,9.852a.489.489,0,0,1,0-.686Z" 
+		transform="translate(0.001 -4.676)"/>
+</svg>

@@ -1,0 +1,478 @@
+.you-design-block {
+	display: none;
+
+	@include minw-media ($breakPoints-l) {
+		display: block;
+	}
+
+	&.we-desing-block {
+		@include minw-media ($breakPoints-l) {
+			padding-bottom: 60px;
+		}
+
+		.you-design-block__wrapper {
+			padding: 0 0 20px;
+
+			@include minw-media($breakPoints-xl) {
+				padding: 0;
+			}
+
+			&--perfect-fit {
+				background: $seventh-bg-color;
+
+				&::after {
+					border-top: 12px solid $seventh-bg-color;
+				}
+			}
+		}
+
+		.you-design-block__wrapper--text-group {
+			div {
+				p {
+					color: $sixth-color;
+				}
+			}
+			p {
+				span {
+					color: $sixth-color;
+				}
+			}
+		}
+
+		&.product-detail { 
+			padding: 3rem 0 0;
+		
+			@include minw-media ($breakPoints-l) {
+				padding: 0;
+			}
+
+			.you-design-block__wrapper {
+				&--perfect-fit {
+					&::after {
+						border-top: 6px solid $seventh-bg-color;
+					}
+				}
+			}
+		}
+	}
+
+	&.about-us {
+		display: block;
+
+		.row {
+			@include maxw-media ($breakPoints-l) {
+				flex-direction: column-reverse;
+			}
+		}
+
+		.you-design-block__wrapper {
+			padding: 1rem 0 0;
+
+			@include minw-media ($breakPoints-l) {
+				padding: 1rem;
+			}
+
+			&--heading, &--text {
+				text-align: left;
+
+				@include maxw-media ($breakPoints-l) {
+					text-align: center;
+					margin: 0 auto 1rem;
+				}
+			}
+
+			&--text {
+				@include maxw-media ($breakPoints-l) {
+					margin: 0;
+				}
+			}
+
+			.link-button {
+				margin: 0;
+			}
+
+			@include minw-media ($breakPoints-l){
+				position: unset;
+				display: flex;
+				justify-content: center;
+			}
+		}
+
+		.you-design-block__image {
+			margin: 0;
+		}
+	}
+
+	&.product-detail {
+		display: block;
+    width: 100%;
+		height: 100%;
+		padding: 2rem 0 0;
+		
+		@include minw-media ($breakPoints-l) {
+			padding: 0;
+		}
+
+		.row {
+			height: 100%;
+		}
+
+		.you-design-block__wrapper {
+			&--perfect-fit {
+				padding: 0.3rem 0.1rem;
+				font-family: $fourth-font-family-BS-Medium;
+				@include fluid-type(font-size, 320px, 1600px, 16px, 26px);
+				text-transform: none;
+
+				@include minw-media ($breakPoints-l) {
+					margin: 0;
+					@include fluid-type(font-size, 320px, 1600px, 10px, 14px);
+				}
+
+				img {
+					max-width: 13px;
+					margin-right: 5px;
+				}
+
+				&::after {
+					left: calc(50% - 9px);
+					width: 14px;
+					height: 6px;
+					background: transparent;
+					border-top: 6px solid #18C4C7;
+					border-left: 8px solid transparent;
+					border-right: 8px solid transparent;
+
+					@include minw-media ($breakPoints-l) {
+						left: calc(15% - 9px);
+					}
+				}
+			}
+
+			&--heading {
+				font-family: $fourth-font-family-BS-Medium;
+				@include fluid-type(font-size, 320px, 1400px, 16px, 20px);
+				line-height: 1.25;
+				text-transform: uppercase;
+
+				@include minw-media ($breakPoints-xl) {
+					margin: 0;
+					@include fluid-type(font-size, 320px, 1400px, 12px, 16px);
+				}
+			}
+
+			&--text {
+				font-family: $fourth-font-family-BS-book;
+				@include fluid-type(font-size, 320px, 1400px, 16px, 20px);
+				line-height: 1.25;
+
+				@include minw-media ($breakPoints-xl) {
+					margin: 0;
+					@include fluid-type(font-size, 320px, 1400px, 12px, 16px);
+				}
+
+				&.small-text {
+					max-height: 40px;
+				}
+			}
+
+			&--text-group {
+				align-items: center;
+				margin: 0 auto 0.3rem;
+				justify-content: center;
+
+				@include minw-media ($breakPoints-l) {
+					align-items: flex-start;
+					justify-content: flex-start;
+				}
+
+				div {
+					align-items: center;
+					justify-content: center;
+	
+					@include minw-media ($breakPoints-l) {
+						align-items: flex-start;
+						justify-content: flex-start;
+					}
+
+					img {
+						max-width: 36px;
+					}
+
+					p {
+						font-family: $fourth-font-family-BS-Medium;
+						@include fluid-type(font-size, 320px, 1600px, 24px, 28px);
+						line-height: 0.75;
+						text-transform: none;
+
+						@include minw-media ($breakPoints-l) {
+							@include fluid-type(font-size, 320px, 1600px, 20px, 24px);
+						}
+					}
+				}
+
+				p {
+					@include fluid-type(font-size, 320px, 1600px, 16px, 22px);
+					@include minw-media ($breakPoints-l) {
+						@include fluid-type(font-size, 320px, 1600px, 6px, 12px);
+					}
+				}
+			}
+
+			.block-stars__wrapper {
+				display: block;
+				max-width: 206px;
+				margin: 1rem auto;
+		
+				@include minw-media ($breakPoints-l) {
+					display: flex;
+					margin: 0;
+				}
+
+				&--image {
+					max-width: 22px;
+				}
+
+				&--text {
+					margin-left: 0;
+				}
+			}
+
+			.link-button {
+				height: 31px;
+				margin: 0.3rem auto 0;
+
+				&:focus, &.active {
+					background: #FFFFFF;
+					border: 1px solid #696969;
+					color: #000000;
+
+					svg {
+						margin-right: 0;
+						path {
+							fill: #000000;
+						}
+					}
+				}
+			}
+		}
+
+		.you-design-block__image {
+			@include maxw-media ($breakPoints-l) {
+				display: none;
+			}
+		}
+
+		.link-button {
+			width: 100%;
+			max-width: 251px;
+		}
+	}
+
+	&__image {
+		margin-bottom: 20px;
+
+		@include minw-media ($breakPoints-xl) {
+			margin-bottom: 0;
+		}
+
+		img {
+			display: block;
+			width: 100%;
+		}
+	}
+
+	&__wrapper {
+		display: flex;
+		flex-direction: column;
+		align-self: center;
+		justify-content: center;
+		// padding-top: 50px;
+		width: 100%;
+		text-align: center;
+
+		@include minw-media($breakPoints-l) {
+			align-self: flex-start;
+			justify-content: space-between;
+			height: 100%;
+			padding: 0;
+			text-align: left;
+		}
+	
+		&--perfect-fit {
+			position: relative;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 100%;
+			margin-bottom: 1rem;
+			padding: 7px 15px;
+			background: $seventeenth-bg-color;
+			color: $first-color;
+			font-family: $default-font-family-bold;
+			@include fluid-type(font-size, 320px, 1600px, 6px, 16px);
+			line-height: 1.31;
+			text-transform: uppercase;
+
+			@include between-width-media ($breakPoints-l, $breakPoints-xl) {
+				width: 40%;
+				margin: 0 auto 1rem;
+			}
+
+			&::after {
+				content: "";
+				position: absolute;
+				top: 100%;
+				left: calc(15% - 9px);
+				display: block;
+				width: 24px;
+				height: 12px;
+				background: transparent;
+				border-top: 12px solid $seventeenth-bg-color;
+				border-left: 12px solid transparent;
+				border-right: 12px solid transparent;
+			}
+
+			img {
+				display: inline-block;
+				width: 100%;
+				max-width: 22px;
+				margin-right: 10px;
+			}
+		}
+		
+		&--heading {
+			width: 100%;
+			margin: 0 0 10px;
+			color: $fifteenth-color;
+			text-align: center;
+			font-family: $third-font-family-medium-italic;
+			@include fluid-type(font-size, 320px, 1400px, 24px, 30px);
+			line-height: 1.42;
+			letter-spacing: 2.4px;
+
+			@include minw-media ($breakPoints-xl) {
+				@include fluid-type(font-size, 320px, 1400px, 14px, 24px);
+				line-height: 1.42;
+				text-align: left;
+			}
+		}
+
+		&--text {
+			margin: 0 0 1rem;
+			color: $default-color;
+			text-align: center;
+			font-family: $second-font-regular;
+			@include fluid-type(font-size, 320px, 1600px, 16px, 20px);
+			line-height: 1.875;
+
+			@include minw-media ($breakPoints-l) {
+				@include fluid-type(font-size, 320px, 1600px, 12px, 16px);
+			}
+
+			@include minw-media ($breakPoints-xl) {
+				text-align: left;
+			}
+
+			-webkit-transition: all 0.5s ease;
+			-moz-transition: all 0.5s ease;
+			-o-transition: all 0.5s ease;
+			transition: all 0.5s ease;
+
+			&.small-text {
+				max-height: 60px;
+				overflow: hidden;
+   			text-overflow: ellipsis;
+			}
+
+			&.show-text {
+				max-height: 100%;
+			}
+		}
+
+		&--text-group {
+			display: flex;
+			flex-direction: column;
+			align-self: flex-start;
+			justify-content: flex-start;
+			margin: 1rem auto;
+
+			@include between-width-media ($breakPoints-l, $breakPoints-xl) {
+				align-self: center;
+				justify-content: center;
+				text-align: center;
+			}
+
+			@include minw-media($breakPoints-l) {
+				width: 100%;
+			}
+
+			div {
+				display: flex;
+				align-items: center;
+				justify-content: flex-start;
+				width: 100%;
+
+				@include between-width-media ($breakPoints-l, $breakPoints-xl) {
+					align-self: center;
+					justify-content: center;
+					text-align: center;
+				}
+
+				img {
+					display: inline-block;
+					width: 100%;
+					max-width: 43px;
+					margin-right: 15px;
+				}
+
+				p {
+					margin: 0;
+					color: $fifth-color;
+					font-family: $default-font-family-bold;
+					@include fluid-type(font-size, 320px, 1600px, 16px, 26px);
+					line-height: 34px;
+					text-transform: uppercase;
+				}
+			}
+
+			p {
+				margin: 0;
+				color: $default-color;
+				font-family: $default-font-family-semi-bold;
+				@include fluid-type(font-size, 320px, 1600px, 6px, 16px);
+				line-height: 22px;
+				text-transform: uppercase;
+
+				span {
+					color: $fifth-color;
+				}
+			}
+		}
+
+		.block-stars__wrapper {
+			margin-bottom: 1rem;
+
+			@include between-width-media ($breakPoints-l, $breakPoints-xl) {
+				margin: 0 auto 1rem;
+			}
+
+			&--text {
+				p {
+					@include minw-media ($breakPoints-l){
+						height: 20px;
+						overflow: hidden;
+					}
+				}
+			}
+		}
+
+		.link-button {
+			margin: 1.5rem auto 0;
+
+			@include minw-media ($breakPoints-xl){
+				margin: 1.5rem 0 0;
+			}
+		}
+	}
+}

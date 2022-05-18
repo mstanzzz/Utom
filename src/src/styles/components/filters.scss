@@ -1,0 +1,688 @@
+.organizer-filters-block {
+	padding-top: 0;
+	padding-bottom: 0;
+	background: $fourteenth-bg-color;
+
+	@include minw-media($breakPoints-l) {
+		padding-top: 30px;
+		padding-bottom: 60px;
+		background-color: $default-backgroung-color;
+	}
+
+	&__wrapper {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		width: 100%;
+
+		@include minw-media($breakPoints-l) {
+			display: flex;
+			flex-direction: row;
+			align-items: flex-start;
+			height: inherit;
+			margin-top: 0;
+			padding-bottom: 20px;
+			border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+		}
+
+		.form-control {
+			height: 40px;
+			border: 1px solid $fifteenth-bg-color;
+			border-radius: 0;
+			font-family: $default-font-family;
+			outline: none;
+
+			@include minw-media($breakPoints-l) {
+				height: 30px;
+			}
+
+			&:hover, &:focus {
+				outline: none;
+				box-shadow: none;
+			}
+		}
+
+		.btn-enter-tag {
+			height: 30px;
+			padding: 6px 23px;
+			text-transform: none;
+		}
+	}
+}
+
+.my-custom-select-wrapper {
+	position: relative;
+	user-select: none;
+	width: 100%;
+	max-width: 268px;
+	margin: 0 auto 15px;
+
+	@include minw-media($breakPoints-l) {
+		max-width: 214px;
+		margin: 0 15px 0 0;
+	}
+
+
+	.my-custom-select {
+		display: flex;
+		flex-direction: column;
+		border: 1px solid #949DAE;
+	}
+
+	.my-custom-select__trigger {
+		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		height: 38px;
+		padding: 0 11px;
+		background: #ffffff;
+		color: $default-color;
+		font-family: $default-font-family;
+		@include fluid-type(font-size, 320px, 1400px, 14px, 16px);
+		cursor: pointer;
+		line-height: 38px;
+
+		@include minw-media($breakPoints-l) {
+			height: 28px;
+			@include fluid-type(font-size, 320px, 1400px, 12px, 14px);
+			line-height: 28px;
+		}
+	}
+
+	.my-custom-options {
+		position: absolute;
+		display: none;
+		top: 100%;
+		left: 0;
+		right: 0;
+		border: 1px solid #949DAE;
+		border-top: 0;
+		background: #fff;
+		opacity: 0;
+		visibility: hidden;
+		pointer-events: none;
+		z-index: -1;
+	}
+
+	.my-custom-select.open-select .my-custom-options {
+		display: block;
+		opacity: 1;
+		visibility: visible;
+		pointer-events: all;
+		z-index: 2;
+	}
+
+	.my-custom-option {
+		position: relative;
+		display: block;
+		padding: 0 11px;
+		color: $default-color;
+		text-align: left;
+		font-family: $default-font-family;
+		@include fluid-type(font-size, 320px, 1400px, 14px, 16px);
+		line-height: 38px;
+		cursor: pointer;
+
+		@include minw-media($breakPoints-l) {
+			@include fluid-type(font-size, 320px, 1400px, 12px, 14px);
+			line-height: 28px;
+		}
+	}
+
+	.my-custom-option:hover {
+		cursor: pointer;
+		background-color: #f8f9fa;
+	}
+
+	.my-custom-option.selected {
+		color: #000;
+		font-family: $default-font-family-semi-bold;
+		// background-color: #305c91;
+	}
+
+	.arrow {
+		position: relative;
+		height: 15px;
+		width: 15px;
+	}
+
+	.arrow::after {
+		content: "";
+		position: absolute;
+		top: calc(50% - 4px);
+		right: 0;
+		display: block;
+		width: 8px;
+		height: 8px;
+		border-bottom: 1px solid #DB440D;
+		border-right: 1px solid #DB440D;
+		transform: rotate(316deg);
+		transition: all 0.3s ease;
+	}
+
+	.open-select .arrow::after {
+		transform: rotate(43deg);
+	}
+}
+
+
+.my-custom-select-selects-wrapper {
+	position: relative;
+	user-select: none;
+	width: 100%;
+	max-width: 268px;
+	margin: 0 auto 15px;
+
+	@include minw-media($breakPoints-l) {
+		max-width: 214px;
+		margin: 0 15px 0 0;
+	}
+
+	.my-customs-select {
+		display: flex;
+		flex-direction: column;
+		border: 1px solid #949DAE;
+
+		&__trigger {
+			position: relative;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			height: 38px;
+			padding: 0 11px;
+			background: #ffffff;
+			color: $default-color;
+			font-family: $default-font-family;
+			@include fluid-type(font-size, 320px, 1400px, 16px, 20px);
+			cursor: pointer;
+			line-height: 38px;
+
+			@include minw-media($breakPoints-l) {
+				height: 28px;
+				@include fluid-type(font-size, 320px, 1400px, 10px, 14px);
+				line-height: 28px;
+			}
+		}
+
+		&__features-detail {
+
+
+			&.opens-select {
+				&,
+				.my-customs-options {
+					border: none;
+					box-shadow: 0 0 10px rgba(0, 0, 0, 0.26);
+				}
+
+			}
+
+			.my-customs-select__trigger {
+				z-index: 9;
+			}
+
+			.my-customs-options::before {
+				content: "";
+				position: absolute;
+				top: 0;
+				left: 50%;
+				transform: translateX(-50%);
+				width: calc(100% - 20px);
+				display: block;
+				height: 1px;
+				background: #ededed;
+				z-index: 2;
+			}
+		}
+	}
+
+	.arrows {
+		position: relative;
+		height: 15px;
+		width: 15px;
+
+		&::after {
+			content: "";
+			position: absolute;
+			top: calc(50% - 4px);
+			right: 0;
+			display: block;
+			width: 8px;
+			height: 8px;
+			border-bottom: 1px solid #DB440D;
+			border-right: 1px solid #DB440D;
+			transform: rotate(316deg);
+			transition: all 0.3s ease;
+		}
+	}
+
+	.my-customs-options {
+		position: absolute;
+		display: none;
+		top: 100%;
+		left: 0;
+		right: 0;
+		border: 1px solid #949DAE;
+		border-top: 0;
+		background: #fff;
+		opacity: 0;
+		visibility: hidden;
+		pointer-events: none;
+		z-index: -1;
+	}
+
+	.my-customs-option {
+		position: relative;
+		display: block;
+		padding: 0 11px;
+		color: $default-color;
+		text-align: left;
+		font-family: $default-font-family;
+		@include fluid-type(font-size, 320px, 1400px, 16px, 20px);
+		line-height: 38px;
+		cursor: pointer;
+
+		@include minw-media($breakPoints-l) {
+			@include fluid-type(font-size, 320px, 1400px, 10px, 14px);
+			line-height: 28px;
+		}
+
+		&.selected {
+			color: #000;
+			font-family: $default-font-family-semi-bold;
+		}
+	}
+
+	.my-customs-option:hover {
+		cursor: pointer;
+		color: #DB440D;
+	}
+
+	.my-customs-select.opens-select .my-customs-options {
+		display: block;
+		opacity: 1;
+		visibility: visible;
+		pointer-events: all;
+		z-index: 2;
+	}
+
+	.opens-select .arrows::after {
+		transform: rotate(43deg);
+	}
+
+
+	.my-custom-select-select-wrapper {
+		position: relative;
+		user-select: none;
+		width: 100%;
+		max-width: 268px;
+
+		@include minw-media($breakPoints-l) {
+			max-width: 214px;
+		}
+
+		.my-customs-select-select {
+			position: relative;
+			display: flex;
+			flex-direction: column;
+
+			&__trigger {
+				position: relative;
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				height: 38px;
+				padding: 0 11px;
+				background: #ffffff;
+				color: $default-color;
+				font-family: $default-font-family;
+				@include fluid-type(font-size, 320px, 1400px, 16px, 20px);
+				cursor: pointer;
+				line-height: 38px;
+
+				@include minw-media($breakPoints-l) {
+					height: 28px;
+					@include fluid-type(font-size, 320px, 1400px, 10px, 14px);
+					line-height: 28px;
+				}
+
+				&.opened {
+					color: #DB440D;
+					font-family: $default-font-family-semi-bold;
+
+					.arrow-second {
+						&::after {
+							border-bottom: 1px solid #DB440D;
+							border-right: 1px solid #DB440D;
+						}
+					}
+				}
+
+				&:hover {
+					@include minw-media($breakPoints-l) {
+						color: #DB440D;
+					}
+
+					.arrow-second {
+						&::after {
+							@include minw-media($breakPoints-l) {
+								border-bottom: 1px solid #DB440D;
+								border-right: 1px solid #DB440D;
+							}
+						}
+					}
+				}
+			}
+		}
+
+		.my-customs-select-cur {
+			position: relative;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			height: initial !important;
+			padding: 5px 11px;
+			background: #ffffff;
+			color: $default-color;
+			font-family: $default-font-family;
+			font-size: 16px !important;
+			cursor: pointer;
+			line-height: 38px;
+
+			@include minw-media($breakPoints-l) {
+				height: 28px;
+				@include fluid-type(font-size, 320px, 1400px, 10px, 14px);
+				line-height: 28px;
+			}
+
+			&.opened {
+				color: #DB440D;
+				font-family: $default-font-family-semi-bold;
+
+				.arrow-second {
+					&::after {
+						border-bottom: 1px solid #DB440D;
+						border-right: 1px solid #DB440D;
+					}
+				}
+			}
+
+			&:hover {
+				@include minw-media($breakPoints-l) {
+					color: #DB440D;
+				}
+
+				.arrow-second {
+					&::after {
+						@include minw-media($breakPoints-l) {
+							border-bottom: 1px solid #DB440D;
+							border-right: 1px solid #DB440D;
+						}
+					}
+				}
+			}
+
+			& + .my-customs-select-select-options .my-customs-select-select-option {
+				padding: 3px 11px 3px 22px;
+			}
+		}
+
+
+		.arrow-second {
+			position: relative;
+			height: 15px;
+			width: 15px;
+
+			&::after {
+				content: "";
+				position: absolute;
+				top: calc(50% - 4px);
+				right: 0;
+				display: block;
+				width: 8px;
+				height: 8px;
+				border-bottom: 1px solid #000000;
+				border-right: 1px solid #000000;
+				transform: rotate(316deg);
+				transition: all 0.3s ease;
+			}
+		}
+
+		.my-customs-select-select-options {
+			display: none;
+			border-top: 0;
+			background: #fff;
+			opacity: 0;
+			visibility: hidden;
+			pointer-events: none;
+			z-index: -1;
+		}
+
+		.my-customs-select-select-option {
+			position: relative;
+			display: block;
+			padding: 0 11px 0 22px;
+			color: $default-color;
+			text-align: left;
+			font-family: $default-font-family;
+			@include fluid-type(font-size, 320px, 1400px, 16px, 20px);
+			line-height: 38px;
+			cursor: pointer;
+
+			@include minw-media($breakPoints-l) {
+				@include fluid-type(font-size, 320px, 1400px, 12px, 14px);
+				line-height: 28px;
+			}
+
+			&.selected {
+				color: #000;
+				font-family: $default-font-family-semi-bold;
+			}
+
+			&:hover {
+				cursor: pointer;
+				color: #DB440D;
+			}
+		}
+
+		.my-customs-select-select.open-second-select {
+			.my-customs-select-cur,
+			.my-customs-select-select__trigger {
+				color: #DB440D;
+			}
+
+			.my-customs-select-select-options {
+				display: block;
+				opacity: 1;
+				visibility: visible;
+				pointer-events: all;
+				z-index: 2;
+			}
+
+			&::after {
+				content: "";
+				position: absolute;
+				bottom: 0;
+				left: 20px;
+				display: block;
+				width: calc(100% - 40px);
+				height: 1px;
+				background: #949DAE;
+				z-index: 2;
+			}
+		}
+
+		.open-second-select .arrow-second::after {
+			border-color: #DB440D;
+			transform: rotate(43deg);
+		}
+	}
+}
+
+.dropdown {
+	position: relative;
+
+	.dropdown-list {
+		padding: 0.25rem 0.75rem;
+		background: #fff;
+		position: absolute;
+		top: 100%;
+		left: 0;
+		right: 0;
+		border: 1px solid #A0A0A0;
+		max-height: 170px;
+		overflow-y: auto;
+		background: #fff;
+		display: none;
+		z-index: 10;
+
+		scrollbar-width: none;
+
+		// Hide scrollbar for IE
+		-ms-overflow-style: none;
+
+		&::-webkit-scrollbar {
+			width: 4px;
+			height: 4px;
+		}
+
+		&::-webkit-scrollbar-track {
+			margin-top: 0;
+			background: transparent;
+			border-radius: 7px;
+		}
+
+		&::-webkit-scrollbar-thumb {
+			border-radius: 7px;
+			background: $account-fifth-color;
+		}
+	}
+
+	.dropdown-label {
+		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+		flex-flow: wrap;
+		padding: 0 1.438rem 0 0.75rem;
+		min-height: 35px;
+		background: #fff;
+		border: 1px solid #A0A0A0;
+		color: #696969;
+		font-family: $default-font-family;
+		@include fluid-type(font-size, 320px, 1400px, 14px, 16px);
+		cursor: pointer;
+
+		@include minw-media($breakPoints-l) {
+			@include fluid-type(font-size, 320px, 1400px, 12px, 14px);
+		}
+
+		span {
+			display: inline-block;
+			width: 8px;
+			height: 8px;
+			margin-left: 0.25rem;
+			border-bottom: 1px solid #DB440D;
+			border-right: 1px solid #DB440D;
+			transform: rotate(316deg);
+			transition: all 0.3s ease;
+
+			&.not-empty {
+				position: absolute;
+				top: 0.85rem;
+				right: 0.5rem;
+			}
+		}
+
+		&__filter {
+			display: inline-flex;
+			padding: 10px 2.438rem 10px 0.75rem !important;
+			min-height: auto;
+
+			span {
+				position: absolute;
+				top: 18px;
+				right: 1.3rem;
+
+				&.not-empty {
+					top: 18px !important;
+					right: 1.3rem !important;
+				}
+			}
+		}
+
+		&::-webkit-scrollbar {
+			width: 4px;
+		}
+
+		&::-webkit-scrollbar-track {
+			margin-top: 0;
+			background: transparent;
+			border-radius: 7px;
+		}
+
+		&::-webkit-scrollbar-thumb {
+			border-radius: 7px;
+			background: $account-fifth-color;
+		}
+	}
+
+	& .custom-checkbox {
+		left: 0;
+		width: 100%;
+		height: 24px !important;
+
+		& + label {
+			height: 24px;
+
+			&::before {
+				width: 18px;
+				height: 18px;
+			}
+		}
+
+		&:hover {
+			& + label {
+				&::after {
+					top: 5px;
+					width: 14px;
+					height: 14px;
+					border: 3px solid $default-backgroung-color;
+				}
+			}
+		}
+
+		&:checked {
+			& + label {
+				&::before {
+					background: $account-fifth-color;
+				}
+
+				&::after {
+					top: 5px;
+					width: 14px;
+					height: 14px;
+					border: 3px solid $default-backgroung-color;
+				}
+			}
+		}
+	}
+
+	&.open {
+		.dropdown-list {
+			display: block;
+		}
+
+		.checkbox {
+			transition: 2s opacity 2s;
+			opacity: 1;
+		}
+
+		.dropdown-label {
+			span {
+				transform: rotate(43deg);
+			}
+		}
+	}
+}

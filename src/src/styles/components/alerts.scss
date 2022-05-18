@@ -1,0 +1,99 @@
+.alert {
+	margin-top: 30px;
+	border-radius: 5px;
+	padding-top: 10px;
+	padding-right: 20px;
+	padding-bottom: 10px;
+	padding-left: 20px;
+	font-family: $default-font-family;
+	@include fluid-type(font-size, 320px, 1510px, 14px, 18px);
+	color: $first-color;
+	line-height: 1.1;
+
+
+	&-success {
+		padding-top: 20px;
+		padding-bottom: 20px;
+		background-color: #059552;
+		text-align: center;
+		text-transform: uppercase;
+		line-height: 1.5;
+
+		.alert-icon {
+			display: inline-block;
+			width: 35px;
+			margin-right: 0;
+			margin-bottom: 5px;
+		}
+
+		.alert-title {
+			margin: 0;
+			font-family: $default-font-family-bold;
+			@include fluid-type(font-size, 320px, 1510px, 16px, 18px);
+		}
+
+		.alert-text {
+			margin: 0;
+			font-family: $default-font-family;
+			@include fluid-type(font-size, 320px, 1510px, 14px, 16px);
+		}
+	}
+
+	&-primary {
+		background-color: $success-color;
+		text-align: center;
+	}
+
+	&-agree {
+		padding-top: 15px;
+		padding-right: 15px;
+		padding-bottom: 15px;
+		padding-left: 15px;
+		background-color: $second-color;
+
+
+		.alert-title {
+			margin-bottom: 3px;
+		}
+
+		.alert-text {
+			margin: 0;
+			line-height: 1.4;
+		}
+
+		.btn {
+			min-width: auto;
+
+			border-radius: 5px;
+		}
+
+		.link {
+			margin: 0 10px;
+			padding: 0 10px;
+			color: $first-color;
+		}
+
+		.btn,
+		.link {
+			font-family: $default-font-family;
+			@include fluid-type(font-size, 320px, 1510px, 14px, 14px);
+			text-transform: capitalize;
+		}
+
+		.alert-title {
+			text-transform: uppercase;
+			font-family: $default-font-family-bold;
+		}
+
+		.alert-title,
+		.alert-text {
+			@include fluid-type(font-size, 320px, 1510px, 14px, 14px);
+		}
+	}
+
+	&-icon {
+		width: 20px;
+		display: inline-block;
+		margin-right: 15px;
+	}
+}

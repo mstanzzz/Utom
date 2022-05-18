@@ -1,0 +1,19 @@
+.section-checkout {
+  padding-top: 25px;
+  padding-bottom: 65px;
+
+  @include media-breakpoint-down(md) {
+    padding-top: 0;
+    padding-bottom: 50px;
+    background-color: #ffffff;
+
+    .card-checkout {
+      border: none;
+    }
+
+    .col-auto__custom {
+      padding-right: 0;
+      padding-left: 0;
+    }
+  }
+}

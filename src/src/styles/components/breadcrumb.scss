@@ -1,0 +1,60 @@
+.breadcrumb-block {
+	padding-top: 17px;
+	padding-bottom: 64px;
+
+	&.about-us, &.showroom-detail-page {
+		padding-bottom: 10px;
+	}
+
+	&.diy-instructions {
+		padding-bottom: 40px;
+	}
+
+	&__links {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		justify-content: center;
+		width: 100%;
+		height: 100%;
+	}
+
+	.breadcrumb-item {
+		display: flex;
+		align-items: center;
+	}
+}
+
+.breadcrumb {
+	margin: 0;
+	padding-top: 0;
+	padding-bottom: 0;
+	background-color: transparent;
+
+	.breadcrumb-item,	.breadcrumb-item a {
+		text-align: left;
+		color: #A0A0A0;
+		font-family: $second-font-semi-bold;
+		@include fluid-type(font-size, 320px, 1400px, 10px, 14px);
+		// text-transform: uppercase;
+		text-transform: capitalize;
+		line-height: 20px;
+
+		&.active {
+			color: $ninth-color;
+		}
+	}
+
+	&-item + &-item:before {
+		content: '';
+		width: 26px;
+		height: 8px;
+		// background-image: url('../images/left-arrow-gray.svg');
+		background-image: url('../images/left-arrow-gray-v2.svg');
+		background-size: contain;
+		background-position: 30%;
+		background-repeat: no-repeat;
+		padding: 0;
+	}
+}
+

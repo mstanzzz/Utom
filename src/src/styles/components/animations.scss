@@ -1,0 +1,46 @@
+.animate-pulse:before,
+.animate-pulse:after {
+	content: '';
+	position: absolute;
+	left: -30px;
+	top: -30px;
+	right: -30px;
+	bottom: -30px;
+	border: 2px solid #18C4C7;
+	border-radius: 50%;
+	webkit-animation: animate 1s linear infinite;
+	-moz-animation: animate 1s linear infinite;
+	-ms-animation: animate 1s linear infinite;
+	-o-animation: animate 1s linear infinite;
+	animation: animate 1s linear infinite;
+	opacity: 0;
+	backface-visibility: hidden;
+}
+
+.animate-pulse:after {
+	animation-duration: 0.5s;
+}
+
+@keyframes animate {
+	0% {
+		-webkit-transform: scale(0.5);
+		-moz-transform: scale(0.5);
+		-o-transform: scale(0.5);
+		-ms-transform: scale(0.5);
+		transform: scale(0.5);
+		opacity: 0;
+	}
+
+	50% {
+		opacity: 1;
+	}
+
+	100% {
+		-webkit-transform: scale(0.8);
+		-moz-transform: scale(0.8);
+		-o-transform: scale(0.8);
+		-ms-transform: scale(0.8);
+		transform: scale(0.8);
+		opacity: 0;
+	}
+}

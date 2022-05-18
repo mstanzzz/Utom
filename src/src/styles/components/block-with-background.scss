@@ -1,0 +1,312 @@
+.block-with-background {
+	background: $default-backgroung-color;
+
+	&.about-us {
+
+		.block-with-background__wrapper {
+			@include maxw-media($breakPoints-l) {
+				background-image: none !important;
+				box-shadow: none;
+			}
+		}
+
+		.block-with-background__content {
+			text-align: center;
+			padding: 0;
+
+			@include minw-media($breakPoints-l) {
+				padding: 1rem;
+			}
+
+			&--heading {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				width: 100%;
+				margin-bottom: 0.3rem;
+				@include fluid-type(font-size, 320px, 1400px, 25px, 25px);
+				letter-spacing: 0.5px;
+				line-height: 1.3;
+
+				@include minw-media($breakPoints-l) {
+					@include fluid-type(font-size, 320px, 1400px, 16px, 26px);
+					line-height: 1.3;
+					letter-spacing: 0.52px;
+				}
+
+				svg {
+					margin: 0 1rem;
+
+					path {
+						fill: #EDB700;
+					}
+				}
+			}
+
+			&--subheading {
+				margin: 0 0 0.7rem;
+				color: $default-color;
+				font-family: $third-font-family-book;
+				@include fluid-type(font-size, 320px, 1400px, 22px, 32px);
+				line-height: 1.47;
+				letter-spacing: 0.44px;
+				text-transform: uppercase;
+
+				@include minw-media($breakPoints-l) {
+					@include fluid-type(font-size, 320px, 1400px, 12px, 22px);
+					letter-spacing: 0.46px;
+				}
+			}
+
+			.link-button {
+				background: $default-backgroung-color;
+
+				&:focus {
+					border: 1px solid #696969;
+					background: $default-backgroung-color;
+					color: #000000;
+				}
+
+				&:active {
+					background: #384765 !important;
+					color: #fff !important;
+				}
+
+				&:hover {
+					@include minw-media($breakPoints-l) {
+						background: #384765;
+						color: #fff !important;
+					}
+
+					svg {
+						path {
+							@include minw-media($breakPoints-l) {
+								fill: #fff;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	&__wrapper {
+		background-size: cover;
+		background-repeat: no-repeat;
+		border-radius: 5px;
+		box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+
+		@include minw-media($breakPoints-l) {
+			border-radius: 0;
+			box-shadow: none;
+		}
+	}
+
+	&__content {
+		position: relative;
+		padding: 20px 21px 30px 13px;
+
+		@include minw-media($breakPoints-l) {
+			padding: 25px;
+		}
+
+		&--heading {
+			width: 90%;
+			margin: 0 0 20px;
+			// color: $second-color;
+			color: $fifteenth-color;
+			font-family: $third-font-family-book;
+			@include fluid-type(font-size, 320px, 1400px, 20px, 30px);
+			line-height: 27px;
+
+			@include minw-media($breakPoints-l) {
+				width: 100%;
+				margin: 0 0 15px;
+				@include fluid-type(font-size, 320px, 1400px, 24px, 34px);
+				line-height: 1.3;
+				letter-spacing: 0.6px;
+			}
+		}
+
+		&--button {
+			position: absolute;
+			top: 0;
+			right: 10px;
+			width: 18px;
+			padding: 0;
+
+			img {
+				width: 100%;
+			}
+
+			@include minw-media($breakPoints-l) {
+				display: none;
+			}
+		}
+
+		&--mobile-popup {
+
+			@include maxw-media($breakPoints-l) {
+				position: absolute;
+				top: 0px;
+				right: 0;
+				background: $default-backgroung-color;
+				width: 100%;
+				padding: 5px 10px;
+				box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+
+				transform: scale(0);
+				visibility: hidden;
+				opacity: 0;
+
+				-webkit-transition: all 0.3s ease-in-out;
+				-moz-transition: all 0.3s ease-in-out;
+				-o-transition: all 0.3s ease-in-out;
+				transition: all 0.3s ease-in-out;
+				z-index: 1;
+			}
+
+			&.active {
+				transform: scale(1);
+				opacity: 1;
+				visibility: visible;
+			}
+
+
+		}
+
+		&--text {
+			margin: 0;
+			color: $default-color;
+			font-family: $second-font-regular;
+			@include fluid-type(font-size, 320px, 1400px, 12px, 16px);
+			line-height: 1.875;
+
+			@include minw-media($breakPoints-l) {
+				max-height: 60px;
+				margin: 0 0 30px;
+				overflow: hidden;
+				text-overflow: ellipsis;
+			}
+		}
+
+		&--images {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			width: 100%;
+
+			@include minw-media($breakPoints-l) {
+				max-width: 271px;
+				margin: 0 auto;
+			}
+
+			.mobile-show {
+				width: 100%;
+			}
+
+			.images-link {
+				width: 60%;
+
+				@include minw-media($breakPoints-l) {
+					width: 100%;
+				}
+			}
+		}
+
+		.link-button {
+			background: transparent;
+
+			@include maxw-media($breakPoints-l) {
+				min-width: 170px;
+				@include fluid-type(font-size, 320px, 1400px, 14px, 24px);
+			}
+
+			svg {
+				@include maxw-media($breakPoints-l) {
+					width: 15px;
+					margin-left: 10px;
+				}
+			}
+
+			&:hover {
+				color: #000000;
+				@include minw-media($breakPoints-l) {
+					background: $fourteenth-bg-color;
+					border: 1px solid $fourteenth-bg-color;
+					color: $first-color;
+				}
+
+				svg {
+					@include maxw-media($breakPoints-l) {
+						margin-right: 0;
+					}
+
+					path {
+						@include maxw-media($breakPoints-l) {
+							fill: #000;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	&__consultation {
+		background-position: center;
+		background-size: cover;
+		background-repeat: no-repeat;
+		padding: 40px 20px 45px 20px;
+
+
+
+		.title {
+			font-family: $default-font-family;
+			color: #384765;
+			font-size: 20px;
+
+			&-sub {
+				margin-top: 20px;
+				font-family: $default-font-family;
+				color: #384765;
+				font-size: 18px;
+			}
+		}
+
+		.btn {
+			margin-top: 35px;
+			padding: 10px 15px;
+			text-transform: uppercase;
+			font-size: 12px;
+			font-family: $default-font-family-bold;
+		}
+
+
+		@include media-breakpoint-down(md) {
+			padding: 0;
+			background-image: none !important;
+
+			.consultation-bg__sm {
+
+				img  {
+					display: block !important;
+				}
+			}
+
+			.title {
+				margin-top: 23px;
+
+				&-sub {
+					margin-top: 15px;
+				}
+			}
+
+			.btn {
+				margin-top: 35px;
+				padding: 17px 15px;
+				font-size: 20px;
+				width: 100%;
+			}
+		}
+	}
+}

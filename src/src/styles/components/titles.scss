@@ -1,0 +1,50 @@
+.title {
+	&-bordered {
+		text-transform: none;
+		position: relative;
+		width: fit-content;
+
+		&__bottom::before {
+			content: '';
+			position: absolute;
+			bottom: -12px;
+			left: 0;
+			width: 150px;
+			height: 4px;
+			background-color: $fifteenth-color;
+		}
+	}
+
+	&__background {
+
+		&__success {
+			background-color: #389B00;
+			@include media-breakpoint-down(md) {
+				width: 100%;
+			}
+
+			&__title {
+				margin: 0;
+				padding: 10px 30px;
+				font-family: $default-font-family;
+				@include fluid-type(font-size, 320px, 1510px, 24px, 26px);
+				color: $first-color;
+				letter-spacing: 3px;
+				text-transform: uppercase;
+
+
+				@include media-breakpoint-down(md) {
+					padding: 10px;
+				}
+			}
+		}
+	}
+
+	&__compare {
+		font-family: $default-font-family;
+		@include fluid-type(font-size, 320px, 1510px, 20px, 26px);
+		letter-spacing: 2.6px;
+		color: #384765;
+		text-transform: uppercase;
+	}
+}

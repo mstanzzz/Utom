@@ -1,0 +1,89 @@
+.form-group__default {
+	&__form-control {
+		padding: 0 30px 0 0;
+		border-radius: 0;
+
+		.input {
+			width: 100%;
+			height: 100%;
+			border: none;
+			padding-left: 15px;
+		}
+
+		.required {
+			&__star {
+				position: absolute;
+				top: 50%;
+				right: 15px;
+				transform: translateY(-50%);
+				width: 10px;
+				height: 10px;
+				line-height: 1;
+				color: $fifth-color;
+
+			}
+		}
+	}
+
+	.home-consult-form__radio input + span,
+	&__label {
+		margin-bottom: 10px;
+		font-family: $default-font-family-semi-bold;
+		@include fluid-type(font-size, 320px, 1400px, 12px, 14px);
+		color: $second-color;
+	}
+
+	.home-consult-form__radio input:hover {
+		&  + span:after {
+			background: $fifth-color;
+			transform: scale(0.5);
+		}
+
+		&  + span:before {
+			border: 1px solid $fifth-color;
+			background: $first-color;
+		}
+	}
+
+	.home-consult-form__radio input:checked + span:after {
+		background: $fifth-color;
+	}
+
+	.home-consult-form__radio input:checked + span:before {
+		border: 1px solid $fifth-color;
+	}
+
+	&__form-check {
+		& + .form-check {
+			margin-left: 40px;
+		}
+
+		.checkbox__ch-card__checkbox + label {
+			max-width: none;
+			flex: 0 0 auto;
+		}
+	}
+
+	::-webkit-input-placeholder { /* Edge */
+		color: $placeholder-color;
+	}
+
+	:-ms-input-placeholder { /* Internet Explorer */
+		color: $placeholder-color;
+	}
+
+	::placeholder {
+		color: $placeholder-color;
+	}
+}
+
+.form-promo {
+	border-bottom: 1px solid #D2D2D2;
+	padding-bottom: 13px;
+
+	&__label {
+		font-family: $default-font-family;
+		@include fluid-type(font-size, 320px, 1400px, 16px, 18px);
+		color: $eighth-color;
+	}
+}

@@ -1,0 +1,15 @@
+.list {
+	&-default {
+		padding-left: 0;
+		list-style: none;
+		text-align: left;
+		font-family: $default-font-family;
+		@include fluid-type(font-size, 320px, 1400px, 14px, 16px);
+		color: $first-bg-color;
+
+		li::before {
+			padding-right: 8px;
+			content: "-";
+		}
+	}
+}

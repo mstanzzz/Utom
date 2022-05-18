@@ -1,0 +1,77 @@
+.comparison {
+	hr {
+		border-top: 1px solid #949DAE;
+	}
+	.title__compare {
+		//margin-bottom: 90px;
+		padding-top: 55px;
+		padding-bottom: 10px;
+		@include media-breakpoint-down(md) {
+			display: none;
+		}
+	}
+
+	&-page {
+		.main.wrapper {
+			@include media-breakpoint-down(md) {
+				padding-bottom: 70px;
+			}
+		}
+	}
+
+	.btn-primary {
+		max-width: initial;
+		width: auto;
+	}
+
+	.filter__compare__mobile {
+		display: none;
+	}
+
+	.filter__compare__desktop {
+		display: flex;
+		margin-top: 1rem;
+		margin-bottom: 1rem;
+	}
+
+	@include media-breakpoint-down(md) {
+
+		.filter__compare__desktop,
+		.title__compare__desktop,
+		footer {
+			display: none;
+		}
+
+
+		.filter__compare__mobile {
+			display: block;
+			position: fixed;
+			bottom: 0;
+			width: 100%;
+			z-index: 9;
+
+			.btn-primary__trans {
+				border-color: #E1E1E1;
+				background-color: #E1E1E1;
+				color: #384765
+			}
+		}
+	}
+
+	.table__brands-comparison {
+		@include media-breakpoint-down(md) {
+			display: none;
+
+			&.active {
+				display: block;
+			}
+		}
+	}
+
+
+	&.comparison-page .home-mobile-buttons-block__wrapper h2{
+		@include media-breakpoint-down(md){
+			margin-left: 30px !important;
+		}
+	}
+}
